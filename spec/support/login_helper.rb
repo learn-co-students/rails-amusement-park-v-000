@@ -1,16 +1,5 @@
 module LoginHelper
 
-  # def visit_signup
-  #   visit '/users/new'
-  #   binding.pry
-  #   click_link('Sign Up')
-  # end
-
-  def visit_signup
-    visit '/users/new'
-    # click_link('Sign Up')
-  end
-
   def user_signup
     fill_in("user[name]", :with => "Amy Poehler")
     fill_in("user[height]", :with => "58")
@@ -19,16 +8,6 @@ module LoginHelper
     fill_in("user[tickets]", :with => "15")
     fill_in("user[password]", :with => "password")
     click_button('Create User')
-  end
-
-  # def visit_signin
-  #   visit '/signin'
-  #   click_link('Sign In')
-  # end
-
-  def visit_signin
-    visit '/signin'
-    # click_link('Sign In')
   end
 
   def user_login
@@ -70,5 +49,5 @@ module LoginHelper
     fill_in("user[password]", :with => "password")
     click_button('Sign In')
   end
-
+  
 end
