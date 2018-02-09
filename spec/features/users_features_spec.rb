@@ -164,7 +164,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
       :happiness_rating => 1,
       :min_height => 28
     )
-    visit_signup
+    visit '/users/new'
     user_signup
   end
 
@@ -262,7 +262,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     click_link('See attractions')
     click_link("Go on #{@ferriswheel.name}")
     click_button("Go on this ride")
-    expect(page).to have_content("You do not have enough tickets the #{@ferriswheel.name}")
+    expect(page).to have_content("You do not have enough tickets to ride the #{@ferriswheel.name}")
     expect(page).to have_content("Tickets: 1")
   end
 
@@ -273,7 +273,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     click_link("Go on #{@rollercoaster.name}")
     click_button("Go on this ride")
     expect(page).to have_content("You are not tall enough to ride the #{@rollercoaster.name}")
-    expect(page).to have_content("You do not have enough tickets the #{@rollercoaster.name}")
+    expect(page).to have_content("You do not have enough tickets to ride the #{@rollercoaster.name}")
     expect(page).to have_content("Tickets: 1")
   end
 end
@@ -302,7 +302,7 @@ describe 'Feature Test: Admin Flow', :type => :feature do
       :happiness_rating => 1,
       :min_height => 28
     )
-    visit_signup
+    visit '/users/new'
     admin_signup
   end
 

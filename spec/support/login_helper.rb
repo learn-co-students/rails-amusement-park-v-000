@@ -11,16 +11,9 @@ module LoginHelper
   end
 
   def user_login
-    @mindy = User.create(
-      name: "Mindy",
-      password: "password",
-      happiness: 3,
-      nausea: 2,
-      tickets: 10,
-      height: 50
-    )
-    fill_in("user[name]", :with => "Mindy")
-    fill_in("user[password]", :with => "password")
+    @mindy = User.create(name: "Mindy",password: "password",happiness: 3,nausea: 2,tickets: 10,height: 50)
+    fill_in("name", :with => "Mindy")
+    fill_in("password", :with => "password")
     click_button('Sign In')
   end
 
@@ -45,8 +38,8 @@ module LoginHelper
       password: "password",
       admin: true
     )
-    fill_in("user[name]", :with => "Walt Disney")
-    fill_in("user[password]", :with => "password")
+    fill_in("name", :with => "Walt Disney")
+    fill_in("password", :with => "password")
     click_button('Sign In')
   end
   
