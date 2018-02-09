@@ -164,7 +164,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
       :happiness_rating => 1,
       :min_height => 28
     )
-    visit_signup
+    visit '/users/new'
     user_signup
   end
 
@@ -302,7 +302,7 @@ describe 'Feature Test: Admin Flow', :type => :feature do
       :happiness_rating => 1,
       :min_height => 28
     )
-    visit_signup
+    visit '/users/new'
     admin_signup
   end
 

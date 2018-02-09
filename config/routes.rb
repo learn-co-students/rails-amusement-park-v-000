@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   get '/attractions', to: 'attractions#index', as: 'attractions'
   get '/signin', to: 'session#new', as: 'signin'
   post '/session', to: 'session#create', as: 'session'
+  delete '/session/', to: 'session#destroy'
+  get '/attractions/new', to: 'attractions#new', as: 'new_attraction'
+  get '/attractions/:id', to: 'attractions#show', as: 'attraction'
+  get '/attractions/:id/edit', to: 'attractions#edit', as: 'edit_attraction'
+  patch '/attractions/:id', to: 'attractions#update'
+  post '/attractions', to: 'attractions#create'
+  post '/rides', to:"rides#create", as: 'rides'
 end
