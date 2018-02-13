@@ -2,7 +2,8 @@
 
   <div class="form-group">
     <%= label_tag(:name, "Your name:") %>
-    <%= text_field_tag(:name, nil, class: "form-control") %>
+
+    <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown") %>
   </div>
 
   <div class="form-group">
