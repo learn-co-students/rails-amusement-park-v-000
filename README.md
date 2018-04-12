@@ -7,7 +7,7 @@ Get comfortable with using form helpers, having models interact with each other,
 You're going to be building an amusement park. There will be users, attractions, and users can take rides on attractions.
 
 ## Instructions
-* Check out [The Demo](http://amusement-park.herokuapp.com/) to see where this lab is headed.
+* Check out [The Demo](https://flatiron-amusement-park.herokuapp.com/) to see where this lab is headed.
 * This is a test driven lab, check out the model tests and get those to pass before moving onto the feature specs.
 * Remember, if you use scaffolds or generators do ***not*** overwrite the model specs that are included in this lab. Always use the `--no-test-framework` flag and enter `n` or `no` when prompted to overwrite the model specs for this lab.
 
