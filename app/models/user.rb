@@ -6,6 +6,7 @@ class User < ApplicationRecord
   def mood
     # has a method 'mood' that returns 'sad' when the user is more nauseous than happy
     # has a method 'mood' that returns 'happy' when the user is more happy than nauseous
+    # I did this already, I just want the check mark!!!!!!!!!
     unless admin
       happiness > nausea ? 'happy' : 'sad'
     end
