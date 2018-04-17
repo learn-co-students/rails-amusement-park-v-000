@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
-  get '/users/new', to: 'users#new', as: 'new_user'
-  root 'static_pages#home'
-  get '/users', to:'users#index', as: 'users'
-  post '/users', to:'users#create'
-  get '/users/:id', to: 'users#show', as: 'user'
-  get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
-  get '/attractions', to: 'attractions#index', as: 'attractions'
-  get '/signin', to: 'session#new', as: 'signin'
-  post '/session', to: 'session#create', as: 'session'
-  delete '/session/', to: 'session#destroy'
-  get '/attractions/new', to: 'attractions#new', as: 'new_attraction'
-  get '/attractions/:id', to: 'attractions#show', as: 'attraction'
-  get '/attractions/:id/edit', to: 'attractions#edit', as: 'edit_attraction'
-  patch '/attractions/:id', to: 'attractions#update'
-  post '/attractions', to: 'attractions#create'
-  post '/rides', to:"rides#create", as: 'rides'
+root 'welcome#home'
+get 'signin', to: 'sessions#new'
+get 'logout', to: 'sessions#destroy'
+post 'signin', to: 'sessions#create'
+post '/users/:id', to: 'users#ride'
+post '/rides/new', to: 'rides#new', as: 'ride'
+
+resources :attractions
+resources :users
+
+
 end
