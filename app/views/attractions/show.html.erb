@@ -1,24 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<div class="center">
-
-  <div class="info">
-    <p><strong>Name:</strong> <%= @attraction.name %></p>
-    <p><strong>Total Number of Users:</strong> <%= @attraction.users.count %></p>
-    <p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
-    <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
-    <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
-    <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
-    <% if current_user.admin %>
-      <%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
-    <% else %>
-      <%= form_for @ride do |f| %>
-        <%= f.hidden_field :user_id %><br />
-        <%= f.hidden_field :attraction_id %><br />
-        <%= f.submit "Go on this ride", class:"btn btn-light" %>
-      <% end %>
-    <% end %>
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
   </div>
+<% end %>
 
-</div>
+<h2>Name: <%= @attraction.name %></h2>
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
+<p>Happiness Rating: <%= @attraction.happiness_rating %></p>
+<p>Tickets Required: <%= @attraction.tickets %></p>
+<p>Minimum Height: <%= @attraction.min_height %></p>
 
+<%= button_to "Go on this ride", ride_path, params: {:attraction_id => @attraction.id, :user_id => current_user.id} %>
+
+<p><%= link_to "Edit Attraction", edit_attraction_path if current_user.admin %></p>

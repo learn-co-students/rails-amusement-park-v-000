@@ -1,13 +1,14 @@
-class User < ApplicationRecord
-  has_secure_password
-  has_many :rides
-  has_many :attractions, through: :rides
+class User < ActiveRecord::Base
+	has_secure_password
+	validates_presence_of :name, :password#, :nausea, :happiness, :tickets, :height
 
-  def mood
-    # has a method 'mood' that returns 'sad' when the user is more nauseous than happy
-    # has a method 'mood' that returns 'happy' when the user is more happy than nauseous
-    unless admin
-      happiness > nausea ? 'happy' : 'sad'
-    end
-  end
+	has_many :rides
+	has_many :attractions, through: :rides
+
+	def mood
+	  if nausea.present? && happiness.present?
+	    nausea > happiness ? 'sad' : 'happy'
+	  end
+	end
+
 end

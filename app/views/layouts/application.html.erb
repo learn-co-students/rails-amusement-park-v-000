@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsAmusementPark</title>
+    <title>Amusement Park</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= analytics_init if Rails.env.production? %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
   </head>
   <body>
+    <!--  navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -18,27 +20,26 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        
-        <% if !current_user %>
-          <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
-          <%= link_to "Log in", signin_path, class:"navbar-brand" %>
-        <% end %>
-        <% if current_user %>
-          <%= link_to "#{current_user.name}'s profile", user_path(current_user), class:"navbar-brand"%>
-          <%= link_to "Log Out", session_path, class:"navbar-brand",method:'delete' %>
-        <% end %>
+
+        <a class="navbar-brand" href="<%= attractions_path %>"/>Attractions</a>
+        <a class="navbar-brand" id="Log Out" href="<%= logout_path %>"/>Log Out</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+           <!--  nav here -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
+  <div class="center alert">
+    <% if flash[:error].present? %>
+      <%= flash[:error] %>
+    <%end%>
+  </div>
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>
     </div>
+
   </body>
 </html>
