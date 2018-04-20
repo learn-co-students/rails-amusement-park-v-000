@@ -8,6 +8,6 @@
     <p><strong>Tickets:</strong> <%= @user.tickets %></p>
     <p><strong>Mood:</strong>  <%= @user.mood if @user.mood %></p>
     <p><strong>Height:</strong> <%= @user.height %> inches</p>
-    <p><a href="/attractions">See attractions</a></p>
+    <p><%= link_to 'See attractions', attractions_path %></p>
   </div>
 </div>
