@@ -2,8 +2,9 @@
 
   <div class="info">
     <p><strong>Name:</strong> <%= @attraction.name %></p>
+    <!-- Total Number of Users:  -->
     <p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
-    <p><strong>Height Requirement:</strong> <%= @attraction.min_height %></p>
+    <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
     <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
     <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
     <%= button_to 'Go on this ride', ride_attraction_path, class: 'btn btn-primary' %>

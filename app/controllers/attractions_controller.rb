@@ -7,9 +7,10 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find(params[:id])
   end
 
+#can put this in a ride controller...
   def ride
     ride = Ride.create(user_id: current_user.id, attraction_id: params[:id])
-    ride.take_ride
-    redirect_to ride.user
+    ride_message = ride.take_ride
+    redirect_to ride.user, alert: ride_message
   end
 end

@@ -1,5 +1,9 @@
 <div class="center">
 
+  <div class="center alert">
+    <p><%= flash[:alert] %></p>
+  </div>
+
   <div class="info">
     <% if @user.admin %>
     <p><strong>ADMIN</strong></p>

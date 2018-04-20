@@ -8,6 +8,7 @@ class Ride < ActiveRecord::Base
       user.nausea += attraction.nausea_rating
       user.happiness += attraction.happiness_rating
       user.save
+      @success = "Thanks for riding the #{attraction.name}!"
     else
       @errors.join(" ")
     end
@@ -16,7 +17,7 @@ class Ride < ActiveRecord::Base
   def allowed?
     @errors = ["Sorry."]
     @errors << "You do not have enough tickets to ride the #{attraction.name}." if user.tickets < attraction.tickets
-    @errors << "You are not tall enough to ride the Roller Coaster." if user.height < attraction.min_height
+    @errors << "You are not tall enough to ride the #{attraction.name}." if user.height < attraction.min_height
     @errors.length <= 1 ? true : false
   end
 end
