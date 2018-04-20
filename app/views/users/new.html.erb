@@ -25,25 +25,3 @@
   </div>
   <%= f.submit class: 'btn btn-primary'%>
 <% end %>
-
-<% form_for @user do |f| %>
-
-
-
-  <%= f.label :height %>
-  <%= f.text_field :height %>
-
-  <%= f.label :happiness %>
-  <%= f.text_field :happiness %>
-
-  <%= f.label :nausea %>
-  <%= f.text_field :nausea %>
-
-  <%= f.label :tickets %>
-  <%= f.text_field :tickets %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Create User" %>
-<% end %>
