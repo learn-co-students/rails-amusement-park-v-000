@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    require_login
     @user = User.find_by(params[:id])
   end
 
