@@ -20,6 +20,10 @@
     <%= f.text_field :tickets, class: 'form-control' %>
   </div>
   <div class="form-group">
+      <%= f.label :admin, "Check box if you are a theme park owner" %>
+      <%= f.check_box :admin %>
+  </div>
+  <div class="form-group">
     <%= f.label :password %><br>
     <%= f.password_field :password, class: 'form-control' %>
   </div>

@@ -11,4 +11,8 @@ class SessionsController < ApplicationController
       redirect_to @user
     end
   end
+
+  def destroy
+    session.delete :user_id
+  end
 end
