@@ -8,8 +8,8 @@ class AttractionsController < ApplicationController
   end
 
   def ride
-    @ride = Ride.create(user_id: current_user.id, attraction_id: params[:id])
-    @ride.take_ride
-    byebug
+    ride = Ride.create(user_id: current_user.id, attraction_id: params[:id])
+    ride.take_ride
+    redirect_to ride.user
   end
 end
