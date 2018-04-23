@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :password_required, only: [:show]
     def new
         @user = User.new
     end
