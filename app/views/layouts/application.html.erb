@@ -18,6 +18,14 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+<<<<<<< HEAD
+        <% if logged_in? %>
+          <%= link_to "#{current_user.name}'s profile", user_path(current_user), class: "navbar-brand" %>
+          <%= link_to "Log Out", logout_path, class: "navbar-brand" %>
+        <% else %>
+            <%= link_to "Sign Up", new_user_path, class: "navbar-brand" %>
+            <%= link_to "Log In", signin_path, class: "navbar-brand" %>
+=======
         
         <% if !current_user %>
           <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
@@ -26,11 +34,12 @@
         <% if current_user %>
           <%= link_to "#{current_user.name}'s profile", user_path(current_user), class:"navbar-brand"%>
           <%= link_to "Log Out", session_path, class:"navbar-brand",method:'delete' %>
+>>>>>>> refs/remotes/origin/master
         <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>

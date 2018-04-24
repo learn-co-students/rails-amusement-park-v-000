@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+  root 'static#index'
+
+  # Users Controller Routes
+  resources :users
+
+  # Sessions Controller Routes
+  get '/signin' => "sessions#new"
+  post '/signin' => "sessions#create"
+  get '/logout' => "sessions#destroy"
+
+  # Attractions Controller Routes
+  resources :attractions
+
+  # Rides Controller Routes
+  post '/rides' => "rides#create"
+=======
   get '/users/new', to: 'users#new', as: 'new_user'
   root 'static_pages#home'
   get '/users', to:'users#index', as: 'users'
@@ -15,4 +32,5 @@ Rails.application.routes.draw do
   patch '/attractions/:id', to: 'attractions#update'
   post '/attractions', to: 'attractions#create'
   post '/rides', to:"rides#create", as: 'rides'
+>>>>>>> refs/remotes/origin/master
 end
