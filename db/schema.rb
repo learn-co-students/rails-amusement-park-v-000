@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_04_24_163303) do
+=======
+ActiveRecord::Schema.define(version: 20180209165747) do
+>>>>>>> refs/remotes/origin/master
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
@@ -23,6 +27,11 @@ ActiveRecord::Schema.define(version: 2018_04_24_163303) do
   create_table "rides", force: :cascade do |t|
     t.integer "user_id"
     t.integer "attraction_id"
+<<<<<<< HEAD
+=======
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> refs/remotes/origin/master
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,6 +41,11 @@ ActiveRecord::Schema.define(version: 2018_04_24_163303) do
     t.integer "happiness"
     t.integer "tickets"
     t.integer "height"
+<<<<<<< HEAD
+=======
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> refs/remotes/origin/master
     t.boolean "admin", default: false
   end
 
