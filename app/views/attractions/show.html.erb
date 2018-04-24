@@ -1,0 +1,9 @@
+<ul>
+    <li><%= label_tag :name %><%= ": #{@attraction.name}" %></li>
+    <li><%= label_tag "Total Number of Users " %><%= ": #{@attraction.users.size}" %></li>
+    <li><%= label_tag "Ticket Requirement " %><%= ": #{@attraction.tickets}" %></li>
+    <li><%= label_tag "Height Requirement " %><%= ": #{@attraction.min_height}" %></li>
+    <li><%= label_tag "Nausea Rating " %><%= ": #{@attraction.nausea_rating}" %></li>
+    <li><%= label_tag "Happiness Rating " %><%= ": #{@attraction.happiness_rating}" %></li>
+    <%= button_to "Go on this ride", {controller:"users", action: "show", id: @user.id}, method: "get" %>
+</ul>
