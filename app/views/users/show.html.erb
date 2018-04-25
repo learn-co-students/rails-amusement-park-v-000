@@ -1,10 +1,9 @@
 <ul>
-    <li><%= label_tag :admin, "ADMIN"%></li>
-    <li><%= label_tag :name%><%=" : " + @user.name%></li>
-    <li><%= label_tag :tickets%><%=" : " + @user.tickets.to_s%></li>
-    <%#= label_tag "Mood"%><%#=" : " + @user.happiness.to_s%>
-    <li><%= label_tag "Mood"%><%=" : " + "happy" %></li>
-    <li><%= label_tag :height%><%=" : " + @user.height.to_s%></li>
+    <%= label_tag :admin, "ADMIN" if @user.admin %>
+    <li><%= label_tag :name%><%=":  #{@user.name}"%></li>
+    <li><%= label_tag :tickets%><%=": #{@user.tickets}"%></li>
+    <li><%= label_tag "Mood"%><%=": #{@user.mood}" if !@user.admin%></li>
+    <li><%= label_tag :height%><%=": #{@user.height}"%></li>
     <%= link_to 'See attractions', attractions_path%>
 </ul>
 
