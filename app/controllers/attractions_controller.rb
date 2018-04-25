@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-    before_action :set_attraction, only: [:show]
+    before_action :set_attraction, only: [:show, :edit, :update]
     def index
         @attractions = Attraction.all
         @user= current_user
@@ -8,11 +8,17 @@ class AttractionsController < ApplicationController
         @attraction = Attraction.new
     end
     def create
-        @attraction = Attraction.create(attraction_params)
-        redirect_to attraction_path(@attraction)
+        attraction = Attraction.create(attraction_params)
+        redirect_to attraction_path(attraction)
     end
     def show
         @user= current_user
+    end
+    def edit
+    end
+    def update
+        @attraction.update(attraction_params)
+        redirect_to attraction_path(@attraction)
     end
 
     private
