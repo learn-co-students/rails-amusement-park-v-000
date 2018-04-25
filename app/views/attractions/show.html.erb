@@ -5,5 +5,5 @@
     <li><%= label_tag "Height Requirement " %><%= ": #{@attraction.min_height}" %></li>
     <li><%= label_tag "Nausea Rating " %><%= ": #{@attraction.nausea_rating}" %></li>
     <li><%= label_tag "Happiness Rating " %><%= ": #{@attraction.happiness_rating}" %></li>
-    <%= button_to "Go on this ride", {controller:"users", action: "show", id: @user.id}, method: "get" %>
+    <%= button_to "Go on this ride", rides_path, params: {"ride[user_id]" => @user.id, "ride[attraction_id]" => @attraction.id} %>
 </ul>
