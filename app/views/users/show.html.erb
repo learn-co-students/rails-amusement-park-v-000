@@ -1,4 +1,5 @@
 <ul>
+    <p><%= flash[:notice]  if flash[:notice] %></p>
     <%= label_tag :admin, "ADMIN" if @user.admin %>
     <li><%= label_tag :name%><%=":  #{@user.name}"%></li>
     <li><%= label_tag :tickets%><%=": #{@user.tickets}"%></li>

@@ -4,14 +4,22 @@ class Ride < ActiveRecord::Base
 
     def take_ride
         if enough_tickets? && tall_enough?
-            update_after_ride
+            ride_info
         else
             requirements_info
         end
     end
 
     private
-
+    def enough_tickets?
+        self.user.tickets >= self.attraction.tickets
+    end
+    def tall_enough?
+        self.user.height >= self.attraction.min_height
+    end
+    def ride_info
+        update_after_ride ? "Thanks for riding the #{attraction.name}!" : "System Error"
+    end
     def update_after_ride 
         self.user.tickets -= self.attraction.tickets
         self.user.happiness += self.attraction.happiness_rating
@@ -28,11 +36,5 @@ class Ride < ActiveRecord::Base
             message << "You are not tall enough to ride the #{attraction.name}." 
         end
         message.join(" ")
-    end
-    def enough_tickets?
-        self.user.tickets >= self.attraction.tickets
-    end
-    def tall_enough?
-        self.user.height >= self.attraction.min_height
     end
 end
