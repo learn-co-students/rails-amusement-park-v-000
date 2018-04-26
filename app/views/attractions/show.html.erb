@@ -1,24 +1,20 @@
-<p id="notice"><%= notice %></p>
+<H1><%= @attraction.name %></p></H1>
+   <p>Ticket Requirement: <%= @attraction.tickets %></p><br>
+    <p>Height Requirement: <%= @attraction.min_height %> inches</p><br>
+    <p>Nausea Rating: <%= @attraction.nausea_rating %></p><br>
+    <p>Happiness Rating: <%= @attraction.happiness_rating %></p><br>
+    
+ <% if current_user.admin %>
 
-<div class="center">
 
-  <div class="info">
-    <p><strong>Name:</strong> <%= @attraction.name %></p>
-    <p><strong>Total Number of Users:</strong> <%= @attraction.users.count %></p>
-    <p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
-    <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
-    <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
-    <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
-    <% if current_user.admin %>
-      <%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
-    <% else %>
-      <%= form_for @ride do |f| %>
-        <%= f.hidden_field :user_id %><br />
-        <%= f.hidden_field :attraction_id %><br />
-        <%= f.submit "Go on this ride", class:"btn btn-light" %>
-      <% end %>
-    <% end %>
-  </div>
+<%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %>
 
-</div>
+<% else %>
 
+<%= form_tag("/rides", method: "post") do %>
+ <%= hidden_field_tag :user_id %><br />
+<%= hidden_field_tag :attraction_id %><br />
+<div class="actions"><%= submit_tag 'Go on this ride', :class => 'btn btn-primary' %></div>
+
+<% end %>
+<% end %>

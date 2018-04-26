@@ -1,41 +1,49 @@
 class AttractionsController < ApplicationController
-  def index
+ before_action :set_attraction, only: [:show, :edit, :update, :destroy]
+def index
     @attractions = Attraction.all
-  end
+end
 
-  def show
-    @attraction = Attraction.find_by(id: params[:id])
-    @ride = @attraction.rides.build(user_id:current_user.id)
-  end
+def show
+    @attraction = Attraction.find(params[:id])
+end
 
-  def new
+def new
     @attraction = Attraction.new
-  end
+end
 
-  def create
-    attraction = Attraction.create(attraction_params)
-    redirect_to attraction_path(attraction)
-  end
+def create
+    @attraction = Attraction.new(attraction_params)
+    if current_user.admin
+        @attraction.save
+    redirect_to @attraction
+else
+    render :new
+    end
+end
 
-  def edit
-    @attraction = Attraction.find_by(id: params[:id])
-    @ride = @attraction.rides.build(user_id:current_user.id)
-  end
+def update
+    if @attraction.update(attraction_params)
+        redirect_to @attraction, notice: 'Attraction was successfully updated.'
+    else
+        render :edit
+    end
+end
 
-  def update
-    attraction = Attraction.find_by(id: params[:id])
-    attraction.update(attraction_params)
-    redirect_to attraction_path(attraction)
-  end
+def destroy
+        @attraction.destroy
+    redirect_to root_url
+end
 
-  private
-  def attraction_params
-    params.require(:attraction).permit(
-        :name,
-        :min_height,
-        :tickets,
-        :happiness_rating,
-        :nausea_rating
-      )
-  end
+private
+
+
+def set_attraction
+    @attraction = Attraction.find_by(params[:id])
+end
+
+def attraction_params
+params.require(:attraction).permit(:name, :min_height, :tickets, :happiness_rating, :nausea_rating)
+end
+
 end

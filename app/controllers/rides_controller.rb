@@ -1,15 +1,23 @@
 class RidesController < ApplicationController
-  def create
+   
+     def new
+     ride = Ride.new(ride_params)
+     end
+    
+    def create
     ride = Ride.create(ride_params)
+     ride.user = user
     message = ride.take_ride
-    redirect_to user_path(ride.user), flash: { message:message }
-  end
+    redirect_to user_path(ride.user)
+end
+private
 
-  private
-  def ride_params
-    params.require(:ride).permit(
-      :user_id,
-      :attraction_id
-      )
-  end
+# def set_ride
+#     @ride = Ride.find(params[:id])
+# end
+
+def ride_params
+# params.require(:user).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
+params.require(:ride).permit(:user_id, :attraction_id)
+end
 end

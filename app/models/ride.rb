@@ -1,49 +1,80 @@
-class Ride < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :attraction
+class Ride < ApplicationRecord
+    belongs_to :user
+    belongs_to :attraction
+        
 
-  def take_ride
-    user_has_enough_tickets, user_is_tall_enough = check_if_user_meets_the_requirements
-    if user_has_enough_tickets && user_is_tall_enough
-      start_ride
-    elsif user_is_tall_enough && !user_has_enough_tickets
-      "Sorry. " + not_enough_tickets
-    elsif user_has_enough_tickets && !user_is_tall_enough
-      "Sorry. " + not_tall_enough
-    else
-      "Sorry. " + not_enough_tickets + " " + not_tall_enough
+ def too_few
+       
+         "self.attraction.tickets".to_f >= "self.user.tickets".to_f 
+        #  binding.pry
+ end
+    def ticket_problem
+             "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
     end
-  end
+      
+    def too_short
+     "self.attraction.min_height".to_f >= "self.user.height".to_f 
+    
+    end
+    def height_problem
+         "Sorry. You are not tall enough to ride the #{self.attraction.name}." 
+    end
+    def multiple_issues
+         "self.attraction.tickets".to_f >= "self.user.tickets".to_f && "self.attraction.height".to_f >= "self.user.height".to_f
+    end
+    def multiple_problems
+        "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
+    end
 
-  def check_if_user_meets_the_requirements
-    user_has_enough_tickets, user_is_tall_enough = false
-    if self.user.tickets >= self.attraction.tickets
-      user_has_enough_tickets = true
+    def go_for_it
+        "self.user.tickets".to_f >= "self.attraction.tickets".to_f && "self.user.height".to_f >= "self.attraction.min_height".to_f
     end
-    if self.user.height >= self.attraction.min_height
-      user_is_tall_enough = true
+    
+    def thank_you
+        "Thank you for riding."
     end
-    return [user_has_enough_tickets, user_is_tall_enough]
-  end
-
-  def start_ride
+            
+        
+    def update_feelings
     new_happiness = self.user.happiness + self.attraction.happiness_rating
     new_nausea = self.user.nausea + self.attraction.nausea_rating
-    new_tickes_count =  self.user.tickets - self.attraction.tickets
+    new_tickets =  self.user.tickets - self.attraction.tickets
     self.user.update(
       :happiness => new_happiness,
       :nausea => new_nausea,
-      :tickets => new_tickes_count
+      :tickets => new_tickets
     )
-    "Thanks for riding the #{self.attraction.name}!"
-  end
+    end
+    
+    # def go_on_ride
+    #   if go_for_it
+    #          update_feelings
+    #          thank_you
+    #      end
+        
+    # end
 
-  def not_enough_tickets
-    "You do not have enough tickets to ride the #{self.attraction.name}."
-  end
+    def take_ride
+    ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
 
-  def not_tall_enough
-    "You are not tall enough to ride the #{self.attraction.name}."
-  end
+    ride.user_id = user.id
+         if go_for_it
+              update_feelings
+        #      thank_you
+ 
+        end
+          if too_short && !too_few
+            height_problem
+    
+      end
+       if too_few  && !too_short
+              ticket_problem
+          end
+             if too_short && too_few
+            multiple_problems
+   end
+#   binding.pry
+      
 
+     end
 end
