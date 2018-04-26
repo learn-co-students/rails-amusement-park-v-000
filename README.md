@@ -1,6 +1,6 @@
 # Rails Amusement Park
 
-## Objectives
+## Objectives 
 
 Get comfortable with using form helpers, having models interact with each other, and building out a simple sessions system.
 
