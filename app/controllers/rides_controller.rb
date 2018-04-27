@@ -1,11 +1,16 @@
 class RidesController < ApplicationController
-   
-     def new
-     @ride = Ride.create(ride_params)
-     @ride.user = user
-    message = @ride.take_ride
-    redirect_to user_path(ride.user)
-end
+    before_action :current_user
+  def new
+   @ride = Ride.new
+  end
+  
+  def create
+     @ride = Ride.create(:user_id => params[:user_id], :attraction_id => params[:attraction_id])
+     # @attraction = Attraction.find(params[:id])
+     @user = @ride.user
+     @message = @ride.take_ride
+    redirect_to user_path(@ride.user)
+  end
 private
 
 # def set_ride
@@ -13,7 +18,6 @@ private
 # end
 
 def ride_params
-# params.require(:user).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
 params.require(:ride).permit(:user_id, :attraction_id)
 end
 end

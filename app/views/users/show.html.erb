@@ -9,7 +9,7 @@
     <p>Height: <%= @user.height %> inches</p>
     <p>Admin: <%= @user.admin if true %> ADMIN</p>
    <%= link_to 'See attractions', attractions_path %> 
-    <%= link_to 'Sign Out', signout_path%>
+    <%= link_to 'Log Out', signout_path%>
     
     <% if current_user.admin %>
     
