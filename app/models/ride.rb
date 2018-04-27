@@ -54,17 +54,16 @@ class Ride < ApplicationRecord
     if go_for_it
         update_feelings
         thank_you
+    elsif too_short && too_few
+        multiple_problems
     
     elsif too_short
        height_problem
     
-    
     elsif too_few  
        ticket_problem
    end
-    if too_short && too_few
-        multiple_problems
-    end
+ 
 #   binding.pry
     end
 end
