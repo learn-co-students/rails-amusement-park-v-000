@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+    def show
+        @user = User.find(params[:id])
+    end
+
     def new
         @user = User.new
     end
@@ -17,12 +21,23 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
      end
     end
     
-     def show
-        @user = User.find(params[:id])
-     end
-    
+    def edit
+    end
+
+    def update
+      if @user.update(user_params)
+        redirect_to @user
+      else
+        render :edit 
+      end
+    end
+ 
     
     private
+    def set_user
+      @user = User.find(params[:id])
+    end
+    
   def user_params
     params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
 

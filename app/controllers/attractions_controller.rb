@@ -5,11 +5,15 @@ def index
 end
 
 def show
-    @attraction = Attraction.find(params[:id])
+        @ride = Ride.new
+    # @attraction = Attraction.find(params[:id])
 end
 
 def new
     @attraction = Attraction.new
+end
+
+def edit
 end
 
 def create
@@ -24,7 +28,7 @@ end
 
 def update
     if @attraction.update(attraction_params)
-        redirect_to @attraction, notice: 'Attraction was successfully updated.'
+        redirect_to @attraction
     else
         render :edit
     end

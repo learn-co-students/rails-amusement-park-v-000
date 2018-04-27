@@ -13,7 +13,7 @@ def create
       redirect_to user_path(@user)
     else
       redirect_to '/signin'
-     end
+      end
 end
 
 def destroy
