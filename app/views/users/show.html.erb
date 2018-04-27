@@ -1,9 +1,11 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Hi, <%= @user.name %>.</h1>
    
-
-  <% if flash[:message] %>
-   <p><%= flash[:message] %></p>
-   <% end %>
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+  
     <p>Tickets: <%= @user.tickets %></p>
     <p>Mood: <%= @user.mood %></p>
     <p>Height: <%= @user.height %> inches</p>

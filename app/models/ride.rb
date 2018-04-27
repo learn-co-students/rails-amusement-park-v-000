@@ -5,7 +5,7 @@ class Ride < ApplicationRecord
 
  def too_few
        
-         "self.attraction.tickets".to_f >= "self.user.tickets".to_f 
+         self.attraction.tickets >= self.user.tickets
         #  binding.pry
  end
     def ticket_problem
@@ -13,21 +13,21 @@ class Ride < ApplicationRecord
     end
       
     def too_short
-     "self.attraction.min_height".to_f >= "self.user.height".to_f 
+     self.attraction.min_height >= self.user.height 
     
     end
     def height_problem
          "Sorry. You are not tall enough to ride the #{self.attraction.name}." 
     end
     def multiple_issues
-         "self.attraction.tickets".to_f >= "self.user.tickets".to_f && "self.attraction.height".to_f >= "self.user.height".to_f
+         self.attraction.tickets >= self.user.tickets && self.attraction.height >= self.user.height
     end
     def multiple_problems
         "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
     end
 
     def go_for_it
-        "self.user.tickets".to_f >= "self.attraction.tickets".to_f && "self.user.height".to_f >= "self.attraction.min_height".to_f
+        self.user.tickets >= self.attraction.tickets && self.user.height >= self.attraction.min_height
     end
     
     def thank_you
@@ -46,35 +46,25 @@ class Ride < ApplicationRecord
     )
     end
     
-    # def go_on_ride
-    #   if go_for_it
-    #          update_feelings
-    #          thank_you
-    #      end
-        
-    # end
 
     def take_ride
-    ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
+    # ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
 
-    ride.user_id = user.id
-         if go_for_it
-              update_feelings
-        #      thank_you
- 
-        end
-          if too_short && !too_few
-            height_problem
+    # ride.user_id = user.id
+    if go_for_it
+        update_feelings
+        thank_you
     
-      end
-       if too_few  && !too_short
-              ticket_problem
-          end
-             if too_short && too_few
-            multiple_problems
-   end
+    elsif too_short
+       height_problem
+    
+    
+    elsif too_few  
+       ticket_problem
+       
+   else
+        multiple_problems
+    end
 #   binding.pry
-      
-
-     end
+    end
 end
