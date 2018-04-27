@@ -61,8 +61,8 @@ class Ride < ApplicationRecord
     
     elsif too_few  
        ticket_problem
-       
-   else
+   end
+    if too_short && too_few
         multiple_problems
     end
 #   binding.pry
