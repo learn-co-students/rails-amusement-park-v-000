@@ -31,7 +31,7 @@ class Ride < ApplicationRecord
     end
     
     def thank_you
-        "Thank you for riding."
+        "Thanks for riding the #{self.attraction.name}!"
     end
             
         
