@@ -7,7 +7,12 @@
     <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
     <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
     <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
-    <%= button_to 'Go on this ride', ride_attraction_path, class: 'btn btn-primary' %>
+    <% if current_user.admin %>
+      <%= link_to "Edit Attraction", edit_attraction_path %>
+    <% else %>
+      <%= button_to 'Go on this ride', ride_attraction_path, class: 'btn btn-primary' %>
+    <% end %>
+
       <!-- <a href="/attractions/1/edit">Edit Attraction</a><p></p> -->
   </div>
 

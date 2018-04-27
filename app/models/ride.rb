@@ -1,4 +1,5 @@
 class Ride < ActiveRecord::Base
+
   belongs_to :user
   belongs_to :attraction
 
@@ -20,4 +21,5 @@ class Ride < ActiveRecord::Base
     @errors << "You are not tall enough to ride the #{attraction.name}." if user.height < attraction.min_height
     @errors.length <= 1 ? true : false
   end
+
 end

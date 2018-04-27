@@ -18,10 +18,17 @@
       <tr>
         <td><%= a.name %></td>
         <td><%= a.tickets %></td>
-          <td><%= link_to "Go on " + a.name, a %></td>
+          <% if current_user.admin %>
+            <td><%= link_to "Show " + a.name, a %></td>
+          <% else %>
+            <td><%= link_to "Go on " + a.name, a %></td>
+          <% end %>
       </tr>
     <% end %>
-
   </tbody>
 </table>
 <br>
+
+<% if current_user.admin %>
+  <p><a href="/attractions/new">New Attraction</a></p>
+<% end %>
