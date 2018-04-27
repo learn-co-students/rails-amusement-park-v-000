@@ -5,7 +5,6 @@ def index
 end
 
 def show
-  @ride = Ride.new
   @attraction = Attraction.find(params[:id])
 end
 
