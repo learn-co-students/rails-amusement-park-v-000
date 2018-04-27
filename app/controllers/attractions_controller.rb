@@ -22,7 +22,7 @@ def create
         @attraction.save
     redirect_to @attraction
 else
-    render :new
+    redirect_to root_url
     end
 end
 
