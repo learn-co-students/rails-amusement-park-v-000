@@ -17,7 +17,10 @@
   <%= f.number_field :happiness %><br />
 
   <%= f.label :height %>:
-  <%= f.number_field :height %><br />  
+  <%= f.number_field :height %><br />
+
+  <%= f.label :admin, "Check box if you are a theme park owner" %>
+  <%= f.check_box :admin, class: "form-check-input" %>
 
   <%= f.submit %>
 <% end %>

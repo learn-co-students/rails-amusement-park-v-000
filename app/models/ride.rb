@@ -3,17 +3,17 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
-     user_has_enough_tickets, user_is_tall_enough = check_if_user_meets_the_requirements
-     if user_has_enough_tickets && user_is_tall_enough
-       start_ride
-     elsif user_is_tall_enough && !user_has_enough_tickets
-       "Sorry. " + not_enough_tickets
-     elsif user_has_enough_tickets && !user_is_tall_enough
-       "Sorry. " + not_tall_enough
-     else
-       "Sorry. " + not_enough_tickets + " " + not_tall_enough
-     end
-   end
+    user_has_enough_tickets, user_is_tall_enough = check_if_user_meets_the_requirements
+    if user_has_enough_tickets && user_is_tall_enough
+      start_ride
+    elsif user_is_tall_enough && !user_has_enough_tickets
+      "Sorry. " + not_enough_tickets
+    elsif user_has_enough_tickets && !user_is_tall_enough
+      "Sorry. " + not_tall_enough
+    else
+      "Sorry. " + not_enough_tickets + " " + not_tall_enough
+    end
+  end
 
   def check_if_user_meets_the_requirements
     user_has_enough_tickets, user_is_tall_enough = false
@@ -39,11 +39,11 @@ class Ride < ActiveRecord::Base
   end
 
   def not_enough_tickets
-   "You do not have enough tickets to ride the #{self.attraction.name}."
- end
+    "You do not have enough tickets to ride the #{self.attraction.name}."
+  end
 
- def not_tall_enough
-   "You are not tall enough to ride the #{self.attraction.name}."
- end
+  def not_tall_enough
+    "You are not tall enough to ride the #{self.attraction.name}."
+  end
 
 end
