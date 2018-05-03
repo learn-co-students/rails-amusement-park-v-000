@@ -1,2 +1,4 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
+
+  has_many :rides
 end
