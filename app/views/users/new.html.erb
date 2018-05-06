@@ -9,7 +9,9 @@
   How many tickets do you have? <br>
   <%=f.text_field :tickets%> <br>
   Password <br>
-  <%=f.text_field :password%> <br>
+  <%=f.text_field :password%> <br><br>
+  Are you an administrator?
+  <%=f.check_box :admin%> <br><br>
 
   <%=f.submit "Create User"%>
 <% end %>

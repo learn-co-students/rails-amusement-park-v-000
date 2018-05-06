@@ -11,13 +11,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user=User.find_by(id: session[:user_id])
+    if logged_in?
+      @user=User.find_by(id:       session[:user_id])
+    else
+      redirect_to '/'
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
+    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
+  end
+
+  def require_login
+    redirect_to '/' unless session.include? :user_id
   end
 
 end

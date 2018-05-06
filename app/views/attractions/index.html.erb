@@ -1,0 +1,12 @@
+
+<%Attraction.all.each do |attraction| %>
+  <%if is_admin?(@user)=="ADMIN" %>
+    <%=link_to "Show #{attraction.name}", attraction_path(attraction)%> <br>
+  <%else%>
+    <%=link_to "Go on #{attraction.name}", attraction_path(attraction)%> <br>
+  <%end%>
+<%end%>
+<br>
+<%if is_admin?(@user)=="ADMIN" %>
+  <%=link_to "New Attraction", new_attraction_path%>
+<%end%>
