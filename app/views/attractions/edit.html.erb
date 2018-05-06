@@ -1,6 +1,14 @@
-<h1>Editing attraction</h1>
+<%=form_for :attraction do |f| %>
+  <%=f.label :name %>
+  <%=f.text_field :name%>  <br>
+  <%=f.label :tickets %> <br>
+  <%=f.text_field :tickets %><br>
+  <%=f.label :nausea_rating %> Please enter (1-5):<br>
+  <%=f.text_field :nausea_rating %><br>
+  <%=f.label :happiness_rating %> Please enter (1-5):<br>
+  <%=f.text_field :happiness_rating %><br>
+  <%=f.label :min_height %> <br>
+  <%=f.text_field :min_height %><br>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @attraction %> |
-<%= link_to 'Back', attractions_path %>
+  <%=f.submit "Update Attraction"%>
+<% end %>

@@ -1,34 +1,31 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_user_is_authenticated, only: [:new,:create]
+
   def new
-    @user = User.new
   end
 
   def create
-    if (user = User.create user_params)
-      session[:user_id] = user.id
-      redirect_to user_path(user)
-    else
-      render 'new'
-    end
+    @user=User.create(user_params)
+    session[:user_id]=@user.id
+
+    redirect_to user_path(@user)
   end
 
   def show
-    @user = User.find_by(id:params[:id])
+    if logged_in?
+      @user=User.find_by(id:       session[:user_id])
+    else
+      redirect_to '/'
+    end
   end
 
   private
+
   def user_params
-    params.require(:user).permit(
-      :name,
-      :height,
-      :height,
-      :nausea,
-      :tickets,
-      :admin,
-      :admin,
-      :password,
-      :happiness
-      )
+    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
   end
+
+  def require_login
+    redirect_to '/' unless session.include? :user_id
+  end
+
 end

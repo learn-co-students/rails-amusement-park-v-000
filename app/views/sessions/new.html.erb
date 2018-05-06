@@ -1,0 +1,11 @@
+<h1> Sign In </h1> <br>
+
+<%= form_tag('/sessions') do%>
+  <%= label_tag(:user_name, "Name:") %>
+  <%= collection_select :user, :name, User.all, :name, :name, {:prompt=> 'Please select your username from this dropdown'} %> <br><br>
+
+  <label> Password </label> <br>
+  <%= text_field_tag :password %> <br>
+
+  <%= submit_tag "Sign In" %>
+<% end %>
