@@ -1,0 +1,16 @@
+<% if @user.admin == true %>
+<h4>ADMIN</h4>
+<% end %>
+
+<h4>Name: <%= @user.name %></h4>
+<h4>Height: <%= @user.height %> inches</h4>
+<h4>Mood: <%= @user.mood %></h4>
+<h4>Tickets: <%= @user.tickets %></h4>
+
+<%= link_to "Edit", edit_user_path(@user) %> <br>
+<%= link_to "See attractions", attractions_path %><br>
+
+<% if flash[:message] %>
+  <h3><%= flash[:message] %></h3>
+<% flash[:message].clear %>
+<% end %>
