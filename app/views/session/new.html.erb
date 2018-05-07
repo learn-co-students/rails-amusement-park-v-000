@@ -1,18 +1,8 @@
-<%= form_tag('/session', method: :post) do %>
-
-  <div class="form-group">
-    <%= label_tag(:name, "Your name:") %>
-
-    <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown") %>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag(:password, "Your password:") %>
-    <%= password_field_tag(:password, nil, class: "form-control") %>
-  </div>
-
-  <div class="actions">
-    <%= submit_tag("Sign In") %>
-  </div>
-
+<h1>Sign In</h1>
+<%= form_tag("/signin", method: "post") do %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <p>Select a User:</p>
+  <%= collection_select(:user, :name, User.all, :name, :name) %><br />
+  <p>Password: <%= text_field_tag :password %></p>
+  <%= submit_tag "Sign In" %>
 <% end %>
