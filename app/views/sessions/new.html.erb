@@ -1,0 +1,7 @@
+<%= form_tag sessions_path do %>
+<%= label_tag :user, "Your name: "%>
+<%= collection_select :user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown" %></br></br>
+<%= label_tag :password, "Your password: "%></br>
+<%= password_field_tag :password %></br></br>
+<%= submit_tag "Sign In" %>
+<% end %>
