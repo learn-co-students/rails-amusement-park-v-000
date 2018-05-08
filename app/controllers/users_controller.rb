@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       else
         format.html{render :new}
       end
+    end
   end
 
   def show
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
       else
         format.html {render :edit}
       end
+    end
   end
 
   private
