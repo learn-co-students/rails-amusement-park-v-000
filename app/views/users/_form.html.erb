@@ -1,0 +1,54 @@
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id='error_explanation'>
+      <h2>
+        <%= pluralize(@user.errors.count, 'error') %> prohibited this user from creating an account:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |m| %>
+          <li><%= m %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group'>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :height, 'Height in inches' %><br>
+    <%= f.number_field :height, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :happiness, 'Rate your happiness on the scale 1-5?' %><br>
+    <%= f.number_field :happiness, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :nausea, 'How nauseous are you on the scale 1-5?' %><br>
+    <%= f.number_field :nausea, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :tickets, 'How many tickets do you have?' %><br>
+    <%= f.number_field :tickets, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :admin, 'Check box if you are a theme park owner' %><br>
+    <%= f.check_box :admin, class: 'form-check-input' %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class='actions'>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+
+<% end %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
-  get 'sessions/new'
-
+  root 'statis_pages#home'
+  get '/signin', to: 'sessions#new'
+  resources :attractions
+  resources :users
 end
