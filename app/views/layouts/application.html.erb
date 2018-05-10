@@ -27,6 +27,17 @@
       </div>
     </div>
 
+    <% if @user %>
+      <% if @user.errors.any? %>
+        <% @users.errors.full_messages.each do |message| %>
+        <div class="alert">
+          <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>
