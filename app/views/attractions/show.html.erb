@@ -1,0 +1,5 @@
+<h3><%= @attraction.name %></h3>
+<% if @user.admin %>
+  <%= link_to "Edit Attraction", "/attractions/#{@attraction.id}/edit"%>
+<% end %>
+<%= button_to "Go on this ride", '/rides', params: {id: @attraction.id} %>
