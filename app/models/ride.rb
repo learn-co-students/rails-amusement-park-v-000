@@ -11,6 +11,7 @@ class Ride < ActiveRecord::Base
 			"Sorry. You are not tall enough to ride the #{attraction.name}."
 		else
 			update_user_after_ride
+			"Thanks for riding the #{self.attraction.name}!"
 		end 
 	end 
 

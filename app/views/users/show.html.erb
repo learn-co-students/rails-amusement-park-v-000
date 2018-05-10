@@ -1,16 +1,22 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+
+
 Name:  <%= @user.name %><br>
 Height:  <%= @user.height%><br>
 Happiness:  <%= @user.happiness %><br>
 Nausea:  <%= @user.nausea %><br>
 Tickets:  <%= @user.tickets %><br>
 <% if @user.mood %>
-	Mood:   <%= @user.mood %>
+	Mood:   <%= @user.mood %><br>
 <% end %>
 
 <% if @user.admin %>
-	<%= "ADMIN" %>
+	<%= "ADMIN" %><br>
 <% end %>
+<br><br><br>
+<a href="/logout">Log Out</a><br>
 
-<a href="/logout">Log Out</a>
-
-<a href="/attractions">See attractions</a>
+<a href="/attractions">See attractions</a><br>
