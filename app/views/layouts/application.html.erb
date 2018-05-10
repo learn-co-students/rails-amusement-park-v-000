@@ -32,4 +32,6 @@
       <%= yield %>
     </div>
   </body>
+  <footer>
+  <small><%= logged_in? ? (link_to "Log Out", logout_path) : (link_to "Sign In", signin_path) %></small>
 </html>

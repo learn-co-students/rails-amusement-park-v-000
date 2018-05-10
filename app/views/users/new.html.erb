@@ -1,0 +1,16 @@
+   <%= form_for(@user) do |f| %>
+            <%= f.text_field :name, placeholder: "Name" %>
+            <%= f.password_field :password, placeholder: "Password" %>
+            <%= f.number_field :tickets, placeholder: "Tickets" %> 
+            <%= f.number_field :height, placeholder: "Height in inches" %> 
+            <br>
+            <%= f.label "How happy are you? 1-10" %>
+            <%= f.number_field :happiness, in: 1...11 %>
+            <%= f.label "How nauseous are you? 1-10" %>
+            <%= f.number_field :nausea, in: 1...11 %>
+            <%= f.label "Are you an Admin?"%>
+            <%= f.check_box :admin, id: "user_admin"%> 
+			<%= f.submit %>
+        <% end %>
+
+    
