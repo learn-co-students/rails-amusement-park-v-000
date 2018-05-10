@@ -1,0 +1,12 @@
+<%= form_for(@user) do |f| %>
+
+<%= f.text_field :name %> <br>
+
+<%= f.text_field :password %> <br>
+<%= f.text_field :nausea %> <br>
+<%= f.text_field :happiness %> <br>
+<%= f.text_field :height %>
+<%= f.text_field :tickets %>
+<%= f.text_field :admin %>
+<%= f.submit "Create User"%>
+<% end %>
