@@ -1,0 +1,35 @@
+<h1>New user</h1>
+<%= form_for current_user, controller: 'users', action: 'create' do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label "Height (in inches)" %><br>
+    <%= f.number_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label "How happy are you? (1-5 scale)" %><br>
+    <%= f.number_field :happiness %>
+  </div>
+  <div class="field">
+    <%= f.label "How nauseous are you? (1-5 scale)" %><br>
+    <%= f.number_field :nausea %>
+  </div>
+  <div class="field">
+    <%= f.label "How many dollars are in your pocket?" %><br>
+    <%= f.number_field :tickets %>
+  </div>
+  <div class="field">
+    <%= f.label "Check box if you are a theme park owner" %>
+    <%= f.check_box :admin %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %><br><br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create User" %>
+  </div>
+<% end %>

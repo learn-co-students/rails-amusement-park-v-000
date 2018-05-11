@@ -1,0 +1,17 @@
+<div class="center">
+  <div class="notice">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
+
+  <div class="info">
+    <p><strong><%='ADMIN' if current_user.admin %></strong></p>
+    <p><strong>Name:</strong> <%= current_user.name %></p>
+    <p><strong>Tickets:</strong> <%= current_user.tickets %> </p>
+    <p><strong>Mood:</strong> <%= current_user.mood %> </p>
+    <p><strong>Height:</strong> <%= current_user.height %> inches</p>
+    <p><%= link_to "Edit", edit_user_path(current_user) if current_user.admin %></p>
+    <p><%= link_to "See attractions", attractions_path %></p>
+  </div>
+</div>
