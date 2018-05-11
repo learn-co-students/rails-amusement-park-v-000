@@ -17,7 +17,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+
+            <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+          <% if !logged_in? %>
+            <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
+            <a class="navbar-brand" href="<%= signin_path %>"/>Login</a>
+          <% else %>
+            <a class="navbar-brand" href="<%= user_path(current_user) %>"/>Profile</a>
+            <a class="navbar-brand" href="<%= logout_path %>"/>Log Out</a>
+          <% end %>
+          
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -26,6 +35,17 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+
+    <% if @user %>
+      <% if @user.errors.any? %>
+        <% @users.errors.full_messages.each do |message| %>
+        <div class="alert">
+          <%= message %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
 
     <!-- content -->
     <div class="container"  role="main">

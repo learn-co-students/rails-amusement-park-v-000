@@ -1,0 +1,25 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+
+<div class="info center">
+<p><strong>Name:</strong>  <%= @user.name %></p>
+<p><strong>Height:</strong>  <%= @user.height%></p>
+<p><strong>Happiness:</strong>  <%= @user.happiness %></p>
+<p><strong>Nausea:</strong>  <%= @user.nausea %></p>
+<p><strong>Tickets:</strong>  <%= @user.tickets %></p>
+<% if @user.mood %>
+	<p><strong>Mood:</strong>   <%= @user.mood %></p>
+<% end %>
+
+<% if @user.admin %>
+	<p><strong><%= "ADMIN" %></strong></p>
+<% end %>
+<br><br><br>
+
+
+<a href="/attractions">See attractions</a><br><br>
+
+<a href="/logout">Log Out</a>
+</div>
