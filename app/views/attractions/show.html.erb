@@ -1,15 +1,17 @@
+<div class="center info">
+
 <h1><%= @attraction.name %></h1>
 
-Users: <%= @attraction.users.count %><br>
+<p><strong>Users:</strong> <%= @attraction.users.count %></p>
 
-Tickets: <%= @attraction.tickets %><br>
+<p><strong>Tickets:</strong> <%= @attraction.tickets %></p>
 
-Height: <%= @attraction.min_height %><br>
+<p><strong>Height:</strong> <%= @attraction.min_height %></p>
 
-Nausea Rating: <%= @attraction.nausea_rating %><br>
+<p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
 
-Happiness Rating: <%= @attraction.happiness_rating %><br>
-
+<p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
+</div>
 <br><br><br>
 
 <%= form_tag('/rides') do %>
