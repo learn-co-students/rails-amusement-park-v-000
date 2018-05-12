@@ -1,0 +1,24 @@
+<p><%= flash[:notice] %></p>
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+
+<h2><%= @attraction.name %></h2>
+<p>Tickets: <%= @attraction.tickets %></p>
+<p>Happiness Level: <%= @attraction.happiness_rating %></p>
+<p>Nausea Level: <%= @attraction.nausea_rating %></p>
+<p>Minimum Height: <%= @attraction.min_height %></p>
+
+<% if current_user.admin? %>
+  <%=link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
+<br>
+<form action="/rides/new" method="post">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+  <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+  <input type="submit" value="Go on this ride">
+</form>
+
+<br>
+<p><%=link_to "See attractions", attractions_path %></p>
