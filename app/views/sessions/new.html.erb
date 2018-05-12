@@ -1,0 +1,13 @@
+<h1>Sign In</h1>
+
+<%= form_tag('/session', method: :post) do %>
+  Name:<br>
+  <%= collection_select(:user, :name, User.all, :id, :name) %>
+  <br><br>
+  Password:<br>
+  <%= password_field_tag :password %>
+  <br><br>
+  <%= submit_tag("Sign In") %>
+<% end %>
+
+ <p>New user? <%= link_to "Sign up now!", signup_path %></p>
