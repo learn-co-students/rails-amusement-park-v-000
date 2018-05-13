@@ -5,4 +5,5 @@
 <p><%= @user.tickets %></p>
 <p><%= @user.height %></p>
 <p>ADMIN</p>
-<p><%= link_to 'Log Out', 'logout_path', data: { confirm: 'Are you sure?' }, method: :delete %></p>
+
+<p><%= link_to "Log Out", logout_path, method: :delete %></p>
