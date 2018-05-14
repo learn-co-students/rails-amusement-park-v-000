@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 2018_05_10_160151) do
     t.integer "happiness"
     t.integer "tickets"
     t.integer "height"
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
   end
 
 end

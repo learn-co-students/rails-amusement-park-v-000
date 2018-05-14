@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :rides
   resources :attractions
   resources :users
-  root 'users#new'
+  
 
 end

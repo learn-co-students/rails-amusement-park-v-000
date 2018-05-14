@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  after_initialize :defaults
   has_many :rides
   has_many :attractions, through: :rides
   validates :password, presence: true
@@ -13,9 +12,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def defaults
-    self.admin = false
-  end
+
 end
 
 

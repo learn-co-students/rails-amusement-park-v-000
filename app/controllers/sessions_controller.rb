@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    binding.pry
     session.destroy
     redirect_to '/'
   end
