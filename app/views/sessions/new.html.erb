@@ -1,7 +1,8 @@
-
-<%= form_tag('/signin') do%>
+<%= form_tag('/users') do%>
     <%= collection_select :user, :name, User.all, :name, :name %>
+    
     <%= label_tag :password %>
     <%= text_field_tag :password %>
+
     <%= submit_tag "Sign In"%>
 <% end %>
