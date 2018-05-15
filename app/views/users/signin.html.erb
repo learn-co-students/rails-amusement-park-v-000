@@ -1,12 +1,7 @@
-<%= form_for(:user, url: signin_path) do |f|%>
-    <p>
-        <%= f.label :user_name %>
-        <%= f.collection_select :name, User.all, :id, :name %>
-    </p>
-    <p>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-    </p>
 
-      <%= f.submit %>
+<%= form_tag('/signin') do%>
+    <%= collection_select :user, :name, User.all, :name, :name %>
+    <%= label_tag :password %>
+    <%= text_field_tag :password %>
+    <%= submit_tag "Sign In"%>
 <% end %>
