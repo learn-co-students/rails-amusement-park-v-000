@@ -1,8 +1,11 @@
-<%= form_tag('/users') do%>
-    <%= collection_select :user, :name, User.all, :name, :name %>
-    
-    <%= label_tag :password %>
-    <%= text_field_tag :password %>
+<%= form_for :user do |f|%>
+    <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown") %>
 
-    <%= submit_tag "Sign In"%>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :admin, "Check box if you are a theme park owner" %>
+    <%= f.check_box :admin, class: "form-check-input" %>
+
+    <%= f.submit "Sign In"%>
 <% end %>

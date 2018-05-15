@@ -1,4 +1,4 @@
-<%= form_for(user) do |f|%>
+<%= form_for(@user) do |f|%>
     <p>
         <%= f.label :name %>
         <%= f.text_field :name %>
@@ -22,6 +22,10 @@
     <p>
         <%= f.label :tickets %>
         <%= f.text_field :tickets %>
+    </p>
+    <p>
+        <%= f.label :admin, "Check box if you are a theme park owner" %>
+        <%= f.check_box :admin, class: "form-check-input" %>
     </p>
 
       <%= f.submit %>
