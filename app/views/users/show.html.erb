@@ -1,0 +1,8 @@
+
+
+<h1><%= 'Admin' if current_user.admin %></h1>
+  <label>Name:</label><p><%= current_user.name %></p>
+  <label>Tickets:</label><p><%= current_user.tickets %></p>
+  <label>Mood:</label><p><%= current_user.mood %></p>
+  <label>Height:</label><p><%= current_user.height %></p>
+  <p><%= link_to 'See attractions', attractions_path %></p>
