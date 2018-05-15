@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe Attraction, :type => :model do
   let(:attraction) {
     Attraction.create(
