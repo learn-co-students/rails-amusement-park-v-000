@@ -1,24 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in?, :authenticate_user
-  
-  private 
+  before_action :verify_user_is_authenticated
+  helper_method :current_user
 
-  def user_authenticated?
-    redirect_to '/' unless logged_in?
+  private
+  def verify_user_is_authenticated
+    redirect_to '/' unless user_is_authenticated
   end
 
-  def current_user 
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-  end 
-
-  def logged_in? 
+  def user_is_authenticated
     !!current_user
   end
 
-  def authenticate_user 
-    if !logged_in?
-      redirect_to new_user_path 
-    end
+  def current_user
+    User.find_by(id:session[:user_id])
   end
 end
