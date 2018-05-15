@@ -1,6 +1,9 @@
-class Ride < ActiveRecord::Migration[5.2]
+class CreateRide < ActiveRecord::Migration[5.2]
   def change
-    t.integer :user_id
-    t.integer :attraction_id
+    create_table :rides do |t|
+      t.integer :user_id
+      t.integer :attraction_id
+    end
+
   end
 end
