@@ -4,13 +4,13 @@
   <label for="user_name"> Your Name
     <select name="user[name]" id="user_name">
       <option value="">Please select your username from this dropdown</option>
-      <%= options_from_collection_for_select(@users, :id, :name) %>
+      <%= options_from_collection_for_select(@users, :id) %>
     </select>
   </label><br>
 
   <label for="password">Your Password: <br> <input class="form_control" type="text" name="password" id="password"></label><br>
 
 
-  <input type=submit value='Sign in'>
+  <input type=submit value='Sign In'>
 
 <% end %>
