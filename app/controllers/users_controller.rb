@@ -5,8 +5,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    byebug
     User.create(user_params)
+  end
+
+  def show
   end
 
   private
