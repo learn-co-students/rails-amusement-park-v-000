@@ -12,11 +12,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     #need some kind of logic that translates the happiness_rating into a mood
-    if @user.happiness > 0
-      @mood = "happy"
-    else
-      @mood = "sad"
-    end        
+    @mood = @user.mood
+
   end
 
   private
