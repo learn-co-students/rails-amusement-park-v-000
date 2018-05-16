@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :attractions
   resources :rides
 
-  root 'users#new'
+
+  #root 'users#new'
+  root 'sessions#index'
 
   get 'signin' => 'sessions#new'
   post 'signin' => 'sessions#create'
