@@ -1,0 +1,14 @@
+
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+
+  <select name="user[name]" id="user_name"
+    <%= options_from_selection_for_select(@users, :id, :name)
+    <input name=name>
+  </select>
+
+  <label for="password">Password</label><br>
+  <input class="form_control" type="text" name="password" id="password">
+
+  <input type=submit value='Sign in'>
+  
+<% end %>
