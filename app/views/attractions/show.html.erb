@@ -18,7 +18,8 @@
 
 <%= form_tag ({controller: 'rides', action: 'create', method: 'post'}) do %>
 
-  <%= hidden_field_tag(:ride, "<%=@attraction.id%>") %>
+
+  <%= hidden_field_tag "ride[user_id]", "#{@user.id}" %>
 
   <input type=submit value='Go on this ride'>
 <% end %>
