@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     if @user.authenticate(params[:password])
       redirect_to @user
     else
-      render :new
+      redirect_to :signin
     end
   end
 
