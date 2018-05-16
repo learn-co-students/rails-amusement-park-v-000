@@ -10,6 +10,13 @@ class User < ApplicationRecord
 
 
 
-
+  def mood_change
+    if self.mood == "happy"
+      self.mood = "sad"
+    else
+      self.mood = "happy"
+    end
+    self.save
+  end
 
 end
