@@ -5,8 +5,8 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    byebug
     @attraction = Attraction.find(params[:id])
+    @user = User.find(current_user)
   end
 
 

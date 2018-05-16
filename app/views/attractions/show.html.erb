@@ -14,7 +14,7 @@
 <h3> Happiness Rating: <%=@attraction.happiness_rating%> </h3>
 
 <%= form_tag ({controller: 'rides', action: 'create', method: 'post'}) do %>
-  <input type="hidden" value="69" name="ride[user_id]" id="ride_user_id">
+  <input type="hidden" value="#{@user.id}" name="ride[user_id]" id="ride_user_id">
   <input type="hidden" value= "#{@attraction.id}" name="ride[attraction_id]" id="ride_attraction_id">
 
   <input type=submit value='Go on this ride'>
