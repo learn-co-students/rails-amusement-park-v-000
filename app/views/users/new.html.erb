@@ -1,0 +1,47 @@
+<h1>New User Registration</h1>
+
+<br>
+<%= form_for @user do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :height, "Height (in inches)" %>
+    <%= f.text_field :height, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :happiness, "How happy are you? (1-5 scale)" %>
+    <%= f.text_field :happiness, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %>
+    <%= f.text_field :nausea, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tickets, "How many dollars are in your pocket?" %>
+    <%= f.text_field :tickets, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :admin, "Check box if you are a theme park owner" %>
+    <%= f.check_box :admin %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password, class:"form-control" %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= f.submit class:"btn btn-primary" %>
+  </div>
+
+<% end %>
+
