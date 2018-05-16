@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  #before_action :logged_in?, only: [:index, :show]
+  before_action :logged_in?, only: [:index, :show]
 
   def new
 
@@ -13,9 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    logged_in?
     @user = User.find(params[:id])
-    #need some kind of logic that translates the happiness_rating into a mood
     @mood = @user.mood
 
   end
