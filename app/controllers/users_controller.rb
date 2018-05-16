@@ -6,9 +6,11 @@ class UsersController < ApplicationController
 
   def create
     User.create(user_params)
+    redirect_to :show
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   private
