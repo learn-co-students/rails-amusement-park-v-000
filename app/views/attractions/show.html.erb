@@ -13,6 +13,6 @@
 
 <h3> Happiness Rating: <%=@attraction.happiness_rating%> </h3>
 
-<%= form_tag ({controller: 'attractions', action: 'rides', method: 'post'}) do %>
+<%= form_tag ({controller: 'rides', action: 'rides', method: 'post'}) do %>
   <input type=submit value='Go on this ride'>
 <% end %>
