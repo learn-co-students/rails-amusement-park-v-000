@@ -4,8 +4,7 @@ class RidesController < ApplicationController
     @user = User.find(current_user)
     @attraction = Attraction.find(params[:ride][:attraction_id])
     @user.ticket_count(@attraction)
-    #@user.tickets = @user.tickets - @attraction.tickets
-    #@user.save
+    @user.mood_change
     redirect_to @user
   end
 

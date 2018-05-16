@@ -5,8 +5,10 @@ class User < ApplicationRecord
 
   def ticket_count(attraction)
     self.tickets = self.tickets - attraction.tickets
-    #self.save
+    self.save
   end
+
+
 
   def mood
     if self.happiness && self.happiness > 0
@@ -15,5 +17,9 @@ class User < ApplicationRecord
       @mood = "sad"
     end
     @mood
+  end
+
+  def mood_change
+    @mood = "sad"
   end
 end
