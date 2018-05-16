@@ -1,3 +1,4 @@
+
 <!-- successfully signs up as non-admin -->
 <%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
   <label for="user_name">Name</label><br>
@@ -19,5 +20,5 @@
   <input class="form_control" type="text" name="user[password]" id="user_password">
 
 
-  <input type=submit value='signup'>
+  <input type=submit value='Create User'>
 <% end %>
