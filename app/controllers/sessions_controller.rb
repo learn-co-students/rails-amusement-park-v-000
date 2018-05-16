@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
   def create
     byebug
     #need to authenticate user
-    @user = User.find
-    @user.authenticate
+    @user = User.find(params[:user][:id])
+    @user.authenticate(params[:password])
     params[:user]
     params[:password]
   end

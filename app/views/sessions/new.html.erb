@@ -2,9 +2,9 @@
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
 
   <label for="user_name"> Your Name
-    <select name="user[name]" id="user_name">
+    <select name="user[id]" id="user_name">
       <option value="">Please select your username from this dropdown</option>
-      <%= options_from_collection_for_select(@users, :id) %>
+      <%= options_from_collection_for_select(@users, :id, :name) %>
     </select>
   </label><br>
 
