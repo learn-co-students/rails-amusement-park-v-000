@@ -2,6 +2,9 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.create(ride_params)
     @user = User.find(current_user)
+    @attraction = Attraction.find(params[:ride][:attraction_id])
+    @user.tickets = @user.tickets - @attraction.tickets
+    @user.save
     redirect_to @user
   end
 
