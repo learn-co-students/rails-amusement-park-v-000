@@ -19,5 +19,5 @@
 <%= form_tag ({controller: 'rides', action: 'create', method: 'post'}) do %>
   <%= hidden_field_tag "ride[user_id]", "#{@user.id}" %>
   <%= hidden_field_tag "ride[attraction_id]", "#{@attraction.id}" %>
-   <%= submit_tag 'Go on this ride' %>
+  <%= submit_tag 'Go on this ride' %>
 <% end %>
