@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   def ticket_count(attraction)
     self.tickets = self.tickets - attraction.tickets
-    self.save
+    #self.save
   end
 
   def mood
