@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :tickets
       t.integer :height
       t.boolean :admin
-      t.boolean :mood, :default => true # equals happy
+      t.string :mood, :default => "happy" 
     end
   end
 end
