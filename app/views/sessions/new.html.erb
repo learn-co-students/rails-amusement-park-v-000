@@ -1,14 +1,16 @@
 
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
 
-  <select name="user[name]" id="user_name"
-    <%= options_from_selection_for_select(@users, :id, :name)
-    <input name=name>
-  </select>
+  <label for="user_name"> Your Name
+    <select name="user[name]" id="user_name">
+      <option value="">Please select your username from this dropdown</option>
+      <%= options_from_collection_for_select(@users, :id, :name) %>
+    </select>
+  </label><br>
 
-  <label for="password">Password</label><br>
-  <input class="form_control" type="text" name="password" id="password">
+  <label for="password">Your Password: <br> <input class="form_control" type="text" name="password" id="password"></label><br>
+
 
   <input type=submit value='Sign in'>
-  
+
 <% end %>
