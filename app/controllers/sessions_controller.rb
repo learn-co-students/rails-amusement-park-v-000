@@ -9,9 +9,11 @@ class SessionsController < ApplicationController
     byebug
     #need to authenticate user
     @user = User.find(params[:user][:id])
-    @user.authenticate(params[:password])
-    params[:user]
-    params[:password]
+    if @user.authenticate(params[:password])
+      redirect_to @user
+    else
+      redirect_to '/new'
+    end
   end
 
   def destroy
