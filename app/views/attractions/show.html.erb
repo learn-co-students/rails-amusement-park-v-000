@@ -1,0 +1,7 @@
+<h1><%=@attraction.name%></h1>
+
+<%if !current_user.admin%>
+  <%= button_to "Go on this ride", {action: "new", controller: "rides", attraction_id: @attraction}, class: "btn btn-primary" %>
+  <%else%>
+  <h3> <%= link_to "Edit Attraction", edit_attraction_path(@attraction)%> </h3>
+<%end%>
