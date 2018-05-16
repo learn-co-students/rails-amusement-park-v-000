@@ -6,10 +6,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    byebug
-    #need to authenticate user
     @user = User.find(params[:user][:id])
     if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
       redirect_to @user
     else
       redirect_to :signin
