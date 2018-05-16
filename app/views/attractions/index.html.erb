@@ -1,6 +1,7 @@
 <h1> Listing attractions </h1>
 
 <%@attractions.each do |attraction| %>
-<%= link_to attraction.name, attraction_path(attraction) %>
+<%=attraction.name%>
+<%= link_to "Go on <%=attraction.name%>", attraction_path(attraction) %>
 
 <%end%>
