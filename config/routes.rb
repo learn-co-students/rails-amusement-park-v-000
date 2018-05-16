@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :attractions
   resources :rides
 
+  root 'users#new'
+
 end
