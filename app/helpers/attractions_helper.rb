@@ -16,6 +16,21 @@ module AttractionsHelper
     if user.admin
       link_to "New Attraction", { controller: "attractions", action: "new" }
     end
+  end
 
+  def go_on_this_ride(user,attraction)
+    if !user.admin
+      form_tag ({controller: 'rides', action: 'create', method: 'post'}) do
+        hidden_field_tag "ride[user_id], user.id"
+        hidden_field_tag "ride[attraction_id], attraction.id"
+        submit_tag 'Go on this ride'
+      end
+    end
+  end
+
+  def go_on_this_ride_submit(user)
+    if !user.admin
+      submit_tag 'Go on this ride'
+    end
   end
 end
