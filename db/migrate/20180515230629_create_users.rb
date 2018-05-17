@@ -6,9 +6,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :nausea
       t.integer :happiness
       t.integer :tickets
-      t.integer :height 
+      t.integer :height
       t.boolean :admin, :default => false
-      t.string :mood, :default => "happy"
+      #t.string :mood, :default => "happy"
     end
   end
 end
