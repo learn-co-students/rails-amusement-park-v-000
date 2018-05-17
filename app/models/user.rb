@@ -14,17 +14,6 @@ class User < ApplicationRecord
     "happy" if self.nausea < self.happiness
   end
 
-=begin
-  def mood_change
-    if self.mood == "happy"
-      self.mood = "sad"
-    else
-      self.mood = "happy"
-    end
-    self.save
-  end
-=end
-
   def nausea_update(attraction)
     self.nausea += attraction.nausea_rating
     self.save

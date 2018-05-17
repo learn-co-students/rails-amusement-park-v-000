@@ -11,13 +11,6 @@ class Ride < ActiveRecord::Base
   end
 
   def take_ride
-    #the Ride instance knows who it's user is and who it's attraction is
-    #accounts for the user not having enough tickets
-    #accounts for the user not being tall enough
-    #accounts for the user not being tall enough and not having enough tickets
-    #updates ticket number
-    #updates the user's nausea
-    #updates the user's happiness
     @user = User.find(self.user_id)
     @attraction = Attraction.find(self.attraction_id)
     @response = ""
@@ -36,9 +29,9 @@ class Ride < ActiveRecord::Base
 
     if tall_enough?(@user,@attraction) && tickets_enough?(@user,@attraction)
       @user.ticket_count(@attraction)
-      @user.mood_change
       @user.nausea_update(@attraction)
       @user.happiness_update(@attraction)
+      @user.mood_change
     end
 
 

@@ -1,7 +1,10 @@
 class RidesController < ApplicationController
   def create
-    @user = User.find(current_user)
-    @attraction = Attraction.find(params[:ride][:attraction_id])
+    #@user = User.find(current_user)
+    #@attraction = Attraction.find(params[:ride][:attraction_id])
+    @ride = Ride.create(ride_params)
+
+    byebug
 
     if !@attraction.tall_enough?(@user)
       flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
