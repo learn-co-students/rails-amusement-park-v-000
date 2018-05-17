@@ -5,6 +5,11 @@ class RidesController < ApplicationController
     #this is about what hte user is authorized to do
     @user = User.find(current_user)
     @attraction = Attraction.find(params[:ride][:attraction_id])
+
+    if !@attraction.tall_enough?(@user)
+      flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
+    end
+
     byebug
     if @attraction.min_height > @user.height
       flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
