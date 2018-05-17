@@ -4,6 +4,11 @@ class RidesController < ApplicationController
     @user = User.find(current_user)
     @attraction = Attraction.find(params[:ride][:attraction_id])
 
+    if !@attraction.tickets_enough?(@user) && !@attraction.tall_enough?(@user)
+      flash[:notice] = "You are not tall enough to ride the #{@attraction.name}
+      You do not have enough tickets to ride the #{@attraction.name}"
+    end
+
     if !@attraction.tall_enough?(@user)
       flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
     end
@@ -11,7 +16,6 @@ class RidesController < ApplicationController
     if !@attraction.tickets_enough?(@user)
       flash[:notice] = "You do not have enough tickets to ride the #{@attraction.name}"
     end
-
 
     if @attraction.tickets_enough?(@user) && @attraction.tall_enough?(@user)
       @ride = Ride.create(ride_params)
