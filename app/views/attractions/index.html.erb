@@ -2,10 +2,13 @@
 
 <%@attractions.each do |attraction| %>
   <%=attraction.name%>
-  <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+  <!--
+  <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %> -->
+  <%= link_to_if(!@user.admin, "Go on #{attraction.name}", attraction_path(attraction) ) %>
+  <%= link_to_if(@user.admin, "Show #{attraction.name}", attraction_path(attraction) ) %>
   <br><br>
 <%end%>
 
 
-<%= link_to_if(@user.admin, "Add Attraction", { controller: "attractions", action: "new" }) %>
+<%= link_to_if(@user.admin, "New Attraction", { controller: "attractions", action: "new" }) %>
 
