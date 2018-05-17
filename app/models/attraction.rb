@@ -11,6 +11,10 @@ class Attraction < ApplicationRecord
       true if user.height > self.min_height
       false if user.height < self.min_height
   end
-  #tickets_enough
+
+  def tickets_enough(user)
+    true if user.tickets > self.tickets
+    false if user. tickets < self.tickets
+  end
 
 end
