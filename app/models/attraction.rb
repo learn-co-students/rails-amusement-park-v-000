@@ -9,6 +9,7 @@ class Attraction < ApplicationRecord
   #tall_enough
   def tall_enough?(user)
       true if user.height > self.min_height
+      false if user.height < self.min_height
   end
   #tickets_enough
 
