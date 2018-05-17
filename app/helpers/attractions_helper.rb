@@ -25,8 +25,8 @@ module AttractionsHelper
   end
 
   def link_to_edit_attraction(user)
-    if !user.admin
-      link_to("Edit Attraction", { controller: "attractions", action: "edit" }
+    if user.admin
+      link_to("Edit Attraction", { controller: "attractions", action: "edit" })
     end
   end
 end
