@@ -8,8 +8,6 @@ class User < ApplicationRecord
     self.save
   end
 
-  #rules for authorization
-
   def mood_change
     if self.mood == "happy"
       self.mood = "sad"

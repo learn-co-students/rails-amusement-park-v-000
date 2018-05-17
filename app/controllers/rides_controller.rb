@@ -9,12 +9,11 @@ class RidesController < ApplicationController
     end
 
     if !@attraction.tickets_enough?(@user)
-      flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
+      flash[:notice] = "You do not have enough tickets to ride the #{@attraction.name}"
     end
 
 
     if @attraction.tickets_enough?(@user) && @attraction.tall_enough?(@user)
-      byebug
       @ride = Ride.create(ride_params)
       @user.ticket_count(@attraction)
       @user.mood_change
