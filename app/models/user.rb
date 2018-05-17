@@ -8,6 +8,10 @@ class User < ApplicationRecord
     self.save
   end
 
+  def mood
+    "sad" if self.nausea > self.happiness
+  end
+
   def mood_change
     if self.mood == "happy"
       self.mood = "sad"
