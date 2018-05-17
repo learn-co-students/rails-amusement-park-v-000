@@ -1,5 +1,9 @@
 class RidesController < ApplicationController
   def create
+    if @attraction.min_height > @user.height
+      flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
+      redirect_to @user
+    end
     @ride = Ride.create(ride_params)
     @user = User.find(current_user)
     @attraction = Attraction.find(params[:ride][:attraction_id])
@@ -9,10 +13,6 @@ class RidesController < ApplicationController
 
     if (@user.height > @attraction.min_height) && (@user.tickets >= @attraction.tickets)
       flash[:notice] = "Thanks for riding the #{@attraction.name}!"
-    end
-
-    if @user.height < @attraction.min_height
-      flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
     end
 
     redirect_to @user
