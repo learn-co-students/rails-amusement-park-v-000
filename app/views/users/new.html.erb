@@ -1,0 +1,27 @@
+
+<!-- successfully signs up as non-admin -->
+<%= form_for(@user) do |f| %>
+
+  <%= label_tag 'Name' %><br>
+  <%= f.text_field :name %><br>
+
+  <%= label_tag 'Height' %><br>
+  <%= f.text_field :height %><br>
+
+  <%= label_tag 'Happiness' %><br>
+  <%= f.text_field :happiness %><br>
+
+  <%= label_tag 'Nausea' %><br>
+  <%= f.text_field :nausea %><br>
+
+  <%= label_tag 'How many dollars do you have?' %><br>
+  <%= f.text_field :tickets %><br>
+
+  <%= label_tag 'Password' %><br>
+  <%= f.text_field :password %><br>
+
+  <%= label_tag 'Check box if you are a theme park owner' %><br>
+  <%= f.check_box :admin %>
+
+  <%= f.submit %>
+<% end %>

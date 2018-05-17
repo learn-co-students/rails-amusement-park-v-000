@@ -1,0 +1,11 @@
+
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+
+  <%= select_tag "user[name]", options_from_collection_for_select(@users, :id, :name) %>
+
+  <%= label_tag 'Your Password:' %>
+  <%= text_field_tag :password %>
+
+  <%= submit_tag "Sign In" %>
+  
+<% end %>

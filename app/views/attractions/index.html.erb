@@ -1,0 +1,11 @@
+<h1> Listing attractions </h1>
+
+<%@attractions.each do |attraction| %>
+  <%=attraction.name%>
+  <%=not_admin_link(@user,attraction)%>
+  <%= admin_link(@user,attraction) %>
+  <br><br>
+<%end%>
+
+
+<%= new_attraction_link(@user) %>

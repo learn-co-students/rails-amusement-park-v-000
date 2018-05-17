@@ -1,0 +1,23 @@
+<h1> Here is the info about this Attraction </h1>
+
+
+<h3> Name: <%=@attraction.name%> </h3>
+
+<h3> Total Number of Users: <%=@attraction.users.count%> </h3>
+
+<h3> Ticket Requirement: <%=@attraction.tickets%> </h3>
+
+<h3> Height Requirement: <%=@attraction.min_height%> </h3>
+
+<h3> Nausea Rating: <%=@attraction.nausea_rating%> </h3>
+
+<h3> Happiness Rating: <%=@attraction.happiness_rating%> </h3>
+
+
+<%= form_tag ({controller: 'rides', action: 'create', method: 'post'}) do %>
+  <%= hidden_field_tag "ride[user_id]", "#{@user.id}" %>
+  <%= hidden_field_tag "ride[attraction_id]", "#{@attraction.id}" %>
+  <%= go_on_this_ride_submit(@user) %>
+<% end %>
+
+<%= link_to_edit_attraction(@user) %>
