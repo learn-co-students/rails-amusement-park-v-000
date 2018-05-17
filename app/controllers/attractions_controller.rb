@@ -5,8 +5,8 @@ class AttractionsController < ApplicationController
     @user = User.find(current_user)
   end
 
-  def new 
-    
+  def new
+
   end
 
   def create
