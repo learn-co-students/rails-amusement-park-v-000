@@ -3,13 +3,18 @@
  <% end %>
 
 <h2> Here is your information <%= @user.name %></h2>
+ <%if @user.admin %>
+   <li>User Type: ADMIN<li>
+ <% end %>
 
-<ul>
-  <%if @user.admin %> <li>User Type: ADMIN<li> <%end%>
-  <li>Height: <%=@user.height%></li>
-  <li>Mood: <%=@user.mood%></li>
-  <li>Nausea Level: <%=@user.nausea%></li>
-  <li>Tickets: <%=@user.tickets%></li>
-</ul>
 
-<%= link_to "See attractions", "/attractions" %>
+  <%if !@user.admin %>
+    <ul>
+      <li>Height: <%=@user.height%></li>
+      <li>Mood: <%=@user.mood%></li>
+      <li>Nausea Level: <%=@user.nausea%></li>
+      <li>Tickets: <%=@user.tickets%></li>
+    </ul>
+  <%end%>
+
+  <%= link_to "See attractions", "/attractions" %>
