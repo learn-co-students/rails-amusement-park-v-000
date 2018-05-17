@@ -18,13 +18,20 @@ class Ride < ActiveRecord::Base
     #updates ticket number
     #updates the user's nausea
     #updates the user's happiness
-    byebug
     @user = User.find(self.user_id)
     @attraction = Attraction.find(self.attraction_id)
     @response = ""
 
     if !tickets_enough?(@user,@attraction)
       @response = "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
+    end
+
+    if !tall_enough?(@user,@attraction)
+      @response = "Sorry. You are not tall enough to ride the #{@attraction.name}."
+    end
+
+    if !tall_enough? && !tickets_enough(@user,@attraction)
+      @response = "Sorry. You do not have enough tickets to ride the #{@attraction.name}. You are not tall enough to ride the #{@attraction.name}."
     end
 
 
