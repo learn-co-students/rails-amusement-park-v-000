@@ -1,0 +1,17 @@
+<h1><%= @user.name %></h1>
+<% if @user.admin %>
+    <h3>ADMIN</h3>    
+<% else %>
+    <p><%= @user.height %> inches tall</p>
+    <p>Tickets: <%= @user.tickets %></p>
+    <% if @user.happiness > @user.nausea %>
+        <p>Mood: happy</p>
+    <% else %>
+        <p>Mood: sad</p>
+    <% end %>
+<% end %>
+
+<br></br>
+<%= link_to "See attractions", attractions_path %>
+<br></br>
+<%= link_to "Log Out", '/signout' %>
