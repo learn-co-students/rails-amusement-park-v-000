@@ -1,7 +1,5 @@
 
 <!-- successfully signs up as non-admin -->
-
-
 <%= form_for(@user) do |f| %>
   <label>Name</label><br>
   <%= f.text_field :name %><br>
@@ -22,8 +20,7 @@
   <%= f.text_field :password %><br>
 
   <label for="user_admin">Check box if you are a theme park owner</label>
-  <input class="form-check-input" type="checkbox" value="1" name="user[admin]" id="user_admin">
-  <br>
+  <%= f.check_box :admin %>
 
   <%= f.submit %>
 <% end %>
