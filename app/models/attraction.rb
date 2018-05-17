@@ -3,11 +3,24 @@ class Attraction < ApplicationRecord
   has_many :users, through: :rides
 
   def tall_enough?(user)
-    true unless user.height < self.min_height
+    byebug
+    if user.height < self.min_height
+      @answer = false
+    else
+      @answer = true
+    end
+    @answer
+    #true unless user.height < self.min_height
   end
 
   def tickets_enough?(user)
-    true unless user.tickets < self.tickets
+    if user.tickets < self.tickets
+      @answer = false
+    else
+      @answer = true
+    end
+    @answer
+    #true unless user.tickets < self.tickets
   end
 
 end
