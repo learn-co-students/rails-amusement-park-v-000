@@ -19,3 +19,5 @@
   <%= hidden_field_tag "ride[attraction_id]", "#{@attraction.id}" %>
   <%= go_on_this_ride_submit(@user) %>
 <% end %>
+
+<%= link_to_edit_attraction(@user) %>
