@@ -28,12 +28,12 @@ class Ride < ActiveRecord::Base
     end
 
     if tall_enough?(@user,@attraction) && tickets_enough?(@user,@attraction)
+      #there is something not right here
       @user.ticket_count(@attraction)
       @user.nausea_update(@attraction)
       @user.happiness_update(@attraction)
-      @user.mood
       @user.save
-      byebug
+      @response = "Thanks for riding the #{@attraction.name}!"
     end
 
 

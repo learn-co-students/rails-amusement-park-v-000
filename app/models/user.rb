@@ -10,8 +10,11 @@ class User < ApplicationRecord
 
   def mood
     #returns 'happy' when the user is more happy than nauseous
-    "sad" if self.nausea > self.happiness
-    "happy" if self.nausea < self.happiness
+    @return = "sad" if self.nausea > self.happiness
+    @return = "happy" if self.nausea < self.happiness
+    @return
+    #"sad" if self.nausea > self.happiness
+    #"happy" if self.nausea < self.happiness
   end
 
   def nausea_update(attraction)
