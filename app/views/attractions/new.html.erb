@@ -17,30 +17,3 @@
 
   <%= f.submit "Create Attraction" %>
 <% end %>
-
-
-
-<%= form_tag ({controller: 'attractions', action: 'create', method: 'post'}) do %>
-
-  <label for="user_name">Name</label>
-  <input class="form_control" type="text" name="attraction[name]" id="attraction_name">
-  <br>
-
-  <label for="user_height">Height Requirement (in inches)</label>
-  <input class="form_control" type="text" name="attraction[min_height]" id="user_height">
-  <br>
-
-  <label for="user_happiness">How fun is it? (1-5 scale)</label>
-  <input class="form_control" type="text" name="attraction[happiness_rating]" id="user_happiness">
-  <br>
-
-  <label for="user_nausea">How nausea-inducing is it? (1-5 scale)</label>
-  <input class="form_control" type="text" name="attraction[nausea_rating]" id="attraction_nausea">
-  <br>
-
-  <label for="user_tickets">How many tickets does it cost?</label>
-  <input class="form_control" type="text" name="attraction[tickets]" id="attraction_tickets">
-  <br>
-
-  <input type=submit value='Create Attraction'>
-<% end %>
