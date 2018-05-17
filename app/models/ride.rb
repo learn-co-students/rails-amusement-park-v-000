@@ -30,8 +30,15 @@ class Ride < ActiveRecord::Base
       @response = "Sorry. You are not tall enough to ride the #{@attraction.name}."
     end
 
-    if !tall_enough? && !tickets_enough(@user,@attraction)
+    if !tall_enough?(@user,@attraction) && !tickets_enough?(@user,@attraction)
       @response = "Sorry. You do not have enough tickets to ride the #{@attraction.name}. You are not tall enough to ride the #{@attraction.name}."
+    end
+
+    if tall_enough?(@user,@attraction) && tickets_enough?(@user,@attraction)
+      @user.ticket_count(@attraction)
+      @user.mood_change
+      @user.nausea_update(@attraction)
+      @user.happiness_update(@attraction)
     end
 
 

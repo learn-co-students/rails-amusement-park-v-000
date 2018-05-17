@@ -17,7 +17,15 @@ class User < ApplicationRecord
     self.save
   end
 
-  #admin authorization rules
-  
+  def nausea_update(attraction)
+    self.nausea += attraction.nausea_rating
+    self.save
+  end
+
+  def happiness_update(attraction)
+    self.happiness += attraction.happiness_rating
+    self.save
+  end
+
 
 end
