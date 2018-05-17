@@ -2,13 +2,11 @@
 
 <%@attractions.each do |attraction| %>
   <%=attraction.name%>
-  byebug
-  <%=not_admin_link(@user)%>
-  <%= link_to_if(!@user.admin, "Go on #{attraction.name}", attraction_path(attraction) ) %>
-  <%= link_to_if(@user.admin, "Show #{attraction.name}", attraction_path(attraction) ) %>
+  <%=not_admin_link(@user,attraction)%>
+  <%= admin_link(@user,attraction) %>
   <br><br>
 <%end%>
 
 
-<%= link_to_if(@user.admin, "New Attraction", { controller: "attractions", action: "new" }) %>
+<%= new_attraction_link(@user) %>
 
