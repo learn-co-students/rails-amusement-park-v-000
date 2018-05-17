@@ -1,35 +1,29 @@
 
 <!-- successfully signs up as non-admin -->
-<%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
 
-  <label for="user_name">Name</label>
-  <input class="form_control" type="text" name="user[name]" id="user_name">
-  <br>
 
-  <label for="user_height">Height</label>
-  <input class="form_control" type="text" name="user[height]" id="user_height">
-  <br>
+<%= form_for(@user) do |f| %>
+  <label>Name</label><br>
+  <%= f.text_field :name %><br>
 
-  <label for="user_happiness">Happiness</label>
-  <input class="form_control" type="text" name="user[happiness]" id="user_happiness">
-  <br>
+  <label>Height</label><br>
+  <%= f.text_field :height %><br>
 
-  <label for="user_nausea">Nausea</label>
-  <input class="form_control" type="text" name="user[nausea]" id="user_nausea">
-  <br>
+  <label>Happiness</label><br>
+  <%= f.text_field :happiness %><br>
 
-  <label for="user_tickets">How many dollars do you have?</label>
-  <input class="form_control" type="text" name="user[tickets]" id="user_tickets">
-  <br>
+  <label>Nausea</label><br>
+  <%= f.text_field :nausea %><br>
 
-  <label for="user_password">Password</label>
-  <input class="form_control" type="text" name="user[password]" id="user_password">
-  <br>
+  <label>How many dollars do you have?</label><br>
+  <%= f.text_field :tickets %><br>
+
+  <label>Password</label><br>
+  <%= f.text_field :password %><br>
 
   <label for="user_admin">Check box if you are a theme park owner</label>
   <input class="form-check-input" type="checkbox" value="1" name="user[admin]" id="user_admin">
   <br>
 
-
-  <input type=submit value='Create User'>
+  <%= f.submit %>
 <% end %>
