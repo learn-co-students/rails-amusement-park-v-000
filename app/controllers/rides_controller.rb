@@ -19,7 +19,7 @@ class RidesController < ApplicationController
     if @attraction.tickets_enough?(@user) && @attraction.tall_enough?(@user)
       @ride = Ride.create(ride_params)
       @user.ticket_count(@attraction)
-      @user.mood_change
+      #@user.mood_change
       flash[:notice] = "Thanks for riding the #{@attraction.name}!"
     end
 

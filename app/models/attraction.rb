@@ -10,4 +10,6 @@ class Attraction < ApplicationRecord
     true unless user.tickets < self.tickets
   end
 
+  
+
 end
