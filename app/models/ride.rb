@@ -31,7 +31,7 @@ class Ride < ActiveRecord::Base
       @user.ticket_count(@attraction)
       @user.nausea_update(@attraction)
       @user.happiness_update(@attraction)
-      @user.mood_change
+      @user.mood
     end
 
 

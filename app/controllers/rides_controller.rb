@@ -3,9 +3,9 @@ class RidesController < ApplicationController
     #@user = User.find(current_user)
     #@attraction = Attraction.find(params[:ride][:attraction_id])
     @ride = Ride.create(ride_params)
+    flash[:notice] = @ride.take_ride
 
-    byebug
-
+=begin
     if !@attraction.tall_enough?(@user)
       flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
     end
@@ -25,7 +25,7 @@ class RidesController < ApplicationController
       #@user.mood_change
       flash[:notice] = "Thanks for riding the #{@attraction.name}!"
     end
-
+=end
     redirect_to @user
   end
 
