@@ -4,5 +4,7 @@
   <%=attraction.name%>
   <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
   <br><br>
-
 <%end%>
+
+<%= link_to("Add Attraction", { controller: "attractions", action: "new" }  %>
+

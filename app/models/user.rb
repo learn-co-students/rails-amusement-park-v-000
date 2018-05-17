@@ -17,4 +17,7 @@ class User < ApplicationRecord
     self.save
   end
 
+  #admin authorization rules
+  
+
 end
