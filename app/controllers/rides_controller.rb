@@ -11,6 +11,10 @@ class RidesController < ApplicationController
       flash[:notice] = "Thanks for riding the #{@attraction.name}!"
     end
 
+    if @user.height < @attraction.min_height
+      flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
+    end
+
     redirect_to @user
   end
 
