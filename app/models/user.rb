@@ -9,9 +9,13 @@ class User < ApplicationRecord
   end
 
   def mood
+    byebug
+    #returns 'happy' when the user is more happy than nauseous
     "sad" if self.nausea > self.happiness
+    "happy" if self.nausea < self.happiness
   end
 
+=begin
   def mood_change
     if self.mood == "happy"
       self.mood = "sad"
@@ -20,6 +24,7 @@ class User < ApplicationRecord
     end
     self.save
   end
+=end
 
   def nausea_update(attraction)
     self.nausea += attraction.nausea_rating
