@@ -32,6 +32,8 @@ class Ride < ActiveRecord::Base
       @user.nausea_update(@attraction)
       @user.happiness_update(@attraction)
       @user.mood
+      @user.save
+      byebug
     end
 
 
