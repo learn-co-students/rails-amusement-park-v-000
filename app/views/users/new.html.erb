@@ -4,13 +4,13 @@
     <%= f.label "Name" %><br>
     <%= f.text_field :name %><br>
     <%= f.label "Height (in inches)" %><br>
-    <%= f.number_field :height %><br>
+    <%= f.number_field :height, options = {min: 0, max: 96} %><br>
     <%= f.label "How happy are you? (1-5 scale)" %><br>
-    <%= f.number_field :happiness %><br>
+    <%= f.number_field :happiness, options = {min: 1, max: 5} %><br>
     <%= f.label "How nauseous are you? (1-5 scale)" %><br>
-    <%= f.number_field :nausea %><br>
+    <%= f.number_field :nausea, options = {min: 1, max: 5} %><br>
     <%= f.label "How many tickets do you have? ($1 each)" %><br>
-    <%= f.number_field :tickets %><br>
+    <%= f.number_field :tickets, options = {min: 1, max: 5000} %><br>
     <%= f.label "Check box if you are a theme park owner:" %>
     <%= f.check_box :admin %><br>
     <%= f.label "Password" %><br>

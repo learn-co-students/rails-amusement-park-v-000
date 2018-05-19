@@ -1,7 +1,7 @@
 <ul>
 <% @attractions.each do |attraction| %>
     <li>
-    <% if User.find(session[:user_id]).admin %>
+    <% if @user.admin %>
         <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
     <% else %>
         <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>

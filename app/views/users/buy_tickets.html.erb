@@ -1,0 +1,11 @@
+<h1>Tickets</h1>
+
+<h3>User: <%= @user.name %></h3>
+<h3>Current number of tickets: <%= @user.tickets %></h3>
+
+<%= form_tag "/users/#{@user.id}/tickets" do %>
+    <%= label_tag "How many tickets do you want to buy? ($1 each)" %><br>
+    <%= number_field_tag :new_tickets, options = {min: 0, max: 5000} %><br>
+    <br>
+    <%= submit_tag "Buy Tickets" %>
+<% end %>
