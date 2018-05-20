@@ -1,0 +1,9 @@
+<%= form_for(:user) do |f| %>
+    <%= f.label :name %>
+    <%= f.collection_select :id, User.all, :id, :name, {:include_blank=>true}, {:name=>"user_name"} %>
+    <br>
+    <%= f.label :password %>
+    <%= f.text_field :password, {:name=>"password"} %>
+    <%= f.submit "Sign In" %>
+<% end %>
+
