@@ -1,0 +1,6 @@
+<%= form_for @attraction do |f| %>
+  <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <%= f.submit %>
+<% end %>
