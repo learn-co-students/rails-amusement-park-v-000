@@ -1,0 +1,6 @@
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+
+  <%= collection_select(:user, :name, User.all, :id, :name, prompt: true) %>
+  <input type="text" name="password">
+  <input type=submit value='Sign In'>
+<% end %>
