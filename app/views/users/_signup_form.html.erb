@@ -1,0 +1,49 @@
+<%= form_for @user do |f| %>
+	
+	<p>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	</p>
+
+	<p>
+	<%= f.label :height %>
+	<%= f.text_field :height %>
+	</p>
+
+	<p>
+	<%= f.label :happiness %>
+	<%= f.text_field :happiness %>
+	</p>
+
+	<p>
+	<%= f.label :nausea %>
+	<%= f.text_field :nausea %>
+	</p>
+
+	<p>
+	<%= f.label :tickets %>
+	<%= f.text_field :tickets %>
+	</p>
+
+	<p>
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+	</p>
+
+	<p>
+		<%= f.label :admin %>
+	 <%= f.check_box :admin, :class => "toggle", :checked => false %> 
+  
+	</p>
+
+	<%= f.submit "Create User" %>
+<% end %>
+
+
+<!-- fill_in("user[name]", :with => "Amy Poehler")
+    fill_in("user[height]", :with => "58")
+    fill_in("user[happiness]", :with => "3")
+    fill_in("user[nausea]", :with => "2")
+    fill_in("user[tickets]", :with => "15")
+    fill_in("user[password]", :with => "password")
+    click_button('Create User') -->
