@@ -1,0 +1,16 @@
+<div class="info">
+	<p><strong>Name: </strong><%= @attraction.name%></p>
+	<p><strong>Total Number of Users: </strong><%= @attraction.users.count%></p>
+	<p><strong>Tickets Requirement: </strong><%= @attraction.tickets%></p>
+	<p><strong>Height Requirement: </strong><%= @attraction.min_height %></p>
+	<p><strong>Happiness Rating: </strong><%= @attraction.happiness_rating %></p>
+	<p><strong>Nausea Rating: </strong><%= @attraction.nausea_rating %></p>
+
+<%= button_to "Go on this ride", user_path(current_user), method: "patch", params: {attraction_id: @attraction.id} %>
+
+<% if current_user.admin %>
+	<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
+
+	
+</div>

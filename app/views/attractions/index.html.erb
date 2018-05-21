@@ -1,0 +1,53 @@
+<h1>Listing Attractions</h1>
+
+<table class="table">
+	<thead></thead>
+
+	<tbody>
+		<tr> 
+      <td><strong>Name</strong></td>
+      <td><strong>Tickets</strong></td>
+      <td><strong>Details</strong></td>
+    </tr>
+		<% @attractions.each do |attraction| %>
+			<tr>
+				<td><%= attraction.name %></td>
+				<td><%= attraction.tickets %></td>
+				<% if current_user.admin%>
+					<td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
+				<% else %>
+					<td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+				<% end %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<% if current_user.admin %>
+	<p>
+		<%= link_to "New Attraction", new_attraction_path %>
+	</p>
+<% end %>
+
+
+
+<!-- it "has a button from the attraction show page to go on the ride" do
+    click_link('See attractions')
+    click_link("Go on #{@ferriswheel.name}")
+    expect(current_path).to eq("/attractions/2")
+    expect(page).to have_button("Go on this ride")
+  end
+
+  it "clicking on 'Go on ride' redirects to user show page" do
+    click_link('See attractions')
+    click_link("Go on #{@ferriswheel.name}")
+    click_button("Go on this ride")
+    expect(current_path).to eq("/users/1")
+  end
+
+  it "clicking on 'Go on ride' updates the users ticket number" do
+    click_link('See attractions')
+    click_link("Go on #{@ferriswheel.name}")
+    click_button("Go on this ride")
+    expect(page).to have_content("Tickets: 13")
+  end -->
