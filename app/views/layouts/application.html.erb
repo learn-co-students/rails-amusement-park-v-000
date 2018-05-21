@@ -17,7 +17,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+
+          <%= link_to "Home", root_url, class: "navbar-brand" %>
+
+          <% if logged_in? %>
+            <%= link_to current_user.name, user_path(current_user), class: "navbar-brand" %>
+            <%= link_to "Log Out", logout_path, method: :post, class: "navbar-brand" %>
+          <% else %>
+            <%= link_to "Sign Up", users_new_path, class: "navbar-brand" %>
+            <%= link_to "Login", signin_path, class: "navbar-brand" %>
+          <% end %>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

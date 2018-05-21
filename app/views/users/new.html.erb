@@ -1,0 +1,29 @@
+<%= form_for :user do |f| %>
+  <%= field_set_tag do %>
+    <%= f.label :admin, "Is this account an administrator?" %>
+    <%= f.check_box :admin %> <br>
+    <%= f.label :name %> <br>
+    <%= f.text_field :name %><br>
+    <%= f.label :password %> <br>
+    <%= f.password_field :password %> <br> <br>
+  <% end %>
+
+  <%= f.label :height, "Height (in inches)" %>
+  <%= f.number_field :height %> <br>
+
+  <%= f.label :happiness, "Happiness" %>
+  <%= f.text_field :happiness %> <br>
+
+  <%= f.label :nausea, "Nausea" %>
+  <%= f.text_field :nausea %> <br>
+
+  <br>
+
+  <%= f.label :tickets, "How many tickets would you like to purchase?" %> <br>
+  <%= f.number_field :tickets %> <br>
+
+  <br>
+
+  <%= f.submit "Create User" %>
+
+<% end %>
