@@ -1,0 +1,9 @@
+<% if !flash.empty? %>
+<h1><%= flash[:message] %></h1>
+<% end %>
+
+<h1>User Info</h1>
+<%= render 'sessions/user' %>
+
+<%= link_to "See attractions", attractions_path %>
+<%= link_to "Log Out", signout_path, method: :post %>
