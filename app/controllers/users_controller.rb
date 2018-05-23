@@ -15,10 +15,17 @@ class UsersController < ApplicationController
 
   def show
     if logged_in?
-      @user = User.find_by(id: session[:user_id])
+      @user = current_user
     else
-      redirect_to '/'
+      redirect_to root_path
     end
+  end
+
+  def edit
+  end
+
+  def update
+   
   end
 
   private
