@@ -1,5 +1,7 @@
 {
   "name": "rails-amusement-park",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "npm": "^6.0.1"
+  }
 }

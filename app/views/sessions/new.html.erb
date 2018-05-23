@@ -1,0 +1,14 @@
+<%= form_for @user, url: "/users/login" do |f| %>
+
+<%= f.label :name, "Select your name" %><br>
+    <%= f.collection_select(:name, :id, @users, :id, :user_name) %>
+  </div>
+
+
+    <%= f.label :password, "Enter your password" %><br>
+    <%= f.password_field :password %>
+
+
+
+    <%= f.submit "Sign In"%>
+<% end %>
