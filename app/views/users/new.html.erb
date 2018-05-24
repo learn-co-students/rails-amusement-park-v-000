@@ -1,2 +1,25 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<%= form_for :user do |f| %>
+
+  <%= f.label :name %> <br>
+  <%= f.text_field :name %> <br>
+
+  <%= f.label :password %> <br>
+  <%= f.password_field :password %> <br>
+
+  <%= f.label :admin, "Are you an ADMIN??"%> <br>
+  <%= f.check_box :admin %> <br>
+
+  <%= f.label :nausea %>
+  <%= f.text_field :nausea %>
+
+  <%= f.label :happiness %>
+  <%= f.text_field :happiness %>
+
+  <%= f.label :tickets %>
+  <%= f.text_field :tickets %>
+
+  <%= f.label :height %>
+  <%= f.text_field :height %>
+
+  <%= f.submit "Create User" %>
+<%end%>
