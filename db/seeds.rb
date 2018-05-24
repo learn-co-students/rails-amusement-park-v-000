@@ -66,7 +66,7 @@ def make_attractions_and_rides
   DATA[:attractions].each do |attraction|
     new_attraction = Attraction.new
     attraction.each_with_index do |attribute, i|
-      new_attraction.send(DATA[:attraction_keys][i] + "=", attribute)
+     new_attraction.send(DATA[:attraction_keys][i] + "=", attribute)
     end
     rand(1..8).times do
       customers = []
