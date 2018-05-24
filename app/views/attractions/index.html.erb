@@ -1,0 +1,13 @@
+<% if current_user.admin == true %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
+<%= @attractions.each do |x| %>
+  <% show_obj_info(x).each do |y| %>
+     <h3><%= y %></h3>
+  <% end %>
+  <% if current_user.admin == true %>
+       <%= link_to "Show #{x.name}", attraction_path(x) %>
+  <% else %>
+      <%= link_to "Go on #{x.name}", attraction_path(x) %>
+  <% end %>
+<% end %>
