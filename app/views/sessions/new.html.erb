@@ -4,8 +4,8 @@
   <%= f.label :name %>
   <%= f.collection_select :name, @users, :name, :name %><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
+  <%= label_tag :password %>
+  <%= password_field_tag 'user[password]', nil, id: 'password' %><br>
   <br>
 
   <%= f.submit "Sign In"%>
