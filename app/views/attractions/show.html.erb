@@ -1,0 +1,19 @@
+<h1><%= @attraction.name %></h1>
+
+<% if user_is_admin? %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
+
+<h3>Nausea Rating:</h3>
+<h4><%= @attraction.nausea_rating %></h4>
+<h3>Happiness Rating:</h3>
+<h4><%= @attraction.happiness_rating %></h4>
+<h3>Ticket Cost:</h3>
+<h4><%= @attraction.tickets %></h4>
+<h3>Minimum Height:</h3>
+<h4><%= @attraction.min_height %></h4>
+<%= form_tag '/rides', method: :post do %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :attraction_id, @attraction.id %>
+  <%= submit_tag 'Go on this ride' %>
+<% end %>
