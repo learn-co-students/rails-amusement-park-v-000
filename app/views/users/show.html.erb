@@ -8,3 +8,5 @@
   <li>Mood: <%= @user.mood %></li>
   <li>Tickets: <%= @user.tickets %></li>
 </ul>
+
+<%= link_to "Log Out", {controller: "sessions", action: "destroy"}, method: :delete %>
