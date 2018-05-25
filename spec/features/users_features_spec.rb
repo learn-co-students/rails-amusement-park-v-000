@@ -9,7 +9,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Amy Poehler")
     expect(page).to have_content("Mood")
-    expect(page).to have_content("happy")
+    expect(page).to have_content("Happy")
     expect(page).to have_content("15")
     expect(page).to have_content("58")
   end
@@ -22,7 +22,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   end
 
   it 'successfully logs in as non-admin' do
-    
+
     # user_login method is defined in login_helper.rb
     create_standard_user
     visit '/signin'
@@ -31,7 +31,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Mindy")
     expect(page).to have_content("Mood")
-    expect(page).to have_content("happy")
+    expect(page).to have_content("Happy")
     expect(page).to have_content("10")
     expect(page).to have_content("50")
   end
@@ -167,17 +167,17 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
   end
 
   it 'has a link from the user show page to the attractions index page' do
-    expect(page).to have_content("See attractions")
-    click_link('See attractions')
+    expect(page).to have_content("See Attractions")
+    click_link('See Attractions')
   end
 
   it 'links from the user show page to the attractions index page' do
-    click_link('See attractions')
+    click_link('See Attractions')
     expect(current_path).to eq('/attractions')
   end
 
   it 'prevents users from editing/deleting/adding rides on the index page' do
-    click_link('See attractions')
+    click_link('See Attractions')
     expect(current_path).to eq('/attractions')
     expect(page).to_not have_content("edit")
     expect(page).to_not have_content("delete")
@@ -185,60 +185,60 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
   end
 
   it 'has titles of the rides on the attractions index page' do
-    click_link('See attractions')
+    click_link('See Attractions')
     expect(page).to have_content("#{@ferriswheel.name}")
     expect(page).to have_content("#{@rollercoaster.name}")
   end
 
   it "has links on the attractions index page to the attractions' show pages" do
-    click_link('See attractions')
+    click_link('See Attractions')
     expect(page).to have_content("Go on #{@ferriswheel.name}")
     expect(page).to have_content("Go on #{@rollercoaster.name}")
   end
 
   it "links from the attractions index page to the attractions' show pages" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@ferriswheel.name}")
     expect(current_path).to eq("/attractions/2")
   end
 
   it 'prevents users from editing/deleting a ride on the show page' do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@ferriswheel.name}")
     expect(page).to_not have_content("edit")
     expect(page).to_not have_content("delete")
   end
 
   it "has a button from the attraction show page to go on the ride" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@ferriswheel.name}")
     expect(current_path).to eq("/attractions/2")
     expect(page).to have_button("Go on this ride")
   end
 
   it "clicking on 'Go on ride' redirects to user show page" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@ferriswheel.name}")
     click_button("Go on this ride")
     expect(current_path).to eq("/users/1")
   end
 
   it "clicking on 'Go on ride' updates the users ticket number" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@ferriswheel.name}")
     click_button("Go on this ride")
     expect(page).to have_content("Tickets: 13")
   end
 
   it "clicking on 'Go on ride' updates the users mood" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@teacups.name}")
     click_button("Go on this ride")
-    expect(page).to have_content("sad")
+    expect(page).to have_content("Sad")
   end
 
   it "when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@ferriswheel.name}")
     click_button("Go on this ride")
     expect(page).to have_content("Thanks for riding the #{@ferriswheel.name}!")
@@ -247,17 +247,17 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
   it "when the user is too short, clicking on 'Go on ride' displays a sorry message" do
     @user = User.find_by(:name => "Amy Poehler")
     @user.update(:height => 10)
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@teacups.name}")
     click_button("Go on this ride")
     expect(page).to have_content("You are not tall enough to ride the #{@teacups.name}")
-    expect(page).to have_content("happy")
+    expect(page).to have_content("Happy")
   end
 
   it "when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message" do
     @user = User.find_by(:name => "Amy Poehler")
     @user.update(:tickets => 1)
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@ferriswheel.name}")
     click_button("Go on this ride")
     expect(page).to have_content("You do not have enough tickets to ride the #{@ferriswheel.name}")
@@ -267,7 +267,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
   it "when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry message" do
     @user = User.find_by(:name => "Amy Poehler")
     @user.update(:tickets => 1, :height => 30)
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Go on #{@rollercoaster.name}")
     click_button("Go on this ride")
     expect(page).to have_content("You are not tall enough to ride the #{@rollercoaster.name}")
@@ -309,23 +309,23 @@ describe 'Feature Test: Admin Flow', :type => :feature do
   end
 
   it 'links to the attractions from the users show page when logged in as a admin' do
-    expect(page).to have_content("See attractions")
+    expect(page).to have_content("See Attractions")
   end
 
   it 'has a link from the user show page to the attractions index page when in admin mode' do
-    click_link('See attractions')
+    click_link('See Attractions')
     expect(page).to have_content("#{@teacups.name}")
     expect(page).to have_content("#{@rollercoaster.name}")
     expect(page).to have_content("#{@ferriswheel.name}")
   end
 
   it 'allows admins to add an attraction from the index page' do
-    click_link('See attractions')
+    click_link('See Attractions')
     expect(page).to have_content("New Attraction")
   end
 
   it 'allows admins to add an attraction' do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("New Attraction")
     expect(current_path).to eq('/attractions/new')
     fill_in("attraction[name]", :with => "Haunted Mansion")
@@ -339,42 +339,42 @@ describe 'Feature Test: Admin Flow', :type => :feature do
   end
 
   it "has link to attraction/show from attraction/index page for admins" do
-    click_link('See attractions')
+    click_link('See Attractions')
     expect(page).to have_content("Show #{@ferriswheel.name}")
   end
 
   it "does not suggest that admins go on a ride" do
-    click_link('See attractions')
+    click_link('See Attractions')
     expect(page).to_not have_content("Go on #{@ferriswheel.name}")
   end
 
   it "links to attractions/show page from attractions/index" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Show #{@rollercoaster.name}")
     expect(current_path).to eq("/attractions/1")
   end
 
   it "does not suggest that an admin go on a ride from attractions/show page" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Show #{@rollercoaster.name}")
     expect(page).to_not have_content("Go on this ride")
   end
 
   it "has a link for admin to edit attraction from the attractions/show page" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Show #{@rollercoaster.name}")
     expect(page).to have_content("Edit Attraction")
   end
 
   it "links to attraction/edit page from attraction/show page when logged in as an admin" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Show #{@rollercoaster.name}")
     click_link("Edit Attraction")
     expect(current_path).to eq("/attractions/1/edit")
   end
 
   it "updates an attraction when an admin edits it" do
-    click_link('See attractions')
+    click_link('See Attractions')
     click_link("Show #{@rollercoaster.name}")
     click_link("Edit Attraction")
     fill_in("attraction[name]", :with => "Nitro")

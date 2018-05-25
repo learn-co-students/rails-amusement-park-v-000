@@ -1,0 +1,16 @@
+<h1><%= @user.name %></h1>
+
+<% if @user.admin %>
+  <h2>ADMIN</h2>
+<% end %>
+
+<% if @message %>
+  <h2><%= @message %></h2>
+<% end %>
+
+<h3>Mood:</h3>
+<h4><%= @user.mood.try(:capitalize) %></h4>
+<h3>Height:</h3>
+<h4><%= pluralize @user.height, 'inch' %></h4>
+<h3>Tickets:</h3>
+<h4><%= pluralize @user.tickets, 'ticket' %></h4>

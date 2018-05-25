@@ -1,0 +1,19 @@
+<%= form_for @user do |f| %>
+  Name: <%= f.text_field :name %>
+  <br>
+  Password: <%= f.password_field :password %>
+  <br>
+  Nausea Level: <%= f.number_field :nausea, in: 1..5 %>
+  <br>
+  Happiness Level: <%= f.number_field :happiness, in: 1..5 %>
+  <br>
+  Height in Inches: <%= f.number_field :height %>
+  <br>
+  Number of Tickets: <%= f.number_field :tickets %>
+  <br>
+  Admin: <%= f.radio_button :admin, true %>
+  <br>
+  Not an Admin: <%= f.radio_button :admin, false %>
+  <br>
+  <%= f.submit "Create User" %>
+<% end %>
