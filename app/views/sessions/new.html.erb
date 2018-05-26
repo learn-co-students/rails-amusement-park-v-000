@@ -1,0 +1,12 @@
+<h1>Sign in!</h1>
+
+<%= form_for @user, url: '/signin', method: :post  do |f| %>
+  <%= f.label :name %>
+  <%= f.collection_select :name, @users, :name, :name %><br>
+
+  <%= label_tag :password %>
+  <%= password_field_tag 'user[password]', nil, id: 'password' %><br>
+  <br>
+
+  <%= f.submit "Sign In"%>
+<% end %>

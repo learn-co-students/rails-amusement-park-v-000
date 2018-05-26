@@ -1,0 +1,19 @@
+<h1><%= @user.name %></h1>
+<% if @user.admin %>
+  <h2>ADMIN</h2>
+<% end %>
+
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
+
+<ul>
+  <li>Height: <%= @user.height %> inches</li>
+  <li>Mood: <%= @user.mood %></li>
+  <li>Tickets: <%= @user.tickets %></li>
+</ul>
+
+<p><%= link_to "Edit user", edit_user_path(@user) %></p>
+<p><%= link_to "See attractions", attractions_path %></p>
+
+<%= link_to "Log Out", {controller: "sessions", action: "destroy"}, method: :delete %>
