@@ -1,0 +1,15 @@
+<h1><%= @attraction.name %></h1>
+
+<ul>
+  <li>Total number of users: <%= @attraction.users.count %></li>
+  <li>Ticket requirement: <%= @attraction.tickets %></li>
+  <li>Height requirement: <%= @attraction.min_height %> inches</li>
+  <li>Happiness rating: <%= @attraction.happiness_rating %></li>
+  <li>Nausea rating: <%= @attraction.nausea_rating %></li>
+</ul>
+
+<%= form_tag '/rides/new', method: :post do %>
+  <%= hidden_field_tag 'user_id', @user.id %>
+  <%= hidden_field_tag 'attraction_id', @attraction.id %>
+  <%= submit_tag "Go on this ride" %>
+<% end %>

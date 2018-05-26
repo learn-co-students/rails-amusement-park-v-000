@@ -17,6 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    if params[:message]
+      @message = params[:message]
+    else
+      @message = false
+    end
   end
 
   private
