@@ -1,0 +1,20 @@
+<% if !!flash[:ride] %>
+	<div class="alert alert-dismissible alert-success"><%= flash[:ride] %></div>
+<% elsif !!flash[:error] %>
+	<div class="alert alert-danger"><%= flash[:error] %></div>
+<% end %>
+
+<% user = User.find_by(:id => session[:user_id]) %>
+<% if user.admin %>
+	<h3>ADMIN</h3>
+	<p><strong>Name: </strong><%= user.name %></p>
+	<%= link_to 'See attractions', attractions_path %>
+<% else %>
+	<div class="info">
+		<p><strong>Name: </strong><%= user.name %></p>
+		<p><strong>Tickets: </strong><%= user.tickets %></p>
+		<p><strong>Mood: </strong><%= user.mood %></p>
+		<p><strong>Height: </strong><%= user.height %></p>
+		<%= link_to 'See attractions', attractions_path %><br>
+	</div>
+<% end %>
