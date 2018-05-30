@@ -1,4 +1,10 @@
 <%= @user.name %>
-Mood: <%= @user.mood %>
-Height: <%= @user.height %>
-Tickets:  <%= @user.tickets %>
+<% if @user.admin %>
+  ADMIN
+<% else %>
+  Mood: <%= @user.mood%>
+  Height: <%= @user.height %>
+  Tickets:  <%= @user.tickets %>
+<% end %>
+
+<%= link_to "Log Out", '/logout' %>
