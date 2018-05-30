@@ -3,9 +3,14 @@ class AttractionsController < ApplicationController
     @attractions = Attraction.all
   end
 
+  def show
+    @attraction = Attraction.find(params[:id])
+    @ride = Ride.new
+  end
+
   def new
     if logged_in?
-      @user = User.find[session[:user_id]]
+      @user = User.find(session[:user_id])
       if @user.admin
         @attraction = Attraction.new
       else
@@ -17,18 +22,14 @@ class AttractionsController < ApplicationController
   end
 
   def create
-    @attraction = Attraction.new(params)
+    @attraction = Attraction.new(attraction_params)
+    @attraction.save
     redirect_to attraction_path(@attraction)
-  end
-
-  def show
-    @attraction = Attraction.find(params[:id])
-    @ride = Ride.new
   end
 
   def edit
     if logged_in?
-      @user = User.find[session[:user_id]]
+      @user = User.find(session[:user_id])
       if @user.admin
         @attraction = Attraction.find(params[:id])
       else
@@ -37,6 +38,19 @@ class AttractionsController < ApplicationController
     else
       redirect_to '/signin'
     end
+  end
+
+  def update
+    @attraction = Attraction.find(params[:id])
+    @attraction.update(attraction_params)
+    @attraction.save
+    redirect_to attraction_path(@attraction)
+  end
+
+  private
+
+  def attraction_params
+    params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
   end
 
 end
