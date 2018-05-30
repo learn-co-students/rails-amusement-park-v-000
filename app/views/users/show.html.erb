@@ -1,8 +1,12 @@
 New User:
 
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
+
 <%=@user.name%>
 <%=@user.height%>
-<%=@user.tickets%>
+Tickets: <%=@user.tickets%>
 <%=@user.happiness%>
 <%=@user.nausea%>
 Mood: <%=@user.mood%>
