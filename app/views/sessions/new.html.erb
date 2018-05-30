@@ -1,6 +1,6 @@
 <%= form_for @user, url: signin_path, method: :post do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.collection_select :User.all, :id, :name %>
 
   <%= f.label :password %>
   <%= f.password_field :password %>
