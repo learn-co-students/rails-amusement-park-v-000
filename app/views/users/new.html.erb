@@ -1,0 +1,17 @@
+<%= form_for(@user) do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name, class: "form-control", placeholder: "Enter your name" %><br>
+	<%= f.label :height %>
+	<%= f.text_field :height, class: "form-control", placeholder: "Enter your height" %><br>
+	<%= f.label :Happiness %>
+	<%= f.text_field :happiness, class: "form-control", placeholder: "Enter your happiness" %><br>
+	<%= f.label :Nausea %>
+	<%= f.text_field :nausea, class: "form-control", placeholder: "Enter your nausea" %><br>
+	<%= f.label :Tickets %>
+	<%= f.text_field :tickets, class: "form-control", placeholder: "Enter your tickets" %><br>
+	<%= f.label :Admin, "Check box if you are a theme park owner" %>
+	<%= f.check_box :admin %><br>
+	<%= f.label :Password %>
+	<%= f.text_field :password, class: "form-control", placeholder: "Enter your password" %><br>
+	<%= f.submit class: "btn btn-primary"%>
+<% end %>
