@@ -1,0 +1,15 @@
+New User:
+
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
+
+<%=@user.name%>
+<%=@user.height%>
+Tickets: <%=@user.tickets%>
+<%=@user.happiness%>
+<%=@user.nausea%>
+Mood: <%=@user.mood%>
+<% if @user.admin %>
+     <p><strong>ADMIN</strong></p>
+<% end %>
