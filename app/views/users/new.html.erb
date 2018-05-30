@@ -8,5 +8,7 @@ Create new User
   Nausea: <%= f.text_field :nausea %>
   Happiness: <%= f.text_field :happiness %>
   Tickets: <%= f.text_field :tickets %>
+  <%= f.label :admin, "Check box if you are a theme park owner" %>
+    <%= f.check_box :admin, class: "form-check-input" %>
   <%= f.submit "Create User" %>
 <% end %>

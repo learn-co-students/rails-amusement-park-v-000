@@ -15,13 +15,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:password, :name, :height, :nausea, :happiness, :tickets)
+    params.require(:user).permit(:password, :name, :height, :nausea, :happiness, :tickets, :admin)
   end
 
 end

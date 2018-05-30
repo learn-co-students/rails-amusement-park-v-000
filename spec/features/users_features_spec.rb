@@ -36,7 +36,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("50")
   end
 
-  xit "on log in, successfully adds a session hash" do
+  it "on log in, successfully adds a session hash" do
     create_standard_user
     visit '/signin'
     # user_login method is defined in login_helper.rb
@@ -44,14 +44,14 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
-  xit 'prevents user from viewing user show page and redirects to home page if not logged in' do
+  it 'prevents user from viewing user show page and redirects to home page if not logged in' do
     create_standard_user
     visit '/users/1'
     expect(current_path).to eq('/')
     expect(page).to have_content("Sign Up")
   end
 
-  xit 'successfully signs up as admin' do
+  it 'successfully signs up as admin' do
     visit '/users/new'
     expect(current_path).to eq('/users/new')
     # admin_signup method is defined in login_helper.rb
@@ -61,14 +61,14 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("ADMIN")
   end
 
-  xit "on sign up for admin, successfully adds a session hash" do
+  it "on sign up for admin, successfully adds a session hash" do
     visit '/users/new'
     # admin_signup method is defined in login_helper.rb
     admin_signup
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
-  xit 'successfully logs in as admin' do
+  it 'successfully logs in as admin' do
     create_standard_and_admin_user
     visit '/signin'
     expect(current_path).to eq('/signin')
@@ -79,7 +79,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("ADMIN")
   end
 
-  xit "on log in, successfully adds a session hash to admins" do
+  it "on log in, successfully adds a session hash to admins" do
     create_standard_and_admin_user
     visit '/signin'
     # admin_login method is defined in login_helper.rb
@@ -91,14 +91,14 @@ end
 
 describe 'Feature Test: User Signout', :type => :feature do
 
-  xit 'has a link to log out from the users/show page' do
+  it 'has a link to log out from the users/show page' do
     visit '/users/new'
     # user_signup method is defined in login_helper.rb
     user_signup
     expect(page).to have_content("Log Out")
   end
 
-  xit 'redirects to home page after logging out' do
+  it 'redirects to home page after logging out' do
     visit '/users/new'
     # user_signup method is defined in login_helper.rb
     user_signup
@@ -106,7 +106,7 @@ describe 'Feature Test: User Signout', :type => :feature do
     expect(current_path).to eq('/')
   end
 
-  xit "successfully destroys session hash when 'Log Out' is clicked" do
+  it "successfully destroys session hash when 'Log Out' is clicked" do
     visit '/users/new'
     # user_signup method is defined in login_helper.rb
     user_signup
@@ -114,7 +114,7 @@ describe 'Feature Test: User Signout', :type => :feature do
     expect(page.get_rack_session).to_not include("user_id")
   end
 
-  xit 'has a link to log out from the users/show page when user is an admin' do
+  it 'has a link to log out from the users/show page when user is an admin' do
     visit '/users/new'
     # admin_signup method is defined in login_helper.rb
     admin_signup
@@ -129,7 +129,7 @@ describe 'Feature Test: User Signout', :type => :feature do
     expect(current_path).to eq('/')
   end
 
-  xit "successfully destroys session hash when 'Log Out' is clicked as admin" do
+  it "successfully destroys session hash when 'Log Out' is clicked as admin" do
     visit '/users/new'
     # admin_signup method is defined in login_helper.rb
     admin_signup
