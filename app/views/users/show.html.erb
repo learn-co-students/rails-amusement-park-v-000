@@ -1,16 +1,18 @@
-<%= @user.name %>
+<%= @user.name %><br>
 <% if @user.admin %>
-  ADMIN
+  ADMIN<br>
+  <%= link_to "See attractions", admin_attractions_path %><br>
 <% else %>
-  Mood: <%= @user.mood %>
-  Height: <%= @user.height %>
-  Tickets:  <%= @user.tickets %>
+  Mood: <%= @user.mood %><br>
+  Height: <%= @user.height %><br>
+  Tickets:  <%= @user.tickets %><br>
+
+  <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div><br>
+    <% end %>
+  <%= link_to "See attractions", attractions_path %><br>
 <% end %>
 
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
 
-<%= link_to "See attractions", attractions_path %>
 
 <%= link_to "Log Out", logout_path %>
