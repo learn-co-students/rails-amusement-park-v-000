@@ -16,5 +16,5 @@ namespace :db do
     puts 'starting rails server ....'
     exec('rails s')    
 
-end
+  end
 end

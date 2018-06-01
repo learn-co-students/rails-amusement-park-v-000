@@ -1,0 +1,26 @@
+template for signup, create new user 
+
+<%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    
+    <%= f.label :height %>
+    <%= f.number_field :height %>
+    
+    <%= f.label :nausea %>
+    <%= f.range_field :nausea, 1..10  %>
+
+    <%= f.label :happiness %>
+    <%= f.range_field :happiness, 1..5 %>
+    
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets %>
+
+    <% f.label :admin, "Theme park owner? Check here. " %>
+    <%= f.checkbox :admin %>
+
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+
+    <%= f.submit  %>
+<% end %>
