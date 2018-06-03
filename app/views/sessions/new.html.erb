@@ -1,0 +1,6 @@
+<%= form_tag signing_path, method: :post do %>
+  <%= label_tag :user_name %> <br>
+  <%= select_tag :username, options_from_collection_for_select(User.all, :name, :name) %><br>
+  <%= label_tag :password %> <br>
+  <%= submit_tag "Sign In" %> <br>
+<% end %>
