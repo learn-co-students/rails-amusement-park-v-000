@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   post 'signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  resources :users
-  resources :attractions
-  resources :rides
+  resources :users, only: [:new, :create, :show]
+  resources :attractions, only: [:index, :new, :create, :show, :edit, :update]
+  resources :rides, only: [:create]
+
+  namespace :admin do
+    resources :attractions, only: [:index, :new, :create, :edit, :update]
+  end
 
   root 'welcome#home'
 

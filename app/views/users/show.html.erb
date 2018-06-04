@@ -1,9 +1,12 @@
 
-
+<div class="center">
 <div class="info">
   <% if @user.admin %>
-    <p><strong>ADMIN</strong></p>
-  <% end %>
+    <p><strong>ADMIN:</strong></p> <br>
+    <p><strong>Name: </strong><%= @user.name %></p>
+    <%= link_to 'See attractions', attractions_path %>
+    <%= link_to 'Log out', logout_path %>
+  <% else %>
   <p><strong>Name: </strong><%= @user.name %></p>
   <p><strong>Tickets: </strong><%= @user.tickets %></p>
   <p><strong>Mood: </strong><%= @user.mood %></p>
@@ -17,3 +20,4 @@
     <p><%= flash[:message] %></p>
   </div>
 <% end %>
+</div>
