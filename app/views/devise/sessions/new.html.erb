@@ -1,6 +1,6 @@
 <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+<%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
