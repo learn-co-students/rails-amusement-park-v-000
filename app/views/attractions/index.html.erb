@@ -1,4 +1,7 @@
 <h1>Listing attractions</h1>
+<% if @user.admin %>
+  <%= link_to "New Attraction", new_attraction_path %>
+  <% end %>
 <table class="table">
   <thead>
     <tr>
@@ -18,7 +21,7 @@
     <td><%= attraction.name %></td>
     <td><%= attraction.tickets %></td>
     <% if @user.admin %>
-      <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
+      <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td><br>
     <% else %>
       <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
     <% end %>
