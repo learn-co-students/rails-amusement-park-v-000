@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
 
   def mood
     if self.nausea > self.happiness
-      mood = "sad"
+      return "sad"
     else
-      mood = "happy"
+      return "happy"
     end
   end
 end
