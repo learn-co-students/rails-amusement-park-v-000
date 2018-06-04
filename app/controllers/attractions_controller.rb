@@ -20,6 +20,7 @@ class AttractionsController < ApplicationController
     
     def show 
         @attraction = Attraction.find_by(id: params[:id])
+        @ride = Ride.new
         @user = current_user
     end
     
