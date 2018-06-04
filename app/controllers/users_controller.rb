@@ -7,13 +7,14 @@ class UsersController < ApplicationController
     end
     
     def create 
-        @user = User.create(user_params)
+        p = user_params
+        @user = User.create(p)
             session[:user_id] = @user.id
             redirect_to user_path(@user)
     end
     
     def show 
-        if logged_in? 
+        if logged_in?
             @user = User.find(params[:id])
         else 
             redirect_to root_path

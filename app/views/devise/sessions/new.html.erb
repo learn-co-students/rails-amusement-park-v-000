@@ -1,6 +1,6 @@
 <h2>Log in</h2>
 
-<%= form_for(@user) do |f| %>
+<%= form_for(:user, :url => user_session_path, :method => 'post') do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "off" %>
