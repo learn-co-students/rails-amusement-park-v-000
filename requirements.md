@@ -6,38 +6,11 @@
 - User has_many rides, has many attractions through rides
 - #mood method, if nauseaous > happy = sad, if happy > nauseas = happy
 
-User.create(
-      :name => "Mindy",
-      :password => "password",
-      :nausea => 5,
-      :happiness => 3,
-      :tickets => 4,
-      :height => 34
-    )
-    
-    User.create(
-      :name => "Walt",
-      :password => "password",
-      :nausea => 5,
-      :happiness => 3,
-      :tickets => 4,
-      :height => 34,
-      :admin => true
-    )
-
 ## Attractions
 - Attractions have: picture, name, tickets req, details, total # of users allowed, height req, nausea req, happiness rating
 - has_many rides
 - has many users through rides
 
-
-Attraction.create(
-      :name => "Roller Coaster",
-      :tickets => 5,
-      :nausea_rating => 2,
-      :happiness_rating => 4,
-      :min_height => 32
-    )
 
 ## Ride
 - Ride is a join table
