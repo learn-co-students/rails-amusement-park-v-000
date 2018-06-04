@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsAmusementPark</title>
+    <title>Amusement Park</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= analytics_init if Rails.env.production? %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
   </head>
   <body>
+    <%# Flash messages %>
+  <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+  
+    <!--  navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -17,11 +24,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= root_url %>"/>Home</a> 
+        
+        <% if @current_user %>
+          <%# <%= button_to "Log Out", {:controller => :sessions,
+        :action => 'destroy', :id => @current_user.id }, :method => :delete %> %>
+          <%= link_to("Log Out", destroy_user_session_path, :method => :delete, class: "navbar-brand") %>
+        <%else %>
+          <%= link_to("Sign Up", new_user_registration_path, class: "navbar-brand") %>
+          <%= link_to("Sign In", new_user_session_path, class: "navbar-brand") %>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+           <!--  nav here -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -31,5 +47,6 @@
     <div class="container"  role="main">
       <%= yield %>
     </div>
+
   </body>
 </html>
