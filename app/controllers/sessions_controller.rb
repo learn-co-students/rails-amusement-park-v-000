@@ -1,11 +1,14 @@
-class SessionsController < ApplicationController
-    def new 
-        @user = User.new 
-    end
-    
+class SessionsController <  Devise::SessionsController 
+    # def new 
+    #     @user = User.new 
+    # end
+    skip_before_filter :verify_signed_out_user, :only => [:destroy]
     def create 
+        # allowed = user_params
+       
         @user = User.find_by(name: params[:user][:name])
-        if @user && @user.authenticate(params[:user][:password])
+        if @user && @user.valid_password?(params[:user][:password])
+            sign_in(:user, @user)
             session[:user_id] = @user.id 
             redirect_to user_path(@user)
         else 
@@ -13,10 +16,9 @@ class SessionsController < ApplicationController
             render 'new'
         end
     end
-    
-    def destroy 
-        reset_session
-        redirect_to root_path 
+
+    def destroy
+        session.delete(:user_id)
+        super
     end
-    
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate, only: [:show]
+    # before_action :authenticate, only: [:show]
 
     def new
         redirect_to user_path(current_user) if logged_in?
@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     end
     
     def create 
-        puts user_params
         @user = User.create(user_params)
             session[:user_id] = @user.id
             redirect_to user_path(@user)
