@@ -1,8 +1,13 @@
 <% if @user.admin %>
     Welcome Admin!
     <%= link_to("Create a New Attraction", new_attraction_path) %><br><br>
-<% end %>
 
-<% @attractions.each do |attraction| %>
-    <%= link_to("Go on #{attraction.name}", attraction_path(attraction.id)) %>
+    <% @attractions.each do |attraction| %>
+        <%= link_to("Show #{attraction.name}", attraction_path(attraction.id)) %>
+    <% end %>
+
+<% else %>
+    <% @attractions.each do |attraction| %>
+        <%= link_to("Go on #{attraction.name}", attraction_path(attraction.id)) %>
+    <% end %>
 <% end %>
