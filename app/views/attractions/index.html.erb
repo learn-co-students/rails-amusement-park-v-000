@@ -1,0 +1,22 @@
+<h1>Listing attractions</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <td>
+        <strong>Name</strong>
+      </td>
+      <td>
+        <strong>Tickets</strong>
+      </td>
+      <td>
+        <strong>Details</strong>
+      </td>
+    </tr>
+  </thead>
+<% @attractions.each do |attraction| %>
+
+  <td><%= attraction.name %></td>
+  <td><%= attraction.tickets %></td>
+
+<% end %>
+</table>

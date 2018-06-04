@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find_by(id: params[:id])
+    if logged_in?
+      @user = User.find_by(id: params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def new
@@ -9,27 +13,25 @@ class UsersController < ApplicationController
   end
 
   def create
-    if (user = User.create user_params)
-      session[:user_id] = user.id
-      redirect_to user_path(user)
+    if @user = User.create(user_params)
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     else
-      render 'new'
+      redirect_to '/'
     end
   end
 
-  def update
-  end
-
   private
+
   def user_params
     params.require(:user).permit(
       :name,
-      :height,
+      :password,
+      :happiness,
       :nausea,
+      :height,
       :tickets,
       :admin,
-      :password,
-      :happiness
     )
   end
 end
