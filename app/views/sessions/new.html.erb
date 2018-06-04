@@ -1,0 +1,9 @@
+<%= form_tag signin_path, method: :post do %>
+  <label>Select User:</label>
+  <%= collection_select :user, :name, User.all, :name, :name %> <br>
+
+  <label>Passowrd:</label>
+  <%= text_field_tag :password %> <br>
+  
+  <%= submit_tag "Sign In" %> <br>
+<% end %>
