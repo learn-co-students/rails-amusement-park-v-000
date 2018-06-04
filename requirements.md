@@ -18,12 +18,6 @@
 - belongs to one user
 - #take_ride (height, tickets)
 
-Ride.create(
-    user_id: user.id, 
-    attraction_id: attraction.id
-    )
-
-
 # AUTHENTICATION
 - Sign-in from a list of existing user names
 
