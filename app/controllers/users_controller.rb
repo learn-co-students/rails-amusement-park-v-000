@@ -1,16 +1,5 @@
 class UsersController < ApplicationController
 
-  configure do
-    set :views, "app/views"
-    enable :sessions
-    set :session_secret, "a_fun_day_out"
-  end
-
-  # "/signin" Page <-- identified in routes
-  def index
-  end
-
-  # Log In Page
   def new
   end
 
@@ -42,3 +31,4 @@ end
 
 # Referenced Labs
 # sinatra-secure-password-lab-v-000
+# sessions_controller_lab-v-000

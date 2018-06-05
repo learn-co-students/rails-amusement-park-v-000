@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
   # resources :rides
-  resources :attractions, only: [:new, :create, :show, :edit, :update]
+  resources :attractions, only: [:index, :new, :create, :show, :edit, :update]
   resources :users, only: [:new, :create, :show]
-  get '/signin', to: 'users#index'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
 
 end
 
