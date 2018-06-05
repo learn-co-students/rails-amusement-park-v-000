@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :rides
-  resources :attractions
+  # resources :rides
+  resources :attractions, only: [:new, :create, :show, :edit, :update]
   resources :users, only: [:new, :create, :show]
   get '/signin', to: 'users#index'
 
