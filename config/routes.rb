@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'application#hello'
 
   # resources :rides
   resources :attractions, only: [:index, :new, :create, :show, :edit, :update]

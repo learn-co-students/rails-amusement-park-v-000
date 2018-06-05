@@ -1,6 +1,5 @@
 class AttractionsController < ApplicationController
 
-  # Homepage/root
   def index
   end
 
@@ -13,6 +12,7 @@ class AttractionsController < ApplicationController
   def show
   end
 
+  # Only visible to admins (though apparently accessible by anyone through url in demo...)
   def edit
   end
 
