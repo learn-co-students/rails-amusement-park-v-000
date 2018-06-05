@@ -13,6 +13,12 @@ class UsersController < ApplicationController
     @user.height = params[:user][:height]
     @user.password = params[:user][:password]
 
+    if params[:user][:admin].to_i == 1
+      @user.admin = true
+    else
+      @user.admin = false
+    end
+    
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)

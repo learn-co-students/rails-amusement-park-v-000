@@ -16,7 +16,10 @@
   <%= u.number_field :tickets %><br>
 
   <%= u.label :password %>
-  <%= u.number_field :password %><br><br>
+  <%= u.number_field :password %><br>
+
+  <%= u.label :admin %>
+  <%= u.check_box :admin %> <br><br>
 
   <%= u.submit %>
 <% end %>
