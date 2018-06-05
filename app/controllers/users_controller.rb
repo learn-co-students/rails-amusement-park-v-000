@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+
+  # NOTE : Currently at building out the users_features_spec methods and views
+
+
   def new
   end
 
