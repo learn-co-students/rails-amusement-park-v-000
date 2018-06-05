@@ -52,3 +52,8 @@
 	[] links to attraction/edit page from attraction/show page when logged in as an admin
 	[] updates an attraction when an admin edits it
 
+t.belongs_to :user, foreign_key: true
+      t.belongs_to :attraction, foreign_key: true
+      change_column(table_name, column_name, type, options = 
+      rails g migration change_column(:rides, :user_id, :belongs_to)
+

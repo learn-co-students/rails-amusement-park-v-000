@@ -31,7 +31,7 @@
 
 <% if @user %>
 <br>
-	<%= link_to "Back to profile", user_path(@user), {:class => "btn btn-primary"} %>
+	<%= link_to "Back to profile", user_path(@user), { :class => "btn btn-primary" } %>
 	<br>
 	<% else %>
 	<br><%= link_to "New Attraction", new_attraction_path %> <br>

@@ -6,7 +6,8 @@ class AttractionsController < ApplicationController
 	end
 
 	def show
-		@ride = Ride.new
+		@attraction = Attraction.find_by(id: params[:id])
+		@ride = @attraction.rides.build(user_id:current_user.id)
 	end
 
 	def new
@@ -14,10 +15,13 @@ class AttractionsController < ApplicationController
 	end
 
 	def edit
+		# @attraction = Attraction.find_by(id: params[:id])
+		# @ride = @attraction.rides.build(user_id:current_user.id)
 	end
 
 	def create
 		@attraction = Attraction.new(attraction_params)
+		redirect_to attraction_path(attraction)
 		respond_to do |format|
 			if @attraction.save
 				format.html { redirect_to @attraction, notice: "Attraction was successfully created." }
@@ -28,13 +32,13 @@ class AttractionsController < ApplicationController
 	end
 
 	def update
-		respond_to do |format|
-			if @attraction.update(attraction_params)
-				format.html { redirect_to @attraction, notice: "Attraction was successfully updated." }
-			else
-				format.html { render :edit }
-			end
-		end
+		attraction = Attraction.find_by(id: params[:id])
+		attraction.update(attraction_params)
+		redirect_to attraction_path(attraction) #notice: "Attraction was successfully updated." }
+		# 	else
+		# 		format.html { render :edit }
+		# 	end
+		# end
 	end
 
 	def destroy
