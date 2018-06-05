@@ -16,6 +16,7 @@ end
 
 # rspec spec/models/user_spec.rb --format d
 # rspec spec/features/users_features_spec.rb
+# rspec spec/support/login_helper.rb
 
 
 # rails g resource User name:string password_digest:string nausea:integer happiness:integer tickets:integer height:integer admin:boolean --no-test-framework
