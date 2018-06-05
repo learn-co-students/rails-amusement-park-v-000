@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 DATA = {
   :user_keys =>
     ["name", "nausea", "happiness", "tickets", "height", "password"],
