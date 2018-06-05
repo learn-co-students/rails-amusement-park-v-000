@@ -24,9 +24,9 @@
 [] GOAR links from user/show to attractions/index
 [] GOAR prevents users from editing/deleting rides on the index page
 
-!! GOAR Attracions/index page 
-	[] has titles of rides
-	[] links to the attractions' show page
+!! GOAR Attractions/index page 
+	[x] has titles of rides
+	[x] links to the attractions' show page
 ** GOAR 
 	[] prevents users from editing/deleting a ride on the show page
 	[] has a button from the attraction show page to go on the ride

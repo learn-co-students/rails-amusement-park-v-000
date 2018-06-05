@@ -1,2 +1,16 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="theme-showcase" role="main">
+
+	<div class="left-pic">
+		<img src="http://www.washingtonpost.com/wp-srv/special/health/why-roller-coasters-make-us-scream/images/rollercoasterBackground.jpg" width="600">
+	</div>
+
+	<div class="right-info">
+		<h1>Welcome to the Amusement Park!</h1>
+		<div class="center">
+			<%= link_to "Sign In", signin_path, class: "btn btn-primary" %>
+			<%= link_to "Sign Up", new_user_path, class: "btn btn-primary" %>
+		</div>
+	</div>
+
+</div>
+

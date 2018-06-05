@@ -1,1 +1,30 @@
-_form.html.erb
+
+<%= form_for(@attraction) do |f| %>
+
+<div class="form-group">
+	<%= f.label :name %>
+	<%= f.text_field :name, class: "form-control" %> </div>
+
+<div class="form-group">
+	<%= f.label :tickets %>
+	<%= f.number_field :tickets, class: "form-control" %> </div>
+
+<div class="form-group">
+	<%= f.label :min_height %>
+	<%= f.number_field :min_height, class: "form-control" %></div>
+
+<div class="form-group">
+	<%= f.label :nausea_rating %>
+	<%= f.number_field :nausea_rating %></div>
+
+<div class="form-group">
+	<%= f.label :happiness_rating %>
+	<%= f.number_field :happiness_rating %></div>
+
+<div class="actions">
+	<%= f.submit class: "btn btn-primary" %>
+</div>
+
+<% end %>
+			
+			
