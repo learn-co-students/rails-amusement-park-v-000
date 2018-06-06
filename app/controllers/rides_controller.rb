@@ -8,7 +8,6 @@ class RidesController < ApplicationController
     # 3) redirect to confirmation/failure page (based on flash notice)
 
     ride = Ride.new(ride_params)
-    # puts "take ride = #{ride.take_ride}"
     if ride.check_ride == ""
       ride.save
       ride.take_ride

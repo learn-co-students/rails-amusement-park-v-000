@@ -20,6 +20,7 @@ class Ride < ActiveRecord::Base
     @notice
   end
 
+  # NOTE : Separated this from the above because of having the ride controller check for the notice sans making updates (I had started with the model specs when writing this code initially)
   def check_ride
     @notice = ""
     if !check_tickets && !check_height
