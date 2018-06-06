@@ -1,0 +1,13 @@
+<%= form_for(@user) do |f| %>
+<h1>New User</h1>
+<h2>Login Information</h2>
+Name: <%= f.text_field :name %>
+Password: <%= f.password_field :password %>
+<h2>Other User Information</h2>
+Height: <%= f.text_field :height %>
+Happiness: <%= f.text_field :happiness %>
+Nausea: <%= f.text_field :nausea %>
+Tickets: <%= f.text_field :tickets %>
+Are you an admin? <%= f.check_box :admin, {}, "true", "false" %>
+<%= f.submit %>
+<% end %>

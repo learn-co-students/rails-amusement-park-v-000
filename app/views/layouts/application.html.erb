@@ -18,10 +18,17 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <% if session[:user_id].blank? %>
+          <a class="navbar-brand" href="<%= '/signin' %>"/>Log In</a>
+          <a class="navbar-brand" href="<%= '/users/new' %>"/>Sign Up</a>
+        <% else %>
+          <a id= "Log Out" class="navbar-brand" rel="nofollow" data-method="delete" href="<%= '/signout' %>"/>Log Out</a>
+        <% end %>
         </div>
+
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +36,11 @@
 
     <!-- content -->
     <div class="container"  role="main">
+
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>
