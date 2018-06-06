@@ -8,7 +8,7 @@
 <p><strong>Happiness Rating: </strong><%= @attraction.happiness_rating %></p>
 
 <% if current_user.admin %>
-  <%= link_to "Edit Attraction", attraction_path(@attraction) %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
 <% else %>
   <%= render partial: "ride", locals: {attraction: @attraction} %>
 <% end %>

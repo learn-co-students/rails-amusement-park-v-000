@@ -17,7 +17,8 @@
       <tr>
         <td><%= attraction.name %></td>
         <td><%= attraction.tickets %></td>
-        <td><%= link_to "Go on " + attraction.name, attraction_path(attraction) %></td>
+        <td><%= link_to "Go on " + attraction.name, attraction_path(attraction) if !current_user.admin %></td>
+        <td><%= link_to "Show " + attraction.name, attraction_path(attraction) if current_user.admin %></td>
       </tr>
     <% end %>
   </tbody>
