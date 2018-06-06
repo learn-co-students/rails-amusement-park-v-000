@@ -1,0 +1,6 @@
+<h1 id="user_admin"><%= "ADMIN" if @user.admin %></h1>
+<h1><%= @user.name %></h1>
+<p> <%= "Height: #{@user.height} inches" unless @user.admin %></p>
+<p> <%= "Mood: #{@user.mood}" unless @user.admin %></p>
+<p> <%= "Tickets: #{@user.tickets}" unless @user.admin %></p>
+<%= link_to "See attractions", attractions_path %>
