@@ -8,6 +8,8 @@ class UsersController < ApplicationController
       flash[:notice] = "You are already signed in. If this is not your account, please 'Log Out'."
       # session[:error_message] = "You are already signed in. If this is not your account, please 'Log Out'."
       redirect_to "/users/#{current_user.id}"
+    else
+      @new_user = User.new
     end
   end
 
@@ -21,7 +23,7 @@ class UsersController < ApplicationController
 		else
       # session[:error_message] = "Something went wrong during sign up, please try again."
       flash[:notice] = "Something went wrong during sign up, please try again."
-			redirect_to signin_path
+			redirect_to new_user_path
 		end
   end
 

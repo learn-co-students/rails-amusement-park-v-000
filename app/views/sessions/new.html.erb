@@ -1,8 +1,9 @@
 <h3>Sign In Page</h3>
 
-<% if flash[:notice] %>
+<!-- NOTE : Replaced with code in layout so that notices will always appear and I don't need to worry about it -->
+<!-- <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div><br>
-<% end %>
+<% end %> -->
 
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
 

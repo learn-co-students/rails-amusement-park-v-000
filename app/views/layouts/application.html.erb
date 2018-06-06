@@ -38,6 +38,12 @@
 
     <!-- content -->
     <div class="container"  role="main">
+
+      <!-- NOTE : Added for convenience -->
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>

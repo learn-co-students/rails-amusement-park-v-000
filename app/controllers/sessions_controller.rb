@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
 
   # Log Out Page
   def destroy
-    puts "LOG OUT"
     if session[:user_id]
       session.clear
     end

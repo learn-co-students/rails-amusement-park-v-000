@@ -26,3 +26,5 @@ module ApplicationHelper
   end
 
 end
+
+# https://stackoverflow.com/questions/13613223/where-to-put-ruby-helper-methods-for-rails-controllers

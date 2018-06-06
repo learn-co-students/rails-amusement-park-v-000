@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
   def hello
-    session[:error_message] = ""
+    # session[:error_message] = ""
+    flash[:notice] = ""
   end
 
 end
