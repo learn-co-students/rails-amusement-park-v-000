@@ -6,16 +6,10 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
-    notice = ""
     set_variables
 
-    if !check_tickets && !check_height
-      notice = "Sorry. You do not have enough tickets to ride the #{@ride_attraction.name}. You are not tall enough to ride the #{@ride_attraction.name}."
-    elsif !check_tickets
-      notice = "Sorry. You do not have enough tickets to ride the #{@ride_attraction.name}."
-    elsif !check_height
-      notice = "Sorry. You are not tall enough to ride the #{@ride_attraction.name}."
-    else
+    # Only update rider having taken ride if the rider CAN ride the attraction
+    if check_ride == ""
       puts "update rider info"
       update_rider_tickets
       update_rider_nausea
@@ -23,7 +17,19 @@ class Ride < ActiveRecord::Base
       @rider.save
     end
 
-    notice
+    @notice
+  end
+
+  def check_ride
+    @notice = ""
+    if !check_tickets && !check_height
+      @notice = "Sorry. You do not have enough tickets to ride the #{@ride_attraction.name}. You are not tall enough to ride the #{@ride_attraction.name}."
+    elsif !check_tickets
+      @notice = "Sorry. You do not have enough tickets to ride the #{@ride_attraction.name}."
+    elsif !check_height
+      @notice = "Sorry. You are not tall enough to ride the #{@ride_attraction.name}."
+    end
+    @notice
   end
 
   private
