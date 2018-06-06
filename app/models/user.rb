@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # NOTE : Added for loading slug module
+  include Slugifiable
+
   has_secure_password
   has_many :rides
   has_many :attractions, through: :rides

@@ -1,4 +1,7 @@
 class Ride < ActiveRecord::Base
+  # NOTE : Added for loading slug module
+  include Slugifiable
+
   belongs_to :user
   belongs_to :attraction
 

@@ -1,0 +1,16 @@
+
+<!-- NOTE : Trying to get the nav bar links to work properly
+but the layout doesn't register the "current_user" helper method
+so have to figure out something else? -->
+
+<!-- UPDATE : Logic worked after moving the helper methods to the actual default ApplicationHelper file
+  https://mixandgo.com/blog/the-beginners-guide-to-rails-helpers -->
+
+
+<% if !current_user %>
+  <li><%= link_to "Sign Up", new_user_path %></li>
+  <li><%= link_to "Log In", signin_path %></li>
+<% else %>
+  <li><%= link_to current_user.name + "'s Profile", user_path(current_user) %></li>
+  <li><%= link_to "Sign Out", logout_path %></li>
+<% end %>

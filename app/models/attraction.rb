@@ -1,4 +1,8 @@
 class Attraction < ApplicationRecord
+
+  # NOTE : Added for loading slug module
+  include Slugifiable
+
   has_many :rides
   has_many :users, through: :rides
 
