@@ -18,10 +18,22 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <%if !logged_in? %><a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a><%end%>
+        <%if !logged_in? %><a class="navbar-brand" href="<%= signin_path %>"/>Log In</a><%end%>
+        <%if logged_in? %><a class="navbar-brand" href="<%= user_path(current_user) %>"/>Your Profile</a><%end%>
+
+        <%if logged_in? %><a class="navbar-brand" href="<%= attractions_path %>"/>See attractions</a><%end%>
+
+        <% if logged_in? %>
+        <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+        <a class="navbar-brand" href="/logout">Log Out</a>
+        <% end %>
+        <%end%>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>

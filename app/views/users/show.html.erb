@@ -1,0 +1,24 @@
+<h1>Welcome</h1><br /><br />
+
+<% if !!@user.admin %>
+<strong>ADMIN Account</strong><br /><br />
+<%end%>
+
+<strong>Name:</strong> <%= @user.name %><br /><br />
+<strong>Height:</strong> <%= @user.height %><br /><br />
+<strong>Mood:</strong> <%= @user.mood %><br /><br />
+<strong>Nausea:</strong> <%= @user.nausea %><br /><br />
+<strong>Tickets:</strong> <%= @user.tickets %><br /><br />
+
+
+
+<strong>Current User: </strong><%= @current_user.name if @current_user %><br /><br />
+
+<strong>Logged In: </strong><%= @logged_in %><br /><br />
+
+<%= link_to "See attractions", attractions_path %>
+
+<br />
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
