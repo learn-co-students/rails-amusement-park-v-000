@@ -16,7 +16,8 @@ module ApplicationHelper
 
   def redirect_if_not_logged_in
     if !logged_in?
-      session[:error_message] = "You need to be logged in to do that."
+      # session[:error_message] = "You need to be logged in to do that."
+      flash[:error] = "You need to be logged in to do that."
       redirect to "/signin"
     end
   end

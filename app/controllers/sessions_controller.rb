@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      flash[:alert] = "Login unsuccessful, would you like to sign up instead?"
+      flash[:alert] = "Log in unsuccessful, would you like to sign up instead?"
       redirect_to "/login"
     end
   end
