@@ -37,7 +37,15 @@ class AttractionsController < ApplicationController
   end
 
   def update
-
+    puts "Edit Attraction Params = #{params}"
+    attraction = Attraction.find(params[:id])
+    attraction.update(attraction_params)
+    if attraction.save
+      redirect_to attraction_path(attraction)
+    else
+      flash[:notice] = "Something went wrong during attraction edit, please try again."
+      redirect_to edit_attraction_path(attraction)
+    end
   end
 
   private

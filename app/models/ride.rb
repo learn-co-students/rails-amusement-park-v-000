@@ -10,7 +10,7 @@ class Ride < ActiveRecord::Base
 
     # Only update rider having taken ride if the rider CAN ride the attraction
     if check_ride == ""
-      puts "update rider info"
+      # puts "update rider info"
       update_rider_tickets
       update_rider_nausea
       update_rider_happiness
