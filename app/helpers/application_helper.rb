@@ -21,7 +21,7 @@ module ApplicationHelper
     if !logged_in?
       # session[:error_message] = "You need to be logged in to do that."
       flash[:notice] = "You need to be logged in to do that."
-      redirect to "/signin"
+      redirect_to root_path
     end
   end
 

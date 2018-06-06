@@ -7,8 +7,8 @@
 
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
 
-  <label for="name">Your name:</label>
-    <%=select_tag "name", options_from_collection_for_select(@users, "name", "name"), prompt: "Please select your username from this dropdown" %>
+  <label for="user_name">Your name:</label>
+    <%=select_tag "user_name", options_from_collection_for_select(@users, "name", "name"), prompt: "Please select your username from this dropdown" %>
     <br><br>
 
   <label for="password">Your password:</label>
