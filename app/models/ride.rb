@@ -16,11 +16,12 @@ class Ride < ActiveRecord::Base
     elsif !check_height
       notice = "Sorry. You are not tall enough to ride the #{@ride_attraction.name}."
     else
+      puts "update rider info"
       update_rider_tickets
       update_rider_nausea
       update_rider_happiness
       @rider.save
-  end
+    end
 
     notice
   end

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
   # Post Sign In Page
   def create
-    puts "Params = #{params}"
+    # puts "Sign In Params = #{params}"
     user = User.find_by(name: params[:user_name])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id

@@ -22,3 +22,8 @@
     <% end %>
   </tbody>
 </table>
+
+
+<% if current_user.admin %>
+  <%= link_to "Add Attraction", new_attraction_path %>
+<% end %>
