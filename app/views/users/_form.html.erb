@@ -1,6 +1,6 @@
 
 <%= form_for @user do |f| %>
-	>% if @user.errors.any? %>
+	<% if @user.errors.any? %>
 	<div id="error_explanation">
 		<h2>
 			<%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved: </h2>
@@ -29,17 +29,17 @@
 	<%= f.number_field :nausea, class: "form-control" %></div>
 
 <div class="form-group">
-	<%= f.label :tickets, "How much money do you have?" %><br>
+	<%= f.label :tickets, "How much money do you have? (in whole dollars)" %><br>
 	<%= f.number_field :tickets, class: "form-control" %> </div>
 
 <div class="form-group">
-	<%= f.label :admin, "Check box if you are a theme park owner" %><br>
+	<%= f.label :admin, "Check box if you are a theme park owner" %>
 	<%= f.check_box :admin, class: "form-check-input" %></div>
 
 <div class="form-group">
 	<%= f.label :password %>
 	<br>
-	<%= f.password_field :password, class: "form-control"></div> 
+	<%= f.password_field :password, class: "form-control"%></div> 
 	
 <div class="actions">
 	<%= f.submit class: "btn btn-primary" %>

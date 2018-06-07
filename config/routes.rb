@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   
   
    
-  get '/static_pages/home', to: 'static_pages#home'
+  # get '/static_pages/home', to: 'static_pages#home'
   root 'static_pages#home'  
-  get '/signin', to: 'users#signin', as: 'signin' 
+  get '/signin', to: 'sessions#new'
   post '/sessions/create', to: 'sessions#create'  
   delete '/signout', to: 'sessions#destroy' 
   post '/rides', to:"rides#create", as: 'rides'
