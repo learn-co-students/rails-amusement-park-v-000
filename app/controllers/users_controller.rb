@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     else
       @user.admin = false
     end
-    
+
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -33,5 +33,13 @@ class UsersController < ApplicationController
     else
       redirect_to '/'
     end
+  end
+
+  def update
+    @attraction = Attraction.find(params[:id])
+    ride = Ride.create(user: current_user, attraction: @attraction)
+    flash[:message] = ride.take_ride
+    redirect_to user_path(current_user)
+
   end
 end
