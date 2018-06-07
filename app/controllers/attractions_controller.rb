@@ -6,8 +6,9 @@ class AttractionsController < ApplicationController
 	end
 
 	def show
-		@attraction = Attraction.find_by(id: params[:id])
-		@ride = @attraction.rides.build(user_id:current_user.id)
+		# @attraction = Attraction.find_by(id: params[:id])
+		@ride = Ride.new
+		# @attraction.rides.build(user_id:current_user.id)
 	end
 
 	def new
@@ -20,15 +21,15 @@ class AttractionsController < ApplicationController
 	end
 
 	def create
-		@attraction = Attraction.new(attraction_params)
+		@attraction = Attraction.create(attraction_params)
 		redirect_to attraction_path(attraction)
-		respond_to do |format|
-			if @attraction.save
-				format.html { redirect_to @attraction, notice: "Attraction was successfully created." }
-			else
-				format.html { render :new }
-			end
-		end
+		# respond_to do |format|
+		# 	if @attraction.save
+		# 		format.html { redirect_to @attraction, notice: "Attraction was successfully created." }
+		# 	else
+		# 		format.html { render :new }
+		# 	end
+		# end
 	end
 
 	def update
