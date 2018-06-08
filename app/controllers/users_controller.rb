@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   before_action :authenticate_user, :except => [:new, :create]
 
   def new
+    if logged_in?
+      redirect_to user_path(current_path)
+    else
     @user = User.new
   end
+end
 
   def create
     @user = User.new(user_params)
@@ -17,10 +21,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(:id => params[:id])
-    if current_user != @user
+    if logged_in?
+      @user = User.find(params[:id])
+      @message = params[:message]
+    else
       redirect_to root_path
-    end 
+    end
   end
 
   def update

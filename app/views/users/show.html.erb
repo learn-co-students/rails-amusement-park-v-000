@@ -2,9 +2,14 @@
 <strong>ADMIN</strong>
 <% end %>
 
+<% if @message %>
+<%= @message %>
+<% end %>
+
 Name: <%= @user.name %>
-Mood: <%= @user.happiness %>
+Mood: <%= @user.mood %>
 Tickets: <%= @user.tickets %>
 Height: <%= @user.height %>
 
-<%= link_to("See attractions", attractions_path %>)
+<%= link_to("See attractions", attractions_path) %>
+<%= link_to("Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post) %>
