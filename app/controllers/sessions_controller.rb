@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 	
   def new
   	@user = User.new
+    session[:user_id] = @user.id
   end
 
   def create
@@ -20,4 +21,9 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
+  def session_params
+    params.require(:session).permit(:user_id, :user_name, :user_password)
+  end
 end

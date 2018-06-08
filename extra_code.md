@@ -26,3 +26,11 @@ from home.html.erb:
 		<%= f.label :name, 'Your name' %><br>
 		<%= f.text_field :name, class: "form-control" %>
 	</div>
+ views/layouts/application
+	<li><%= link_to "Attractions", attractions_path %></li>
+
+	views/users/show
+	<p><%= link_to 'Edit', edit_user_path(@user) %></p>
+
+	users/show from top
+	<div class="container" role="main">

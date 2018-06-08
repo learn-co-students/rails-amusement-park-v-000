@@ -1,8 +1,8 @@
-<%= form_for @user, url: "/users/signin" do |f| %>
+<%= form_for @user, url: "/session" do |f| %>
 
 	<div class="field">
 		<%= f.label :name, "Select your name" %><br>
-		<%= f.collection_select(:id, @users, :id, :name) %>
+		<%= f.collection_select(:id, @users, :id, :name)%>
 	</div>
 
 	<div class="field">
@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="actions">
-		<%= f.submit "Sign in" %>
+		<%= f.submit "Sign In" %>
 	</div>
 
 	<% end %>
