@@ -7,20 +7,19 @@ class UsersController < ApplicationController
 	
 	def create
 		@user = User.new(user_params)
-		respond_to do |format|
 		if @user.save
 			session[:user_id] = @user.id 
-			format.html { redirect_to user_path(@user), notice: "Welcome to the theme park!"}
+			 redirect_to user_path(@user), notice: "Welcome to the theme park!"
 		else
-			format.html { render :new }
+			render :new 
 		end
 	end
-end
+
 
 	def show
 		@message = params[:message] if params[:message]
 		@message ||= false
-		# @user = User.find_by(id: params[:id])
+		@user = User.find_by(id: params[:id])
 	end
 
 
@@ -28,14 +27,12 @@ end
 	end
 
 	def update
-		respond_to do |format|
 		if @user.update(user_params)
-			format_html { redirect_to @user, notice: "User was successfully updated." }
+			redirect_to @user, notice: "User was successfully updated." 
 		else
-			format.html { render :edit }
+			render :edit 
 		end
 	end
-end
 
 
 	private
