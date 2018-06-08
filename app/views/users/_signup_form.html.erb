@@ -1,0 +1,54 @@
+<%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+            </h2>
+
+            <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                    <% end %>
+            </ul>
+        </div>
+        <% end %>
+
+
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+   <% end %>  
+
+
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    
+    <%= f.label :height, "Height in inches" %>
+    <%= f.number_field :height, min: 0 %>
+    <br>
+    
+    <%= f.label :nausea %>
+    <%= f.range_field :nausea, in: 0..5 %>
+    <br>
+
+    <%= f.label :happiness %>
+    <%= f.range_field :happiness, in: 0..5%>
+    <br>
+    
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets, min: 0 %>
+    <br>
+
+    <%= f.label :admin, "Theme park owner? Check here." %>
+    <%= f.check_box :admin %>
+    <br>
+
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+    <br>
+
+    <%= f.submit %>
+<% end %>
