@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
 
 	def new
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		
 		
 		if !current_user
 			redirect_to '/'

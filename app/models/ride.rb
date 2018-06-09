@@ -13,7 +13,7 @@ class Ride < ActiveRecord::Base
 			return "Sorry. You do not have enough tickets to ride the #{attraction.name}."
 		elsif user.height < attraction.min_height
 			return "Sorry. You are not tall enough to ride the #{attraction.name}."
-		end
+		else
 
 		user.tickets = user.tickets - attraction.tickets
 		user.nausea += 2
@@ -21,6 +21,8 @@ class Ride < ActiveRecord::Base
 			
 		user.save
 		# see spec for details
+		end
+		binding.pry
 	end
 
 
