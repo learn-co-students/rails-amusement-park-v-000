@@ -1,8 +1,8 @@
 <%= form_for @user, url: "/session" do |f| %>
 
-	<div class="field">
+	<div class="form-group">
 		<%= f.label :name, "Select your name" %><br>
-		<%= f.collection_select(:name, User.all, :id, :name)%>
+		<%= f.collection_select(:name, User.all, :id, :name, {include_blank: "Please select your name"})%>
 	</div>
 
 	<div class="form-group">

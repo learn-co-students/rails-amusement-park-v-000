@@ -2,6 +2,14 @@ class Ride < ApplicationRecord
 	belongs_to :user
 	belongs_to :attraction
 
+	def user_has_enough_tickets
+		self.user.tickets >= self.attraction.tickets
+	end
+
+	def user_is_tall_enough
+		self.user.height >= self.attraction.min_height
+	end
+
 	def take_ride
 		user_has_enough_tickets, user_is_tall_enough = user_meets_requirements
 		if user_has_enough_tickets && user_is_tall_enough
@@ -15,7 +23,6 @@ class Ride < ApplicationRecord
 		end
 	end
 			
-
 	def user_meets_requirements
 		user_has_enough_tickets, user_is_tall_enough = false
 		if self.user.tickets >= self.attraction.tickets

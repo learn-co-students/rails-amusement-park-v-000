@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/users', to:'users#index', as: 'users' 
   post '/users', to:'users#create'  
   get '/users/:id', to: 'users#show', as: 'user'  
-  get '/users/:id/edit', to: 'users#edit', as: 'edit_user'  
+  patch '/users/:id/edit', to: 'users#edit', as: 'edit_user'  
   get '/attractions', to: 'attractions#index', as: 'attractions'  
   get '/signin', to: 'sessions#new'
   post '/session', to: 'sessions#create', as: 'session' 

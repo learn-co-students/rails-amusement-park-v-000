@@ -1,4 +1,3 @@
-
 <p id="notice"><%= notice %></p>
 
 <div class="center">
@@ -10,15 +9,18 @@
 		<p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
 		<p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
 		<p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
+
 		<% if current_user.admin %>
 			<%= link_to "Edit Attraction", [:edit, @attraction] %><br>
+
 			<% else %>
-			<form class="new_ride" action="/rides" method="post">
+			<form action="/rides" method="post">
 				<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-				<%= tag(:input, :type => "hidden", :name => "ride[user_id]", :value => @current_user_id) %>
-				<%= tag(:input, :type => "hidden", :name => "ride[attraction_id]", :value => @attraction.id) %><br>
+				<%= tag(:input, :type => "hidden", :name => "user_id", :value => @current_user_id) %>
+				<%= tag(:input, :type => "hidden", :name => "attraction_id", :value => @attraction.id) %><br>
 				<input class="btn btn-light" type="submit" value="Go on this ride">
 			</form>
 			<% end %>
+			<%= link_to "Back", attractions_path, class: "btn btn-primary btn-light" %>
 		</div>
 </div>
