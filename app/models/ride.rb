@@ -25,6 +25,7 @@ class Ride < ApplicationRecord
 			
 	def user_meets_requirements
 		user_has_enough_tickets, user_is_tall_enough = false
+
 		if self.user.tickets >= self.attraction.tickets
 			user_has_enough_tickets = true
 		end
