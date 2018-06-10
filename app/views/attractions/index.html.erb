@@ -5,3 +5,7 @@
 	<h3><%=link_to "Go on #{attraction.name}", attraction_path(attraction)%></h3>
 
 <%end%>
+
+<%if current_user.admin == true %>
+	<%=link_to "New Attraction", attractions_path %>
+<%end%>
