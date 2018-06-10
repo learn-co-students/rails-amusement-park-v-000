@@ -6,13 +6,15 @@ class UsersController < ApplicationController
 	end
 	
 	def create
-		@user = User.new(user_params)
+		@user = User.create(user_params)
+		respond_to do |format|
 		if @user.save
 			session[:user_id] = @user.id 
-			 redirect_to user_path(@user), notice: "Welcome to the theme park!"
+			 format.html {redirect_to user_path(@user), notice: "Welcome to the theme park!"}
 		else
-			render :new 
+			format.html { render :new }
 		end
+	end
 	end
 
 

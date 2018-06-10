@@ -2,17 +2,17 @@ class Ride < ApplicationRecord
 	belongs_to :user
 	belongs_to :attraction
 
-	def user_has_enough_tickets
-		self.user.tickets >= self.attraction.tickets
-	end
+	# def user_has_enough_tickets
+	# 	self.user.tickets >= self.attraction.tickets
+	# end
 
-	def user_is_tall_enough
-		self.user.height >= self.attraction.min_height
-	end
+	# def user_is_tall_enough
+	# 	self.user.height >= self.attraction.min_height
+	# end
 
 	def take_ride
 		user_has_enough_tickets, user_is_tall_enough = user_meets_requirements
-		binding.pry
+		 # binding.pry
 		if user_has_enough_tickets && user_is_tall_enough
 			start_ride
 		elsif user_is_tall_enough && !user_has_enough_tickets
@@ -26,7 +26,7 @@ class Ride < ApplicationRecord
 			
 	def user_meets_requirements
 		user_has_enough_tickets, user_is_tall_enough = false
-		binding.pry
+		# binding.pry
 		if self.user.tickets >= self.attraction.tickets
 			user_has_enough_tickets = true
 		end

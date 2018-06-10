@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def require_logged_in
-  	redirect_to '/static_pages/home' unless logged_in?
+  	redirect_to '/' unless logged_in?
   end
 
   def current_user

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  # skip_before_action :require_logged_in, only: [:new, :create]
+  
 	
   def new
   	@user = User.new
@@ -21,9 +21,5 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  # private
-
-  # def session_params
-  #   params.require(:session).permit(:user_id, :user_name, :user_password)
-  # end
+  
 end

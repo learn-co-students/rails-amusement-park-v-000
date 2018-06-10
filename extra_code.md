@@ -34,3 +34,16 @@ from home.html.erb:
 
 	users/show from top
 	<div class="container" role="main">
+
+	from users#_form
+	<% if @user.errors.any? %>
+	<div id="error_explanation">
+		<h4>
+			<%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved: </h4>
+		<ul>
+			<% @user.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
