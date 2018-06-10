@@ -19,27 +19,57 @@ class AttractionsController < ApplicationController
 
 	def create
 		
-
-		ride = Ride.new(user_id: current_user.id, attraction_id: params[:id])
-		
-		status = ride.take_ride
-		
-		if status == true
-			ride.save
+		if params[:attraction] == nil
+	
+			ride = Ride.new(user_id: current_user.id, attraction_id: params[:id])
 			
-			session[:ride] = "Thanks for riding the #{ride.attraction.name}!"
+			status = ride.take_ride
+			
+			if status == true
+				ride.save
+				
+				session[:ride] = "Thanks for riding the #{ride.attraction.name}!"
+			
+
+				# @ride = ride
+				# binding.pry
+			else
+				status = status.gsub(/^(.......)/, '')
+				status = status.gsub(/[.]/, '')
+			
+				session[:ride] = status.strip
+				
+			end
+			redirect_to user_path(current_user)
 		
 
-			# @ride = ride
-			# binding.pry
 		else
-			status = status.gsub(/^(.......)/, '')
-			status = status.gsub(/[.]/, '')
-		
-			session[:ride] = status.strip
+			attraction = Attraction.create(new_attraction)
+			redirect_to attraction_path(attraction)
+			
 		end
-		redirect_to user_path(current_user)
+
+	def edit
+		@attraction = Attraction.find_by(id: params[:id])
+
 	end
+
+
+	def update
+		attraction = Attraction.find_by(id: params[:id])
+		
+		attraction.update(new_attraction)
+		redirect_to attraction_path(attraction)
+
+	end
+		
+	end
+
+	private
+
+		def new_attraction
+			params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
+		end
 
 
 

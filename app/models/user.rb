@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
 	def mood
 		if self.admin == false
+		
 			if self.nausea > self.happiness
 				return "sad"
 			elsif self.nausea <= self.happiness
