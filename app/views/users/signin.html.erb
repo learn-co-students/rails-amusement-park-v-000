@@ -1,14 +1,11 @@
-<%= form_for @user, url: "/signin" do |f| %>
+<%= form_for @user, url: "/users/login" do |f| %>
 
 	<div class="field">
 		<%= f.label :name, "Select your name" %><br>
-		<%= f.collection_select(:user_id, User.all, :id, :name, {include_blank: "Please select your name"}) %>
+		<%= f.collection_select(:id, @users, :id, :name, {include_blank: "Please select your name"})%>
 	</div>
 
-	<div class="field">
-		<%= f.label :password, 'Enter your password' %><br>
-		<%= f.password :password, class: "form-control" )%>
-	</div>
+	
 
 	<div class="actions">
 		<%= f.submit "Sign In" %>

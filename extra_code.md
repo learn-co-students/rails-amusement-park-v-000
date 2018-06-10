@@ -47,3 +47,9 @@ from home.html.erb:
 		</ul>
 	</div>
 	<% end %>
+
+	from users signin:
+	<div class="field">
+		<%= f.label :password, 'Enter your password' %><br>
+		<%= f.password :password, class: "form-control" )%>
+	</div>
