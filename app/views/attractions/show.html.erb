@@ -19,7 +19,7 @@
 				<%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
 				<%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %><br>
 				<input class="btn btn-light" type="submit" value="Go on this ride"><br>
-			</form><br>
+			</form>
 			<% end %><p>
 			<%= link_to "Back", attractions_path, class: "btn btn-primary btn-light" %></p>
 		</div>
