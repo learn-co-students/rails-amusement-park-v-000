@@ -1,0 +1,9 @@
+<h1> Log in </h1>
+
+<%= form_for(@user, url: signin_path) do |f| %>
+<%= f.label "Your name:" %>
+<%= f.collection_select(:name, User.all, :name, :name, prompt: "Please select your username from this dropdown")%><br><br>
+<%= f.label "Your password:" %><br>
+<%= f.password_field :password, id: "password" %><br><br>
+<%= f.submit "Sign In" %>
+<% end %>
