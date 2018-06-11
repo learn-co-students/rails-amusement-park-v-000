@@ -7,8 +7,7 @@ class AttractionsController < ApplicationController
 
 	def show
 		@attraction = Attraction.find_by(id: params[:id])
-		@ride = Ride.new #- 6/9/18 13:38 restored 6/10
-		# @attraction.rides.build(user_id:current_user.id)
+		@ride = Ride.new 
 	end
 
 	def new
@@ -17,7 +16,6 @@ class AttractionsController < ApplicationController
 
 	def edit
 		@attraction = Attraction.find_by(id: params[:id])
-		# @ride = @attraction.rides.build(user_id:current_user.id)
 	end
 
 	def create

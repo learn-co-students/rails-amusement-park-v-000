@@ -12,15 +12,14 @@
 
 		<% if current_user.admin %>
 			<%= link_to "Edit Attraction", [:edit, @attraction] %><br>
-
 			<% else %>
-			<form action="/rides/new" method="post">
-				<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-				<%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
-				<%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %><br>
-				<input class="btn btn-light" type="submit" value="Go on this ride"><br>
-			</form>
-			<% end %><p>
+
+			<%= form_for(:ride, method: 'post') do |f| %>
+			<%= f.hidden_field :user_id, value: current_user.id %>
+			<%= f.hidden_field :attraction_id, value: @attraction.id %>
+			<%= f.submit "Go on this ride" %>
+			<% end %>
+			<% end %>
 			<%= link_to "Back", attractions_path, class: "btn btn-primary btn-light" %></p>
 		</div>
 </div>
