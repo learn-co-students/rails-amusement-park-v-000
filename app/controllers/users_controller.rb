@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   # skip_before_action :login_required, [ :new]
   
-
   def new
     @user = User.new
   end
@@ -12,9 +11,10 @@ class UsersController < ApplicationController
 
 #signup/create user in db/future logins can check against this
   def create
-    user_signup
+    @user = User.new(user_params)
     if @user.save
-      user_login
+      # user_login
+      session[:user_id] = @user.id
       flash[:success] = "welcome"
       redirect_to @user
     else
@@ -22,6 +22,9 @@ class UsersController < ApplicationController
     end
   end
 
-  
+private
+  def user_params
+   params.require(:user).permit(:name, :password, :happiness, :nausea, :height, :tickets, :admin) 
+  end 
 
 end 
