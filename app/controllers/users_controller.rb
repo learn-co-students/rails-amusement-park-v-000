@@ -16,13 +16,12 @@ class UsersController < ApplicationController
       # user_login
       session[:user_id] = @user.id
       flash[:success] = "welcome"
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       render :new
     end
   end
 
-  
 
 private
   def user_params

@@ -1,12 +1,17 @@
-<h2>Signin</h2>
+<h2>Login</h2>
 
-<%= form_for @user do |f| %>
+
+<%= form_for @user, :url => 'login_path' do |f| %>
+
+
     <%= f.label :user_name, "Name" %>
-    <%= f.select_tag @user, :id, "name" %>
+    <%= f.collection_select :user, User.all, :id, :name %>
+
   
 
     <%= f.label :password, "Password" %>
     <%= f.password_field :password %>
+
 
     <%= f.submit "Sign In"%>
 

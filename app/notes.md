@@ -54,3 +54,12 @@ select
 	
 	<%= f.select(:user_name) do %>
 		<% 
+
+
+
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= Password Confirmation: <%= f.password_field :password_confirmation %>
+
+set_user 
+	@user = User.find(params[:id])
+ before_action :set_user, only: [:show, :edit, :update, :destroy]
