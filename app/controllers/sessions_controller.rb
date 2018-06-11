@@ -8,15 +8,15 @@ class SessionsController < ApplicationController
 
 
   def create
-    @user = User.find_by(name: params[:name])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by(name: params[:user][:name])
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
 
       redirect_to user_path(@user)  # :notice => "Welcome back, #{@user.name}!"
     else
-      flash[:notice] = "try again"
+      # flash[:notice] = "try again"
       # flash.now.alert = "Invalid email"
-      render 'new' # or redirect_to signin_path
+      render 'new', :alert => "Try again" # or redirect_to signin_path
     end 
   end 
 

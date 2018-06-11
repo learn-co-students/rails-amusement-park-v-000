@@ -1,12 +1,17 @@
 class UsersController < ApplicationController
   # skip_before_action :login_required, [ :new]
-  
+
+
   def new
     @user = User.new
   end
   
   def show
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to '/'
+    end 
   end
 
 #signup/create user in db/future logins can check against this

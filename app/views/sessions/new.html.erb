@@ -1,14 +1,15 @@
+<%= form_for @user, :url => signin_path do |f|  %>
 
-<%= form_for(:session, url: signin_path) do |f| %>
+    
+    <%# key attribute for the parameter, what's being collected, attribute of the collection that's being collected, what's being displayed. %>
 
-    <%= f.label :name, "name" %>
-	<%= f.collection_select( :user_id, User.all, :id, 
-	:user_name) %>
+	Name: <%= f.collection_select(:name, @users, :name, :name) %>
 
-    <%= f.label :password, "password" %>
-    <%= f.password_field :password %>
+    Password: <%= f.password_field :password %>
 
 
     <%= f.submit "Sign In"%>
 
 <% end %>
+
+
