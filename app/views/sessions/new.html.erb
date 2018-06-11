@@ -1,0 +1,9 @@
+<h2>Please Login Below:</h2>
+
+<%=form_tag("/signin", method: "post") do %>
+	<label>Username: </label>
+	<%=collection_select(:user, :name, User.all, :name, :name) %>
+	<label>Password: </label>
+	<%=text_field_tag :password %>
+	<%=submit_tag "Sign In" %>
+<%end%>
