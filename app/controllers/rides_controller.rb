@@ -1,13 +1,11 @@
 class RidesController < ApplicationController
 	
   
-  
+
   def create
-    # binding.pry
     @ride = Ride.create(ride_params)
     @message = @ride.take_ride
-       # binding.pry
-  	redirect_to user_path(@ride.user, :message => @message)
+    redirect_to user_path(@ride.user, :message => @message)
   end
 
   private
