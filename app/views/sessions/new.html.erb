@@ -2,8 +2,8 @@
 <%= form_for(:session, url: signin_path) do |f| %>
 
     <%= f.label :name, "name" %>
-    <%= f.text_field :name %>
-
+	<%= f.collection_select( :user_id, User.all, :id, 
+	:user_name) %>
 
     <%= f.label :password, "password" %>
     <%= f.password_field :password %>

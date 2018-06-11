@@ -22,7 +22,7 @@
             <% if current_user %>  
                 <p class="navbar-brand">Welcome <%= current_user.name %></p>
                 <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-                <a class="navbar-brand" href="<%= logout_url %>"/>Log out</a>
+                <a class="navbar-brand" href="<%= logout_url %>"/>Log Out</a>
                 
             <% else %>   
                 <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
