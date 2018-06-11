@@ -1,15 +1,11 @@
-<h2>Login</h2>
+
+<%= form_for(:session, url: signin_path) do |f| %>
+
+    <%= f.label :name, "name" %>
+    <%= f.text_field :name %>
 
 
-<%= form_for @user, :url => 'login_path' do |f| %>
-
-
-    <%= f.label :user_name, "Name" %>
-    <%= f.collection_select :user, User.all, :id, :name %>
-
-  
-
-    <%= f.label :password, "Password" %>
+    <%= f.label :password, "password" %>
     <%= f.password_field :password %>
 
 

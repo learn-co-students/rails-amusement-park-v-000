@@ -50,6 +50,9 @@ select
 	select_tag
 	collection_select 
 
+removed this:  <%= f.collection_select @user, User.all, :id, :name %>
+
+
 <%= f.collection_select(:user_name User.all, :id, :name) %>
 	
 	<%= f.select(:user_name) do %>
