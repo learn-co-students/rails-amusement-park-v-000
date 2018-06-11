@@ -18,6 +18,7 @@ def create
   respond_to do |format|
     if @user.save
       session[:name] = @user.name
+      session[:user_id] = @user.id
       format.html { redirect_to @user, notice: 'User was successfully created.' }
     else
       format.html { render :new }

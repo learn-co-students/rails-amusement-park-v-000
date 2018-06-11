@@ -24,9 +24,9 @@
           <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
         <%end%>
         <% if current_user %>
-          <a class="navbar-brand" href="<%= logout_path %>"/>Log Out</a>
+          <a class="navbar-brand" href="<%= signout_path %>"/>Log Out</a>
         <% else %>
-         <a class="navbar-brand" href="<%= login_path %>"/>Log in</a>
+         <a class="navbar-brand" href="<%= signin_path %>"/>Log in</a>
         <%end%>
         </div>
         <div class="navbar-collapse collapse">

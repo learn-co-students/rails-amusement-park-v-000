@@ -6,12 +6,14 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
 
 
+validates :name, :password, :happiness, :nausea, :tickets, :height, presence: true
+
   def mood
 
     if self.happiness > self.nausea
-      "Happy"
+      "happy"
     else
-      "Sad"
+      "sad"
 
     end
 

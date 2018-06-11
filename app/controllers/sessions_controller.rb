@@ -8,8 +8,9 @@ def create
   @user = User.find_by(:name => params[:name])
 
 
-  if @user.authenticate(params[:password])
+  if @user && @user.authenticate(params[:password])
     session[:name] = @user.name
+    session[:user_id] = @user.id
     redirect_to @user
 
   else
@@ -22,12 +23,8 @@ end
 
 def destroy
 
-  if !session[:name]
-       session[:name] == nil
-  else
-       session.delete :name
-  end
-   redirect_to '/login'
+  session.clear
+   redirect_to '/'
 
 end
 end

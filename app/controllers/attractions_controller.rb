@@ -49,7 +49,7 @@ class AttractionsController < ApplicationController
         @attraction = Attraction.find(params[:id])
       end
 
-      def pond_params
-        params.require(:attraction).permit(:name)
+      def attraction_params
+        params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
       end
 end
