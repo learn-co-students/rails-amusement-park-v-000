@@ -1,0 +1,46 @@
+    <% if @attraction.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@attracion.errors.count, "error") %> prohibited this user from being saved:
+            </h2>
+
+            <ul>
+                <% @attraction.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                    <% end %>
+            </ul>
+        </div>
+        <% end %>
+
+
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+    <% end %>  
+<%# how might I DRY out this code -- put in helper -- how to iterate.insert the local variable? %>
+
+<%= form_for @attraction do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    
+    <%= f.label :min_height, "Minimum height" %>
+    <%= f.number_field :min_height, min: 0 %>
+    <br>
+    
+    <%= f.label :nausea_rating %>
+    <%= f.range_field :nausea_rating, in: 0..5 %>
+    <br>
+
+    <%= f.label :happiness_rating %>
+    <%= f.range_field :happiness_rating, in: 0..5%>
+    <br>
+    
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets, min: 0 %>
+    <br>
+
+    <%= f.submit %>
+<% end %>

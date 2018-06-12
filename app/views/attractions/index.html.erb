@@ -16,13 +16,13 @@
 		<tr> 
 			<td><%= attraction.name %> </td>
 			<td><%= attraction.tickets %></td>
-			<td><%= link_to "Go to #{attraction.name}", attraction_path(attraction) %></td>
+			<td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
 		</tr>
 		<% end %>
 	</tbody>
 
 </table>
 
-
-
+<%= link_to "Edit", New Attraction", new_attraction_path %>
+<%= link_to "Delete", attraction_path(@attraction), method: :delete, data: { confirm: 'Are you sure?' }%>
 <%= link_to "New Attraction", new_attraction_path %>

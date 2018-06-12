@@ -1,10 +1,12 @@
 
 
-Name: <%= @attraction.name %>
-<%# Total Number of Users: <%= @attraction.name %>
-Ticket Requirement: 
+
+
+Name: <%= @attraction.name %><
+<p>Total Number of Users:</p> <%= @attraction.users.count %>
+Ticket Requirement: <%= @attraction.tickets %>
 Height Requirement: <%= @attraction.min_height %> inches
 Nausea Rating: <%= @attraction.nausea_rating %>
 Happiness Rating: <%= @attraction.happiness_rating %>
 
-<%= link_to "Go on this ride", (GOES TO USER SHOW PAGE) user_path(@user)
+<%= link_to "Go on this ride",  attractions_page(@attraction) %>
