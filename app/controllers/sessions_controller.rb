@@ -14,7 +14,7 @@ def create
     redirect_to @user
 
   else
-    redirect_to '/login'
+    redirect_to signin_url
 
   end
 
