@@ -1,0 +1,14 @@
+<% if admin %>
+  <%= link_to "New Attraction", new_attraction_path %><br /><br />
+  <ul>
+    <% @attractions.each do |attr| %>
+    <li><%= link_to "Show #{attr.name}", attraction_path(attr) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul>
+    <% @attractions.each do |attr| %>
+    <li><%= link_to "Go on #{attr.name}", attraction_path(attr) %></li>
+    <% end %>
+  </ul>
+<% end %>
