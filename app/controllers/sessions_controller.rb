@@ -9,7 +9,7 @@ def create
 
 
   if @user && @user.authenticate(params[:password])
-    session[:name] = @user.name
+
     session[:user_id] = @user.id
     redirect_to @user
 

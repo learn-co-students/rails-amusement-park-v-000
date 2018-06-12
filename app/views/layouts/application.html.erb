@@ -19,7 +19,7 @@
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <% if current_user %>
-          <a class="navbar-brand" href="<%= user_path(User.find_by(:name =>session[:name])) %>"/><%=current_user%>'s profile</a>
+          <a class="navbar-brand" href="<%= user_path(User.find_by(:name =>session[:user_id])) %>"/><%=User.find_by(:name =>session[:user_id]).name%>'s profile</a>
         <% else %>
           <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
         <%end%>

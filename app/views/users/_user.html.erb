@@ -1,4 +1,9 @@
 <ul>
+
+    <% if user.admin == true %>
+        <li>ADMIN</li>
+    <%end%>
+
   <li>
     Name: <%= user.name %>
   </li>
@@ -11,4 +16,8 @@
   <li>
     Height: <%= user.height %>
   </li>
+  <li>
+    <%= link_to "See attractions", attractions_path %>
+  </li>
+
 </ul>

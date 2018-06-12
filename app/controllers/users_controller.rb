@@ -13,11 +13,12 @@ end
 def edit
 end
 def create
+
   @user = User.new(user_params)
 
   respond_to do |format|
     if @user.save
-      session[:name] = @user.name
+
       session[:user_id] = @user.id
       format.html { redirect_to @user, notice: 'User was successfully created.' }
     else
@@ -47,7 +48,7 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:name, :password, :happiness, :nausea, :tickets, :height, :password_confirmation)
+  params.require(:user).permit(:name, :password, :happiness, :nausea, :tickets, :height, :password_confirmation, :admin)
 end
 def set_user
   @user = User.find(params[:id])
