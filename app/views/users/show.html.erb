@@ -1,11 +1,16 @@
 
+<% if @user.admin %>
+	<<h4>ADMIN</h4>
+<% end %>
+
 
 name: <%= @user.name %><br>
 Mood: <%= @user.mood %><br>
 nausea: <%= @user.nausea %><br>
 height: <%= @user.height %><br>
 tickets: <%= @user.tickets %><br>
-admin status: <%= @user.admin? %>
+<%= link_to "See attractions", attractions_url %>
+<%= link_to "Log Out", logout_url %>
 
 
 
