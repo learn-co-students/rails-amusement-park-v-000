@@ -1,4 +1,4 @@
-class Attraction < ApplicationRecord
+class Attraction < ActiveRecord::Base
   validates :name, presence: true
   validates :tickets, presence: true
   validates :nausea_rating, presence: true
