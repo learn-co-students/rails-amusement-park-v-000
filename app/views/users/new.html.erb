@@ -1,0 +1,9 @@
+<%= form_for :user, url: '/users' do |f| %>
+  Username: <%= f.text_field :name %>
+  Height: <%= f.text_field :name %>
+  Happiness: <%= f.text_field :name %>
+  Nausea: <%= f.text_field :name %>
+  Tickets: <%= f.text_field :tickets %>
+  Password: <%= f.password_field :password %>
+  <%= f.submit "Create User" %>
+<% end %>
