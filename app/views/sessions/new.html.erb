@@ -1,6 +1,6 @@
 <!-- login form/page (new session) -->
 <h1>Login Here</h1>
-<%= form_for @user, url: sessions_path, method: :post do |f| %>
+<%= form_for @user, url: '/signin', method: :post do |f| %>
 <%= f.label :name %> <br>
 <%= f.collection_select :name, User.all,:id,:name %><br><br>
 <%= f.label :password %><br>
