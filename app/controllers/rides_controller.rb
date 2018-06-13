@@ -7,4 +7,6 @@ class RidesController < ApplicationController
     @ride = Ride.new(:user_id => params[:user_id], :attraction_id => params[:attraction_id])
     redirect_to attractions_url
   end
+  
+
 end

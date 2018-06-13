@@ -15,10 +15,19 @@
     Happiness Rating: <%= attraction.happiness_rating %>
   </li>
   <li>
-    <%= link_to "Go on #{attraction.name}", new_rides_path %>
-  </li>
-  <li>
     <%= link_to "See attractions", attractions_path %>
   </li>
+
+
+  <% if current_user.admin %>
+    <p><%= link_to "Edit Attraction", edit_attraction_path %></p>
+  <% end %>
+
+  <%= form_tag(new_rides_path) do %>
+    <%= hidden_field_tag 'user_id', "#{current_user.id}" %>
+    <%= hidden_field_tag 'attraction_id', "#{attraction.id}" %>
+    <%= submit_tag("Go on this ride", :id => "button") %>
+  <% end %>
+
 
 </ul>

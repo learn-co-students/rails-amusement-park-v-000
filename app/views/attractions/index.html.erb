@@ -1,8 +1,9 @@
-<h1> Attraction List </h1>
+<h2>Attractions</h2>
 
-<% @attractions.each do |attraction|%>
-<li>
-  <%=link_to "#{attraction.name}", attraction_path(attraction)%>
-</li>
-<%end%>
-<%= link_to "New attraction", new_attraction_path %>
+<% @attractions.each do |attraction| %>
+  <% if current_user.admin %>
+    <p><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></p>
+  <% else %>
+    <p><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></p>
+    <% end %>
+<% end %>

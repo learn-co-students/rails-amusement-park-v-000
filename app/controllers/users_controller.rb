@@ -9,22 +9,26 @@ class UsersController < ApplicationController
     @user = User.new
   end
 def show
+  
+
+    if !current_user.admin
+      if current_user != @user
+        redirect_to root_path
+      end
+    end
 end
 def edit
 end
 def create
 
+
   @user = User.new(user_params)
-
-  respond_to do |format|
-    if @user.save
-
-      session[:user_id] = @user.id
-      format.html { redirect_to @user, notice: 'User was successfully created.' }
-    else
-      format.html { render :new }
-    end
-  end
+ if @user.save
+   session[:user_id] = @user.id
+   redirect_to user_path(@user)
+ else
+   render :new
+ end
 end
 
 def update
