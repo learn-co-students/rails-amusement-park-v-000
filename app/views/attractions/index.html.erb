@@ -1,10 +1,13 @@
+<% @attractions.each do |a| %>
+  <%= a.name %>
+  <% end %>
 <table>
   <tr>
     <th>Name</th>
     <th>Tickets</th>
     <th>Details</th>
   </tr>
-    <% @attractions.each do |a| %>
+    <%= @attractions.each do |a| %>
       <tr>
         <td><%= a.name %></td>
         <td><%= a.tickets %></td>
