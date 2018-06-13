@@ -1,19 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user
+  helper_method :current_user, :require_login
 
   # def cart
   #   session[:cart] ||= []
   # end
 
+
+
+  private
   def current_user
     session[:user_id]
   end
-
-  private
-
   def require_login
-    redirect_to '/'  unless current_user
+    redirect_to root_url  unless current_user
   end
 
 end
