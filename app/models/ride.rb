@@ -19,18 +19,18 @@ class Ride < ActiveRecord::Base
       "Sorry. You are not tall enough to ride the #{attraction.name}."
     end
 
-    self.nauseau += attraction.nausea_rating
-    self.tickets -= attraction.tickets
-    self.happiness += attraction.happiness_rating
+    self.nausea += self.attraction.nausea_rating
+    self.tickets -= self.attraction.tickets
+    self.happiness += self.attraction.happiness_rating
 
   end
 
   def too_short?
-    self.height < attraction.min_height
+    self.user.height < self.attraction.min_height
   end
 
-  def too_broke?(attraction)
-    self.tickets - attraction.tickets < 0
+  def too_broke?
+    self.user.tickets - self.attraction.tickets < 0
   end
 
 

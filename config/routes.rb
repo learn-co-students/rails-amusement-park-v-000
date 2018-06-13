@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :attractions
-
+  resources :ride
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
