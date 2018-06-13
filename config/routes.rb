@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  get 'users/new' => 'users#new'
-  post 'users' => 'users#create'
-  get 'sessions/new' => 'sessions#new'
-  post 'sessions' => 'sessions#create'
+  resources :users
+
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get  '/logout' => 'sessions#destroy'
 
   root 'welcome#home'
 end
