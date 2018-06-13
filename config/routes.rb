@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'rides/new'
+  get 'rides/create'
   root 'sessions#index'
 
   get '/secrets' => 'secrets#show'

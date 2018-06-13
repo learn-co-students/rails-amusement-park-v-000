@@ -10,7 +10,11 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-    session[:user_id]
+   @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+
+  def logged_in?
+   !!current_user
   end
   def require_login
     redirect_to root_url  unless current_user
