@@ -3,19 +3,24 @@
     Name: <%= attraction.name %>
   </li>
   <li>
-    Total Number of Users: <%= attraction.number %>
+    Ticket Requirement: <%= attraction.tickets %>
   </li>
   <li>
-    Ticket Requirement: <%= user.tickets %>
+    Height Requirement: <%= attraction.min_height %>
   </li>
   <li>
-    Height Requirement: <%= user.height %>
+    Nausea Rating: <%= attraction.nausea_rating %>
   </li>
   <li>
-    Nausea Rating: <%= user.nausea_rating %>
+    Happiness Rating: <%= attraction.happiness_rating %>
   </li>
   <li>
-    Happiness Rating: <%= user.happiness_rating %>
+    <%= link_to "See attractions", attractions_path %>
   </li>
+
+
+
+
+
 
 </ul>

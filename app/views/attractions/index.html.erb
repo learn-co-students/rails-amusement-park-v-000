@@ -1,1 +1,8 @@
-hi
+<h1> Attraction List </h1>
+
+<% @attractions.each do |attraction|%>
+<li>
+  <%=link_to "#{attraction.name}", attraction_path(attraction)%>
+</li>
+<%end%>
+<%= link_to "New attraction", new_attraction_path %>

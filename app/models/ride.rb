@@ -13,10 +13,10 @@ def take_ride
   elsif user.height < attraction.min_height
     "Sorry. You are not tall enough to ride the #{attraction.name}."
   else
-    user.tickets = user.tickets - attraction.tickets
-    user.nausea = user.nausea + attraction.nausea_rating
-    user.happiness = user.happiness + attraction.happiness_rating
-    user.save
+    current_tickets = user.tickets - attraction.tickets
+    current_nausea = user.nausea + attraction.nausea_rating
+    current_happiness = user.happiness + attraction.happiness_rating
+    user.update(tickets: current_tickets, nausea: current_nausea, happiness: current_happiness )
   end
 
 
