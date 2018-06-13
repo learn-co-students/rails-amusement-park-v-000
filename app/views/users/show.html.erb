@@ -1,16 +1,18 @@
 
 <% if @user.admin %>
-	<<h4>ADMIN</h4>
+	<h4>ADMIN</h4>
 <% end %>
 
 
-name: <%= @user.name %><br>
+<br>
+Name: <%= @user.name %><br>
 Mood: <%= @user.mood %><br>
-nausea: <%= @user.nausea %><br>
-height: <%= @user.height %><br>
-tickets: <%= @user.tickets %><br>
-<%= link_to "See attractions", attractions_url %>
-<%= link_to "Log Out", logout_url %>
+Nausea: <%= @user.nausea %><br>
+Height: <%= @user.height %><br>
+Tickets: <%= @user.tickets %><br>
+
+<%= link_to "See attractions", attractions_path %><br>
+<%= link_to "Log Out", logout_path %>
 
 
 

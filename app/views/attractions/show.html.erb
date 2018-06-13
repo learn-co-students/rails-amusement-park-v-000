@@ -2,11 +2,26 @@
 
 
 
-Name: <%= @attraction.name %><
-<p>Total Number of Users:</p> <%= @attraction.users.count %>
-Ticket Requirement: <%= @attraction.tickets %>
-Height Requirement: <%= @attraction.min_height %> inches
-Nausea Rating: <%= @attraction.nausea_rating %>
-Happiness Rating: <%= @attraction.happiness_rating %>
+Name: <%= @attraction.name %><br>
+Total Number of Users: <%= @attraction.users.count %><br>
+Ticket Requirement: <%= @attraction.tickets %><br>
+Height Requirement: <%= @attraction.min_height %> inches<br>
+Nausea Rating: <%= @attraction.nausea_rating %><br>
+Happiness Rating: <%= @attraction.happiness_rating %><br>
 
-<%= link_to "Go on this ride",  attractions_page(@attraction) %>
+
+<% if current_user.admin %>
+	<%= link_to "New Attraction", new_attraction_path %><br>
+	<%= link_to "Edit", edit_attraction_path %><br>
+	<%= link_to "Delete", attraction_path(@attraction), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% else %>
+
+	<%= form_for @ride do |f| %>
+		<%= f.hidden_field :user_id, value:current_user.id %>
+		<%= f.hidden_field :attraction_id, value:@attraction.id %>
+		<%= f.submit "Go on this ride" %>
+	<% end %>
+
+
+<% end %> 

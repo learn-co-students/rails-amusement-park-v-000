@@ -5,7 +5,7 @@ class AttractionsController < ApplicationController
 	end 
 
 	def show
-
+		@ride = Ride.new
 		@attraction = Attraction.find(params[:id])
 	end 
 
@@ -17,9 +17,10 @@ class AttractionsController < ApplicationController
 	def create
 		@attraction = Attraction.new(attraction_params)
 		if @attraction.save
-			redirect_to @attraction
+			redirect_to @attraction, notice: "Attraction was successfully created ."
 		else
-			render :new, notice="something went wrong"
+			flash[:notice] = "something went wrong"
+			render :new
 		end 
 	end 
 
@@ -31,9 +32,9 @@ class AttractionsController < ApplicationController
 		@attraction = Attraction.new
 		@attraction.update(attraction_params)
 		if @attraction.save
-			redirect_to @attraction
+			redirect_to @attraction, notice="Attraction was succesfully created."
 		else
-			render :edit, notice="something went wrong"
+			render :edit 
 		end
 
 	end 

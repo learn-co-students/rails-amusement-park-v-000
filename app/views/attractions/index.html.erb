@@ -6,6 +6,7 @@
 			<th colspan="3"></th>
 		</tr>
 	</thead>
+
 	<tbody>
 		<tr>
 			<td>Name</td>
@@ -16,13 +17,25 @@
 		<tr> 
 			<td><%= attraction.name %> </td>
 			<td><%= attraction.tickets %></td>
-			<td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+			<% if current_user.admin %>
+				<td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+				</td>
+			<% else %>
+				<td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>				
+				</td>
+			<% end %> 
 		</tr>
-		<% end %>
+	  <% end %> 
 	</tbody>
 
 </table>
+<br>
 
-<%= link_to "Edit", New Attraction", new_attraction_path %>
-<%= link_to "Delete", attraction_path(@attraction), method: :delete, data: { confirm: 'Are you sure?' }%>
-<%= link_to "New Attraction", new_attraction_path %>
+
+<% if @user %>
+  <p>
+    <%= link_to "Back to profile", user_path(@user), {class: "btn btn-primary"} %>
+  </p>
+<% else %>
+  <p><%= link_to 'New Attraction', new_attraction_path %></p>
+<% end %>

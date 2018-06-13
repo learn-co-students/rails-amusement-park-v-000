@@ -66,3 +66,49 @@ removed this:  <%= f.collection_select @user, User.all, :id, :name %>
 set_user 
 	@user = User.find(params[:id])
  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+
+
+<h2>Login</h2>
+
+
+<%= form_for(:session, url: signin_path) do |f| %>
+
+    <%= f.label :name, "name" %>
+	<%= f.collection_select( :user_id, User.all, :id, 
+	:user_name) %>
+
+    <%= f.label :password, "password" %>
+    <%= f.password_field :password %>
+
+
+    <%= f.submit "Sign In"%>
+
+
+<%= form_for @user, :url => 'login_path' do |f| %>
+
+
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+    <%= f.collection_select @users, User.all, :id, :name %>
+
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+
+
+    <%= f.submit "Sign In"%>
+
+<% end %>
+
+
+
+
+<% if current_user.admin? %>
+	<%= link_to "New Attraction", new_attraction_path %><br>
+	<%= link_to "Edit", edit_attraction_path(attraction) %><br>
+	<%= link_to "Delete", attraction_path(attraction), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+<%#<% else %>
+<%#	<%= link_to "Back to profile", user_path(@user) %> 
+<% end %>
+
+
