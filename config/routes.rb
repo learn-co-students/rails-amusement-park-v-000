@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'sessions#index'
 
-  get '/signin' => 'sessions#new'
+  get '/signin' => 'sessions#new', as: 'signin'
   post '/signin' => 'sessions#create'
   get '/signout' => 'sessions#destroy'
   resource :sessions, only: [:new]
@@ -10,3 +10,4 @@ Rails.application.routes.draw do
   resources :attractions
   resource :rides, only: [:new, :create]
 end
+ 
