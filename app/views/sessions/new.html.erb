@@ -2,7 +2,7 @@
 <h1>Login Here</h1>
 <%= form_for @user, url: '/signin', method: :post do |f| %>
 <%= f.label :name %> <br>
-<%= f.collection_select :name, User.all,:id,:name %><br><br>
+<%= f.collection_select :name, User.all, :name, :name, {:prompt => "Select Name"}%><br>
 <%= f.label :password %><br>
 <%= f.text_field :password %><br>
 <%= f.submit "Sign In" %>

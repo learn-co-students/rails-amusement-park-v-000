@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(name: params[:user][:name])
     user.try(:authenticate, params[:user][:password])
-      binding.pry
+      #binding.pry
     return redirect_to signin_path unless user
     session[:user_id] = user.id
 
