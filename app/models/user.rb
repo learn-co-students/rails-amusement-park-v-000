@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
 
 
-validates :name, :password, :happiness, :nausea, :tickets, :height, presence: true
+  validates :name, :password, :happiness, :nausea, :tickets, :height, presence: true
 
   def mood
 
