@@ -1,0 +1,15 @@
+<h1><%= "#{@user.name}'s Profile" %> 
+
+<% if @user.admin %> 
+	* ADMIN *
+<% end %> 
+</h1>
+Tickets: <%= @user.tickets %> 
+<br/>
+Happiness: <%= @user.happiness %> 
+<br/>
+Mood: <%= @user.mood %> 
+<br/>
+Nausea: <%= @user.nausea %> 
+<br/>
+Height: <%= @user.height %> 

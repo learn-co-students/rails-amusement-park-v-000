@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+require 'pry'
 RSpec.describe User, :type => :model do
   let(:user) {
     User.create(
@@ -45,6 +45,7 @@ RSpec.describe User, :type => :model do
   }
 
   it "is valid with a name, password, happiness, nausea, height, and tickets" do
+
     expect(user).to be_valid
   end
 

@@ -1,0 +1,6 @@
+<h1>Welcome to my Amusement Park!</h1> 
+<% if isLoggedIn? %> 
+	<h2>Welcome back <%= @user.name %>! </h2>
+<% else %>
+	<p><%= @users %> have already joined the magic. Sign up today!</p>
+<% end %> 
