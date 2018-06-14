@@ -11,26 +11,26 @@ class Ride < ActiveRecord::Base
     #if not tall enough - "Sorry. You are not tall enough to ride the #{attraction.name}."
     #if too short and broke - both messages combined
     #updates ticket number(subtract), nauseau(add nauseau rating) and happiness (adds rating)
-    if too_short? && too_broke?
-      "Sorry. You are not tall enough to ride the #{@attraction.name}."
-    elsif too_broke?
-      "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
-    elsif too_short?
-      "Sorry. You are not tall enough to ride the #{@attraction.name}."
+    if too_short?(attraction) && too_broke?(attraction)
+      "Sorry. You are not tall enough to ride the #{attraction.name}."
+    elsif too_broke?(attraction)
+      "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+    elsif too_short?(attraction)
+      "Sorry. You are not tall enough to ride the #{attraction.name}."
     else
-      "Thanks for riding the #{@attraction.name}!"
-    self.nausea += @attraction.nausea_rating
-    self.tickets -= @attraction.attraction.tickets
-    self.happiness += @attraction.happiness_rating
-
+      "Thanks for riding the #{attraction.name}!"
+    current_user.nausea += attraction.nausea_rating
+    current_user.tickets -= attraction.attraction.tickets
+    current_user.happiness += attraction.happiness_rating
+    end
   end
 
-  def too_short?
-    self.user.height < self.attraction.min_height
+  def too_short?(attraction)
+    current_user.height < attraction.min_height
   end
 
-  def too_broke?
-    self.user.tickets - self.attraction.tickets < 0
+  def too_broke?(attraction)
+    current_user.user.tickets - attraction.tickets < 0
   end
 
 
