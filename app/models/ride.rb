@@ -14,6 +14,7 @@ class Ride < ActiveRecord::Base
             self.user.tickets = self.user.tickets - self.attraction.tickets
             self.user.happiness = self.user.happiness + self.attraction.happiness_rating
             self.user.save
+            "Thanks for riding the #{self.attraction.name}!"
         end
     end
 end
