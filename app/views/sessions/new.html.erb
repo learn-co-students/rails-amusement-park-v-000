@@ -1,0 +1,9 @@
+<h3>Existing User? Sign in here:</h3>
+<%= form_tag('/signin') do %>
+  Name:
+  <%= select_tag "user_name", options_from_collection_for_select(@users, "id", "name") %>
+
+  Password:
+  <%= password_field_tag "password"%>
+  <%= submit_tag "Sign In"%>
+<% end %>

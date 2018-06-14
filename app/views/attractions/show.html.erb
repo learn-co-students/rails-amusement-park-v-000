@@ -1,0 +1,8 @@
+<h1><%= @a.name %></h1>
+
+<%= button_to "Go on this ride", action: "update"%>
+
+<% if @user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@a)%>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
