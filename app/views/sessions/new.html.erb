@@ -1,9 +1,10 @@
-    <%= form_for @user, url: signin_path(@user) do |f| %>
-      <%= f.label :name %>
-      <%= f.collection_select :id, User.all, :id, :name, include_blank: true %>
+<%= form_tag(signin_path) do %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %><br>
+  <%= label_tag 'name'%>
+  <%= text_field_tag 'name' %>
 
-      <%= f.submit "Sign In"%>
-    <% end %>
+  <%= label_tag 'password' %>
+  <%= password_field_tag 'password' %>
+
+  <%= submit_tag "Sign in", class: "btn btn-large btn-primary" %>
+<% end -%>
