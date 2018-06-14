@@ -7,6 +7,7 @@ class Ride < ActiveRecord::Base
 
 
   def take_ride
+    #we need this method to update the current users info. but we cannot call current_user in this method(because we are in the model)..we could pass the current_user?
     attraction = Attraction.find_by(id: self.attraction_id)
     #if not enough tickets - responds with "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     #if not tall enough - "Sorry. You are not tall enough to ride the #{attraction.name}."

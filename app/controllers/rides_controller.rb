@@ -4,14 +4,14 @@ class RidesController < ApplicationController
   end
 
   def create
+    binding.pry
     attraction = Attraction.find_by(id: params[:id])
     ride = Ride.new(ride_params)
-
-    if !ride.too_short?(attraction) & !ride.too_broke?(attraction)
-      ride.take_ride(attraction)
+    if !ride.too_short? & !ride.too_broke?
+      ride.take_ride
       redirect_to user_path(current_user)
     else
-      flash[:message] = ride(attraction)
+      flash[:message] = ride
     end
 
 
