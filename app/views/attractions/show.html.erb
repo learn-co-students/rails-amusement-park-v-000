@@ -4,3 +4,6 @@
 <label>Number of Tickets to Ride:</label><%= @attraction.tickets %>
 <label>Nausea Rating:</label><%= @attraction.nausea_rating %>
 <label>Happiness Rating:</label><%= @attraction.happiness_rating %>
+<%= form_tag ({controller: 'ride', action: 'create', method: 'get'}) do %>
+  <input type="submit" value="Go on a Ride">
+  <% end %> why does it want us to use link instead of form/button/post action?

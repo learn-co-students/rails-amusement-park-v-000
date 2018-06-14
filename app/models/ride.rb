@@ -6,22 +6,22 @@ class Ride < ActiveRecord::Base
   validates :attraction_id, presence: true
 
 
-  def take_ride
+  def take_ride(attraction)
     #if not enough tickets - responds with "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     #if not tall enough - "Sorry. You are not tall enough to ride the #{attraction.name}."
     #if too short and broke - both messages combined
     #updates ticket number(subtract), nauseau(add nauseau rating) and happiness (adds rating)
     if too_short? && too_broke?
-      "Sorry. You are not tall enough to ride the #{attraction.name}."
+      "Sorry. You are not tall enough to ride the #{@attraction.name}."
     elsif too_broke?
-      "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+      "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
     elsif too_short?
-      "Sorry. You are not tall enough to ride the #{attraction.name}."
-    end
-
-    self.nausea += self.attraction.nausea_rating
-    self.tickets -= self.attraction.tickets
-    self.happiness += self.attraction.happiness_rating
+      "Sorry. You are not tall enough to ride the #{@attraction.name}."
+    else
+      "Thanks for riding the #{@attraction.name}!"
+    self.nausea += @attraction.nausea_rating
+    self.tickets -= @attraction.attraction.tickets
+    self.happiness += @attraction.happiness_rating
 
   end
 
