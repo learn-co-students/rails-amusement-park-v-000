@@ -1,0 +1,6 @@
+<h1>The Flatiron School Amusement Park</h1> 
+<% if logged_in? %> 
+	<h2>Welcome back <%= current_user.name %>! </h2>
+<% else %>
+	<%= link_to "Sign Up to See the Rides!", signin_path %>
+<% end %> 
