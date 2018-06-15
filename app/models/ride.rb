@@ -7,11 +7,11 @@ def take_ride
   attraction = self.attraction
 
   if user.tickets < attraction.tickets && user.height < attraction.min_height
-    "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
+    flash[:alert] = "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
   elsif user.tickets < attraction.tickets
-    "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+  flash[:alert] =  "Sorry. You do not have enough tickets to ride the #{attraction.name}."
   elsif user.height < attraction.min_height
-    "Sorry. You are not tall enough to ride the #{attraction.name}."
+    flash[:alert] = "Sorry. You are not tall enough to ride the #{attraction.name}."
   else
     current_tickets = user.tickets - attraction.tickets
     current_nausea = user.nausea + attraction.nausea_rating

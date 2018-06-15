@@ -1,7 +1,7 @@
 <ul>
 
     <% if user.admin == true %>
-        <li>ADMIN</li>
+        <p>ADMIN</p>
     <%end%>
 
   <li>
@@ -16,8 +16,7 @@
   <li>
     Height: <%= user.height %>
   </li>
-  <li>
-    <%= link_to "See attractions", attractions_path %>
-  </li>
+  <%= link_to 'See attractions', attractions_path %><br>
+  <%= link_to 'Log Out', signout_path, method: :delete %>
 
 </ul>

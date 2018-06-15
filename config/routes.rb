@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resource :sessions, only: [:new]
   resources :users
   resources :attractions
-  resource :rides, only: [:new, :create]
+  get '/rides/new', to: 'rides#new'
+  post '/rides/new', to: 'rides#create'
 end
