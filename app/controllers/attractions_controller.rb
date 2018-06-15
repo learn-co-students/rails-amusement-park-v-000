@@ -32,14 +32,13 @@ class AttractionsController < ApplicationController
 		@attraction = Attraction.find(params[:id])
 		@attraction.update(attraction_params)
 		if @attraction.save
-			redirect_to attraction_path(@attraction)
-			# notice="Attraction was succesfully created."
+			redirect_to attraction_path(@attraction), notice="Attraction was succesfully created."
 		else
 			render :edit 
 		end
 
 	end 
-	
+
 	def destroy
 		@attraction = Attraction.find(params[:id])
 		@attraction.destroy
