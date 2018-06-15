@@ -14,7 +14,3 @@ by clicking the button, they need the attraction_id (what they are currently vie
         <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
         <input class="btn btn-light" type="submit" value="Go on this ride">
 </form>
-<!-- <%= form_tag ({controller: 'rides', action: 'new', method: 'post'}) do |f|%>
-<%= f.hidden_field_tag 'attraction', @attraction %>
-<%= f.submit "Go on this ride" %>
-<% end %> -->

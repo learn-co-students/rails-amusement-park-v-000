@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get  '/logout' => 'sessions#destroy'
 
+  post '/rides/new' => 'rides#new'
+
+
   root 'welcome#home'
 end

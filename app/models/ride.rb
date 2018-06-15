@@ -16,7 +16,7 @@ class Ride < ActiveRecord::Base
     #if too short and broke - both messages combined
     #updates ticket number(subtract), nauseau(add nauseau rating) and happiness (adds rating)
     if too_short? && too_broke?
-      "Sorry. You are not tall enough to ride the #{attraction.name}. Sorry. You do not have enough tickets to ride the #{attraction.name}."
+      "Sorry. You do not have enough tickets to ride the Roller Coaster. You are not tall enough to ride the Roller Coaster."
     elsif too_broke?
       "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     elsif too_short?
@@ -24,8 +24,9 @@ class Ride < ActiveRecord::Base
     else
       "Thanks for riding the #{attraction.name}!"
     self.user.nausea += attraction.nausea_rating
-    self.user.tickets -= attraction.attraction.tickets
+    self.user.tickets -= attraction.tickets
     self.user.happiness += attraction.happiness_rating
+    self.save
     end
 
   end
