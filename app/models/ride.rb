@@ -5,18 +5,9 @@ class Ride < ActiveRecord::Base
     
     def take_ride 
         if all_good  
-            update_user_info
-            "Great job"
-            
-        else
-            bad_ride
-            if !enough_tickets 
-                low_on_tickets_message
-            elsif !tall_enough
-                message = "Sorry. You are not tall enough to ride the #{attraction.name}."
-            else !enough_tickets && !tall_enough
-                needs_more_tickets_and_height_message
-            end
+            update_user_info      
+        else           
+            bad_ride 
         end 
     end
 
@@ -24,10 +15,20 @@ class Ride < ActiveRecord::Base
         enough_tickets && tall_enough
     end 
 
+    def bad_ride
+        if !enough_tickets 
+                low_on_tickets_message
+        elsif !tall_enough
+            "Sorry. You are not tall enough to ride the #{attraction.name}."
+        else !enough_tickets && !tall_enough
+                needs_more_tickets_and_height_message
+        end
+    end
+
    
     def enough_tickets
       if self.user && self.attraction
-          if self.user.tickets.to_i >= self.attraction.tickets.to_i
+          if self.user.tickets >= self.attraction.tickets
             return enough_tickets = true
           end
         end
@@ -67,9 +68,8 @@ class Ride < ActiveRecord::Base
                 happiness: new_happiness,
                 nausea: new_nausea
                 )
-                
-        else
-            "You need more tickets"
+              
+            puts "Thanks for riding the #{attraction.name}!"   
         end 
 
     end
