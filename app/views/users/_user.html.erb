@@ -1,0 +1,22 @@
+<ul>
+
+    <% if user.admin == true %>
+        <p>ADMIN</p>
+    <%end%>
+
+  <li>
+    Name: <%= user.name %>
+  </li>
+  <li>
+    Tickets: <%= user.tickets %>
+  </li>
+  <li>
+    Mood: <%= user.mood %>
+  </li>
+  <li>
+    Height: <%= user.height %>
+  </li>
+  <%= link_to 'See attractions', attractions_path %><br>
+  <%= link_to 'Log Out', signout_path, method: :delete %>
+
+</ul>
