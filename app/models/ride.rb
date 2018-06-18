@@ -22,11 +22,11 @@ class Ride < ActiveRecord::Base
     elsif too_short?
       "Sorry. You are not tall enough to ride the #{attraction.name}."
     else
+      self.user.nausea += attraction.nausea_rating
+      self.user.tickets -= attraction.tickets
+      self.user.happiness += attraction.happiness_rating
+      self.user.save
       "Thanks for riding the #{attraction.name}!"
-    self.user.nausea += attraction.nausea_rating
-    self.user.tickets -= attraction.tickets
-    self.user.happiness += attraction.happiness_rating
-    self.user.save
     end
 
   end
