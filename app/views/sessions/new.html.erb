@@ -1,0 +1,14 @@
+<!-- sessions/new -->
+<%= form_tag signin_path do %>
+  <div class="form-group">
+    <%= label_tag "Your name:" %> <br>
+    <%= select_tag :user_name, options_from_collection_for_select(@users, :id, :name) %> <br>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag "Your password:" %> <br>
+    <%= password_field_tag :password %> <br>
+  </div>
+
+  <div class="actions"><%= submit_tag "Sign In", :class => "btn" %></div>
+<% end %>

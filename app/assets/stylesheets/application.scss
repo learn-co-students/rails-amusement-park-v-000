@@ -22,6 +22,11 @@ body {
   padding-bottom: 30px;
 }
 
+img {
+  width: 600px;
+  height: auto;
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -49,4 +54,52 @@ body {
 .info {
   height: 290px;
   text-align: left;
+}
+
+th, td {
+  padding: 8px;
+  line-height: 1.4;
+  vertical-align: top;
+}
+
+td.num, th {
+  text-align: center;
+}
+
+th {
+  border-top: 2px solid #ccc
+}
+
+td {
+  border-top: 1px solid #ccc
+}
+
+// input.btn {
+//   background-color: #6699ff;
+//   width: auto;
+// }
+
+button, a.link, input.btn {
+  background-color: #99ccff;
+  border-radius: 5px;
+  padding: 6px 12px;
+  border: none;
+  color: #222;
+  width: auto;
+  text-decoration: none;
+  font-size: 120%;
+}
+
+input, select {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  color: #222;
+  background-color: transparent;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+input:focus {
+  background-color: #ccffcc;
 }

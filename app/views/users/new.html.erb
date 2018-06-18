@@ -1,0 +1,38 @@
+<!-- users/new -->
+<%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.label :name %> <br>
+    <%= f.text_field :name %> <br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Height (in inches)" %> <br>
+    <%= f.text_field :height %> <br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "How happy are you? (1-5 scale)" %> <br>
+    <%= f.text_field :happiness %> <br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "How nauseous are you? (1-5 scale)" %> <br>
+    <%= f.text_field :nausea %> <br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "How many dollars are in your pocket?" %> <br>
+    <%= f.text_field :tickets %> <br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "Check box if you are a theme park owner" %> <%= f.check_box :admin %> <br>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %> <br>
+    <%= f.password_field :password %> <br>
+  </div>
+
+  <div class="actions"><%= f.submit :class => "btn" %></div>
+<% end %>
