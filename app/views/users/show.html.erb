@@ -1,10 +1,11 @@
-
-
-<%= link_to "Log Out", logout_path %>
-
+<div class="center">
+<div class="info center">
 Name: <%= @user.name %> <br>
 Tickets: <%= @user.tickets %> <br>
 Mood: <%= @user.mood %> <br>
 Height: <%= @user.height %> <br>
 <% if @user.admin %> ADMIN <% end %><br>
-<%= link_to "See attractions", attractions_path %>
+<%= link_to "See attractions", attractions_path %><br><br>
+<%= link_to "Log Out", logout_path %><br>
+</div>
+</div>

@@ -1,9 +1,11 @@
-<%= link_to "Go on this ride", new_ride_path %>
-<%= @attraction.name %>
-<label>Height Requirement:</label><%= @attraction.min_height %>
-<label>Number of Tickets to Ride:</label><%= @attraction.tickets %>
-<label>Nausea Rating:</label><%= @attraction.nausea_rating %>
-<label>Happiness Rating:</label><%= @attraction.happiness_rating %>
+<!-- <%= link_to "Go on this ride", new_ride_path %><br> -->
+
+<div class="info center">
+<%= @attraction.name %><br>
+<label>Height Requirement: </label><%= @attraction.min_height %><br>
+<label>Number of Tickets to Ride: </label><%= @attraction.tickets %><br>
+<label>Nausea Rating: </label><%= @attraction.nausea_rating %><br>
+<label>Happiness Rating: </label><%= @attraction.happiness_rating %><br>
 
 <!-- this is confusing because we need to submit enough info for a user to take a ride without actually filling out a form.
 by clicking the button, they need the attraction_id (what they are currently viewing) and the user (current_user) -->
@@ -14,3 +16,4 @@ by clicking the button, they need the attraction_id (what they are currently vie
         <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
         <input class="btn btn-light" type="submit" value="Go on this ride">
 </form>
+</div>
