@@ -8,6 +8,21 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.new
   end
 
+  def edit
+    @attraction = Attraction.find_by(id: params[:id])
+  end
+
+  def update
+    @attraction = Attraction.find_by(id: params[:id])
+      if @attraction.update(attraction_params)
+        redirect_to attraction_path(@attraction)
+      else
+        render edit_attraction_path(@attaction)
+      end
+  end
+
+
+
   def create
     @attraction = Attraction.new(attraction_params)
     if @attraction.save

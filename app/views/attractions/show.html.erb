@@ -1,5 +1,7 @@
 <!-- <%= link_to "Go on this ride", new_ride_path %><br> -->
-
+<% if current_user.admin? %>
+    <%= link_to "Edit Attraction",edit_attraction_path %>
+    <% end %>
 <div class="info center">
 <%= @attraction.name %><br>
 <label>Height Requirement: </label><%= @attraction.min_height %><br>

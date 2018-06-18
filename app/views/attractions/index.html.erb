@@ -16,7 +16,12 @@
       <tr>
         <td><%= a.name %></td>
         <td><%= a.tickets %></td>
-        <td><%= link_to "Go on #{a.name}", attraction_path(a) %></td>
+        <td> <% if !current_user.admin? %>
+            <%= link_to "Go on #{a.name}", attraction_path(a) %>
+             <% else %>
+            <%= link_to "Show "+ a.name, attraction_path(a) %>
+            <% end %></td>
+
       </tr>
     <% end %>
 
