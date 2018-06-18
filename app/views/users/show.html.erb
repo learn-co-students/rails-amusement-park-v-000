@@ -1,5 +1,8 @@
 <div class="center">
-<div class="info center">
+  <% if flash[:message] %><br>
+  <%=  flash[:message] %>
+    <% end %>
+<div class="info">
 Name: <%= @user.name %> <br>
 Tickets: <%= @user.tickets %> <br>
 Mood: <%= @user.mood %> <br>

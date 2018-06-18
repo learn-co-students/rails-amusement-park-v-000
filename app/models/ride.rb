@@ -26,7 +26,7 @@ class Ride < ActiveRecord::Base
     self.user.nausea += attraction.nausea_rating
     self.user.tickets -= attraction.tickets
     self.user.happiness += attraction.happiness_rating
-    self.save
+    self.user.save
     end
 
   end

@@ -3,8 +3,8 @@ class RidesController < ApplicationController
 
     attraction = Attraction.find_by(id: params[:attraction_id])
     @ride = Ride.create(ride_params)
-    redirect_to user_path(@ride.user)
     flash[:message] = @ride.take_ride
+    redirect_to user_path(@ride.user)
     #binding.pry
   end
 
