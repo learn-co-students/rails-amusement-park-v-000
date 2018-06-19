@@ -1,3 +1,2 @@
-<%= form_for @user do |f| %>
-<%= f.collection_select(:name, User.all, :id, :name) %>
-<% end %>
+<%= link_to 'Log In', '/signin', class: "navbar-brand" %>
+<%= link_to 'Sign Up', '/signup', class: "navbar-brand" %>

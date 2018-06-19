@@ -35,8 +35,8 @@ DATA = {
     ["Teacups Ride", 3, 1, 1, 28]
   ],
   :admins => [
-    "Mary Elitch Long",
-    "John Elitch"
+    ["Mary Elitch Long", 0, 3, 6, 32, "password"],
+    ["John Elitch", 0, 3, 6, 32, "password"]
   ]
 }
 
@@ -57,8 +57,12 @@ def make_users
 end
 
 def make_admin
-  DATA[:admins].each do |name|
-    User.create(name: name, admin: true, password: 'password')
+  DATA[:admins].each do |admin_array|
+    admin = User.new
+    admin_array.each_with_index do |attribute, i|
+      admin.send(DATA[:user_keys][i]+"=", attribute)
+    end
+    admin.save
   end
 end
 
