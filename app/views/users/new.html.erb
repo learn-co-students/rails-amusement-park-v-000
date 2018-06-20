@@ -1,0 +1,25 @@
+<h3>Welcome! Sign Up as new user below: </h3>
+<%= form_for(@user) do |u| %>
+  <%= u.label :name %>
+  <%= u.text_field :name %>
+
+  <%= u.label :height %>
+  <%= u.number_field :height %>
+
+  <%= u.label :happiness %>
+  <%= u.number_field :happiness %>
+
+  <%= u.label :nausea %>
+  <%= u.number_field :nausea %>
+
+  <%= u.label :tickets %>
+  <%= u.number_field :tickets %>
+
+  <%= u.label :password %>
+  <%= u.number_field :password %>
+
+  <%= u.label :admin %>
+  <%= u.check_box :admin %>
+
+  <%= u.submit %>
+<% end %>
