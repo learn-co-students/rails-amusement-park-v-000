@@ -1,0 +1,39 @@
+<%= form_for @user  do |f| %>
+<br>
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+<br>
+<div>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+</div>
+<br>
+<div>
+  <%= f.label :tickets %>
+  <%= f.text_field :tickets %>
+</div>
+<br>
+<div>
+  <%= f.label :height %>
+  <%= f.text_field :height %>
+</div>
+<br>
+<div>
+  <%= f.label :nausea %>
+  <%= f.text_field :nausea %>
+</div>
+<div>
+  <%= f.label :admin %>
+  <%= f.check_box :admin, :checked => false %>
+</div>
+<br>
+<div>
+  <%= f.label :happiness %>
+  <%= f.text_field :happiness %>
+</div>
+
+<br>
+<%= f.submit 'Create User' %>
+<% end %>
