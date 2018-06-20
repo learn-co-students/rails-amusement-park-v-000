@@ -78,4 +78,16 @@ def make_attractions_and_rides
   end
 end
 
+a = Attraction.create(name: "A", nausea_rating: 1, happiness_rating: 5, tickets: 5, min_height: 35)
+b = Attraction.create(name: "B", nausea_rating: 4, happiness_rating: 7, tickets: 60, min_height: 45)
+c = Attraction.create(name: "C", nausea_rating: 3, happiness_rating: 8, tickets: 18, min_height: 40)
+d = Attraction.create(name: "D", nausea_rating: 3, happiness_rating: 5, tickets: 19, min_height: 42)
+
+r = Ride.create(user_id: 3, attraction_id: 1)
+s = Ride.create(user_id: 1, attraction_id: 2)
+t = Ride.create(user_id: 1, attraction_id: 4)
+u = Ride.create(user_id: 5, attraction_id: 6)
+v = Ride.create(user_id: 3, attraction_id: 11)
+
+
 main

@@ -1,0 +1,13 @@
+
+<div class="navbar-brand">
+<% if logged_in? %>
+  <%= link_to current_user.name + "'s Profile", user_path(current_user) %>
+  <%= link_to "Log Out", logout_path %>
+  <!-- <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'POST'}) do %>
+    <input type="submit" value="Log Out">
+    <% end %> why does it want us to use link instead of form/button/post action? -->
+<% else %>
+    <%= link_to "Sign Up", new_user_path %>
+    <%= link_to "Log In", signin_path %>
+<% end %>
+</div>
