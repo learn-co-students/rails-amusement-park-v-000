@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get  '/logout' => 'sessions#destroy'
   post '/logout' => 'sessions#destroy'
   post '/rides/new' => 'rides#new'
+  
 
 
   resources :attractions

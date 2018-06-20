@@ -1,11 +1,27 @@
+<% if current_user.admin == true %>
+<ul>
+  <% @attractions.each do |attraction| %>
+  <li>attraction name: <%= attraction.name %></li>
+  <li>number of tickets: <%= attraction.tickets %></li>
+  <li><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></li>
+  <br>
+  <% end %>
+</ul>
+
+
+
+<% else %>
 <ul>
   <% @attractions.each do |attraction| %>
 <li>attraction name: <%= attraction.name %></li>
 <li>number of tickets: <%= attraction.tickets %></li>
 <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></li>
 <br>
+<% end %>
 
 
-
-  <% end %>
+<% end %>
 </ul>
+<% if current_user.admin == true %>
+  <%= link_to "New Attraction", '/attractions/new', class: "navbar-brand" %>
+<% end %>

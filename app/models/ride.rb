@@ -7,17 +7,19 @@ class Ride < ActiveRecord::Base
     user_height = self.user.height
     user_tickets = self.user.tickets
     if
-      user_tickets < self.attraction.tickets && user_height < self.attraction.min_height
+      user_tickets <= self.attraction.tickets && user_height <= self.attraction.min_height
       both_insufficient
 
     elsif
-      user_height < self.attraction.min_height
+      user_height <= self.attraction.min_height
       insufficient_height
     elsif
-      user_tickets < self.attraction.tickets
+      user_tickets <= self.attraction.tickets
       insufficient_tickets
     else
       update_user
+      "Thanks for riding the #{self.attraction.name}!"
+
     end
   end
 
