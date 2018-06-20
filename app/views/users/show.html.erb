@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>
+
+<% if @user.admin %>
+    <p><strong>ADMIN</strong></p>
+<% end %>
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Mood:</strong> <%= @user.mood %></p>
+<p><strong>Tickets:</strong> <%= @user.tickets %></p>
+<p><strong>Height:</strong> <%= @user.height %> inches</p>
+
+
+<p><%= link_to "See attractions", attractions_path %> </p>
+<p><%= link_to "Log Out", signout_path, :method => :delete, data: { confirm: "Signout?" } %></p>
