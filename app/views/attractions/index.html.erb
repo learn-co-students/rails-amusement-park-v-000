@@ -1,0 +1,27 @@
+<%@attractions.each do |attraction| %>
+
+  <p>Name:<%=attraction.name%></p>
+  <p>Tickets: <%=attraction.tickets%></p>
+  <p><%=attraction.nausea_rating%></p>
+  <%=attraction.happiness_rating%>
+  <%=attraction.min_height%>
+<%end%>
+
+<%if @admin%>
+  <ul>
+    <%=@attractions.each do |attraction|%>
+    <li><%=link_to "Show #{attraction.name}", attraction_path(attraction)%></li>
+    <%end%>
+  </ul>
+<%else %>
+  <ul>
+  <%@attractions.each do |attraction|%>
+    <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></li>
+<%end%>
+</ul>
+<%end%>
+
+<%if @admin %> 
+  <%=link_to "New Attraction", new_attraction_path%>
+<%end%>
+
