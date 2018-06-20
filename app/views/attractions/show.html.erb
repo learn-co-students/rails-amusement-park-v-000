@@ -6,7 +6,7 @@
   <li>Minimum Height: <%= @attraction.min_height %></li>
   <li>Ticket Requirement: <%= @attraction.tickets %></li>
 </ul>
-  <%= link_to '/Edit Attraction', [:edit, @attraction]  %>
+  <%= link_to 'Edit Attraction', [:edit, @attraction]  %>
 <% else %>
 <ul>
   <li><%= @attraction.name %></li>

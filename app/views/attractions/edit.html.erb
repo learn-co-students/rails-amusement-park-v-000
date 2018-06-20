@@ -1,6 +1,8 @@
 <h1>Edit Attraction</h1>
+<%= form_for @attraction do |f| %>
 
+<%= render :partial => 'form', :locals=> {:f=>f} %>
 
-<%= render 'form' %>
-<br>
-<%= submit_tag 'Update Attraction', '/edit' %>
+<%= f.submit 'Update Attraction' %>
+
+<% end %>
