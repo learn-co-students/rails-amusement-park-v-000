@@ -1,0 +1,6 @@
+<h1>Everybody:</h1>
+<ul>
+<% User.all.each do |user| %>
+    <li><%= user.name %>, <%= user.id %></li>
+<% end %>
+<ul>

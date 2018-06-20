@@ -1,0 +1,26 @@
+<h1>New user</h1>
+
+<%= form_for @user do |f| %>
+    
+    <label for="user_name">Name</label><br>
+    <input id="user_name" name="user[name]" type="text"><br><br>
+    
+    <label for="user_height">Height (in inches)</label><br>
+    <input id="user_height" name="user[height]" type="number"><br><br>
+    
+    <label for="user_nausea">How nauseous are you? (scale of 1-5)</label><br>
+    <input id="user_nausea" name="user[nausea]" type="number"><br><br>
+    
+    <label for="user_happiness">How happy are you? (scale of 1-5)</label><br>
+    <input id="user_happiness" name="user[happiness]" type="number"><br><br>
+    
+    <label for="user_tickets">How many tickets do you have?</label><br>
+    <input id="user_tickets" name="user[tickets]" type="number"><br><br>
+    
+    <label for="user_password">Password</label><br>
+    <input id="user_password" name="user[password]" type="password"><br><br>
+
+    <%= f.check_box :admin %>
+    <%= f.label :admin, "I'm an admin" %><br>
+    <input name="commit" type="submit" value="Create User">
+<% end %>
