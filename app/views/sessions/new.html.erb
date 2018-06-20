@@ -1,0 +1,14 @@
+
+
+<h2>Sign in</h2>
+
+<%= form_tag  sessions_create_path, method: :post do %>
+
+  <%= label_tag :user_name %> <br>
+  <%= select_tag :user_name, options_from_collection_for_select(User.all, :name, :name) %><br>
+
+  <%= label_tag :password %> <br>
+  <%= password_field_tag :password %> <br>
+
+  <%= submit_tag "Sign In" %> <br>
+<% end %>
