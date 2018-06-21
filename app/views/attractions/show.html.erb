@@ -1,0 +1,13 @@
+<%= @attraction.name %>
+
+<%= form_tag '/rides/new' do  %>
+
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :attraction_id, @attraction.id %>
+  <%= submit_tag  "Go on this ride" %>
+<% end %>
+
+
+<% if current_user.admin %>
+  <%= link_to 'Edit Attraction', [:edit, @attraction] %>
+<% end %>
