@@ -1,0 +1,22 @@
+Attraction
+
+
+
+
+
+
+
+<% if @admin %>
+  <%= @attractions.each do |att| %>
+    <%= link_to "Show #{att.name}", attraction_path(att) %>
+  <% end %>
+    <% else %>
+    <%= @attractions.each do |att| %>
+      <%= link_to "Go on #{att.name}", attraction_path(att) %>
+  <% end %>
+  <% end %>
+
+  
+  <% if @admin %>
+<%= link_to "New Attraction", new_attraction_path %>
+<% end %>
