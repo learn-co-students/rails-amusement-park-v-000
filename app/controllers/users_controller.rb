@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # before_actionbefore_action :set_item, only: [:edit, ..., :my_member_action] :set_item, only: [:edit, ..., :my_member_action]
   def new
     @user = User.new
   end
@@ -6,13 +7,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-       session[:user_id] = @user.id 
-      # binding.pry
+      session[:user_id] = @user.id 
       redirect_to user_path(@user)
-    else
-      #  binding.pry
+    else 
       render :new
     end
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    # binding.pry
   end
 
 private

@@ -4,14 +4,13 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
 
   def mood
-    happiness = self.happiness
-    case happiness
-    when 1..3
-      "sad"
-    when 7..100
+    happiness = self.happiness.to_i
+    net_happiness = happiness - self.nausea.to_i
+    if net_happiness >= 1
       "happy"
     else
-      "fine"
+        "sad"
     end
+    
   end
 end

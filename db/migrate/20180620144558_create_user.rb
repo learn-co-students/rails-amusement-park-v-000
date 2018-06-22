@@ -7,7 +7,7 @@ class CreateUser < ActiveRecord::Migration[5.2]
       t.integer :happiness  
       t.integer :tickets
       t.integer :height
-      t.boolean :admin, :default => false
+      t.boolean :admin, :default => 0
     end
   end
 end
