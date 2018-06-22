@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     #  controller: 'sessions', action: 'new'   
     else
      find_and_set_user
-     redirect_to user_path(@user)
+     redirect_to user_path
     end
   end
 
