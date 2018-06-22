@@ -1,6 +1,8 @@
 require 'pry'
 
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show]
+
   def new
     @user = User.new
   end
@@ -20,6 +22,14 @@ class UsersController < ApplicationController
 
 
   private
+
+  def require_login
+    redirect_to(controller:'static_pages', action:'home') unless current_user
+  end
+
+  def current_user
+    session[:user_id]
+  end
 
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation, :happiness, :tickets, :nausea, :height, :admin)
