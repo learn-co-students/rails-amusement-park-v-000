@@ -5,21 +5,21 @@
   <%= f.label :password %>
   <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <!-- <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %> -->
 
   <%= f.label :height %>
-  <%= f.text_field :height %>
+  <%= f.number_field :height %>
 
   <%= f.label :happiness%>
-  <%= f.text_field :happiness %>
+  <%= f.number_field :happiness %>
 
   <%= f.label :nausea%>
-  <%= f.text_field :nausea %>
+  <%= f.number_field :nausea %>
 
-  <%= f.label :height %>
-  <%= f.text_field :height %>
+ <%= f.label :tickets %>
+ <%= f.number_field :tickets %>
 
 
-  <%= f.submit "create" %>
+  <%= f.submit "Create User" %>
 <% end %>
