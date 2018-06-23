@@ -1,0 +1,17 @@
+
+Total Number of Attractions: <%= @attractions.count %><br><br>
+
+<% @attractions.order("name").each do |attraction|%>
+
+  <% if current_user.admin %>
+<li> <%= link_to "Show #{attraction.name}", attraction_path(attraction) %> </li><br>
+
+  <% else %>
+<li> <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br> <br>
+
+</li>
+  <% end %>
+<% end %>
+
+
+<%= link_to_if(current_user.admin, "New Attraction", new_attraction_path) %> <br>
