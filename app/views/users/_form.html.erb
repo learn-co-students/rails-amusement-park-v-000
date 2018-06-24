@@ -1,0 +1,27 @@
+<h3> Register Form </h3>
+<%= form_for @user do |f| %>
+
+<%= f.label :name %><br>
+<%= f.text_field :name %> <br> <br>
+
+
+<%= f.label :height,'Height(in inches)'  %> <br>
+<%= f.number_field :height %><br><br>
+
+<%= f.label :happiness %> <%= 'How happy are you? (1 - 5 scale)' %> <br>
+<%= f.number_field :happiness %><br><br>
+
+<%= f.label :nausea %> <%= 'How nauseous are you? (1 - 5 scale)' %> <br>
+<%= f.number_field :nausea %><br><br>
+
+<%= f.label :tickets %> <%= 'How many tickets?' %> <br>
+<%= f.number_field :tickets %><br><br>
+
+<%= f.label :admin %> <%= '(Check if you are an Admin!)' %><br>
+<%= f.check_box :admin %><br><br>
+
+<%= f.label :password %><br>
+<%= f.password_field :password %> <br><br>
+
+<%= f.submit %>
+<% end %>
