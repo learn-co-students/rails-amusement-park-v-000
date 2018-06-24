@@ -1,17 +1,36 @@
 
 Total Number of Attractions: <%= @attractions.count %><br><br>
 
-<% @attractions.order("name").each do |attraction|%>
+<table class = "table">
+<thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-  <% if current_user.admin %>
-<li> <%= link_to "Show #{attraction.name}", attraction_path(attraction) %> </li><br>
+<tbody>
+
+  <tr>
+    <td> Attraction </td>
+    <td> Tickets Required </td>
+    <td> Link </td>
+  </tr>
+
+<% @attractions.order("name").each do |attraction|%>
+<tr>
+ <td> <%= attraction.name %> </td>
+ <td> <%= attraction.tickets %> </td>
+
+   <% if current_user.admin %>
+ <td> <%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
 
   <% else %>
-<li> <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br> <br>
-
-</li>
+<td> <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
   <% end %>
+</tr>
 <% end %>
-
+</tbody>
+</table>
+<br>
 
 <%= link_to_if(current_user.admin, "New Attraction", new_attraction_path) %> <br>
