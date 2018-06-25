@@ -1,0 +1,21 @@
+<% if @message %>
+	<%= @message %>
+<% end %>
+
+<h2><%= @attraction.name %></h2>
+<p>Ticket requirement: <%= @attraction.happiness_rating%></p>
+<p>Height requirement: <%= @attraction.min_height%></p>
+<p>Nausea rating: <%= @attraction.nausea_rating%></p>
+<p>Happiness Level: <%= @attraction.happiness_rating%></p>
+
+
+<form action="/rides/new" method="post">
+	<%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+	<%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+	<input type="submit" value="Go on this ride">
+</form>
+
+
+<% if current_user.admin %>
+	<%=link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
