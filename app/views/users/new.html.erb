@@ -1,0 +1,20 @@
+<%=form_for @user do |f| %>
+
+	<%= f.text_field :name, placeholder: "name" %>
+	
+	<%= f.text_field :height, placeholder: "Height (in inches)" %>
+
+	<%= f.text_field :happiness, placeholder: "How happy are you? (1-5 scale)" %>
+
+	<%= f.text_field :nausea, placeholder: "How nauseous are you? (1-5 scale)" %>
+
+	<%= f.text_field :tickets, placeholder: "How many dollars are in your pocket?" %>
+
+	<%= f.label :admin, "Check box if you are a theme park owner" %>
+	<%= f.check_box :admin %>
+
+	<%= f.password_field :password, placeholder: "Password" %>
+
+	<%= f.submit %>
+
+<% end %>

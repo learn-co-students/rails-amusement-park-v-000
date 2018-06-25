@@ -1,0 +1,13 @@
+<% if @message %>
+	<%= @message %>
+<% end %>
+
+<% if @user.admin %>
+	<p>ADMIN</p>
+<% end %>
+<p><%= @user.name %></p>
+<p>Height: <%= @user.height %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Mood: <%= @user.mood %></p>
+
+<%= link_to "See attractions", attractions_path %>
