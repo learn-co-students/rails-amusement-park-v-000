@@ -1,5 +1,5 @@
 <%= form_for @user, url: signin_path do |f| %>
-<%# <% binding.pry %> %>
+<%# <% binding.pry %>
  <%= f.label :name ,"select name"%><br />
  <%= f.collection_select(:name, User.all, :name, :name) %>
 <%= f.password_field :password, id: "password" %>
