@@ -1,0 +1,10 @@
+<%= @attraction.name %>
+
+
+
+<form class="" action="/rides/new" method="post">
+  <input type="hidden" name="attraction_id" value="<%=@attraction.id  %>">
+  <input type="hidden" name="user_id" value="<%= @user.id  %>">
+  <input type="submit" name="" value="Go on this ride">
+
+</form>
