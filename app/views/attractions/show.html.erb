@@ -1,5 +1,15 @@
+<%# views/attractions/show.html.erb %>
 <%# <button href="/users/:id">Go on this ride</button> %>
-<%# <% binding.pry %> %>
-<%# <%= link_to 'Go on this ride', user_path %>
-<%=  %>
-<%= button_to "Go on this ride", ride_path, :id => "open-contacts-dialog-btn", :method => :get %>
+<%# <% binding.pry %>
+<%# <%= link_to 'Go on this ride',  ride_path :id => "open-contacts-dialog-btn",%>
+<%= form_for @ride do |f| %>
+ <%# <% binding.pry %> %>
+  <%# <input type="button"> %>
+  <%= f.hidden_field(@attraction) %>
+  <%= f.hidden_field(@user) %>
+  <%= f.button value="Go on this ride" %>
+<% end %>
+
+
+<%# hidden_field(:signup, :pass_confirm)
+# => <input type="hidden" id="signup_pass_confirm" name="signup[pass_confirm]" value="#{@signup.pass_confirm}" /> %>
