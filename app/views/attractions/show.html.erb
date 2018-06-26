@@ -1,0 +1,16 @@
+<h1><%=@attraction.name%></h1>
+<ul>
+  <li>Ticket Requirement: <%=@attraction.tickets%></li>
+  <li>Height Requirement: <%=@attraction.min_height%> inches</li>
+  <li>Nausea Rating: <%=@attraction.nausea_rating%></li>
+  <li>Happiness Rating: <%=@attraction.happiness_rating%></li>
+</ul>
+<% if current_user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+  <%= form_tag ({controller: 'users', action: 'ride', method: 'post'}) do %>
+    <input type="hidden" name="id" value="<%= current_user.id %>">
+    <input type="hidden" name="attraction[id]" value="<%= @attraction.id %>">
+    <%= button_tag "Go on this ride" %>
+  <% end %>
+<% end %>
