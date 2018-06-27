@@ -24,13 +24,6 @@ class UsersController < ApplicationController
     # binding.pry
   end
 
-    # def destroy
-    # # forget(current_user)
-    # # session.delete(:user_id)
-    # # @current_user = nil
-    # # redirect_to root_url
-    # end
-
 private
 
   def user_params

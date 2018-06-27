@@ -3,11 +3,17 @@
 
 <% @attractions.each do |attraction| %>
   <%= attraction.name %>
-  <%= link_to "Go on #{attraction.name}", attraction_path(attraction.id) %> <br>
+
+  <% if @current_user.admin %>
+     <%= link_to "Show #{attraction.name}", attraction_path(attraction.id) %> <br>
+  <% else %>
+   <%= link_to "Go on #{attraction.name}", attraction_path(attraction.id) %> <br>
+  <% end %>
+ 
 <% end %>
 
 <% if @user && @user.admin %>
 <%#= button_to "New Attraction" %>
-<%= button_to "New Attraction", new_attraction_path, :id => "open-contacts-dialog-btn", :method => :get %>
+<%= link_to "New Attraction", new_attraction_path, :id => "open-contacts-dialog-btn", :method => :get %>
   
 <% end %>

@@ -15,12 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy  
-    # binding.pry
-    # forget(current_user)
-    # session.delete(:user_id)
-    # @current_user = nil
     session[:user_id] = nil
-    # redirect_to root_url
     redirect_to root_path
   end
 
