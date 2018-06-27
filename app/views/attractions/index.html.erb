@@ -1,0 +1,7 @@
+<h1>Attractions Index</h1>
+
+<ul>
+  <% @attractions.each do |attraction| %>
+    <li><%= link_to "Go on #{attraction.name}", attraction_url(attraction) %></li>
+  <% end %>
+</ul>

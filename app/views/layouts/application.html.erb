@@ -17,8 +17,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <% if @user %>
-          <%= render partial: 'layouts/loggedin_navbar', locals: { user: @user } %>
+        <% if @current_user %>
+          <%= render partial: 'layouts/loggedin_navbar', locals: { user: @current_user } %>
         <% else %>
           <%= render 'layouts/default_navbar' %>
         <% end %>

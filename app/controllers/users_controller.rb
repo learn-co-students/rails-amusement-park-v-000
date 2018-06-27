@@ -20,12 +20,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    #maybe
   end
 
   def update
+    #maybe
   end
 
   def destroy
+    #maybe
   end
 
 
