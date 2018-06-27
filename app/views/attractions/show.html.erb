@@ -7,12 +7,8 @@
   <%= attraction_show_li(@attraction, :min_height)%>
 </ul>
 
-<%= form_for(@current_user) do |f| %>
-  <%= f.fields_for(@attraction) do |a|%>
-    <%= a.hidden_field :tickets %>
-    <%= a.hidden_field :nausea_rating %>
-    <%= a.hidden_field :happiness_rating %>
-    <%= a.hidden_field :min_height %>
-  <% end %>
-  <%=f.submit "Go on this ride" %>
+<%= form_for(@ride) do |f| %>
+  <%= f.hidden_field :user_id, value: @current_user.id %>
+  <%= f.hidden_field :attraction_id, value: @attraction.id %>
+  <%= f.submit "Go on this ride" %>
 <% end %>

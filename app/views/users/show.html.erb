@@ -11,3 +11,7 @@
 </ul>
 
 <a href="<%=attractions_url%>">See attractions</a>
+
+<% if flash[:alert] %>
+  <p><%= flash[:alert] %></p>
+<% end %>

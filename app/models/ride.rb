@@ -37,6 +37,7 @@ class Ride < ActiveRecord::Base
         u.happiness += self.attraction.happiness_rating
         u.save
       end
+      nil #returns nil if user update successful 
     else
       generate_ride_error_message
     end
