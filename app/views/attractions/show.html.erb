@@ -1,5 +1,18 @@
 <h1><%= @attraction.name %></h1>
 
 <ul>
-  tickets, nausea_rating, happiness_rating, min_height
+  <%= attraction_show_li(@attraction, :tickets)%>
+  <%= attraction_show_li(@attraction, :nausea_rating)%>
+  <%= attraction_show_li(@attraction, :happiness_rating)%>
+  <%= attraction_show_li(@attraction, :min_height)%>
 </ul>
+
+<%= form_for(@current_user) do |f| %>
+  <%= f.fields_for(@attraction) do |a|%>
+    <%= a.hidden_field :tickets %>
+    <%= a.hidden_field :nausea_rating %>
+    <%= a.hidden_field :happiness_rating %>
+    <%= a.hidden_field :min_height %>
+  <% end %>
+  <%=f.submit "Go on this ride" %>
+<% end %>
