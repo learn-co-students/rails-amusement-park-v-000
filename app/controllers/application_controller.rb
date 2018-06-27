@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path if !logged_in?
   end
 
+  def require_admin
+    redirect_to user_path(@current_user) unless @current_user.admin
+  end
+  
 end

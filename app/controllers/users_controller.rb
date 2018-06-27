@@ -24,9 +24,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if params[:user][:attraction]
-      
-    end
+    #maybe
   end
 
   def destroy

@@ -2,6 +2,11 @@
 
 <ul>
   <% @attractions.each do |attraction| %>
-    <li><%= link_to "Go on #{attraction.name}", attraction_url(attraction) %></li>
+    <li><%= attraction_index_link(@current_user, attraction) %></li>
   <% end %>
 </ul>
+<br><br>
+
+<% if @current_user.admin %>
+  <%= link_to "New Attraction", new_attraction_url %>
+<% end %>
