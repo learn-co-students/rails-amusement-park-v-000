@@ -1,0 +1,11 @@
+<h1><%= @user.name %> </h1>
+
+<% if @user.admin %>
+  <h3>ADMIN</h3>
+<% end %>
+
+<ul>
+  <%= user_info_li(@user, :mood) %>
+  <%= user_info_li(@user, :height) %>
+  <%= user_info_li(@user, :tickets) %>
+</ul>

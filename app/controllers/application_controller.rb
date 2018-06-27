@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def home
+    @user = current_user if logged_in?
   end
 
   private
