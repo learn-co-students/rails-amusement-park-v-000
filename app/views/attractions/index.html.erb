@@ -5,3 +5,9 @@
   <%= attraction.name %>
   <%= link_to "Go on #{attraction.name}", attraction_path(attraction.id) %> <br>
 <% end %>
+
+<% if @user && @user.admin %>
+<%#= button_to "New Attraction" %>
+<%= button_to "New Attraction", new_attraction_path, :id => "open-contacts-dialog-btn", :method => :get %>
+  
+<% end %>

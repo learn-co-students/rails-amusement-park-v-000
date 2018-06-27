@@ -1,0 +1,10 @@
+<%= form_for @ride do |f| %>
+ <%# <% binding.pry %> %>
+  <%# <input type="button"> %>
+  <%= f.hidden_field(@attraction) %>
+  <%= f.hidden_field(@user) %>
+  <%= f.button value="Go on this ride" %>
+<% end %>
+
+
+  resources :rides, only: [:new, :create]
