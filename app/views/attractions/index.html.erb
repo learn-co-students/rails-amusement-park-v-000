@@ -1,0 +1,12 @@
+<h1>Attractions Index</h1>
+
+<ul>
+  <% @attractions.each do |attraction| %>
+    <li><%= attraction_index_link(@current_user, attraction) %></li>
+  <% end %>
+</ul>
+<br><br>
+
+<% if @current_user.admin %>
+  <%= link_to "New Attraction", new_attraction_url %>
+<% end %>
