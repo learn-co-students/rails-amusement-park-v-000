@@ -1,7 +1,9 @@
 <h1>Sign In!</h1>
 
-<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-  <input name=name>
-  <input name=password>
-  <input type=submit value='login'>
+<%= form_for  @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+  <%= f.collection_select :user_id, User.all, :id, :name, include_blank: true %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit %>
 <% end %>
