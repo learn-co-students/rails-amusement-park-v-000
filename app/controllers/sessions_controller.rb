@@ -1,15 +1,15 @@
 class SessionsController < ApplicationController
 
-  def new
-  end
+  def signin
 
-  def create
   end
 
   def login
+
   end
 
   def logout
+    
   end
 
 end
