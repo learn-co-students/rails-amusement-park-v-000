@@ -1,0 +1,4 @@
+<%= form_for @attraction do |f| %>
+  <%= render :partial => "form", :locals => {:f => f} %>
+  <div class="actions"><%= f.submit "Update Attraction", :class => "btn" %></div>
+<% end %>
