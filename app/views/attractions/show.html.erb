@@ -1,0 +1,9 @@
+<h1><%= @attraction.name %></h1>
+
+
+<%= form_for @ride do |f| %>
+  <%= hidden_field_tag 'ride[user_id]', @user.id%>
+  <%= hidden_field_tag 'ride[attraction_id]', @attraction.id%>
+
+  <%= f.submit "Go on this ride" %>
+<% end %>
