@@ -1,9 +1,7 @@
 <%= form_for :user, url: signin_path do |f| %>
 <%= f.label :name, "Name" %><br>
 <%= f.collection_select :name, User.all, :name, :name %><br>
-<label for="password">Your password:</label>
-<input type="password" name= "password" id="password"><br>
-
-
+<%= f.label :password, "Your password:" %>
+<%= f.password_field :password %><br>
 <input type= "submit" name="signin" value= "Sign In" %>
 <% end %>
