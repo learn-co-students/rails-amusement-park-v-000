@@ -1,4 +1,5 @@
 <h1>Show page</h1>
+<h3><%= "ADMIN" if @user.admin %></h3>
 
 <p>Name: <%= @user.name %></p>
 <p>Height: <%= @user.height %></p>
@@ -6,3 +7,6 @@
 <p>Happiness: <%= @user.happiness %></p>
 <p>Nausea: <%= @user.nausea %></p>
 <p>Mood: <%= @user.mood %></p>
+
+<%= link_to "See attractions", attractions_path %><br>
+<%= link_to "Log Out", user_path, method: "delete" %>

@@ -1,0 +1,6 @@
+<h1>Sign In!</h1>
+
+<%= form_tag '/signin', method: 'post' do %>
+  <%= select_tag 'user[id]', options_from_collection_for_select(@users, "id", "name") %>
+  <%= submit_tag "Sign In" %>
+<% end %>
