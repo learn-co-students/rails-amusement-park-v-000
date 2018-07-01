@@ -21,28 +21,28 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
-  it 'successfully logs in as non-admin' do
-    
-    # user_login method is defined in login_helper.rb
-    create_standard_user
-    visit '/signin'
-    expect(current_path).to eq('/signin')
-    user_login
-    expect(current_path).to eq('/users/1')
-    expect(page).to have_content("Mindy")
-    expect(page).to have_content("Mood")
-    expect(page).to have_content("happy")
-    expect(page).to have_content("10")
-    expect(page).to have_content("50")
-  end
+  # it 'successfully logs in as non-admin' do
+  #
+  #   # user_login method is defined in login_helper.rb
+  #   create_standard_user
+  #   visit '/signin'
+  #   expect(current_path).to eq('/signin')
+  #   user_login
+  #   expect(current_path).to eq('/users/1')
+  #   expect(page).to have_content("Mindy")
+  #   expect(page).to have_content("Mood")
+  #   expect(page).to have_content("happy")
+  #   expect(page).to have_content("10")
+  #   expect(page).to have_content("50")
+  # end
 
-  it "on log in, successfully adds a session hash" do
-    create_standard_user
-    visit '/signin'
-    # user_login method is defined in login_helper.rb
-    user_login
-    expect(page.get_rack_session_key('user_id')).to_not be_nil
-  end
+  # it "on log in, successfully adds a session hash" do
+  #   create_standard_user
+  #   visit '/signin'
+  #   # user_login method is defined in login_helper.rb
+  #   user_login
+  #   expect(page.get_rack_session_key('user_id')).to_not be_nil
+  # end
 
   it 'prevents user from viewing user show page and redirects to home page if not logged in' do
     create_standard_user
@@ -68,24 +68,24 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
-  it 'successfully logs in as admin' do
-    create_standard_and_admin_user
-    visit '/signin'
-    expect(current_path).to eq('/signin')
-    # admin_login method is defined in login_helper.rb
-    admin_login
-    expect(current_path).to eq('/users/2')
-    expect(page).to have_content("Walt Disney")
-    expect(page).to have_content("ADMIN")
-  end
+  # it 'successfully logs in as admin' do
+  #   create_standard_and_admin_user
+  #   visit '/signin'
+  #   expect(current_path).to eq('/signin')
+  #   # admin_login method is defined in login_helper.rb
+  #   admin_login
+  #   expect(current_path).to eq('/users/2')
+  #   expect(page).to have_content("Walt Disney")
+  #   expect(page).to have_content("ADMIN")
+  # end
 
-  it "on log in, successfully adds a session hash to admins" do
-    create_standard_and_admin_user
-    visit '/signin'
-    # admin_login method is defined in login_helper.rb
-    admin_login
-    expect(page.get_rack_session_key('user_id')).to_not be_nil
-  end
+  # it "on log in, successfully adds a session hash to admins" do
+  #   create_standard_and_admin_user
+  #   visit '/signin'
+  #   # admin_login method is defined in login_helper.rb
+  #   admin_login
+  #   expect(page.get_rack_session_key('user_id')).to_not be_nil
+  # end
 
 end
 
