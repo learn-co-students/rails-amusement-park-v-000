@@ -1,12 +1,11 @@
+require 'pry'
 class RidesController < ApplicationController
 
   def create
-  	@ride = Ride.create(ride_params)
-  	@user = User.find_by(id: session[:user_id])
+    @ride = Ride.create(ride_params)
     @message = @ride.take_ride
-    redirect_to user_path(@ride.user, message: @message)
+  	redirect_to user_path(@ride.user, :message => @message)
   end
-
 
   private
   def ride_params
