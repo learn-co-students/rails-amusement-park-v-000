@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  # validates_presence_of :tickets
   has_many :rides
   has_many :attractions, through: :rides
 
