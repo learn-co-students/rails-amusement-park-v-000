@@ -1,10 +1,14 @@
 class AttractionsController < ApplicationController
 
-  def index
-    @attractions = Attraction.all
+  def new
   end
 
-  def show 
+  def index
+    @attractions = Attraction.all
+    @user = current_user
+  end
+
+  def show
     @attraction = Attraction.find_by(id: params[:id])
   end
 end
