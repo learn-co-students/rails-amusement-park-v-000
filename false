@@ -1,0 +1,2 @@
+      invoke  active_record
+    conflict    db/migrate/20180702185746_add_admin_column_to_users.rb

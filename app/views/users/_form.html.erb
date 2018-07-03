@@ -1,0 +1,32 @@
+<%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :height, "Height (in inches)" %> <br>
+  <%= f.text_field :height %><br>
+  <br>
+  <%= f.label :happiness, "On a scale of 1-5, how happy are you?" %>
+  <%= f.number_field :happiness %> <br>
+
+  <%= f.label :nausea, "On a scale of 1-5, how nauseous are you?" %>
+  <%= f.number_field :nausea %> <br>
+  <br>
+  <%= f.label :tickets, "How many dollars do you have in your pocket?" %> <br>
+  <%= f.text_field :tickets %><br>
+  <br>
+  <%= f.label :admin, "Check box if you own the park:" %>
+  <%= f.check_box :admin %><br>
+
+  <br>
+  <%= f.label :password %> <br>
+  <%= f.password_field :password %><br><br>
+
+  <%= f.submit %>
+<% end %>
