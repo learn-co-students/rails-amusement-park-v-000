@@ -1,0 +1,15 @@
+<h1>Welcome, <%= @user.name %> !</h1>
+
+<% if @user.admin %>
+
+  <h2>ADMIN</h2>
+
+<% else  %>
+  <h3>Mood:  <%= @user.mood %></h3>
+  <h3>Height: <%= @user.height %></h3>
+  <h3>Tickets: <%= @user.tickets %></h3>
+  <%= @message %>
+<% end %>
+
+<%= link_to 'See attractions', attractions_path %>
+<%= link_to 'Log Out', user_path, method: "delete" %>
