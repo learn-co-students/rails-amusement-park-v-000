@@ -18,7 +18,16 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by(id: params[:id])
   	@user =  User.find_by(id: session[:user_id])
     @ride = Ride.new
+  end
 
+  def edit
+    @attraction = Attraction.find_by(id: params[:id])
+  end
+
+  def update
+    @attraction = Attraction.find_by(id: params[:id])
+    @attraction.update(attraction_params)
+    redirect_to attraction_path(@attraction)
   end
 
   private
