@@ -1,0 +1,16 @@
+
+
+Name: <%= @attraction.name %>Haunted Mansion <br>
+
+Total Number of Users: <%= @attraction.users.count %> <br>
+
+Ticket Requirement: <%= @attraction.tickets %> <br>
+
+Height Requirement: <%= @attraction.min_height %> <br>
+
+Nausea Rating: <%= @attraction.nausea_rating %> <br>
+
+Happiness Rating: <%= @attraction.happiness_rating %> <br>
+
+<%#f.submit "Go on this ride", go_path %>
+<%= button_to "Go on this ride", go_path, method: 'get' %>

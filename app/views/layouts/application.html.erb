@@ -21,7 +21,14 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+            <% if !logged_in? %>
+            <li><%=  link_to "Sign Up", new_user_path, method: 'get' %></l1>
+
+            <li><%=  link_to "Sign in", signin_path , method: 'post '%></li>
+              <% else %>
+
+            <li> <%= link_to "Log Out", logout_path , method: 'post'%> </li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +36,16 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <%# if !logged_in? %>
+      <%#  link_to "Sign Up", new_user_path %>
+      <%# else %>
+      <%#  link_to "sign in", signin_path %>
+      <%# end %>
+      <% if logged_in? %>
+      <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+        <input type=submit value='Log Out'>
+      <% end %>
+      <% end %>
       <%= yield %>
     </div>
   </body>
