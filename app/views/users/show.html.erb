@@ -1,0 +1,19 @@
+<h3>User Show</h3>
+<% if flash[:alert] %>
+<%= flash[:alert] %>
+<% end %>
+
+<% if @user.admin %>
+ <p>"ADMIN"</p>
+ <% end %>
+
+
+Name:<%= @user.name %>
+Height:<%=@user.height %>
+Mood: <%= @user.mood %>
+Nausea: <%= @user.nausea %>
+Tickets: <%= @user.tickets %>
+Admin: <%= @user.admin %>
+
+<%= link_to "Log Out", signout_path %>
+<%= link_to "See attractions", attractions_path %>
