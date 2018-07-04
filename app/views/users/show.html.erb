@@ -1,4 +1,8 @@
 <h3>User Show</h3>
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
 <% if @user.admin %>
  <p>"ADMIN"</p>
  <% end %>
