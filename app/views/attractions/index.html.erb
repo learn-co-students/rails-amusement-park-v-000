@@ -8,4 +8,8 @@
 <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br>
 <% end %>
 <% end %>
+
+<% if @user.admin %>
 <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
+<%= link_to "Log Out", signout_path %>
