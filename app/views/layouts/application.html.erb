@@ -24,28 +24,40 @@
             <% if !logged_in? %>
             <li><%=  link_to "Sign Up", new_user_path, method: 'get' %></l1>
 
-            <li><%=  link_to "Sign in", signin_path , method: 'post '%></li>
+            <li><%=  link_to "Sign in", signin_path , method: 'get'%></li>
               <% else %>
 
             <li> <%= link_to "Log Out", logout_path , method: 'post'%> </li>
+
+            <li class="user_admin">ADMIN</li>
+            <% end %>
+            <% if current_user %>
+              <% if current_user.admin %>
+                    <%# binding.pry %>
+              <li><%= link_to "New Attraction", new_attraction_path %></li>
+              <% end %>
             <% end %>
           </ul>
+          <div  ></div>
+
+
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
     <!-- content -->
     <div class="container"  role="main">
-      <%# if !logged_in? %>
-      <%#  link_to "Sign Up", new_user_path %>
-      <%# else %>
-      <%#  link_to "sign in", signin_path %>
-      <%# end %>
+
       <% if logged_in? %>
       <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
         <input type=submit value='Log Out'>
       <% end %>
       <% end %>
+      <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
+
+  <% end %>
+      
       <%= yield %>
     </div>
   </body>

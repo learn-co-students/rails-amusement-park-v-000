@@ -11,5 +11,5 @@ Rails.application.routes.draw do
    post '/signin', to: 'sessions#create'
 
    post '/logout', to: 'sessions#destroy'
-   get '/go', to: 'attractions#go'
+   get '/go', to: 'rides#go'
 end

@@ -7,17 +7,17 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(name: params[:user][:name])
     # binding.pry
-    if @user  && @user.authenticate(params[:password])  
+    if  @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      # @user.save
+       # @user.save
       redirect_to user_path(@user)
     # elsif !@user.exists?
     #   redirect_to new_user_path
 
-  elsif current_user != @user
+  else #current_user != @user
     redirect_to root_path
-  else
-       redirect_to signin_path
+  # else
+  #      redirect_to signin_path
 
     end
   end

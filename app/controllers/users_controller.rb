@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, only: [:show]
+   before_action :logged_in?, only: [:show]
 
   def new
     @user = User.new
@@ -8,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-      if @user.save
+      if @user.save && @user
         session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
+
     @user = User.find(params[:id])
     if !current_user.admin
       if  current_user != @user
@@ -25,6 +27,11 @@ class UsersController < ApplicationController
      end
     end
     end
+
+  end
+
+  def update
+
   end
 
 
@@ -32,6 +39,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :tickets, :happiness, :nausea, :height)
+    params.require(:user).permit(:name, :password, :tickets, :happiness, :nausea, :height, :admin)
   end
 end

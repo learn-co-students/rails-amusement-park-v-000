@@ -4,29 +4,27 @@ class Ride < ActiveRecord::Base
 
   def take_ride
 
-    # if user.tickets > attraction.tickets
-    #  (user.tickets) - (attraction.tickets)
-    # end
-    if user.height < attraction.min_height && user.tickets < attraction.tickets
-      "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
-      # redirect_to user_path(user)
-    elsif user.height < attraction.min_height
-      "Sorry. You are not tall enough to ride the #{attraction.name}."
-      # redirect_to user_path(user)
-    elsif user.tickets < attraction.tickets
-      "Sorry. You do not have enough tickets to ride the #{attraction.name}."
-      # redirect_to user_path(user)
-    else
-      user.tickets -= attraction.tickets
-      user.nausea += attraction.nausea_rating
-      user.happiness += attraction.happiness_rating
-      user.save
-      # redirect_to user_path(user)
-    end
+    if self.user.height < self.attraction.min_height && self.user.tickets < self.attraction.tickets
+      return  "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
 
-    # if user.nausea
-    #   user.nausea  = user.nausea + attraction.nausea_rating
-    # end
+    elsif self.user.height < self.attraction.min_height
+    return "Sorry. You are not tall enough to ride the #{attraction.name}."
+
+    elsif self.user.tickets < self.attraction.tickets
+
+      return "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+
+    else
+      # binding.pry
+      self.user.tickets -= self.attraction.tickets
+      self.user.nausea += self.attraction.nausea_rating
+      self.user.happiness += self.attraction.happiness_rating
+      self.user.save
+      return "Thanks for riding the #{attraction.name}!"
+
+
+
+    end
 
 end
 
