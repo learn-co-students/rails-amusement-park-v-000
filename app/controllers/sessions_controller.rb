@@ -1,17 +1,37 @@
 class SessionsController < ApplicationController
+
   def new
+    if current_user
+      @user = current_user
+      redirect_to user_path(@user)
+    else
+      @users = User.all
+      @user = User.new
+    end
   end
 
   def create
-    #Look for the correct user name in the user hash
-    user = User.find_by(name: params[:user][:name])
-    user = user.try(:authenticate, params[:user][:password])
-    if user
-      session[:user_id] = user.id
-      @user = user
-      redirect_to controller: 'users', action: 'home'
-    else
-      redirect_to controller: 'sessions', action: 'new'
-    end
-  end
+   @user = User.find_by(name: params[:session][:name])
+     if @user && @user.authenticate(params[:session][:password])
+       session[:user_id] = @user.id
+       redirect_to user_path(@user)
+     else
+       redirect_to signin_path
+   end
+ end
+
+ def destroy
+   if current_user
+     session.delete :user_id
+   end
+   redirect_to '/'
+ end
+
+ private
+
+ def user_params
+   params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets, :admin)
+ end
+
+
 end

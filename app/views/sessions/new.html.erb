@@ -1,0 +1,9 @@
+<%= form_for(:session, url: signin_path) do |f|%>
+<%= f.label :name, "Select your name" %>
+<%= f.collection_select(:id, @users, :id, :name)%>
+<br></br>
+<%= f.label :password %>
+<%= f.password_field :password %>
+<br></br>
+<%= f.submit 'Sign In' %>
+<% end %>

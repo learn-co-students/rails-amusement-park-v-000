@@ -1,22 +1,29 @@
 class UsersController < ApplicationController
+
+  before_action :require_login, only: [:show]
+
   def new
+    @user = User.new
   end
 
   def create
     @user = User.create(user_params)
-    return redirect_to controller: 'users', action: 'new' unless @user.save
-    session[:user_id] = @user.id
-    redirect_to controller: "users", action: "home"
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to new_user_path
+    end
   end
 
-  def home
-    @user = User.find(params[:id])
+  def show
+      @user = current_user
   end
-
 
   private
+
   def user_params
-    params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height)
+    params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets, :admin)
   end
 
 end
