@@ -1,4 +1,4 @@
-<%= form_for(:session, url: signin_path) do |f|%>
+<%= form_for @user, url: signin_path, method: :post do |f| %>
 <%= f.label :name, "Select your name" %>
 <%= f.collection_select(:id, @users, :id, :name)%>
 <br></br>
