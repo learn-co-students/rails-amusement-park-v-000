@@ -10,15 +10,12 @@
     <tr>
       <td><%=att.name%></td>
       <td><%=att.tickets%></td>
-      <%if current_user.admin? %>
-        <td><%=link_to "Show #{att.name}", attraction_path(att)%></td>
-      <%else%>
-        <td><%=link_to "Go on #{att.name}", attraction_path(att)%></td>
-      <%end%>
+      <td><%=attraction_link(att)%></td>
     </tr>
   <%end%>
 </table>
 <br />
-<%if current_user.admin? %>
+
+<div class="<%=for_admin%>">
   <%=link_to "New Attraction", new_attraction_path%>
-<%end%>
+</div>
