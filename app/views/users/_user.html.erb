@@ -1,0 +1,24 @@
+<h1>Name: <%= @user.name %></h1>
+<% if @user.admin %>
+    <h5>ADMIN</h5>
+<% end %>
+
+<% if flash[:message] %>
+    <%=flash[:message] %>
+<% end %>
+
+<ul>
+  <li>
+    Height: <%= @user.height  %>
+  </li>
+  <% if @user.happiness && @user.nausea %>
+	  <li>
+	    Mood: <%= @user.mood %>
+	  </li>
+  <% end %>
+  <li>
+    Tickets: <%= @user.tickets %>
+  </li>
+</ul>
+
+<%= link_to "Log Out", logout_path, action: 'destroy', method: 'post' %>
