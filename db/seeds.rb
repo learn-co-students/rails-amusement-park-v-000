@@ -40,6 +40,15 @@ DATA = {
   ]
 }
 
+User.create(
+      name: "Mindy",
+      password: "password",
+      happiness: 3,
+      nausea: 2,
+      tickets: 10,
+      height: 50
+      )
+
 def main
   make_users
   make_admin
