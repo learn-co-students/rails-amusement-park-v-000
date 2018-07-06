@@ -1,0 +1,15 @@
+<div class="info">
+  <p><strong>Name:</strong> <%= @attraction.name %></p>
+  <p><strong>Tickets:</strong> <%= @attraction.tickets %></p>
+  <p><strong>Height Req:</strong> <%= @attraction.min_height %></p>
+  <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
+  <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
+     <%= form_for @ride, controller: 'rides', action: 'create' do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+      <%= f.submit %>
+    <% end %>
+  <% if @user.admin %>
+      <%= link_to "Edit Attraction", attractions_path(@attraction) %>
+  <% end %>
+</div>

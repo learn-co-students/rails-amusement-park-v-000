@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#welcome'
-  resources :attractions, except: [:destroy]
+  resources :attractions
   resources :users
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
+  post '/rides/new', to: 'rides#create'
+  resources :rides
+
 end

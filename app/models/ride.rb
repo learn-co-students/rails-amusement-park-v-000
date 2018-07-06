@@ -3,6 +3,7 @@ class Ride < ActiveRecord::Base
   belongs_to :user
 
   def take_ride
+    binding.pry
     if tall_enough? && enough_tickets?
       user_takes_ride
     elsif !tall_enough? && enough_tickets?
