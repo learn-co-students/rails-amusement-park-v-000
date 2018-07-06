@@ -1,0 +1,18 @@
+
+
+<h1>Welcome, <%=current_user.name%></h1>
+<h3>Name: <%=current_user.name%></h3>
+
+
+<div class="<%=for_admin%>">
+  <h2>ADMIN</h2>
+</div>
+
+<div class="<%=for_user%>">
+  <h3>Mood: <%=current_user.mood%></h3>
+  <h3>Tickets: <%=current_user.tickets%></h3>
+  <h3>Height: <%=current_user.height%></h3>
+</div>
+
+
+<%=link_to "See attractions", attractions_path%>

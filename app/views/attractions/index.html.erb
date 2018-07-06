@@ -1,0 +1,21 @@
+<h1>Attractions</h1>
+
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Tickets</th>
+    <th></th>
+  </tr>
+  <% @attractions.each do |att| %>
+    <tr>
+      <td><%=att.name%></td>
+      <td><%=att.tickets%></td>
+      <td><%=attraction_link(att)%></td>
+    </tr>
+  <%end%>
+</table>
+<br />
+
+<div class="<%=for_admin%>">
+  <%=link_to "New Attraction", new_attraction_path%>
+</div>

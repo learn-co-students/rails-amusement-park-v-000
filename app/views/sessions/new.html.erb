@@ -1,0 +1,11 @@
+<h1>Welcome back! Sign in to get riding!</h1>
+
+<%=form_tag('/sessions') do%>
+  <%=label_tag :name%>
+  <%=select_tag :user_name, options_from_collection_for_select(@users, :id, :name)%><br>
+
+  <%=label_tag :password%>
+  <%=password_field_tag :password%><br>
+
+  <%=submit_tag "Sign In"%>
+<%end%>
