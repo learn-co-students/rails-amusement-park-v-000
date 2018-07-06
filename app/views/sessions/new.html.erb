@@ -1,9 +1,7 @@
-<%= form_for @user, url: signin_path, method: :post do |f| %>
-<%= f.label :name, "Select your name" %>
-<%= f.collection_select(:id, @users, :id, :name)%>
+<%= form_tag signin_path do |f| %>
+<%= select_tag :user_name, options_from_collection_for_select(@users, :id, :name) %>
+<%= label_tag :password %>
+<%= password_field_tag :password %>
 <br></br>
-<%= f.label :password %>
-<%= f.password_field :password %>
-<br></br>
-<%= f.submit 'Sign In' %>
+<%= submit_tag 'Sign In' %>
 <% end %>
