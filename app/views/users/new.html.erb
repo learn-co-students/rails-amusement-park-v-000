@@ -1,0 +1,31 @@
+<%= form_for @user, controller: 'users', action: 'create' do |f| %>
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :nausea %>
+  <%= f.number_field :nausea, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :happiness %>
+  <%= f.number_field :happiness, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :tickets %>
+  <%= f.number_field :tickets, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :height %>
+  <%= f.number_field :height, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :admin, "Check box if you are the theme park owner" %>
+  <%= f.check_box :admin, class: "form-check-input" %>
+</div>
+  <%= f.submit "Create User" %>
+<% end %>

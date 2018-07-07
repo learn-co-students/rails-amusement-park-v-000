@@ -1,0 +1,7 @@
+<%= form_tag signin_path do |f| %>
+<%= select_tag :user_name, options_from_collection_for_select(@users, :id, :name) %>
+<%= label_tag :password %>
+<%= password_field_tag :password %>
+<br></br>
+<%= submit_tag 'Sign In' %>
+<% end %>
