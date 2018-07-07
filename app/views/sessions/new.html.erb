@@ -1,0 +1,8 @@
+    <form method='post'>
+        <input name='user_name'>
+        <%= select_tag "user_name", options_from_collection_for_select(User.all, "id", "name")%>
+        
+        <input name='password'>
+        
+        <input type='submit' value='Sign In'>
+    </form>

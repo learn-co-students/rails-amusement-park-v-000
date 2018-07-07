@@ -1,0 +1,21 @@
+<%= form_for(@user) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    
+    <%= f.label :happiness %>
+    <%= f.number_field :happiness %>
+    
+    <%= f.label :nausea %>
+    <%= f.number_field :nausea %>
+    
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets %>
+    
+    <%= f.label :height %>
+    <%= f.number_field :height %>
+    
+    <%= f.label :password %>
+    <%= f.text_field :password%>
+    
+    <%= f.submit  "Create User"%>
+<% end %>
