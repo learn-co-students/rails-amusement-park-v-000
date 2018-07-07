@@ -2,12 +2,13 @@
 
 
 <table style="width:100%">
-  <% @attractions.each do |attr|  %>
+<% Attraction.all.each do |attr|  %>
   <tr>
     <th>Name</th>
     <th>Tickets</th>
     <th>Details</th>
   </tr>
+
   <tr>
     <td><%= attr.name %></td>
     <td><%= attr.tickets %></td>

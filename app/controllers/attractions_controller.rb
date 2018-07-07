@@ -1,6 +1,7 @@
 class AttractionsController < ApplicationController
 
   def index
+    # binding.pry
     @attractions = Attraction.all
   end
 
@@ -37,6 +38,7 @@ end
 def update
   @attraction = Attraction.find(params[:id])
   @attraction = Attraction.update(attraction_params)
+  
   redirect_to attraction_path
 end
 

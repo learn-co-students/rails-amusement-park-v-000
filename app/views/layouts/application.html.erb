@@ -21,6 +21,11 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            <% if current_user %>
+              <% if current_user.admin %>
+              <li><%= "ADMIN"  %></li>
+              <% end %>
+            <% end %>
             <% if !logged_in? %>
             <li><%=  link_to "Sign Up", new_user_path, method: 'get' %></l1>
 
@@ -28,9 +33,8 @@
               <% else %>
 
             <li> <%= link_to "Log Out", logout_path , method: 'post'%> </li>
-
-            <li class="user_admin">ADMIN</li>
             <% end %>
+
             <% if current_user %>
               <% if current_user.admin %>
                     <%# binding.pry %>
@@ -57,7 +61,7 @@
     <%= content_tag :div, msg, class: "alert alert-info" %>
 
   <% end %>
-      
+
       <%= yield %>
     </div>
   </body>
