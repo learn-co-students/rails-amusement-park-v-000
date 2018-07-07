@@ -1,4 +1,9 @@
 <div class="info">
+  <% if @message %>
+    <div class="center alert">
+      <p><%= @message %></p>
+    </div>
+  <% end %>
   <% if @user.admin %>
       <p><strong>ADMIN</strong></p>
   <% end %>

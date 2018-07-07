@@ -17,6 +17,7 @@ class AttractionsController < ApplicationController
   end
 
   def edit
+    @attraction = Attraction.find_by(params[:id])
   end
 
   def create
@@ -28,12 +29,19 @@ class AttractionsController < ApplicationController
     end
   end
 
+  def update
+    if @attraction.update(attraction_params)
+      redirect_to attraction_path(@attraction)
+    else
+      redirect_to attractions_path
+    end
+  end
+
 
   def destroy
   end
 
-  def edit
-  end
+
 
   private
 

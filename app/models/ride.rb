@@ -3,9 +3,9 @@ class Ride < ActiveRecord::Base
   belongs_to :user
 
   def take_ride
-    binding.pry
     if tall_enough? && enough_tickets?
       user_takes_ride
+      "Thanks for riding the #{attraction.name}!"
     elsif !tall_enough? && enough_tickets?
       "Sorry. " + ride_height_error_message
     elsif !enough_tickets? && tall_enough?
@@ -43,12 +43,12 @@ class Ride < ActiveRecord::Base
 
   def tall_enough?
     tall_enough = false
-    self.user.height > self.attraction.min_height ? tall_enough = true : tall_enough = false
+    self.user.height >= self.attraction.min_height ? tall_enough = true : tall_enough = false
   end
 
   def enough_tickets?
     enough_tickets = false
-    self.user.tickets > self.attraction.tickets ? enough_tickets = true : enough_tickets = false
+    self.user.tickets >= self.attraction.tickets ? enough_tickets = true : enough_tickets = false
   end
 
 
@@ -59,7 +59,4 @@ class Ride < ActiveRecord::Base
   def ride_height_error_message
     "You are not tall enough to ride the #{attraction.name}."
   end
-
-
-
 end

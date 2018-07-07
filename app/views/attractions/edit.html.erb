@@ -1,0 +1,23 @@
+<%= form_for @attraction, controller: 'attractions', action: 'update' do |f| %>
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name, :placeholder => @attraction.name, class: 'form-control'%>
+</div>
+<div class="form-group">
+  <%= f.label :min_height %>
+  <%= f.number_field :min_height, :placeholder => @attraction.min_height, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :happiness_rating %>
+  <%= f.number_field :happiness_rating, :placeholder => @attraction.happiness_rating, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :tickets %>
+  <%= f.number_field :tickets, :placeholder => @attraction.tickets,  class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :nausea_rating %>
+  <%= f.number_field :nausea_rating, :placeholder => @attraction.nausea_rating, class: 'form-control' %>
+</div>
+  <%= f.submit "Update Attraction" %>
+<% end %>

@@ -17,6 +17,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if params[:message]
+      @message = params[:message]
+    end
       @user = current_user
   end
 
