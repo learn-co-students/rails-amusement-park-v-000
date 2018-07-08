@@ -3,10 +3,14 @@
 <div class="center">
 
   <div class="info">
+    <% if @user.admin %>
+      <p><strong>ADMIN</strong></p>
+    <% end %>
     <p><strong>Name:</strong> <%= @user.name %></p><br>
     <p><strong>Tickets:</strong> <%= @user.tickets %></p><br>
     <p><strong>Mood:</strong> <%= @user.mood %></p><br>
     <p><strong>Height:</strong> <%= @user.height %></p><br>
+    <p><%= link_to "See attractions", attractions_path %></p><br>
   </div>
 
 </div>
