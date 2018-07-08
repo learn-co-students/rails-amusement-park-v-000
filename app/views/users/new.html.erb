@@ -1,0 +1,19 @@
+<h2>Sign Up today!</h2>
+
+<%=form_for @user do |f|%>
+  <%=f.label :name%><br />
+  <%=f.text_field :name%> <br />
+  <%=f.label :password%><br />
+  <%=f.text_field :password%> <br />
+  <%=f.label :nausea%><br />
+  <%=f.text_field :nausea%> <br />
+  <%=f.label :happiness%><br />
+  <%=f.text_field :happiness%> <br />
+  <%=f.label :tickets%><br />
+  <%=f.text_field :tickets%> <br />
+  <%= f.label :admin%><br />
+  <%= f.check_box :admin%><br />
+  <%=f.label :height%><br />
+  <%=f.text_field :height%> <br />
+  <br><%=f.submit id: 'Sign Up'%><br />
+<%end%>
