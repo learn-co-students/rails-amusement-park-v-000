@@ -4,7 +4,6 @@ resources :users
 get '/signin', to: 'sessions#new'
   
 get '/signup', to: 'users#new'
-  
 post '/signin', to: 'sessions#create'
 
 root 'application#index'
