@@ -1,5 +1,5 @@
 <h1>Sign In</h1>
-<%= form_for @user, url: signin_path(@user) do |f| %>
+<%= form_for User.new, url: signin_path(@user) do |f| %>
 
   <%= f.label :name %><br>
   <%= f.text_field :name %>
