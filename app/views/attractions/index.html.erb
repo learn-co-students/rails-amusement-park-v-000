@@ -13,12 +13,12 @@
       <td><strong>Tickets</strong></td>
       <td><strong>Details</strong></td>
     </tr>
-    <tr>
-      <% @attractions.each do |attraction| %>
+    <% @attractions.each do |attraction| %>
+      <tr>
         <td><%= attraction.name %></td>
         <td><%= attraction.tickets %></td>
         <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
   </tbody>
 </table>

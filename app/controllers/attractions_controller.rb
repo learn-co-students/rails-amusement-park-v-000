@@ -6,6 +6,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
+    @ride = Ride.new
   end
 
 private
