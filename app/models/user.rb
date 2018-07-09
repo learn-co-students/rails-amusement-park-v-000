@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
     
     def user_name
         self.name
-        #binding.pry
     end 
+    
 end
