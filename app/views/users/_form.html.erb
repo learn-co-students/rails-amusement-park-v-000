@@ -1,5 +1,11 @@
 <%= form_for @user do |f| %>
 
+<% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+<% end %>
+
   <%= f.label :name %><br>
   <%= f.text_field :name %><br>
 
@@ -21,8 +27,9 @@
   <!--<input id="admin" name="user[admin]" type="checkbox" value="true" />-->
 
   <br>
+
   <%= f.label :password %> <br>
-  <%= f.password_field :password %><br><br>
+  <%= f.password_field :password%><br><br>
 
   <%= f.submit 'Create User' %>
 <% end %>

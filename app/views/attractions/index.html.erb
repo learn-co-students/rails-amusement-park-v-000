@@ -1,30 +1,28 @@
-<h1>Listing attractions</h1>
+<tr>
+     <td><strong>Name</strong></td>
+     <td><strong>Tickets</strong></td>
+     <td><strong>Details</strong></td>
+   </tr>
+   <% @attractions.each do |attraction| %>
+     <tr>
 
-    <tr>
-      <td><strong>Name</strong></td>
-      <td><strong>Tickets</strong></td>
-      <td><strong>Details</strong></td>
-    </tr>
+       <td><%= attraction.name %></td>
+       <td><%= attraction.tickets %></td>
+       <% if admin? %>
+         <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
+       <% else %>
 
-    <% @attractions.each do |attraction| %>
-      <tr>
+         <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+       <% end %>
+     </tr>
+   <% end %>
 
-        <td><%= attraction.name %></td>
-        <td><%= attraction.tickets %></td>
-        <% if current_user.admin %>
-          <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
-        <% else %>
-          <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
-        <% end %>
-      </tr>
-    <% end %>
- 
 <br>
 
 <% if @user %>
-  <p>
-    <%= link_to "Back to profile", user_path(@user) %>
-  </p>
+ <p>
+   <%= link_to "Back to profile", user_path(@user), {:class => "btn btn-primary"} %>
+ </p>
 <% else %>
-  <p><%= link_to 'New Attraction', new_attraction_path %></p>
+ <p><%= link_to 'New Attraction', new_attraction_path %></p>
 <% end %>
