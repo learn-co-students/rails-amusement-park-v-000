@@ -2,3 +2,7 @@ Name: <%= @user.name %> <br>
 Mood: <%= @user.mood %> <br>
 Tickets: <%= @user.tickets %> <br>
 Height: <%= @user.height %> <br>
+
+<p><%= "ADMIN" if @user.admin? %></p>
+
+<%= link_to "Edit", user_path(@user) %> <br />
