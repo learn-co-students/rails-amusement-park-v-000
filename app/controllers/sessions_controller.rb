@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
-  def sign_in
+  def new
     @user = User.new
+    @users = User.all
   end
 
   def create
@@ -10,9 +11,14 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render 'signin'
+      redirect_to signin_path
     end
   end
+
+  def destroy
+    session.delete :user_id
+    redirect_to root_path
+  end 
 
 
 end
