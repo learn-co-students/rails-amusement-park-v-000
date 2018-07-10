@@ -1,4 +1,14 @@
-<%= current_user.name %>
+<% if @message %>
+<%= @message %>
+<% end %>
+
+<% if current_user.admin %>
+<h3>ADMIN</h3>
+<% end %>
+
+Name: <%= current_user.name %>
 Mood: <%= @user.mood %>
 Tickets: <%= @user.tickets %>
 Height: <%= @user.height %>
+
+<%= link_to 'See attractions', attractions_path %>

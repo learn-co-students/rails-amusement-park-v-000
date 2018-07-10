@@ -4,6 +4,10 @@ class AttractionsController < ApplicationController
     @attractions = Attraction.all
   end
 
+  def new 
+    @attraction = Attraction.new 
+  end 
+
   def show
     @attraction = Attraction.find(params[:id])
     @ride = Ride.new

@@ -1,9 +1,9 @@
-<%= form_for @user, url: signin_path(@user) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%= form_for @user, url: '/sessions/create' do |f| %>
+  Your Name: <%= f.label :name, "Please select your username from this dropdown" %>
+  <%= f.collection_select(:name, @users, :name, :name) %>
 
-  <%= f.label :password %>
-  <%= f.text_field :password %>
+  <%= f.label :password, "Password:" %>
+  <%= f.password_field :password %>
 
   <%= f.submit "Sign In" %>
 <% end %>
