@@ -10,14 +10,12 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to new_user_path
+      render :new
     end
   end
 
   def show
     @user = User.find(params[:id])
-    @message = params[:message] if params[:message]
-    @message ||= false
   end
 
 private
