@@ -1,0 +1,22 @@
+<h1>Listing Attractions</h1>
+
+
+<table style="width:100%">
+<% Attraction.all.each do |attr|  %>
+  <tr>
+    <th>Name</th>
+    <th>Tickets</th>
+    <th>Details</th>
+  </tr>
+
+  <tr>
+    <td><%= attr.name %></td>
+    <td><%= attr.tickets %></td>
+    <% if !current_user.admin %>
+    <td><%= link_to "Go on #{attr.name}", attraction_path(attr) %></td>
+    <% else %>
+      <td><%= link_to "Show #{attr.name}", attraction_path(attr) %></td>
+  </tr>
+  <% end %>
+   <% end %>
+</table>

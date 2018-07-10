@@ -1,0 +1,15 @@
+ <h1>Sign In</h1>
+
+<%# binding.pry %>
+ <%= form_for @user, url: signin_path(@user), :method => "post" do |f|   %>
+
+ <%= f.label :name %>
+ <%= f.collection_select :name, User.all, :name, :name%> <br>
+
+Password <input type="text" name="password"><br>
+
+ <%# f.label :password %>
+ <%# f.password_field :password %> <br>
+
+ <%= f.submit "Sign In" %>
+ <% end %>
