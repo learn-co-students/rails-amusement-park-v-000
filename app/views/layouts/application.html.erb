@@ -18,10 +18,22 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
+            <!--code added -->
+            <!-- <% if session[:user_id] %>
+              <% @user = current_user %>
+              <li><a href="<%= user_path(@user) %>"/>Hello, <%= @user.name %>!</a></li>
+              <li><a id="Attractions" href="<%= attractions_path %>"/>Attractions</a></li>
+              <li><a id="Log Out" href="<%= logout_path %>"/>Log Out</a></li>
+            <% else %>
+              <li><a id="Sign Up" href="<%= new_user_path %>"/>Sign Up</a></li>
+              <li> <a id="Sign In" href="<%= signin_path %>"/>Sign In</a></li>
+            <% end %> -->
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -30,6 +42,7 @@
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>
-    </div>
+    <div>
+
   </body>
 </html>

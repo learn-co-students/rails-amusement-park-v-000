@@ -1,0 +1,35 @@
+<%= form_for @user do |f| %>
+
+<% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+<% end %>
+
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :height, "Height (in inches)" %> <br>
+  <%= f.number_field :height %><br>
+  <br>
+  <%= f.label :happiness, "On a scale of 1-5, how happy are you?" %>
+  <%= f.number_field :happiness %> <br>
+
+  <%= f.label :nausea, "On a scale of 1-5, how nauseous are you?" %>
+  <%= f.number_field :nausea %> <br>
+  <br>
+  <%= f.label :tickets, "How many dollars do you have in your pocket?" %> <br>
+  <%= f.text_field :tickets %><br>
+  <br>
+  <%= f.label :admin, "Check box if you are a theme park owner:" %>
+  <%= f.hidden_field :admin, value: false %>
+  <%= f.check_box :admin, {}, true, false %><br><br>
+  <!--<input id="admin" name="user[admin]" type="checkbox" value="true" />-->
+
+  <br>
+
+  <%= f.label :password %> <br>
+  <%= f.password_field :password%><br><br>
+
+  <%= f.submit 'Create User' %>
+<% end %>
