@@ -2,8 +2,8 @@
   <%= f.label :name, "Name" %>
   <%= f.text_field :name %>
 
-  <%= f.label :password, "Password" %>
-  <%= f.password_field :password %>
+  <%= f.label :password %>
+  <%= f.password_field :password, id: "password" %>
 
   <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %>
   <%= f.number_field :nausea %>

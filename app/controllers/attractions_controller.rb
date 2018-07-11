@@ -1,7 +1,8 @@
 class AttractionsController < ApplicationController
 
+
   def index
-    @attractions = Attraction.all
+    @attractions = Attraction.all 
   end
 
   def new 
@@ -22,14 +23,15 @@ class AttractionsController < ApplicationController
     if @attraction.save
       redirect_to attraction_path(@attraction)
     else
-      render 'new'
+      render :new
     end
   end
 
   def update
     attraction = Attraction.find(params[:id])
-    attraction.update(attraction_params)
-    redirect_to attraction_path(attraction)
+    if attraction.update(attraction_params)
+      redirect_to attraction_path(attraction)
+    end 
   end
 
   private

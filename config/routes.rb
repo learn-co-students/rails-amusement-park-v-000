@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   root 'application#home'
 
+  
   get '/signin' => 'sessions#new'
-  post '/sessions/create' => 'sessions#create'
+  post '/signin' => 'sessions#create'
   delete '/signout' => 'sessions#destroy'
   post '/rides/new' => 'rides#new'
 

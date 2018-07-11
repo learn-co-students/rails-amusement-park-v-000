@@ -1,5 +1,6 @@
 <% if @message %>
-<%= @message %>
+<%= !flash.empty? %>
+<h2><%= flash[:notice] %></h2>
 <% end %>
 
 <% if current_user.admin %>
@@ -11,4 +12,4 @@ Mood: <%= @user.mood %>
 Tickets: <%= @user.tickets %>
 Height: <%= @user.height %>
 
-<%= link_to 'See attractions', attractions_path %>
+<%= link_to "See attractions", attractions_path %>
