@@ -1,20 +1,23 @@
-<%= form_for :user, '/signup' do |f| %>
-  <h3>Username</h3><br>
-  <%= f.text_field :username %><br>
-  <h3>Height (in inches)</h3><br>
+<h1>Sign up</h1>
+<br>
+<%= form_for @user do |f| %>
+  <h4>Username</h4><br>
+  <%= f.text_field :name %><br>
+  <h4>Height (in inches)</h4><br>
   <%= f.text_field :height %><br>
-  <h3>How happy are you? (1-5 scale)</h3><br>
+  <h4>How happy are you? (1-5 scale)</h4><br>
   <%= f.text_field :happiness %><br>
-  <h3>How nauseous are you? (1-5 scale)</h3><br>
+  <h4>How nauseous are you? (1-5 scale)</h4><br>
   <%= f.text_field :nausea %><br>
-  <h3>How many dollars are you willing to spend?</h3><br>
+  <h4>How many dollars are you willing to spend?</h4><br>
   <%= f.text_field :tickets %><br>
-  <h3>Check box if you wish to be admin:<h3>
+  <h4>Check box if you wish to be admin:<h4>
   <br>
 
-  <h3>Password:</h3><br>
+  <h4>Password:</h4><br>
   <%= f.password_field :password %><br>
-  <h3>Password Confirmation:</h3><br>
+  <h4>Password Confirmation:</h4><br>
   <%= f.password_field :password_confirmation %><br>
-  <%= f.submit "Create User" %>
+  <br>
+  <%= f.submit "Create User" %> 
 <% end %>

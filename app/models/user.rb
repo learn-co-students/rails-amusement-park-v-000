@@ -1,5 +1,16 @@
 class User < ApplicationRecord
+  validates :password, presence: true
+  validates :admin, inclusion: { in: [true, false] }
+
   has_many :rides
-  has_many :users, through: :rides
+  has_many :attractions, through: :rides
   has_secure_password
+
+  def mood
+    if self.nausea > self.happiness
+      "Sad"
+    else
+      "Happy"
+    end
+  end
 end
