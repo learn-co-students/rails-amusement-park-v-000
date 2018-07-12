@@ -1,6 +1,5 @@
 <% if @message %>
-<%= !flash.empty? %>
-<h2><%= flash[:notice] %></h2>
+<h2><%= @message %></h2>
 <% end %>
 
 <% if current_user.admin %>
