@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
   validates :password, presence: true
   validates :admin, inclusion: { in: [true, false] }
 

@@ -2,6 +2,6 @@
 
 <% @attractions.each do |i|%>
 <ul>
-  <li><%= i.name %> -- <%= i.tickets %> <%= link_to "Take a Ride", ride_path %></li>
+  <li><%=link_to i.name, attraction_path(i) %> -- <%= i.tickets %> tickets</li>
 </ul>
 <% end %>
