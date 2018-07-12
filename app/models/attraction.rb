@@ -1,2 +1,2 @@
-class Attraction < ApplicationRecord
+class Attraction < ActiveRecord::Base
 end
