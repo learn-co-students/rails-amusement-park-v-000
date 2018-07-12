@@ -1,0 +1,31 @@
+<h1>Create a User</h1>
+
+<%= form_for @user  do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br />
+
+  <%= f.label :height %>
+  <%= f.text_field :height %>
+  <br />
+
+  <%= f.label :happiness %>
+  <%= f.text_field :happiness %>
+  <br />
+
+  <%= f.label :nausea %>
+  <%= f.text_field :nausea %>
+  <br />
+
+  <%= f.label :tickets %>
+  <%= f.text_field :tickets %>
+  <br />
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <br />
+
+  <!-- find(:css, "#user_admin").set(true) -->
+
+  <%= f.submit %>
+<% end %>
