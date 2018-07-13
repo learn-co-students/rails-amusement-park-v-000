@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_07_13_021211) do
 
-  create_table "admins", force: :cascade do |t|
-    t.string "name"
-    t.boolean "admin"
-    t.string "password"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "attractions", force: :cascade do |t|
     t.string "name"
     t.integer "nausea_rating"
@@ -46,7 +37,7 @@ ActiveRecord::Schema.define(version: 2018_07_13_021211) do
     t.integer "height"
     t.string "password"
     t.string "password_digest"
-    t.boolean "admin", default: true, null: false
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
