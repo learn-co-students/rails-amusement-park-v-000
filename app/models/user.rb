@@ -8,9 +8,9 @@ class User < ActiveRecord::Base
 
   def mood
     if self.nausea > self.happiness
-      "Sad"
+      "sad"
     else
-      "Happy"
+      "happy"
     end
   end
 end
