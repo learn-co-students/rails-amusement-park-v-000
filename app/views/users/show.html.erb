@@ -1,3 +1,7 @@
+<% if flash[:ride_success] %>
+    <div class="notice"><%= flash[:ride_success] %></div>
+<% end %>
+
 <h2>Welcome <%= @user.name %>!</h2><br>
 <h4>Tickets: <%= @user.tickets %></h4><br>
 <h4>Mood: <%= @user.mood %></h4><br>
