@@ -1,7 +1,16 @@
 <h1>Attractions List</h1>
 
-<% @attractions.each do |i|%>
-<ul>
-  <li><%=link_to i.name, attraction_path(i) %> -- <%= i.tickets %> tickets</li>
-</ul>
-<% end %>
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Tickets</th>
+    <th>Details</th>
+  </tr>
+  <% @attractions.each do |i|%>
+  <tr>
+    <td><%= i.name %></td>
+    <td><%= i.tickets %></td>
+    <td><%=link_to "Go on #{i.name}", attraction_path(i) %></td>
+  </tr>
+  <%end%>
+</table>
