@@ -1,0 +1,12 @@
+<%= form_tag '/login' do %>
+  <%= label_tag "Your name:" %>
+  <%= select_tag "user_name", options_from_collection_for_select(User.all, "name", "name"), {:prompt => "Please select your username from this dropdown"} %>
+  <br>
+  <br>
+  <%= label_tag "Password:" %>
+  <%= password_field_tag "password" %>
+  <br>
+  <br>
+  <%= submit_tag "Sign In" %>
+
+<% end %>
