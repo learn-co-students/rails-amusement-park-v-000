@@ -1,0 +1,24 @@
+
+<% if !@user.admin? %>
+  Name: <%= @user.name %><br>
+  Tickets: <%= @user.tickets %><br>
+  Mood: <%= @user.mood %><br>
+  Height: <%= @user.height %><br>
+  <% else %>
+    Name: <%= @user.name %><br>
+    ADMIN: <%= @user.admin %><br>
+<% end %>
+
+<% if !@user.rides.empty? %>
+  <% ride_result =  @user.rides[-1].take_ride %>
+  <% if ride_result == true %>
+    <%= "Thanks for riding the #{@user.rides[-1].attraction.name}!" %>
+  <% else %>
+    <%= ride_result %>
+  <% end %>
+<% end %>
+
+
+<%= link_to 'Log Out', logout_path, method: :delete %><br>
+
+<%= link_to "See attractions", attractions_path %>
