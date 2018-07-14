@@ -1,8 +1,17 @@
 <% if flash[:ride_success] %>
     <div class="notice"><%= flash[:ride_success] %></div>
 <% end %>
+<% if flash[:too_few_tickets] %>
+    <div class="notice"><%= flash[:too_few_tickets] %></div>
+<% end %>
+<% if flash[:too_short] %>
+    <div class="notice"><%= flash[:too_short] %></div>
+<% end %>
 
-<h2>Welcome <%= @user.name %>!</h2><br>
+<% if @user.admin %>
+  <h2>ADMIN</h2>
+<% end %>
+<h4>Name: <%= @user.name %>!</h4><br>
 <h4>Tickets: <%= @user.tickets %></h4><br>
 <h4>Mood: <%= @user.mood %></h4><br>
 <h4>Height: <%= @user.height %> inches</h4><br>

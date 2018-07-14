@@ -4,7 +4,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   it 'successfully signs up as non-admin' do
     visit '/users/new'
     expect(current_path).to eq('/users/new')
-    # user_signup method is defined in login_helper.rb 
+    # user_signup method is defined in login_helper.rb
     user_signup
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Amy Poehler")
@@ -206,7 +206,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     click_link('See attractions')
     click_link("Go on #{@ferriswheel.name}")
     expect(page).to_not have_content("edit")
-    expect(page).to_not have_content("delete")
+    expect(page).to_not have_content("delete") 
   end
 
   it "has a button from the attraction show page to go on the ride" do
