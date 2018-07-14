@@ -8,14 +8,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     session[:user_name] = @user.name
     if @user.save
-      if user_params[:admin] == "0"
+      #if user_params[:admin] == "0"
         @user.save
-        session[:user_id] = @user.id
-          #log_in(@user)
+        log_in(@user)
         redirect_to @user
-      elsif user_params[:admin] == "1"
-        admin_signup
-      end
+      #elsif user_params[:admin] == "1"
+      #  admin_signup
+      #end
     else
       render 'new'
     end
