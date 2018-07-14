@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    session[:user_name] = @user.name
+    session[:user_id] = @user.id
     if @user.save
       #if user_params[:admin] == "0"
         @user.save
@@ -21,7 +21,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    if User.find_by_id(session[:user_id])
+      @user = User.find_by_id(session[:user_id])
+    else
+      redirect_to '/'
+    end
   end
 
   private
