@@ -1,0 +1,15 @@
+<%= form_for @attraction do |f| %>
+  <% if @user.admin == false %>
+    Name: <%= @attraction.name %><br>
+    Total Number of users: <%= @attraction.users.count %><br>
+    Ticket Requirement: <%= @attraction.tickets %><br>
+    Height Requirement: <%= @attraction.min_height%>inches <br>
+    Nausea Rating: <%= @attraction.nausea_rating %><br>
+    Happiness Rating: <%= @attraction.happiness_rating %><br>
+    <%= f.submit "Go on this ride" %>
+
+  <% elsif @user.admin == true %>
+    Name: <%= @attraction.name %><br>
+    <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></p>
+  <% end %>
+<% end %>
