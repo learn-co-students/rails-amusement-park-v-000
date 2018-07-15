@@ -12,11 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2018_07_15_210345) do
 
-  create_table "names", force: :cascade do |t|
+  create_table "attractions", force: :cascade do |t|
+    t.string "name"
     t.string "min_height"
-    t.integer "naseau_rating"
+    t.integer "nausea_rating"
     t.integer "happiness_rating"
-    t.integer "ticket_number"
+    t.integer "tickets"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 2018_07_15_210345) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
+    t.integer "nausea"
     t.integer "happiness"
     t.integer "height"
     t.integer "tickets"
