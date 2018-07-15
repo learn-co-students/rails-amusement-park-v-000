@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-    resources :users, only: [:new]
+    root :to => 'welcome#index'
+
+    resources :users, only: [:index, :new, :create, :show]
+    get 'users/signin', to: 'users#signin'
 end
