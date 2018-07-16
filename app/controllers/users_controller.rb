@@ -14,13 +14,26 @@ class UsersController < ApplicationController
   end
 
   def signin
-    @user = User.new
+    @users = User.all
   end
 
   def show
-    @user = User.find(session[:user_id])
+    if !logged_in?
+      redirect_to root_path
+    end
+    @user = User.find(params[:id])
   end
 
+
+  def login
+    @user = User.find_by(name: params[:user][:name])
+    if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      render 'signin'
+    end
+  end
 
   private
 

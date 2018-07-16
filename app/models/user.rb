@@ -1,18 +1,14 @@
 class User < ActiveRecord::Base
+  has_many :rides
+  has_many :attractions, through: :rides
   has_secure_password
 
-  def mood(num)
-  case num
-    when 1
-      @happiness = 'sad'
-    when 2
-      ''
-    when 3
-      @happiness ='happy'
-    when 4
-      ''
+  def mood(happy)
+    binding.pry
+    if happy > self.nausea
+      'happy'
     else
-      'super'
+      'sad'
     end
   end
 
