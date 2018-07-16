@@ -1,0 +1,33 @@
+<table style="width: 100%">
+  <tr>
+    <th>Name:</th>
+    <td><%= @attraction.name %></td>
+  </tr>
+  <tr>
+    <th>Ticket Requirement:</th>
+    <td><%= @attraction.tickets %></td>
+  </tr>
+  <tr>
+    <th>Height Requirement:</th>
+    <td><%= @attraction.min_height %></td>
+  </tr>
+  <tr>
+    <th>Nausea Rating:</th>
+    <td><%= @attraction.nausea_rating %></td>
+  </tr>
+  <tr>
+    <th>Happiness Rating:</th>
+    <td><%= @attraction.happiness_rating %></td>
+  </tr>
+  <% if @user.admin %>
+    <%= link_to "Edit Attraction", edit_attraction_path(@attraction)%>
+  <% else %>
+    <%= form_for @user do |f| %>
+      <%= f.hidden_field :id %>
+      <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+      <%# byebug%>
+      <%= f.submit "Go on this ride" %><br>
+    <% end %>
+  <% end %>
+
+  <%= link_to "See attractions", attractions_path %>
