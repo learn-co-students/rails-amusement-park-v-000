@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def mood(happy)
-    binding.pry
-    if happy > self.nausea
+    if self.happiness > self.nausea
       'happy'
     else
       'sad'
