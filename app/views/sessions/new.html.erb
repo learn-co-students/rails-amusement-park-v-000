@@ -1,0 +1,16 @@
+<div class="container" role="main">
+      <form action="/sessions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="1iLxyusW/3OaSFhUBO+SOkdmAl3ilMhYIb2vnpxVlbPrLIdEJkMDWuCOP2KlE6HVwdYeAzcZ5TrQi/k3z8oTFQ==">
+
+  <div class="form-group">
+    <p>Your Name:</p>
+    <select name="user_name">
+      <%= @users.each do |user| %>
+        <option value="<%= user.id %>"><%= user.name %></option>
+      <% end %>
+    </select><br />
+    <br>
+    <p>Your Password:</p>
+    <input type="password" name="password" id="password" class="form-control">
+  
+    <%= submit_tag "Sign In" %>
+  </div>

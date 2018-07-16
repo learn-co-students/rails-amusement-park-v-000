@@ -1,0 +1,23 @@
+<h1>Attractions</h1>
+<table style="width: 100%">
+  <tr>
+    <th>Name</th>
+    <th>Tickets</th>
+    <th></th>
+  </tr>
+<% @attractions.each do |attr| %>
+<%#byebug%>
+<tr>
+  <td><%= attr.name %></td>
+  <td><%= attr.tickets %></td>
+  <% if @user.admin %>
+    <td><%= link_to "Show #{attr.name}", attraction_path(attr.id)%></td>
+  <% else %>
+    <td><%= link_to "Go on #{attr.name}", attraction_path(attr.id)%></td>
+  <% end %>
+</tr>
+<% end %>
+
+<% if @user.admin %>
+  <td><%= link_to "New Attraction", new_attraction_path%></td>
+<% end %>
