@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get '/users/new' => 'users#new'
   post '/logout' => 'sessions#destroy'
-  root 'welcome#home'
+  root 'application#home'
   post '/take_ride' => 'users#ride'
 end
