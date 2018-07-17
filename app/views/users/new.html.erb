@@ -1,0 +1,16 @@
+<%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
+  <input name=user[name]>
+
+  <input name=user[height]>
+
+  <input name=user[happiness]>
+
+  <input name=user[nausea]>
+
+  <input name=user[tickets]>
+
+  <input name=user[password]>
+
+
+  <input type=submit value='Create User'>
+<% end %>
