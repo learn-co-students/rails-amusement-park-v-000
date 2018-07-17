@@ -21,7 +21,7 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find(params[:id])
-    #session[:attraction_id] = @attraction.id
+    session[:attraction_id] = @attraction.id
   end
 
   private
