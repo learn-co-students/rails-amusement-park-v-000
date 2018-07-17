@@ -14,9 +14,8 @@ class Ride < ActiveRecord::Base
     else
       #tickets = @user.tickets - @attraction.tickets
       @user.update_attribute(:tickets, (@user.tickets - @attraction.tickets))
-      @user.update_attribute(:happiness, @attraction.happiness_rating)
-      @user.update_attribute(:nausea, @attraction.nausea_rating)
-      #@user.nausea = @user.nausea - @attraction.nausea_rating
+      @user.update_attribute(:happiness, (@attraction.happiness_rating + @user.happiness))
+      @user.update_attribute(:nausea, (@attraction.nausea_rating + @user.nausea)) 
       #@user.happiness = @user.happiness - @attraction.happiness_rating
       #flash[:ride_success] = "Thanks for riding #{@attraction.name}!"
     end
