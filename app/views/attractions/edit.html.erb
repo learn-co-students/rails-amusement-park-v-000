@@ -1,0 +1,27 @@
+<h1>Editing attraction</h1>
+<%= form_tag ({controller: 'attractions', action: 'update', method: 'post'}) do %>
+
+  <%= label_tag(:name, "Name") %> <br>
+  <%= text_field_tag(:name, @attraction.name) %>
+  <br></br>
+
+  <%= label_tag(:min_height, "Height Requirement (in inches)") %> <br>
+  <%= text_field_tag(:min_height, @attraction.min_height)%>
+  <br></br>
+
+  <%= label_tag(:happiness_rating, "How fun is it? (1-5 scale)") %> <br>
+  <%= text_field_tag(:happiness_rating, @attraction.happiness_rating) %>
+  <br></br>
+
+  <%= label_tag(:nausea_rating, "How nausea-inducing is it? (1-5 scale)") %> <br>
+  <%= text_field_tag(:nausea_rating, @attraction.nausea_rating) %>
+  <br></br>
+
+  <%= label_tag(:tickets, "How many tickets does it cost?") %> <br>
+  <%= text_field_tag(:tickets, @attraction.tickets) %>
+  <br></br>
+
+  <input type=submit value='Update Attraction'>
+<% end %>
+
+<p><%=link_to "Show", attraction_path(@attraction.id)%> | <%=link_to "Back", attractions_path%></p>
