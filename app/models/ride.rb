@@ -12,12 +12,14 @@ class Ride < ActiveRecord::Base
     elsif @user.tickets < @attraction.tickets
       #flash[:too_few_tickets] = "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
     else
-      @user.update_attribute(tickets: (@user.tickets - @attraction.tickets))
-      @user.nausea = @user.nausea - @attraction.nausea_rating
-      @user.happiness = @user.happiness - @attraction.happiness_rating
+      #tickets = @user.tickets - @attraction.tickets
+      @user.update_attribute(:tickets, (@user.tickets - @attraction.tickets))
+      @user.update_attribute(:happiness, @attraction.happiness_rating)
+      @user.update_attribute(:nausea, @attraction.nausea_rating)
+      #@user.nausea = @user.nausea - @attraction.nausea_rating
+      #@user.happiness = @user.happiness - @attraction.happiness_rating
       #flash[:ride_success] = "Thanks for riding #{@attraction.name}!"
     end
-    @user.save
   end
 
 
