@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
 
-  before_action :user_redirect, only: [:show]
+  #before_action :user_redirect, only: [:show]
 
   def new
     @user = User.new
   end
+
+  def signin
+    @user = User.new
+    @users = User.all
+  end 
 
   def create
     @user = User.new(user_params)
@@ -16,12 +21,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def destroy
     session.clear
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
     private
@@ -34,10 +39,10 @@ class UsersController < ApplicationController
       !!session[:user_id]
     end
 
-    def user_redirect
-      if !logged_in?
-        redirect_to root_path
-      end
-    end
+    # def user_redirect
+    #   if !logged_in?
+    #     redirect_to '/users/new'
+    #   end
+    # end
 
 end
