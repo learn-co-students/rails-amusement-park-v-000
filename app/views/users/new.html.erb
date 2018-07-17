@@ -1,33 +1,33 @@
-<%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
+<%= form_for @user do |f| %>
 
-  <%= label_tag(:name, "Name") %> <br>
-  <%= text_field_tag(:name) %>
+  <%= f.label :name, "Name" %> <br>
+  <%= f.text_field :name %>
   <br></br>
 
-  <%= label_tag(:height, "Height (in inches)") %> <br>
-  <%= text_field_tag(:height) %>
+  <%= f.label :height, "Height (in inches)" %> <br>
+  <%= f.text_field :height %>
   <br></br>
 
-  <%= label_tag(:happiness, "How happy are you? (1-5 scale)") %> <br>
-  <%= text_field_tag(:happiness) %>
+  <%= f.label :happiness, "How happy are you? (1-5 scale)" %> <br>
+  <%= f.text_field :happiness %>
   <br></br>
 
-  <%= label_tag(:nausea, "How nauseous are you? (1-5 scale)") %> <br>
-  <%= text_field_tag(:nausea) %>
+  <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %> <br>
+  <%= f.text_field :nausea %>
   <br></br>
 
-  <%= label_tag(:tickets, "How many dollars are in your pocket?") %> <br>
-  <%= text_field_tag(:tickets) %>
+  <%= f.label :tickets, "How many dollars are in your pocket?" %> <br>
+  <%= f.text_field :tickets %>
   <br></br>
 
-  <%= label_tag(:admin, "Check box if you are a theme park owner") %>
-  <%= check_box_tag(:admin) %>
+  <%= f.label :admin, "Check box if you are a theme park owner" %>
+  <%= f.check_box :admin %>
   <br></br>
 
-  <%= label_tag(:password, "Password") %> <br>
-  <%= text_field_tag(:password) %>
+  <%= f.label :password, "Password" %> <br>
+  <%= f.text_field :password %>
   <br></br>
 
-  <input type=submit value='Create User'>
+  <%= f.submit "Create User" %>
 
 <% end %>

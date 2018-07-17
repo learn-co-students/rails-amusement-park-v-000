@@ -1,11 +1,11 @@
-<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
 
-  <%= label_tag(:name, "Your name:") %>
-  <%= collection_select(:ride, :user_id, User.all, :id, :name, prompt: "Please select your username from this dropdown") %>
+  <%= f.label :name, "Your name:" %>
+  <%= f.collection_select(:ride, :user_id, User.all, :id, :name, prompt: "Please select your username from this dropdown") %>
   <br></br>
 
-  <%= label_tag(:password, "Your password:") %> <br>
-  <%= text_field_tag(:password) %>
+  <%= f.label :password, "Your password:" %> <br>
+  <%= f.text_field :password %>
   <br></br>
 
   <input type=submit value='Sign In'>
