@@ -13,7 +13,6 @@ class Ride < ActiveRecord::Base
       flash[:too_few_tickets] = "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
     else
       @user.tickets = @user.tickets - @attraction.tickets
-      binding.pry
       @user.nausea = @user.nausea - @attraction.nausea_rating
       @user.happiness = @user.happiness - @attraction.happiness_rating
       @user.save
