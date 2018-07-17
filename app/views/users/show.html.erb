@@ -2,3 +2,9 @@ Name: <%= @user.name %><br>
 Mood: <%= @user.mood(@user.happiness) %><br>
 Height: <%= @user.height %><br>
 # of Tickets: <%= @user.tickets %><br>
+<% if @user.admin == true %>
+ADMIN
+<% end %>
+<%= link_to 'Log Out', @user, :method=> :delete%>
+
+<%= link_to 'See attractions', attractions_path  %>
