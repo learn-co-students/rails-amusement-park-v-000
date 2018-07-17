@@ -5,7 +5,7 @@
   <h2>Email: <%= @user.email %></h2>
   <h2>Facebook UID: <%= @user.uid %></h2>
   <img src="<%= @user.image %>">
-  <%= link_to('Logout', '/sessions/logout') %>
+  <%= link_to('Logout', '/logout') %>
 <% else %>
-  <%= link_to('Login with Facebook', '/auth/facebook') %>
+  <p>Please Log In or Sign Up</p>
 <% end %>

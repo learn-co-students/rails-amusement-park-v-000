@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class SessionsController < ApplicationController
   def new
 
   end
@@ -10,6 +10,11 @@ class UsersController < ApplicationController
       session[:user][:name] = params[:user][:name]
       redirect_to '/'
     end
+  end
+
+  def destroy
+    session.delete :user[:name]
+    redirect_to '/login'
   end
 
 end
