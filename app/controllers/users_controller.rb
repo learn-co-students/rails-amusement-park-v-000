@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if !logged_in?
         redirect_to root_path
     elsif logged_in? && params[:attraction]
-      set_user.ticket_ride(params)
+      can_you_ride?(params)
     else
       set_user
     end
