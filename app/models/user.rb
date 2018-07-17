@@ -9,10 +9,13 @@ class User < ActiveRecord::Base
   end
 
 
-  def mood(happy)
-    if happy == nil
-      return nil
-    elsif self.happiness > self.nausea
+  def mood(rating)
+    # binding.pry
+    # @ride = Attraction.find(id)
+    # self.nausea = self.nausea - @ride.happiness_rating
+    self.happiness = rating
+    self.save
+    if self.happiness > 3
       'happy'
     else
       'sad'
