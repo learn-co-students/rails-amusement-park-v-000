@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
 
 
 
+  def self.take_ride(params)
+    binding.pry
+    ticket_ride
+    tall_enough
+    mood
+  end
 
   def ticket_ride(params)
     @tickets = Attraction.find(params[:attraction]).tickets
@@ -21,16 +27,6 @@ class User < ActiveRecord::Base
     @height = Attraction.find(params[:attraction]).min_height
     self.height > @height.to_i
   end
-
-#   def admin=(admin)
-#     if admin == 1 || admin == true
-#     @admin = true
-#   end
-# end
-#
-# def admin
-#   @admin
-# end
 
   def mood
     if self.admin == true || self.admin == 1

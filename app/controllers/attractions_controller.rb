@@ -24,7 +24,9 @@ class AttractionsController < ApplicationController
   end
 
   def edit
-
+    # binding.pry
+    @attraction = Attraction.find(attraction_params)
+    redirect_to attraction_path(@attraction)
   end
 
   private

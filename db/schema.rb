@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_07_15_210345) do
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
-    t.string "min_height"
+    t.integer "min_height"
     t.integer "nausea_rating"
     t.integer "happiness_rating"
     t.integer "tickets"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_07_15_210345) do
     t.integer "happiness"
     t.integer "height"
     t.integer "tickets"
-    t.integer "admin", default: 0
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
