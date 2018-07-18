@@ -1,0 +1,14 @@
+<h1>Log in</h1>
+<%= form_for(:session, url: signin_path) do |f| %>
+  <label for "user_name">Name: </label>
+  <select id='user_name' name='session[name]'>
+    <% User.all.each do |i| %>
+    <option><%= i.name %></option>
+    <% end %>
+
+  <label for "password">Password: </label>
+  <input type='password' name='session[password]' id='password'>
+
+  <%= f.submit "Sign In" %>
+<% end %>
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>

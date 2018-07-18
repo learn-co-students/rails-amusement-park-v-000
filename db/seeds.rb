@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create(name: "Max Charles", nausea: 0, happiness: 3, tickets: 6, height: 32, password: "password")
+User.create(name: "Skai Jackson", nausea: 5, happiness: 1, tickets: 12, height: 70, password: "dsnf")
+User.create(name: "Kaleo Elam", nausea: 4, happiness: 4, tickets: 10, height: 53, password: "wefw")
+Attraction.create(name: "Splash Mountain", nausea_rating: 2, happiness_rating: 5, tickets: 2, min_height: 40)
+Attraction.create(name: "Tower of Terror", nausea_rating: 4, happiness_rating: 4, tickets: 3, min_height: 50)
+Attraction.create(name: "Dumbo", nausea_rating: 1, happiness_rating: 2, tickets: 1, min_height: 20)
 
 DATA = {
   :user_keys =>

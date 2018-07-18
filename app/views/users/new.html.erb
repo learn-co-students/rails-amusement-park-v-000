@@ -1,0 +1,24 @@
+<h1>Sign up</h1>
+<br>
+<%= form_for @user do |f| %>
+  <h4>Username</h4><br>
+  <%= f.text_field :name %><br>
+  <h4>Height (in inches)</h4><br>
+  <%= f.text_field :height %><br>
+  <h4>How happy are you? (1-5 scale)</h4><br>
+  <%= f.text_field :happiness %><br>
+  <h4>How nauseous are you? (1-5 scale)</h4><br>
+  <%= f.text_field :nausea %><br>
+  <h4>How many dollars are you willing to spend?</h4><br>
+  <%= f.text_field :tickets %><br>
+  <h4>Check box if you wish to be admin:<h4>
+  <%= f.check_box :admin %>
+  <br>
+
+  <h4>Password:</h4><br>
+  <%= f.password_field :password %><br>
+  <h4>Password Confirmation:</h4><br>
+  <%= f.password_field :password_confirmation %><br>
+  <br>
+  <%= f.submit "Create User" %>
+<% end %>
