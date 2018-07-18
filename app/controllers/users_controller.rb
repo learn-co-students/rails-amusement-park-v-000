@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @message = params[:message] if params[:message]
+    @message ||= false
   end
 
   def new
@@ -21,8 +23,7 @@ class UsersController < ApplicationController
   end
 
   def require_login
-    binding.pry
-    return '/' unless session.include? :user_id
+    redirect_to '/' unless logged_in?
   end
 
   private

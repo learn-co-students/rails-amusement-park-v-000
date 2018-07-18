@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
   resources :attractions
   resources :users
-  resources :rides
+  post '/rides/new', to: 'rides#new'
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
