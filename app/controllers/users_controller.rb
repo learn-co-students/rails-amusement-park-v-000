@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    @message = params[:message] if params[:message]
+    @message ||= false
   end
 
   def edit
