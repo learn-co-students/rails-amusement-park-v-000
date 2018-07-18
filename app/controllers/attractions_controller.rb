@@ -7,6 +7,7 @@ class AttractionsController < ApplicationController
 
   def show
     current_user
+
     @attraction = Attraction.find(params[:id])
   end
 
@@ -23,10 +24,17 @@ class AttractionsController < ApplicationController
     end
   end
 
+  def update
+    @attraction = Attraction.update(attraction_params)
+    if @attraction.save
+      redirect_to attraction_path(@attraction)
+    else
+      render :edit
+    end
+  end
+
   def edit
-    # binding.pry
-    @attraction = Attraction.find(attraction_params)
-    redirect_to attraction_path(@attraction)
+    @attraction = Attraction.find(params[:id])
   end
 
   private
@@ -34,6 +42,4 @@ class AttractionsController < ApplicationController
   def attraction_params
     params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :tickets)
  end
-
-
 end
