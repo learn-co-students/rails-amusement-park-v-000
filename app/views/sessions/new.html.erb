@@ -1,8 +1,9 @@
 <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
 
   <%= f.label :name, "Your name:" %>
-  <%= f.collection_select(:ride, :user_id, User.all, :id, :name, prompt: "Please select your username from this dropdown") %>
+  <%= f.collection_select(:name, @users, :id, :name, prompt: "Please select your username from this dropdown") %>
   <br></br>
+
 
   <%= f.label :password, "Your password:" %> <br>
   <%= f.text_field :password %>

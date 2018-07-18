@@ -21,10 +21,10 @@
 
         <% if current_user %>
           <a class="navbar-brand" href="/users/<%=current_user.id%>"/> <%= current_user.name %> </a>
-          <a class="navbar-brand" href="/logout"/>Log Out</a>
+          <a class="navbar-brand" href="/signout"/>Log Out</a>
         <% else %>
           <a class="navbar-brand" href="/signup"/>Sign Up</a>
-          <a class="navbar-brand" href="/login"/>Log In</a>
+          <a class="navbar-brand" href="/signin"/>Log In</a>
         <% end %>
 
         </div>

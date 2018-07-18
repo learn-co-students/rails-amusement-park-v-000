@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :users
   resources :rides
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  post '/logout' => 'sessions#destroy'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  get '/signout' => 'sessions#destroy'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
