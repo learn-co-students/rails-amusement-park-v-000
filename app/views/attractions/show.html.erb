@@ -2,6 +2,7 @@
 <h2><%= @attraction.name %></h2>
 Min. Height: <%= @attraction.min_height %><br>
 Nausea Rating: <%= @attraction.nausea_rating %><br>
+Happiness Rating: <%= @attraction.happiness_rating %><br>
 # of Tickets: <%= @attraction.tickets %><br>
 <%=  form_tag user_path(@user), :method=> :get do  %>
 <%= hidden_field_tag :attraction, @attraction.id%>

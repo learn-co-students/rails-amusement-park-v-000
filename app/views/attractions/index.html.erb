@@ -1,3 +1,8 @@
+
+<% if @user.admin || @user.admin == 1%>
+ADMIN<br>
+<%= link_to 'New Attraction', new_attraction_path %>
+<% end %>
 <% @attractions.each do |att| %>
  <%= link_to "Go on #{att.name}", attraction_path(att) %><br>
 <% end %>

@@ -5,6 +5,6 @@ Rails.application.routes.draw do
     post 'signin', to: 'users#login'
 
     resources :users, only: [:index, :new, :create, :show, :destroy]
-    resources :attractions, only: [:index, :show]
+    resources :attractions, only: [:index, :show, :new, :create]
 
 end

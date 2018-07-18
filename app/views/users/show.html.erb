@@ -1,10 +1,10 @@
-Name: <%= @user.name %><br>
-Mood: <%= @user.mood(@user.happiness) %><br>
-Height: <%= @user.height %><br>
-# of Tickets: <%= @user.tickets %><br>
-<% if @user.admin == true %>
-ADMIN
+<% if @user.admin || @user.admin == 1%>
+ADMIN<br>
 <% end %>
-<%= link_to 'Log Out', @user, :method=> :delete%>
 
 <%= link_to 'See attractions', attractions_path  %>
+<%= link_to 'Log Out', @user, :method=> :delete%><br>
+Name: <%= @user.name %><br>
+Mood: <%= @user.mood%><br>
+Height: <%= @user.height %><br>
+# of Tickets: <%= @user.tickets %><br>

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
   has_secure_password
 
-  
+
 
 
   def ticket_ride(params)
@@ -22,25 +22,25 @@ class User < ActiveRecord::Base
     self.height > @height.to_i
   end
 
+#   def admin=(admin)
+#     if admin == 1 || admin == true
+#     @admin = true
+#   end
+# end
+#
+# def admin
+#   @admin
+# end
 
-  def mood(ride_id)
+  def mood
     if self.admin
       mood = nil
-    elsif Attraction.all.count > 0
-      @ride = Attraction.find(ride_id)
-      self.happiness = @ride.happiness_rating - @ride.nausea_rating
-      happy_lvl
-    else
-      happy_lvl
-    end
-  end
-
-  def happy_lvl
-    if self.happiness >= 3
+    elsif self.happiness > self.nausea
       'happy'
     else
       'sad'
     end
+
   end
 
 
