@@ -1,6 +1,6 @@
 <h1>Welcome to the Rails Amusement Park!!!!</h1>
 <p>There would be an image of a roller coaster here, but that's too much extra work lol.</p>
 <ul>
-  <li>Click here to sign up with a new account!</li>
-  <li>Click here to log in with an existing account!</li>
+  <li><%= link_to "Sign Up", new_user_path %></li>
+  <li><%= link_to "Log In", signin_path %></li>
 </ul>
