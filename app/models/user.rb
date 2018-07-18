@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 # end
 
   def mood
-    if self.admin
+    if self.admin == true || self.admin == 1
       mood = nil
     elsif self.happiness > self.nausea
       'happy'
