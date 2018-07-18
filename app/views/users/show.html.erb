@@ -1,17 +1,4 @@
-<% if !@attraction.nil? %>
-<% if @user.height < @attraction.min_height && @user.tickets < @attraction.tickets %>
-    <div class="notice"><%= flash[:fail] %></div>
 
-<% elsif @user.height < @attraction.min_height %>
-    <div class="notice"><%= flash[:too_short] %></div>
-
-<% elsif @user.tickets < @attraction.tickets %>
-    <div class="notice"><%= flash[:too_few_tickets] %></div>
-    
-<% else %>
-    <div class="notice"><%= flash[:ride_success] %></div>
-<% end %>
-<% end %>
 
 
 

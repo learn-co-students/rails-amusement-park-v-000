@@ -17,15 +17,17 @@ class RidesController < ApplicationController
 
     if @user.height < @attraction.min_height && @user.tickets < @attraction.tickets
       flash[:fail] = "Sorry. You do not have enough tickets to ride the #{@attraction.name}. You are not tall enough to ride the #{@attraction.name}."
+      redirect_to user_path(@ride.user)
     elsif @user.height < @attraction.min_height
       flash[:too_short] = "Sorry. You are not tall enough to ride the #{@attraction.name}."
+      redirect_to user_path(@ride.user)
     elsif @user.tickets < @attraction.tickets
       flash[:too_few_tickets] = "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
-    else
+      redirect_to user_path(@ride.user)
+    elsif @user.height >= @attraction.min_height && @user.tickets >= @attraction.tickets
       flash[:ride_success] = "Thanks for riding the #{@attraction.name}!"
+      redirect_to user_path(@ride.user)
     end
-
-    redirect_to user_path(@ride.user)
   end
 
   def ride_params

@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     if User.find_by_id(session[:user_id])
       @user = User.find_by_id(session[:user_id])
       @attraction = Attraction.find_by_id(session[:attraction_id])
+
     else
       redirect_to '/'
     end
