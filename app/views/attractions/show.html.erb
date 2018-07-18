@@ -1,0 +1,13 @@
+<h1>Showing Profile Page for <%= @attraction.name %></h1>
+<p>Tickets: <%= @attraction.tickets %></p>
+<p>Nausea: <%= @attraction.nausea_rating %></p>
+<p>Happiness: <%= @attraction.happiness_rating %></p>
+<br>
+<% if current_user.admin %>
+  <p><strong><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></strong></p>
+  <%= form_tag attraction_path(@attraction), method: "delete" do %>
+    <%= submit_tag "Delete #{@attraction.name}" %>
+  <% end %>
+<% else %>
+  <%= button_to "Go on this ride", ride_path, method: "patch" %>
+<% end %>

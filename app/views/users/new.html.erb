@@ -1,0 +1,25 @@
+<h1>Create your new account here!</h1>
+<%= form_for @user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :height %>
+  <%= f.number_field :height, min: 0 %>
+  <br>
+  <%= f.label :happiness %>
+  <%= f.number_field :happiness, min: 0 %>
+  <br>
+  <%= f.label :nausea %>
+  <%= f.number_field :nausea, min: 0 %>
+  <br>
+  <%= f.label :tickets %>
+  <%= f.number_field :tickets, min: 0 %>
+  <br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.label :admin %>
+  <%= f.check_box :admin %>
+  <br><br>
+  <%= f.submit %>
+<% end %>

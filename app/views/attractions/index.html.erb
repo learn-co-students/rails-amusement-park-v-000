@@ -1,0 +1,22 @@
+<h1>All Currently Open Attractions!!</h1>
+<% @attractions.each do |att| %>
+<% if current_user.admin %>
+  <h4><%= link_to "Show #{att.name}", attraction_path(att) %></h4>
+<% else %>
+  <h4><%= link_to "Go on #{att.name}", attraction_path(att) %></h4>
+<% end %>
+  <p>Tickets: <%= att.tickets %></p>
+  <p>Nausea: <%= att.nausea_rating %></p>
+  <p>Happiness: <%= att.happiness_rating %></p>
+  <% if current_user.admin %>
+    <p><strong><%= link_to "Edit Attraction", edit_attraction_path(att) %></strong></p>
+    <%= form_tag attraction_path(att), method: "delete" do %>
+      <%= submit_tag "Delete #{att.name}" %>
+    <% end %>
+  <% end %>
+  <br>
+<% end %>
+<br>
+<% if current_user.admin %>
+  <p><strong><%= link_to "New Attraction", new_attraction_path %></strong></p>
+<% end %>
