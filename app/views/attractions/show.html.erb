@@ -1,3 +1,6 @@
+<% if @user.admin == true || @user.admin == 1%>
+<%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %>
+<% end %>
 
 <h2><%= @attraction.name %></h2>
 Min. Height: <%= @attraction.min_height %><br>
