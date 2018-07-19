@@ -1,0 +1,10 @@
+<% if @user.admin == true || @user.admin == 1%>
+ADMIN<br>
+<% end %>
+
+<%= link_to 'See attractions', attractions_path  %>
+<%= link_to 'Log Out', @user, :method=> :delete%><br>
+Name: <%= @user.name %><br>
+Mood: <%= @user.mood%><br>
+Height: <%= @user.height %><br>
+# of Tickets: <%= @user.tickets %><br>

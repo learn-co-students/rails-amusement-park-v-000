@@ -1,0 +1,5 @@
+<%= form_tag do %>
+<%= collection_select(:user, :name, User.all, :name, :name, {:include_blank => 'Select User'}) %><br>
+Password: <%= password_field_tag :password %>
+<%= submit_tag ("Sign In") %>
+<% end %>
