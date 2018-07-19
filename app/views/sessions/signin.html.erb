@@ -1,1 +1,4 @@
-hello
+<%= form_for @user do |f| %>
+  <%= f.collection_select(:name, :name, User.all, :id)%>
+
+<% end %>
