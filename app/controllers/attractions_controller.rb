@@ -17,9 +17,20 @@ class AttractionsController < ApplicationController
   end
 
   def create
+    @attraction = Attraction.create(attraction_params)
+    if @attraction.save
+      redirect_to attraction_path(@attraction)
+    else
+      render :new
+    end
   end
 
   def update
+    if @attraction.update(attraction_params)
+      redirect_to attraction_path(@attraction)
+    else
+      render :edit
+    end
   end
 
   private
