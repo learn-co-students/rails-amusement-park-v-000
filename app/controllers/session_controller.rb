@@ -11,11 +11,10 @@ class SessionController < ApplicationController
   end
 
   def destroy
+    if logged_in?
+      session.delete :user_id
+    end
+    redirect_to '/login'
   end
 
-  def index
-  end
-
-  def show
-  end
 end
