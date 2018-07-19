@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :attractions
 
   get '/signin', to: 'sessions#new'
+  post '/signup', to: 'sessions#create'
+  
 end
