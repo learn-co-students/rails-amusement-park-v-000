@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :user_set, only: [:show, :edit, :update]
+
   def welcome
     @user = User.find_by(id: params[:id])
   end
@@ -27,6 +29,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_set
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :password, :happiness, :nausea, :height, :tickets, :admin)
