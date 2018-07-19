@@ -17,11 +17,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= root_url %>">Home</a>
+
+        <% if logged_in? %>
+          <a class="navbar-brand" href=<%= user_path(current_user)%> > <%= "#{current_user.name}'s Profile" %> </a>
+          <%= link_to "Log Out", logout_path, class: "navbar-brand", method: :delete %>
+        <% else %>
+          <a class="navbar-brand" href="/users/new">Sign Up</a>
+          <a class="navbar-brand" href="/signin">Log in</a>
+        <%end%>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +38,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
       <%= yield %>
     </div>
   </body>
