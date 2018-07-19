@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'user#welcome'
+
 
   resources :users
   resources :attractions
@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
+
+  root 'user#welcome'
 end
