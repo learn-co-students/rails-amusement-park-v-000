@@ -13,7 +13,7 @@ class Ride < ActiveRecord::Base
       take_tickets
       update_nausea
       update_happiness
-      user.save
+      return "Thanks for riding the #{attraction.name}!"
     end
   end
 
@@ -27,14 +27,17 @@ class Ride < ActiveRecord::Base
 
   def take_tickets
     user.tickets -= attraction.tickets
+    user.update_attribute(:tickets, user.tickets)
   end
 
   def update_nausea
     user.nausea += attraction.nausea_rating
+    user.update_attribute(:nausea, user.nausea)
   end
 
   def update_happiness
     user.happiness += attraction.happiness_rating
+    user.update_attribute(:happiness, user.happiness)
   end
 
 end

@@ -1,0 +1,10 @@
+<ul>
+  <%= @attractions.each do |f| %>
+    <li> <%= f.name %> - <%= link_to "Go on #{f.name}", attraction_path(f) %> </li>
+  <% end %>
+</ul>
+
+
+<% if current_user.admin == true %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>

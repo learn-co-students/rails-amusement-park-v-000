@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user
+    if @user && @user.valid?
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -16,10 +16,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !!logged_in?
+    if logged_in?
       @user = current_user
     else
-      render 'welcome/home'
+      redirect_to root_path
     end
   end
 
