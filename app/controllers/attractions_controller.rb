@@ -1,6 +1,5 @@
 class AttractionsController < ApplicationController
   before_action :require_login
-  helper_method :ride_or_edit
 
   def index
     @attractions = Attraction.all
@@ -23,15 +22,6 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by(id: params[:id])
     @attraction.update(attraction_params)
   end
-
-  def ride_or_edit
-    if current_user.admin == true
-      return "Show #{@attraction.name}"
-    else
-      return "Go on this ride"
-    end
-  end
-
 
   private
 
