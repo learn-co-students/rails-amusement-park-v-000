@@ -1,21 +1,23 @@
 class SessionsController < ApplicationController
 
   def signin
-    @user = User.new
+
   end
 
   def create
-      session[:name] = params[:name]
-      if session[:name] && session[:name] != ""
-        redirect_to '/'
-      else
-        redirect_to '/login'
-      end
 
+    if User.find(params[:user_name]).try(:authenticate, "#{params[:password]}")
+      session[:user_id] = params[:user_name]
+        @user = User.find(params[:user_name])
+        redirect_to user_path(@user)
+
+    else
+        redirect_to '/'
+    end
   end
 
   def destroy
-    session.delete :name
+    session.delete :user_id
     redirect_to '/'
   end
 end
