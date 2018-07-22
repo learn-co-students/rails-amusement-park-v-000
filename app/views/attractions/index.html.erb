@@ -21,7 +21,17 @@
         <tr>
             <td><%=att.name%></td>
             <td><%=att.tickets%></td>
-            <td><%=link_to "Go on #{att.name}", attraction_path(att)%></td>
+            <td>
+                <% if @user.admin%>
+                    <%=link_to "Show #{att.name}", attraction_path(att)%>
+                <%else%>
+                    <%=link_to "Go on #{att.name}", attraction_path(att)%>
+
+                <%end%>
+                
+            </td>
         </tr>
     <%end%>
+    
+    <%= link_to "New Attraction", new_attraction_path if @user.admin%>
 </table>
