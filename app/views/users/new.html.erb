@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, :url => { :action => "create" } do |f| %>
   <label>Name:</label>
   <%= f.text_field :name %><br>
   <label>Height:</label>
@@ -11,5 +11,7 @@
   <%= f.text_field :tickets %><br>
   <label>Password:</label>
   <%= f.password_field :password %><br>
+  <label>Admin:</label>
+  <%= f.check_box :admin %><br>
   <%= f.submit %>
 <% end %>
