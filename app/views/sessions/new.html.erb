@@ -1,0 +1,5 @@
+<h1>Sign in to Rails Amusement Park!</h1>
+<%=form_tag '/sessions' %>
+<%=select_tag :user_name, options_from_collection_for_select(User.all, :name, :name)%>
+<%=password_field_tag :password%>
+<%=submit_tag "Sign In" %>
