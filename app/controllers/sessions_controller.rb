@@ -3,6 +3,16 @@ class SessionsController < ApplicationController
     @user = User.new
   end
 
+  def welcome
+    session.delete :user_id
+  end
+
+  def destroy
+    binding.pry
+    session.delete :user_id
+    redirect_to '/'
+  end
+
   def find
     binding.pry
     @user = User.find(params[:user][:name])
