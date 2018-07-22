@@ -1,0 +1,11 @@
+Create a New User!
+<%=form_for @user do |f| %>
+    Name: <%=f.text_field :name%><br>
+    Password: <%=f.password_field :password%><br>
+    Height (in inches): <%=f.number_field :height%><br>
+    How Happy are you? (1-5) <%=f.number_field :happiness%><br>
+    How nauseous are you? (1-5) <%=f.number_field :nausea%><br>
+    How much money do you have? (dollars) <%=f.number_field :tickets%><br>
+    Are you a theme park owner? <%=f.check_box :admin%><br>
+    <%=f.submit%>
+<%end%>
