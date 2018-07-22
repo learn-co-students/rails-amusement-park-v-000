@@ -21,6 +21,17 @@ class AttractionsController < ApplicationController
         @user=User.find(session[:user_id])
     end
     
+    def edit
+        @attraction=Attraction.find(params[:id].to_i)
+    end
+    
+    def update
+        @attraction=Attraction.find(params[:id].to_i)
+        @attraction.update(attraction_params)
+        redirect_to attraction_path(@attraction)
+    end
+        
+    
     private
     
     def attraction_params

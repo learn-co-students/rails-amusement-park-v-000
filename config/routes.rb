@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root to: "welcome#home"
     
     resources :users, only: [:new, :create, :show, :destroy]
-    resources :attractions, only: [:new, :create, :index, :show]
+    resources :attractions, only: [:new, :create, :index, :show, :edit, :update]
     resources :rides, only: [:create, :index]
     
     get '/signin', to: 'sessions#new'
