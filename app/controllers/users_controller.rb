@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :user_set, only: [:show, :edit, :update]
 
-  def welcome
-    @user = User.find_by(id: params[:id])
-  end
-
   def new
     @user = User.new
   end
