@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     
-    root to: "application#home"
+    root to: "welcome#home"
     
     resources :users, only: [:new, :create, :show, :destroy]
     

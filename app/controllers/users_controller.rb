@@ -14,7 +14,11 @@ class UsersController < ApplicationController
     end
     
     def show
-        @user=User.find(session[:user_id])
+        if (session[:user_id]==params[:id].to_i)
+            @user=User.find(session[:user_id])
+        else
+            redirect_to root_path
+        end
     end
     
     private
