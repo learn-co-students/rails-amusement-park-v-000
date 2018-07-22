@@ -5,4 +5,4 @@
 <p>Nausea Rating: <%=@attraction.nausea_rating%></p>
 <p>Happiness Rating: <%=@attraction.happiness_rating%></p>
 
-<%=link_to "Go on this ride", "/"%> <!--SOON...-->
+<%=button_to "Go on this ride", rides_path, {params: {attraction_id:@attraction.id, user_id:@user.id}} %> <!--SOON...-->

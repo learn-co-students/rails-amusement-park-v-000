@@ -5,10 +5,12 @@ class Ride < ActiveRecord::Base
     def take_ride
         if (nuff_tix? && tall_nuf?)
             update_user
+            self.save
+            "Thanks for riding the #{self.attraction.name}!"
         else
             res="Sorry."
-            res<< " You do not have enough tickets to ride the Roller Coaster." if !nuff_tix?
-            res<< " You are not tall enough to ride the Roller Coaster." if !tall_nuf?
+            res<< " You do not have enough tickets to ride the #{self.attraction.name}." if !nuff_tix?
+            res<< " You are not tall enough to ride the #{self.attraction.name}." if !tall_nuf?
             res
         end
     end
