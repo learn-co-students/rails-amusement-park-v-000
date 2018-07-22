@@ -22,10 +22,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :name,
       :height,
-      :height,
       :nausea,
       :tickets,
-      :admin,
       :admin,
       :password,
       :happiness
