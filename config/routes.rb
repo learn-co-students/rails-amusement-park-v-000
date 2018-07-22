@@ -2,6 +2,8 @@ Rails.application.routes.draw do
     
     root to: "application#home"
     
-    resource :users, only: [:new, :create, :show, :destroy]
+    resources :users, only: [:new, :create, :show, :destroy]
+    
+    get '/signin', to: 'sessions#new'
   
 end

@@ -10,11 +10,19 @@ class UsersController < ApplicationController
         @user=User.create(user_params)
         session[:user_id]=@user.id
         #redirect when we're ready
-        redirect_to users_show_path(@user)
+        redirect_to user_path(@user)
     end
+    
+    def show
+        @user=User.find(session[:user_id])
+    end
+    
+    private
     
     def user_params
         params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets, :admin)
     end
+    
+    
 
 end

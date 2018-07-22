@@ -1,0 +1,6 @@
+<h1>Sign in to Rails Amusement Park!</h1>
+<%=form_for :session do |f|%>
+    Name: <%=f.text_field :user_name%><br>
+    Password <%=f.password_field :password %><br>
+    <%=f.submit%>
+<%end%>
