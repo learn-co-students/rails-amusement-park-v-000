@@ -1,4 +1,8 @@
 class RidesController < ApplicationController
+
+  def new
+  end
+  
   def create
     ride = Ride.create(ride_params)
     message = ride.take_ride

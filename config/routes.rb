@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   patch '/attractions/:id', to: 'attractions#update'
   post '/attractions', to: 'attractions#create'
   post '/rides', to:"rides#create", as: 'rides'
+
 end
