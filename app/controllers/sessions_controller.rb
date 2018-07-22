@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     private
     
     def session_params
-        params.require(:session).permit(:user_name, :password)
+        params.permit(:user_name, :password)
     end
     
 end
