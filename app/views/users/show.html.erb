@@ -4,4 +4,5 @@
 <p>Mood: <%=@user.mood%></p>
 <p>Tickets: <%=@user.tickets%></p>
 <p><%="ADMIN" if @user.admin%></p>
-
+<%= link_to 'Log Out', "/logout" %>
+    
