@@ -18,10 +18,13 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
+        <%= link_to "Sign In", signin_path, class: "navbar-brand" %>
+        <%= link_to "Log Out", signout_path, class: "navbar-brand", method: :post %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +32,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
       <%= yield %>
     </div>
   </body>
