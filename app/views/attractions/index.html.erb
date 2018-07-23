@@ -1,16 +1,16 @@
-<% @attractions.each do |attraction| %>
-  <p>Name: <%= attraction.name %></p>
-  <p>Tickets: <%= attraction.tickets %></p>
-  <p>Details:</p>
-  <% if current_user.admin %>
-    <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
-  <% else %>
-    <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
-  <% end %>
-<% end %>
-
-<% if @user %>
-  <%= link_to "#{@user.name} Profile", user_path(@user) %>
+#
+<h1>Attractions</h1>
+<% if current_user.admin %>
+  <p><%= link_to "New Attraction", new_attraction_path %></p>
+  <ul>
+    <% @attractions.each do |a| %>
+    <li><%= link_to "Show #{a.name}", attraction_path(a)%></li>
+    <% end %>
+  </ul>
 <% else %>
-  <%= link_to 'New Attraction', new_attraction_path %>
+  <ul>
+    <% @attractions.each do |a| %>
+    <li><%= link_to "Go on #{a.name}", attraction_path(a)%></li>
+    <% end %>
+  </ul>
 <% end %>

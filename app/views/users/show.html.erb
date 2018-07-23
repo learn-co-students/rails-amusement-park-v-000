@@ -1,13 +1,25 @@
-<% if @message %>
-  <p><%= @message %></p>
-<% end %>
+<h1>Welcome, <%= @user.name %></h1>
+<table style="width:25%">
+  <% if @user.admin %>
+    <tr>
+      <th>ADMIN</th>
+    </tr>
+    <tr>
+      <th><%= link_to "New Attraction", new_attraction_path %></th>
+    </tr>
+  <% end %>
+  <tr>
+    <th>Mood</th>
+    <td><%= @user.mood if @user.mood%></td>
+  </tr>
+  <tr>
+    <th>Height</th>
+    <td><%= @user.height if @user.height%> inches</td>
+  </tr>
+  <tr>
+    <th>Tickets:</th>
+    <td><%= @user.tickets if @user.tickets %></td>
+  </tr>
+</table>
 
-<% if @user.admin %>
-  <p>ADMIN</p>
-<% end %>
-
-<p>Name: <%= @user.name %></p>
-<p>Tickets: <%= @user.tickets %></p>
-<p>Mood: <%= @user.mood %></p>
-<p>Height: <%= @user.height %></p>
-<p><%= link_to 'See attractions', attractions_path %></p>
+<h3><%= link_to "See attractions", attractions_path %></h3>

@@ -1,5 +1,5 @@
-<%= form_for(@attraction) do |f| %>
-  <%= f.label :name, "Name" %><br>
+<%= form_for @attraction do |f| %>
+  <%= f.label :name %><br>
   <%= f.text_field :name %>
 
   <%= f.label :min_height, "Required Height" %><br>

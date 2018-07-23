@@ -6,7 +6,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    @ride = Ride.new
+    #binding.byebug
   end
 
   def new
@@ -14,6 +14,7 @@ class AttractionsController < ApplicationController
   end
 
   def edit
+
   end
 
   def create

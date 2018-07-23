@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   resources :users
   resources :attractions
-  resources :rides, only: [:new]
+  resources :sessions, only: [:new, :create, :destroy]
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  post '/logout', to: 'sessions#destroy'
+  get '/signin', to: 'sessions#new'
+  post '/sessions/create', to: 'sessions#create'
+  post '/signout', to: 'sessions#destroy'
+  post '/rides', to: 'rides#ride', as: 'ride'
+  post "/rides/new" => 'rides#new'
 
-  root 'user#welcome'
+  root 'static#welcome'
 end
