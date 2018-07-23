@@ -1,0 +1,15 @@
+<% @atts.each do |a| %>
+Name <%= a.name %>
+Tickets <%=a.tickets %>
+<% if @user.admin%>
+  Details <%= link_to "Show #{a.name}", attraction_path(a) %><br>
+<% else %>
+  Details <%= link_to "Go on #{a.name}", attraction_path(a) %><br>
+<% end %>
+
+<% end %>
+
+<% if @user.admin%>
+<%= link_to "New Attraction", new_attraction_path %><br>
+
+<% end %>

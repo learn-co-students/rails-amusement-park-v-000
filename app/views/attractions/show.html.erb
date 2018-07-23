@@ -1,0 +1,15 @@
+Name:<%= @att.name %>
+Total Number of Users:<%= @att.users.count %>
+Ticket Requirement:<%= @att.tickets %>
+Height Requirement:<%= @att.min_height %>
+Nausea Rating:<%= @att.nausea_rating %>
+Happiness Rating:<%= @att.happiness_rating %>
+<% if @user.admin%>
+<%= link_to "Edit Attraction", edit_attraction_path %><br>
+<% else %>
+<%= form_for @ride do |f|%>
+<%= f.hidden_field :attraction_id, value: @att.id %>
+<%= f.hidden_field :user_id, value: @user.id %>
+<%= f.submit "Go on this ride" %>
+<% end %>
+<% end %>
