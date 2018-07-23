@@ -2,7 +2,7 @@ class RidesController < ApplicationController
   before_action :require_login
 
   def new
-    @ride = Ride.new(user_id: current_user.id, attraction_id: params[:attraction_id])
+    @ride = Ride.create(user_id: current_user.id, attraction_id: params[:attraction_id])
     message = @ride.take_ride
     redirect_to user_path(current_user), notice: message
   end
