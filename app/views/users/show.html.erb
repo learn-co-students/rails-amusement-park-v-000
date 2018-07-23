@@ -2,7 +2,7 @@
 <% if flash[:alert] %>
 <%= flash[:alert] %>
 <% end %>
-    <p><strong> <%= "ADMIN" if admin? %></strong></p>
+    <p><strong> <%= "ADMIN" %></strong></p>
     <p><strong>Name: </strong><%= @user.name %></p>
     <p><strong>Tickets: </strong><%= @user.tickets %></p>
     <p><strong>Mood: </strong><%= @user.mood if @user.happiness %></p>
