@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
+  before_action :lo_redirector, only: [:show]
 
-  #before_action :user_redirect, only: [:show]
+  def ride
+      @ride = Ride.create(user_id: params[:user_id], attraction_id: params[:attraction_id])
+      @ride.take_ride
+      redirect_to user_path(current_user)
+  end
 
-  def new
+ def new
     @user = User.new
   end
 
@@ -24,20 +29,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-    private
+  private
 
     def user_params
       params.require(:user).permit(:name, :nausea, :happiness, :tickets, :height, :password)
     end
-
-    def logged_in?
-      !!session[:user_id]
-    end
-
-    # def user_redirect
-    #   if !logged_in?
-    #     redirect_to '/users/new'
-    #   end
-    # end
 
 end
