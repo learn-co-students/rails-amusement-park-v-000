@@ -2,12 +2,12 @@ class UsersController < ApplicationController
   before_action :lo_redirector, only: [:show]
 
   def ride
-      @ride = Ride.create(user_id: params[:user_id], attraction_id: params[:attraction_id])
-      @ride.take_ride
-      redirect_to user_path(current_user)
+    @ride = Ride.create(user_id: params[:user_id], attraction_id: params[:attraction_id])
+    @ride.take_ride
+    redirect_to user_path(current_user)
   end
 
- def new
+  def new
     @user = User.new
   end
 
