@@ -21,19 +21,6 @@ DATA = {
     ["Cole Sand", 2, 2, 7, 34, "password"],
     ["Quvenzhané Wallis", 2, 2, 13, 30, "password"]
   ],
-  :attraction_keys =>
-   ["name", "nausea_rating", "happiness_rating", "tickets", "min_height"],
-  :attractions => [
-    ["Scrambler Ride", 2, 2, 2, 36],
-    ["Miniature Railroad", 0, 1, 2, 32],
-    ["Merry-Go-Round", 1, 1, 1, 30],
-    ["Roller Coaster", 1, 3, 4, 54],
-    ["Swinging Ship", 2, 2, 2, 36],
-    ["Go Karts", 1, 2, 3, 36],
-    ["Haunted Mansion", 1, 1, 1, 30],
-    ["Ferris Wheel", 1, 1, 2, 36],
-    ["Teacups Ride", 3, 1, 1, 28]
-  ],
   :admins => [
     "Mary Elitch Long",
     "John Elitch"
@@ -43,7 +30,15 @@ DATA = {
 def main
   make_users
   make_admin
-  make_attractions_and_rides
+  Attraction.create(name: "Scrambler Ride", nausea_rating: 2, happiness_rating: 2, tickets: 2, min_height: 36)
+  Attraction.create(name: "Miniature Railroad", nausea_rating: 0, happiness_rating: 1, tickets: 2, min_height: 32)
+  Attraction.create(name: "Merry-Go-Round", nausea_rating: 1, happiness_rating: 1, tickets: 1, min_height: 30)
+  Attraction.create(name: "Roller Coaster", nausea_rating: 1, happiness_rating: 3, tickets: 4, min_height: 54)
+  Attraction.create(name: "Swinging Ship", nausea_rating: 2, happiness_rating: 2, tickets: 2, min_height: 36)
+  Attraction.create(name: "Go Karts", nausea_rating: 1, happiness_rating: 2, tickets: 3, min_height: 36)
+  Attraction.create(name: "Haunted Mansion", nausea_rating: 1, happiness_rating: 1, tickets: 1, min_height: 30)
+  Attraction.create(name: "Ferris Wheel", nausea_rating: 1, happiness_rating: 1, tickets: 2, min_height: 36)
+  Attraction.create(name: "Teacups Ride", nausea_rating: 3, happiness_rating: 1, tickets: 1, min_height: 28)
 end
 
 def make_users
@@ -59,22 +54,6 @@ end
 def make_admin
   DATA[:admins].each do |name|
     User.create(name: name, admin: true, password: 'password')
-  end
-end
-
-def make_attractions_and_rides
-  DATA[:attractions].each do |attraction|
-    new_attraction = Attraction.new
-    attraction.each_with_index do |attribute, i|
-      new_attraction.send(DATA[:attraction_keys][i] + "=", attribute)
-    end
-    rand(1..8).times do
-      customers = []
-      User.all.each {|u| customers << u if u.admin != true}
-      new_attraction.users << customers[rand(0...customers.length)]
-    end
-    new_attraction.users.each {|c| c.save}
-    new_attraction.save
   end
 end
 
