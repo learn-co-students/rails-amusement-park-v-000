@@ -14,6 +14,6 @@
     <%= f.label :min_height %><br/>
     <%= f.text_field :min_height %><br/><br/>
 
-    <%= f.submit 'Sumbit' %>
+    <%= f.submit if request.env['PATH_INFO'] == 'attractions/new' ? 'Create Attraction' : 'Update Attraction' %>
 
 <% end %>

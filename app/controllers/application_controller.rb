@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    current_user.admin == true
+    current_user.admin
   end
 end
