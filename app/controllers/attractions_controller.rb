@@ -8,7 +8,8 @@ class AttractionsController < ApplicationController
   def show
     binding.pry
     @attraction = Attraction.find_by(id: params[:id])
-    @ride = @attraction.ride
+    @ride = Ride.new
+    @ride.attraction = @attraction
   end
 
 end

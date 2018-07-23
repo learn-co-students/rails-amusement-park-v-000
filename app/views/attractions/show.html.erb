@@ -3,5 +3,7 @@
 
 
 <%= form_for @ride do |f| %>
+  <%= f.hidden_field :attraction_id, value: @attraction.id %>
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
   <%= f.submit "Go on this ride"%>
 <% end %>
