@@ -1,0 +1,5 @@
+<%=form_tag(sessions_path)  do %>
+  <%=collection_select(:user, :name, User.all, :id, :name)%><br>
+  <%=password_field_tag :password%>
+  <%=submit_tag "Sign In"%>
+<%end%>
