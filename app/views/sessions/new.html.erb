@@ -1,6 +1,6 @@
 <%= form_for :user do |f| %>
     <strong>Your name:</strong><%= f.select 'name', options_for_select(@users) %><br/><br/>
     <strong>Your password:</strong><br/>
-    <%= f.password_field 'password', id: 'password'%><br/><br/>
+    <%= f.password_field 'password', id: 'password' %><br/><br/>
     <%= f.submit 'Sign In' %>
 <% end %>

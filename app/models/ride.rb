@@ -8,7 +8,7 @@ class Ride < ActiveRecord::Base
     if @user.tickets < @attraction.tickets
       errors[:base] << "You do not have enough tickets to ride the #{attraction.name}."
     end
-    if @user.height <= @attraction.min_height
+    if @user.height < @attraction.min_height
       errors[:base] << "You are not tall enough to ride the Roller Coaster."
     end
     if errors[:base]

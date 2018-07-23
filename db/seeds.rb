@@ -39,6 +39,20 @@ DATA = {
     "John Elitch"
   ]
 }
+# Attraction.create(name: "Scrambler Ride", nausea_rating: 2, happiness_rating: 2, tickets: 2, min_height: 36)
+# Attraction.create(name: "Miniature Railroad", nausea_rating: 0, happiness_rating: 1, tickets: 2, min_height: 32)
+# Attraction.create(name: "Merry-Go-Round", nausea_rating: 1, happiness_rating: 1, tickets: 1, min_height: 30)
+# Attraction.create(name: "Roller Coaster", nausea_rating: 1, happiness_rating: 3, tickets: 4, min_height: 54)
+# Attraction.create(name: "Swinging Ship", nausea_rating: 2, happiness_rating: 2, tickets: 2, min_height: 36)
+# Attraction.create(name: "Go Karts", nausea_rating: 1, happiness_rating: 2, tickets: 3, min_height: 36)
+# Attraction.create(name: "Haunted Mansion", nausea_rating: 1, happiness_rating: 1, tickets: 1, min_height: 30)
+# Attraction.create(name: "Ferris Wheel", nausea_rating: 1, happiness_rating: 1, tickets: 2, min_height: 36)
+# Attraction.create(name: "Teacups Ride", nausea_rating: 3, happiness_rating: 1, tickets: 1, min_height: 28)
+
+
+
+
+
 
 def main
   make_users
@@ -77,5 +91,7 @@ def make_attractions_and_rides
     new_attraction.save
   end
 end
+
+
 
 main

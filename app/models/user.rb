@@ -5,11 +5,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true
 
   def mood
-      if self.nausea > self.happiness
-          "sad"
-      else
-          "happy"
-      end
+      happiness >= nausea ? "happy" : "sad"
   end
 
 end
