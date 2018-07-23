@@ -38,11 +38,11 @@ class UsersController < ApplicationController
     if session[:user_id].nil?
       redirect_to '/'
     else
-      binding.pry
+      #binding.pry
       @user = User.find(params[:id])
       if @user.rides.last != nil
         @ride = @user.rides.last
-        @ride.take_ride
+        #@ride.take_ride
         if @ride.take_ride != true
           @message = @ride.take_ride
         else

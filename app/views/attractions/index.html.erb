@@ -1,5 +1,13 @@
 <h1>Rides</h1>
 
-<% @attractions.each do |attraction| %>
-  <p><%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></p>
+<% if @user.admin == true %>
+  <% @attractions.each do |attraction| %>
+    <p><%= link_to "Show #{attraction.name}", attraction_path(attraction)%></p>
+  <% end %>
+<% else %>
+  <% @attractions.each do |attraction| %>
+    <p><%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></p>
+  <% end %>
 <% end %>
+
+<%= link_to_if @user.admin == true, "New Attraction", new_attraction_path %>

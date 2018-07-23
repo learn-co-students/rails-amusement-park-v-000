@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def find
-    binding.pry
+    #binding.pry
     @user = User.find(params[:user][:name])
     #binding.pry
     if @user.authenticate(params[:user][:password])
