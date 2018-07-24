@@ -1,0 +1,7 @@
+<ul>
+  <%= @attractions.each do |f| %>
+    <li> <%= f.name %> - <%= link_to "Show #{f.name}", attraction_path(f) %> </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Attraction", new_attraction_path %>

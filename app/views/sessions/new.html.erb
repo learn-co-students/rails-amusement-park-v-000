@@ -1,0 +1,11 @@
+<h1>Login</h1>
+
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+
+  <%= select_tag 'user_name', options_from_collection_for_select(@users, 'id', 'name') %>
+
+  <input name='password'>
+
+  <input type="submit" value='Sign In'>
+
+<% end %>

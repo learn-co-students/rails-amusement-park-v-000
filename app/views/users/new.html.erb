@@ -1,0 +1,29 @@
+<div class="form-group">
+  <%= form_for(@user) do |f| %>
+    <label>Name</label><br>
+    <%= f.text_field :name, class: "form-control" %><br />
+
+    <label>Height (in inches)</label><br>
+    <%= f.text_field :height, class: "form-control" %><br />
+
+    <label>How happy are you? (1-5 scale)</label><br>
+    <%= f.text_field :happiness, class: "form-control" %><br />
+
+    <label>How nauseas are you? (1-5 scale)</label><br>
+    <%= f.text_field :nausea, class: "form-control" %><br />
+
+    <label>How many dollars are in your pocket?</label><br>
+    <%= f.text_field :tickets, class: "form-control" %><br />
+
+    <label>Check box if you are a theme park owner</label> <%= f.check_box :admin%><br />
+    <br>
+
+    <label>Password</label><br />
+    <%= f.text_field :password, class: "form-control" %><br />
+
+
+    <div class="actions">
+      <%= f.submit "Create User" %>
+    </div>
+  <% end %>
+</div>

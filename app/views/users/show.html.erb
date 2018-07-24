@@ -1,0 +1,17 @@
+<div class="center">
+  <div class="info">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg %>
+    <% end %>
+
+    <h3><%= admin_text %></h3>
+    <br>
+    <p><strong>Name:</strong> <%= @user.name %></p>
+    <p><strong>Tickets:</strong> <%= @user.tickets %></p>
+    <p><strong>Mood:</strong> <%= @user.mood %></p>
+    <p><strong>Height:</strong> <%= @user.height %></p>
+
+    <%= link_to "See attractions", attractions_path %> <br>
+    <%= link_to "Log Out", logout_path %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<h1><%= @attraction.name %></h1>
+
+<%= form_tag rides_new_path, :method => :post do %>
+  <%= hidden_field_tag "attraction_id", @attraction.id %>
+  <%= button_tag "Go on this ride" %>
+<% end %>
