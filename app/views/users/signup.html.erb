@@ -1,0 +1,23 @@
+<h1>Sign up to Rails Amusement Park</h1>
+
+<%= form_for @user do |f| %>
+  <label>Name:</label><br>
+  <%= f.text_field :name %><br>
+
+  <label>Password</label><br>
+  <%= f.password_field :password %><br>
+
+  <label>Height</label><br>
+  <%= f.number_field :height %><br>
+
+  <label>How nauseous are you? (1-5 scale) </label><br>
+  <%= f.number_field :nausea %><br>
+
+  <label>How happy are you? (1-5 scale) </label><br>
+  <%= f.number_field :happiness %><br>
+
+  <label>How many tickets do you have? </label><br>
+  <%= f.number_field :tickets %><br>
+
+  <%= f.submit %>
+<% end %>
