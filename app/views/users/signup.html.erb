@@ -1,4 +1,4 @@
-<h1>Sign up to Rails Amusement Park</h1>
+<h1>Sign Up to Rails Amusement Park</h1>
 
 <%= form_for @user do |f| %>
   <label>Name:</label><br>
@@ -19,5 +19,8 @@
   <label>How many tickets do you have? </label><br>
   <%= f.number_field :tickets %><br>
 
-  <%= f.submit %>
+  <label>Check this box if you are a park administrator</label><br>
+  <%= f.check_box :admin, {}, checked_value = true, unchecked_value = false %><br>
+
+  <%= f.submit 'Create User'%>
 <% end %>
