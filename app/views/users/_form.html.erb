@@ -1,0 +1,53 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+    </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.label :height, "Height (in inches)" %><br />
+    <%= f.text_field :height, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.label :happiness, "How happy are you? (1-5 scale) " %><br />
+    <%= f.text_field :happiness, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.label :nausea, "How nauseous are you? (1-5 scale) " %><br />
+    <%= f.text_field :nausea, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.label :tickets, "How many dollars are in your pocket? " %><br />
+    <%= f.text_field :tickets, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.label :admin, "Check box if you are a theme park owner" %>
+    <%= f.check_box :admin, class: "form-check-input" %>
+  </p>
+
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password, class: "form-control" %>
+  </p>
+
+  <div class="actions">
+      <br/>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+
+<%end%>
