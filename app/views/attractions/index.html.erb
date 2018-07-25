@@ -1,0 +1,25 @@
+listing attractions
+binding.pry
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Tickets</th>
+    <th>Details</th>
+  </tr>
+  <%= @attractions.each do |attraction| %>
+    <tr>
+      <td><%= attraction.name %></td>
+      <td><%= attraction.tickets %></td>
+      <% if User.find(session[:user_id]).admin? %>
+        <td><%= link_to("Show #{attraction.name}", "/attractions/#{attraction.id}")%></td>
+      <% else %>
+        <td><%= link_to("Go on #{attraction.name}", "/attractions/#{attraction.id}")%></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<% if User.find(session[:user_id]).admin? %>
+  <%= link_to("New Attraction", new_attraction_path)%>
+
+<% end %>

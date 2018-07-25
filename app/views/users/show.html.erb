@@ -1,0 +1,14 @@
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<% if @user.admin %>
+  <p>ADMIN</p>
+<% end %>
+<p>Name: <%= @user.name %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Height: <%= @user.height %> inches</p>
+<p><a href="/attractions">See attractions</a></p>
+<p><a href="/signout">Log Out</a></p>
