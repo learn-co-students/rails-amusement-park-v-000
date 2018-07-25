@@ -10,13 +10,16 @@ binding.pry
     <tr>
       <td><%= attraction.name %></td>
       <td><%= attraction.tickets %></td>
-      <td><%= link_to("Go on #{attraction.name}", "/attractions/#{attraction.id}")%></td>
+      <% if User.find(session[:user_id]).admin? %>
+        <td><%= link_to("Show #{attraction.name}", "/attractions/#{attraction.id}")%></td>
+      <% else %>
+        <td><%= link_to("Go on #{attraction.name}", "/attractions/#{attraction.id}")%></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
-<% if @user.admin %>
-  <%= form_for()%>
+<% if User.find(session[:user_id]).admin? %>
+  <%= link_to("New Attraction", new_attraction_path)%>
 
-  <% end %>
 <% end %>

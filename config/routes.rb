@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   post "/session" => 'sessions#create'
   get "/signout" => 'sessions#destroy'
   root 'application#hello'
-  get "/attractions" => 'attractions#index'
-  get "/attractions/:id" => 'attractions#show'
+
+  resources :attractions
 
   post "/rides" => 'rides#create'
 end
