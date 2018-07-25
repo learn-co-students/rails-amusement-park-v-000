@@ -8,8 +8,9 @@
   <%= f.label :happiness %>
   <%= f.number_field :happiness %>
   <%= f.label :height %>
-  <%= f.number_field :height %>
+  Height:<%= f.number_field :height %>
   <%= f.label :tickets %>
-  <%= f.number_field :tickets %>
+  Tickets:<%= f.number_field :tickets %>
+  ADMIN?<%= f.check_box :admin%><br>
   <%= f.submit 'Create User' %>
 <% end %>
