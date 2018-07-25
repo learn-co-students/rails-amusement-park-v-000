@@ -1,1 +1,22 @@
 listing attractions
+binding.pry
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Tickets</th>
+    <th>Details</th>
+  </tr>
+  <%= @attractions.each do |attraction| %>
+    <tr>
+      <td><%= attraction.name %></td>
+      <td><%= attraction.tickets %></td>
+      <td><%= link_to("Go on #{attraction.name}", "/attractions/#{attraction.id}")%></td>
+    </tr>
+  <% end %>
+</table>
+
+<% if @user.admin %>
+  <%= form_for()%>
+
+  <% end %>
+<% end %>

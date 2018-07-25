@@ -1,3 +1,8 @@
+
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
 <% if @user.admin %>
   <p>ADMIN</p>
 <% end %>

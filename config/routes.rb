@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   root 'application#hello'
   get "/attractions" => 'attractions#index'
   get "/attractions/:id" => 'attractions#show'
+
+  post "/rides" => 'rides#create'
 end
