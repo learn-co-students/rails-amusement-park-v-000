@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
   before_action :current_user
+  layout "application"
+
+  def home
+    render :home
+  end
 
   def current_user
     @user = (User.find_by(id: session[:user_id]) || User.new)
@@ -14,5 +18,5 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
   end
-  
+
 end

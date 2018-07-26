@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'application#main'
+
+  namespace :admin do
+    resources :stats, only: [:index]
+  end
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 
@@ -8,6 +14,6 @@ Rails.application.routes.draw do
 
   post '/logout' => 'sessions#destroy'
 
-  root 'users#index'
+
 
 end
