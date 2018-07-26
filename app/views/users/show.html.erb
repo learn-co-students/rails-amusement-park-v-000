@@ -1,6 +1,10 @@
 <%=link_to "Log Out", logout_path, method: :delete %>
 <%= link_to "See attractions", attractions_path %>
 
+<%if flash[:notice]%>
+<%=flash[:notice]%>
+<%end%>
+
 Name:<%=@user.name%>
 Tickets: <%=@user.tickets%>
 Mood: <%=@user.mood%>
@@ -8,4 +12,5 @@ Height: <%=@user.height%>
 
 <%if @user.admin %>
 ADMIN
+<%=link_to "New Attraction", new_attraction_path%>
 <%end%>
