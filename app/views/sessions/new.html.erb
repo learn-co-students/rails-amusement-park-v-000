@@ -1,0 +1,18 @@
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+
+  <div>
+    <%= f.label :name, "Select your name" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :password, "Enter your password"  %>
+    <%= f.password_field :password %>
+  </div>
+
+
+  <div>
+    <%= f.submit "Sign In" %>
+  </div>
+
+<%end%>
