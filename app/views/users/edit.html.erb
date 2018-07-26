@@ -1,0 +1,21 @@
+<%= form_for(@user) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %><br><br>
+
+      <%= f.label :nausea, "Nausea: 1-5" %>
+      <%= f.number_field :nausea %><br><br>
+
+      <%= f.label :happiness, "Happiness: 1-5" %>
+      <%= f.number_field :happiness %><br><br>
+
+      <%= f.label :tickets %>
+      <%= f.number_field :tickets %><br><br>
+
+      <%= f.label :height %>
+      <%= f.number_field :height %><br><br>
+
+      <%= f.label :admin, "Check if Park Owner" %>
+      <%= f.check_box :admin %><br><br>
+
+      <%= f.submit "Update User" %>
+    <% end %>
