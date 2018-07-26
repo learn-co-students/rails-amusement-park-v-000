@@ -1,4 +1,5 @@
-<%=link_to "Log Out", logout_path %>
+<%=link_to "Log Out", logout_path, method: :delete %>
+<%= link_to "See attractions", attractions_path %>
 
 Name:<%=@user.name%>
 Tickets: <%=@user.tickets%>

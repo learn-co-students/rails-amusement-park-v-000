@@ -5,7 +5,7 @@ resources :sessions
 root "sessions#index"
 get "/signin" => "sessions#new"
 post "/signin" => "sessions#create"
-get "/logout" => "sessions#destroy"
+delete "/logout" => "sessions#destroy"
 
 
 end
