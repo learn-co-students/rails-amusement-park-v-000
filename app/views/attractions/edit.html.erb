@@ -1,0 +1,5 @@
+<%= form_tag attraction_path(@attraction), method: 'put' do %>
+  <label>Name:</label>
+  <%= text_field_tag "attraction[name]", @attraction.name %><br>
+  <%= submit_tag "Update Attraction" %>
+<% end %>
