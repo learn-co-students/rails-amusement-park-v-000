@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     resources :stats, only: [:index]
   end
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
 
   resources :users, only: [:index, :new, :create, :show]
   resources :attractions, only: [:show, :index]

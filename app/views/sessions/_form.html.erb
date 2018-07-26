@@ -1,0 +1,17 @@
+<%= form_for :users, url: '/signin' do |f| %>
+
+  <%= f.label :name, "Your name:" %>
+  <%= f.collection_select :name, User.order(:name), :id, :name %>
+  <br><br>
+
+  <%= f.label :password, "Your Password:" %><br>
+  <%= f.password_field :password %>
+
+  <br><br>
+
+  <%= f.submit 'Sign In' %>
+<% end %>
+
+<br><br>
+
+<p>New user? <%= link_to(controller: 'users', action: 'new') { 'Sign Up' } %>
