@@ -17,8 +17,6 @@ class UsersController < ApplicationController
         flash[:notice] = "User account created successfully"
         # redirect_to @user
         redirect_to user_path(@user)
-        # redirect_to '/show'
-        # redirect_to controller: 'users', action: 'show'
       else
         flash[:alert] = "User account not saved successfully"
         render :new
@@ -31,7 +29,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(session[:user_id])
+    @user = User.find(params[:id])
+
+    # @user = User.find_by(session[:user_id])
   end
 
   private
