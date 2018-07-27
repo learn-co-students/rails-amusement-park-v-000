@@ -1,4 +1,7 @@
 class UsersController < ApplicationController 
+    before_action :require_login
+    skip_before_action :require_login, only: [:new, :create, :signin, :index]
+
     def new 
         @user = User.new
     end
@@ -17,7 +20,8 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
-    def login 
+    def index
+        @users = User.all
     end
 
     private 
@@ -35,5 +39,9 @@ class UsersController < ApplicationController
 
     def find 
         @user = User.find(params[:id])
+    end
+
+    def require_login 
+        redirect_to root_path unless session[:user_id]
     end
 end

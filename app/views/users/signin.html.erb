@@ -1,7 +1,5 @@
-<%= form_for @user do |f| %>
-    <%= f.collection_select :name, User.all, :id, :name %>
-    <%= f.text_field :name %>
-    <%= f.label "Password", :password %>
-    <%= f.text_field :password %>
-    <%= f.submit %>
+<%= form_tag("/signin", method: "post") do %>
+    <%= collection_select(:user, :name, User.all, :name, :name) %>
+    <%= text_field_tag(:password) %>
+    <%= submit_tag("Sign In") %>
 <% end %>
