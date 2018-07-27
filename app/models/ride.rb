@@ -21,5 +21,5 @@ class Ride < ActiveRecord::Base
     end
   end
 
-  end
+
 end
