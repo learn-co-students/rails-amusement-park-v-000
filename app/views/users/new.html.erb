@@ -1,0 +1,12 @@
+<%= link_to("Sign Up", new_user_path) %>
+<%= form_for @user do |f| %>
+    <%= f.text_field :name %>
+    <%= f.number_field :height %>
+    <%= f.number_field :happiness %>
+    <%= f.number_field :nausea %>
+    <%= f.number_field :tickets %>
+    <%= f.label "Password", :password %>
+    <%= f.text_field :password %>
+    <%= f.check_box :admin %>
+    <%= f.submit %>
+<% end %>
