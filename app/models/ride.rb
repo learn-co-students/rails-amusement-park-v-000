@@ -12,6 +12,7 @@ class Ride < ActiveRecord::Base
     else
       subtract_tickets
       add_nausea
+      add_happiness
     end
   end
 
@@ -21,6 +22,10 @@ class Ride < ActiveRecord::Base
 
   def add_nausea
     user.update(nausea: user.nausea += attraction.nausea_rating)
+  end
+
+  def add_happiness
+    user.update(happiness: user.happiness += attraction.happiness_rating)
   end
 
   def too_few_tickets?
