@@ -1,0 +1,7 @@
+<%= form_for @user do |f| %>
+    <%= f.collection_select :name, User.all, :id, :name %>
+    <%= f.text_field :name %>
+    <%= f.label "Password", :password %>
+    <%= f.text_field :password %>
+    <%= f.submit %>
+<% end %>
