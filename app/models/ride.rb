@@ -10,27 +10,25 @@ class Ride < ActiveRecord::Base
     elsif too_short?
       "Sorry. You are not tall enough to ride the #{attraction.name}."
     else
-      self.subtract_tickets
-      self.add_nausea
+      subtract_tickets
+      add_nausea
     end
   end
 
   def subtract_tickets
-    self.user.tickets -= self.attraction.tickets
-    self.user.update(tickets: self.user.tickets)
+    user.update(tickets: user.tickets -= attraction.tickets)
   end
 
   def add_nausea
-    self.user.nausea += self.user.nausea
-    self.user.update(nausea: self.user.nausea)
+    user.update(nausea: user.nausea += attraction.nausea_rating)
   end
 
   def too_few_tickets?
-    self.user.tickets < self.attraction.tickets
+    user.tickets < attraction.tickets
   end
 
   def too_short?
-    self.user.height < self.attraction.min_height
+    user.height < attraction.min_height
   end
 
 
