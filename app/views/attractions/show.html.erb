@@ -1,0 +1,5 @@
+<%= form_tag('/take_ride', method: "get") do %>
+    <%= hidden_field_tag("attraction", @attraction.name) %>
+    <%= button_tag('Go on this ride') %>
+
+<% end %>

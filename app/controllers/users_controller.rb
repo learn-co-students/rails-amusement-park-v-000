@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
     def show 
         find
+        flash[:message] = flash[:message]
     end
 
     def signin

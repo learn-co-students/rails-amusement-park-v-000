@@ -13,6 +13,7 @@ class Ride < ActiveRecord::Base
       subtract_tickets
       add_nausea
       add_happiness
+      "Thanks for riding the #{attraction.name}!"
     end
   end
 
