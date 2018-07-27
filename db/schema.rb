@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_07_27_021556) do
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
-    t.string "tickets"
+    t.integer "tickets"
     t.integer "nausea_rating"
     t.integer "happiness_rating"
     t.integer "min_height"
