@@ -1,0 +1,11 @@
+<% if flash[:notice] %>
+  <div style="color:red;"><%= flash[:notice] %></div>
+<% end %>
+
+<p>Login</p>
+<%= form_for(:user, url: sessions_path) do |f| %>
+<%= f.collection_select(:name, User.all, :name, :name) %>
+<%= f.password_field :password, :id => "password" %>
+<%= f.submit "Sign In" %>
+<% end %>
+<p>Or <%= link_to "sign up", new_user_path %> </p>
