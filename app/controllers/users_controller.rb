@@ -24,6 +24,11 @@ class UsersController < ApplicationController
         @users = User.all
     end
 
+    def signout 
+        session.delete(:user_id)
+        redirect_to root_path
+    end
+
     private 
 
     def user_params 
@@ -33,7 +38,8 @@ class UsersController < ApplicationController
             :happiness,
             :nausea,
             :tickets,
-            :password
+            :password,
+            :admin
         )
     end
 

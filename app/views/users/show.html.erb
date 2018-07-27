@@ -4,3 +4,6 @@
 <p>Nausea: <%= @user.nausea %></p>
 <p>Height: <%= @user.height %></p>
 <p>Happiness: <%= @user.happiness %></p>
+<%= "ADMIN" if @user.admin %>
+<%= link_to("See attractions", attractions_path) %>
+<%= link_to("Log Out", logout_path) %>
