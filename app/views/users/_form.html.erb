@@ -1,8 +1,9 @@
-<%= form_for @user do |f| %>
+<%= form_for user do |f| %>
   <%= f.textfield :name %>
   <%= f.textfield :height %>
   <%= f.textfield :happiness %>
   <%= f.textfield :tickets %>
   <%= f.password_field :password %>
+  Are you a park administrator? <%= f.checkbox :admin %>
   <%= f.submit %>
 <% end %>
