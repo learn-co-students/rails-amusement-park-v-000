@@ -1,8 +1,9 @@
 <%= form_for @user do |f| %>
-  <%= f.textfield :name %>
-  <%= f.textfield :height %>
-  <%= f.textfield :happiness %>
-  <%= f.textfield :tickets %>
+  <%= f.text_field :name %>
+  <%= f.text_field :height %>
+  <%= f.text_field :happiness %>
+  <%= f.text_field :tickets %>
   <%= f.password_field :password %>
+
   <%= f.submit %>
 <% end %>
