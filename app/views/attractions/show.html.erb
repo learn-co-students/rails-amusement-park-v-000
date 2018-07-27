@@ -1,0 +1,11 @@
+<p>Name: <%= @attraction.name %></p>
+<p>Total Number of Users: <%= @attraction.rides.count %> </p>
+<p>Ticket Requirement: <%= @attraction.tickets %></p>
+<p>Height Requirement: <%= @attraction.min_height %> inches</p>
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
+
+<% if @user %>
+<%= link_to "Edit Attraction", edit_attraction_path %>
+<% else %>
+<%= button_to "Go on this ride", {controller: 'users', action: 'update'}, method: 'put' %>
+<% end %>
