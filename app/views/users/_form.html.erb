@@ -1,9 +1,15 @@
 <%= form_for @user do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_field :height %>
-  <%= f.text_field :happiness %>
-  <%= f.text_field :tickets %>
-  <%= f.password_field :password %>
-
+  Name: <%= f.text_field :name %>
+  <br>
+  Height: <%= f.text_field :height %>
+  <br>
+  Happiness: <%= f.text_field :happiness %>
+  <br>
+  Number of Tickets: <%= f.text_field :tickets %>
+  <br>
+  Password: <%= f.password_field :password %>
+  <br>
+  Are you an administrator? <%= f.check_box :admin %>
+  <br>
   <%= f.submit %>
 <% end %>
