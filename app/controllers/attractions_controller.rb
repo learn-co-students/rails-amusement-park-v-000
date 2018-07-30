@@ -7,4 +7,7 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by(id: params[:id])
   end
 
+  def ride
+  end
+
 end

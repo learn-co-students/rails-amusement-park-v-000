@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'rides/show'
   get 'attractions/index'
   resources :users
 
   resources :attractions, only: [:show] do
-    resources :attractions, only: [:ride]
+    resources :rides, only: [:show]
   end
 
   get '/signin', to: "sessions#new"
