@@ -10,14 +10,15 @@ class Ride < ActiveRecord::Base
 
     if user.height > attraction.min_height && user.tickets > attraction.tickets
       user.tickets -= attraction.tickets
-      user.happiness += attraction.happiness_rating - attraction.nausea_rating
+      user.happiness += attraction.happiness_rating
+      user.nausea += attraction.nausea_rating
       user.save
     elsif user.height > attraction.min_height
       phrase1
     elsif user.tickets > attraction.tickets
       phrase2
     else
-      phrase1 & " " & phrase2
+      "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
     end
   end
 
