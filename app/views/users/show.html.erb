@@ -1,7 +1,10 @@
 <h1> Welcome <%= @user.name %>! </h1>
-<% @user.attributes.each do |attr_name|
-  <% unless attr_name.eql?('password') || attr_name.eql?('password_digest')
-  <ul>
-    <li><%= attr_name %>: <%= @user.attr_name %></li>
-  </ul>
+<% if @user.admin %>
+  <h2> ADMIN </h2>
 <% end %>
+
+<p>
+  Mood: <%= @user.mood %> <br>
+  Tickets: <%= @user.tickets %> <br>
+  Height: <%= @user.height %><br>
+</p>
