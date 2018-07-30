@@ -1,6 +1,6 @@
-<%= form_for @user do |f| %>
+<%= form_for :session, url: signin_path do |f| %>
   <%= f.label :name %>
-  <%= f.select :name, User.all.collect{|user| user.name}, {include_blank: 'None'} %>
+  <%= f.select :user_name, User.all.collect{|user| user.name}, {include_blank: 'None'} %>
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.submit "Sign In" %>
