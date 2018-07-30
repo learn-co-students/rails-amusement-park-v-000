@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action
 
   def index
   end
@@ -36,10 +35,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session.delete(:user_id)
+    redirect_to root_path
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation, :height, :nausea, :tickets, :happiness, :admin)
+    params.require(:user).permit(:name, :password, :height, :nausea, :tickets, :happiness, :admin)
   end
 
 end
