@@ -6,4 +6,5 @@ class AttractionsController < ApplicationController
   def show
     @attraction = Attraction.find_by(id: params[:id])
   end
+
 end
