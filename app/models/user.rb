@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 
 
   def mood
-    "happy" if @happiness > @nausea
-    "sad"
+    self.happiness > self.nausea ? "happy" : "sad"
   end
 end

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    params[:id] = params[:id].to_i
     if session[:user_id] == params[:id]
       @user = User.find_by(id: params[:id])
     else
