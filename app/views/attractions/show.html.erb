@@ -10,6 +10,6 @@
   <%= form_tag("/rides/new", method: "post") do %>
     <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
     <%= hidden_field_tag(:attraction_id, "#{@attraction.id}") %>
-    <%= submit_tag("Go on #{@attraction.name}") %>
+    <%= submit_tag("Go on this ride") %>
   <% end %>
 <% end %>
