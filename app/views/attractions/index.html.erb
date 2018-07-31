@@ -8,7 +8,7 @@
   <% end %>
   <strong> Create a new ride: </strong>
   <%= form_for @new_attraction, method: 'post', url: {action: 'create'} do |f| %>
-    <%= render 'form' %>
+    <%= render partial: 'form', locals: {f: f} %>
     <%= f.submit "Create Attraction" %>
   <% end %>
 

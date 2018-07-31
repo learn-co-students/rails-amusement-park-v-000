@@ -24,10 +24,15 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by(id: params[:id])
   end
 
+  def update
+    @attraction = Attraction.find_by(id: params[:id])
+    @attraction.update(attraction_params)
+  end
+
   private
 
   def attraction_params
-    params.require(:attraction)
+    params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
   end
 
 end
