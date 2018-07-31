@@ -1,18 +1,21 @@
 <h1>Attractions</h1>
-<% @attractions.each do |attraction| %>
-  <ul>
-    <li><%= attraction.name %> - <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></li>
-  </ul>
-<% end %>
 
 <% if current_user.try(:admin) %>
+  <% @attractions.each do |attraction| %>
+    <ul>
+      <li><%= attraction.name %> - <%= link_to "Edit Attraction", edit_attraction_path(attraction) %></li>
+    </ul>
+  <% end %>
   <strong> Create a new ride: </strong>
   <%= form_for @new_attraction, method: 'post', url: {action: 'create'} do |f| %>
-    Name: <%= f.text_field :name %><br>
-    Minimum Height: <%= f.text_field :min_height %><br>
-    Happiness Rating: <%= f.text_field :happiness_rating %><br>
-    Nausea Rating: <%= f.text_field :nausea_rating %><br>
-    Tickets Requirement: <%= f.text_field :tickets %><br>
+    <%= render 'form' %>
     <%= f.submit "Create Attraction" %>
+  <% end %>
+
+<% else %>
+  <% @attractions.each do |attraction| %>
+    <ul>
+      <li><%= attraction.name %> - <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></li>
+    </ul>
   <% end %>
 <% end %>
