@@ -1,0 +1,16 @@
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
+
+<h1> Welcome <%= @user.name %>! </h1>
+<% if @user.admin %>
+  <h2> ADMIN </h2>
+<% end %>
+
+<p>
+  Mood: <%= @user.mood %> <br>
+  Tickets: <%= @user.tickets %> <br>
+  Height: <%= @user.height %><br>
+</p>
+
+<%= link_to "Log Out", signout_path, method: :delete %>
