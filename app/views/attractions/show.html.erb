@@ -5,3 +5,7 @@
   <li>Happiness Rating: <%= @attraction.happiness_rating %></li>
   <li>Height Requirement: <%= @attraction.min_height %></li>
 </ul>
+
+<% if !current_user.admin %>
+  <%= form_for current_user %>
+<% end %>
