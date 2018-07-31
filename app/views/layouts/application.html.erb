@@ -24,6 +24,9 @@
             <li><%= link_to "Sign Up", '/users/new' %></li>
             <li><%= link_to "Sign In", signin_path %></li>
             <li><%= link_to "See attractions", attractions_path %></li>
+            <% if current_user.try(:admin) %>
+              <li><%= link_to "New Attraction", new_attraction_path %></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
