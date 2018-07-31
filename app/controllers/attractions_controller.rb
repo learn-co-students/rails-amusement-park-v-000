@@ -1,6 +1,7 @@
 class AttractionsController < ApplicationController
   def index
     @attractions = Attraction.all
+    @new_attraction = Attraction.new
   end
 
   def show
@@ -13,6 +14,13 @@ class AttractionsController < ApplicationController
     redirect_to user_path(@ride.user)
   end
 
+  def create
+  end
 
+  private
+
+  def attraction_params
+    params.require(:attraction)
+  end
 
 end
