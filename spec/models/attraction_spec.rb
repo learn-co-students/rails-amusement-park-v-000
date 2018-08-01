@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Attraction, :type => :model do
   let(:attraction) {
@@ -7,7 +7,7 @@ RSpec.describe Attraction, :type => :model do
       :tickets => 5,
       :nausea_rating => 2,
       :happiness_rating => 4,
-      :min_height => 32
+      :min_height => 32,
     )
   }
 
@@ -29,5 +29,4 @@ RSpec.describe Attraction, :type => :model do
     expect(attraction.users.first).to eq(max)
     expect(attraction.users.last).to eq(skai)
   end
-
 end

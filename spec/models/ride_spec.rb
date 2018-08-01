@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Ride, :type => :model do
   let(:attraction) {
@@ -7,7 +7,7 @@ RSpec.describe Ride, :type => :model do
       :tickets => 5,
       :nausea_rating => 2,
       :happiness_rating => 4,
-      :min_height => 32
+      :min_height => 32,
     )
   }
 
@@ -18,7 +18,7 @@ RSpec.describe Ride, :type => :model do
       :nausea => 5,
       :happiness => 3,
       :tickets => 4,
-      :height => 34
+      :height => 34,
     )
   }
 
