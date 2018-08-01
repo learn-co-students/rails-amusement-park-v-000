@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, :type => :model do
   let(:user) {
@@ -8,7 +8,7 @@ RSpec.describe User, :type => :model do
       :nausea => 5,
       :happiness => 3,
       :tickets => 4,
-      :height => 34
+      :height => 34,
     )
   }
 
@@ -20,7 +20,7 @@ RSpec.describe User, :type => :model do
       :happiness => 3,
       :tickets => 4,
       :height => 34,
-      :admin => true
+      :admin => true,
     )
   }
 
@@ -30,7 +30,7 @@ RSpec.describe User, :type => :model do
       :tickets => 5,
       :nausea_rating => 2,
       :happiness_rating => 4,
-      :min_height => 32
+      :min_height => 32,
     )
   }
 
@@ -40,7 +40,7 @@ RSpec.describe User, :type => :model do
       :tickets => 2,
       :nausea_rating => 2,
       :happiness_rating => 1,
-      :min_height => 28
+      :min_height => 28,
     )
   }
 
@@ -81,5 +81,4 @@ RSpec.describe User, :type => :model do
     user.update(:happiness => 7)
     expect(user.mood).to eq("happy")
   end
-
 end
