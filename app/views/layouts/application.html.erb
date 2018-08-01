@@ -18,6 +18,11 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="/users/new"/>Sign Up</a>
+        <a class="navbar-brand" href="/signin">Log in</a>
+        <% if logged_in? %>
+        <a class="navbar-brand" href="/logout">Log Out</a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -29,6 +34,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
       <%= yield %>
     </div>
   </body>

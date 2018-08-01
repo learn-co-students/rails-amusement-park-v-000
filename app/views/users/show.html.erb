@@ -1,0 +1,8 @@
+<h1>Welcome <%= @user.name %>!</h1>
+<h2>Current Mood: <%= @user.mood %> </h2>
+<h2>Tickets: <%= @user.tickets %> </h2>
+<h3>Your Height: <%= @user.height %> </h3>
+<% if @current_user.admin %>
+<h3>ADMIN</h3>
+<% end %>
+<h3><a href='/attractions'>See attractions</a></h3>
