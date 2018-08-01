@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #get '/users/:id', to: 'users#show', as: 'user'
 
   get '/signin', to: 'sessions#new'
-  root 'users#home'
+  root 'static#home'
   post '/sessions/create', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
 
