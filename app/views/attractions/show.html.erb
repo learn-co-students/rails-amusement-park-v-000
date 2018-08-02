@@ -1,0 +1,12 @@
+<h1><%= @attraction.name %></h1>
+</hr>
+<p>Tickets: <%= @attraction.tickets %></p>
+<form action="/ride" method="post">
+  <input type="hidden" name="ride[attraction_id]" value="<%=@attraction.id%>">
+  <input type="hidden" name="ride[user_id]" value="<%=current_user.id%>">
+  <input type="submit" value="Go on this ride">
+</form>
+
+<% if current_user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>

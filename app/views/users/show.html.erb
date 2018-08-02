@@ -1,0 +1,13 @@
+<h1><%= @user.name %></h1>
+<hr/>
+<h3>Stats</h3>
+<ul>
+  <li>Mood: <%= @user.nausea && @user.happiness ? @user.mood : "n/a" %></li>
+  <li>Tickets: <%= @user.tickets ? @user.tickets : "n/a" %></li>
+  <li>Height: <%= @user.height ? @user.height : "n/a" %></li>
+  <li>Nausea Rating: <%= @user.nausea ? @user.nausea : "n/a" %></li>
+  <li>Happiness Rating: <%= @user.happiness ? @user.happiness : "n/a" %></li>
+  <li>Admin: <%= @user.admin ? "ADMIN" : "NOT ADMIN" %></li>
+</ul>
+<br/>
+<%= link_to "See attractions", attractions_path %>
