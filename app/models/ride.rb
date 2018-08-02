@@ -39,6 +39,7 @@ class Ride < ActiveRecord::Base
       :tickets => new_tickets
     )
     "Thanks for riding the #{self.attraction.name}!"
+
   end
 
   def ticket_issue
