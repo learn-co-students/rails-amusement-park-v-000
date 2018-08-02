@@ -1,0 +1,10 @@
+<%= form_for @user do |f| %>
+  <label>Name: </label><input type="text" id="user[name]" name="user[name]"><br/>
+  <label>Height: </label><input type="text" id="user[height]" name="user[height]"><br/>
+  <label>Happiness: </label><input type="text" id="user[happiness]" name="user[happiness]"><br/>
+  <label>Nausea: </label><input type="text" id="user[nausea]" name="user[nausea]"><br/>
+  <label>Tickets: </label><input type="text" id="user[tickets]" name="user[tickets]"><br/>
+  <label>Password: </label><input type="text" id="user[password]" name="user[password]"><br/>
+  <label>Admin: </label><input type="checkbox" id="user_admin" name="user[admin]"><br/>
+  <input type="submit" id="Create User" value="Create User">
+<% end %>
