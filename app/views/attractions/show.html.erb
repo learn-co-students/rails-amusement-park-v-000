@@ -1,0 +1,18 @@
+Name: <%=@attraction.name %>
+Total Number of Users: <%= @users %>
+Ticket Requirement: <%= @attraction.tickets %>
+Height Requirement: <%= @attraction.nausea_rating %>
+Nausea Rating: <%= @attraction.happiness_rating %>
+Happiness Rating <%= @attraction.happiness_rating%>
+
+
+<%= form_for @ride, url: new_ride_path, method: :post do |f| %>
+  <%= f.hidden_field :user_id, value: session[:user_id]  %>
+  <%= f.hidden_field :attraction_id, value: @attraction.id %>
+  <%= f.submit "Go on this ride" %>
+<% end %>
+
+
+<%if User.find_by_id(session[:user_id]).admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+  <%end%>
