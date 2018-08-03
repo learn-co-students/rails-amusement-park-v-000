@@ -1,6 +1,15 @@
+<p id="notice"><%= notice %></p>
+
 <h2><%= @user.name %></h2>
 <ul>
   <li><%= "Mood: #{@user.mood}" %></li>
   <li><%= "Tickets: #{@user.tickets}" %></li>
   <li><%= "Height: #{@user.height}" %></li>
 </ul>
+
+<h4><%= "ADMIN" if @user.admin %> </h4>
+<h3> <%= session[:message] %> </h3>
+
+
+<%= link_to "Log Out", signout_path, method: "delete" %>
+<%= link_to "See attractions", attractions_path %>
