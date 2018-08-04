@@ -1,0 +1,8 @@
+<h1>Log In</h1>
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+  <p>Name:</p>
+  <p><%= collection_select :user, :name, User.all, :name, :name %></p>
+  <p>Password:</p>
+  <p><%= password_field_tag :password %></p>
+  <p><%= submit_tag "Sign In"%></p>
+<% end %>

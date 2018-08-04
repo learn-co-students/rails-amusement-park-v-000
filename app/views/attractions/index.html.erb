@@ -1,0 +1,9 @@
+<% if @user.admin %>
+  <% @attractions.each do |a| %>
+    <p><%= link_to "Show #{a.name}", a %></p>
+  <% end %>
+<% else %>
+  <% @attractions.each do |a| %>
+    <p><%= link_to "Go on #{a.name}", a %></p>
+  <% end %>
+<% end %>

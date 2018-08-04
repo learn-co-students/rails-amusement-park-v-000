@@ -1,0 +1,18 @@
+<!-- t.string :name
+t.string :password_digest
+t.integer :nausea
+t.integer :happiness
+t.integer :tickets
+t.integer :height
+t.boolean :admin, {:default => false}
+t.timestamps -->
+<%= form_for user do |f| %>
+  <p>Name:<%= f.text_field :name %></p>
+  <p>Nausea:<%= f.text_field :nausea %></p>
+  <p>Height:<%= f.text_field :height %></p>
+  <p>Happiness:<%= f.text_field :happiness %></p>
+  <p>Tickets:<%= f.text_field :tickets %></p>
+  <p>Password:<%= f.password_field :password %></p>
+  <p>Admin? <%= f.check_box :admin %></p>
+  <p><%= f.submit %></p>
+<% end %>
