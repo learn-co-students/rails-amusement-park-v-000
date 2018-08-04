@@ -20,6 +20,7 @@
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
         <a class="navbar-brand" href="<%= signin_url %>"/>Log In</a>
+        <a class="navbar-brand" id="New Attraction" href="<%= new_attraction_url %>"/>New Attraction</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -31,7 +32,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <h1>ADMIN</h1>
       <%= yield %>
+
     </div>
   </body>
 </html>

@@ -1,0 +1,13 @@
+<!-- t.string :name
+t.integer :tickets
+t.integer :nausea_rating
+t.integer :happiness_rating
+t.integer :min_height -->
+<%= form_for attraction do |f| %>
+  <p>Name: <%= f.text_field :name %></p>
+  <p>Tickets: <%= f.text_field :tickets %></p>
+  <p>Nausea: <%= f.text_field :nausea_rating%></p>
+  <p>Happiness: <%= f.text_field :happiness_rating%></p>
+  <p>Height: <%= f.text_field :min_height%></p>
+  <p><%= f.submit %></p>
+<% end %>
