@@ -1,12 +1,16 @@
 <!-- log in page -->
-<h1>Log In</h1>
-
+<h2>Log In</h2>
+<br>
 <%= form_tag('/login', method: :post) do %>
-    <%= label_tag 'Name: ' %>
-    <%= text_field_tag :name %><br />
+  <div class ="form-group">
+  <%= label_tag 'Name: ' %>
+  <%= select_tag "Users", options_from_collection_for_select(@users, "id", "name"), prompt: "Please select your username from this dropdown" %><br />
+  </div>
 
-    <%= label_tag 'password: ' %>
-    <%= password_field_tag :password %><br />
+  <div class ="form-group">
+  <%= label_tag 'password: ' %>
+  <%= password_field_tag :password, nil, class:'form-control' %><br />
+  </div>
 
-    <%= submit_tag 'Login' %>
+  <%= submit_tag 'Login' %>
 <% end %>
