@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_08_06_221150) do
 
-  create_table "atrractions", force: :cascade do |t|
+  create_table "attractions", force: :cascade do |t|
     t.string "name"
     t.integer "tickets"
     t.integer "nausea_rating"

@@ -1,6 +1,6 @@
-class CreateAtrractions < ActiveRecord::Migration[5.2]
+class CreateAttractions < ActiveRecord::Migration[5.2]
   def change
-    create_table :atrractions do |t|
+    create_table :attractions do |t|
       t.string :name
       t.integer :tickets
       t.integer :nausea_rating
