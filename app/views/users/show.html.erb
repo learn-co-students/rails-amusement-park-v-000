@@ -1,0 +1,19 @@
+<div class="center alert">
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+
+  <h2>User Display</h2>
+  <div class="info">
+    <% if current_user.admin %>
+      <p>ADMIN</p>
+      <p>Name: <%= current_user.name %></p>
+    <% else %>
+      <p>Name: <%= @user.name %></p>
+      <p>Tickets: <%= @user.tickets %></p>
+      <p>Mood: <%= @user.mood %></p>
+      <p>Height: <%= @user.height %> inches</p>
+    <% end %>
+    <%= link_to 'See attractions', attractions_path %>
+  </div>
+</div>
