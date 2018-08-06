@@ -1,0 +1,17 @@
+<% if flash[:error] %>
+<font color='red>'<%= flash[:error] %></font>
+<% end %>
+
+<font color= "green"><h1>Sign Up! </h1></font>
+
+<%= form_for @user do |f| %>
+  Name: <%= f.text_field :name %><br />
+  Password: <%= f.password_field :password %><br />
+  Height (in inches): <%= f.number_field :height %><br />
+  How happy are you? (1-5 scale) <%= f.number_field :happiness %><br />
+  How nauseous are you? (1-5 scale) <%= f.number_field :nausea %><br />
+  How many tickets do you have? <%= f.number_field :tickets %><br />
+  Check box if you are an admin: <%= f.check_box :admin %><br />
+  <br>
+  <%= f.submit "Create User" %>
+<% end %>

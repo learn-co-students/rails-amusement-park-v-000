@@ -1,0 +1,10 @@
+<center>
+  <% if flash[:error] %>
+    <font color = 'red'><%= flash[:error] %></font>
+  <% end %>
+
+  <font color= "green"><h1>Welcome to the Most Amazing Amusement Park!!!</h1></font>
+  <br>
+  <br>
+  New User? <%=link_to "Sign up", new_user_path %> | Already have an account? <%=link_to "Sign In", signin_path %>
+</center>

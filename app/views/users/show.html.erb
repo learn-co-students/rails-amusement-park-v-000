@@ -1,0 +1,17 @@
+<font color='green'><h2>Hey there, <%= @user.name %>!</h2></font>
+
+<% if flash[:message] %>
+  <font color="blue"><%= flash[:message] %></font>
+<% end %>
+
+<% if @user.admin == true %>
+  <font color='green'><h2><%= @user.name %>!</h2>
+  <font color = 'blue'>[ ADMIN ]</h4></font>
+<% else %>
+  <h4>Mood: <%= @user.mood %></h4>
+  <h4>Height: <%= @user.height %></h4>
+  <h4>Tickets: <%= @user.tickets %></h4>
+<% end %>
+
+<p><%= link_to "See attractions", attractions_path %></p><br />
+<p><%= link_to "Log Out", signout_path, method: :delete %></p>
