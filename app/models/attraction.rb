@@ -1,2 +1,0 @@
-class Attraction < ApplicationRecord
-end

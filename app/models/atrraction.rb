@@ -1,0 +1,2 @@
+class Atrraction < ApplicationRecord
+end
