@@ -1,1 +1,10 @@
-<h1>Signup Here</h1>
+
+<%= form_tag do %>
+    <%= label_tag :user, "Your name:" %>
+    <%= collection_select(:user, @users, :id, :name) %>
+    <br>
+    <%= label_tag :password, "Your Password:" %>
+    <%= password_field_tag :password %>
+    <br>
+    <%= submit_tag "Sign In" %>
+<% end %>
