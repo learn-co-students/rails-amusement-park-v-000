@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  get '/users/new' => 'users#new', :as => '/signup'
+  get '/signup' => 'users#new'
   post '/users/create' => 'users#create'
 
   get '/signin' => 'sessions#new'
