@@ -1,0 +1,23 @@
+<h2>Edit Attraction</h2>
+
+<%= form_for(@attraction) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control", placeholder: @attraction.name %>
+
+  <%= f.label "Height Requirement (in inches)" %>
+  <%= f.number_field :min_height, class: "form-control" %>
+
+  <%= f.label "How fun is it? (1-5 sclae)" %>
+  <%= f.number_field :happiness_rating, class: "form-control" %>
+
+  <%= f.label "How nausea-inducing is it? (1-5 scale)" %>
+  <%= f.number_field :nausea_rating, class: "form-control" %>
+
+  <%= f.label "How many tickets does it cost?" %>
+  <%= f.number_field :tickets, class: "form-control" %>
+
+  <br>
+  <%= f.submit "Update Attraction", class: "btn btn-primary" %>
+<% end %>
+
+<span><%= link_to "Show", attraction_path %> | <%= link_to "Back", :back %></span>

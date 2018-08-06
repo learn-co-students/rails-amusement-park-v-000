@@ -18,8 +18,13 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        <a class="navbar-brand" href="/users/new"/>Sign Up</a>
-        <a class="navbar-brand" href="/login"/>Log In</a>
+        <% if logged_in? %>
+          <a class="navbar-brand" href="/users/<%=current_user.id%>"/><%= current_user.name %>'s Profile</a>
+          <a class="navbar-brand" href="/logout" id="Log Out"/>Log Out</a>
+        <% else %>
+          <a class="navbar-brand" href="/users/new"/>Sign Up</a>
+          <a class="navbar-brand" href="/signin"/>Log In</a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
