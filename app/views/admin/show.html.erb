@@ -1,0 +1,13 @@
+
+<div class="center">
+
+  <div class="info">
+    <p><strong>Name: </strong><%= current_user.name %></p>
+    <p><strong>Ticket Requirement: </strong><%= current_user.tickets %></p>
+    <p><strong>Height Requirement: </strong><%= current_user.height %> inches</p>
+    <p><strong>Nausea Rating: </strong><%= current_user.nausea %></p>
+    <p><strong>Happiness Rating: </strong><%= current_user.happiness %></p>
+    <p><%= link_to "See attractions", attractions_path %></p>
+  </div>
+
+</div>
