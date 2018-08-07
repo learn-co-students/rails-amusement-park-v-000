@@ -16,11 +16,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
 
         <% if logged_in? -%>
           <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%= current_user.name %>'s profile</a>
           <a class="navbar-brand" rel="nofollow" data-method="delete" href="/logout">Log Out</a>
+          <a class="navbar-brand" id="New Attraction" href="<%= new_attraction_url %>"/>New Attraction</a>
         <% else %> 
           <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
           <a class="navbar-brand" href="/signin">Log in</a>
@@ -35,7 +35,8 @@
     </div>
     <!-- content -->
     <div class="container"  role="main">
-  
+      <h1>ADMIN</h1>
+      
       <%= yield %>
 
     </div>
