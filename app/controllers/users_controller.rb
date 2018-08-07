@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        @user.admin = true if params[:admin]
         if !@user.save
           redirect_to new_user_path
         else
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        redirect_to '/' if !is_current_user?(params[:id])
         @user = User.find(params[:id])
     end
 
@@ -23,6 +25,6 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:name, :password, 
-            :height, :happiness, :nausea, :tickets)
+            :height, :happiness, :nausea, :tickets, :admin)
      end
 end
