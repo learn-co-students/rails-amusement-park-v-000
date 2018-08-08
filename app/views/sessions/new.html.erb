@@ -1,0 +1,8 @@
+<h1>Log In</h1>
+<%= form_for @user do |f|%>
+<%f.label "Please select your username."%>
+<%=f.collection_select :user_name, User.all, :name, :name%>
+<%f.label "Password"%>
+<%=f.password_field :password%>
+<%=f.submit "Log in"%>
+<%end%>
