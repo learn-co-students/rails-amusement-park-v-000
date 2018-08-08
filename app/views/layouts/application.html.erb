@@ -23,6 +23,9 @@
           <ul class="nav navbar-nav">
             <li><a href="/signup">Sign Up</a></li>
             <li><a href="/signin">Sign In</a></li>
+            <% if current_user %>
+                <li><a href="/logout">Log Out</a></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

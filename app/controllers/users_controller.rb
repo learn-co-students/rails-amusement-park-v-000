@@ -8,18 +8,21 @@ class UsersController < ApplicationController
     def create
           @user = User.new(strong_params(params))
           if helpers.logged_in?
-              redirect_to root_path
+              redirect_to user_path(@user)
           else
               if @user.save
-                  binding.pry
-                  params[:user][:admin].exsists? ?
-                  session[:user_id] = @user.id : false
+                  if params[:user][:admin] == "true"
+                       @user.admin = true
+                       @user.save
+                  end
+                  session[:user_id] = @user.id
                   redirect_to user_path(@user)
               else
                   redirect_to '/sessions/new'
               end
           end
     end
+
 
     def show
         @user = User.find_by(:id => params[:id])
