@@ -2,14 +2,19 @@ class UsersController < ApplicationController
 
     def new
          @user = User.new
+         if helpers.logged_in?
+             redirect_to user_path(helpers.current_user)
+         else
+
+         end
     end
 
 
     def create
-          @user = User.new(strong_params(params))
           if helpers.logged_in?
-              redirect_to user_path(@user)
+              redirect_to user_path(helpers.current_user)
           else
+              @user = User.new(strong_params(params))
               if @user.save
                   if params[:user][:admin] == "true"
                        @user.admin = true

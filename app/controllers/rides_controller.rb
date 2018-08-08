@@ -10,9 +10,7 @@ class RidesController < ApplicationController
 
     def create
         @ride = Ride.find_or_create_by(strong_params(params))
-        # binding.pry
-        @ride.take_ride
-        # binding.pry
+        flash[:notice] = @ride.take_ride
         redirect_to user_path(@ride.user)
     end
 

@@ -16,8 +16,11 @@
         </tr>
             <td><%= attraction.name %></td>
             <td><%= attraction.id %></td>
-              <td><a href="<%= attraction_path(attraction) %>">Go on <%= attraction.name %></a></td>
+                <td><a href="<%= attraction_path(attraction) %>"> <%= current_user.admin ? "Show " : "Go on "  %><%= attraction.name %></a></td>
         </tr>
+    <% end %>
+    <% if current_user.admin %>
+        <a href="<%= new_attraction_path %>">New Attraction</a>
     <% end %>
 </tbody>
 </table>
