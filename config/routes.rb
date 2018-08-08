@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   resources :rides
 
   namespace :admin do
-    resources :attractions, only [:new]
+    resources :attractions, only: [:new]
   end
 
+  get '/login' => "sessions#new"
+  post '/login' => "sessions#create"
 
+  root 'users#home'
 end
