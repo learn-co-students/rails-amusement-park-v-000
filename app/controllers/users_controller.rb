@@ -21,6 +21,10 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def takeride
+        raise params.inspect
+    end
+    
     private
 
     def user_params

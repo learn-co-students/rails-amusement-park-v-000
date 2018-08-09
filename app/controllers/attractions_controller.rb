@@ -1,3 +1,4 @@
+require 'pry'
 class AttractionsController < ApplicationController
 
     def index
@@ -8,5 +9,6 @@ class AttractionsController < ApplicationController
     def show
         redirect_to '/' if !logged_in?
         @attraction = Attraction.find(params[:id])
+        @user = current_user
     end
 end
