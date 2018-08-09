@@ -3,9 +3,10 @@
 <p>Nausea Rating <%= @attraction.nausea_rating %></p>
 <p>Happiness Rating <%= @attraction.happiness_rating %></p>
 <p>Minimum Height <%= @attraction.min_height %></p>
-<p>
-    <%= link_to 'Take ride', 
+<p>     
+    <%= button_to 'Go on this ride', 
         { :controller => 'rides',  :action=>"create", :id => @user.id, :attraction_id => @attraction.id} ,
         :method => :post %>
+
 </p>
 
