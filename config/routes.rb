@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post '/signin' => 'sessions#create'
     delete '/logout' => 'sessions#destroy'
 
-    resources :attractions, only: [:index]
+    resources :attractions, only: [:index, :show]
 
     root 'users#new'
 end
