@@ -5,18 +5,18 @@ class Ride < ApplicationRecord
 
     def take_ride
         msg = String.new
-        user = User.find(self.user_id)
-        attraction = Attraction.find(self.attraction_id)
+        # user is based on self.user_id.  And attraction, on self.attraction_id
         if user.tickets < attraction.tickets 
             msg= add_error(msg,"You do not have enough tickets to ride the #{attraction.name}.")
         end
         if user.height < attraction.min_height
             msg= add_error(msg,"You are not tall enough to ride the #{attraction.name}.")
         end
-        if msg.length==0
+        if msg.length==0    # all good!
             user.update(:tickets => user.tickets - attraction.tickets,
                         :nausea => user.nausea + attraction.nausea_rating,
                         :happiness => user.happiness + attraction.happiness_rating)
+            msg="Thanks for riding the #{attraction.name}!"
         end
         msg
     end

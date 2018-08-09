@@ -7,7 +7,6 @@ class RidesController < ApplicationController
         # error check : user should match logged in user
         ride = Ride.new(:user_id => @user.id, :attraction_id => params[:attraction_id])
         message = ride.take_ride
-        message = "Thanks for riding the #{@attraction.name}!" if message.empty?
         flash[:notice] = message
         redirect_to user_path(@user)
     end
