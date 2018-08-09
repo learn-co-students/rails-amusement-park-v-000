@@ -20,11 +20,7 @@ class UsersController < ApplicationController
         redirect_to '/' if !is_current_user?(params[:id])
         @user = User.find(params[:id])
     end
-
-    def takeride
-        raise params.inspect
-    end
-    
+   
     private
 
     def user_params
