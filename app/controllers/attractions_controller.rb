@@ -1,13 +1,16 @@
 require 'pry'
 class AttractionsController < ApplicationController
+    before_action :verify_login
+    before_action :verify_admin, :except => [:index, :show]
 
     def index
-        redirect_to '/' if !logged_in?
         @attractions = Attraction.all
+        if is_admin?
+            render "index_for_admin"
+        end
     end
 
     def show
-        redirect_to '/' if !logged_in?
         @attraction = Attraction.find(params[:id])
         @user = current_user
     end
@@ -17,7 +20,7 @@ class AttractionsController < ApplicationController
     end
 
     def create
-        redirect_to '/' if !logged_in?    
+
         @attraction = Attraction.new(attraction_params)   
         if !@attraction.save
             redirect_to new_attraction_path 
@@ -25,9 +28,33 @@ class AttractionsController < ApplicationController
         redirect_to @attraction
     end
 
+    def edit
+        @attraction = Attraction.find(params[:id])
+    end
+
+    def update
+        @attraction = Attraction.find(params[:id])
+
+        @attraction.update(attraction_params)
+    
+        if @attraction.save
+          redirect_to @attraction
+        else
+          render :edit
+        end
+    end
+
     private
 
     def attraction_params
         params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
+    end
+
+    def verify_login
+        redirect_to '/' if !logged_in?
+    end
+
+    def verify_admin
+        redirect_to '/' if !is_admin?
     end
 end
