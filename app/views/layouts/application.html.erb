@@ -17,11 +17,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <!-- <a class="navbar-brand" href="<%= root_url %>"/>Home</a> -->
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+          <% if !logged_in? %>
+            <li><a class="navbar-brand" rel="nofollow" href="/">Sign Up</a></li>
+            <li><a class="navbar-brand" rel="nofollow" href="/signin">Log In</a></li>
+          <% else %>
+            <li><a class="navbar-brand" rel="nofollow" href=<%=user_path(current_user)%>>Home</a></li> -->
+            <li><a class="navbar-brand" rel="nofollow" href=<%=attractions_path%>>See attractions</a></li>
+            <li><a class="navbar-brand" rel="nofollow" data-method="delete" href="/logout">Log Out</a></li>
+          <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

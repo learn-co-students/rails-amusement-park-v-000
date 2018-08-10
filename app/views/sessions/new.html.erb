@@ -1,0 +1,13 @@
+<h1>Login</h1>
+<%= form_tag signin_path do %>
+  <label>Name:</label>
+  <select name="user[id]" id="user_name">
+  <!-- this seems really bad - going to model -->
+  <% User.all.each do | user | %>
+    <option value=<%=user.id%>><%=user.name%></option>
+  <% end %>
+  </select>
+  <br/>
+  <label>Password:</label><input name=password><br/>
+  <input type=submit value='Sign In'>
+<% end %>
