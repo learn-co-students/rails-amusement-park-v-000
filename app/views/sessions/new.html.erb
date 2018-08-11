@@ -1,0 +1,14 @@
+<h1>Sign In</h1>
+
+<h3>Welcome Back!</h3>
+
+<%= form_tag(sessions_path) do %>
+
+  <label>Name:</label>
+  <%= select_tag "user_name", options_from_collection_for_select(@users, "id", "name") %><br>
+
+  <label>Password:</label>
+  <%= password_field_tag :password %><br>
+
+  <%= submit_tag "Sign In"%>
+<% end %>

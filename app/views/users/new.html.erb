@@ -1,0 +1,35 @@
+<h1>Welcome to the Rails Amusement Park</h1>
+  <h2>Step Right Up!</h2>
+
+    <h4>First timer? Sign Up</h4>
+
+      <%= form_for(@user) do |f| %>
+        <label>Name:</label>
+        <%= f.text_field :name %><br>
+
+        <label>Password:</label>
+        <%= f.text_field :password %><br>
+
+        <label>Nausea:</label>
+        <%= f.text_field :nausea %><br>
+
+        <label>Happiness:</label>
+        <%= f.text_field :happiness %><br>
+
+        <label>Tickets:</label>
+        <%= f.text_field :tickets %><br>
+
+        <label>Height:</label>
+        <%= f.text_field :height %><br>
+
+        <label>Admin?:</label>
+        <%= f.check_box :admin, class: "form-check-input" %>
+
+        <%= f.submit %>
+      <% end %>
+
+
+
+
+    <h4>A regular?</h4>
+    <h5><%= link_to 'Log In', signin_url %>
