@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     if session[:user_id] == params[:id].to_i
       @user = User.find(session[:user_id])
       @user.admin = true if params[:admin]
+      @message = params[:message]
       render 'users/show'
     else
       @user = User.new
