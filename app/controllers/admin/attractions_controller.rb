@@ -10,6 +10,7 @@ class Admin::AttractionsController < ApplicationController
       redirect_to '/attractions/:id'
     else
       redirect_to '/attractions/new'
+    end
   end
 
   private

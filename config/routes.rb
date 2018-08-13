@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :attractions, only: [:new]
+    post '/logout' => "sessions#destroy"
   end
 
   get '/signin' => "sessions#new"
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
 
   get '/signup' => "users#new"
   post '/signup' => "users#create"
+
+
 
   root 'users#home'
 end

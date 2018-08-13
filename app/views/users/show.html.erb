@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+ <% end %>
+
 <%if @user.admin != false%>
 <h3><%= "ADMIN"%></h3>
 <%end%>
@@ -6,3 +10,5 @@
 <h3>Mood: <%=@user.mood%></h3>
 <h3>Mood: <%=@user.tickets%></h3>
 <h3>Mood: <%=@user.height%></h3>
+
+<%=link_to "See attractions", attractions_path%>
