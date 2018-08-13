@@ -3,6 +3,7 @@ class Ride < ActiveRecord::Base
   belongs_to :user
 
   def take_ride
+    binding.pry
     @user = User.find_by(id: user_id)
     @ride = Ride.find_by(id: self.id)
     if user[:tickets] < @ride[:tickets]
