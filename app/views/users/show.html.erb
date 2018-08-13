@@ -1,3 +1,7 @@
+<%if @user.admin != false%>
+<h3><%= "ADMIN"%></h3>
+<%end%>
+
 <h1><%=@user.name%>
 <h3>Mood: <%=@user.mood%></h3>
 <h3>Mood: <%=@user.tickets%></h3>

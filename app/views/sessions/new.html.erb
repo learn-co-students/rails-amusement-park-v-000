@@ -1,8 +1,8 @@
 <h1>Log In</h1>
-<%= form_for @user do |f|%>
+<%= form_for @user, url: signin_path, method: :post do |f|%>
 <%f.label "Please select your username."%>
-<%=f.collection_select :user_name, User.all, :name, :name%>
-<%f.label "Password"%>
-<%=f.password_field :password%>
-<%=f.submit "Log in"%>
+<%=f.collection_select :name, User.all, :name, :name%>
+<%f.label "password"%>
+<%=f.password_field :password %>
+<%=f.submit "Sign in"%>
 <%end%>
