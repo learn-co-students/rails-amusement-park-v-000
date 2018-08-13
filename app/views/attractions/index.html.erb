@@ -1,0 +1,18 @@
+Attactions
+
+<% @attractions.each do |a| %>
+  <%= a.name %>
+  <% if current_user.admin %>
+    <td><%= link_to "Show #{a.name}", attraction_path(a) %></td>
+  <% else %>
+    <td><%= link_to "Go on #{a.name}", attraction_path(a) %></td>
+  <% end %>
+<% end %>
+
+<% if @user %>
+  <p>
+    <%= link_to "Back to profile", user_path(@user) %>
+  </p>
+<% else %>
+  <p><%= link_to 'New Attraction', new_attraction_path %></p>
+<% end %>

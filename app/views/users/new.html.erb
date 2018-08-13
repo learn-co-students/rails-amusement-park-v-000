@@ -1,0 +1,15 @@
+Sign up!
+
+<%= form_for @user do |f| %>
+<%= f.text_field :name %>
+<%= f.text_field :password %>
+<%= f.text_field :mood %>
+<%= f.text_field :tickets %>
+<%= f.number_field :height %>
+<%= f.number_field :happiness %>
+<%= f.number_field :nausea %>
+<input type="checkbox" name="admin" id="user_admin" value=true>Admin<br>
+
+
+<%= f.submit %>
+<% end %>
