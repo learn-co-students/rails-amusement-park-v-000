@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :rides
 
   namespace :admin do
-    resources :attractions, only: [:new]
+    resources :attractions, only: [:new, :create]
     post '/logout' => "sessions#destroy"
   end
 

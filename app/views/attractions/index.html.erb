@@ -2,16 +2,16 @@
    <div class="notice"><%= flash[:notice] %></div>
  <% end %>
 
-<div class="container" role="main">
-  <table class="table">
+<div>
+  <table class="table" >
     <th colspan="3">Name</th>
     <th colspan="3">Tickets</th>
     <th colspan="3">Details</th>
-  <%=@attractions.each do |attraction|%>
+  <%@attractions.each do |attraction|%>
     <tr>
-      <td><%=attraction.name%></td>
-      <td><%=attraction.tickets%></td>
-      <td><%=link_to "Go on #{attraction.name}", attraction_path(attraction)%></td>
+      <td colspan="3"><%=attraction.name%></td>
+      <td colspan="3"><%=attraction.tickets%></td>
+      <td colspan="3"><%=link_to "Go on #{attraction.name}", attraction_path(attraction)%></td>
     </tr>
   <%end%>
 </table>

@@ -7,9 +7,9 @@ class Admin::AttractionsController < ApplicationController
   def create
     @attraction = Attraction.new(attraction_params)
     if @attraction.save
-      redirect_to '/attractions/:id'
+      redirect_to "/attraction/#{@attraction.id}"
     else
-      redirect_to '/attractions/new'
+      redirect_to '/admin/attractions/new'
     end
   end
 
