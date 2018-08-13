@@ -18,10 +18,14 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <%if !logged_in?%>
+          <%=link_to 'Sign Up', signup_path, class:"navbar-brand" %>
+          <%=link_to 'Log In', signin_path, class:"navbar-brand" %>
+          <%end%>
         <div class="navbar-brand">
           <%if logged_in?%>
-          <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-            <input type=submit value='Logout' id="logout">
+          <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'})  do %>
+            <input type=submit value='Logout' class:"navbar-brand">
           <% end %>
         <%end%>
       </div>
