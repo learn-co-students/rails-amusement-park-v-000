@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
   has_secure_password
 
-  validates :password, presence: true
-  validates :name, :height, :happiness, :nausea, :tickets, presence: true
+  validates :password, presence: true, on: :create
+  validates :name, :height, :happiness, :nausea, :tickets, presence: true, on: :create
   validates :name, uniqueness: true
 
 
