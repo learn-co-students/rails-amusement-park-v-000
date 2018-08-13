@@ -51,10 +51,11 @@ body {
   text-align: left;
 }
 
-.logout {
+#logout {
   padding: 20px;
   display: inline-block;
-  background-color: black;
+  background-color: #222;
+  border-color: #222;
   padding: 1px;
-  border-color: black;
+  text-align: top;
 }

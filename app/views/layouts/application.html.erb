@@ -18,11 +18,13 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        <%if session[:user_id]%>
-        	<form method='post' action='/logout' class="navbar-brand">
-        	<input class="logout" type='submit' value='Logout'>
-        	</form>
+        <div class="navbar-brand">
+          <%if current_user%>
+        	<%=form_tag logout_path, method: 'post' do %>
+        	<%=submit_tag 'Logout', id: "logout"%>
+          <%end%>
         <%end%>
+      </div>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
