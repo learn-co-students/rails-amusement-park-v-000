@@ -6,8 +6,12 @@ class SessionsController < ApplicationController
 
 
   def create
-  
     user_login
    end
+
+  def destroy
+	   session.delete :name
+	end
+
 
 end
