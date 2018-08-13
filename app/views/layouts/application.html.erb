@@ -19,10 +19,10 @@
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <div class="navbar-brand">
-          <%if current_user%>
-        	<%=form_tag logout_path, method: 'post' do %>
-        	<%=submit_tag 'Logout', id: "logout"%>
-          <%end%>
+          <%if logged_in?%>
+          <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+            <input type=submit value='Logout' id="logout">
+          <% end %>
         <%end%>
       </div>
         </div>
