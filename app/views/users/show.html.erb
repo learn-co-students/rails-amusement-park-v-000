@@ -1,6 +1,20 @@
 Hello, <%= @user.name %>.
-Mood <%= @user.mood %>
-Happiness <%= @user.happiness %>
-Tickets <%= @user.tickets %>
-Nausea <%= @user.nausea %>
-Height <%= @user.height %>
+
+<% if flash[:message] %>
+  <font color="blue"><%= flash[:message] %></font>
+<% end %>
+<% if @user.admin == true %>
+  <font color='green'><h2><%= @user.name %>!</h2>
+  <font color = 'blue'>[ ADMIN ]</h4></font>
+<% else %>
+
+  Mood <%= @user.mood %>
+  Happiness <%= @user.happiness %>
+  Tickets <%= @user.tickets %>
+  Nausea <%= @user.nausea %>
+  Height <%= @user.height %>
+
+<% end %>
+
+ <%= link_to "Log Out", signout_path, method:'delete' %>
+ <%= link_to 'See attractions', attractions_path %>
