@@ -7,5 +7,7 @@ class AttractionsController < ApplicationController
   def show
     @ride = Ride.new
     @attraction = Attraction.find_by(id: params[:id])
+    @user = current_user
+
   end
 end
