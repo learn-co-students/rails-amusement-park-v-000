@@ -10,5 +10,6 @@
 <%=form_for @attraction.rides.build do |f|%>
 <%= f.hidden_field :attraction_id %>
 <%= f.hidden_field :user_id %>
-<%=f.submit "Go on this ride"%>
+<%=f.submit "Go on this ride" if !current_user.admin%>
+<%=link_to "Edit ride", edit_admin_attraction_path(@attraction) if current_user.admin%>
 <%end%>
