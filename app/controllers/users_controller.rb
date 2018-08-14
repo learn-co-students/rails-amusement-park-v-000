@@ -15,9 +15,6 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
-  def signin
-    @user = User.find_by(name: params[:name])
-  end
 
   private
 
