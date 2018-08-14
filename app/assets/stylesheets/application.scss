@@ -51,8 +51,12 @@ body {
   text-align: left;
 }
 
-div.container::before, div.container::after{
-  display: table;
-  content: none;
-  text: none;
+#logout {
+  background-color: #222;
+  border: none;
+  display: inline;
+}
+
+.copy {
+  border: none;
 }
