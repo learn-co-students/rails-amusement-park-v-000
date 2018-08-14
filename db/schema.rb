@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_204440) do
+ActiveRecord::Schema.define(version: 2018_08_14_111722) do
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_204440) do
     t.integer "happiness"
     t.integer "tickets"
     t.integer "height"
-    t.boolean "admin"
+    t.boolean "admin", default: false
   end
 
 end
