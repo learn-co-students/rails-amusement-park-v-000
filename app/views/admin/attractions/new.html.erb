@@ -1,3 +1,17 @@
+<% if @attraction.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@attraction.errors.count, "error") %>
+      are preventing you from adding an attraction:
+      </h2>
+    <ul>
+    <% @attraction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%=form_for @attraction, url: attractions_path, method: :post do |f|%>
 <%=f.label "Name:"%><br>
 <%=f.text_field :name%><br><br>

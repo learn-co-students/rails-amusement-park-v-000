@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
      session[:user_id] = @user.id
      redirect_to user_path(@user)
    else
-     redirect_to '/users/new'
+     render '/users/new'
    end
   end
 
