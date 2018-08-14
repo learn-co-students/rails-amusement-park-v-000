@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :attractions
+    get '/attractions/:id/edit' => "attractions#edit"
+    patch '/attractions' => "attractions#update"
     post '/logout' => "sessions#destroy"
   end
 

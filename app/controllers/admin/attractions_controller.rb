@@ -30,8 +30,8 @@ class Admin::AttractionsController < ApplicationController
   end
 
   def update
-    if admin_user?
       @attraction = Attraction.find(params[:id])
+      if admin_user?
       @attraction.update(attraction_params)
       @attraction.save
       redirect_to attraction_path(@attraction)

@@ -1,4 +1,4 @@
-<%=form_for @attraction, url: attractions_path, action: 'update', method: :post do |f|%>
+<%=form_for @attraction, url: attractions_path, method: :post do |f|%>
 <%=f.label "Name:"%><br>
 <%=f.text_field :name%><br><br>
 <%=f.label "Height Requirement (inches)"%><br>
