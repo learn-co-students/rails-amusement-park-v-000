@@ -1,0 +1,14 @@
+Name: <%= @user.name %>
+Height: <%= @user.height %>
+Happiness: <%= @user.happiness %>
+Nausea: <%= @user.nausea %>
+Tickets: <%= @user.tickets %>
+Mood: <%= @user.mood %>
+<% if @user.admin %>
+<p>ADMIN</p>
+<% end %>
+<%= @message %>
+
+<%= link_to("See attractions", attractions_path, :method => 'get') %>
+
+<%= link_to("Log Out", logout_path, :method => 'post') %>
