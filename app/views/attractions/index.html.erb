@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+ <% end %>
+
 
 <div>
   <table class="table" >
@@ -14,4 +18,4 @@
 </table>
 </div>
 
-<%=link_to "New Attraction", new_admin_attraction_path%>
+<%=link_to "New Attraction", new_admin_attraction_path if admin_user?%>

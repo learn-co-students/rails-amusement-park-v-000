@@ -3,27 +3,42 @@ class Admin::AttractionsController < ApplicationController
   before_action :require_login
 
   def new
-    @attraction = Attraction.new
-  end
-
-  def create
-    @attraction = Attraction.new(attraction_params)
-    if @attraction.save
-      redirect_to "/attraction/#{@attraction.id}"
+    if admin_user?
+      @attraction = Attraction.new
     else
-      redirect_to '/admin/attractions/new'
+      redirect_to '/attractions'
+      flash[:notice] = "You must be an admin to access that page"
     end
   end
 
+  # def create
+  #   @attraction = Attraction.new(attraction_params)
+  #   if @attraction.save
+  #     redirect_to "/attraction/#{@attraction.id}"
+  #   else
+  #     redirect_to '/admin/attractions/new'
+  #   end
+  # end
+
   def edit
-    @attraction = Attraction.find(params[:id])
+    if admin_user?
+      @attraction = Attraction.find(params[:id])
+    else
+      redirect_to '/attractions'
+      flash[:notice] = "You must be an admin to access that page"
+    end
   end
 
   def update
-    @attraction = Attraction.find(params[:id])
-    @attraction.update(attraction_params)
-    @attraction.save
-    redirect_to attraction_path(@attraction)
+    if admin_user?
+      @attraction = Attraction.find(params[:id])
+      @attraction.update(attraction_params)
+      @attraction.save
+      redirect_to attraction_path(@attraction)
+    else
+      redirect_to '/attractions'
+      flash[:notice] = "You must be an admin to access that page"
+    end
   end
 
   private

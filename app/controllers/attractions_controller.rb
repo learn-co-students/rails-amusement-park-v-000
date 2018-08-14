@@ -10,13 +10,13 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find(params[:id])
   end
 
-  def new
-    @attraction = Attraction.new
-  end
+  # def new
+  #   @attraction = Attraction.new
+  # end
 
   def create
     @attraction = Attraction.new(attraction_params)
-    if @attraction.save
+    if @attraction.save && admin_user?
       redirect_to attraction_path(@attraction)
     else
       render new_admin_attraction_path

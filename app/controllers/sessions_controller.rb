@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     user_login
-   end
+  end
 
   def destroy
     if session[:user_id] != nil

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :user_signup, :user_login, :require_login
+  helper_method :current_user, :logged_in?, :user_signup, :user_login, :require_login, :admin_user?
 
   def current_user
     if session[:user_id]
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to '/sessions/new'
+      redirect_to '/signin'
     end
   end
 
@@ -48,5 +48,8 @@ class ApplicationController < ActionController::Base
     end
 	end
 
+  def admin_user?
+     current_user.admin
+  end
 
 end

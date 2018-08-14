@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     post '/logout' => "sessions#destroy"
   end
 
+	scope '/attractions' do
+    resources :rides
+  end
+
+
   get '/signin' => "sessions#new"
   post '/signin' => "sessions#create"
   post '/logout' => "sessions#destroy"
