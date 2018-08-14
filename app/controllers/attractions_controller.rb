@@ -1,5 +1,7 @@
 class AttractionsController < ApplicationController
 
+  before_action :require_login
+
   def index
     @attractions = Attraction.all
   end

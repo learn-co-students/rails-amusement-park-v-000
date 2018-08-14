@@ -1,5 +1,7 @@
 class Admin::AttractionsController < ApplicationController
 
+  before_action :require_login
+
   def new
     @attraction = Attraction.new
   end

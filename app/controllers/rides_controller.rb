@@ -2,6 +2,8 @@ require 'rack-flash'
 
 class RidesController < ApplicationController
 
+  before_action :require_login
+
   use Rack::Flash
 
   def create

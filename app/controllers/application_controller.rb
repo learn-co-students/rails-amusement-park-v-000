@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :user_signup, :user_login
+  helper_method :current_user, :logged_in?, :user_signup, :user_login, :require_login
 
   def current_user
     if session[:user_id]
@@ -40,5 +40,13 @@ class ApplicationController < ActionController::Base
       redirect_to '/sessions/new'
     end
   end
+
+  def require_login
+	  unless session.include? :user_id
+      redirect_to '/'
+      flash[:notice] = "You must login to view that page."
+    end
+	end
+
 
 end

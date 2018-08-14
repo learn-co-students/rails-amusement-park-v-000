@@ -2,6 +2,9 @@ require 'rack-flash'
 
 class UsersController < ApplicationController
 
+  before_action :require_login
+  skip_before_action :require_login, only: [:home, :new, :create]
+
   use Rack::Flash
 
   def home
