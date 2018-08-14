@@ -1,0 +1,10 @@
+
+<% if user_admin? %>
+<% @attractions.each do |attr| %>
+    <%= link_to "Show #{attr.name}", attraction_path(attr) %>
+    <% end %>
+<% else %> 
+    <% @attractions.each do |attr| %>
+    <%= link_to "Go on #{attr.name}", attraction_path(attr) %>
+    <% end %>
+<% end %>

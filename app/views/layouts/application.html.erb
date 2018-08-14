@@ -17,7 +17,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= '/' %>"/>Home</a>
+        </div>
+        <a class="navbar-brand" href="<%= '/signup' %>"/>Sign Up</a>
+       
+        <a class="navbar-brand" href="<%= '/signin' %>"/>Sign In</a>
+   
+        <a class="navbar-brand" href="<%= '/logout' %>" name="Log Out" id="Log Out">Log Out</a>
+       
+        <% if user_admin? %>
+        <a class="navbar-brand" href="<%= '/attractions/index' %>">ADMIN</a>
+        <a class="navbar-brand" href="<%= '/attractions/new' %>">New Attraction</a>
+        <% end %>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
