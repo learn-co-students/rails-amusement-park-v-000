@@ -7,11 +7,16 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     @user.save
+    session[:user_id] = @user.id
     redirect_to "/users/#{@user.id}"
   end
 
   def show
     @user = User.find_by(id: params[:id])
+  end
+
+  def signin
+    @user = User.find_by(name: params[:name])
   end
 
   private

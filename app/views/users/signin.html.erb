@@ -1,0 +1,4 @@
+<%= form_tag ({controller: 'users', action: 'signin', method: 'post'}) do %>
+  <%= collection_select(:user, :user_id, User.all, :id, :name) %>
+  <input type=submit value='login'>
+<% end %>
