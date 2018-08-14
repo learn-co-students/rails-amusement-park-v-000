@@ -1,4 +1,4 @@
-<%=form_for @attraction do |f|%>
+<%=form_for @attraction, url: attractions_path, method: :post do |f|%>
 <%=f.label "Name:"%><br>
 <%=f.text_field :name%><br><br>
 <%=f.label "Height Requirement (inches)"%><br>
@@ -9,5 +9,5 @@
 <%=f.text_field :nausea_rating%><br><br>
 <%=f.label "How many tickets does it cost?"%><br>
 <%=f.text_field :tickets%><br><br>
-<%=f.submit "Create Attraction", attraction_path(@attraction)%>
+<%=f.submit "Create Attraction"%>
 <%end%>
