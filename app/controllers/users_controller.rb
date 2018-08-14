@@ -19,12 +19,16 @@ class UsersController < ApplicationController
   end
 
 
+    def update
+    current_user
+      redirect_to user_path(current_user)
+    end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets, :admin)
   end
-
 #  def require_login
 #  redirect_to '/' unless session.include? :user_id
 #end
