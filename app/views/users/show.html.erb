@@ -1,0 +1,11 @@
+<%= @user.name %>
+Mood : <%= @user.mood %>
+Nausea: <%= @user.nausea %>
+Happiness: <%= @user.happiness %>
+Tickets: <%= @user.tickets %>
+Height: <%= @user.height %>
+<%= link_to "See attractions", attractions_path %>
+
+<% if flash[:message] %>
+<%= flash[:message] %>
+<% end %>
