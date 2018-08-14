@@ -2,9 +2,10 @@
    <div class="notice"><%= flash[:notice] %></div>
  <% end %>
 
-<%if @user.admin != false%>
+<%if @user.admin %>
 <h3><%= "ADMIN"%></h3>
 <%end%>
+
 
 <h1><%=@user.name%>
 <h3>Mood: <%=@user.mood%></h3>

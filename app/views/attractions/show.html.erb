@@ -6,6 +6,7 @@
 <h4>Nausea Rating: <%=@attraction.nausea_rating%></h4>
 <h4>Happiness Rating: <%=@attraction.happiness_rating%></h4>
 
+
 <%=form_for @attraction.rides.build do |f|%>
 <%= f.hidden_field :attraction_id %>
 <%= f.hidden_field :user_id %>

@@ -10,13 +10,13 @@ class Ride < ActiveRecord::Base
       @user.happiness = @user.happiness + self.attraction.happiness_rating
       @user.rides << self
       @user.save
-      return "success"
+      return "Thanks for riding the #{self.attraction.name}!"
     elsif @user.height < self.attraction.min_height && @user.tickets < self.attraction.tickets
-      return "short and no tickets"
+      return "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
     elsif @user.height < self.attraction.min_height
-      return "short"
+      return  "Sorry. You are not tall enough to ride the #{self.attraction.name}."
     elsif @user.tickets < self.attraction.tickets
-      return "no tickets"
+      return  "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
     end
   end
 
