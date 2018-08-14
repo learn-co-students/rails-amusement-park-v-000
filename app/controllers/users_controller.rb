@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def show
-  end 
+    @user = User.find_by(id: params[:id])
+  end
 
   private
 
