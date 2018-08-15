@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
   resources :users
-  resources :attractions, only: [:new, :create], controller: 'admin/attractions'
+  resources :attractions, only: [:new, :create, :edit, :update], controller: 'admin/attractions'
   resources :attractions, only: [:index, :show]
   resources :rides
 
   namespace :admin do
     resources :attractions
-    get '/attractions/:id/edit' => "attractions#edit"
-    patch '/attractions' => "attractions#update"
+    # get '/attractions/:id/edit' => "attractions#edit"
+    # patch '/attractions' => "attractions#update"
     post '/logout' => "sessions#destroy"
   end
 
-	scope '/attractions' do
-    resources :rides
-  end
+	# scope '/attractions' do
+  #   resources :rides
+  # end
 
 
   get '/signin' => "sessions#new"

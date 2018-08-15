@@ -14,5 +14,5 @@
 <%= f.hidden_field :user_id, value:"#{current_user}" %>
 <%end%>
 <%=f.submit "Go on this ride" if !admin_user?%>
-<%=link_to "Edit attraction", edit_admin_attraction_path(@attraction) if admin_user?%>
+<%=link_to "Edit Attraction", edit_attraction_path(@attraction) if admin_user?%>
 <%end%>

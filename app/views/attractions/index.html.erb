@@ -12,7 +12,8 @@
     <tr>
       <td colspan="3"><%=attraction.name%></td>
       <td colspan="3"><%=attraction.tickets%></td>
-      <td colspan="3"><%=link_to "Go on #{attraction.name}", attraction_path(attraction)%></td>
+      <td colspan="3"><%=link_to "Go on #{attraction.name}", attraction_path(attraction) if !admin_user?%></td>
+      <td colspan="3"><%=link_to "Show #{attraction.name}", attraction_path(attraction) if admin_user?%></td>
     </tr>
   <%end%>
 </table>
