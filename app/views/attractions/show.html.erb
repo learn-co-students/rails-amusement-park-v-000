@@ -1,8 +1,8 @@
-<%=@attraction.name%>
-<%=@attraction.tickets%>
-<%=@attraction.min_height%>
-<%=@attraction.nausea_rating%>
-<%=@attraction.happiness_rating%>
+<h1>Name: <%=@attraction.name%></h1>
+<p>Tickets: <%=@attraction.tickets%></p>
+<p>Required Height: <%=@attraction.min_height%></p>
+<p>Nausea Rating: <%=@attraction.nausea_rating%></p>
+<p>Happiness Rating: <%=@attraction.happiness_rating%></p>
 
 <%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
 
