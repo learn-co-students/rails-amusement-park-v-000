@@ -4,7 +4,7 @@ class Ride < ActiveRecord::Base
 
 
   def take_ride
-    user = User.find_by(id: user_id)
+    user = self.user
     attraction = self.attraction
     if user[:tickets].to_i < attraction[:tickets].to_i && user[:height].to_i < attraction[:min_height].to_i
       "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."

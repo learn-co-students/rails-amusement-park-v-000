@@ -1,10 +1,10 @@
 class RidesController < ApplicationController
 
   def create
-    binding.pry
     @ride = Ride.create(ride_params)
-    @ride.save
     @ride.take_ride
+    @ride.save
+    redirect_to user_path(current_user)
   end
 
   private
