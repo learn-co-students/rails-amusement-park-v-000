@@ -11,10 +11,12 @@ class User < ActiveRecord::Base
   # validates :nausea, inclusion: {in: 1..5, message: "must be between 1 and 5"}, on: :create
 
   def mood
-    if happiness > nausea
-        "happy"
-    else
-       "sad"
+    unless admin
+      if happiness > nausea
+          "happy"
+      else
+         "sad"
+      end
     end
   end
 

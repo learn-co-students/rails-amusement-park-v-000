@@ -1,8 +1,10 @@
 <h1>Log In</h1>
-<%= form_for @user, url: signin_path, method: :post do |f|%>
-<%=f.label "Please select your username."%>
-<%=f.collection_select :name, User.all, :name, :name%>
-<%=f.label "password"%>
-<%=f.password_field :password %>
-<%=f.submit "Sign in"%>
-<%end%>
+
+
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+  <%=label_tag "Please select your username."%>
+  <%=collection_select :user, :name, User.all, :name, :name%>
+  <%=label_tag "Password"%>
+  <%=password_field_tag :password %>
+  <%= submit_tag "Sign In"%>
+<% end %>

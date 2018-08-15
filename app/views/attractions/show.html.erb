@@ -13,6 +13,6 @@
 <%= f.fields_for :user, @attraction.rides.last.build_user do |users_fields| %>
 <%= f.hidden_field :user_id, value:"#{current_user}" %>
 <%end%>
-<%=f.submit "Go on #{@attraction.name}" if !admin_user?%>
+<%=f.submit "Go on this ride" if !admin_user?%>
 <%=link_to "Edit attraction", edit_admin_attraction_path(@attraction) if admin_user?%>
 <%end%>
