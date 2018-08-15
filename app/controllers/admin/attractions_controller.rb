@@ -11,14 +11,14 @@ class Admin::AttractionsController < ApplicationController
     end
   end
 
-  # def create
-  #   @attraction = Attraction.new(attraction_params)
-  #   if @attraction.save
-  #     redirect_to "/attraction/#{@attraction.id}"
-  #   else
-  #     redirect_to '/admin/attractions/new'
-  #   end
-  # end
+  def create
+    @attraction = Attraction.new(attraction_params)
+    if @attraction.save && admin_user?
+      redirect_to attraction_path(@attraction)
+    else
+      render new_attraction_path
+    end
+  end
 
   def edit
     if admin_user?

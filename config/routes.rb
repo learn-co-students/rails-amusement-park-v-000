@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
-  resources :attractions
+  resources :attractions, only: [:new, :create], controller: 'admin/attractions'
+  resources :attractions, only: [:index, :show]
   resources :rides
 
   namespace :admin do

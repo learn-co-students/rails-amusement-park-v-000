@@ -27,7 +27,7 @@
           <!-- <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'})  do %>
             <%=submit_tag 'Log Out', class:"navbar-brand", id:"logout"%>
           <% end %> -->
-          <%=link_to "Log Out", logout_path%>
+          <%=link_to "Log Out", logout_path, method:'post', action:'destroy' %>
         <%end%>
         </div>
         <div class="navbar-collapse collapse">
