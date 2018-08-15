@@ -1,0 +1,10 @@
+<h1> Edit attraction </h1>
+
+<%= form_for(@attraction) do |f| %>
+  <%= f.text_field :name, placeholder: "Name" %><br>
+  <%= f.text_field :min_height, placeholder: "Height requirement (in inches)" %><br>
+  <%= f.text_field :happiness_rating, placeholder: "How fun is it? (1-5 scale)" %><br>
+  <%= f.text_field :nausea_rating, placeholder: "How nausea-inducing is it? (1-5 scale)" %><br>
+  <%= f.text_field :tickets, placeholder: "How many tickets does it cost?" %><br>
+  <%= f.submit "Update Attraction" %>
+<% end %>
