@@ -1,0 +1,17 @@
+<%= form_with(model: attraction, local: true) do |form| %>
+  <% if attraction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attraction.errors.count, "error") %> prohibited this attraction from being saved:</h2>
+
+      <ul>
+      <% attraction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
