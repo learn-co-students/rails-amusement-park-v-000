@@ -1,0 +1,22 @@
+<p>Name: <%=@user.name%></p>
+<p>Mood: <%=@user.mood%></p>
+<p>Tickets: <%=@user.tickets%></p>
+<p>Height: <%=@user.height%></p>
+<p>ADMIN: <%=@user.admin%></p>
+
+<p><a href= '/attractions'>See attractions</a></p>
+<p><a href= '/logout'>Log Out</a></p>
+
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>
+
+
+
+
+
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<% end %>
