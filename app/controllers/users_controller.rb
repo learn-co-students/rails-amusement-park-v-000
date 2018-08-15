@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @message = params[:message] if params[:message]
+    @message ||= false
     redirect_to '/' unless session.include? :user_id
     @user = User.find_by(id: params[:id])
   end
