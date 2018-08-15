@@ -1,5 +1,8 @@
 <%@attractions.each do |attraction|%>
-<p><a href="/attractions/<%=attraction.id%>">Go on <%=attraction.name%></a></p>
+<p><a href="/attractions/<%=attraction.id%>">Go on <%=attraction.name%></a></p></br>
+<p><a href="/attractions/<%=attraction.id%>">Show <%=attraction.name%></a></p></br>
+
 <%end%>
+</br>
 
 <p><a href='/attractions/new'>New Attraction</a></p>
