@@ -5,8 +5,10 @@
 <p>ADMIN: <%=@user.admin%></p>
 <p><a href= '/logout'>Log Out</a></p>
 <p><a href= '/attractions'>See attractions</a></p>
-<%binding.pry%>
-<p>"Thanks for riding the Ferris Wheel!"</p>
+<p><%=@message%></p>
+
+
+
 
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
