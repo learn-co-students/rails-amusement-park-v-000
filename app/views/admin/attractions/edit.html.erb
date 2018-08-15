@@ -1,0 +1,13 @@
+<%=form_for @attraction, url: attraction_path, method: :patch do |f|%>
+<%=f.label "Name:"%><br>
+<%=f.text_field :name%><br><br>
+<%=f.label "Height Requirement (inches)"%><br>
+<%=f.text_field :min_height%><br><br>
+<%=f.label "How fun is it on scale of 1-5?"%><br>
+<%=f.text_field :happiness_rating%><br><br>
+<%=f.label "How nausea-inducing is it on scale of 1-5?"%><br>
+<%=f.text_field :nausea_rating%><br><br>
+<%=f.label "How many tickets does it cost?"%><br>
+<%=f.text_field :tickets%><br><br>
+<%=f.submit "Update Attraction"%>
+<%end%>

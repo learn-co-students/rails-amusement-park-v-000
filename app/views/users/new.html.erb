@@ -1,0 +1,31 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+      are preventing you from signing up:
+      </h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user do |f|%>
+<%= f.label "Name:"%>
+<%=f.text_field :name %><br>
+<%= f.label "Height (Inches):"%>
+<%=f.text_field :height %><br>
+<%= f.label "Happiness on scale of 1-5:"%>
+<%=f.text_field :happiness %><br>
+<%= f.label "Nauseous on scale of 1-5:"%>
+<%=f.text_field :nausea %><br>
+<%= f.label "How many dollars do you have?"%>
+<%=f.text_field :tickets %><br>
+<%=f.label "Check if you own a theme park"%>
+<%=f.check_box :admin%><br>
+<%= f.label "Password:"%>
+<%=f.password_field :password %><br>
+<%=f.submit "Create User"%>
+<%end%>
