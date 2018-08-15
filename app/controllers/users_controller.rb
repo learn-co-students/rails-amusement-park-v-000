@@ -16,7 +16,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_signup
+    @user = User.new do |u|
+     u.name = params[:user]['name']
+     u.height = params[:user]['height']
+     u.happiness = params[:user]['happiness']
+     u.nausea = params[:user]['nausea']
+     u.tickets = params[:user]['tickets']
+     u.admin = params[:user]['admin']
+     u.password = params[:user]['password']
+    end
+   if @user.save
+     session[:user_id] = @user.id
+     redirect_to user_path(@user)
+   else
+     render '/users/new'
+   end
   end
 
   def show

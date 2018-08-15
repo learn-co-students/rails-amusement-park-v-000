@@ -6,14 +6,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :attractions
-    # get '/attractions/:id/edit' => "attractions#edit"
-    # patch '/attractions' => "attractions#update"
+
     post '/logout' => "sessions#destroy"
   end
-
-	# scope '/attractions' do
-  #   resources :rides
-  # end
 
 
   get '/signin' => "sessions#new"
@@ -22,7 +17,6 @@ Rails.application.routes.draw do
 
   get '/signup' => "users#new"
   post '/signup' => "users#create"
-
 
 
   root 'users#home'

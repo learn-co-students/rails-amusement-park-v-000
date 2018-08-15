@@ -6,7 +6,13 @@ class SessionsController < ApplicationController
 
 
   def create
-    user_login
+    @user = User.find_by(name: params[:user][:name])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to '/signin'
+    end
   end
 
   def destroy
