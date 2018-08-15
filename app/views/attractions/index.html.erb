@@ -1,0 +1,19 @@
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+ <% end %>
+
+<h2>Attractions</h2>
+
+<ul>
+    <%= @attractions.each do |attraction| %>
+        <% if current_user.admin %>
+            <li><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></li>
+        <% else %>
+            <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></li>
+        <% end %>
+    <% end %>
+</ul>
+
+<% if current_user.admin %>
+<%= link_to "New Attraction", new_attraction_path %>
+<% end %>
