@@ -1,0 +1,26 @@
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+ <% end %>
+
+<%= form_for(@user) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %><br>
+    <%= f.label :nausea %> (1-5 scale)
+    <%= f.text_field :nausea, class: 'form-control' %><br>
+    <%= f.label :happiness %> (1-5 scale)
+    <%= f.text_field :happiness, class: 'form-control' %><br>
+    <%= f.label :tickets %>
+    <%= f.text_field :tickets, class: 'form-control' %><br>
+    <%= f.label :height %> (in inches)
+    <%= f.text_field :height, class: 'form-control' %><br>
+    <br>
+    <div class="form-group">
+        <%= f.label 'Check box if you are a theme park owner' %>
+        <%= f.check_box :admin %>
+    </div>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+    <br>
+
+    <%= f.submit 'Create User'%>
+<% end %>
