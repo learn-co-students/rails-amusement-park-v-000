@@ -1,4 +1,4 @@
-# Rails Amusement Park
+
 
 ## Objectives
 
