@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_231103) do
     t.string "password_digest"
     t.integer "nausea"
     t.integer "happiness"
-    t.string "tickets"
+    t.integer "tickets"
     t.integer "height"
     t.boolean "admin", default: false
     t.datetime "created_at", null: false

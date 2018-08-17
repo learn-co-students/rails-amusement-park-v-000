@@ -11,19 +11,18 @@ class UsersController < ApplicationController
 # binding.pry
     if !user_params.empty?
       @user = User.new(user_params)
-
       if @user.save
         session[:user_id] = @user.id
-        flash[:notice] = "User account created successfully"
+        session[:notice] = "User account created successfully"
         # redirect_to @user
         redirect_to user_path(@user)
       else
-        flash[:alert] = "User account not saved successfully"
+        session[:alert] = "User account not saved successfully"
         render :new
       # redirect_to controller: 'users', action: 'new'
       end
     else
-      flash[:alert] = "Error, fill in all form fields before submitting"
+      session[:alert] = "Error, fill in all form fields before submitting"
       render :new
     end
   end
