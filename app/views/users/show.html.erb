@@ -1,0 +1,16 @@
+<% if flash[:notice] %>
+   <%= flash[:notice] %></div>
+ <% end %>
+
+
+<h3>Details</h3>
+<ul>
+    <li>Name: <%= @user.name %></li>
+    <li>Tickets: <%= @user.tickets %></li>
+    <li>Nausea: <%= @user.nausea %></li>
+    <li>Happiness: <%= @user.happiness %></li>
+    <li>Height: <%= @user.height %> inches</li>
+    <li>Mood: <%= @user.mood %></li>
+    <li>Admin: <%= @user.admin ? "ADMIN" : "NOT ADMIN" %></li>
+</ul>
+<%= link_to 'See attractions', attractions_path %>
