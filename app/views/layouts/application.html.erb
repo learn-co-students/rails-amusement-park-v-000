@@ -19,9 +19,19 @@
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         </div>
+
+
+        <% if !logged_in? %>
+          <%= link_to "Sign In", signin_path, class: "navbar-brand" %>
+          <%= link_to "Sign Up", new_user_path, class: "navbar-brand" %>
+        <% else %>
+          <a class="navbar-brand" href="/users/<%= current_user.id%>"/><%= current_user.name %>'s profile</a>
+          <%= link_to "Log Out", signout_path, class: "navbar-brand", method: "delete" %>
+        <% end %>
+
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
