@@ -8,18 +8,15 @@ class UsersController < ApplicationController
   end
 
   def create
-# binding.pry
     if !user_params.empty?
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
         session[:notice] = "User account created successfully"
-        # redirect_to @user
         redirect_to user_path(@user)
       else
         session[:alert] = "User account not saved successfully"
         render :new
-      # redirect_to controller: 'users', action: 'new'
       end
     else
       session[:alert] = "Error, fill in all form fields before submitting"
@@ -28,9 +25,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-
-    # @user = User.find_by(session[:user_id])
+    if logged_in?
+      @user = current_user
+    else
+      redirect_to new_user_path
+    end
   end
 
   private
