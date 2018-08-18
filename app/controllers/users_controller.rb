@@ -13,13 +13,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    if logged_in?
-      @user = User.find(session[:user_id])
-      if params[:message]
-        @message = params[:message]
-      end
-    else
-      return redirect_to root_path
+    @user = User.find(session[:user_id])
+    if params[:message]
+      @message = params[:message]
     end
   end
 

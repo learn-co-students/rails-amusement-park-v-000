@@ -3,7 +3,6 @@ class AttractionsController < ApplicationController
   before_action :find_attraction, except: [:index, :new, :create]
 
   def index
-    @user = User.find(session[:user_id])
     @attractions = Attraction.all
   end
 
@@ -16,28 +15,16 @@ class AttractionsController < ApplicationController
   end
 
   def create
-    @attraction = Attraction.new(attraction_params)
-    if @attraction.save
-      redirect_to attraction_path(@attraction.id)
-    else
-      @errors = @attraction.errors
-      render "new"
-    end
+    @attraction = Attraction.create(attraction_params)
+    redirect_to attraction_path(@attraction.id)
   end
 
   def edit
   end
 
   def update
-    if @attraction.update(attraction_params)
-      redirect_to attraction_path(@attraction)
-    else
-      @errors = @attraction.errors
-      render "edit"
-    end
-  end
-
-  def destroy
+    @attraction.update(attraction_params)
+    redirect_to attraction_path(@attraction.id)
   end
 
   private
