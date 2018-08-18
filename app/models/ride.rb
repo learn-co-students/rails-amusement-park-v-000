@@ -8,13 +8,14 @@ class Ride < ActiveRecord::Base
     @attraction = self.attraction
 
     if @user.tickets.to_i < @attraction.tickets.to_i  && @user.height.to_i < @attraction.min_height.to_i
-      ride_invalid
+      "Sorry. " + tickets_invalid + " " + height_invalid
     elsif @user.height.to_i < @attraction.min_height.to_i
-      height_invalid
+      "Sorry. " + height_invalid
     elsif @user.tickets.to_i < @attraction.tickets.to_i
-      tickets_invalid
+      "Sorry. " + tickets_invalid
     else
       @user.update(tickets: ticket_current, nausea: nausea_current, happiness: happiness_current)
+      "Thanks for riding the #{@attraction.name}!"
     end
   end
 
@@ -32,15 +33,11 @@ class Ride < ActiveRecord::Base
   end
 
   def tickets_invalid
-    "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
+    "You do not have enough tickets to ride the #{self.attraction.name}."
   end
 
   def height_invalid
-    "Sorry. You are not tall enough to ride the #{self.attraction.name}."
-  end
-
-  def ride_invalid
-    "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
+    "You are not tall enough to ride the #{self.attraction.name}."
   end
 
 end
