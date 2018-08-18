@@ -20,7 +20,7 @@ class AttractionsController < ApplicationController
     if @attraction.save
       redirect_to attraction_path(@attraction)
     else
-      render :new
+      render 'new'
     end
   end
 
@@ -33,8 +33,8 @@ class AttractionsController < ApplicationController
     if @attraction.update(attraction_params)
       redirect_to attraction_path(@attraction)
     else
-      render :new
-    end 
+      render 'new'
+    end
   end
 
   private
