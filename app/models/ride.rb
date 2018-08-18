@@ -2,8 +2,8 @@ class Ride < ActiveRecord::Base
   belongs_to :user
   belongs_to :attraction
 
-  validate :not_tall_enough_for_ride
-  validate :not_enough_tickets_for_ride
+  before_save :not_tall_enough_for_ride
+  before_save :not_enough_tickets_for_ride
 
   def not_tall_enough_for_ride
     if self.user.height && self.attraction.min_height
