@@ -1,20 +1,12 @@
-<%= form_for :users, url: '/signin' do |f| %>
+<%= form_for @user, url: signin_path, method: :post do |f| %>
 
-  <%= f.label :name, "Your name:" %>
-  <%= f.collection_select :name, User.order(:name), :id, :name %>
-  <br><br>
+<%= f.label :name, "Your Name: " %>
+<%= f.collection_select(:name, User.all, :id, :name, prompt: "Please select your username from this dropdown") %><br>
 
-  <%= f.label :password, "Your Password:" %><br>
-  <%= f.password_field :password %>
+<%= f.label :password, "password" %>
+<%= f.password_field :password %><br>
 
-  <br><br>
-
-  <%= f.label :password, "Reconfirm Password:" %><br>
-  <%= f.password_field :password_confirmation %>
-
-  <br><br>
-
-  <%= f.submit 'Sign In' %>
+<%= f.submit "Sign In" %>
 <% end %>
 
 <br><br>
