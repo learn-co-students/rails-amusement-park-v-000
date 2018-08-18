@@ -22,7 +22,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   end
 
   it 'successfully logs in as non-admin' do
-    
+
     # user_login method is defined in login_helper.rb
     create_standard_user
     visit '/signin'
@@ -48,7 +48,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     create_standard_user
     visit '/users/1'
     expect(current_path).to eq('/')
-    expect(page).to have_content("Sign Up")
+    expect(page).to have_content("Sign up")
   end
 
   it 'successfully signs up as admin' do

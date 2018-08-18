@@ -41,13 +41,18 @@
 
     <br><br>
 
-    <%= label_tag(:admin, "Check box if you are a theme park owner") %>
+    <%= f.label :admin, "Check box if you are a theme park owner" %>
     <%= f.check_box :admin , {}, "true", "false" %>
 
     <br><br>
 
     <%= f.label :password %><br>
     <%= f.password_field :password %>
+
+    <br><br>
+
+    <%= f.label :password_confirmation, "Reconfirm password" %><br>
+    <%= f.password_field :password_confirmation %>
   </div>
 
   <br><br>

@@ -1,5 +1,9 @@
 
-  <p><strong>Name:</strong> <%= @user.name %>/<p>
+  <% if @user.admin %>
+  <p><strong>ADMIN</strong></p>
+  <% end %>
+
+  <p><strong>Name:</strong> <%= @user.name %></p>
 
   <br><br>
 
@@ -16,4 +20,4 @@
   <br><br>
 
 
-  <p><%= link_to(controller: 'attractions', action: 'index') { 'See Attractions' } %>
+  <p><%= link_to(controller: 'attractions', action: 'index') { 'See Attractions' } %></p>

@@ -18,13 +18,18 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        <a class="navbar-brand" href="/users/new">Sign Up</a>
-        <a class="navbar-brand" href="/signin">Log in</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-
-          </ul>
+            <% if current_user %>
+              <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
+              <li><%= link_to "Attractions", attractions_path %></li>
+              <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'Sign Up', new_user_path %></li>
+              <li><%= link_to 'Sign In', signin_path %></li>
+          <% end %>
+        </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
