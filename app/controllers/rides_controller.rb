@@ -3,12 +3,9 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
     if @ride.save
-      @ride.after_ride
-      redirect_to user_path(session[:user_id])
-    else
-      @errors = @ride.errors.messages[:base]
-      @user = User.find(params[:ride][:user_id])
-      render :template => "users/show"
+      @message = @ride.take_ride
+      @user = User.find(@ride.user.id)
+      redirect_to user_path(@ride.user, :message => @message)
     end
   end
 
