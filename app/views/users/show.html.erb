@@ -1,9 +1,14 @@
+  <% if @message %>
+    <p><%= @message %></p>
+  <% end %>
 
-  <% if @user.admin %>
+  <br><br>
+
+  <% if current_user.admin %>
   <p><strong>ADMIN</strong></p>
   <% end %>
 
-  <p><strong>Name:</strong> <%= @user.name %></p>
+  <strong>Name:</strong> <%= @user.name %></p>
 
   <br><br>
 

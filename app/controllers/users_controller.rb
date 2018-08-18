@@ -1,20 +1,17 @@
 class UsersController < ApplicationController
   before_action :require_logged_in, only: [:show, :edit, :update, :destroy]
 
-  def index
-  end
-
   def new
     @user = User.new
   end
 
   def create
-# binding.pry
-    @user = User.new(user_params) if user_params
+    @user = User.new(user_params)
+    #  if user_params
     if @user.save
       session[:user_id] = @user.id
       # session[:notice] = "User account created successfully!"
-      redirect_to user_path(@user)
+      redirect_to user_path(@user.id)
     else
       # session[:alert] = "Failure, user account not saved."
       render 'new'
@@ -22,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
+# binding.pry
     if logged_in?
       @user = User.find_by_id(session[:user_id])
     else
