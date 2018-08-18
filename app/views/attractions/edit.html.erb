@@ -1,0 +1,9 @@
+<% if current_user.admin %>
+  <h1>Edit Attractions</h1>
+  <%= render 'form' %>
+
+  <br><br>
+
+  <%= link_to 'Show', @attraction %>
+  <%= link_to 'Back', attractions_path %>
+<% end %>
