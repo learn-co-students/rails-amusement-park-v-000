@@ -1,11 +1,26 @@
 <h1><%= @user.name %></h1>
 
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% elsif @user.rides.length > 0 %>
+  <p>Thanks for riding the <%= @user.rides.last.attraction.name %>!</p>
+<% end %>
+
+
+<% if @last_ride %>
+  <p>Thanks for riding the <%= @last_ride_name %>!</p>
+<% end %>
+
 <p>Mood: <%= @user.mood %></p>
 
 <p>Tickets: <%= @user.tickets %></p>
 
 <p>Height: <%= @user.height %></p>
 
-<%= form_tag ({controller: "sessions", action: "destroy", method: "post"}) do %>
-  <%= submit_tag "Log Out" %>
-<% end %>
+<p><%= "ADMIN" if @user.admin %></p>
+
+<p><%= link_to "See attractions", attractions_path %></p>
+
+<p><%= link_to(controller: 'sessions', action: 'destroy') { 'Log Out' } %></p>
