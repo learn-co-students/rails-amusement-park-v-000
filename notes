@@ -1,0 +1,12 @@
+users_controller#create
+
+# if params[:admin] == 1, admin
+# else !admin
+@user = User.new(user_params)
+params[:admin] == 1 ? @user.admin = true : @user.admin = false
+
+  session[:user_id] = @user.id
+  redirect_to user_path(@user.id)
+else
+  redirect_to user_new_path
+end

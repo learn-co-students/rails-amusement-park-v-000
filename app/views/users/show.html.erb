@@ -1,4 +1,9 @@
-<p>Name: <%= @user.name %></p>
-<p>Tickets: <%= @user.tickets %></p>
-<p>Mood: <%= @user.mood %></p>
-<p>Height: <%= "#{@user.height} inches" %></p>
+
+<% if !@user.admin %>
+  <p>Name: <%= @user.name %></p>
+  <p>Tickets: <%= @user.tickets %></p>
+  <p>Mood: <%= @user.mood %></p>
+  <p>Height: <%= "#{@user.height} inches" %></p>
+<% else %>
+  <p><h3><%= "ADMIN #{@user.name}" %></h3></p>
+<% end %>

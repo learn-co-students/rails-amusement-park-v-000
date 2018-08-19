@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   def mood
     # User has a method 'mood' that returns 'sad' when
     # the user is more nauseous than happy
-    self.nausea > self.happiness ? 'sad' : 'happy'
+    nausea > happiness ? 'sad' : 'happy'
+  end
+
+  def admin?
+    admin == true
   end
 end

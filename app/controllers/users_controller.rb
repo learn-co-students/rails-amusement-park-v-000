@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    raise params.inspect
     if @user = User.create(user_params)
 
       session[:user_id] = @user.id
