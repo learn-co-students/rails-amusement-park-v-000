@@ -1,0 +1,7 @@
+<h2>User Login</h2>
+
+<%= form_tag '/signin' do %>
+  <%= collection_select :user, :name, User.all, :name, :name %>
+  <%= text_field_tag :password, '', :placeholder => "enter your password" %>
+  <%= submit_tag 'Sign In' %>
+<% end %>
