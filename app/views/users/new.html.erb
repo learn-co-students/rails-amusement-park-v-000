@@ -9,7 +9,8 @@
   <p><%= f.text_field :nausea %></p>
   <p><%= f.label 'How many tickets are in your pocket?' %></p>
   <p><%= f.text_field :tickets %></p>
-  <p><%= f.label 'Password' %></p>
+  <br><%= f.check_box :admin %> <%= f.label 'Check box if you are a theme park owner' %>
+  <br><br><p><%= f.label 'Password' %></p>
   <p><%= f.text_field :password %></p>
   <p><%= f.submit %></p>
 <% end %>
