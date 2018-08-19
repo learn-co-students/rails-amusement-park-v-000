@@ -7,3 +7,7 @@
 <% else %>
   <p><h3><%= "ADMIN #{@user.name}" %></h3></p>
 <% end %>
+
+<p><%= link_to "See attractions", attractions_path %></p>
+
+<p><%= link_to "Log Out", "/logout" %></p>
