@@ -15,18 +15,18 @@ class AttractionsController < ApplicationController
   end
 
   def edit
-    @attraction = Attraction.find_by(id: params[:id]) ##DRY ALERT!
+    find_attraction
   end
 
   def update
-    @attraction = Attraction.find_by(id: params[:id])
+    find_attraction
     @attraction.update(attraction_params)
 
     redirect_to attraction_path(@attraction)
   end
 
   def show
-    @attraction = Attraction.find_by(id: params[:id])
+    find_attraction
     @user = current_user
     @ride = Ride.new
   end
