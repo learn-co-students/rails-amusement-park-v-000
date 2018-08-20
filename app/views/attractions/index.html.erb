@@ -1,12 +1,12 @@
 <% @attractions.all.each do |attraction| %>
   <p><h4><%= attraction.name %></h4></p>
-  <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
-  || <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+  <% if !@current_user.admin? %>
+    <%= link_to "Go on #{attraction.name}  || ", attraction_path(attraction) %>
+  <% end %>
+  <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
 <% end %>
 <br><br>
 <hr>
 <% if @current_user.admin? %>
   <p><%= link_to "New Attraction", new_attraction_path %></p>
 <% end %>
-
-"Show #{@ferriswheel.name}"

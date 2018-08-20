@@ -14,6 +14,17 @@ class AttractionsController < ApplicationController
     redirect_to attraction_path(@attraction)
   end
 
+  def edit
+    @attraction = Attraction.find_by(id: params[:id]) ##DRY ALERT!
+  end
+
+  def update
+    @attraction = Attraction.find_by(id: params[:id])
+    @attraction.update(attraction_params)
+
+    redirect_to attraction_path(@attraction)
+  end
+
   def show
     @attraction = Attraction.find_by(id: params[:id])
     @user = current_user
