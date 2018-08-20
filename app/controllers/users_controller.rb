@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     if current_user
       @user = current_user
+      
       params[:message] ? @message = params[:message] : nil
     else
       redirect_to root_path
