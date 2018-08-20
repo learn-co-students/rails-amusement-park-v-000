@@ -2,7 +2,7 @@
 
   <div class="form-group">
     <%= f.label :name, "Select name:" %><br>
-    <%= f.text_field :name, class: "form-control" %>
+      <%= f.collection_select :name, User.all, :name, :name %><br>
   </div>
 
   <div class="form-group">

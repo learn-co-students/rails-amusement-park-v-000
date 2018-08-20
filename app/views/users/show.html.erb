@@ -17,5 +17,6 @@
       <p><strong>Height:</strong> <%= @user.height %></p>
       <p><%= link_to "Edit",edit_user_path(@user) %></p>
       <p><%= link_to "See attractions", attractions_path %></p>
+      <p><%= link_to(controller: 'sessions', action: 'destroy') { 'Log Out' } %></p>
     </div>
   </div>

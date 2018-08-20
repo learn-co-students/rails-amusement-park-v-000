@@ -34,6 +34,11 @@ class AttractionsController < ApplicationController
     end
   end
 
+  def update
+   @attraction.update(attraction_params)
+   redirect_to attraction_path(@attraction.id)
+ end
+
 private
 
 def set_attraction
@@ -44,4 +49,4 @@ def attraction_params
   params.require(:attraction).permit(:name,:min_height,:tickets,:happiness_rating,:nausea_rating)
 end
 
-end 
+end

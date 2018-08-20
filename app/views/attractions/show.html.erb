@@ -7,7 +7,7 @@
     <p><strong>Ticket Requirement:</strong><%= @attraction.tickets %></p>
     <p><strong>Heigh Requirement:</strong><%= @attraction.min_height %></p>
     <p><strong>Nausea Rating:</strong><%= @attraction.nausea_rating %></p>
-    <p><strong>Happiness Rating:</strong><%= @attraction.happines_rating %></p>
+    <p><strong>Happiness Rating:</strong><%= @attraction.happiness_rating %></p>
     <% if current_user.admin %>
     <%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
     <% else %>
