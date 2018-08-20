@@ -18,3 +18,20 @@ attractions#show.html.erb
   <% f.hidden_field "happiness_rating", value: @attraction.happiness_rating %>
   <% f.submit %>
 <% end %>
+
+<%= form_for @ride do |f| %>
+  <% f.hidden_field "ride_user_id", value: @ride.user_id %>
+  <% f.hidden_field "ride_attraction_id", value: @ride.attraction_id %>
+  <%= f.submit 'Go on this ride' %>
+<% end %>
+
+
+<form class="new_ride" id="new_ride" action="/rides" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="jYtdOueZjpL0GagJjmyY+0O2C7/P0NpO24/LX8FJ5UWtobyWBhxh6I6MEwUSUDNVN/aAAM6/3Ix9xUm/VwW0cg==" />
+        <input type="hidden" value="377" name="ride[user_id]" id="ride_user_id" /><br />
+        <input type="hidden" value="12" name="ride[attraction_id]" id="ride_attraction_id" /><br />
+        <input type="submit" name="commit" value="Go on this ride" class="btn btn-light" data-disable-with="Go on this ride" />
+</form>
+
+<form class="edit_ride" id="edit_ride_74" action="/rides/74" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pm4HhaHcQWneKiZdYAwkf8tp0tfih+z3mX6uQXFK9mB78kUnty7iv5/y8SHWYXGQG00krHXey/pVOdpTK9bafQ==" />
+  <input type="submit" name="commit" value="Go on this ride" data-disable-with="Go on this ride" />
+</form>

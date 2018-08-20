@@ -1,5 +1,7 @@
 <%= @attraction.name %>
 
-<%= form_for @user do |f| %>
-  <%= f.submit 'Go on this ride' %>
-<% end %>
+<form action="/rides" method="post">
+  <input  type="hidden" value="<%= @user.id %>" name="ride[user_id]">
+  <input  type="hidden" value="<%= @attraction.id %>" name="ride[attraction_id]">
+  <input type=submit value='Go on this ride'>
+</form>

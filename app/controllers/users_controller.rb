@@ -21,14 +21,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    raise params.inspect
-    # update user tickets, nausea, happiness
-    @user = current_user
-
-    redirect_to user_path(@user)
-  end
-
   private
 
   def user_params
