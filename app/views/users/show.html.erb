@@ -1,0 +1,35 @@
+<% if @success_message %>
+  <p><%= @ride_message %></p>
+<% end %>
+
+<% if @incomplete_message %>
+  <p><%= @ride_message %></p>
+<% end %>
+
+<% if @ride_message %>
+  <p><%= @ride_message %></p>
+<% end %>
+
+  <br><br>
+
+  <% if current_user.admin %>
+  <p><strong>ADMIN</strong></p>
+  <% end %>
+
+  <strong>Name:</strong> <%= @user.name %></p>
+
+  <br><br>
+
+  <p><strong>Tickets:</strong> <%= @user.tickets %></p>
+
+  <br><br>
+
+  <p><strong>Mood:</strong> <%= @user.mood %></p>
+
+  <br><br>
+
+  <p><strong>Height:</strong> <%= @user.height %> inches</p>
+
+  <br><br>
+
+  <%= link_to "See attractions", attractions_path%>
