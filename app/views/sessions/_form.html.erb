@@ -1,3 +1,12 @@
+<% if @incomplete_message %>
+  <p><%= @incomplete_message %></p>
+<% end %>
+
+<% if @failure_message %>
+  <p><%= @failure_message %></p>
+<% end %>
+
+
 <%= form_for @user, url: signin_path, method: :post do |f| %>
   <%= f.label :name, "Your Name: " %>
   <%= f.collection_select(:name, User.all, :id, :name, prompt: "Please select your username from this dropdown") %><br>
