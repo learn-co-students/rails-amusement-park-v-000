@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :rides
   has_many :attractions, through: :rides
 
+  accepts_nested_attributes_for :attractions
+
   def mood
     # User has a method 'mood' that returns 'sad' when
     # the user is more nauseous than happy

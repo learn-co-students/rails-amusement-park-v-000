@@ -10,3 +10,11 @@ params[:admin] == 1 ? @user.admin = true : @user.admin = false
 else
   redirect_to user_new_path
 end
+
+attractions#show.html.erb
+
+<%= form_for @attraction do |f| %>
+  <% f.hidden_field "nausea_rating", value: @attraction.nausea_rating %>
+  <% f.hidden_field "happiness_rating", value: @attraction.happiness_rating %>
+  <% f.submit %>
+<% end %>
