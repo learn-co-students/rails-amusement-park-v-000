@@ -2,12 +2,9 @@ class RidesController < ApplicationController
 
   def create
     @ride = Ride.create(ride_params)
-    # @user = User.find_by(id: @ride.user_id)
-    #
-    # @user # update nausea, happiness, and tickets using the attractions data
-    @ride.take_ride
+    @message = @ride.take_ride
 
-    redirect_to user_path(@ride.user_id)
+    redirect_to user_path(@ride.user_id, :message => @message)
   end
 
   private

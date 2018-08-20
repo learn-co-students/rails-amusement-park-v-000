@@ -18,6 +18,7 @@ class Ride < ActiveRecord::Base
       subtract_tickets
       update_nausea
       update_happiness
+      "Thanks for riding the #{attraction.name}!"
     end
   end
 
