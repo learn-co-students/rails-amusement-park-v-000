@@ -1,17 +1,55 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= form_for @user do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% user.errors.full_messages.each do |message| %>
+      <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <%end%>
 
-  <div class="actions">
-    <%= form.submit %>
+
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :height, "Height(inches)" %><br>
+    <%= f.text_field :height, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :happiness, "Happiness (1-5)" %><br>
+    <%= f.text_field :happiness, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :nausea, "Nausea (1-5)" %><br>
+    <%= f.text_field :nausea, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tickets, "How much scrilla you got?" %><br>
+    <%= f.text_field :tickets, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :admin, "Check if you are a theme park owner" %><br>
+    <%= f.check_box :admin, class: "form-check-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %><br>
+    <%= f.text_field :password, class: "form-control" %>
+  </div>
+
+  <div class="actions"><br>
+    <%= f.submit class: "btn btn-primary" %>
+
   </div>
 <% end %>
