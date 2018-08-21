@@ -14,9 +14,13 @@ class Ride < ActiveRecord::Base
 
         if !disqualifiers.empty?
             "Sorry. " + disqualifiers.join(" ")
-        end
-            
+        else
+            user.tickets -= attraction.tickets
+            user.nausea += attraction.nausea_rating
+            user.happiness += attraction.happiness_rating
 
+            user.save
+        end
     end
 
     private
