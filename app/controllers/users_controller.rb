@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    if session[:user_id] == params[:id].to_i
+    if session[:user_id].to_i == params[:id].to_i
       @user = User.find(params[:id])
     else
       redirect_to root_url
