@@ -1,1 +1,37 @@
-This is where the new users form will go ~
+<% content_for :navbar do %>
+  <a class="navbar-brand" href="/signin">Sign In</a>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <div>
+    <%= f.label :name, "Your Name: " %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :height, "How tall are you? (in inches ~ please round up)" %>
+    <%= f.number_field :height %>
+  </div>
+
+  <div>
+    <%= f.label :happiness, "How HAPPY are you, on a 1-5?" %>
+    <%= f.number_field :happiness %>
+  </div>
+
+  <div>
+    <%= f.label :nausea, "How NAUSEOUS are you, on a 1-5?" %>
+    <%= f.number_field :nausea %>
+  </div>
+
+  <div>
+    <%= f.label :tickets, "How many dollars do you have?" %>
+    <%= f.number_field :tickets %>
+  </div>
+
+  <div>
+    <%= f.label :password, "Choose a password: " %>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
