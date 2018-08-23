@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def signin
-
+    @users = User.all
   end
 
   def logged_in?
