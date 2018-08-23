@@ -1,6 +1,6 @@
-class UsersController < ApplicationController
+class UsersController < SessionsController
   def show
-    if session[:user_id].to_i == params[:id].to_i
+    if logged_in? && this_user?
       @user = User.find(params[:id])
     else
       redirect_to root_url
