@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   delete '/session', to: "sessions#signout"
 
   resources :users, only: [:show, :new, :create]
-  resources :attractions, only: [:index]
+  resources :attractions, only: [:index, :show]
 
   root "welcome#home"
 end
