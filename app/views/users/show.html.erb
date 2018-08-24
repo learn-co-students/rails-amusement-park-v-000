@@ -3,6 +3,10 @@
 <% end %>
 
 <div>
+  <%= @user.admin ? "ADMIN" : "" %>
+</div>
+
+<div>
   Name: <%= @user.name %>
 </div>
 
