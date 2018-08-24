@@ -2,7 +2,7 @@ Here we will sign the user in!!!
 
 <%= form_tag '/authenticate' %>
   <%= label_tag 'user_id', 'Your Name:' %>
-  <%= collection_select :user, :id, @users, :id, :name %>
+  <%= collection_select :user, :name, @users, :name, :name %>
 
   <%= label_tag 'password', 'Your Password: ' %>
   <%= password_field_tag :password %>

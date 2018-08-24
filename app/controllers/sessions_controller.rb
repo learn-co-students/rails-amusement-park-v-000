@@ -4,7 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def authenticate
-    render html: "We are gonna authenticate the fuck out of you, motherfucker!"
+    @user = User.find_by(name: params[:user][:name])
+
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+
+      redirect_to @user
+    else
+      redirect_to action: 'signin'
+    end
   end
 
   def logged_in?
