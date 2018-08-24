@@ -1,0 +1,23 @@
+<% content_for :navbar do %>
+  <a class="navbar-brand" href="/users/<%= @user.id %>"><%= "#{@user.name}'s profile" %></a>
+  <a class="navbar-brand" rel="nofollow" data-method="delete" href="/session">Log Out</a>
+<% end %>
+
+<p>
+  <span class="show_field_label">Name: </span><%= @attraction.name %>
+</p>
+<p>
+  <span class="show_field_label">Total Number of Users: </span><%= @attraction.rides.count %>
+</p>
+<p>
+  <span class="show_field_label">Ticket Requirement: </span><%= @attraction.tickets %>
+</p>
+<p>
+  <span class="show_field_label">Height Requirement: </span><%= @attraction.min_height %>
+</p>
+<p>
+  <span class="show_field_label">Nausea Rating: </span><%= @attraction.nausea_rating %>
+</p>
+<p>
+  <span class="show_field_label">Happiness Rating: </span><%= @attraction.happiness_rating %>
+</p>
