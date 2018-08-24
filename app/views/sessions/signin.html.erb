@@ -1,6 +1,6 @@
 Here we will sign the user in!!!
 
-<%= form_tag '/sessions' %>
+<%= form_tag '/authenticate' %>
   <%= label_tag 'user_id', 'Your Name:' %>
   <%= collection_select :user, :id, @users, :id, :name %>
 

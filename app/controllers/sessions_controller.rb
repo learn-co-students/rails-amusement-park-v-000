@@ -3,6 +3,10 @@ class SessionsController < ApplicationController
     @users = User.all
   end
 
+  def authenticate
+    render html: "We are gonna authenticate the fuck out of you, motherfucker!"
+  end
+
   def logged_in?
     session[:user_id]
   end
