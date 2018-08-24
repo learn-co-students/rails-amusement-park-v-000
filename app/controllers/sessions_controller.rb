@@ -15,6 +15,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def signout
+    session.delete(:user_id)
+
+    redirect_to root_url
+  end
+
+  protected
+
   def logged_in?
     session[:user_id]
   end
