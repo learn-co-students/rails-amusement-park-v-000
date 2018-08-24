@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  #for creating and authenticating user accounts
   has_many :rides
   has_many :attractions, through: :rides
 
