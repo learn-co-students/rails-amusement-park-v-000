@@ -1,11 +1,19 @@
 <h1> Signup Page </h1>
 
 <%= form_for :user, url: '/users' do |f| %>
-  Username: <%= f.text_field :name %><br />
+  Name: <%= f.text_field :name %><br />
   <br />
   Password: <%= f.password_field :password %><br />
   <br />
   Password Confirmation: <%= f.password_field :password_confirmation %><br />
+  <br />
+  Nausea Level: <%= f.text_field :nausea %><br />
+  <br />
+  Happiness Level: <%= f.text_field :happiness %><br />
+  <br />
+  Tickets: <%= f.text_field :tickets %><br />
+  <br />
+  Height: <%= f.text_field :height %><br />
   <br />
 <%= f.submit "Submit" %>
 <% end %>
