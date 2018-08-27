@@ -1,1 +1,32 @@
-We are gonna make a new attraction!
+<h1>New attraction</h1>
+
+<%= form_for @attraction do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :min_height %>
+    <%= f.number_field :min_height %>
+  </p>
+
+  <p>
+    <%= f.label :happiness_rating %>
+    <%= f.number_field :happiness_rating %>
+  </p>
+
+  <p>
+    <%= f.label :nausea_rating %>
+    <%= f.number_field :nausea_rating %>
+  </p>
+
+  <p>
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets %>
+  </p>
+
+  <p>
+    <%= f.submit "Create Attraction" %>
+  </p>
+<% end %>
