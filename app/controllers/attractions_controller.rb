@@ -18,6 +18,10 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.new
   end
 
+  def edit
+    @attraction = Attraction.find(params[:id])
+  end
+
   def create
     @attraction = Attraction.new(attraction_params)
 
@@ -26,6 +30,10 @@ class AttractionsController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def update
+    render html: "We are gonna update the heck out of this attraction!"
   end
 
   private
