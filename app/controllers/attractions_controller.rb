@@ -10,7 +10,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    @attraction = Attraction.find(session[:user_id])
+    @attraction = Attraction.find_by(id: params[:id])
 
     if @attraction
       render :show
@@ -19,5 +19,17 @@ class AttractionsController < ApplicationController
     end
   end
 
+  def edit
+    @attraction = Attraction.find_by(id: params[:id])
+    @user = User.find_by(id: current_user.id)
 
+    if current_user.admin
+      render :edit
+    else
+      redirect_to root_path
+    end
+  end
+
+  def update
+  end
 end

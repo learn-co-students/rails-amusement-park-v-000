@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    render :new
   end
 
   def create
@@ -12,19 +11,19 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to("/users/#{@user.id}")
+      redirect_to user_path(@user)
     else
-      redirect_to users_new_path
+      render :new
     end
   end
 
   def show
-    @user = User.find_by(id: session[:user_id])
+    @user = User.find_by(id: params[:id])
 
-    if @user
-      render :show
-    else
-      redirect_to root_path
+    if !current_user.admin
+      if current_user != @user
+        redirect_to root_path
+      end
     end
   end
 
@@ -35,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def require_login
-    redirect_to controller: 'sessions', action: 'new' unless logged_in?
+    redirect_to controller: 'users', action: 'new' unless logged_in?
   end
 
 end
