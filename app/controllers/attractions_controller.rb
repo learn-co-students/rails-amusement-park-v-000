@@ -33,10 +33,24 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    render html: "We are gonna update the heck out of this attraction!"
+    @attraction = Attraction.find(params[:id])
+
+    @attraction.name = attract[:name]
+    @attraction.min_height = attract[:min_height]
+    @attraction.happiness_rating = attract[:happiness_rating]
+    @attraction.nausea_rating = attract[:nausea_rating]
+    @attraction.tickets = attract[:tickets]
+
+    @attraction.save
+
+    redirect_to @attraction
   end
 
   private
+
+  def attract
+    params[:attraction]
+  end
 
   def attraction_params
     params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
