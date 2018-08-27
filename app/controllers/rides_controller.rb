@@ -3,6 +3,8 @@ class RidesController < ApplicationController
     @ride = Ride.new(ride_params)
     @ride.save
 
+    flash[:notice] = @ride.take_ride
+
     redirect_to @ride.user
   end
 

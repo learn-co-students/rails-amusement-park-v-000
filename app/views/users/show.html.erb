@@ -2,6 +2,12 @@
   <a class="navbar-brand" rel="nofollow" data-method="delete" href="/session">Log Out</a>
 <% end %>
 
+<% if flash[:notice] %>
+  <div>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <div>
   <%= @user.admin ? "ADMIN" : "" %>
 </div>
