@@ -1,0 +1,33 @@
+<% content_for :navbar do %>
+  <a class="navbar-brand" rel="nofollow" data-method="delete" href="/session">Log Out</a>
+<% end %>
+
+<% if flash[:notice] %>
+  <div>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div>
+  <%= @user.admin ? "ADMIN" : "" %>
+</div>
+
+<div>
+  Name: <%= @user.name %>
+</div>
+
+<div>
+  Tickets: <%= @user.tickets %>
+</div>
+
+<div>
+  Mood: <%= @user.mood %>
+</div>
+
+<div>
+  Height: <%= @user.height %>
+</div>
+
+<div>
+  <%= link_to "See attractions", attractions_path %>
+<div>

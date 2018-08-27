@@ -1,0 +1,23 @@
+<% content_for :navbar do %>
+  <a class="navbar-brand" rel="nofollow" data-method="delete" href="/session">Log Out</a>
+<% end %>
+
+<%= link_to "New Attraction", new_attraction_url  %>
+
+<h1>Listing attractions</h1>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Tickets</td>
+    <td>Details</td>
+  </tr>
+
+  <% @attractions.each do |attraction| %>
+    <tr>
+      <td><%= attraction.name %></td>
+      <td><%= attraction.tickets %></td>
+      <td><%= link_to "#{@prompt} #{attraction.name}", attraction_path(attraction) %></td>
+    </tr>
+  <% end %>
+</table>
