@@ -1,0 +1,10 @@
+<h1> Attraction Information </h1>
+
+<p><%= @attraction.name %></p>
+<p>Tickets: <%= @attraction.tickets %></p>
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
+<p>Happiness Rating: <%= @attraction.happiness_rating %></p>
+<p>Minimum Height: <%= @attraction.min_height %></p>
+
+<%= link_to 'See attractions', edit_attraction_path %>
+<%= link_to '<button type="button">Go on this ride</button>'.html_safe, attraction_path(@attraction) %>
