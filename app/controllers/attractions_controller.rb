@@ -1,6 +1,12 @@
 class AttractionsController < ApplicationController
   def index
     @attractions = Attraction.all
+    @user = User.find(session[:user_id])
+    if @user.admin
+      @prompt = "Show"
+    else
+      @prompt = "Go on"
+    end
   end
 
   def show

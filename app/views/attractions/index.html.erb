@@ -17,7 +17,7 @@
     <tr>
       <td><%= attraction.name %></td>
       <td><%= attraction.tickets %></td>
-      <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+      <td><%= link_to "#{@prompt} #{attraction.name}", attraction_path(attraction) %></td>
     </tr>
   <% end %>
 </table>
