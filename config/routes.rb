@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create]
   resources :attractions, only: [:index, :show]
+  resources :rides, only: [:create]
 
   root "welcome#home"
 end
