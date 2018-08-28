@@ -1,0 +1,14 @@
+<h1>Attractions</h1>
+
+<table>
+  <th>Name</th>
+  <th>Tickets</th>
+  <th>Link to Ride</th>
+  <% @attractions.each do |a| %>
+  <tr>
+    <td><%= a.name %></td>
+    <td><%= a.tickets %></td>
+    <td><%= link_to("Go on #{a.name}", attraction_path(a)) %></td>
+  </tr>
+  <% end %>
+</table>

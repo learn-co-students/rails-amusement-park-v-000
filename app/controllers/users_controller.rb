@@ -24,6 +24,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find_by_id(params[:id])
+    @attraction = Attraction.find_by_name(params[:user][:attraction])
+    @ride = Ride.new(user_id: @user.id, attraction_id: @attraction.id)
+    flash[:message] = "#{@ride.take_ride}"
+    redirect_to user_path(@user)
+  end
+
   private
 
   def user_params
