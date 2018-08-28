@@ -4,14 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    raise user_params
     @user = User.create(user_params)
     redirect_to user_path(@user)
   end
 
   def show
     @user = User.find(params[:id])
-    raise @user.inspect
+    # raise @user.inspect
   end
 
   private
