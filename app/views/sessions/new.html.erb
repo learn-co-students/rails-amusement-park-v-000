@@ -1,11 +1,11 @@
 <h1> Signin Page </h1>
 
-<%= form_for @user, url: '/sessions' do |f| %>
-  <label for=user_name> Name: </label>
-  <%= f.collection_select :name, User.all, :name, :name %><br />
+<%= form_tag '/sessions' do %>
+  <%= label_tag :name %>
+  <%= collection_select :user, :name, User.all, :name, :name %><br />
 
-  <label for=user_password> Password: </label>
-  <%= f.password_field :password %><br />
+  <%= label_tag :password %>
+  <%= password_field_tag :password %><br />
   <br />
-<%= f.submit "Sign In" %>
+<%= submit_tag "Sign In" %>
 <% end %>

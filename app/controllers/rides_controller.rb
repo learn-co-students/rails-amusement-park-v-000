@@ -1,8 +1,10 @@
 class RidesController < ApplicationController
 
-  def new
+  def create
     @ride = Ride.new
     @ride.user = current_user
+    binding.pry
+    @ride.attraction
     @ride.take_ride
     @ride.save
 

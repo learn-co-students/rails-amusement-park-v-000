@@ -10,8 +10,8 @@
   <%= link_to "Show #{@attraction.name}", edit_attraction_path(@attraction) %>
 <% end %>
 
-<%= button_to "Go on #{@attraction.name}", action: "new" %>
-  <form method="get" action="/rides/new" class="button_to">
+<%= button_to "Go on this ride", {controller: 'rides', action: 'create', attraction_id: @attraction.id} %>
+  <!-- <form method="get" action="/rides/new" class="button_to">
     <input value="Go on this ride" type="submit" />
-  </form>"
+  </form>" -->
 <!-- <%= link_to '<button type="button">Go on this ride</button>'.html_safe, attraction_path(@attraction) %> -->
