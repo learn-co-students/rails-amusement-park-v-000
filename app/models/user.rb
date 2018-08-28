@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
+
   validates :password, presence: true
 
   has_many :rides
@@ -12,6 +14,12 @@ class User < ApplicationRecord
       when self.happiness < self.nausea
         return "sad"
       end
+    end
+  end
+
+  def admin_status
+    if self.admin
+      "ADMIN"
     end
   end
 

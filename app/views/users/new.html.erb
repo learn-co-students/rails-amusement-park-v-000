@@ -25,5 +25,9 @@
   <%= f.text_field :tickets %>
   <br />
   <br />
+  <%= f.label :admin, "Admin?" %>
+  <%= f.check_box :admin %>
+  <br />
+  <br />
   <%= f.submit "Create User" %>
 <% end %>
