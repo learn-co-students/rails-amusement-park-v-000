@@ -4,9 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Allow for more flexible gems versioning
-Gemfile.lock
-
 # Ignore bundler config.
 /.bundle
 
@@ -15,12 +12,8 @@ Gemfile.lock
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/log/*.log
+/tmp
 
-/node_modules
-/yarn-error.log
-
-.byebug_history
+.DS_Store
+Gemfile.lock
