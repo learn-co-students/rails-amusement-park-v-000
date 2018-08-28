@@ -18,6 +18,7 @@ class AttractionsController < ApplicationController
   #Test Comment. Please ignore.
   #Test Comment #2. Please ignore.
   #erikas comment
+  #Yet another comment.
   def create
     # binding.pry
     @attraction = Attraction.new(attraction_params)
