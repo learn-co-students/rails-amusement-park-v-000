@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render :new
+      redirect_to root_path
     end
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def require_login
-    redirect_to controller: 'users', action: 'new' unless logged_in?
+    redirect_to controller: 'sessions', action: 'new' unless logged_in?
   end
 
 end

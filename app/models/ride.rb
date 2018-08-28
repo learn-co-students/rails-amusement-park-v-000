@@ -33,7 +33,7 @@ class Ride < ActiveRecord::Base
     self.user.nausea += self.attraction.nausea_rating
     self.user.save
 
-    puts "Thanks for riding the #{self.attraction.name}! We hope to see you again soon."
+    puts "Thanks for riding the #{self.attraction.name}!"
   end
 
   def not_tall_enough_message
