@@ -1,5 +1,11 @@
 <h1>Attractions</h1>
 
+<% if current_user.admin %>
+  <% @attractions.each do |a| %>
+    <p><%= link_to("Show #{a.name}", attraction_path(a)) %></p>
+  <% end %>
+  <%= link_to("New Attraction", new_attraction_path) %>
+<% else %>
 <table>
   <th>Name</th>
   <th>Tickets</th>
@@ -12,3 +18,4 @@
   </tr>
   <% end %>
 </table>
+<% end %>
