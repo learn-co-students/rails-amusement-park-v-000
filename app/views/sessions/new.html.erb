@@ -2,7 +2,7 @@
 
 <%= form_for @user, url: '/sessions' do |f| %>
   <label for=user_name> Name: </label>
-  <%= f.collection_select :id, User.all, :id, :name %><br />
+  <%= f.collection_select :name, User.all, :name, :name %><br />
 
   <label for=user_password> Password: </label>
   <%= f.password_field :password %><br />

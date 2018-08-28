@@ -1,9 +1,11 @@
 <h1> Signin Page </h1>
 
-<%= form_for @user, url: '/sessions' do |f| %>
-  Name: <%= f.collection_select :id, User.all, :id, :name %><br />
+<%= form_for @user, url: '/users/login' do |f| %>
+  <label for=user_name> Name: </label>
+  <%= f.collection_select :name, User.all, :name, :name %><br />
 
-  Password: <%= f.password_field :password %><br />
+  <label for=user_password> Password: </label>
+  <%= f.password_field :password %><br />
   <br />
 <%= f.submit "Sign In" %>
 <% end %>

@@ -10,6 +10,13 @@ class AttractionsController < ApplicationController
     render :new
   end
 
+  def create
+    @attraction = Attraction.new(attraction_params)
+    @attraction.save
+
+    redirect_to attraction_path(@attraction)
+  end
+
   def show
     @attraction = Attraction.find_by(id: params[:id])
     @user = User.find_by(id: current_user.id)
@@ -33,5 +40,13 @@ class AttractionsController < ApplicationController
   end
 
   def update
+    @attraction = @attraction.update(attraction_params)
+    @attraction.save
+  end
+
+  private
+
+  def attraction_params
+    params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
   end
 end
