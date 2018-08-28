@@ -1,0 +1,3 @@
+      invoke  active_record
+      create    db/migrate/20180825175753_change_column.rb
+Running via Spring preloader in process 3376
