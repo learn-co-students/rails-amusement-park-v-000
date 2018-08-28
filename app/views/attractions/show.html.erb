@@ -1,0 +1,9 @@
+<h1> <%= @attraction.name %> </h1>
+
+<h3> Tickets: <%= @attraction.tickets %> </h3>
+<h3> Nausea: <%= @attraction.nausea_rating %> </h3>
+<h3> Happiness: <%= @attraction.happiness_rating %> </h3>
+
+<br />
+
+<%= button_to "Go on this ride", {controller: :rides, action: :create, attraction_id: @attraction.id}, method: "POST" %>
