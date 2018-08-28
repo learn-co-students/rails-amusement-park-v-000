@@ -18,8 +18,8 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    @attraction = Attraction.find_by(id: params[:id])
-    @user = User.find_by(id: current_user.id)
+    @attraction = Attraction.find(params[:id])
+    @user = User.find(current_user.id)
 
     if @attraction
       render :show
@@ -29,19 +29,22 @@ class AttractionsController < ApplicationController
   end
 
   def edit
-    @attraction = Attraction.find_by(id: params[:id])
-    @user = User.find_by(id: current_user.id)
-
     if current_user.admin
-      render :edit
+      @attraction = Attraction.find(params[:id])
     else
       redirect_to root_path
     end
   end
 
   def update
-    @attraction = @attraction.update(attraction_params)
-    @attraction.save
+    @attraction = Attraction.find(params[:id])
+    @attraction.update(attraction_params)
+
+    if @attraction.save
+      redirect_to @attraction
+    else
+      render :edit
+    end
   end
 
   private
