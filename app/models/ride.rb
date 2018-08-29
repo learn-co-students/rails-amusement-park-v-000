@@ -3,48 +3,43 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
-    meets_tickets, meets_height = meets_requirements
-    if meets_tickets && meets_height
-      ride_ride
-    elsif meets_height && !meets_tickets
-      "Sorry. " + ticket_problem
-    elsif !meets_height && meets_tickets
-      "Sorry. " + height_problem
+    @user = User.find_by(id: self.user_id)
+    @attraction = Attraction.find_by(id: self.attraction_id)
+
+    if !self.enough_tickets? && !self.tall_enough?
+      return "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
+    elsif !self.enough_tickets?
+      return "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+    elsif !self.tall_enough?
+      return "Sorry. You are not tall enough to ride the #{attraction.name}."
     else
-      "Sorry. " + ticket_problem + " " + height_problem
+      self.take_tickets
+      self.nauseate
+      self.make_happy
+      return "Thanks for riding the #{attraction.name}!"
     end
   end
 
-  def meets_requirements
-    if self.user.tickets >= self.attraction.tickets
-      meets_tickets = true
-    else
-      meets_tickets = false
-    end
-    if self.user.height >= self.attraction.min_height
-      meets_height = true
-    else
-      meets_height = false
-    end
-    return [meets_tickets, meets_height]
+  def enough_tickets?
+    @user.tickets > @attraction.tickets
   end
 
-  def ride_ride
-    user = User.find_by(id: self.user_id)
-    attraction = Attraction.find_by(id: self.attraction_id)
-
-    user.update(happiness: user.happiness + attraction.happiness_rating)
-    user.update(nausea: user.nausea + attraction.nausea_rating)
-    user.update(tickets: user.tickets - attraction.tickets)
-
-    "Thank you for riding the #{self.attraction.name}!"
+  def tall_enough?
+    @user.height > @attraction.min_height
   end
 
-  def ticket_problem
-    "You do not have enough tickets to ride the #{self.attraction.name}."
+  def take_tickets
+    new_tickets = @user.tickets - @attraction.tickets
+    @user.update(tickets: new_tickets)
   end
 
-  def height_problem
-    "You are not tall enough to ride the #{self.attraction.name}."
+  def nauseate
+    @user.nausea = @user.nausea + @attraction.nausea_rating
+    @user.update(nausea: @user.nausea)
+  end
+
+  def make_happy
+    @user.happiness = @user.happiness + @attraction.happiness_rating
+    @user.update(happiness: @user.happiness)
   end
 end

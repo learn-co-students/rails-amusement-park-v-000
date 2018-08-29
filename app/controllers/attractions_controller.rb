@@ -11,6 +11,7 @@ class AttractionsController < ApplicationController
 
   def show
     @user = current_user
+    @ride = Ride.new
   end
 
   def edit
@@ -19,7 +20,7 @@ class AttractionsController < ApplicationController
   def create
     if logged_in? && current_user.admin
       @attraction = Attraction.new(attraction_params)
-      redirect_to attraction_path(@attraction)
+      redirect_to attraction_path(@attraction), notice: 'Attraction was successfully created.'
     else
       redirect_to attraction_path
     end
@@ -27,10 +28,15 @@ class AttractionsController < ApplicationController
 
   def update
     if @attraction.update(attraction_params)
-      redirect_to attraction_path(@attraction)
+      redirect_to attraction_path(@attraction), notice: 'Attraction was successfully updated.'
     else
       render :edit
     end
+  end
+
+  def destroy
+    @attraction.destroy
+    redirect_to attractions_url, notice: 'Attraction was successfully destroyed.'
   end
 
   private

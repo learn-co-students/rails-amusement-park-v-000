@@ -1,9 +1,9 @@
 <%= form_for @user, :url => url_for(controller: 'sessions', action: 'create') do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= select_tag "user_name", options_from_collection_for_select(@users, "id", "name") %>
 
   <%= f.label :password %>
-  <%= f.text_field :password %>
+  <%= password_field_tag :password %>
 
   <%= f.submit 'Sign In' %>
 <% end %>

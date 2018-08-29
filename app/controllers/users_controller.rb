@@ -15,9 +15,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def show
-    @message = params[:message] if params[:message]
-    @message ||= false
+    @message = params[:message]
   end
 
   def update
@@ -25,7 +27,7 @@ class UsersController < ApplicationController
     @attraction = Attraction.find_by(name: params[:user][:attraction])
     @ride = Ride.new(user_id: @user.id, attraction_id: @attraction.id)
 
-    redirect_to user_path(@user)
+    redirect_to user_path(@user), notice: 'User was successfully updated.'
   end
 
   private
