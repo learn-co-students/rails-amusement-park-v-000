@@ -15,7 +15,7 @@ class Ride < ActiveRecord::Base
 
     else
       # updates ticket number
-      u.update(tickets: u.tickets -= a.tickets)
+      u.update(tickets: u.tickets - a.tickets)
       # updates user's nausea
       u.update(nausea: u.nausea + a.nausea_rating)
       # updates user's happiness
