@@ -7,11 +7,11 @@ class Ride < ActiveRecord::Base
     a = self.attraction
 
     if u.height < a.min_height && u.tickets < a.tickets
-      return "Sorry. You do not have enough tickets to ride the #{a.name}. You are not tall enough to ride the #{a.name}."
+      message = "Sorry. You do not have enough tickets to ride the #{a.name}. You are not tall enough to ride the #{a.name}."
     elsif u.tickets < a.tickets
-      return "Sorry. You do not have enough tickets to ride the #{a.name}."
+      message = "Sorry. You do not have enough tickets to ride the #{a.name}."
     elsif u.height < a.min_height
-      return "Sorry. You are not tall enough to ride the #{a.name}."
+      message = "Sorry. You are not tall enough to ride the #{a.name}."
 
     else
       # updates ticket number
@@ -23,7 +23,7 @@ class Ride < ActiveRecord::Base
 
       u.save
 
-      puts "Weeeeee, that was fun!"
+      message = "Thanks for riding the #{a.name}!"
     end
 
   end

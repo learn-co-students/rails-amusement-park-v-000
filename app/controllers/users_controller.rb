@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       @user = User.find(session[:user_id])
+      @message = params[:message] if params[:message]
     end
   end
 
