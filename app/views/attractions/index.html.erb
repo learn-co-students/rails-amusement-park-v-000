@@ -1,9 +1,14 @@
 <h1> Rides: </h1>
 
-<tr>
-<% @attractions.each do |attraction| %>
-  <td> <%= attraction.name %> </td>
-  <td> <%= attraction.tickets %> </td>
-  <td> <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %> </td>
+<table class="table">
+  <th> Ride </th>
+  <th> Tickets </th>
+  <th> </th>
+  <% @attractions.each do |attraction| %>
+  <tr>
+    <td> <%= attraction.name %> </td>
+     <td> <%= attraction.tickets %> </td>
+     <td> <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %> </td>
+  </tr>
 <% end %>
-</tr>
+<table>

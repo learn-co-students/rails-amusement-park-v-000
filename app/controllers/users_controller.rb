@@ -15,10 +15,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !session[:user_id]
+    if !session[:user_id] 
       redirect_to root_path
     else
-      @user = User.find(session[:user_id])
+      @user = User.find_by_id(params[:id])
       @message = params[:message] if params[:message]
     end
   end
