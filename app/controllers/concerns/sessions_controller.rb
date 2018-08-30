@@ -1,27 +1,20 @@
 class SessionsController < ApplicationController
-  # def new
-  # end
-  #
-  # def show
-  # end
-  #
-  # def create
-  #   session[:name] = params[:name]
-  #   if current_user == nil || current_user == ''
-  #     redirect_to '/login'
-  #   else
-  #     render 'secrets/show'
-  #   end
-  # end
-  #
-  # def destroy
-  #   session.delete :name
-  #   redirect_to '/login'
-  # end
-  #
-  # private
-  #
-  # def current_user  #maybe move to application controller
-  #   session[:name]
-  # end
+  def new #login
+    @user = User.new
+  end
+
+  def create #login
+    @user = User.find_by(name: params[:user_name])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    session.delete :user_id
+    redirect_to '/'
+  end
 end

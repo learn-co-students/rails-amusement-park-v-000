@@ -1,6 +1,7 @@
 <h1>Create a User</h1>
 
 <%= form_for @user  do |f| %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
   <br />
@@ -25,7 +26,9 @@
   <%= f.text_field :password %>
   <br />
 
-  <!-- find(:css, "#user_admin").set(true) -->
+  <%= f.label :admin, "Check box if you are a theme park owner" %>
+  <%= f.check_box :admin, class: "form-check-input" %>
+  <br />
 
   <%= f.submit %>
 <% end %>

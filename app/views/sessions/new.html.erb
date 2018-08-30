@@ -1,4 +1,7 @@
-<!-- <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-  <input name=name>
-  <input type=submit value='login'>
-<% end %> -->
+<h1>Log In</h1>
+
+<%= form_tag sessions_path do %>
+  User Name: <%= select_tag "user_name", options_from_collection_for_select(User.order(:name), 'name', 'name')%><br>
+  Password: <%= text_field_tag "password" %>
+  <%= submit_tag "Sign In" %>
+<% end %>

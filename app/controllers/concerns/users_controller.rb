@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if session.include? :user_id
+      @user = User.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def new
@@ -15,6 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      session[:user_id] = @user.id
       redirect_to @user
     else
       render :new
@@ -28,7 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    @user.update(song_params)
+    @user.update(attraction_params)
 
     if @user.save
       redirect_to @user
@@ -47,6 +52,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
+    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end
 end
