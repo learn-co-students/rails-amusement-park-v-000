@@ -6,4 +6,8 @@
 
 <br />
 
-<%= button_to "Go on this ride", {controller: :rides, action: :create, attraction_id: @attraction.id}, method: "POST" %>
+<% if @user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+  <%= button_to "Go on this ride", {controller: :rides, action: :create, attraction_id: @attraction.id}, method: :post %>
+<% end %>
