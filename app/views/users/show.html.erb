@@ -1,0 +1,14 @@
+<%= link_to "See attractions", attractions_path %><br>
+
+<% if params.has_key?(:message) %>
+  <p><%= params[:message] %></p>
+<% end %>
+
+<% if @user.admin %>
+  <h1>ADMIN<h1>
+<% end %>
+
+<%= "User Name: #{@user.name}" %><br>
+<%= "User Mood: #{@user.mood}" %><br>
+<%= "User Height: #{@user.height}" %><br>
+<%= "User Tickets: #{@user.tickets}" %>
