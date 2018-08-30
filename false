@@ -1,0 +1,17 @@
+      invoke  active_record
+      create    db/migrate/20180826225138_create_users.rb
+    conflict    app/models/user.rb
+  Overwrite /Users/sara/Documents/Documents/Coding/Learn_labs/rails-amusement-park-v-000/app/models/userr.rb? (enter "h" for help) [Ynaqdh] 
+       force    app/models/user.rb
+      invoke  controller
+      create    app/controllers/users_controller.rb
+      invoke    erb
+      create      app/views/users
+      invoke    helper
+   identical      app/helpers/users_helper.rb
+      invoke    assets
+      invoke      coffee
+   identical        app/assets/javascripts/users.coffee
+      invoke      scss
+    conflict        app/assets/stylesheets/users.scss
+      Overwrite /Users/sara/Documents/Documents/Coding/Learn_labs/rails-amusement-park-v-000/app/assets//stylesheets/users.scss? (enter "h" for help) [Ynaqdh] 

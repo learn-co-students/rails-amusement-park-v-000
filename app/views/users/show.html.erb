@@ -1,0 +1,24 @@
+<p> <%= @message %> </p>
+<h1> User Profile </h1>
+<h3> <%= @user.admin_status %>  </h3>
+
+Name: <%= @user.name %>
+<br />
+Height (inches): <%= @user.height %>
+<br />
+Tickets: <%= @user.tickets %>
+<br />
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<br />
+Mood: <%= @user.mood %>
+<br />
+Happiness: <%= @user.happiness %>
+<br />
+Nausea: <%= @user.nausea %>
+<br />
+<br />
+<br />
+<%= link_to "See attractions", attractions_path %>
+<br />
+<br />
+<%= link_to "Log Out", logout_path %>
