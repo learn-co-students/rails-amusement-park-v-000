@@ -1,20 +1,27 @@
 class SessionsController < ApplicationController
   def new
-
+    @user = User.new
   end
 
   def create
-    raise params.inspect
+    @user = User.find_by(name: user_params[:name])
+    if @user && @user.authenticate(user_params[:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to "/signin"
+    end
 
-    # So, the params below show that the users[name]
-    # param is assigned to the user's id. I need to
-    # change the form to make sure the params reflect
-    # user[id] = user.id instead.  Instead of doing a
-    # form_for I could just do a form_tag and explicitly
-    # call the collection select and then add a pw field
+  end
 
-    #      RuntimeError:
-       # <ActionController::Parameters {"utf8"=>"✓", "user"=>{"name"=>"1", "password"=>"password"}, "commit"=>"Sign In", "controller"=>"sessions", "action"=>"create"} permitted: false>
-       #
+  def destroy
+    session.clear
+    redirect_to root_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :password)
   end
 end

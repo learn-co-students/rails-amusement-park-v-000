@@ -1,7 +1,10 @@
 <h1>Sign In Here</h1>
-<%= form_for :user do |f|%>
-  <%= f.collection_select(:name, User.all, :id, :name) %> <br>
+
+<%= form_for(@user, :url => url_for(:controller => 'sessions', :action => 'create')) do |f| %>
+
+  <%= f.collection_select(:name, User.all, :name, :name) %> <br>
   <%= f.label :password %>
-  <%= f.password_field :password, :id => "password" %> <br>
+  <%= f.password_field :password %>
   <%= f.submit "Sign In" %>
+
 <% end %>

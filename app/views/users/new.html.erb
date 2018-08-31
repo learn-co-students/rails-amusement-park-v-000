@@ -10,7 +10,9 @@
   <%= f.number_field :nausea %> <br>
   <%= f.label :tickets, value: "How many dollars are in your wallet?" %>
   <%= f.number_field :tickets %> <br>
+  <%= f.label :admin %>
+  <%= f.check_box :admin, :class => "user_admin" %><br>
   <%= f.label :password %>
-  <%= f.password_field :password %>  <br>
+  <%= f.password_field :password, :id => "password" %>  <br>
   <%= f.submit "Create User" %>
 <% end %>

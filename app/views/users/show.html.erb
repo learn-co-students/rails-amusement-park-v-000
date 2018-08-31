@@ -3,4 +3,8 @@
   <p>Tickets: <%= @user.tickets %> </p>
   <p>Mood: <%= @user.mood %> </p>
   <p>Height: <%= @user.height %> inches</p>
+  <% if @user.admin  %>
+    <p>ADMIN</p>
+  <% end %>
+  <p> <a href="/attractions">See attractions</a> </p>
 </div>
