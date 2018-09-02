@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<% if current_user.admin %>
+  <h1><%= current_user.name %></h1>
+  <h2>ADMIN</h2>
+<% end %>
+
+  Name: <%= current_user.name %><br>
+  Tickets: <%= current_user.tickets %><br>
+  Mood: <%= current_user.mood %><br>
+  Height: <%= current_user.height %> inches<br>
+
+<%= link_to "Edit", edit_user_path %>
+<%= link_to "See attractions", attractions_path %>
+<%= link_to "Log Out", {:controller=> "sessions", :action=> "destroy"}, :method => :post %>

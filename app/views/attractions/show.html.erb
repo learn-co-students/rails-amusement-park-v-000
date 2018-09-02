@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>Name: <%= @attraction.name %></p>
+<p>Ticket Requirement: <%= @attraction.tickets %></p>
+<p>Height Requirement: <%= @attraction.min_height %></p>
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
+<p>Happiness Rating: <%= @attraction.happiness_rating %></p>
+
+<% if current_user.admin %>
+  <li><%= link_to "Edit Attraction", edit_attraction_path %></li>
+<% else %>
+  <%= form_tag rides_new_path do %>
+    <input type="hidden" name="attraction_id" value="<%= @attraction.id %>">
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    <input type="submit" value="Go on this ride">
+  <% end %>
+<% end %>

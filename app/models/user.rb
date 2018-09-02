@@ -5,10 +5,14 @@ class User < ApplicationRecord
 
 
   def mood
+
+    return "Not Applicable" if self.admin
+
     if self.nausea > self.happiness
       return "sad"
     else
       return "happy"
     end
+    
   end
 end

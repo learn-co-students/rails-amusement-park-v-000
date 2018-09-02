@@ -16,6 +16,8 @@ rails g model User name:string password_digest:integer nausea:integer happiness:
 
 rails g migration AddAdminColumnToUsersTable Users admin:boolean --no-test-framework
 
+rails g migration change_password_digest_to_be_string_in_users --no-test-framework
+
 
 
 Ride
@@ -25,3 +27,15 @@ belongs_to :user
 
 
 rails g model Ride user_id:integer attraction_id:integer --no-test-framework
+
+
+
+
+
+<%= form_for @user, url: signin_path(@user) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+  <%= f.submit "Sign In"%>
+<% end %>

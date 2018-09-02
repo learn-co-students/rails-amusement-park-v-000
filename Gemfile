@@ -49,6 +49,7 @@ group :development, :test do
   gem "database_cleaner"
   gem "rspec-rails"
   gem "rack_session_access"
+  gem 'pry'
 end
 
 group :development do

@@ -1,0 +1,26 @@
+<h1>List of Users</h1>
+
+
+<table>
+  <tbody>
+    <th>
+      <td>Name</td>
+      <td>PD:</td>
+      <td>Nausea</td>
+      <td>Happiness</td>
+      <td>Tickets</td>
+      <td>Heights</td>
+    </th>
+    <% @users.each do |user| %>
+    <tr>
+      <td></td>
+      <td><%= user.name %></td>
+      <td><%= user.password_digest %></td>
+      <td><%= user.nausea %></td>
+      <td><%= user.happiness %></td>
+      <td><%= user.tickets %></td>
+      <td><%= user.height %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
