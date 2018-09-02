@@ -1,24 +1,37 @@
 class UsersController < ApplicationController
+  before_action :lookup_user, only: [:show, :edit]
+  before_action :require_login
+  skip_before_action :require_login, only: [:new, :create, :welcome]
 
-	def new
+  def new
     @user = User.new
   end
 
   def create
-    binding.pry
-    if !params[:user].blank && !params[:password].blank? #if name is not blank
-        binding.pry
-        @user = User.create(user_params)
-        redirect_to root_path
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     else
-        redirect_to signup_path
+      redirect_to new_user_path
     end
   end
-
+  def show
+    @user = User.find_by(id: params[:id])
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :password)
+    params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
+  end
+  def lookup_user
+    @user = User.find_by(id: params[:id])
+  end
+
+  def require_login
+    if !session[:user_id]
+      redirect_to root_path
+    end
   end
 end

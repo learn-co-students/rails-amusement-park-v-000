@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-    get '/signup', to: 'users#new'
+  root 'users#welcome'
+  resources :users
+  resources :attractions
+  	
+  get '/signin' => 'sessions#new'
+  post '/sessions' => 'sessions#create'
+  delete '/sessions' => 'sessions#destroy'
+
+  post '/ride' => 'attractions#ride'
 
 end
