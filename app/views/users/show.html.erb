@@ -1,3 +1,6 @@
+<% if @user.admin %>
+<p>Admin</p>
+<% end %>
 Name:
 <%= @user.name %>
 
@@ -9,3 +12,7 @@ Height:
 
 Tickets:
 <%= @user.tickets %>
+
+<p><%= link_to 'Edit', edit_user_path(@user) %></p>
+
+<%= link_to 'See attractions', attractions_path %>
