@@ -4,8 +4,12 @@ Tickets: <%= @user.tickets %>
 Height: <%= @user.height %>
 ADMIN?<%= "ADMIN" if @user.admin%>
 
+<% if flash[:message] %>
+<%= flash[:message] %>
+<% end %>
+
 <br></br>
-<h3><a href='/attractions'>See attractions</a></h3> 
+<h3><a href='/attractions'>See attractions</a></h3>
 
 <br></br>
 <h3><a href='/logout'>Log Out</a></h3>

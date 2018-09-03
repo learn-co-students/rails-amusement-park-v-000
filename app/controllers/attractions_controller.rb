@@ -30,6 +30,17 @@ class AttractionsController < ApplicationController
     @ride = Ride.create(user_id: @user.id, attraction_id: @attraction.id)
   end
 
+  def edit
+    @attraction = Attraction.find_by_id(params[:id])
+  end
+
+  def update
+        @attraction = Attraction.find_by_id(params[:id])
+        @attraction.update(attraction_params)
+        @attraction.save
+        redirect_to "/attractions/#{@attraction.id}"
+    end
+
   private
 
      def attraction_params

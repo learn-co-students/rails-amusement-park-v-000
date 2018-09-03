@@ -24,6 +24,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @ride = Ride.find_by_id(params[:id])
+    flash[:message] = "#{@ride.take_ride}"
+    @user = @ride.user
+      if @user.save
+        redirect_to @user
+      else
+        render "/attractions"
+      end 
+  end
+
   private
 
   def user_params
