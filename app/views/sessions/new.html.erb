@@ -1,0 +1,8 @@
+<%= form_tag action: "create", method: "POST" do %>
+  <label>Your name:</label>
+  <%= select_tag "user[name]", options_from_collection_for_select(@users, :name, :name), :prompt => "Please select your username from this dropdown"%><br>
+ 
+  <label>Your password:</label><br>
+  <%= text_field_tag :password %><br>
+  <%= submit_tag "Sign In" %>
+<% end %>
