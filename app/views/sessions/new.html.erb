@@ -1,0 +1,5 @@
+<%=form_tag '/sessions', method: "post" do %>
+  <p><strong>Your Name:</strong><%=collection_select(:user, :name, User.all, :id, :name, {:include_blank => true})%></p>
+  <p><strong>Your password:</strong><%=password_field_tag('password')%></p>
+  <%=submit_tag "Sign In"%>
+<%end%>
