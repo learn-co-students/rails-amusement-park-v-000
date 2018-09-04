@@ -1,0 +1,7 @@
+<h1>Listing attractions</h1>
+
+<%@attractions.each do |attr|%>
+  <%=attr.name%><br>
+  <%=attr.tickets%><br>
+  <%=link_to "Show #{attr.name}", attraction_path(attr)%>
+  <%end%>
