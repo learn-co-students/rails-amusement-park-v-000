@@ -1,3 +1,5 @@
+    <%=flash[:message] if flash[:message]%>
+
 <p><%="ADMIN" if @user.admin%></p>
 
 <p>Name: <%=@user.name%></p>

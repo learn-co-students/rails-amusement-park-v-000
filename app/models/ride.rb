@@ -26,6 +26,7 @@ class Ride < ActiveRecord::Base
       user.nausea += attraction.nausea_rating
       user.happiness += attraction.happiness_rating
       user.save
+      # raise user.inspect
     else
       errors.clear
       enough_tickets?
@@ -35,6 +36,7 @@ class Ride < ActiveRecord::Base
         @message << " #{e}"
       end
       @message
+      # "Where is the error"
     end
   end
 
