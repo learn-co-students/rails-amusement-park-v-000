@@ -1,3 +1,6 @@
+<% if flash[:message] %>
+   <p><%= flash[:message] %></p>
+<% end %>
 <div class="info">
   <p>Name: <%= @user.name %></p>
   <p>Tickets: <%= @user.tickets %> </p>

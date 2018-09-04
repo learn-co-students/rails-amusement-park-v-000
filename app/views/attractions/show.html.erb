@@ -1,11 +1,16 @@
+
 <div class="info">
   <p>Name: <%= @attraction.name %> </p>
   <p>Tickets Required: <%= @attraction.tickets %> </p>
   <p>Height Requirements: <%= @attraction.min_height %> inches</p>
   <p>Nausea Rating: <%= @attraction.nausea_rating %> </p>
   <p>Happiness Rating: <%= @attraction.happiness_rating %> </p>
-
-
+  <%= form_for @ride do |f| %>
+    <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+    <%= f.hidden_field :user_id, :value => @current_user.id %>
+    <%= f.submit "Go on this ride" %>
+  <% end %>
+  <p> <a href="<%= edit_attraction_path(@attraction) %>">Edit Attraction</a> </p>
 </div>
 
 <!-- form to post to NEW RIDE ... submit button -->

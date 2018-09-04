@@ -21,7 +21,6 @@ class Ride < ActiveRecord::Base
     rider = User.find(user_id)
     attraction = Attraction.find(attraction_id)
 
-    #TODO: Abstract this logic
     if !enough_tickets? && !tall_enough?
       "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
     elsif !enough_tickets?
@@ -32,8 +31,8 @@ class Ride < ActiveRecord::Base
       rider.tickets = rider.tickets - attraction.tickets
       rider.happiness = rider.happiness + attraction.happiness_rating
       rider.nausea = rider.nausea + attraction.nausea_rating
-
       rider.save
+      "Thanks for riding the #{attraction.name}!"
     end
 
 

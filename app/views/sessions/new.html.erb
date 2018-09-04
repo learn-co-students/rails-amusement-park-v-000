@@ -4,7 +4,7 @@
 
   <%= f.collection_select(:name, User.all, :name, :name) %> <br>
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, :id => "password" %>
   <%= f.submit "Sign In" %>
 
 <% end %>
