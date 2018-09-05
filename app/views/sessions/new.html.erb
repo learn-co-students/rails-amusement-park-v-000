@@ -1,0 +1,16 @@
+  <%= form_for @user, url: url_for(action: 'create', controller: 'sessions') do |f| %>
+
+    <p>
+    <%= f.label "Your Name:" %>
+    <%= f.collection_select :name, User.all, :id, :name, :prompt => 'Please select your username from this dropdown'%>
+    </p>
+
+    <p>
+    <%= f.label "Your Password:" %>
+    <%= f.password_field :password %>
+  </p>
+
+    <p>
+    <%= f.submit "Sign In" %>
+    </p>
+  <% end %>

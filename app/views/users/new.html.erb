@@ -1,0 +1,12 @@
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <label>Name:</label> <%= f.text_field :name%>
+    <label>Password:</label> <%= f.text_field :password%>
+    <label>Nausea:</label> <%= f.text_field :nausea%>
+    <label>Happiness:</label> <%= f.text_field :happiness%>
+    <label>Tickets:</label> <%= f.text_field :tickets%>
+    <label>Height:</label> <%= f.text_field :height%>
+    <label>Check box if you are a theme park owner:</label> <%= f.check_box :admin%>
+  </div>
+    <%= f.submit %>
+  <% end %>
