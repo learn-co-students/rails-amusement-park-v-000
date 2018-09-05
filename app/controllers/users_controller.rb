@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    session[:user_id].clear
+    session[:user_id] = nil
     redirect_to root_url
   end
 

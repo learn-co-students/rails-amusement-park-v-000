@@ -1,5 +1,9 @@
 class AttractionsController < ApplicationController
 
+  def index
+    @attractions = Attraction.all
+  end
+
   def new
 
   end
@@ -7,5 +11,11 @@ class AttractionsController < ApplicationController
   def create
 
   end
-  
+
+  def show
+    @attraction = Attraction.find(params[:id])
+  end
+
+
+
 end

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  root "users#new"
+  root "application#welcome"
   resources :users
   resources :rides
   resources :attractions
 
   get '/signin' => "users#login"
-  get '/logout' => "uses#logout"
+  get '/logout' => "users#logout"
 end
