@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :attractions
 
   get '/signin' => "users#login"
+  get '/logout' => "uses#logout"
 end
