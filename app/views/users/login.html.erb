@@ -1,0 +1,7 @@
+<h1>Login:</h1>
+
+<%=form_tag users_path do %>
+  <%= select_tag "user_name", options_from_collection_for_select(User.all, "id", "name"), include_blank: true %>
+  <%=text_field_tag :password, nil, placeholder: "Password"%>
+  <%=submit_tag "Sign In"%>
+<%end%>

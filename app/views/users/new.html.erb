@@ -1,0 +1,13 @@
+<h1>Create a New User:</h1>
+
+<%=form_for(@user) do |f|%>
+  <%=f.text_field :name, placeholder: "Name"%><br>
+  <%=f.text_field :password, placeholder: "Password"%><br>
+  <%=f.text_field :height, placeholder: "Height"%><br>
+  <%=f.text_field :happiness, placeholder: "Happiness"%><br>
+  <%=f.text_field :nausea, placeholder: "Nausea"%><br>
+  <%=f.text_field :tickets, placeholder: "Tickets"%><br>
+  <%=f.label "Admin?"%>
+  <%=f.check_box "admin"%><br>
+  <%=f.submit%>
+<%end%>

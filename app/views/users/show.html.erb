@@ -1,0 +1,13 @@
+<%if @user.admin == true%>
+<h1>ADMIN</h1><br>
+<%end%>
+<h1><%=@user.name%></h1>
+
+<h3>Mood: <%=@user.mood%></h3>
+<ul>
+  <li>Happiness: <%=@user.happiness%></li>
+  <li>Nausea: <%=@user.nausea%></li>
+  <li>Height: <%=@user.height%></li>
+  <li>Tickets: <%=@user.tickets%></li>
+  <li>Admin? <%=@user.admin%></li>
+</ul>
