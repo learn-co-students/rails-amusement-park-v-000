@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       @user = User.find(session[:user_id])
       @attributes = attributes_list.delete_if {|att, v| att == "password" || att == "name"}
     else
-      redirect_to new_user_path
+      redirect_to root_path
     end
   end
 
