@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<%= @message %>
+
+Name: <%= @user.name %>
+Mood: <%= @user.mood %>
+Happiness: <%= @user.happiness %>
+Nausea: <%= @user.nausea %>
+Tickets: <%= @user.tickets %>
+Height: <%= @user.height %>
+ADMIN: <%= @user.admin %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+<%= link_to 'Log Out', signout_path, method: :delete %>
+<%= link_to "See attractions", attractions_path %>

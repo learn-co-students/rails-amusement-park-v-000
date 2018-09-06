@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+Name: <%= @attraction.name %>
+Happiness: <%= @attraction.happiness_rating %>
+Nausea: <%= @attraction.nausea_rating %>
+Tickets: <%= @attraction.tickets %>
+Height: <%= @attraction.min_height %>
+
+
+<%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %> |
+<%= link_to 'Back', attractions_path %>
+
+    <form action="/rides/new" method="post">
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+        <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+        <input type="submit" value="Go on this ride">
+      </form>
