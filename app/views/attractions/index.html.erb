@@ -1,4 +1,11 @@
 <h1>Welcome to the Amusement Park!</h1>
 <% @attractions.each do |att| %>
-  <h4><%= link_to "Go on #{att.name}", attraction_path(att) %></h4>
+  <% if @user.admin %>
+    <h4><%= link_to "Show #{att.name}", attraction_path(att) %></h4>
+  <% else %>
+    <h4><%= link_to "Go on #{att.name}", attraction_path(att) %></h4>
+  <% end %>
+<% end %>
+<% if @user.admin %>
+  <%= link_to 'New Attraction', new_attraction_path %>
 <% end %>
