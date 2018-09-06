@@ -18,10 +18,17 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <%if logged_in? == false%>
+          <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
+          <a class="navbar-brand" href="/signin"/>Log In</a>
+        <%else%>
+          <a class="navbar-brand" href="/<%=current_user_path%>"/><%=current_user%></a>
+          <a class="navbar-brand" href="/logout"/>Log Out</a>
+          <%end%>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +36,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% flash.each do |name, msg| -%>
+         <%= content_tag :div, msg, class: name %>
+      <% end -%>
       <%= yield %>
     </div>
   </body>
