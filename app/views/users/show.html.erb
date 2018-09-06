@@ -7,4 +7,6 @@ Mood: <%= @user.mood if !@user.admin%>
 <%= @user.nausea %>
 <%= @user.tickets %>
 
+<p><%= link_to 'See attractions',  '/attractions' %></p>
+
 <p><%= link_to 'Log Out',  '/sessions/destroy', method: :delete %></p>

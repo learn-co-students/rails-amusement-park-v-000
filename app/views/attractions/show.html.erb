@@ -1,0 +1,7 @@
+<h1>Go on a ride!</h1>
+
+<%= form_tag user_path(@user), method: "put" do %>
+  <input type="hidden" name="ride[user_id]">
+  <input type="hidden" name="ride[attraction_id]">
+  <input type="submit" value="Go on this ride" class="btn btn-light">
+<% end %>
