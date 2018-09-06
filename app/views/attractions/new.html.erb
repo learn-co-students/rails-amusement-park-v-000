@@ -1,0 +1,10 @@
+<h1>New Attraction:</h1>
+
+<%=form_for(@attraction) do |f|%>
+  <%=f.text_field :name, placeholder: "Name"%>
+  <%=f.text_field :min_height, placeholder: "Min Height"%>
+  <%=f.text_field :nausea_rating, placeholder: "Nausea Rating"%>
+  <%=f.text_field :happiness_rating, placeholder: "Happiness Rating"%>
+  <%=f.text_field :tickets, placeholder: "Tickets"%>
+  <%=f.submit%>
+<%end%>

@@ -3,6 +3,12 @@
 <ul>
   <li>Happiness: <%=@attraction.happiness_rating%></li>
   <li>Nausea: <%=@attraction.nausea_rating%></li>
-  <li>Height: <%=@attraction.min_height%></li>
+  <li>Min-Height: <%=@attraction.min_height%></li>
   <li>Tickets: <%=@attraction.tickets%></li>
 </ul>
+
+<%if @user.admin == false%>
+<%= button_to "Go on this ride", rides_path, params: {id: @attraction.id} %>
+<%else%>
+<%=link_to("Edit Attraction", edit_attraction_path(@attraction))%>
+<%end%>
