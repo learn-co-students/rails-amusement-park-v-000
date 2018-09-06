@@ -1,0 +1,8 @@
+<h1><%= @attraction.name %></h1>
+<h4>Tickets needed: <%= @attraction.tickets %></h4>
+<h4>Your tickets: <%= @user.tickets %></h4>
+
+<%= form_tag(rides_path) do %>
+  <%= hidden_field_tag('attraction_id', value = @attraction.id)%>
+  <%= submit_tag 'Go on this ride' %>
+<% end %>

@@ -1,0 +1,4 @@
+<h1>Welcome to the Amusement Park!</h1>
+<% @attractions.each do |att| %>
+  <h4><%= link_to "Go on #{att.name}", attraction_path(att) %></h4>
+<% end %>

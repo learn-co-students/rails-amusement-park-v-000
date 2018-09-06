@@ -1,13 +1,19 @@
 <h1>Welcome <%= @user.name %></h1>
 
+<% if flash[:message].present? %>
+  <h2><%= flash[:message] %></h2>
+<% end %>
+
 <% if !!@user.admin %>
   <h4>Status: ADMIN</h4>
 <% else %>
   <% @attributes.each do |attribute, value| %>
    <p>
-     <%= attribute %> - <%= @user.attributes[attribute] %>
+     <%= attribute.capitalize %>: <%= @user.attributes[attribute] %>
    </p>
   <% end %>
   <p>Mood: <%= @user.mood %></p>
+
+  <h4><%= link_to "See attractions", attractions_path %> </h4>
 <% end %>
 <%= link_to "Log Out", logout_path %>
