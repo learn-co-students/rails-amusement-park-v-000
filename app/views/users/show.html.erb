@@ -1,7 +1,13 @@
 <h1>Welcome <%= @user.name %></h1>
-<% @attributes.each do |attribute, value| %>
- <p>
-   <%= attribute %> - <%= @user.attributes[attribute] %>
- </p>
+
+<% if !!@user.admin %>
+  <h4>Status: ADMIN</h4>
+<% else %>
+  <% @attributes.each do |attribute, value| %>
+   <p>
+     <%= attribute %> - <%= @user.attributes[attribute] %>
+   </p>
+  <% end %>
+  <p>Mood: <%= @user.mood %></p>
 <% end %>
-<p>Mood: <%= @user.mood %></p>
+<%= link_to "Log Out", logout_path %>
