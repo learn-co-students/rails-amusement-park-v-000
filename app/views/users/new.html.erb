@@ -1,0 +1,11 @@
+<%= form_for @user do |f| %>
+  <% @attributes.each do |attribute, value| %>
+    <%= f.label attribute %>
+    <% if attribute == "password" %>
+      <%= f.password_field attribute %>
+    <% else %>
+      <%= f.text_field attribute %>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

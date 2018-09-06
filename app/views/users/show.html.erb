@@ -1,0 +1,7 @@
+<h1>Welcome <%= @user.name %></h1>
+<% @attributes.each do |attribute, value| %>
+ <p>
+   <%= attribute %> - <%= @user.attributes[attribute] %>
+ </p>
+<% end %>
+<p>Mood: <%= @user.mood %></p>
