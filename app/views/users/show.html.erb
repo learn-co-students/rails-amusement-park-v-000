@@ -1,12 +1,21 @@
 <%= "ADMIN" if @user.admin %>
 
+<p id="notice"><%= notice %></p>
+
+<%#binding.pry%>
+<% if params[:message] %>
+  <div class="center alert">
+    <p><%= params[:message] %></p>
+  </div>
+<% end %>
+
 <%= @user.name %>
 Mood: <%= @user.mood if !@user.admin%>
 <%= @user.height %>
 <%= @user.happiness %>
 <%= @user.nausea %>
-<%= @user.tickets %>
+Tickets: <%= @user.tickets %>
 
-<p><%= link_to 'See attractions',  '/attractions' %></p>
+<p><%= link_to 'See attractions', '/attractions' %></p>
 
-<p><%= link_to 'Log Out',  '/sessions/destroy', method: :delete %></p>
+<p><%= link_to 'Log Out', '/sessions/destroy', method: :delete %></p>

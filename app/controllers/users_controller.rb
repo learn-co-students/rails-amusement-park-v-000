@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    # binding.pry
+    binding.pry
     @user = User.find(params[:id])
     @user.update()
     redirect_to user_path(@user)
