@@ -1,5 +1,16 @@
 module LoginHelper
 
+  # def visit_signup
+  #   visit '/users/new'
+  #   binding.pry
+  #   click_link('Sign Up')
+  # end
+
+  def visit_signup
+    visit '/users/new'
+    # click_link('Sign Up')
+  end
+
   def user_signup
     fill_in("user[name]", :with => "Amy Poehler")
     fill_in("user[height]", :with => "58")
@@ -10,9 +21,27 @@ module LoginHelper
     click_button('Create User')
   end
 
+  # def visit_signin
+  #   visit '/signin'
+  #   click_link('Sign In')
+  # end
+
+  def visit_signin
+    visit '/signin'
+    # click_link('Sign In')
+  end
+
   def user_login
-    select 'Mindy',from:'user_name'
-    fill_in("password", :with => "password")
+    @mindy = User.create(
+      name: "Mindy",
+      password: "password",
+      happiness: 3,
+      nausea: 2,
+      tickets: 10,
+      height: 50
+    )
+    fill_in("user[name]", :with => "Mindy")
+    fill_in("user[password]", :with => "password")
     click_button('Sign In')
   end
 
@@ -24,23 +53,6 @@ module LoginHelper
   end
 
   def admin_login
-    select 'Walt Disney',from:'user_name'
-    fill_in("password", :with => "password")
-    click_button('Sign In')
-  end
-
-  def create_standard_user 
-    @mindy = User.create(
-      name: "Mindy",
-      password: "password",
-      happiness: 3,
-      nausea: 2,
-      tickets: 10,
-      height: 50
-      )
-  end
-
-  def create_standard_and_admin_user
     @mindy = User.create(
       name: "Mindy",
       password: "password",
@@ -54,6 +66,9 @@ module LoginHelper
       password: "password",
       admin: true
     )
+    fill_in("user[name]", :with => "Walt Disney")
+    fill_in("user[password]", :with => "password")
+    click_button('Sign In')
   end
-  
+
 end
