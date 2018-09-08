@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+   before_action :require_login, only: [:show]
 
   def new
     @user = User.new
@@ -6,9 +7,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    return redirect_to new_user_path unless @user.save
-    session[:user_id] = @user.id
-    redirect_to '/'
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      render :new
+    end
   end
 
   def show
@@ -18,8 +22,12 @@ class UsersController < ApplicationController
 
   private
 
+  def require_login
+    redirect_to '/' unless session.include? :user_id
+  end
+
   def user_params
-    params.require(:user).permit(:name, :password, :nausea, :happiness, :height, :tickets, :admin)
+    params.require(:user).permit(:name, :password, :password_confirmation, :nausea, :happiness, :height, :tickets, :admin)
   end
 
 end

@@ -1,0 +1,10 @@
+<h1>Hi, <%= @user.name %>!</h1>
+<%= @user.is_admin? %>
+
+Mood:  <%= @user.mood %>
+Tickets:  <%= @user.tickets %>
+Height:  <%= @user.height %>
+
+<a href="/attractions/index">See attractions</a>
+
+<a href="/logout">Log Out</a>
