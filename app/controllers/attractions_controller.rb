@@ -18,8 +18,7 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    @attraction = Attraction.update(attraction_params)
-    if @attraction.save
+    if @attraction.update(attraction_params)
       redirect_to @attraction
     else
       render :edit
