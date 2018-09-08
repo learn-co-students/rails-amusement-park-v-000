@@ -23,6 +23,8 @@ class UsersController < ApplicationController
         redirect_to root_path
       end
     end
+    @message = params[:message] if params[:message]
+    @message ||= false
   end
 
   def edit
