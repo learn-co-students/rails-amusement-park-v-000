@@ -1,4 +1,6 @@
 class AttractionsController < ApplicationController
+  before_action :set_attraction, only: [:show, :edit, :update, :destroy]
+
   def new
     @attraction = Attraction.new
   end
@@ -38,6 +40,11 @@ class AttractionsController < ApplicationController
   end
 
   private
+
+  def set_attraction
+     @attraction = Attraction.find(params[:id])
+   end
+
   def attraction_params
     params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
   end
