@@ -1,0 +1,17 @@
+class SessionsController < ApplicationController
+
+
+  def new
+
+  end
+
+  def create
+    user = User.find(params[:user][:name])
+    user.try(:authenticate, params[:password])
+    render :new unless user
+
+    session[:user_id] = user.id
+    redirect_to user_path(current_user)
+  end
+
+end
