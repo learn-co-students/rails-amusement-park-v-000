@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
-  root "static_pages#home"
+  root "welcome#home"
 
   get 'signin' => 'sessions#new'
   post 'signin' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
 
   resources :users
+  resources :attractions
 
 end
