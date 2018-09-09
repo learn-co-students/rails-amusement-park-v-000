@@ -1,0 +1,24 @@
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>
+
+<% if @user.admin %>
+<p>ADMIN</p>
+<% end %>
+Name:
+<%= @user.name %>
+
+Mood:
+<%= @user.mood %>
+
+Height:
+<%= @user.height %>
+
+Tickets:
+<%= @user.tickets %>
+
+<p><%= link_to 'Edit', edit_user_path(@user) %></p>
+
+<%= link_to 'See attractions', attractions_path %>
