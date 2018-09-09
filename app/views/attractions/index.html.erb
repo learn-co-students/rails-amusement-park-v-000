@@ -1,0 +1,5 @@
+<h1>Attractions:</h1>
+
+<%= @attractions.each do |attraction| %>
+  <a href="/attractions/<%= attraction.id %>">"Go on <%= attraction.name %>"</a><br>
+<% end %>
