@@ -1,4 +1,5 @@
-  <%= form_for @user, url: url_for(action: 'create', controller: 'sessions') do |f| %>
+  <%#= form_for @user, url: url_for(action: 'create', controller: 'sessions') do |f| %>
+  <%= form_for(:user, :url => sessions_path(:user)) do |f| %>
 
   <div class="form-group">
     <%= f.label "Your Name:" %>
