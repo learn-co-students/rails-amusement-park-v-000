@@ -1,0 +1,1712 @@
+
+Feature Test: User Signup
+  successfully signs up as non-admin (FAILED - 1)
+  on sign up, successfully adds a session hash (FAILED - 2)
+  successfully logs in as non-admin (FAILED - 3)
+  on log in, successfully adds a session hash (FAILED - 4)
+  prevents user from viewing user show page and redirects to home page if not logged in (FAILED - 5)
+  successfully signs up as admin (FAILED - 6)
+  on sign up for admin, successfully adds a session hash (FAILED - 7)
+  successfully logs in as admin (FAILED - 8)
+  on log in, successfully adds a session hash to admins (FAILED - 9)
+
+Feature Test: User Signout
+  has a link to log out from the users/show page (FAILED - 10)
+  redirects to home page after logging out (FAILED - 11)
+  successfully destroys session hash when 'Log Out' is clicked (FAILED - 12)
+  has a link to log out from the users/show page when user is an admin (FAILED - 13)
+  redirects to home page after admin logs out when user is an admin (FAILED - 14)
+  successfully destroys session hash when 'Log Out' is clicked as admin (FAILED - 15)
+
+Feature Test: Go on a Ride
+  has a link from the user show page to the attractions index page (FAILED - 16)
+  links from the user show page to the attractions index page (FAILED - 17)
+  prevents users from editing/deleting/adding rides on the index page (FAILED - 18)
+  has titles of the rides on the attractions index page (FAILED - 19)
+  has links on the attractions index page to the attractions' show pages (FAILED - 20)
+  links from the attractions index page to the attractions' show pages (FAILED - 21)
+  prevents users from editing/deleting a ride on the show page (FAILED - 22)
+  has a button from the attraction show page to go on the ride (FAILED - 23)
+  clicking on 'Go on ride' redirects to user show page (FAILED - 24)
+  clicking on 'Go on ride' updates the users ticket number (FAILED - 25)
+  clicking on 'Go on ride' updates the users mood (FAILED - 26)
+  when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message (FAILED - 27)
+  when the user is too short, clicking on 'Go on ride' displays a sorry message (FAILED - 28)
+  when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message (FAILED - 29)
+  when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry message (FAILED - 30)
+
+Feature Test: Admin Flow
+  displays admin when logged in as an admin on user show page (FAILED - 31)
+  links to the attractions from the users show page when logged in as a admin (FAILED - 32)
+  has a link from the user show page to the attractions index page when in admin mode (FAILED - 33)
+  allows admins to add an attraction from the index page (FAILED - 34)
+  allows admins to add an attraction (FAILED - 35)
+  has link to attraction/show from attraction/index page for admins (FAILED - 36)
+  does not suggest that admins go on a ride (FAILED - 37)
+  links to attractions/show page from attractions/index (FAILED - 38)
+  does not suggest that an admin go on a ride from attractions/show page (FAILED - 39)
+  has a link for admin to edit attraction from the attractions/show page (FAILED - 40)
+  links to attraction/edit page from attraction/show page when logged in as an admin (FAILED - 41)
+  updates an attraction when an admin edits it (FAILED - 42)
+
+Attraction
+  is valid with a name, min_height, nausea_rating, happiness_rating, and ticket number
+  has many rides
+  has many users through rides
+
+Ride
+  is valid with a user_id and a attraction_id
+  belongs to one attraction
+  belongs to one user
+  has a method 'take_ride' that accounts for the user not having enough tickets
+  has a method 'take_ride' that accounts for the user not being tall enough
+  has a method 'take_ride' that accounts for the user not being tall enough and not having enough tickets
+  has a method 'take_ride' that updates ticket number
+  has a method 'take_ride' that updates the user's nausea
+  has a method 'take_ride' that updates the user's happiness
+
+User
+  is valid with a name, password, happiness, nausea, height, and tickets
+  is not valid without a password
+  is valid with an admin boolean
+  defaults to admin => false
+  has many rides
+  has many attractions through rides
+  has a method 'mood' that returns 'sad' when the user is more nauseous than happy
+  has a method 'mood' that returns 'happy' when the user is more happy than nauseous
+
+Failures:
+
+  1) Feature Test: User Signup successfully signs up as non-admin
+     Failure/Error: visit '/users/new'
+
+     ActionController::UnknownFormat:
+       UsersController#new is missing a template for this request format and variant.
+
+       request.formats: ["text/html"]
+       request.variant: []
+
+       NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:5:in `block (2 levels) in <top (required)>'
+
+  2) Feature Test: User Signup on sign up, successfully adds a session hash
+     Failure/Error: visit '/users/new'
+
+     ActionController::UnknownFormat:
+       UsersController#new is missing a template for this request format and variant.
+
+       request.formats: ["text/html"]
+       request.variant: []
+
+       NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:18:in `block (2 levels) in <top (required)>'
+
+  3) Feature Test: User Signup successfully logs in as non-admin
+     Failure/Error: visit '/signin'
+
+     ActionController::RoutingError:
+       No route matches [GET] "/signin"
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:28:in `block (2 levels) in <top (required)>'
+
+  4) Feature Test: User Signup on log in, successfully adds a session hash
+     Failure/Error: visit '/signin'
+
+     ActionController::RoutingError:
+       No route matches [GET] "/signin"
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:41:in `block (2 levels) in <top (required)>'
+
+  5) Feature Test: User Signup prevents user from viewing user show page and redirects to home page if not logged in
+     Failure/Error: visit '/users/1'
+
+     AbstractController::ActionNotFound:
+       The action 'show' could not be found for UsersController
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:49:in `block (2 levels) in <top (required)>'
+
+  6) Feature Test: User Signup successfully signs up as admin
+     Failure/Error: visit '/users/new'
+
+     ActionController::UnknownFormat:
+       UsersController#new is missing a template for this request format and variant.
+
+       request.formats: ["text/html"]
+       request.variant: []
+
+       NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:55:in `block (2 levels) in <top (required)>'
+
+  7) Feature Test: User Signup on sign up for admin, successfully adds a session hash
+     Failure/Error: visit '/users/new'
+
+     ActionController::UnknownFormat:
+       UsersController#new is missing a template for this request format and variant.
+
+       request.formats: ["text/html"]
+       request.variant: []
+
+       NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:65:in `block (2 levels) in <top (required)>'
+
+  8) Feature Test: User Signup successfully logs in as admin
+     Failure/Error: visit '/signin'
+
+     ActionController::RoutingError:
+       No route matches [GET] "/signin"
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:73:in `block (2 levels) in <top (required)>'
+
+  9) Feature Test: User Signup on log in, successfully adds a session hash to admins
+     Failure/Error: visit '/signin'
+
+     ActionController::RoutingError:
+       No route matches [GET] "/signin"
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+     # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+     # ./spec/features/users_features_spec.rb:84:in `block (2 levels) in <top (required)>'
+
+  10) Feature Test: User Signout has a link to log out from the users/show page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:95:in `block (2 levels) in <top (required)>'
+
+  11) Feature Test: User Signout redirects to home page after logging out
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:102:in `block (2 levels) in <top (required)>'
+
+  12) Feature Test: User Signout successfully destroys session hash when 'Log Out' is clicked
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:110:in `block (2 levels) in <top (required)>'
+
+  13) Feature Test: User Signout has a link to log out from the users/show page when user is an admin
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:118:in `block (2 levels) in <top (required)>'
+
+  14) Feature Test: User Signout redirects to home page after admin logs out when user is an admin
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:125:in `block (2 levels) in <top (required)>'
+
+  15) Feature Test: User Signout successfully destroys session hash when 'Log Out' is clicked as admin
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:133:in `block (2 levels) in <top (required)>'
+
+  16) Feature Test: Go on a Ride has a link from the user show page to the attractions index page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  17) Feature Test: Go on a Ride links from the user show page to the attractions index page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  18) Feature Test: Go on a Ride prevents users from editing/deleting/adding rides on the index page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  19) Feature Test: Go on a Ride has titles of the rides on the attractions index page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  20) Feature Test: Go on a Ride has links on the attractions index page to the attractions' show pages
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  21) Feature Test: Go on a Ride links from the attractions index page to the attractions' show pages
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  22) Feature Test: Go on a Ride prevents users from editing/deleting a ride on the show page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  23) Feature Test: Go on a Ride has a button from the attraction show page to go on the ride
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  24) Feature Test: Go on a Ride clicking on 'Go on ride' redirects to user show page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  25) Feature Test: Go on a Ride clicking on 'Go on ride' updates the users ticket number
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  26) Feature Test: Go on a Ride clicking on 'Go on ride' updates the users mood
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  27) Feature Test: Go on a Ride when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  28) Feature Test: Go on a Ride when the user is too short, clicking on 'Go on ride' displays a sorry message
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  29) Feature Test: Go on a Ride when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  30) Feature Test: Go on a Ride when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry message
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:165:in `block (2 levels) in <top (required)>'
+
+  31) Feature Test: Admin Flow displays admin when logged in as an admin on user show page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  32) Feature Test: Admin Flow links to the attractions from the users show page when logged in as a admin
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  33) Feature Test: Admin Flow has a link from the user show page to the attractions index page when in admin mode
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  34) Feature Test: Admin Flow allows admins to add an attraction from the index page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  35) Feature Test: Admin Flow allows admins to add an attraction
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  36) Feature Test: Admin Flow has link to attraction/show from attraction/index page for admins
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  37) Feature Test: Admin Flow does not suggest that admins go on a ride
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  38) Feature Test: Admin Flow links to attractions/show page from attractions/index
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  39) Feature Test: Admin Flow does not suggest that an admin go on a ride from attractions/show page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  40) Feature Test: Admin Flow has a link for admin to edit attraction from the attractions/show page
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  41) Feature Test: Admin Flow links to attraction/edit page from attraction/show page when logged in as an admin
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+  42) Feature Test: Admin Flow updates an attraction when an admin edits it
+      Failure/Error: visit '/users/new'
+
+      ActionController::UnknownFormat:
+        UsersController#new is missing a template for this request format and variant.
+
+        request.formats: ["text/html"]
+        request.variant: []
+
+        NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/tempfile_reaper.rb:15:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/etag.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/conditional_get.rb:25:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/head.rb:12:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:232:in `context'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/session/abstract/id.rb:226:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:38:in `call_app'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/rack/logger.rb:26:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/method_override.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/runtime.rb:22:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/sendfile.rb:111:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/railties-5.2.1/lib/rails/engine.rb:524:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:68:in `block in call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `each'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-2.0.5/lib/rack/urlmap.rb:53:in `call'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit'
+      # /Users/dakshapatel/.rvm/gems/ruby-2.3.3/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in <module:DSL>'
+      # ./spec/features/users_features_spec.rb:303:in `block (2 levels) in <top (required)>'
+
+Finished in 1.52 seconds (files took 3.45 seconds to load)
+62 examples, 42 failures
+
+Failed examples:
+
+rspec ./spec/features/users_features_spec.rb:4 # Feature Test: User Signup successfully signs up as non-admin
+rspec ./spec/features/users_features_spec.rb:17 # Feature Test: User Signup on sign up, successfully adds a session hash
+rspec ./spec/features/users_features_spec.rb:24 # Feature Test: User Signup successfully logs in as non-admin
+rspec ./spec/features/users_features_spec.rb:39 # Feature Test: User Signup on log in, successfully adds a session hash
+rspec ./spec/features/users_features_spec.rb:47 # Feature Test: User Signup prevents user from viewing user show page and redirects to home page if not logged in
+rspec ./spec/features/users_features_spec.rb:54 # Feature Test: User Signup successfully signs up as admin
+rspec ./spec/features/users_features_spec.rb:64 # Feature Test: User Signup on sign up for admin, successfully adds a session hash
+rspec ./spec/features/users_features_spec.rb:71 # Feature Test: User Signup successfully logs in as admin
+rspec ./spec/features/users_features_spec.rb:82 # Feature Test: User Signup on log in, successfully adds a session hash to admins
+rspec ./spec/features/users_features_spec.rb:94 # Feature Test: User Signout has a link to log out from the users/show page
+rspec ./spec/features/users_features_spec.rb:101 # Feature Test: User Signout redirects to home page after logging out
+rspec ./spec/features/users_features_spec.rb:109 # Feature Test: User Signout successfully destroys session hash when 'Log Out' is clicked
+rspec ./spec/features/users_features_spec.rb:117 # Feature Test: User Signout has a link to log out from the users/show page when user is an admin
+rspec ./spec/features/users_features_spec.rb:124 # Feature Test: User Signout redirects to home page after admin logs out when user is an admin
+rspec ./spec/features/users_features_spec.rb:132 # Feature Test: User Signout successfully destroys session hash when 'Log Out' is clicked as admin
+rspec ./spec/features/users_features_spec.rb:169 # Feature Test: Go on a Ride has a link from the user show page to the attractions index page
+rspec ./spec/features/users_features_spec.rb:174 # Feature Test: Go on a Ride links from the user show page to the attractions index page
+rspec ./spec/features/users_features_spec.rb:179 # Feature Test: Go on a Ride prevents users from editing/deleting/adding rides on the index page
+rspec ./spec/features/users_features_spec.rb:187 # Feature Test: Go on a Ride has titles of the rides on the attractions index page
+rspec ./spec/features/users_features_spec.rb:193 # Feature Test: Go on a Ride has links on the attractions index page to the attractions' show pages
+rspec ./spec/features/users_features_spec.rb:199 # Feature Test: Go on a Ride links from the attractions index page to the attractions' show pages
+rspec ./spec/features/users_features_spec.rb:205 # Feature Test: Go on a Ride prevents users from editing/deleting a ride on the show page
+rspec ./spec/features/users_features_spec.rb:212 # Feature Test: Go on a Ride has a button from the attraction show page to go on the ride
+rspec ./spec/features/users_features_spec.rb:219 # Feature Test: Go on a Ride clicking on 'Go on ride' redirects to user show page
+rspec ./spec/features/users_features_spec.rb:226 # Feature Test: Go on a Ride clicking on 'Go on ride' updates the users ticket number
+rspec ./spec/features/users_features_spec.rb:233 # Feature Test: Go on a Ride clicking on 'Go on ride' updates the users mood
+rspec ./spec/features/users_features_spec.rb:240 # Feature Test: Go on a Ride when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message
+rspec ./spec/features/users_features_spec.rb:247 # Feature Test: Go on a Ride when the user is too short, clicking on 'Go on ride' displays a sorry message
+rspec ./spec/features/users_features_spec.rb:257 # Feature Test: Go on a Ride when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message
+rspec ./spec/features/users_features_spec.rb:267 # Feature Test: Go on a Ride when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry message
+rspec ./spec/features/users_features_spec.rb:307 # Feature Test: Admin Flow displays admin when logged in as an admin on user show page
+rspec ./spec/features/users_features_spec.rb:311 # Feature Test: Admin Flow links to the attractions from the users show page when logged in as a admin
+rspec ./spec/features/users_features_spec.rb:315 # Feature Test: Admin Flow has a link from the user show page to the attractions index page when in admin mode
+rspec ./spec/features/users_features_spec.rb:322 # Feature Test: Admin Flow allows admins to add an attraction from the index page
+rspec ./spec/features/users_features_spec.rb:327 # Feature Test: Admin Flow allows admins to add an attraction
+rspec ./spec/features/users_features_spec.rb:341 # Feature Test: Admin Flow has link to attraction/show from attraction/index page for admins
+rspec ./spec/features/users_features_spec.rb:346 # Feature Test: Admin Flow does not suggest that admins go on a ride
+rspec ./spec/features/users_features_spec.rb:351 # Feature Test: Admin Flow links to attractions/show page from attractions/index
+rspec ./spec/features/users_features_spec.rb:357 # Feature Test: Admin Flow does not suggest that an admin go on a ride from attractions/show page
+rspec ./spec/features/users_features_spec.rb:363 # Feature Test: Admin Flow has a link for admin to edit attraction from the attractions/show page
+rspec ./spec/features/users_features_spec.rb:369 # Feature Test: Admin Flow links to attraction/edit page from attraction/show page when logged in as an admin
+rspec ./spec/features/users_features_spec.rb:376 # Feature Test: Admin Flow updates an attraction when an admin edits it
+
