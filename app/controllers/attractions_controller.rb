@@ -1,6 +1,7 @@
 class AttractionsController < ApplicationController
 
   def index
+    @attractions = Attraction.all
   end
 
   def new
@@ -10,6 +11,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
+    @attraction = Attraction.find_by(id: params[:id])
   end
 
   def edit

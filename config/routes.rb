@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'rides/index'
+  get 'rides/new'
+  get 'rides/create'
+  get 'rides/show'
+  get 'rides/destroy'
   #home path
   root 'static_pages#home'
 
