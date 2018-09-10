@@ -10,13 +10,17 @@
     <p><strong>Nausea Rating:</strong><%= @attraction.nausea_rating %></p>
     <p><strong>Happiness Rating:</strong><%= @attraction.happiness_rating %></p>
 
-    <%= form_for @attraction do |f| %>
+
       <% if current_user.admin %>
         <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></p>
       <% else %>
-        <%= f.submit "Go on this ride", class: "btn btn-primary btn-light" %>
+        <%= form_tag rides_path do %>
+        <%= hidden_field_tag "ride[user_id]", current_user.id %><br>
+        <%= hidden_field_tag "ride[attraction_id]", @attraction.id %><br>
+          <%= submit_tag "Go on this ride", class: "btn btn-primary btn-light" %>
       <% end %>
     <% end %>
+
 
   </div>
 

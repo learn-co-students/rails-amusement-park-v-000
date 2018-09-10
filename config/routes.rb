@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   post 'signin' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
 
+  resources :rides 
+
   resources :users
   resources :attractions
+
 
 end
