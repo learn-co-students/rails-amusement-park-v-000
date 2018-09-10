@@ -1,0 +1,18 @@
+<h1><%= @attraction.name %></h1>
+
+<%= form_for @user do |f| %>
+
+<%= f.label :min_height, "Minimum height (inches): #{@attraction.min_height}" %>
+
+<%= f.label :nausea, "Nausea rating: #{@attraction.nausea_rating}" %>
+<%= f.hidden_field :nausea, value="#{@attraction.nausea_rating}" %><br>
+
+<%= f.label :happiness, "Happiness rating: #{@attraction.happiness_rating}" %>
+<%= f.hidden_field :happiness, value="#{@attraction.happiness_rating}" %><br>
+
+<%= f.label :tickets, "Tickets needed: #{@attraction.tickets}" %>
+<%= f.hidden_field :tickets, value="#{@attraction.tickets}" %><br>
+
+<%= f.submit "Go on this ride" %>
+
+<% end %>

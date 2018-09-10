@@ -1,5 +1,6 @@
 <h1>Attractions:</h1>
 
+<!-- this is where i left off; this isn't showing the attraction name in the view, and how will it pass the id of the attraction to the show page? -->
 <%= @attractions.each do |attraction| %>
-  <a href="/attractions/<%= attraction.id %>">"Go on <%= attraction.name %>"</a><br>
+  <%= link_to "Go on #{attraction.name}", attraction_path(attraction), :method => :get %><br>
 <% end %>

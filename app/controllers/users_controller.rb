@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
+  def update
+    @user.update(user_params)
+    redirect_to @user
+  end
+
 
   private
 
