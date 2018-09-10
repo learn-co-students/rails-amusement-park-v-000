@@ -18,6 +18,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
+gem 'rack-flash3'
 
 
 # bootstrap
@@ -34,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'pry'
 
 
 # Use Capistrano for deployment
