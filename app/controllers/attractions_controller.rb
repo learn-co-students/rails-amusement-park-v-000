@@ -12,12 +12,14 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find_by(id: params[:id])
+    @ride = Ride.new
   end
 
   def edit
   end
 
   def update
+
   end
 
   private
