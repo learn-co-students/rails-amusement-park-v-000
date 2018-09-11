@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :rides
   has_many :attractions, through: :rides
-  #has_secure_password
+
+  has_secure_password
 
   def happiness_level
     if self.happiness && self.nausea
