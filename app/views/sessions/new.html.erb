@@ -1,0 +1,17 @@
+<div class="container" role="main">
+  <%= form_for @user, url: url_for(controller: 'sessions', action: 'create') do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Your name" %>
+      <%= f.collection_select :name, @users, :name, :name, prompt: "Please select your username from this dropdown", class: "form-control", id: "user_name" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, "Your Password" %>
+      <%= password_field_tag :password, class: "form-control" %>
+    </div>
+
+    <div class=actions>
+      <%= f.submit "Sign In" %>
+    </div>
+  <% end %>
+</div>
