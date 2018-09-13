@@ -1,7 +1,13 @@
+
+<% if params[:message] %>
+  <p><%= params[:message] %></p>
+<% end %>
+
 <h1><%= @attraction.name %></h1>
 <h3><%= @attraction.tickets %> tickets</h3>
-<%= button_to "Go on this ride", rides_path(:attraction_id => @attraction.id) %>
 
 <% if current_user.admin %>
   <p><%= link_to "Edit Attraction", edit_attraction_path() %></p>
+<% else %>
+  <%= button_to "Go on this ride", rides_path(:attraction_id => @attraction.id) %>
 <% end %>

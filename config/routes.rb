@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
-  get 'rides/create'
-  resources :users, only: [:new, :create, :show, :index]
-  
+  root 'users#new'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
-  post '/signout' => 'sessions#destroy'
-
+  delete '/signout' => 'sessions#destroy'
+  
+  resources :users, only: [:new, :create, :show, :index]
   resources :attractions
-
   resources :rides, only: [:create]
-
-  root 'users#new'
-
 end

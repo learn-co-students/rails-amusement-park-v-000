@@ -15,7 +15,7 @@ class AttractionsController < ApplicationController
   def create
     attraction = Attraction.new(attraction_params)
     if attraction.save
-      redirect_to attraction_path(attraction)
+      redirect_to attraction_path(attraction, message: 'Attraction successfully created')
     else
       render :new
     end
@@ -26,10 +26,10 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    @attraction = Attraction.find_by(id: params[:id])
-    @attraction.update(attraction_params)
+    attraction = Attraction.find_by(id: params[:id])
+    attraction.update(attraction_params)
 
-    redirect_to attraction_path(@attraction)
+    redirect_to attraction_path(attraction, message: 'Attraction successfully updated')
   end
 
   private
