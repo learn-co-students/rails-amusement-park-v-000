@@ -1,0 +1,18 @@
+<% if params[:message] %>
+  <h3><%= params[:message] %></h3>
+<% end %>
+
+<h1><%= @user.name %></h1>
+
+<% if @user.admin %>
+  <h2>ADMIN</h2>
+<% else %>
+  <ul>
+    <li>Mood: <%= @user.mood %></li>
+    <li>Tickets: <%= @user.tickets %></li>
+    <li>Height: <%= @user.height %></li>
+  </ul>
+<% end %>
+
+<%= link_to 'See attractions', attractions_path %><br>
+<%= link_to 'Log Out', signout_path, method: :delete %>
