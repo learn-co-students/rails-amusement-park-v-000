@@ -2,15 +2,14 @@
 <% if @user.admin %>
   <%= link_to "New Attraction", new_attraction_path %>
   <br>
-  <ul>
-    <% @attractions.each do |a| %>
-      <li><%= link_to "Show #{a.name}", attraction_path(a) %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <ul>
-    <% @attractions.each do |a| %>
-      <li><%= link_to "Go on #{a.name}", attraction_path(a) %></li>
-    <% end %>
-  </ul>
 <% end %>
+
+<ul>
+<% @attractions.each do |a| %>
+  <% if @user.admin %>
+    <li><%= link_to "Show #{a.name}", attraction_path(a) %></li>
+  <% else %>
+    <li><%= link_to "Go on #{a.name}", attraction_path(a) %></li>
+  <% end %>
+<% end %>
+</ul>

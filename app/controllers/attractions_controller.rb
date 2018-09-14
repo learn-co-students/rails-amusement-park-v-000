@@ -4,11 +4,6 @@ class AttractionsController < ApplicationController
     @attractions = Attraction.all
   end
 
-  def show
-    @attraction = Attraction.find(params[:id])
-    @user = User.find(session[:user_id])
-  end
-
   def new
     @attraction = Attraction.new
   end
@@ -19,6 +14,11 @@ class AttractionsController < ApplicationController
     redirect_to attraction_path(@attraction)
   end
 
+  def show
+    @attraction = Attraction.find(params[:id])
+    @user = User.find(session[:user_id])
+  end
+
   def edit
     @attraction = Attraction.find(params[:id])
   end
@@ -26,7 +26,7 @@ class AttractionsController < ApplicationController
   def update
     attraction = Attraction.find_by(id: params[:id])
     attraction.update(attraction_params)
-    # flash[:message] = @ride.take_ride
+    flash[:message] = "Attraction updated!"
 
     redirect_to attraction_path(attraction)
   end
