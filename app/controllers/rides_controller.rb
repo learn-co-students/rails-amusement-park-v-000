@@ -5,7 +5,7 @@ class RidesController < ApplicationController
 
     @ride = Ride.create(:user_id => @user.id, :attraction_id => @attraction.id)
 
-    flash[:message] = @message = @ride.take_ride
+    flash[:message] = @ride.take_ride
 
     redirect_to user_path(@user)
   end

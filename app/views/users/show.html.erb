@@ -1,15 +1,15 @@
 <h1>Hello, <%= @user.name %></h1>
 
+<% if flash[:message] %>
+  <h3><%=flash[:message] %></h3>
+<% end %>
+
 <% if @user.admin %>
   <h2>ADMIN</h2>
 <% else %>
   <h3>Your Mood: <%= @user.mood %></h3>
   <h3>Tickets: <%= @user.tickets %></h3>
   <h3>Your height: <%= @user.height %> inches</h3>
-<% end %>
-
-<% if flash[:message] %>
-  <h3><%=flash[:message] %></h3>
 <% end %>
 
 <%= link_to 'See attractions', attractions_path %><br>

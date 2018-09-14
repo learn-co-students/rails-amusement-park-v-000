@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
     if session[:user_id] == params[:id].to_i
       @user = User.find(params[:id])
+      @attractions = Attraction.all
     else
       redirect_to root_path
     end
