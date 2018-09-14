@@ -27,6 +27,9 @@ class Ride < ActiveRecord::Base
     user.nausea += attraction.nausea_rating
     user.happiness += attraction.happiness_rating
     user.save
+    message = "Thanks for riding the #{attraction.name}!"
+
+    message
   end
 
   def no_ride
