@@ -1,0 +1,12 @@
+<h1><%= "Welcome to #{@attraction.name}" %></h1>
+<h3><%= "This ride takes #{@attraction.tickets} tickets." %></h3>
+
+<% if @user.admin %>
+  <% if flash[:message] %>
+    <h3><%=flash[:message] %></h3>
+  <% end %>
+
+  <p><%= link_to "Edit Attraction", edit_attraction_path %></p>
+<% else %>
+  <%= button_to "Go on this ride", rides_path(:attraction_id => @attraction.id) %>
+<% end %>
