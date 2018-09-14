@@ -1,0 +1,4 @@
+<h1><%= "Welcome to #{@attraction.name}" %></h1>
+<h3><%= "You will need #{@attraction.tickets} tickets." %></h3>
+
+<%= button_to "Go on this ride", rides_path(:attraction_id => @attraction.id) %>
