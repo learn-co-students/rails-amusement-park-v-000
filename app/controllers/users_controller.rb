@@ -4,10 +4,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    session[:user_id] = user.id
+    params[:admin] ? params = admin_params : params = user_params
 
-    redirect_to user_path(user.id)
+    @user = User.create(params)
+    session[:user_id] = @user.id
+
+    redirect_to user_path(@user.id)
   end
 
   def show
@@ -21,5 +23,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:admin, :name, :nausea, :happiness, :tickets, :height, :password)
+  end
+
+  def admin_params
+    params.require(:user).permit(:admin, :name, :password)
   end
 end
