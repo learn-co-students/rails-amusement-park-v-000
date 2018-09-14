@@ -2,6 +2,7 @@ class AttractionsController < ApplicationController
 
     def index
         @attractions = Attraction.all
+        @user = User.find(session[:user_id])
     end
 
     def new
@@ -16,6 +17,16 @@ class AttractionsController < ApplicationController
 
     def show
         @attraction = Attraction.find(params[:id])
+    end
+
+    def edit
+        @attraction = Attraction.find(params[:id])
+    end
+
+    def update
+        @attraction = Attraction.find(params[:id])
+        @attraction.update(attraction_params)
+        redirect_to attraction_path(@attraction)
     end
 
     private

@@ -19,7 +19,7 @@ class Ride < ActiveRecord::Base
             user.nausea = new_nausea
             user.happiness = new_happiness
             user.save
-            "Yay! You can ride the #{attraction.name}."
+            "Thanks for riding the #{attraction.name}!"
         end
 
     end

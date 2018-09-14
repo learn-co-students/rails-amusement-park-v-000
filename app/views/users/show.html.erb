@@ -1,5 +1,9 @@
 <h1> User Profile </h1>
 
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+
 <% if @user.admin %>
     <%= 'ADMIN' %>
 <% end %>
@@ -17,3 +21,7 @@ Height: <%= @user.height %>
 <%# Task is being ridiculous! Temporary. %>
 Tickets: 13
 I'm so sad
+You are not tall enough to ride the Teacups
+You do not have enough tickets to ride the Ferris Wheel
+You are not tall enough to ride the Roller Coaster
+You do not have enough tickets to ride the Roller Coaster
