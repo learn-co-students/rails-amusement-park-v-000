@@ -1,0 +1,3 @@
+<% @attractions.each do |ride| %>
+    <%= link_to "Go on #{ride.name}", attraction_path(ride) %>
+<% end %>

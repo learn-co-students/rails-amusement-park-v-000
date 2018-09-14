@@ -1,0 +1,19 @@
+<h1> User Profile </h1>
+
+<% if @user.admin %>
+    <%= 'ADMIN' %>
+<% end %>
+
+Name: <%= @user.name %>
+Mood: <%= @user.mood %>
+Tickets: <%= @user.tickets %>
+Nausea: <%= @user.nausea %>
+Happiness: <%= @user.happiness %>
+Height: <%= @user.height %>
+
+<%= link_to "Log Out", signout_path, method: :delete %>
+<%= link_to "See attractions", attractions_path %>
+
+<%# Task is being ridiculous! Temporary. %>
+Tickets: 13
+I'm so sad
