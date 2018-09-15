@@ -16,8 +16,11 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     end
   end
+  def welcome
+  end
+  
+
   def show
-    @user = User.find_by(id: params[:id])
   end
 
   private

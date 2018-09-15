@@ -9,5 +9,9 @@
 <%end%>
 
 <%if @user.admin%>
-  <%=link_to "New Attraction", new_attraction_path%>
+  <%=link_to "New Attraction", new_attraction_path%><br>
+<%end%>
+
+<%if @user.admin%>
+  <%=link_to "User Profile", user_path(@user)%>
 <%end%>
