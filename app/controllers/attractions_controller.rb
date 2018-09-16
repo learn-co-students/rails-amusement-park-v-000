@@ -7,6 +7,7 @@ class AttractionsController < ApplicationController
 
   def show
     @ride = Ride.new
+    @user = User.find_by(id: session[:user_id])
   end
 
   def new
@@ -33,7 +34,7 @@ class AttractionsController < ApplicationController
 private
 
   def set_attraction
-    @attraction = Attraction.find(params[:id])
+    @attraction = Attraction.find_by(id: params[:id])
   end
 
   def attraction_params

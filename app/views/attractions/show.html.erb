@@ -1,18 +1,14 @@
-<h1><%= @attraction.name %></h1>
+<p>Name: <%= @attraction.name %></p>
+<p>Total Number of Users: <%= @attraction.users.count %></p>
+<p>Ticket Requirement: <%= @attraction.tickets %></p>
+<p>Height Requirement: <%= @attraction.min_height %> inches</p>
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
+<p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 
-<%= form_for @user do |f| %>
+<%= link_to "Edit this Attraction", edit_attraction_path if @user.is_admin? %><br>
 
-<%= f.label :min_height, "Minimum height (inches): #{@attraction.min_height}" %>
-
-<%= f.label :nausea, "Nausea rating: #{@attraction.nausea_rating}" %>
-<%= f.hidden_field :nausea, value="#{@attraction.nausea_rating}" %><br>
-
-<%= f.label :happiness, "Happiness rating: #{@attraction.happiness_rating}" %>
-<%= f.hidden_field :happiness, value="#{@attraction.happiness_rating}" %><br>
-
-<%= f.label :tickets, "Tickets needed: #{@attraction.tickets}" %>
-<%= f.hidden_field :tickets, value="#{@attraction.tickets}" %><br>
-
-<%= f.submit "Go on this ride" %>
-
-<% end %>
+<form action="/rides" method="post">
+  <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+  <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+  <input type="submit" value="Go on this ride">
+</form>
