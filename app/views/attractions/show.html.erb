@@ -5,10 +5,12 @@
 <p>Nausea Rating: <%= @attraction.nausea_rating %></p>
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 
-<%= link_to "Edit this Attraction", edit_attraction_path if @user.is_admin? %><br>
-
-<form action="/rides" method="post">
-  <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
-  <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
-  <input type="submit" value="Go on this ride">
-</form>
+<% if current_user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+  <form action="/rides" method="post">
+    <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+    <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+    <input type="submit" value="Go on this ride">
+  </form>
+<% end %>

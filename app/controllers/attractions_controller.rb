@@ -7,11 +7,19 @@ class AttractionsController < ApplicationController
 
   def show
     @ride = Ride.new
-    @user = User.find_by(id: session[:user_id])
   end
 
   def new
     @attraction = Attraction.new
+  end
+
+  def create
+    @attraction = Attraction.create(attraction_params)
+    if @attraction.save
+      redirect_to attraction_path(@attraction)
+    else
+      render :new
+    end
   end
 
   def edit
