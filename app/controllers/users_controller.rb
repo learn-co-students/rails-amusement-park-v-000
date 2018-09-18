@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+
+  def show
+  end
+
   def new
     @user = User.new
   end
@@ -15,12 +19,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def edit
   end
 
   def update
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -28,18 +32,18 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    render :new
+    redirect_to new_user_path
   end
 
 
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation, :nausea, :happiness, :height, :tickets, :admin)
+    params.require(:user).permit(:name, :password, :nausea, :happiness, :height, :tickets, :admin)
   end
 
 end

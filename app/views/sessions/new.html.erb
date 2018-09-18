@@ -1,6 +1,6 @@
 <%= form_for @user do |f| %>
 <%= f.label :name, "Your name:" %><br>
-<%= f.collection_select :name, User.all, :id, :name %>
+<%= f.collection_select :name, User.all, :id, :name, :include_blank => "Please select" %>
 <br>
 <%= f.label :password, "Your password:" %><br>
 <%= f.password_field :password %>
