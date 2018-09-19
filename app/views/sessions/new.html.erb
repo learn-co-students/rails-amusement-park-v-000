@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, :url => url_for(controller: "sessions", action: "create") do |f| %>
 <%= f.label :name, "Your name:" %><br>
 <%= f.collection_select :name, User.all, :id, :name, :include_blank => "Please select" %>
 <br>
