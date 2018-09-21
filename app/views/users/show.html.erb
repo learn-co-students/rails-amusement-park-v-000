@@ -7,7 +7,9 @@ Happiness: <%=@user.happiness%><br>
 Tickets: <%=@user.tickets%><br>
 Height: <%=@user.height%><br>
 Admin?: <%=@user.admin_status%><br><br>
-
-<%=link_to "Log Out", :sessions, method: :delete%><br>
+<%if @user.admin%>
+  <%=link_to "Update User", edit_user_path(@user)%><br>
+<%end%>
 
 <%=link_to "See attractions", attractions_path%>
+<%=link_to "Log Out", :sessions, method: :delete%><br>
