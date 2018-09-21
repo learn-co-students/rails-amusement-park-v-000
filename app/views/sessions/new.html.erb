@@ -1,0 +1,10 @@
+<h1>Log In</h1>
+
+<%= form_tag('/sessions', method: :post) do %>
+  <%= collection_select :user, :name, User.all, :id, :name %><br />
+
+  <%= label_tag :password %><br />
+  <%= password_field_tag :password %><br /><br />
+
+  <%= submit_tag "Sign In" %>
+<% end %>

@@ -3,7 +3,6 @@
   <head>
     <title>RailsAmusementPark</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,10 +17,19 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+
+        <% if session[:user_id] %>
+          <a class="navbar-brand" href="<%= user_url(User.find_by(id: session[:user_id])) %>"/>Profile</a>
+          <a class="navbar-brand" href="<%= logout_url %>"/>Log Out</a>
+        <% else %>
+          <a class="navbar-brand" href="<%= signup_url %>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_url %>"/>Log In</a>
+        <% end %>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +37,12 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% flash.each do |name, msg| -%>
+        <div class="alert alert-<%= name %>" role="alert">
+            <%= msg %>
+        </div>
+      <% end -%>
+
       <%= yield %>
     </div>
   </body>
