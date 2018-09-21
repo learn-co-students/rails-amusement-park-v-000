@@ -7,7 +7,6 @@ class AttractionsController < ApplicationController
 
   def show
     @ride = Ride.new
-    redirect_to attraction_path(@attraction)
   end
 
   def new
@@ -29,12 +28,10 @@ class AttractionsController < ApplicationController
 
   def create
     @attraction = Attraction.new(attraction_params)
-    binding.pry
-    if @attraction
-      @attraction.save
-    end
-
-    redirect_to attraction_path(@attraction)
+    @attraction.save
+      if @attraction
+        redirect_to attraction_path(@attraction)
+      end
   end
 
   def destroy
