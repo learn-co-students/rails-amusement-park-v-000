@@ -36,6 +36,15 @@ body {
   text-align: center;
 }
 
+div.middle {
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center }
+  
+div.middle h1 {
+  margin: 0 }
+
 .pic,
 .info {
   padding: 20px;
@@ -49,4 +58,24 @@ body {
 .info {
   height: 290px;
   text-align: left;
+}
+
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
 }
