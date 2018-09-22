@@ -9,6 +9,6 @@ Mood:  <%= @user.mood %>
 Tickets:  <%= @user.tickets %>
 Height:  <%= @user.height %>
 
-<a href="/attractions">See attractions</a>
-
+<%= link_to 'See attractions', attractions_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>
 <a href="/logout">Log Out</a>

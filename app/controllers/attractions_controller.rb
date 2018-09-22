@@ -16,7 +16,7 @@ class AttractionsController < ApplicationController
   def create
     @attraction = Attraction.create(attraction_params)
     if @attraction.save
-      redirect_to attraction_path(@attraction)
+      redirect_to @attraction, notice: 'Attraction was successfully created.'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class AttractionsController < ApplicationController
 
   def update
     if @attraction.update(attraction_params)
-      redirect_to @attraction
+      redirect_to @attraction, notice: 'Attraction was successfully updated.'
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class AttractionsController < ApplicationController
 
   def destroy
     @attraction.destroy
-    redirect_to attractions_path
+    redirect_to attractions_path, notice: 'Attraction was successfully destroyed.'
   end
 
 
@@ -46,7 +46,13 @@ private
   end
 
   def attraction_params
-    params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :tickets)
-  end
+      params.require(:attraction).permit(
+        :name,
+        :min_height,
+        :tickets,
+        :happiness_rating,
+        :nausea_rating
+      )
+    end
 
 end

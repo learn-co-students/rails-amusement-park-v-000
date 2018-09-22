@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
 
   def show
+    @message = params[:message] if params[:message]
+    @message ||= false
   end
 
   def new
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: "Welcome to the theme park!"
     else
       render :new
     end
@@ -24,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), notice: 'User was successfully updated.'
     else
       render :edit
     end
