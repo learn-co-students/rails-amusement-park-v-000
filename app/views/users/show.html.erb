@@ -1,0 +1,16 @@
+ <p><%= flash[:notice] %></p>
+
+<h1><%= @user.name %>'s Profile</h1>
+
+  <div>
+    <% if @user.admin %>
+      <p>ADMIN</p>
+    <% end %>
+    <p>Name: <%= @user.name %> </p>
+    <p>Tickets: <%= @user.tickets %> </p>
+    <p>Mood: <%= @user.mood %> </p>
+    <p>Height: <%= @user.height %> </p>
+    <p><%= link_to "See attractions", attractions_path %></p>
+  </div>
+
+<p><%=link_to "Log Out", '/signout'%></p>
