@@ -1,0 +1,7 @@
+<%= @attraction.name %>
+
+<%= button_to "Go on this ride",rides_new_path(user_id: session[:user_id], attraction_id: @attraction.id) %>
+
+<% if admin? %>
+<%= link_to "Edit Attraction" , edit_attraction_path %>
+<% end %>
