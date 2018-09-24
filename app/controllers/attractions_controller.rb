@@ -21,12 +21,19 @@ class AttractionsController < ApplicationController
 
   def show
     @ride = Ride.new
+
   end
 
   def edit
   end
 
   def update
+    if @attraction.update(attraction_params)
+      @attraction.save
+      redirect_to attraction_path(@attraction)
+    else
+      render :edit
+    end 
   end
 
   def destory
