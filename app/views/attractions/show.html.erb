@@ -1,0 +1,12 @@
+<h1><%= @attraction.name %></h1>
+
+<p><strong>Name:</strong> <%= @attraction.name %></p>
+<p><strong>Total Number of Users:</strong> <%= @attraction.users.count %></p>
+<p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
+<p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches </p>
+<p><strong>Nausea Rating:</strong> <%= @attraction.tickets %></p>
+<p><strong>Happiness Rating:</strong> <%= @attraction.tickets %></p>
+
+<%= button_to "Go on this ride", new_ride_path , :params => {:user_id => session[:user_id], :attraction_id => @attraction.id}, method: :get %>
+
+<%= link_to "Edit attraction", edit_attraction_path(@attraction) %>
