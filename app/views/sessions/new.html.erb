@@ -1,0 +1,6 @@
+
+  <form method='post'>
+    <%=collection_select(:user, :name, User.all, :name, :name, prompt: true)%><br />
+    <input type="text" name="password" value="">
+    <input type='submit' value='Sign In'>
+  </form>
