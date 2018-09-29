@@ -22,3 +22,19 @@ You're going to be building an amusement park. There will be users, attractions,
 * [`has_secure_password`](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-amusement-park' title='Rails Amusement Park'>Rails Amusement Park</a> on Learn.co and start learning to code for free.</p>
+
+
+
+
+<% @rides.each do |ride| %>
+<tr>
+  <td><strong>Name</strong></td>
+  <td><strong>Tickets</strong></td>
+  <td><strong>Details</strong></td>
+</tr>
+<tr>
+  <td><%= ride.name %></td>
+  <td><%= ride.tickets %></td>
+  <td>Show <%= link_to "<%= @ride.name %>", ride_path(ride) %></td>
+</tr>
+<% end %>
