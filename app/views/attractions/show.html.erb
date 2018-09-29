@@ -1,0 +1,6 @@
+
+<%if @user.admin == true %>
+<%= render 'admin_show'%>
+<%else %>
+<%=render 'non_admin_show'%>
+<%end%>

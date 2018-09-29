@@ -1,0 +1,19 @@
+
+
+<h1><%= @user.admin ? "ADMIN: #{@user.name}"  : "Welcome #{@user.name}"%></h1>
+
+
+<label>Mood:</label>
+<p><%=@user.mood unless @user.nausea.nil?%></p>
+
+<label>Tickets:</label>
+<p><%=@user.tickets unless @user.tickets.nil?%></p>
+
+<label>Height:</label>
+<p><%=@user.height unless @user.height.nil? %></p>
+
+
+<%=link_to 'See attractions', attractions_path%>
+
+
+<%=link_to 'Log Out', session_delete_path %>

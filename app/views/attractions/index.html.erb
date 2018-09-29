@@ -1,0 +1,5 @@
+<%if @user.admin == true %>
+<%= render 'admin'%>
+<%else %>
+<%=render 'non_admin'%>
+<%end%>

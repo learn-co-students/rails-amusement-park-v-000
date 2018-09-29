@@ -1,0 +1,18 @@
+<h1><%=@attraction.name%></h1>
+
+<label>Total Number of Users:</label>
+<%=@attraction.users.size%><br  />
+
+<label>Ticket Requirement:</label>
+<%=@attraction.tickets%><br  />
+
+<label>Height Requirement:</label>
+<%=@attraction.min_height%><br  />
+
+<label>Nausea Rating:</label>
+<%=@attraction.nausea_rating%><br  />
+
+<label>Happiness Rating:</label>
+<%=@attraction.happiness_rating%><br  />
+
+<%=link_to "Edit Attraction", edit_attraction_path%>
