@@ -21,7 +21,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +29,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% flash.each do |name, msg| -%>
+     <%= content_tag :div, msg, class: name %>
+   <% end -%>
       <%= yield %>
     </div>
   </body>

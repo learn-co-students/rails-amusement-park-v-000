@@ -11,8 +11,13 @@ before_action :require_login, except: [:create, :new]
   end
 
   def edit
-    binding.pry
+
+  end
+
+  def update
     @user = User.find(params[:id])
+    @user.ride.take_ride
+    redirect_to @user
   end
 
   def create

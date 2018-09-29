@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
       "happy"
     end
   end
+
+
 end
