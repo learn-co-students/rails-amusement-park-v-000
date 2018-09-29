@@ -1,0 +1,15 @@
+<%= form_for user = User.new, url: signin_path, method: :post do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Your name:", :id => 'user_name' %>
+    <%= f.collection_select(:name, User.all, :name, :name, {:prompt => 'Please select your username from this dropdown'})  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, "Your password:" %><br>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class="action">
+    <%= f.submit "Sign In" %>
+  </div>
+<% end %>

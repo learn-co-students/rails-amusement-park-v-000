@@ -17,19 +17,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
 
-    <!-- content -->
-    <div class="container"  role="main">
-      <%= yield %>
+        <a class="navbar-brand" href="<%= root_url %>">Home</a>
+
+        <% if @current_user %>
+          <a class="navbar-brand" href='/users/<%= @current_user.id %>'><%= @current_user.name %>'s profile</a>
+          <%= link_to("Log Out", logout_path, method: :delete, class: "navbar-brand") %>
+        <% else %>
+          <a class="navbar-brand" href='/users/new'>Sign Up</a>
+          <a class="navbar-brand" href='/signin'>Log in</a>
+        <% end %>
+
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
-  </body>
+  </div>
+
+  <!-- content -->
+  <div class="container"  role="main">
+    <%= yield %>
+  </div>
+</body>
 </html>

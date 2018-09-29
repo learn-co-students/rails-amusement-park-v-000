@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="center">
+  <div class="info">
+
+    <p>
+      <strong>Name:</strong> <%= @attraction.name %>
+    </p>
+    <p>
+      <strong>Total Number of Users:</strong>
+    </p>
+    <p>
+      <strong>Ticket Requirement:</strong> <%= @attraction.tickets %>
+    </p>
+    <p>
+      <strong>Height Requirement:</strong> <%= @attraction.min_height %> inches
+    </p>
+    <p>
+      <strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %>
+    </p>
+    <p>
+      <strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %>
+    </p>
+    <p>
+
+      <% if @current_user.admin %>
+        <a href="/attractions/<%= @attraction.id %>/edit">Edit Attraction</a>
+      <% else %>
+        <form class="new_ride" id="new_ride" action="/rides" method="post">
+          <input type="hidden" value="<%= @current_user.id %>" name="ride[user_id]" id="ride_user_id">
+          <input type="hidden" value="<%= @attraction.id %>" name="ride[attraction_id]" id="ride_attraction_id">
+
+          <input type="submit" name="commit" value="Go on this ride" class="btn btn-primary" data-disable-with="Go on this ride">
+        </form>
+      <% end %>
+
+    </p>
+  </div>
+</div>
