@@ -1,0 +1,10 @@
+
+<%= form_tag do  %>
+<%= label_tag :user_name, name="User Name :" %>
+<%= select_tag :user_name, options_from_collection_for_select(User.all,:id,:name),{include_blank: "Select a User Below"} %>
+<br>
+<%= label_tag :password,  name="Password :"%>
+<%= password_field_tag :password %>
+<br>
+<%= submit_tag name='Sign In' %>
+<% end %>

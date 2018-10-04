@@ -16,7 +16,6 @@ class Ride < ActiveRecord::Base
       user.save
     end
 
-
   end
 
 
