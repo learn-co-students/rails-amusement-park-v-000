@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     def show
         if login?
-          @user = User.find(session[:user_id])
+          @user = current_user
         else
           redirect_to "/"
       end
@@ -27,11 +27,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-  def update
-    byebug
-    Attraction.find(params[:id]).tickets
-  end
 
 private
 

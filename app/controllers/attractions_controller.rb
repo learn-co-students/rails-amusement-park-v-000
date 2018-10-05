@@ -1,11 +1,11 @@
 class AttractionsController < ApplicationController
+  before_action :current_attraction, only: [:show,:edit]
 
   def index
     @attractions = Attraction.all
   end
 
   def show
-    current_attraction
     @ride = Ride.new
   end
 
@@ -24,7 +24,6 @@ class AttractionsController < ApplicationController
   end
 
   def edit
-    current_attraction # <-- found and assign the object. returns instance variable
   end
 
   def update
