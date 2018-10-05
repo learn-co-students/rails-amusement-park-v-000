@@ -1,0 +1,16 @@
+<h2>Attractions</h2>
+<div>
+  <%= link_to "New Attraction", new_attraction_path if current_user.admin %>
+</div>
+
+<% @attractions.each do |ride| %>
+  <ul>
+    <li><h3><%= link_to "Go on #{ride.name}", attraction_path(ride) unless current_user.admin %></h3></li>
+    <li><h3><%= link_to "Show #{ride.name}", attraction_path(ride)if current_user.admin%></h3></li>
+    <li>Name :<%= ride.name%></li>
+    <li>Tickets : <%= ride.tickets %></li>
+    <li>Nausea :<%= ride.nausea_rating %></li>
+    <li>Happy :<%= ride.happiness_rating %></li>
+    <li>Minium Height : <%= ride.min_height %></li>
+  </ul>
+<% end %>

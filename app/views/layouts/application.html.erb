@@ -21,7 +21,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,7 +29,16 @@
 
     <!-- content -->
     <div class="container"  role="main">
+
+      <div class="">
+        <% if flash[:notice] || flash[:alert] %>
+          <%=flash[:notice]%>
+          <%=flash[:alert]%>
+        <% end %>
+      </div>
+
       <%= yield %>
+
     </div>
   </body>
 </html>

@@ -1,0 +1,23 @@
+<div class="">
+  <% if flash[:notice] || flash[:alert] %>
+    <%=flash[:notice]%>
+    <%=flash[:alert]%>
+  <% end %>
+</div>
+
+<div class="">
+<%= link_to "Log Out", logout_path, method: :delete %>  ||
+<%= link_to "See attractions", attractions_path %>
+</div>
+<h2> <%= @user.name %> </h2>
+<p>
+  <%= @user.admin ? "ADMIN" : "User's" %> Levels & Characteristics:
+<ul>
+  <li>   Nausea: <%= @user.nausea %></li>
+  <li>    happy: <%= @user.happiness %></li>
+  <li>  Tickets: <%= @user.tickets %></li>
+  <li>  Height : <%= @user.height %></li>
+  <li>  Admin? : <%= @user.admin %></li>
+  <li>    Mood : <%= @user.mood %> </li>
+</ul>
+</p>
