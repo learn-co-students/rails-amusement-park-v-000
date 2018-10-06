@@ -1,0 +1,7 @@
+<h1><%= @attraction.name %></h1>
+
+<%= button_to "Go on this ride", new_ride_path , :params => {:user_id => session[:user_id], :attraction_id => @attraction.id}, method: :get %>
+
+<% if current_user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
