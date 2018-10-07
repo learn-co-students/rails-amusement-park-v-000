@@ -1,0 +1,15 @@
+<%= form_for @user, url: signin_path, method: :post do |f| %>
+
+  <%= f.label :id, "Your Name:" %><br>
+  <%= f.collection_select :name, User.order(:name), :name, :name, include_blank: true%><br>
+
+  <%= f.label :password %><br>
+  <%= f.password_field :password, id: "password" %> <br>
+
+  <br>
+
+  <%= f.submit "Sign In" %>
+  <br>
+
+  <%= link_to(controller: 'users', action: 'new'){'Sign Up'} %>
+<% end %>
