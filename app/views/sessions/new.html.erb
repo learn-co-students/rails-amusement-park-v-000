@@ -1,0 +1,12 @@
+<div style="width: 960px; margin: 0 auto; text-align: center">
+  <h1>Login</h1>
+  <div style="width: 300px; margin: 50px auto; text-align: left" %>
+    <%= form_tag('/sessions', :method => 'POST') do %>
+      <%= label_tag(:name) %>
+      <%= select_tag :name, options_from_collection_for_select(User.all, "name", "name"), :id => "user_name" %><br />
+      <%= label_tag(:password) %>
+      <%= password_field_tag(:password) %><br />
+      <%= submit_tag("Sign In") %>
+    <% end %>
+  </div>
+</div>

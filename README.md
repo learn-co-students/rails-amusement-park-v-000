@@ -1,3 +1,7 @@
+TODO
+
+1. Change name field on login page to be a select box where users select their name from a dropdown.
+
 # Rails Amusement Park
 
 ## Objectives
