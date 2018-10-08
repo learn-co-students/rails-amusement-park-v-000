@@ -1,0 +1,22 @@
+<div style="width: 960px; margin: 0 auto; text-align: center">
+  <h1>Sign Up</h1>
+  <div style="width: 300px; margin: 50px auto; text-align: left" %>
+    <%= form_for(@user) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %><br />
+      <%= f.label :password %>
+      <%= f.password_field :password %><br  />
+      <%= f.label :nausea, 'Nausea level 1-5' %>
+      <%= f.text_field :nausea %><br />
+      <%= f.label :happiness, "Happiness level 1-5" %>
+      <%= f.text_field :happiness %><br />
+      <%= f.label :tickets %>
+      <%= f.text_field :tickets %><br />
+      <%= f.label :height, "Your height" %>
+      <%= f.text_field :height %><br />
+      <%= f.label :admin %>
+      <%= f.check_box :admin %><br />
+      <%= f.submit "Create User" %>
+    <% end %>
+  </div>
+</div>
