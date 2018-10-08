@@ -1,11 +1,15 @@
-<h1>Log In</h1>
-
 <%= form_tag '/users' do %>
-  <%= label_tag 'Your name' %><br>
-  <%= text_field_tag 'name'%><br>
+  <div class="form-group">
+    <%= label_tag 'Your name:' %>
+    <%= collection_select(:user, :user_id, User.all, :id, :name, prompt: "Please select your username from this dropdown")%>
+  </div>
 
-  <%= label_tag 'Your password' %>
-  <%= password_tag 'password' %><br>
+  <div class="form-group">
+    <%= label_tag 'Your password:' %><br>
+    <%= password_field_tag 'password', '', class: "form-control"%>
+  <div>
 
-  <%= submit_tag 'Sign In' %>
+  <div>
+    <%= submit_tag 'Sign In' %>
+  </div>
 <% end %>
