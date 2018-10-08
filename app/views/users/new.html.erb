@@ -1,0 +1,25 @@
+<h1>Register</h1>
+
+<%= form_tag '/users' do %>
+  <%= label_tag 'Your name' %><br>
+  <%= text_field_tag 'user[name]'%><br>
+
+  <%= label_tag 'Height (in inches)' %><br>
+  <%= text_field_tag 'user[height]' %><br>
+
+  <%= label_tag 'How happy are you? (1-5 scale)' %><br>
+  <%= text_field_tag 'user[happiness]' %><br>
+
+  <%= label_tag 'How nauseous are you?' %><br>
+  <%= text_field_tag 'user[nausea]' %><br>
+
+  <%= label_tag 'How many dollars are in your pocket?' %><br>
+  <%= text_field_tag 'user[tickets]' %><br>
+
+  Check box if you are a theme park owner <%= check_box_tag 'user[admin]', true %><br>
+
+  <%= label_tag 'Your password' %><br>
+  <%= password_field_tag 'user[password]' %><br>
+
+  <%= submit_tag 'Create User' %>
+<% end %>

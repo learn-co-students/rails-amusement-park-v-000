@@ -1,0 +1,11 @@
+<h1>Log In</h1>
+
+<%= form_tag '/users' do %>
+  <%= label_tag 'Your name' %><br>
+  <%= text_field_tag 'name'%><br>
+
+  <%= label_tag 'Your password' %>
+  <%= password_tag 'password' %><br>
+
+  <%= submit_tag 'Sign In' %>
+<% end %>
