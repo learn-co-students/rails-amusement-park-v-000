@@ -13,7 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_log_in
-    redirect_to root_path unless logged_in?
+    if !logged_in?
+      flash[:message] = "Please log in or sign up!"
+      redirect_to root_path
+    end
   end
 
 end

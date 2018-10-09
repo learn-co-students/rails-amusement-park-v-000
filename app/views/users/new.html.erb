@@ -1,4 +1,10 @@
 <div class="container">
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+
   <%= form_tag '/users' do %>
     <div class="form-group">
       <%= label_tag :user_name, 'Name' %><br>
