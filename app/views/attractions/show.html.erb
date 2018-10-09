@@ -1,0 +1,16 @@
+<div class="center">
+  <div class="info">
+    <p><b>Name:</b> <%= @attraction.name %></p>
+    <p><b>Total Number of Users:</b> <%= @attraction.users.count %></p>
+    <p><b>Ticket Requirement:</b> <%= @attraction.tickets %></p>
+    <p><b>Height Requirement:</b> <%= @attraction.min_height %> inches</p>
+    <p><b>Nausea Rating:</b> <%= @attraction.nausea_rating %></p>
+    <p><b>Happiness Rating:</b> <%= @attraction.happiness_rating %></p>
+    <br>
+    <%= form_for @ride, new_ride_path |f| %>
+        <%= hidden_field_tag 'ride[user_id]', current_user.id %>
+        <%= hidden_field_tag 'ride[attraction_id]', @attraction.id %>
+        <%= f.submit 'Go on this ride' %>
+    <% end %>
+  </div>
+</div>
