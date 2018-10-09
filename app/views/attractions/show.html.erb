@@ -7,10 +7,11 @@
     <p><b>Nausea Rating:</b> <%= @attraction.nausea_rating %></p>
     <p><b>Happiness Rating:</b> <%= @attraction.happiness_rating %></p>
     <br>
-    <%= form_for @ride, new_ride_path |f| %>
-        <%= hidden_field_tag 'ride[user_id]', current_user.id %>
-        <%= hidden_field_tag 'ride[attraction_id]', @attraction.id %>
-        <%= f.submit 'Go on this ride' %>
-    <% end %>
+    <form action='/rides/create', method='post' >
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag 'user_id', current_user.id %>
+        <%= hidden_field_tag 'attraction_id', @attraction.id %>
+        <%= submit_tag 'Go on this ride' %>
+    </form>
   </div>
 </div>
