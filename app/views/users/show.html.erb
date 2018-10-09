@@ -1,0 +1,15 @@
+<div class="container">
+
+  <div class="notice"> <%= flash[:message] %> </div>
+
+  <div class="center">
+    <div class="info">
+      <p><strong><%= admin?(@user) %><strong><p>
+      <p><b>Name:</b> <%= @user.name %></p>
+      <p><b>Tickets:</b> <%= @user.tickets %></p>
+      <p><b>Mood:</b> <%= @user.mood %></p>
+      <p><b>Height:</b> <%= @user.height %> inches</p>
+      <%= link_to 'See attractions', attractions_path %>
+    </div>
+  </div>
+</div>

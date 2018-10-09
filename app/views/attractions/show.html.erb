@@ -1,0 +1,27 @@
+<div class="center">
+
+  <div class="notice"> <%= flash[:message] %> </div>
+
+  <div class="info">
+    <p><b>Name:</b> <%= @attraction.name %></p>
+    <p><b>Total Number of Users:</b> <%= @attraction.users.count %></p>
+    <p><b>Ticket Requirement:</b> <%= @attraction.tickets %></p>
+    <p><b>Height Requirement:</b> <%= @attraction.min_height %> inches</p>
+    <p><b>Nausea Rating:</b> <%= @attraction.nausea_rating %></p>
+    <p><b>Happiness Rating:</b> <%= @attraction.happiness_rating %></p>
+    <br>
+    <% if !!current_user.admin %>
+      <%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %> |
+      <%= link_to 'Destroy Attraction', @attraction, method: :delete, data:{confirm: "Are you sure you want to destroy this attraction?"} %> |
+    <% else %>
+      <form action='/rides/create', method='post' >
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= hidden_field_tag 'user_id', current_user.id %>
+          <%= hidden_field_tag 'attraction_id', @attraction.id %>
+          <%= submit_tag 'Go on this ride' %>
+      </form>
+    <% end %>
+
+    <%= link_to 'Back', attractions_path %>
+  </div>
+</div>
