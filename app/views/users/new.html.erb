@@ -1,25 +1,40 @@
-<h1>Register</h1>
+<div class="container">
+  <%= form_tag '/users' do %>
+    <div class="form-group">
+      <%= label_tag :user_name, 'Name' %><br>
+      <%= text_field_tag 'user[name]', "", class: "form-control"%>
+    </div>
 
-<%= form_tag '/users' do %>
-  <%= label_tag 'Your name' %><br>
-  <%= text_field_tag 'user[name]'%><br>
+    <div class="form-group">
+      <%= label_tag :user_height, 'Height (in inches)' %><br>
+      <%= text_field_tag 'user[height]', "", type: "number", class: "form-control" %>
+    </div>
 
-  <%= label_tag 'Height (in inches)' %><br>
-  <%= text_field_tag 'user[height]' %><br>
+    <div class="form-group">
+      <%= label_tag :user_happiness, 'How happy are you? (1-5 scale)' %><br>
+      <%= text_field_tag 'user[happiness]', "", type: "number", class: "form-control" %>
+    </div>
 
-  <%= label_tag 'How happy are you? (1-5 scale)' %><br>
-  <%= text_field_tag 'user[happiness]' %><br>
+    <div class="form-group">
+      <%= label_tag :user_nausea, 'How nauseous are you?' %><br>
+      <%= text_field_tag 'user[nausea]', "", type: "number", class: "form-control" %>
+    </div>
 
-  <%= label_tag 'How nauseous are you?' %><br>
-  <%= text_field_tag 'user[nausea]' %><br>
+    <div class="form-group">
+      <%= label_tag :user_tickets, 'How many dollars are in your pocket?' %><br>
+      <%= text_field_tag 'user[tickets]', "", type: "number", class: "form-control" %><br>
+    </div>
 
-  <%= label_tag 'How many dollars are in your pocket?' %><br>
-  <%= text_field_tag 'user[tickets]' %><br>
+    <div class="form-group">
+      <%= label_tag :user_admin, 'Check box if you are a theme park owner'%>
+      <%= check_box_tag 'user[admin]' %><br>
+    </div>
 
-  Check box if you are a theme park owner <%= check_box_tag 'user[admin]', true %><br>
+    <div class="form-group">
+      <%= label_tag :user_password, 'Your password' %><br>
+      <%= password_field_tag 'user[password]', "", class: "form-control"%>
+    </div>
 
-  <%= label_tag 'Your password' %><br>
-  <%= password_field_tag 'user[password]' %><br>
-
-  <%= submit_tag 'Create User' %>
-<% end %>
+    <%= submit_tag 'Create User', class: "btn btn-primary"%>
+  <% end %>
+</div>
