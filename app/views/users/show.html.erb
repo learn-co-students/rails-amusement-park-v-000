@@ -1,4 +1,8 @@
 <div>
+  <% if @user.admin %>
+    <p><strong>ADMIN</strong</p>
+  <% end %>
+  
   <p><strong>Name:</strong> <%= @user.name %></p>
   <p><strong>Tickets:</strong> <%= @user.tickets %></p>
   <p><strong>Mood:</strong> <%= @user.mood %></p>
