@@ -21,7 +21,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -32,4 +32,7 @@
       <%= yield %>
     </div>
   </body>
+<!-- Spec test has a link to log out from the users/show page -->
+<small><%= logged_in? ? (link_to "Log Out", logout_path) : (link_to "Sign In", signin_path) %></small>
+
 </html>

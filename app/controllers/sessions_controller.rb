@@ -17,9 +17,8 @@ class SessionsController < ApplicationController
         end
     end
 
-    private
-
-    def user_params
-        params.require(:user).permit(:name, :height, :happiness, :tickets, :nausea, :password)
+    def destroy
+      session[:user_id] = nil
+      redirect_to root_url
     end
 end
