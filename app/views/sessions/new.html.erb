@@ -1,11 +1,11 @@
-<%= form_for(@user) do |f| %>
+<%= form_tag signin_path do %>
 
-    <%= f.label :name, "Enter your name:" %><br>
-    <%= f.text_field :name %><br>
+    <%= label_tag :user_name, "Enter your name:" %><br>
+    <%= select_tag :user_name, options_from_collection_for_select(User.all, :name, :name) %><br>
 
-    <%= f.label :password, "Enter your password" %><br>
-    <%= f.password_field :password %><br>
+    <%= label_tag :password, "Enter your password" %><br>
+    <%= password_field_tag :password %><br>
 
-    <%= f.submit "Sign In" %>
+    <%= submit_tag "Sign In" %>
 
 <% end %>

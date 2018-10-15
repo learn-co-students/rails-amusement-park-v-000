@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:edit, :update, :destroy]
 
     def show
-
+        # prevent user from viewing user show page
+        if session[:user_id]
+            set_user
+        else
+            redirect_to root_path
+        end
     end
 
     def new
