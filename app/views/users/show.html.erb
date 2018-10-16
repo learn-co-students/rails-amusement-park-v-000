@@ -1,3 +1,7 @@
+<% if flash[:message] %>
+    <%= flash[:message] %>
+<% end %>
+
 <% if @user.admin %>
     <h3>ADMIN</h3>
 <% end %>

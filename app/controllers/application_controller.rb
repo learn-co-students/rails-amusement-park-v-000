@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to root_path unless logged_in?
   end
+
+  def admin?
+    current_user.admin if logged_in?
+  end
+
+  helper_method :admin?
 end

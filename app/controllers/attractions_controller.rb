@@ -15,13 +15,19 @@ class AttractionsController < ApplicationController
 
     def create 
         @attraction = Attraction.new(attraction_params)
-
+        @attraction.save
+        redirect_to attraction_path(@attraction)
     end
 
     def edit 
     end
 
-    def update 
+    def update
+        if @attraction.update(attraction_params)
+            redirect_to attraction_path(@attraction)
+        else
+            render :edit
+        end
     end
 
     def destroy
