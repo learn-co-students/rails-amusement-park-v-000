@@ -1,3 +1,4 @@
+<h1><%= "ADMIN" if @user.admin == true %></h1>
 <h1><%= @user.name %></h1>
 <p>Mood: <%= @user.mood if @user.mood %></p>
 <p>nausea: <%= @user.nausea if @user.nausea %></p>
@@ -10,3 +11,5 @@
 <%if @user.admin = true %>
 <%= link_to 'Attractions', attractions_path %>
 <%end%>
+
+<%= link_to 'Log Out', '/logout' %>
