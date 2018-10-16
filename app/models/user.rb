@@ -5,10 +5,14 @@ class User < ActiveRecord::Base
   #validates :name, presence: true, uniqueness: true
 
   def mood
-    if self.happiness < self.nausea
-      return "sad"
+    if self.happiness && self.nausea
+      if self.happiness < self.nausea
+        return "sad"
+      else
+        return "happy"
+      end
     else
-      return "happy"
+      nil
     end
   end
 end

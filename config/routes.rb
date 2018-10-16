@@ -3,5 +3,12 @@ Rails.application.routes.draw do
   resources :rides
   resources :attractions
 
-   root 'static#home'
+  root 'static#home'
+
+  get    '/signin',   to: 'sessions#new'
+  post   '/signin',   to: 'sessions#create'
+  delete '/signin',  to: 'sessions#destroy'
+
+
+
 end
