@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :rides
   resources :attractions
 
-   root 'post#application'
+   root 'static#home'
 end
