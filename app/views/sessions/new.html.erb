@@ -1,0 +1,9 @@
+<%= form_for(:user, url: signin_path) do |f| %>
+<%=     label_tag "Name" %>
+<%=     select_tag "user_name", options_from_collection_for_select(@users, "name", "name") %><br>
+<%=     label_tag "Password" %>
+<%=     password_field_tag 'password' %><br>
+<%=     f.label :password_confirmation %>
+<%=     f.text_field :password_confirmation %><br>
+<%=     f.submit 'Sign In' %>
+<% end %>
