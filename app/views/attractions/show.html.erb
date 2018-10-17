@@ -3,3 +3,5 @@
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 <p>Nausea Rating: <%= @attraction.nausea_rating %></p>
 <p>Minimum Height: <%= @attraction.min_height %></p>
+
+<%= button_to "Go on this ride", {controller: 'rides', action: 'create', attraction_id: @attraction_id} %>

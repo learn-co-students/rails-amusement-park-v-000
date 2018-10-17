@@ -1,18 +1,18 @@
-<%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :nausea %>
-  <%= f.number_field :nausea %>
-  <%= f.label :happiness %>
-  <%= f.number_field :happiness %>
-  <%= f.label :tickets %>
-  <%= f.number_field :tickets %>
-  <%= f.label :height %>
-  <%= f.number_field :height %>
-  <%= f.label :admin %>
-  <%= f.check_box :admin %>
+<%= form_for(@user) do |f| %>
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name %></p>
+  <p><%= f.label :password %></p>
+  <p><%= f.password_field :password %></p>
+  <p><%= f.label :nausea %></p>
+  <p><%= f.number_field :nausea %></p>
+  <p><%= f.label :happiness %></p>
+  <p><%= f.number_field :happiness %></p>
+  <p><%= f.label :tickets %></p>
+  <p><%= f.number_field :tickets %></p>
+  <p><%= f.label :height %></p>
+  <p><%= f.number_field :height %></p>
+  <p><%= f.label :admin %></p>
+  <p><%= f.check_box :admin %></p>
 
-  <%= f.submit "Create User" %>
+  <p><%= f.submit "Create User" %></p>
 <% end %>

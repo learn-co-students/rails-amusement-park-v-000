@@ -2,6 +2,9 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
   belongs_to :user
 
+  validates :user, presence: true
+  validates :attraction, presence: true
+
   def take_ride
     if enough_tickets && tall_enough
       start_ride
