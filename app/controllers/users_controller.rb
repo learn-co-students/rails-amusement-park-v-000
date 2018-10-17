@@ -13,19 +13,18 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      if @user.admin = false
-        redirect_to '/'
-      else
         redirect_to user_path(@user)
-      end
     else
       redirect_to new_user_path
     end
   end
 
   def show
-
-    @user = User.find(params[:id])
+    if session[:user_id]
+      @user = User.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
 
