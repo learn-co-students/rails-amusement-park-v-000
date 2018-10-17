@@ -1,3 +1,9 @@
+<% if @message %>
+  <div>
+    <p><%= @message %></p>
+  </div>
+<% end %>
+
 <div>
   <% if @user.admin %>
     <p><strong>ADMIN</strong</p>

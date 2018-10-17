@@ -6,8 +6,8 @@ class RidesController < ApplicationController
       :attraction_id => params[:attraction_id]
     )
 
-    @ride.take_ride
-    
-    redirect_to user_path(@ride.user)
+    @message = @ride.take_ride
+
+    redirect_to user_path(@ride.user, :message => @message)
   end
 end

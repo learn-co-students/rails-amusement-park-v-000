@@ -32,6 +32,7 @@ class Ride < ActiveRecord::Base
       :happiness => new_happiness,
       :nausea => new_nausea
     )
+    "Thanks for riding the #{self.attraction.name}!"
   end
 
   def height_issue
