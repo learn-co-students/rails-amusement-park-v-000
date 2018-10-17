@@ -1,0 +1,9 @@
+Name: <%= @attraction.name %>
+Tickets: <%= @attraction.tickets %>
+Nausea Rating: <%= @attraction.nausea_rating %>
+Happiness Rating: <%= @attraction.happiness_rating %>
+Min Height: <%= @attraction.min_height %>
+
+<%button_to do %>
+<%=  content_tag(:strong, 'Go on this ride') %>
+<% end %>
