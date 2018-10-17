@@ -8,8 +8,7 @@
 <p>admin: <%= @user.admin if @user.admin %></p>
 
 
-<%if @user.admin = true %>
-<%= link_to 'Attractions', attractions_path %>
-<%end%>
+
+<%= link_to 'See attractions', attractions_path %>
 
 <%= link_to 'Log Out', '/logout', method: :delete %>
