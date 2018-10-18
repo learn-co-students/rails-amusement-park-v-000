@@ -1,0 +1,19 @@
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <h1><%= current_user.admin %></h1>
+
+<% if current_user.admin %>
+<h1>ADMIN</h1>
+ <% end %>
+
+<h1>Name: <%= current_user.name %></h1>
+<h1>Mood: <%= current_user.mood %></h1>
+<h1>Height: <%= current_user.height %></h1>
+<h1>Tickets: <%= current_user.tickets %></h1>
+<p><%= link_to "See attractions", attractions_path %></p>
+
+<p><%= link_to "Log Out", logout_path %></p>
+
