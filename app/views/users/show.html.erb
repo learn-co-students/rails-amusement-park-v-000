@@ -7,7 +7,9 @@
 <p>Height: <%= @user.height if @user.height %></p>
 <p>Admin: <%= @user.admin if @user.admin %></p>
 
-
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
 
 <%= link_to 'See attractions', attractions_path %>
 
