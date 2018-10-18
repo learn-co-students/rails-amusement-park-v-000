@@ -23,4 +23,28 @@ class AttractionsController < ApplicationController
     @ride.attraction_id = @attraction.id
   end
 
+  def edit
+    if current_user.admin
+      @attraction = Attraction.find(params[:id])
+    else
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @attraction = Attraction.find(params[:id])
+    @attraction.update(attraction_params)
+    if @attraction.save
+      redirect_to @attraction
+    else
+      render :edit
+    end
+  end
+
+  private
+
+    def attraction_params
+      params.require(:attraction).permit(:name, :tickets, :happiness_rating, :nausea_rating, :min_height)
+    end
+
 end

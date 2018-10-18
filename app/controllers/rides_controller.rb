@@ -1,9 +1,6 @@
-require 'pry'
-
 class RidesController < ApplicationController
 
   def create
-    # binding.pry
     @ride = Ride.create(ride_params)
     redirect_to user_path(current_user), notice: @ride.take_ride
   end
