@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
 
   def index
 
@@ -26,6 +27,12 @@ class UsersController < ApplicationController
       redirect_to '/'
     end
   end
+
+    def update
+      binding.pry
+    end
+
+
 
 
   private
