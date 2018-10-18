@@ -1,0 +1,10 @@
+<%= form_for(@user) do |f| %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :attraction_id, value: @attraction.id %>
+  <%= f.submit value = "Go on this ride" %>
+<%end%>
+
+<%= form_tag ({controller: 'users', action: 'show',method: 'get'}) do %>
+   
+<%end%>
+
