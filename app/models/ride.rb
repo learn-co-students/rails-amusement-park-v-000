@@ -8,7 +8,6 @@ class Ride < ActiveRecord::Base
   def take_ride
     if enough_tickets && tall_enough
       start_ride
-      "Thanks for riding the #{@ride.name}!"
     elsif !enough_tickets && tall_enough
       "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     elsif enough_tickets && !tall_enough
@@ -31,6 +30,8 @@ class Ride < ActiveRecord::Base
     self.user.happiness += self.attraction.happiness_rating
     self.user.nausea += self.attraction.nausea_rating
     self.user.save
+
+    "Thanks for riding the #{self.attraction.name}!"
   end
 
 end
