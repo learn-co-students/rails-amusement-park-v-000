@@ -4,4 +4,8 @@
 <p>Nausea Rating: <%= @attraction.nausea_rating %></p>
 <p>Minimum Height: <%= @attraction.min_height %></p>
 
-<%= button_to "Go on this ride", {controller: 'rides', action: 'create', attraction_id: @attraction_id} %>
+<%= form_for(@ride) do |f| %>
+  <%= f.hidden_field :user_id, :value => @ride.user_id %>
+  <%= f.hidden_field :attraction_id, :value => @ride.attraction_id %>
+  <p><%= f.submit "Go on this ride" %></p>
+<% end %>

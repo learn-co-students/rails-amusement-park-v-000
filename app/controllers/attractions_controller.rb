@@ -18,6 +18,9 @@ class AttractionsController < ApplicationController
   def show
     @attraction = Attraction.find(params[:id])
     @user = User.find(current_user.id)
+    @ride = Ride.new
+    @ride.user_id = @user.id
+    @ride.attraction_id = @attraction.id
   end
 
 end
