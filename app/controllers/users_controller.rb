@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
 
   def index
 
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+        session[:user_id] = @user.id
         redirect_to user_path(@user)
     else
       redirect_to new_user_path
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
     def update
-      binding.pry
+    
     end
 
 

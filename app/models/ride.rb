@@ -1,7 +1,7 @@
 class Ride < ActiveRecord::Base
   belongs_to :user
   belongs_to :attraction
-  
+
 
   def take_ride
     @user = self.user
@@ -14,10 +14,13 @@ class Ride < ActiveRecord::Base
     elsif @user.height < @attraction.min_height
        "Sorry. You are not tall enough to ride the #{@attraction.name}."
     else
+
        @user.tickets -= @attraction.tickets
        @user.nausea += @attraction.nausea_rating
        @user.happiness += @attraction.happiness_rating
        @user.save
+      # binding.pry
+      # "Thanks for riding the #{@attraction.name}!"
     end
   end
 end
