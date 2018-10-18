@@ -16,7 +16,7 @@
 
 <% end %>
 
-<% unless current_user.admin == true %>
+<% unless current_user.admin == false %>
 <p><%= link_to "New Attraction", new_attraction_path %></p>
 
  <% end %>

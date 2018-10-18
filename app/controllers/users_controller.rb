@@ -8,21 +8,30 @@ class UsersController < ApplicationController
    end
 
    def create
-   
-   	@user = User.new(user_params)
+    
+    # params[:user][:admin] = ActiveRecord::Type::Boolean.new.cast(params[:user][:admin])
+   	@user = User.create(user_params)
     # @user.admin =  ActiveRecord::Type::Boolean.new.cast(params[:user][:admin])
     
-   	if @user.save
+   	# if @user.save
    		session[:user_id] = @user.id
    		redirect_to user_path(@user) 
-   	else
-   		render :new
-   	end
+   	# else
+   	# 	render :new
+   	# end
    end
 
    def show
-   	authentification_required
-   	@user = current_user
+   	# authentification_required
+   	# @user = current_user
+
+    if !session.include?(:user_id)
+      redirect_to '/'
+    else
+      @user = User.find(params[:id])
+
+      render :show
+    end
    end
 
 

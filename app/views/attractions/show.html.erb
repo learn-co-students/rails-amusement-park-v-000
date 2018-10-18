@@ -12,3 +12,9 @@
 
 <%= f.submit "Go on this ride" %>
 <% end %>
+
+<% if current_user.admin %>
+
+ <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></p>
+
+ <% end %>
