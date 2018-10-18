@@ -8,7 +8,7 @@ class Ride < ActiveRecord::Base
   def take_ride
     if enough_tickets && tall_enough
       start_ride
-      "Have fun, geek."
+      "Thanks for riding the #{@ride.name}!"
     elsif !enough_tickets && tall_enough
       "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     elsif enough_tickets && !tall_enough
