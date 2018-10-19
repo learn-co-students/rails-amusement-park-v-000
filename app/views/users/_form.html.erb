@@ -1,0 +1,38 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :name %><br />
+  <%= f.text_field :name %><br />
+
+  <%= f.label :height, "Height (in inches)" %><br />
+  <%= f.number_field :height %><br />
+
+  <%= f.label :happiness, "How happy are you?" (1-5 scale) %>
+  <%= f.number_field :happiness %><br />
+
+  <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %><br />
+  <%= f.number_field :nausea %><br />
+
+  <%= f.label :tickets %><br />
+  <%= f.number_field :tickets %><br />
+
+  <%= f.label :admin, "Checkbox for themes parks owners" %>><br />
+  <%= f.check_box :admin %><br />
+
+  <%= f.label :password %><br />
+  <%= f.password_field :password %><br />
+
+  <%= f.submit "Create Theme parker" %>
+
+  <% end %>
