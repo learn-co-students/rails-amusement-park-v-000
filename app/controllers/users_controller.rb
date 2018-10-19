@@ -1,18 +1,19 @@
 class UsersController < ApplicationController
+  def show
+  end
 
   def new
     @user = User.new
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to user_path(@user.id)
+    user = User.create(user_params)
+    redirect_to user_path(user.id)
   end
 
   def index
   end
-  def show
-  end
+
 
 private
 
