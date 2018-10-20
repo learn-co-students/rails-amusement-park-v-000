@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :rides
   resources :users
   get '/user/:id' => 'users#show'
-  get '/signin' => 'users#signin'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
 end

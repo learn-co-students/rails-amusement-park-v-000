@@ -8,4 +8,12 @@ class User < ApplicationRecord
     self.nausea > self.happiness ? 'sad' : 'happy'
 
   end
+
+  def self.user_name
+    self.all.map do |user|
+      user.name
+    end
+  end
+
+
 end
