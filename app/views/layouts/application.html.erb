@@ -13,15 +13,29 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
+
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+          <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+
+        <% if logged_in? %>
+          <a class="navbar-brand" href="<%= logout_path  %>"/>Logout</a>
+          <% if current_user.admin %>
+          <a class="navbar-brand" href="<%= user_url(current_user) %>"/><%= current_user.name %>'s Profile ADMIN</a>
+
+          <% else %>
+          <a class="navbar-brand" href="<%= user_url(current_user) %>"/><%= current_user.name %>'s Profile</a>
+          <% end %>
+        <% else %>
+          <a class="navbar-brand" href="<%= new_user_url  %>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_url  %>"/>LogIn</a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>

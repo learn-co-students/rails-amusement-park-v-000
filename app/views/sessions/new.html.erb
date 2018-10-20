@@ -1,0 +1,8 @@
+
+<%= form_tag(controller: "sessions", action: "create", method: "POST") do %>
+<%= label_tag :user_name %>
+<%= select_tag :user_name, options_for_select(User.user_name)  %>
+<%= label_tag :password %>
+<%= password_field_tag(:password) %>
+<input type="submit" value="Sign In">
+<% end %>
