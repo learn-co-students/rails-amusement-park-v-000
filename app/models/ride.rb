@@ -1,7 +1,7 @@
 class Ride < ActiveRecord::Base
     belongs_to :attraction
     belongs_to :user
-    
+
      def take_ride
         enough_tickets, tall_enough = meet_requirements
          if enough_tickets && tall_enough
@@ -16,13 +16,10 @@ class Ride < ActiveRecord::Base
     end
 
      def meet_requirements
-        # start with 0
         enough_tickets, tall_enough = false
-        # if user has more or the exact number of tickets, set the enough_tickets variable to be truthy
         if self.user.tickets >= self.attraction.tickets
             enough_tickets = true
         end
-        # if user's height is equal or greater than an attraction's min_height, set the tall_enough variable to be truthy
         if self.user.height >= self.attraction.min_height
             tall_enough = true
         end

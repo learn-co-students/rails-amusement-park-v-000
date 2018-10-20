@@ -1,9 +1,10 @@
 class AttractionsController < ApplicationController
     before_action :set_attraction, only: [:show, :edit, :update, :destroy]
+    
      def show
         @ride = Ride.new
      end
-     
+
      def index
         @attractions = Attraction.all
      end
