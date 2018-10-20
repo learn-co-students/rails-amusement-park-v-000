@@ -9,11 +9,17 @@ class User < ApplicationRecord
 
   end
 
+
   def self.user_name
     self.all.map do |user|
       user.name
     end
   end
 
+
+
+  def user_name
+    self.name
+  end
 
 end
