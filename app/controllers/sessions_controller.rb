@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+
     if logged_in?
       redirect_to user_path(session[:user_id])
     else
@@ -16,14 +17,12 @@ class SessionsController < ApplicationController
         redirect_to root_path
       end
     end
-
+end
     def destroy
-      binding.pry
-      session[:user_id].reset
+      session[:user_id] = nil
       redirect_to root_path
     end
 
-  end
 
 
 

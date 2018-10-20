@@ -1,10 +1,13 @@
-
+<% if session[:error] %>
+<p style="color:red;"><%= session[:error] %></p>
+<% end %>
 Name:<strong> <%= @user.name %><br></strong>
-Mood: <%= @user.nausea %> <br>
-
-happy: <%= @user.happiness %><br>
-
-Happy: <%= @user.happiness %><br>
+<% if !current_user.admin %>
+Mood: <%= @user.mood%> <br>
+<% end %>
 
 Height: <%= @user.height %><br>
-Tickets:<%= @user.tickets %>
+Tickets: <%= @user.tickets %> <br>
+<%= link_to 'See attractions', attractions_path %><br>
+
+<%= link_to 'Log Out', logout_path %>
