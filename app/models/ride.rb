@@ -23,10 +23,10 @@ class Ride < ActiveRecord::Base
   end
 
   def user_update
-    user.tickets = user.tickets - attraction.tickets
-    user.nausea = user.nausea + attraction.nausea_rating
-    user.happiness = user.happiness + attraction.happiness_rating
-    user.save
+    tickets = user.tickets - attraction.tickets
+    nausea = user.nausea + attraction.nausea_rating
+    happiness = user.happiness + attraction.happiness_rating
+    user.update(tickets: tickets, nausea: nausea, happiness: happiness)
   end
   
 end

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 require 'pry'
+  
    
   def index
   end
@@ -29,10 +30,9 @@ require 'pry'
   def update
     @ride = Ride.new(user_id: params[:user][:user_id], attraction_id: params[:user][:attraction_id])
     @user = User.find_by(id: params[:user][:user_id])
-    binding.pry
+    
     if @ride.valid_rider
       @ride.user_update
-
       redirect_to user_path(@user.id)
     end
   end

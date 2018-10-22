@@ -1,10 +1,12 @@
-<%= form_for(@user) do |f| %>
-  <%= f.hidden_field :user_id, value: @user.id %>
-  <%= f.hidden_field :attraction_id, value: @attraction.id %>
-  <%= f.submit value = "Go on this ride" %>
+<%= @attraction.name %>
+
+
+<%= form_tag ({controller: 'rides', action: 'create',method: 'post'}) do %>
+
+  <%= hidden_field_tag "user_id", @user.id %>
+  <%= hidden_field_tag "attraction_id", @attraction.id %>
+  <input type='submit' value='Go on this ride'>
 <%end%>
 
-<%= form_tag ({controller: 'users', action: 'show',method: 'get'}) do %>
-   
-<%end%>
 
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction.id) if @user.admin %>
