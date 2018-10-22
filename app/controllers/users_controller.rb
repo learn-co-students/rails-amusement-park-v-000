@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-require 'pry'
   
-   
   def index
   end
 
@@ -20,6 +18,7 @@ require 'pry'
   end
 
   def show
+    binding.pry
     if logged_in 
       @user = User.find_by(id: params[:id]) 
     else 
