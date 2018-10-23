@@ -5,7 +5,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     visit '/users/new'
     expect(current_path).to eq('/users/new')
     # user_signup method is defined in login_helper.rb
-    user_signup
+    user_signup #?
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Amy Poehler")
     expect(page).to have_content("Mood")
@@ -13,6 +13,8 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("15")
     expect(page).to have_content("58")
   end
+
+  #if we go to '/users/new' c
 
   it "on sign up, successfully adds a session hash" do
     visit '/users/new'

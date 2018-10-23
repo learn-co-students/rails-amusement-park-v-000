@@ -22,3 +22,14 @@ You're going to be building an amusement park. There will be users, attractions,
 * [`has_secure_password`](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-amusement-park' title='Rails Amusement Park'>Rails Amusement Park</a> on Learn.co and start learning to code for free.</p>
+
+
+
+  <%= form_for(@attraction) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :nausea_rating %>
+  <%= f.text_field :happiness_rating %>
+  <%= f.text_field :min_height %>
+  <%= f.submit value = "create attraction" %>
+
+
