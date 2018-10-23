@@ -1,0 +1,19 @@
+<h1>Sign Up!</h1>
+
+<%=form_for @user do |f|%>
+<li><%=f.label :name%>
+<%=f.text_field :name%></li>
+<li><%=f.label :height%>
+<%=f.text_field :height%></li>
+<li><%=f.label :happiness%>
+<%=f.text_field :happiness%></li>
+<li><%=f.label :nausea%>
+<%=f.text_field :nausea%></li>
+<li><%=f.label :tickets%>
+<%=f.text_field :tickets%></li>
+<p>Check Box if you're an owner<p>
+<li><%=f.check_box :admin%></li>
+<li><%=f.label :password%></li>
+<%=f.password_field :password%></li>
+<p><%=f.submit%></p>
+<%end%>
