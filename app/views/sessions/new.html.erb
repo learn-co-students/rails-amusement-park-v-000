@@ -1,10 +1,17 @@
-<h1>Sign In:</h1>
 
-<%= form_for :user do |f| %>
-  <label>User Name:</label>
-  <%= f.text_field :'name' %>
-  <label>Password:</label>
-  <%= f.password_field :'password' %>
+<%= form_tag signin_path do %>
+<div class="form-group">
+  <%= label_tag(:name, "Your Name:") %>
+  <br>
+  <%= collection_select(:user, :name, User.all, :name, :name, {:prompt => "Please select your username from this dropdown"})  %>
+</div>
 
-  <%= f.submit "Sign In" %>
+<div class="form-group">
+  <%= label_tag(:password, "Your password:") %><br>
+  <%= password_field_tag :password, nil, class: 'form-control' %>
+</div>
+
+<div class="actions">
+  <%= submit_tag "Sign In" %>
+</div>
 <% end %>
