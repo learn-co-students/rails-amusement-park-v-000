@@ -1,0 +1,20 @@
+<div class="center">
+  <% if flash[:message] %>
+    <%= flash[:message] %>
+  <% end %>
+</div>
+
+<div class="center">
+  <div class="info">
+    <% if @user %>
+      <% if @user.admin == true %>
+        <p><b>ADMIN</b></p>
+      <% end %>
+      <p><b>Name:</b> <%= @user.name %></p>
+      <p><b>Tickets:</b> <%= @user.tickets %></p>
+      <p><b>Mood:</b> <%= @user.mood %></p>
+      <p><b>Height:</b> <%= @user.height %></p>
+    <% end %>
+    <p><a data-method="get" href="/attractions">See attractions</a></p>
+  </div>
+</div>
