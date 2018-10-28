@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
   
   def new 
-    raise params.inspect 
-    @user = User.new(user_params) 
-
+    @user = User.new
   end
 
   def create
     
   end
+
+  def show
+
+  end 
 
   def edit
   end
