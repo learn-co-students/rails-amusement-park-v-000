@@ -41,5 +41,8 @@ class Ride < ActiveRecord::Base
         self.user.update(happiness: "updated_happiness",
         nausea: "updated_nausea",
         tickets: "updated_tickets")
+   
+        "Thanks for riding the #{self.attraction.name}!"
+
     end
 end
