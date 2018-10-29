@@ -14,7 +14,9 @@ class Ride < ApplicationRecord
       "Sorry. You are not tall enough to ride the #{ride.attraction.name}."
     else
       n_tickets = ride.user.tickets - ride.attraction.tickets
-      user.update(tickets: n_tickets)
+      n_nausea = ride.user.nausea + ride.attraction.nausea_rating
+      n_happ = ride.user.happiness + ride.attraction.happiness_rating
+      user.update(tickets: n_tickets, nausea: n_nausea, happiness: n_happ)
     end
   end
 
