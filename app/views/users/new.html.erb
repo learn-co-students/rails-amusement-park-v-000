@@ -3,7 +3,7 @@
 
 <section class="todoapp">
   <header class="header">
-    <h1>Sign-up!!!</h1>
+    <h1>Sign Up</h1>
     
     <%= form_for(@user) do |f| %>
        <%= f.label :name %>:
@@ -23,6 +23,7 @@
 
         <%= f.label :password %>:
         <%= f.text_field :password %><br />
+        # admin check box here....
         
         <%= f.submit%>
         <% end %>
