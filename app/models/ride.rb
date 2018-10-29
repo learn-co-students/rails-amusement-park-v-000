@@ -9,12 +9,12 @@ class Ride < ActiveRecord::Base
         begin_ride 
       elsif 
         !user_tickets && user_height 
-        "Sorry partner, you broke AF"
+        "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
       elsif 
         user_tickets && !user_height 
-        "Sorry pip squeak, you blow"
+        "Sorry. You are not tall enough to ride the #{self.attraction.name}."
       else 
-        "Super Sorry, you suck doubly hard!" 
+        "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
       end 
     end 
 
