@@ -1,4 +1,4 @@
-Edit Attraction
+<!-- Edit Attraction
 <%= form_for @attraction do |f| %>
     Name <%= f.text_field :name %>
     Nausea <%= f.number_field :nausea_rating %>
@@ -6,4 +6,18 @@ Edit Attraction
     Tickets <%= f.number_field :tickets %>
     Height <%= f.number_field :min_height %>
     <%= f.submit "Update Attraction" %>
-    <% end %> 
+    <% end %>  -->
+
+    <%= form_for(@attraction) do |f| %>
+         <%= f.label :name %><br>
+        <%= f.text_field :name %><br>
+         <%= f.label :min_height, "Height Requirement (in inches)" %><br>
+        <%= f.number_field :min_height %><br>
+         <%= f.label :happiness_rating, "How fun is it? (1-5 scale)" %><br>
+        <%= f.number_field :happiness_rating %><br>
+         <%= f.label :nausea_rating, "How nausea-inducing is it? (1-5 scale)" %><br>
+        <%= f.number_field :nausea_rating %><br>
+         <%= f.label :tickets, "How many tickets does it cost?" %><br>
+        <%= f.number_field :tickets %><br><br>
+         <%= f.submit %><br>
+     <% end %>

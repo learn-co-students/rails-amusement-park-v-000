@@ -1,4 +1,4 @@
-<h2>Hello, <%= @user.name %></h2>
+<!-- <h2>Hello, <%= @user.name %></h2>
 Mood: <%= @user.mood %>
 Tickets: <%= @user.tickets %>
 Height: <%= @user.height %>
@@ -12,4 +12,17 @@ ADMIN?<%= "ADMIN" if @user.admin%>
 <h3><a href='/attractions'>See attractions</a></h3>
 
 <br></br>
-<h3><a href='/logout'>Log Out</a></h3>
+<h3><a href='/logout'>Log Out</a></h3> -->
+
+
+<% if flash[:message] %>
+   <p><%= flash[:message] %></p>
+<% end %>
+ <p>Name: <%= @user.name %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+ <% if @user.admin %>
+  <p>ADMIN</p>
+<% end %>
+ <%= link_to "See attractions", attractions_path %>
