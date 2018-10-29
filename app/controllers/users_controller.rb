@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id  #attempt to log them in.
         redirect_to user_path(@user) #this is a get request GET "/"
       else
-        render 'users/new' #show them the form.
+        redirect_to root_path #show them the form.
       end
   
   end

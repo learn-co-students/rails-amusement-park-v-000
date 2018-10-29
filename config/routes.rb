@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    post '/sessions' => "sessions#create"
    get '/logout' => "sessions#destroy"
 
-     root'users#new'  #=> want this to roots to an index page.
+     root'users#index'  #=> want this to roots to an index page.
 
     resources :users, :only => [:new, :create, :show]
 
