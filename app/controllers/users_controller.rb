@@ -12,8 +12,8 @@ class UsersController < ApplicationController
       redirect_to user_path(@user) 
 
     else
-      params[:user_params].empty?
-      redirect_to "users#new", :notice => "Please fill in the blanks"
+      @user.params(user_params).empty?
+      redirect_to "/", :notice => "Please fill in the blanks"
     end 
   end
 
@@ -25,9 +25,6 @@ class UsersController < ApplicationController
   end
 
   def update
-  end
-
-  def delete
   end
 
   private 
