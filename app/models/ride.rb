@@ -21,11 +21,11 @@ class Ride < ActiveRecord::Base
     def user_requirements
         user_tickets = true 
         user_height = true 
-        if user.tickets <= attraction.tickets 
+        if self.user.tickets <= self.attraction.tickets 
             user_tickets = false
         end 
 
-        if user.height <= attraction.min_height
+        if self.user.height <= self.attraction.min_height
             user_height = false 
         end   
 
@@ -35,10 +35,10 @@ class Ride < ActiveRecord::Base
 
         
     def begin_ride 
-        updated_happiness = user.happiness + attraction.happiness_rating
-        updated_nausea = user.nausea + attraction.nausea_rating
-        updated_tickets = user.tickets + attraction.tickets 
-        user.update(happiness: "updated_happiness",
+        updated_happiness = self.user.happiness + self.attraction.happiness_rating
+        updated_nausea = self.user.nausea + self.attraction.nausea_rating
+        updated_tickets = self.user.tickets + self.attraction.tickets 
+        self.user.update(happiness: "updated_happiness",
         nausea: "updated_nausea",
         tickets: "updated_tickets")
     end
