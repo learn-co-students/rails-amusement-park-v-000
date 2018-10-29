@@ -21,11 +21,11 @@ class Ride < ActiveRecord::Base
     def user_requirements
         user_tickets = true 
         user_height = true 
-        if user.tickets < attraction.tickets 
+        if user.tickets <= attraction.tickets 
             user_tickets = false
         end 
 
-        if user.height < attraction.min_height
+        if user.height <= attraction.min_height
             user_height = false 
         end   
 
