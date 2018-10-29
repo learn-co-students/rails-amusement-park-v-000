@@ -1,0 +1,18 @@
+<h1>Sessions#new</h1>
+<h1> login page</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+    <%= form_for @user, url:sessions_path do |f| %>
+     <select name="user[id]" id="user_name"> 
+      <% User.all.each do |user| %>
+        <option value="<%= user.id %>"><%= user.name %></option>
+        <% end %>
+        </select>
+
+ <br>
+        <%= f.label :password %>:
+        <%= f.password_field :password, id:"password" %><br />
+        
+        <%= f.submit "Sign In"%>
+<% end %>
+
