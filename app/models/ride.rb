@@ -37,7 +37,7 @@ class Ride < ActiveRecord::Base
     def begin_ride 
         updated_happiness = self.user.happiness + self.attraction.happiness_rating
         updated_nausea = self.user.nausea + self.attraction.nausea_rating
-        updated_tickets = self.user.tickets + self.attraction.tickets 
+        updated_tickets = self.user.tickets - self.attraction.tickets 
         self.user.update(happiness: "updated_happiness",
         nausea: "updated_nausea",
         tickets: "updated_tickets")
