@@ -2,15 +2,15 @@
 
 <table> 
     <tr>
-
-<th>Name</th>
-<th>Tickets</th>
-</tr> 
+      <th>Name</th>
+      <th>Tickets</th>
+      <th>Details</th>
+    </tr> 
 <br></br>
 <% @attractions.each do |a| %>
     <tr>
-    <td><%= a.name %></td>
-    <td><%= a.tickets %></td>
+      <td><%= a.name %></td>
+      <td><%= a.tickets %></td>
     </tr>
     <%end%>
 </table>
