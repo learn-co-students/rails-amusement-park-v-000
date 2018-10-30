@@ -1,6 +1,6 @@
 require 'pry'
 class RidesController < ApplicationController
   def create
-    #binding.pry
+    binding.pry
   end
 end
