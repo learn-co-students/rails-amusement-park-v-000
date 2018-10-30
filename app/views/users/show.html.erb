@@ -1,0 +1,15 @@
+<%= link_to "See attractions", attractions_path %>
+
+<h2> Welcome, <%= @user.name %>!</h2>
+
+<h3>Your details:</h3>
+<p><%= @user.admin ? "ADMIN" : "Enjoy your day!" %></p>
+        <label>Height:</label>
+            <p><%= @user.height %></p>
+        <label>Tickets:</label>
+            <p><%= @user.tickets %></p>
+        <label>Mood:</label>
+            <p><%= @user.mood %></p>
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
