@@ -2,6 +2,6 @@
 
 <ul>
 <% @attractions.each do |att| %>
-  <li><%= att.name %></li>
+  <li><%= link_to "Go on #{att.name}", attraction_path(att) %>
 <% end %>
 </ul>
