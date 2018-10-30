@@ -22,7 +22,11 @@ class UsersController < ApplicationController
 
   def show
     #binding.pry
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to "/"
+    end
   end
 
 
@@ -33,6 +37,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :password, :tickets, :nausea, :happiness, :height)
+  end
+
+  def logged_in?
+    !!session[:user_id]
   end
 
 end
