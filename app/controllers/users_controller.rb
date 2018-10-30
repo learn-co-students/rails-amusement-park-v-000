@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
+      #binding.pry
       redirect_to user_path(@user)
     else
       redirect_to "/"
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :tickets, :nausea, :happiness, :height)
+    params.require(:user).permit(:name, :password, :tickets, :nausea, :happiness, :height, :admin)
   end
 
   def logged_in?
