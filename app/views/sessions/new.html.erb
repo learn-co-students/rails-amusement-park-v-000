@@ -1,0 +1,11 @@
+<h1>signin</h1>
+
+<%= form_for @user, :url => url_for("sessions/new") do |f| %>
+    <%= f.label :name, "Select your name" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+    <br>
+    <%= f.submit "Submit" %>
+    <%end%>
