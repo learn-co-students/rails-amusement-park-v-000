@@ -1,5 +1,6 @@
 class AttractionsController < ApplicationController
   def index
+    @user = current_user
     @attractions = Attraction.all
   end
 
@@ -11,10 +12,8 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.new
   end
 
-  # should I use instance variable for attraction or nah?
   def create
-    @attraction = Attraction.new(attraction_params)
-    @attraction.save
+    @attraction = Attraction.create(attraction_params)
     redirect_to attraction_path(@attraction)
   end
 

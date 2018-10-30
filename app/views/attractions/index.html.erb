@@ -1,10 +1,13 @@
-<% if current_user.admin %>
-  <%= link_to "New Attraction", new_attraction_path %>
-    <% @attractions.each do |a| %>
-    <p><%= link_to "Show #{a.name}", attraction_path(a) %></p>
-  <% end %>
-  <% else %>
-    <% @attractions.each do |a| %>
-    <p><%= a.name %> - <%= link_to "Go on #{a.name}", attraction_path(a) %></p>
-  <% end %>
-<% end %>
+<h1>Attractions</h1>
+  <ul>
+    <% @attractions.each do |attraction| %>
+      <li>
+        <% if current_user_is_admin? %>
+          <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+        <% else %>
+          <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<%= link_to 'New Attraction', new_attraction_path if current_user_is_admin? %>

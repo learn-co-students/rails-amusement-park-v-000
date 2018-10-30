@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'application#home'
+  root 'welcome#home'
   
-  resources :users
-  resources :attractions
-  resources :rides
+  resources :users, only: [:new, :create, :show]
+  resources :sessions, only: [:create, :destroy]
+  resources :attractions, only: [:index, :show, :new, :create, :edit, :update]
+  resources :rides, only: [:create]
   
-  get '/signin'=> 'sessions#new'
-  post '/login'=> 'sessions#create'
-  delete '/logout'=> 'sessions#destroy'
+  get '/go_on_ride', :to => 'attractions#go_on_ride'
+  get '/signin', :to => 'sessions#new'
+  get '/logout', :to => 'sessions#destroy'
 end
