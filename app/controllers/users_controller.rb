@@ -13,12 +13,12 @@ class UsersController < ApplicationController
 
     else
       @user.params(user_params).empty?
-      redirect_to "/", :notice => "Please fill in the blanks"
+      redirect_to "users/new", :notice => "Please fill in the blanks"
     end 
   end
 
   def show
-
+    @user = User.find(params[:id])
   end 
 
   def edit

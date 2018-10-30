@@ -1,0 +1,9 @@
+<h1>Show Your Mom</h1>
+
+
+    <p>Name:</p><%= @user.name %></p>
+    <br>
+    <p>Tickets:</p><%= @user.tickets %>
+    <p>Mood:</p><%= @user.mood %>
+    <p>Height:</p><%= @user.height %>
+    <p><%= link_to "See Attractions", attractions_path(@attractions) %></p>
