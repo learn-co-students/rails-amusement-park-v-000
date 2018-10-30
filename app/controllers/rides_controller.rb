@@ -10,12 +10,13 @@ class RidesController < ApplicationController
     message = @ride.take_ride
     #binding.pry
       if message == true
-        flash[:notice] = "Thanks for riding the #{@attraction.name}!"
+        flash.keep[:notice] = "Thanks for riding the #{@attraction.name}!"
         redirect_to user_path(@user)
       else
-        flash[:notice] = message
+        flash.keep[:notice] = message
         redirect_to user_path(@user)
       end
+      #binding.pry
   end
 
 
