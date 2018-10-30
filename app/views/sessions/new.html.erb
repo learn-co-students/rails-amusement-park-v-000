@@ -1,6 +1,6 @@
 <h1>signin</h1>
 
-<%= form_for @user, :url => url_for("sessions/new") do |f| %>
+<%= form_for @user do |f| %>
     <%= f.label :name, "Select your name" %>
     <%= f.text_field :name %>
     <br>

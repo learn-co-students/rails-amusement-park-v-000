@@ -4,10 +4,9 @@ class User < ActiveRecord::Base
     has_secure_password
 
     def mood
-        if self.nausea > self.happiness
-            "sad"
-        else
-            "happy"
+        if self.happiness && self.nausea
+            mood = self.happiness - self.nausea
+            mood > 0 ? "happy" : "sad"
+          end
         end
-    end 
 end
