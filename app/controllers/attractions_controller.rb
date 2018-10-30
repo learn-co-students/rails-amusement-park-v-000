@@ -11,4 +11,7 @@ class AttractionsController < ApplicationController
     #redirect_to attraction_path(@attraction)
   end
 
+  def new
+  end
+
 end
