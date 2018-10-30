@@ -1,1 +1,7 @@
-<h1>Attraction Name:</h1>
+<h1>Attraction Name:<%= @attraction.name %></h1>
+
+
+<%= form_tag(method: :post, action: :create, controller: :rides) do %>
+
+<%= submit_tag "Go on this ride" %>
+<% end %>
