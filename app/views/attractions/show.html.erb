@@ -2,6 +2,6 @@
 
 
 <%= form_tag(method: :post, action: :create, controller: :rides) do %>
-<% hidden_field_tag "attraction", @attraction.id %>
+<%= hidden_field_tag(:att_id, @attraction.id) %>
 <%= submit_tag "Go on this ride" %>
 <% end %>
