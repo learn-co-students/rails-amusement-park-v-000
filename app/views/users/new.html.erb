@@ -1,0 +1,12 @@
+<h1>New Users Sign Up</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.text_field :name, placeholder: "name" %>
+  <%= f.text_field :height, placeholder: "height" %>
+  <%= f.text_field :happiness, placeholder: "happiness" %>
+  <%= f.text_field :nausea, placeholder: "nausea" %>
+  <%= f.text_field :tickets, placeholder: "tickets" %>
+  <%= f.text_field :password, placeholder: "password" %>
+  <%= f.text_field :admin %>
+  <%= f.submit %>
+<% end %>
