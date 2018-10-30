@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # before_action :require_logged_in, except: [:new, :create, :home]
-
+  before_action :current_user
+  before_action :require_logged_in, except: [:new, :create, :home]
+  
   def require_logged_in
 		redirect_to root_path unless logged_in?
 	end

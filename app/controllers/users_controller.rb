@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
       if @user.save
-        session[:user_id] = @user.id  #attempt to log them in.
 
+        session[:user_id] = @user.id  #attempt to log them in.
         redirect_to user_path(@user) #this is a get request GET "/"
       else
 
