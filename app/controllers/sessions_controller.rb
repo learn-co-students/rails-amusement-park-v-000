@@ -13,4 +13,21 @@ class SessionsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def logout
+    if logged_in?
+      session.clear
+      redirect_to "/"
+    else
+      redirect_to new_session_path
+    end
+  end
+
+
+
+  private
+
+  def logged_in?
+    !!session[:user_id]
+  end
+
 end
