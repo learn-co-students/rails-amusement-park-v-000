@@ -10,7 +10,6 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find(params[:id])
     render 'attractions/show'
     
-
   end
 
 end

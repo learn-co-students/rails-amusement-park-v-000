@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
     resources :users, :only => [:new, :create, :show]
     resources :attractions, :only => [:index, :show]
+    resources :rides, :only => [:new]
+
+    post '/rides/new' => "rides#new"
+  
 
 end
 
