@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :attractions
+  resources :rides
   resources :users
-  root 'users#show'
-
-  get 'signin' => 'sessions#new'
-  post 'sessions/create', to: 'sessions#create'
+  root 'sessions#new'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
 end

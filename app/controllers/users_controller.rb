@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in, except: [:new, :create]
 
   def new
     @user = User.new
@@ -12,10 +13,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @message = params[:message]
   end
 
   private
   def user_params
-    params.require(:user).permit(:happiness, :name, :password, :nausea, :tickets, :height)
+    params.require(:user).permit(:happiness, :name, :password, :nausea, :tickets, :height, :admin)
   end
 end
