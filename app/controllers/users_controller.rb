@@ -25,12 +25,17 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user 
   end
 
   private 
 
   def user_params
     params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
+  end
+
+  def logged_in?
+    @user = User.find(params[:id])
   end
 end
 
