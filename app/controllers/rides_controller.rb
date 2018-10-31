@@ -2,6 +2,7 @@ class RidesController < ApplicationController
    
  def new
     @ride = Ride.create(:user_id => params[:user_id], :attraction_id => params[:attraction_id])
- end
+ redirect_to  user_path(@ride)
+end
 
 end
