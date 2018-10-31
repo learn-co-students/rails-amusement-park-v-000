@@ -5,4 +5,12 @@ class AttractionsController < ApplicationController
       @attractions = Attraction.all
   end
 
+  def show
+    #   attraction needs find by  id.
+    @attraction = Attraction.find(params[:id])
+    render 'attractions/show'
+    
+
+  end
+
 end

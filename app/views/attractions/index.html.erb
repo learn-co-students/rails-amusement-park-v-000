@@ -2,18 +2,19 @@
   <% @attractions.each do |attraction| %>
    
     <label> attraction name</label>
-   <h3> Go on <%= attraction.name%></h3>
 
-    <label> attraction name</label>
+    <h3> <%= link_to "Go on #{attraction.name}", attraction_path(attraction)%>"</h3>
+
+    <p> attraction min_height </p>
     <h3> <%= attraction.min_height%></h3>
-
-     <label> attraction nausea_rating</label>
+p
+     <p> attraction nausea_rating</p>
      <h3> <%= attraction.nausea_rating%></h3>
 
-      <label> attraction happiness_rating</label>
+      <p> attraction happiness_rating</p>
       <h3> <%= attraction.happiness_rating%></h3>
 
-      <label> attraction tickets</label>
+      <p> attraction tickets</p>
       <h3> <%= attraction.tickets%></h3>
 
 <% end %>
