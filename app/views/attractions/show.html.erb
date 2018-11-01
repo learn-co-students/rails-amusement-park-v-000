@@ -1,0 +1,11 @@
+<%= @attraction.name %>
+Tickets: <%= @attraction.tickets%>
+<form action='/rides/new' method="get">
+  <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+  <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+    <input type="submit" value="Go on this ride"
+         name="Submit" id="frm1_submit" />
+</form>
+<%if current_user.admin %>
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<%end%>

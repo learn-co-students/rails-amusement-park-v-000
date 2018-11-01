@@ -1,0 +1,10 @@
+<%= @message if @message %>
+<%=@user.name%>
+<%if @user.happiness && @user.nausea%>
+Mood <%=@user.happiness > @user.nausea ? "happy" : "sad"%>
+<%end%>
+Tickets: <%=@user.tickets%>
+Height <%=@user.height%>
+ADMIN
+<%= link_to "Log Out", logout_path, method: :delete%>
+<%= link_to "See attractions", attractions_path %>
