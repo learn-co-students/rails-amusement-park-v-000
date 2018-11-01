@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
     def mood
         
         if self.nausea && self.happiness
+   
         # returns 'sad' when the user is more nauseous than happy     
-            if  nausea > happiness
-                binding.pry
+            if  self.nausea > self.happiness
                     return "sad"
             else
                     return "happy"

@@ -1,15 +1,15 @@
  <p> This is the users show page, List result or tickets after the went on the ride</p>
 <header class="header">
     
-      <h1><%= "user: #{@user.name}" %></h1>
+          User: <%= @user.name %><br>
 
-      <h3><%= "Heights: #{@user.height}" %></h3>
+          Height: <%= @user.height %><br>
 
-       <h3><%= "Moods: #{@user.mood}" %></h3>
+          Mood: <%= @user.mood %><br>
 
-       <h3><%= "Happiness: #{@user.happiness}" %></h3>
+          Happiness: <%= @user.happiness %><br>
 
-       <h3><%= "Tickets: #{@user.tickets}" %></h3>
+          Tickets: <%= @user.tickets %><br>
 
       <% if @user.admin %>
            <h1> ADMIN </h1>
