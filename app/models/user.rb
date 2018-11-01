@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
         if self.nausea && self.happiness
         # returns 'sad' when the user is more nauseous than happy     
             if  nausea > happiness
+                binding.pry
                     return "sad"
             else
                     return "happy"
