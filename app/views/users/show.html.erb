@@ -15,6 +15,11 @@
            <h1> ADMIN </h1>
       <%end%>
 
+
+        <% if flash[:notice] %>
+         <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+
       <%=link_to "Log Out", logout_path, :method => :delete %>
 
   <br>

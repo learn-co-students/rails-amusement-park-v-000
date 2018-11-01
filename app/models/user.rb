@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
    
         # returns 'sad' when the user is more nauseous than happy     
             if  self.nausea > self.happiness
-                    return "sad"
+                "sad"
             else
-                    return "happy"
+                "happy"
                 # returns 'happy' when the user is more happy than nauseous
             end
          end
