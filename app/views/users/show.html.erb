@@ -1,0 +1,14 @@
+<h3><%= @user.name %></h3>
+<% if @errors %>
+    <%= @errors %>
+<% end %>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+<h4><%= 'ADMIN' if current_user.admin %></h4>
+Mood: <%= @user.mood %><br />
+Tickets: <%= @user.tickets %><br />
+Height: <%= @user.height %>
+<p>
+  <%= link_to 'See attractions', attractions_path %>
+</p>
