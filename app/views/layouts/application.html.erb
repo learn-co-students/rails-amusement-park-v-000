@@ -21,7 +21,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+            <% if current_user %>
+              <li><%= link_to "Log Out", signout_path, method: :delete %></li>
+            <% end %>    
           </ul>
         </div><!--/.nav-collapse -->
       </div>
