@@ -1,14 +1,12 @@
-<h1><%= @user.name %></h1>
-<% if !@errors == nil %>
-    <%= @errors %>
+<% if flash[:message] %>
+  <p><%= flash[:message] %></p>
 <% end %>
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
-<h4><%= 'ADMIN' if current_user_is_admin? %></h4>
-<h3>Mood: <%= @mood %></h3>
-<h3>Height: <%= @user.height %></h3>
-<h3>Tickets: <%= @user.tickets %></h3>
+<p>Name: <%= @user.name %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+  <% if @user.admin %>
+    <p>ADMIN</p>
+  <% end %>
 
 <%= link_to "See attractions", attractions_path %>
-# <%= link_to "Log Out", logout_path, method: 'delete' %>

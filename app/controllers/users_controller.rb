@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
-  before_action :require_logged_in, only: [:show]
+  # before_action :require_logged_in, only: [:show]
 
   def new
     @user = User.new
+  end
+
+  def show
+    if session[:user_id]
+      @user = User.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def create
@@ -14,12 +22,7 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
-  def show
-    @user = User.find(params[:id])
-    @mood = @user.mood
-  end
-
+  
   private
 
   def user_params

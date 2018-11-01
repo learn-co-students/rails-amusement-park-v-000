@@ -1,4 +1,7 @@
 <h1>Welcome,
 <% if session[:user_id] %>
-  <%= User.find(session[:user_id]).name %>
-<% end %></h1>
+     <%= User.find(session[:user_id]).name %></h1>
+   else
+    <h3><a href= '/users/new'>Please signup</a></h3>
+   <% end %>
+<% end %>

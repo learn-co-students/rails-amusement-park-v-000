@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :current_user_is_admin?, :logged_in?, :require_logged_in
+  helper_method :require_logged_in, :logged_in?, :current_user
   
   def require_logged_in
     if !logged_in?
-     redirect_to '/'
+     redirect_to 'root_path'
     end
   end
 
@@ -13,11 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    return unless session[:user_id]
-    @current_user ||= User.find(session[:user_id])
-  end
-
-  def current_user_is_admin?
-    current_user.admin == true
+    @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
   end
 end
