@@ -11,18 +11,21 @@ class Ride < ActiveRecord::Base
        if  self.user.tickets < self.attraction.tickets && self.user.height < self.attraction.min_height
           "Cant Go On Ride"
         # Updates ticket number 
-       elsif
+       else
             new_ticket = self.user.tickets - self.attraction.tickets
             self.user.update(:tickets => new_ticket)
-       elsif
+      
         #update Users Nausea
            new_nausea = self.user.nausea - self.attraction.nausea_rating
            self.user.update(:nausea => new_nausea)
-        else
+        
 
         #update user happiness
+        # TO CODE FOR MODE LOCATED IN MODEL/USER/MODD. need to run the method
+         
             new_happiness = self.user.happiness - self.attraction.happiness_rating
             self.user.update(:happiness => new_happiness)
+            self.user.save
        end # close out if statment
 
     #    note:we need to get this to the ride view page

@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
     has_many :attractions, through: :rides
      
     def mood
-        if !(nausea == nil) && !(happiness == nil)
+        
+        if self.nausea && self.happiness
         # returns 'sad' when the user is more nauseous than happy     
             if  nausea > happiness
                     return "sad"

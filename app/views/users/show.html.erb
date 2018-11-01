@@ -1,26 +1,24 @@
-
+ <p> This is the users show page, List result or tickets after the went on the ride</p>
 <header class="header">
-     Name
-    <h1><%= @user.name %></h1>
-    Id
-    <h1><%= @user.id %></h1>
-    Height
-    <h1><%= @user.height %></h1>
-    Mood
-    <h1><%= @user.mood %></h1>
-    Happy
-    <h1><%= @user.happiness %></h1>
-    Ticket
-    <h1><%= @user.tickets %></h1>
+    
+      <h1><%= "user: #{@user.name}" %></h1>
 
-      <%if @user.admin %>
+      <h3><%= "Heights: #{@user.height}" %></h3>
+
+       <h3><%= "Moods: #{@user.mood}" %></h3>
+
+       <h3><%= "Happiness: #{@user.happiness}" %></h3>
+
+       <h3><%= "Tickets: #{@user.tickets}" %></h3>
+
+      <% if @user.admin %>
            <h1> ADMIN </h1>
       <%end%>
-    <%= link_to "Log Out", logout_path, :method => :delete %>
+
+      <%=link_to "Log Out", logout_path, :method => :delete %>
 
   <br>
-
-   <h2><%= link_to "See attractions", attractions_path %></h2>
+      <h2><%= link_to "See attractions", attractions_path %></h2>
   </header>
 
   
