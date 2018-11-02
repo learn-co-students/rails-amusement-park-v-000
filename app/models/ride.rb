@@ -8,26 +8,37 @@ class Ride < ActiveRecord::Base
     def take_ride
 
         #accounts for the user not having enough ticket & user not tall enough
-       if  self.user.tickets < self.attraction.tickets && self.user.height < self.attraction.min_height
-          "Cant Go On Ride"
-       else
-            new_ticket = self.user.tickets - self.attraction.tickets
-            self.user.update(:tickets => new_ticket)
-      
-           new_nausea = self.user.nausea + self.attraction.nausea_rating
-           self.user.update(:nausea => new_nausea)
         
 
-        #update user happiness
-         
-            new_happiness = self.user.happiness + self.attraction.happiness_rating
-            self.user.update(:happiness => new_happiness)
-            self.user.save
-            "Thanks for riding #{self.attraction.name}!"
-       end # close out if statment
+                    if  self.user.height > self.attraction.min_height && self.user.tickets > self.attraction.tickets  #= need to be true
+                
+                       new_ticket = self.user.tickets - self.attraction.tickets
+                        self.user.update(:tickets => new_ticket)
+            
+                       new_nausea = self.user.nausea + self.attraction.nausea_rating
+                        self.user.update(:nausea => new_nausea)
+
+                      #update user happiness
+                        new_happiness = self.user.happiness + self.attraction.happiness_rating
+                        self.user.update(:happiness => new_happiness)
+                        self.user.save
+                        "Thanks for riding the #{self.attraction.name}!"
+                    elsif self.user.height < self.attraction.min_height && self.user.tickets > self.attraction.tickets
+                        
+                        "You are not tall enough to ride the #{self.attraction.name}"
+                    elsif self.user.height > self.attraction.min_height && self.user.tickets < self.attraction.tickets
+                        "You do not have enough tickets to ride the #{self.attraction.name}"
+                    else
+                        "You do not have enough tickets to ride the #{self.attraction.name} You are not tall enough to ride the #{self.attraction.name}"
+                    end
+        
+            
 
     end
-end
+      
+
+end # end the class
+
 
 
 
