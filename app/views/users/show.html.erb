@@ -1,0 +1,18 @@
+<h1> Welcome <%= @user.name %> </h1>
+
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>
+
+<% if @user.admin %>
+    <p>ADMIN</p>
+  <% end %>
+<ul>
+  <li>Mood: <%=@user.mood%></li>
+  <li>Height: <%=@user.height%></li>
+  <li>Tickets: <%=@user.tickets%></li>
+  <li>Admin? <%=@user.admin%></li>
+  <li><%= link_to "See attractions", attractions_path%></li>
+</ul>

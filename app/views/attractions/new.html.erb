@@ -1,0 +1,8 @@
+<%= form_tag ({controller: 'attractions', action: 'create', method: 'post'}) do %>
+  Name: <input name=attraction[name]><br>
+  Height: <input name= attraction[min_height]><br>
+  Nausea: <input name= attraction[nausea_rating]><br>
+  Happiness: <input name=attraction[happiness_rating]><br>
+  Tickets: <input name=attraction[tickets]><br>
+  <input type=submit value='Create Attraction'><br>
+<% end %>
