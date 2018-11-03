@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
       "neutral"
     end
   end
+
 end

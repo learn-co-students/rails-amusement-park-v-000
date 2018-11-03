@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_11_03_005539) do
     t.integer "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false
   end
 
 end
