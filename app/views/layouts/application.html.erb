@@ -15,13 +15,20 @@
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>π
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <% if current_user %>
+          <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%= @user.name %>'s profile</a>
+          <%= link_to 'Log Out', user_path(current_user), method: :delete,  class: "navbar-brand"%>
+        <% else %>
+          <a class="navbar-brand" href="<%= '/users/new' %>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= '/signin' %>"/>Log In</a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
