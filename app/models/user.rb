@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :attractions, through: :rides
+  has_many :rides
 
   def mood
     if self.nausea > self.happiness
