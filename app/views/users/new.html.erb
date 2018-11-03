@@ -1,0 +1,14 @@
+<h1>Sign up!</h1>
+
+<!--<%render 'form'%>-->
+
+<%= form_tag ({controller: 'users', action: 'create', method: 'post'}) do %>
+  Name: <input name=user[name]><br>
+  Password: <input name=user[password]><br>
+  Height: <input name=user[height]><br>
+  Nausea: <input name=user[nausea]><br>
+  Happiness: <input name=user[happiness]><br>
+  Tickets: <input name=user[tickets]><br>
+  Admin? <input name=user[admin] type="checkbox" id="user_admin" value=true><br>
+  <input type=submit value='Create User'><br>
+<% end %>
