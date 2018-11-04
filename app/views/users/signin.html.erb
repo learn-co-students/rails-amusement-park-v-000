@@ -1,0 +1,6 @@
+<%= form_for :user, url: '/users' do |f| %>
+Your Name:<%= f.collection_select :user_name, User.all, :name, :name, {prompt: "Please select your username from this dropdown"} %><br>
+Your Password<br><%= f.text_field :password %><br>
+<%= f.submit "Sign In"%>
+<% end %>
+
