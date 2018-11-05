@@ -12,10 +12,6 @@ class AttractionsController < ApplicationController
     
   end
 
-  def 
-
-
-
-  end
+  
 
 end

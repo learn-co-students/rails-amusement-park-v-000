@@ -1,7 +1,6 @@
   <h1> This is the attraction index page, Lists all the attractions.. </h1>
-  
+
   <% @attractions.each do |attraction| %>
-    binding.pry
 
     <label> attraction name</label>
 
@@ -20,9 +19,12 @@
      <h3> <%= attraction.tickets%></h3>
 
 
-      <% #if @user.admin %>
-        <h3><%= link_to "New Attractions", attractions_path %></h3>
-      <%#end%>
+      <% #if @user.admin %> 
+        <h3><%= link_to "New Attraction", attractions_path %></h3>
+      <%#end%> 
+      # I need to say if admin... Give this link... (Thus it will be hidden.)
+      # we should route to create method in attraction controller..
+       # This well route to the index attractions page..
 
     
 <% end %>
