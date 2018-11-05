@@ -1,7 +1,8 @@
   <h1> This is the attraction index page, Lists all the attractions.. </h1>
   
   <% @attractions.each do |attraction| %>
-   
+    binding.pry
+
     <label> attraction name</label>
 
     <h3> <%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></h3>
@@ -18,4 +19,10 @@
      <p> attraction tickets</p>
      <h3> <%= attraction.tickets%></h3>
 
+
+      <% #if @user.admin %>
+        <h3><%= link_to "New Attractions", attractions_path %></h3>
+      <%#end%>
+
+    
 <% end %>
