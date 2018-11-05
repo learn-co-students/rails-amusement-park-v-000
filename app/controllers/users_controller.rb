@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
   def create
     # raise params.inspect
-    @user = User.create(user_params(params[:user].keys))
-    #@user = User.create(user_params)
+    # @user = User.create(user_params(params[:user].keys))
+    @user = User.create(user_params)
 
     # @user = User.create(user_params(params[:user].each_pair { |param| param }))
     if @user
@@ -31,18 +31,20 @@ class UsersController < ApplicationController
 
   def update
     # raise params.inspect
+    binding.pry
     @user = User.find(params[:id])
-    @user.update(user_params(params[:user].keys))
+    @user.update(user_params)
+    # @user.update(user_params(params[:user].keys))
     redirect_to user_path(@user)
   end
 
   private
-  #
-  # def user_params
-  #   params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
-  # end
-  def user_params(*args)
-    params.require(:user).permit(*args)
+
+  def user_params
+    params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
   end
+  # def user_params(*args)
+  #   params.require(:user).permit(*args)
+  # end
 
 end
