@@ -4,7 +4,11 @@
 
     <label> attraction name</label>
 
-    <h3> <%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></h3>
+   <% if current_user.admin %> 
+       <h3> <%= link_to "Show  #{attraction.name}", attraction_path(attraction)%></h3>
+     <%else%>
+         <h3> <%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></h3>
+  <% end %>  
 
      <p> attraction min_height </p>
      <h3> <%= attraction.min_height%></h3>
@@ -23,4 +27,4 @@
 
    <% if current_user.admin %> 
         <h3><%= link_to "New Attraction", new_attraction_path %></h3>
-      <% end %> 
+    <% end %> 

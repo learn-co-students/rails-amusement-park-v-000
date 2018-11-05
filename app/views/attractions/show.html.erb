@@ -1,9 +1,10 @@
 <h3> This is the attraction show page</h3>
 
+
  <p>attraction_id</p>
  <h3><%= @attraction.id %> </h3> <br>
   <p>attraction_name</p>
-  <h3><%= @attraction.name %> </h3> <br>
+  <h3>Show <%= @attraction.name %></h3> <br>
    <p>attraction_min_height</p>
   <h3><%= @attraction.min_height %> </h3> <br>
    <p>attraction_nausea_rating</p>
@@ -23,3 +24,7 @@
     <input type = "submit", value = "Go on this ride" >
    
     </form>
+
+       <% if current_user.admin %> 
+       <h3> <%= link_to "Edit Attraction", edit_attraction_path(@attraction)%></h3>
+  <% end %>  

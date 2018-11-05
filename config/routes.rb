@@ -8,7 +8,7 @@ Rails.application.routes.draw do
      root'users#new'  #=> want this to roots to an index page.
 
     resources :users, :only => [:new, :create, :show]
-    resources :attractions, :only => [:index, :show, :new, :create]
+    resources :attractions, :only => [:index, :show, :new, :create, :edit, :update]
     resources :rides, :only => [:new]
 
     post '/rides/new' => "rides#new"
