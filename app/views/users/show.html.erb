@@ -1,5 +1,7 @@
-<% if @user.admin %>
-  <h3>ADMIN</h3>
+<% if session %>
+	<% if @user.admin %>
+  		<h3>ADMIN</h3>
+	<% end %>
 <% end %>
 Name: <%= @user.name %>
 Tickets: <%= @user.tickets %>
