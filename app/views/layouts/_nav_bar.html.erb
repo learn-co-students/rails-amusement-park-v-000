@@ -1,0 +1,8 @@
+<a class="navbar-brand" href="<%= root_path %>"/>Home</a>
+<% if current_user %>
+  <a class="navbar-brand" href="/users/<%= session[:user_id] %>"/><%= current_user.name %>'s profile</a>
+  <a class="navbar-brand" href="<%= logout_path %>" data-method="destroy" />Log Out</a>
+<% else %>
+  <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
+  <a class="navbar-brand" href="<%= signin_path %>"/>Log in</a>
+<% end %>

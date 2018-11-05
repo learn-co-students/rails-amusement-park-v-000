@@ -1,0 +1,24 @@
+<%= form_for attraction do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label :min_height, "Height Requirement(in inches)" %>
+  <%= f.number_field :min_height %><br />
+
+  <%= f.label :happiness_rating, "How fun is it? (1-5 scale)" %>
+  <%= f.number_field :happiness_rating, min:1, max:5 %><br />
+
+  <%= f.label :nausea_rating, "How nausea-inducing is it? (1-5 scale)" %>
+  <%= f.number_field :nausea_rating, min:1, max:5 %><br />
+
+  <%= f.label :tickets, "How many tickets does it cost?" %>
+  <%= f.number_field :tickets %><br />
+
+  <% if attraction[:id].present? %>
+    <%= f.submit 'Update Attraction' %><br />
+    <%= link_to 'Show', attractions_path %> |
+    <%= link_to 'Back', attraction_path(attraction) %><br />
+  <% else %>
+    <%= f.submit 'Create Attraction' %>
+  <% end %>
+<% end %>
