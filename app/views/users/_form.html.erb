@@ -1,0 +1,36 @@
+
+<%= form_for user do |f| %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %><br />
+
+  <%= f.label :height, "Height (in inches)" %>
+  <%= f.number_field :height %><br />
+
+  <%= f.label :happiness, "How happy are you? (1-5 scale)" %>
+  <%= f.number_field :happiness, min:1, max:5 %><br />
+
+  <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %>
+  <%= f.number_field :nausea, min:1, max:5 %><br />
+
+  <%= f.label :tickets, "How many dollars are in your pocket?" %>
+  <%= f.number_field :tickets %><br />
+
+  <%= f.label :admin, "Check box if you are a theme park owner" %>
+  <%= f.check_box :admin %><br />
+
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %><br />
+
+  <% if user[:id].present? %>
+    <%= f.submit 'Update User' %><br />
+    <%= link_to 'Back', user_path(user) %><br />
+  <% else %>
+    <%= f.submit 'Create User' %>
+  <% end %>
+<% end %>
+
+<!-- <%#= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='Log Out'>
+<%# end %>/>Log Out</a> -->
+
+<%= link_to 'Log Out', logout_path, method: :post %><br>
