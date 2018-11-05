@@ -17,14 +17,10 @@
 
      <p> attraction tickets</p>
      <h3> <%= attraction.tickets%></h3>
-
-
-      <% #if @user.admin %> 
-        <h3><%= link_to "New Attraction", attractions_path %></h3>
-      <%#end%> 
-      # I need to say if admin... Give this link... (Thus it will be hidden.)
-      # we should route to create method in attraction controller..
-       # This well route to the index attractions page..
-
+  
     
 <% end %>
+
+   <% if current_user.admin %> 
+        <h3><%= link_to "New Attraction", new_attraction_path %></h3>
+      <% end %> 
