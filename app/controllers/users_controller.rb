@@ -15,6 +15,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+  end
+  
+  def update
+  end
+
   private
 
   def user_params
@@ -23,4 +29,5 @@ class UsersController < ApplicationController
 
   def require_login
     redirect_to root_path unless session.include?(:user_id)
+  end
 end

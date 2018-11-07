@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :attractions
-  resources :users, only: [:new, :show]
+  resources :users
   root 'welcome#home'
   get '/signin': 'sessions#new'
   post '/signin': 'sessions#create'
