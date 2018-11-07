@@ -6,8 +6,8 @@
 <% if @user.admin == true %>
   <h1>ADMIN</h1>
 <% end %>
-<h1>Hello, <%= @user.name %>!</h1>
-<h4>Your Mood: <%=@user.mood%></h4>
+<h1><%= @user.name %></h1>
+<h4>Mood  <%=@user.mood%></h4>
 <h4>Height: <%=@user.height.to_s%> inches</h4>
 <h4>Tickets: <%=@user.tickets.to_s%></h4>
 <%= link_to "See attractions", attractions_path %>

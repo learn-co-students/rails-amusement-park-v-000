@@ -1,0 +1,24 @@
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+      </h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>Name</p><%= f.text_field :name %><br>
+  <p>Password</p><%= f.password_field :password %><br>
+  <p>Height (in inches)</p> <%= f.number_field :height %><br>
+  <p>How happy are you? (1-5 scale)</p> <%= f.number_field :happiness %><br>
+  <p>How nauseous are you? (1-5 scale)</p> <%= f.number_field :nausea %><br>
+  <p>How many tickets do you have?</p> <%= f.number_field :tickets %><br>
+  Check box if you are a theme park owner <%= f.check_box :admin %><br>
+  <%= f.submit "Create User" %>
+<% end %>
