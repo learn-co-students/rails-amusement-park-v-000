@@ -1,10 +1,18 @@
+<p id="notice"><%= notice %></p>
+
 <h1><%= @attraction.name %></h1>
+<h3><%= @attraction.users.count %> Users</h3>
+<h3><%= @attraction.tickets %> Tickets</h3>
+<h3>Height Requirement: <%= @attraction.min_height %></h3>
+<h3>Nausea Rating:<%= @attraction.nausea_rating %></h3>
+<h3>Happiness Rating:<%= @attraction.happiness_rating %></h3>
 <% if !current_user.admin %>
-  <%= form_tag('/rides/new', method: 'post') do %>
-    <input name='user_id' type='hidden' value="<%=current_user.id%>">
-    <input name='attraction_id' type='hidden' value="<%=@attraction.id%>">
-    <%= button_tag "Go on this ride" %>
-  <% end %>
+  <form action="/rides/new" method="post">
+    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+    <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+    <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+    <input class="btn btn-light" type="submit" value="Go on this ride">
+  </form>
 <% else %>
   <h3><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></h3>
 <% end %>

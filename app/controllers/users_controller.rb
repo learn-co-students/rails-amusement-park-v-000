@@ -12,12 +12,13 @@ class UsersController < ApplicationController
 
   def show
     require_login
+    @message = params[:message] if params[:message]
     @user = User.find(params[:id])
   end
 
   def edit
   end
-  
+
   def update
   end
 

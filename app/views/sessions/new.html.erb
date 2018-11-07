@@ -1,6 +1,9 @@
 <h1>Sign In</h1>
-<%= form_tag signin_path, method: 'post' do %>
-  Name: <%= text_field_tag :'user[name]'%><br>
-  Password: <%= password_field_tag :'user[password]'%></br>
-  <%= submit_tag "Sign In" %>
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+
+  <%= f.label :name, "Select your name" %><br>
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.label :password, "Password:" %>
+  <%= f.password_field :password %>
+  <%= f.submit "Sign In" %>
 <% end %>

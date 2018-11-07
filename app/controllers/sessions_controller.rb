@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   def new
+    @user = User.new
+    @users = User.all
   end
 
   def create
@@ -14,5 +16,5 @@ class SessionsController < ApplicationController
     session.destroy
     redirect_to root_path
   end
-  
+
 end

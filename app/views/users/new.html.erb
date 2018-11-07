@@ -1,5 +1,19 @@
 <h1>New User</h1>
 <%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+      </h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>Name</p><%= f.text_field :name %><br>
   <p>Password</p><%= f.password_field :password %><br>
   <p>Height (in inches)</p> <%= f.number_field :height %><br>
