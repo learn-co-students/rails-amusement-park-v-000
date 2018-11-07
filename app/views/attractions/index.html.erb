@@ -1,0 +1,30 @@
+  <h1> This is the attraction index page, Lists all the attractions.. </h1>
+
+  <% @attractions.each do |attraction| %>
+
+    <label> attraction name</label>
+
+   <% if current_user.admin %> 
+       <h3> <%= link_to "Show  #{attraction.name}", attraction_path(attraction)%></h3>
+     <%else%>
+         <h3> <%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></h3>
+  <% end %>  
+
+     <p> attraction min_height </p>
+     <h3> <%= attraction.min_height%></h3>
+
+     <p> attraction nausea_rating</p>
+     <h3> <%= attraction.nausea_rating%></h3>
+
+     <p> attraction happiness_rating</p>
+     <h3> <%= attraction.happiness_rating%></h3>
+
+     <p> attraction tickets</p>
+     <h3> <%= attraction.tickets%></h3>
+  
+    
+<% end %>
+
+   <% if current_user.admin %> 
+        <h3><%= link_to "New Attraction", new_attraction_path %></h3>
+    <% end %> 

@@ -1,0 +1,30 @@
+<h3> This is the attraction show page</h3>
+
+
+ <p>attraction_id</p>
+ <h3><%= @attraction.id %> </h3> <br>
+  <p>attraction_name</p>
+  <h3>Show <%= @attraction.name %></h3> <br>
+   <p>attraction_min_height</p>
+  <h3><%= @attraction.min_height %> </h3> <br>
+   <p>attraction_nausea_rating</p>
+   <h3><%= @attraction.nausea_rating %> </h3> <br>
+    <p>attraction_happiness_rating</p>
+    <h3><%= @attraction.happiness_rating %> </h3> <br>
+     <p>attraction_tickets</p>
+     <h3><%= @attraction.tickets %> </h3> <br>
+
+    <form method= "post" action= "/rides/new" >
+     <%= hidden_field_tag :user_id, current_user.id %>
+
+    <%= hidden_field_tag :attraction_id, @attraction.id %>
+   
+    <%= hidden_field_tag :name => request_forgery_protection_token.to_s, :value => form_authenticity_token %>
+
+    <input type = "submit", value = "Go on this ride" >
+   
+    </form>
+
+       <% if current_user.admin %> 
+       <h3> <%= link_to "Edit Attraction", edit_attraction_path(@attraction)%></h3>
+  <% end %>  

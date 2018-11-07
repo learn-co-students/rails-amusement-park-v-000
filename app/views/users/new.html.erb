@@ -1,0 +1,38 @@
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+
+<section class="todoapp">
+  <header class="header">
+    <h1>Sign Up</h1>
+    ## this route to the users controller
+    <%= form_for(@user) do |f| %>
+       <%= f.label :name %>:
+       <%= f.text_field :name %><br />
+
+      <%= f.label :height %>:
+        <%= f.text_field :height %><br />
+
+        <%= f.label :nausea %>:
+        <%= f.text_field :nausea %><br />
+
+        <%= f.label :happiness %>:
+        <%= f.text_field :happiness %><br />
+
+        <%= f.label :tickets %>:
+        <%= f.text_field :tickets %><br />
+
+        <%= f.label :password %>:
+        <%= f.text_field :password %><br />
+        
+        <%= f.label :ADMIN %> <br />
+        <%= f.check_box :admin %> <br/>
+        <br>
+        <%= f.submit%>
+        <% end %>
+      </form>
+
+  </header>
+  
+  <footer class="footer">
+  </footer>
+</section>

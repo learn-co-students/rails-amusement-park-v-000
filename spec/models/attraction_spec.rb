@@ -9,7 +9,7 @@ RSpec.describe Attraction, :type => :model do
       :happiness_rating => 4,
       :min_height => 32
     )
-  }
+}
 
   it "is valid with a name, min_height, nausea_rating, happiness_rating, and ticket number" do
     expect(attraction).to be_valid
