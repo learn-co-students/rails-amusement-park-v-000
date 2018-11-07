@@ -1,0 +1,5 @@
+Name: <%= @user.name %>
+Height: <%= @user.height %>
+Mood: <%= mood_string(@user) %>
+Tickets: <%= @user.tickets %>
+<%= @user.admin ? 'ADMIN' : '' %>
