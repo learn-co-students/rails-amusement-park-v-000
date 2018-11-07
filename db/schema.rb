@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2018_11_07_095854) do
     t.integer "nausea_rating"
     t.integer "happiness_rating"
     t.integer "min_height"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "rides", force: :cascade do |t|
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2018_11_07_095854) do
     t.integer "happiness"
     t.integer "tickets"
     t.integer "height"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean "admin", default: false
   end
 
