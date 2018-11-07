@@ -1,0 +1,8 @@
+<%= form_for @user, url: signin_path, method: :post do |f|  %>
+  Name: <%= f.text_field :name %>
+  password: <%= f.text_field :password %>
+
+  <%= f.submit "sign in"%> Or 
+  <%= link_to(controller: 'users', action: 'new') {'sign up'} %>
+
+<% end %>
