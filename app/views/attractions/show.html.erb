@@ -1,0 +1,8 @@
+<%= @attraction.name %>
+
+<p><%= link_to 'Go on this ride', session_path, method: :post %></p>
+
+<%= form_for @ride do |f| %>
+  <%= f.hidden_field :attraction_id %>
+  <%= f.submit 'Go on this ride' %>
+<% end %>

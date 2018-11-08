@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   get '/signin' => 'sessions#new', as: :log_in
   resource :session, only: [:create, :destroy]
+
+  resources :attractions, only: [:index, :show]
+  resources :rides, only: [:create]
 end

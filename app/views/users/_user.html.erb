@@ -1,0 +1,7 @@
+<p><%= 'ADMIN' if user.admin %></p>
+<p>name: <%= user.name %></p>
+<p>Mood: <%= user.mood %></p>
+<p>Tickets: <%= user.tickets %></p>
+<p>Height: <%= user.height %></p>
+
+<p><%= link_to 'Log Out', session_path, method: :delete %></p>
