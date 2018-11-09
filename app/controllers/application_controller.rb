@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :validate_session
-  skip_before_action :validate_session, only: :home
+  before_action :validate_session, except: :home
 
   def home
 
@@ -32,6 +31,14 @@ class ApplicationController < ActionController::Base
   def validate_session
     if logged_out?
       redirect_to root_path
+    else
+      @user = User.find(current_user)
+    end
+  end
+
+  def validate_admin
+    if !@user.admin
+      redirect_to attractions_path
     end
   end
 end

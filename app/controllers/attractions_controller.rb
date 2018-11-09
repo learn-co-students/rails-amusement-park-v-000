@@ -1,4 +1,5 @@
 class AttractionsController < ApplicationController
+  before_action :validate_admin, except: [:index, :show]
 
   def index
     @attractions = Attraction.all
@@ -9,9 +10,35 @@ class AttractionsController < ApplicationController
     @ride = Ride.new(attraction_id: @attraction.id)
   end
 
+  def new
+    @attraction = Attraction.new
+  end
+
+  def create
+    @attraction = Attraction.new(attraction_params)
+    if @attraction.save
+      redirect_to @attraction
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @attraction = Attraction.find(params[:id])
+  end
+
+  def update
+    @attraction = Attraction.find(params[:id])
+    if @attraction.update(attraction_params)
+      redirect_to @attraction
+    else
+      render :edit
+    end
+  end
+
   private
 
-  # def user_params
-  #   params.require(:user).permit(:name, :admin, :height, :happiness, :nausea, :tickets, :password)
-  # end
+  def attraction_params
+    params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
+  end
 end
