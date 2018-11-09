@@ -1,0 +1,13 @@
+<form action="<%= session_path %>" method="POST">
+  <label for="user_name">Male</label>
+  <select name="session[id]" id="user_name">
+
+    <%= @users.each do |user| %>
+    <option value="<%= user.id %>"><%= user.name %></option>
+    <% end %>
+
+  </select>
+
+  <input type="password" name="session[password]" id="password">
+  <input type="submit" value="Sign In">
+</form>
