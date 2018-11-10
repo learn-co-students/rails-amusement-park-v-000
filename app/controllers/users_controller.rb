@@ -1,19 +1,23 @@
 class UsersController < ApplicationController
+  before_action :user
+  skip_before_action :user, only: [:new, :create]
+
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    @message = params[:message]
+    @message ||= false
   end
 
   def edit
-    @user = User.find(params[:id])
   end
+
   def create
     @user = User.create(user_params)
     if !@user.save
-      redirect_to controller: 'users', action: 'new'
+      render :new
     else
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -24,7 +28,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         redirect_to user_path(@user)
       else
-        redirect_to controller: 'users', action: 'edit'
+        render :edit
       end
   end
 
@@ -32,5 +36,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :password, :happiness, :tickets, :height, :nausea)
+  end
+
+  def user
+    @user = User.find(params[:id])
   end
 end
