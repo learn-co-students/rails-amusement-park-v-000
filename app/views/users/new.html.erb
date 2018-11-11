@@ -1,43 +1,16 @@
 <h1>Sign up: </h1>
 
-<%= form_for @user do |f|%>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %></br>
+<%= form_for @user do |f|  %>
+  Name: <%= f.text_field :name %></br></br>
+  Height: <%= f.number_field :height %></br></br>
+  Happiness: <%= f.number_field :happiness %></br></br>
+  Nausea: <%= f.number_field :nausea %></br></br>
+  Tickets: <%= f.number_field :tickets %></br></br>
+  Admin: <%= f.check_box :admin %></br></br>
+  password: <%= f.text_field :password %></br></br></br>
 
-  <%= f.label :height %>
-  <%= f.number_field :height %></br>
+  <%= f.submit "Create User"%>
 
-  <%= f.label :happiness %>
-  <%= f.number_field :happiness %></br>
-
-  <%= f.label :nausea %>
-  <%= f.number_field :nausea %></br>
-
-  <%= f.label :tickets %>
-  <%= f.number_field :tickets %></br>
-
-
-  <%= f.label :admin %>
-  <%= f.check_box :admin %></br> %>
-
-  <%= f.label :password %>
-  <%= f.text_field :password %></br>
-
-  <%= f.submit %>
-
-<% end %>
-
-<%= form_for @user, url: signin_path, method: :post do |f|  %>
-  Name: <%= f.text_field :name %>
-  Height: <%= f.number_field :height %>
-  Happiness: <%= f.number_field :happiness %>
-  Nausea: <%= f.number_field :nausea %>
-  Tickets: <%= f.number_field :tickets %>
-  Admin: <%= f.check_box :admin %>
-  password: <%= f.text_field :password %>
-
-  <%= f.submit "log in"%> Or
-  <%= link_to(controller: 'users', action: 'new') {'sign up'} %>
 
 <% end %>

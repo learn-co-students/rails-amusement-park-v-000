@@ -1,0 +1,10 @@
+
+
+<%= @attraction.name %>
+
+
+<%= button_to "Go on this ride", {:method => 'post', :controller => 'rides', :action => 'new',  :params => {:user_id => session[:user_id], :attraction_id => @attraction.id}} %>
+
+<% if @user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>

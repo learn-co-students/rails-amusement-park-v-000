@@ -1,8 +1,12 @@
-<%= form_for @user, url: signin_path, method: :post do |f|  %>
-  Name: <%= f.text_field :name %>
-  password: <%= f.text_field :password %>
+<%= form_for(@user, url: sessions_create_path) do |f|  %>
 
-  <%= f.submit "sign in"%> Or 
+  <%= f.label :name, "Select your name"%><br>
+  <%= f.collection_select(:name, @users,  :name, :name) %>
+
+  <%= f.label :password, "Enter your password"%><b>
+  <%= f.password_field :password %>
+
+
+  <%= f.submit "Sign In"%> Or
   <%= link_to(controller: 'users', action: 'new') {'sign up'} %>
-
-<% end %>
+  <% end %>
