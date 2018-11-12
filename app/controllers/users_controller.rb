@@ -33,6 +33,12 @@ class UsersController < ApplicationController
 			redirect_to signin_path
 		end
 	end
+
+	def destroy
+		session.delete :user_id
+		redirect_to '/'
+	end
+
 private
 	def user_params
 		params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets)
