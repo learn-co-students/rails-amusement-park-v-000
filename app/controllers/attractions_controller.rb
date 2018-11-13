@@ -31,4 +31,25 @@ class AttractionsController < ApplicationController
 		
 		redirect_to user_path(user)
 	end
+
+	def new
+		@attraction = Attraction.new
+	end
+
+	def create
+		#binding.pry
+		Attraction.create(attr_params)
+		attr = Attraction.last
+		redirect_to attraction_path(attr)
+	end
+
+	def edit
+		@attraction = Attraction.find_by(id: params[:id])
+	end
+
+private
+
+	def attr_params
+      params.require(:attraction).permit(:name, :min_height, :happiness_rating, :nausea_rating, :tickets)
+  end
 end

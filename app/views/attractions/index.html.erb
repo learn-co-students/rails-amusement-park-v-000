@@ -1,6 +1,18 @@
 <h1>Available Attractions</h1>
+
+<h2><%= "UID => #{hot_user.name}" %></h2>
+<h2><%= "ADMIN => #{admin?}" %></h2>
+
 <ul>
 	<% @attrs.each do |attr| %>
-		<li><%= link_to "Go on #{attr.name}", attraction_path(attr) %></li>
+		<% if admin? %>
+			<li><%= link_to "Show #{attr.name}", attraction_path(attr) %></li>
+		<% else %>
+			<li><%= link_to "Go on #{attr.name}", attraction_path(attr) %></li>
+		<% end %>
 	<% end %>
 </ul>
+<% if admin? %>
+	<%= link_to "New Attraction", new_attraction_path %>
+<% end %>
+

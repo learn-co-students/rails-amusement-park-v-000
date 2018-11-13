@@ -1,4 +1,7 @@
 <h1><%= @attr.name %></h1>
 <%= form_for @attr do |f| %>
+	<% if admin? %>
+		<%= link_to "Edit Attraction", edit_attraction_path(@attr) %>
+	<% end %>
 	<%= f.submit "Go on this ride" %>
 <% end %>

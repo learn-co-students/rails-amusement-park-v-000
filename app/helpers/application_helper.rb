@@ -13,4 +13,9 @@ module ApplicationHelper
 	def hot_user
 		User.find_by(id: session[:user_id]) if logged_in?
 	end
+
+	def admin?
+		user = hot_user
+		user.admin
+	end
 end

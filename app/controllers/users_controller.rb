@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
 private
 	def user_params
-		params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets)
+		params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets, :admin)
 	end
 	
 	def sign_out
