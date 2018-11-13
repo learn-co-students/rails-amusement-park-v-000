@@ -6,7 +6,7 @@ class Ride < ActiveRecord::Base
     #validates :attraction_id, :presence => true
  
     def take_ride
-
+ binding.pry
         #accounts for the user not having enough ticket & user not tall enough
         
 
