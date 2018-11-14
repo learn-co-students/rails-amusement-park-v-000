@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, except: [:new, :create]
   
   def new 
     @user = User.new
@@ -18,24 +19,20 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+   
   end 
 
   def edit
   end
 
   def update
-    @user 
   end
 
   private 
 
   def user_params
     params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
-  end
-
-  def logged_in?
-    @user = User.find(params[:id])
   end
 end
 
