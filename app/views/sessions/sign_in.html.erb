@@ -1,0 +1,16 @@
+<h1>Signin</h1>
+<br>
+
+<%= form_for @user, url: signin_path(@user) do |f| %>
+    <div class="form-group">
+    <%= f.label :name, "Select User Name" %>
+    <%= f.collection_select :name, User.order(:name),:id,:name, include_blank: true %>
+    </div>
+    <br>
+    <div class="form-group">
+    <%= f.label :password, "password" %>
+    <%= f.password_field :password %>
+    <br>
+    </div>
+    <%= f.submit "Sign In", class: "btn btn-primary" %>
+    <%end%>
