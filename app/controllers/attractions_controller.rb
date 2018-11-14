@@ -19,31 +19,28 @@ class AttractionsController < ApplicationController
 
   def create
     @attraction = Attraction.create(attraction_params)
-    respond_to do |format|
-      if !@attraction.save
-        format.html { render :new }
-      else
-        format.html { redirect_to @attraction, notice: 'Attraction was successfully created.' }
-      end
+    if !@attraction.save
+      render :new
+    else
+
+      redirect_to @attraction
     end
   end
 
   def update
-    respond_to do |format|
-      if @attraction.update(attraction_params)
-        format.html { redirect_to @attraction, notice: 'Attraction was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @attraction.update(attraction_params)
+
+      redirect_to @attraction
+    else
+      render :edit
     end
   end
 
 
   def destroy
     @attraction.destroy
-    respond_to do |format|
-      format.html { redirect_to attractions_url, notice: 'Attraction was successfully destroyed.' }
-    end
+
+    redirect_to attractions_url
   end
 
   private

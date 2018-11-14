@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
 
 private
   def please_log_in
-    redirect_to root_path unless logged_in?
+    if !logged_in?
+      redirect_to root_path
+    end
   end
 
   def current_user
