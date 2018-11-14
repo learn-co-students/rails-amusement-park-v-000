@@ -1,0 +1,18 @@
+
+    <div class="center">
+    <div class="info">
+    <% if @user.admin %>
+    <p>ADMIN</p>
+    <%end%>
+        <strong>Name:</strong><%= @user.name %>
+        <br><br>
+        <strong>Tickets:</strong><%= @user.tickets %>
+        <br><br>
+        <strong>Mood:</strong><%= @user.mood %>
+        <br><br>
+        <strong>Height:</strong><%= @user.height %> inches
+        <br><br>
+        <p><%= link_to "See attractions", attractions_path %></p>
+        <%= link_to "Log Out", signout_path, method: :delete %>
+    </div>
+    
