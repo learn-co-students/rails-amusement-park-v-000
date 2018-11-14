@@ -12,24 +12,35 @@ class AttractionsController < ApplicationController
 
 	def update
 		user = hot_user
-		
+			
+		Attraction.update(attr_params) if user.admin	
 		ride = Attraction.find_by(id: params[:id])
 
 		ride_px = ride.tickets
-		if (user.tickets >= ride_px) && (user.height >= ride.min_height)
-			user.tickets = user.tickets - ride_px
+		
+		user_tix = user.tickets
+		user_tix = 0 unless user_tix
+		user_height = user.height
+		user_height = 0 unless user_height
+
+		if (user_tix >= ride_px) && (user_height >= ride.min_height)
+			user.tickets = user_tix - ride_px
 			user.happiness = ride.happiness_rating
 			user.save
 			flash[:notice] = "Thanks for riding the #{ride.name}!"
-		elsif (user.tickets < ride_px) && (user.height < ride.min_height)
+		elsif (user_tix < ride_px) && (user_height < ride.min_height)
 			flash[:notice] = "You are not tall enough to ride the #{ride.name}. You do not have enough tickets to ride the #{ride.name}." 
-		elsif user.height < ride.min_height
+		elsif user_height < ride.min_height
 			flash[:notice] = "You are not tall enough to ride the #{ride.name}"
-		elsif user.tickets < ride_px
+		elsif user_tix < ride_px
 			flash[:notice] = "You do not have enough tickets to ride the #{ride.name}"	
 		end
 		
-		redirect_to user_path(user)
+		if user.admin
+			redirect_to attraction_path(ride)
+		else
+			redirect_to user_path(user)
+		end
 	end
 
 	def new
