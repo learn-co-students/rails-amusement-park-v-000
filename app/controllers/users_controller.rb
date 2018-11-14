@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   #index show new edit create update destroy
 
   include ApplicationHelper
-  
-  def index
-    @users = User.all
-  end
 
   def show
     @user = User.find_by(id: params[:id])
@@ -20,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create!(user_params)
+    @user = User.new(user_params)
     if @user.save
       user_signup
       redirect_to user_path(@user)
@@ -33,11 +29,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    session.clear
+    redirect_to root_path
   end
 
   
   private
   def user_params
-    params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height)
+    params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
   end
 end

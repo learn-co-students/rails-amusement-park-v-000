@@ -1,6 +1,9 @@
 <h1>Sign In</h1>
-<%= form_tag signin_path, method: :post do %>
-  <label>Name:</label><%= collection_select(:user, :name, User.all, :id, :name) %>
-  <label>Password:</label><%= password_field_tag :password %>
+
+<%= form_tag signin_path do %>
+  <label>Select Your Name Below:</label><br>
+  <%= select_tag :'user_name', options_from_collection_for_select(User.all, :name, :name) %><br>
+  <label>Password</label><br>
+  <%= password_field_tag :'password' %><br>
   <%= submit_tag "Sign In" %>
 <% end %>
