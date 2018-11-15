@@ -1,0 +1,16 @@
+
+
+<h3>Name:<%= @user.name %></h3>
+
+<% if @user.admin %>
+  <p>You are an ADMIN.</p>
+<% else %>
+  <ul>
+    <li>Mood: <%= @user.mood %></li>
+    <li>Height: <%= @user.height %></li>
+    <li>Tickets: <%= @user.tickets %></li>
+  </ul>
+<% end %>
+
+<p><%= link_to "See attractions", attractions_path %></p>
+
