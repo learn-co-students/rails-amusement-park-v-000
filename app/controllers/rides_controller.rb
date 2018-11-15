@@ -1,16 +1,19 @@
 class RidesController < ApplicationController
+
+  def new
+  end
+
   def create
     @ride = Ride.create(ride_params)
+    message = @ride.take_ride
+    if message != true
+      flash[:error] = message
+    else
+      flash[:success] = "Thanks for riding the #{current_user.rides.last.attraction.name}!"
+    end
     redirect_to user_path(@ride.user)
   end
 
-  def update
-    if @ride.update(ride_params)
-      redirect_to attraction_path(@attraction)
-    else
-      render :edit
-    end
-  end
 
   private
   def ride_params

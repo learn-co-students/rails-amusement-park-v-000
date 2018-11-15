@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def admin_login
-
+    current_user.admin?
   end
 
   def current_user
