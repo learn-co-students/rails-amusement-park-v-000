@@ -2,14 +2,15 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
-
+    @message = params[:message] if params[:message]
+    @message ||= false
   end
 
   def new
     @user = User.new
   end
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       format.html { redirect_to user_path(@user), notice: "Welcome to the theme park!" }
@@ -21,18 +22,20 @@ class UsersController < ApplicationController
   def edit
   end
   def update
-    if @user = User.update(user_params)
-      format.html { redirect_to @user, notice: "User was successfully updated." }
-    else
-      format.html { render :edit }
+    respond_to do |format|
+      if @user = User.update(user_params)
+        format.html { redirect_to @user, notice: "User was successfully updated." }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
-  def destroy
-
-  end
-
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(
