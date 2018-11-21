@@ -1,19 +1,28 @@
 Name: <%= @user.name %>
+<br>
 <% if @user.height %>
   Height: <%= @user.height %>
 <% end %>
+<br>
 <% if @user.tickets %>
   Tickets: <%= @user.tickets %>
 <% end %>
+<br>
 <% if @user.happiness %>
   Happiness: <%= @user.happiness %>
 <% end %>
+<br>
 <% if @user.nausea %>
   Nausea: <%= @user.nausea %>
 <% end %>
+<br>
 <% if @user.mood %>
   Mood: <%= @user.mood %>
 <% end %>
+<br>
 <% if @user.admin %>
   ADMIN
 <% end %>
+<br>
+<%= link_to "Log Out", "/signout" %>
+<br>
