@@ -1,0 +1,13 @@
+<%= form_with model: @user do |form| %>
+
+  <%= form.text_field :name %>
+  <%= form.number_field :height %>
+  <%= form.number_field :happiness %>
+  <%= form.number_field :nausea %>
+  <%= form.number_field :tickets %>
+  <%= form.check_box :admin %>
+  <%= form.text_field :password %>
+
+
+  <%= form.submit %>
+<% end %>
