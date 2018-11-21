@@ -1,6 +1,19 @@
 Name: <%= @user.name %>
-Height: <%= @user.height %>
-Tickets: <%= @user.tickets %>
-Happiness: <%= @user.happiness %>
-Nausea: <%= @user.nausea %>
-Mood: <%= @user.mood %>
+<% if @user.height %>
+  Height: <%= @user.height %>
+<% end %>
+<% if @user.tickets %>
+  Tickets: <%= @user.tickets %>
+<% end %>
+<% if @user.happiness %>
+  Happiness: <%= @user.happiness %>
+<% end %>
+<% if @user.nausea %>
+  Nausea: <%= @user.nausea %>
+<% end %>
+<% if @user.mood %>
+  Mood: <%= @user.mood %>
+<% end %>
+<% if @user.admin %>
+  ADMIN
+<% end %>
