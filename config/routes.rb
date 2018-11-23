@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
   resources :sessions, only: [:create]
+  resources :attractions
 end
