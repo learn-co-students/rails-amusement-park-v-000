@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :sessions, only: [:create]
   resources :attractions
+  post '/attractions/:id/ride', to: 'attractions#ride'
 end

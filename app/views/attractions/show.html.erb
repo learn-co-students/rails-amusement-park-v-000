@@ -4,5 +4,5 @@
 <%= link_to "edit", edit_attraction_path(@attraction)  %>
 <%= link_to "delete", attraction_path(@attraction), method: :delete %>
 <% else %>
-<%= link_to "Go on this ride"%>
+<%= link_to "Go on this ride", "/attractions/#{@attraction.id}/ride", method: :post %>
 <% end %>
