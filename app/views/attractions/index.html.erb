@@ -1,0 +1,16 @@
+<%= @attractions.each do |attraction| %>
+<div class="row">
+  <p><%= link_to "#{
+    if @user.admin?
+      "Show"
+    else
+      "Go on"
+    end
+  } #{attraction.name}", attraction_path(attraction) %></p>
+</div>
+
+
+<% end %>
+<% if @user.admin? %>
+<%= link_to "New Attraction", new_attraction_path %>
+<% end %>

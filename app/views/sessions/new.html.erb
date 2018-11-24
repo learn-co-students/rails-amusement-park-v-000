@@ -1,0 +1,5 @@
+<%= form_for :user, url: {action: "create"} do |f| %>
+Name: <%= select("user", "name", User.all.collect {|u| [u.name, u.id]}) %>
+Password: <%= f.password_field :password, id: "password" %>
+<%= f.submit "Sign In" %>
+<% end %>
