@@ -1,8 +1,11 @@
+<% if flash[:notice] %>
+<%= content_tag :div, flash[:notice] %>
+<% end %>
 <h1><%= @attraction.name %></h1>
 <p>Requires <%= @attraction.tickets %> tickets and has a nausea rating of <%= @attraction.nausea_rating %>. Must be at least <%= @attraction.min_height %> inches to ride.</p>
-<% if @user.admin? %>
+<% if @user.admin == true %>
 <%= link_to "edit", edit_attraction_path(@attraction)  %>
 <%= link_to "delete", attraction_path(@attraction), method: :delete %>
 <% else %>
-<%= link_to "Go on this ride", "/attractions/#{@attraction.id}/ride", method: :post %>
+<%= button_to "Go on this ride", "/attractions/#{@attraction.id}/ride", method: :post %>
 <% end %>
