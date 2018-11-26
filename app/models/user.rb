@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :rides
   has_many :attractions, through: :rides
   has_secure_password
-  validates_presence_of :name, :password
+  # validates_presence_of :name, :password
 
   def mood
     if self.happiness && self.nausea
