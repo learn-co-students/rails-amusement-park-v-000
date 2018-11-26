@@ -29,6 +29,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% if @message %>
+        <p><%= @message %></p>
+      <% end %>
       <%= yield %>
     </div>
   </body>

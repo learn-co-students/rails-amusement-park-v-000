@@ -1,0 +1,7 @@
+Name: <%= @attraction.name %>
+Tickets: <%= @attraction.tickets %>
+Nausea Rating: <%= @attraction.nausea_rating %>
+Happiness Rating: <%= @attraction.happiness_rating %>
+Minimum Height: <%= @attraction.min_height %>
+<%# <%= link_to "Go on this ride", user_path(@user) %> %>
+<%= button_to 'Go on this ride', {:controller => "rides", :action => "new", :attraction_id => @attraction.id, :user_id => session[:user_id]} , :method => :post %>

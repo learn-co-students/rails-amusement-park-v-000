@@ -14,8 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    # if current_user is the same as @user
     @user = User.find_by(id: params[:id])
+    # @attraction = Attraction.find_by(id: params[:attraction_id])
     if session[:user_id] == @user.id
       render 'show'
     else
