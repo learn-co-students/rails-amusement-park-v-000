@@ -19,6 +19,13 @@ class AttractionsController < ApplicationController
   end
 
   def edit
+    @attraction = Attraction.find_by(id: params[:id])
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+      render 'edit'
+    else
+      redirect_to "/attractions/#{@attraction.id}/edit"
+    end
   end
 
   def create
@@ -31,6 +38,7 @@ class AttractionsController < ApplicationController
   end
 
   def update
+    @attraction = Attraction.find_by(id: params[:id])
     if @attraction.update(attraction_params)
       redirect_to "/attractions/#{@attraction.id}"
     else
