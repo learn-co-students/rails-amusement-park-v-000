@@ -13,9 +13,9 @@ class RidesController < ApplicationController
     #need to pass in user and attraction id for take ride method
     #need to pass in attraction from view
     @user = current_user
-    flash[:notice] = @ride.take_ride
+    @message =  @ride.take_ride #view will now have access
     #method is working-is changing ticket number, just flash message isn't working
-    redirect_to user_path(@user)
+    redirect_to user_path(@user, message: @message)
   end
 
 

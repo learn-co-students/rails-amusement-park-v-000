@@ -19,13 +19,12 @@ class ApplicationController < ActionController::Base
     return redirect_to(controller: 'sessions', action: 'new') unless is_admin?
   end
 
-  #logged_in/require_logged_in malfunctioning
   def logged_in?
-    return redirect_to(controller: 'sessions', action: 'new') unless current_user
+    current_user != nil
   end
 
   def require_logged_in
-   return redirect_to(controller: 'sessions', action: 'new') unless logged_in?
+   return redirect_to root_path unless logged_in?
   end
 
 end

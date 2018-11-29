@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-  #before_action :require_logged_in, only: :show
-  #before_action is causing redirect_to user_path after signup to reroute to login
-  #i think because session create redirects to login path
-  #or maybe was creating first which was hitting errors
+  before_action :require_logged_in, only: :show
 
   def new
     @user = User.new
@@ -11,12 +8,12 @@ class UsersController < ApplicationController
   def create
     #binding.pry
     @user = User.new(user_params)
-    if !@user.save #working in pry when don't include password
+    if !@user.save 
       redirect_to root_path
     else
       @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user.id)
+      redirect_to user_path(@user)
     end
   end
 
@@ -24,6 +21,9 @@ class UsersController < ApplicationController
     @admin = is_admin?
       #don't have access to controller methods in view
     @user = User.find_by_id(params[:id])
+    @message = params[:message] if params[:message]
+    @message ||= false
+
   end
 
   def edit
