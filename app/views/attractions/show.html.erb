@@ -1,0 +1,18 @@
+<%= @attraction.name %> <br>
+<%= @attraction.happiness_rating %> <br>
+<%= @attraction.nausea_rating %> <br>
+<%= @attraction.tickets %> <br>
+<%= @attraction.min_height %> <br>
+
+<%= link_to "See attractions", attractions_path %> <br>
+
+<% if @admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
+
+<% if !@admin %>
+  <%= form_for :attraction, url: '/rides' do |f| %>
+    <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+  <%= f.submit "Go on this ride", class: 'btn btn-default' %>
+  <% end %>
+<% end %>
