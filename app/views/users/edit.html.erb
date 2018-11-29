@@ -1,1 +1,4 @@
-<%= render partial: "form" %>
+<%= form_for @user do |f| %>
+  <%= render partial: "form", locals: { f: f } %>
+  <%= f.submit "Edit User" %>
+<% end %>
