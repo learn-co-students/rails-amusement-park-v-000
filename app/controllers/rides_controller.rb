@@ -1,12 +1,10 @@
 class RidesController < ApplicationController
 
   def new
-    #binding.pry
 
   end
 
   def create
-    #binding.pry
     @ride = Ride.create(attraction_id: params[:attraction][:attraction_id]) #checked params and this is how it's coming through
     @ride.user_id = current_user.id
     @ride.save
@@ -14,7 +12,6 @@ class RidesController < ApplicationController
     #need to pass in attraction from view
     @user = current_user
     @message =  @ride.take_ride #view will now have access
-    #method is working-is changing ticket number, just flash message isn't working
     redirect_to user_path(@user, message: @message)
   end
 
