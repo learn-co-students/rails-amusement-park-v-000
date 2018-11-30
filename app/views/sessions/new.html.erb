@@ -1,0 +1,5 @@
+<%= form_for @user, url: {action: "create", controller: "sessions"} do |f| %>
+  Username: <%= f.collection_select :name, User.all, :name, :name %><br>
+  Password: <%= f.password_field :password %>
+  <%= f.submit "Sign In", class: 'btn btn-default' %>
+<% end %>

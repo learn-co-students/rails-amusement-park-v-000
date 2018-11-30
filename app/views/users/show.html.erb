@@ -1,0 +1,18 @@
+<% if @message %>
+    <%= @message %>
+<% end %>
+
+<% if @admin %>
+  <h1> ADMIN </h1>
+<% end %>
+
+Name: <%= @user.name %> <br>
+Tickets: <%= @user.tickets %> <br>
+Mood: <%= @user.mood %> <br>
+Height: <%= @user.height %> inches <br>
+
+<%= link_to "See attractions", attractions_path %> <br>
+
+<% if @admin %>
+  <%= link_to "Edit", edit_user_path(@user) %>
+<% end %>
