@@ -3,22 +3,14 @@ class Ride < ActiveRecord::Base
   belongs_to :user
 
   def take_ride
-    # if check tickets && check height pass, then
-      # update the ticket count
-      # update nausea
-      # update happiness
-    # else, display error messages:
-      # Sorry. #{deny_entry_reason}
-
     if able_to_ride?
       update_user_tickets
       make_nauseous
       make_happy
-      self.save
+      message = ""
     else
       show_reason
     end
-
   end
 
   private
@@ -54,15 +46,18 @@ class Ride < ActiveRecord::Base
   def update_user_tickets
     #update User#tickets by tickets required for Attraction
     self.user.tickets -= self.attraction.tickets
+    self.user.save
   end
 
   def make_nauseous
     #update User#nausea by nausea_rating of Attraction
     self.user.nausea += self.attraction.nausea_rating
+    self.user.save
   end
 
   def make_happy
     #update User#happiness by nausea_rating of Attraction
     self.user.happiness += self.attraction.happiness_rating
+    self.user.save
   end
 end
