@@ -9,10 +9,12 @@ class User < ActiveRecord::Base
   end
 
   def mood
-    if self.nausea > self.happiness
-      "sad"
-    elsif self.happiness > self.nausea
-      "happy"
+    if self.nausea != nil
+      if self.nausea > self.happiness
+        "sad"
+      elsif self.happiness > self.nausea
+        "happy"
+      end
     end
   end
 end
