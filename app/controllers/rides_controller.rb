@@ -12,9 +12,9 @@ class RidesController < ApplicationController
     @ride.user_id = @user.id
     @ride.save
 
-    @ride.take_ride
+    @message = @ride.take_ride
 
-    redirect_to user_path(@user)
+    redirect_to user_path(@user, message: @message)
   end
 
 end

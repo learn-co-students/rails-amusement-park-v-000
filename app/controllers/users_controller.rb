@@ -19,8 +19,12 @@ class UsersController < ApplicationController
 
   def show
     if logged_in?
-      # binding.pry
+
       @user = User.find_by(id: params[:id])
+      # binding.pry
+      @message = params[:message] if params[:message]
+      @message ||= false
+
       render :layout => "user_show"
     else
       redirect_to '/'
