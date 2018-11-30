@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -17,9 +18,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-
-    render :layout => "user_show"
+    if logged_in?
+      # binding.pry
+      @user = User.find_by(id: params[:id])
+      render :layout => "user_show"
+    else
+      redirect_to '/'
+    end
   end
 
 private

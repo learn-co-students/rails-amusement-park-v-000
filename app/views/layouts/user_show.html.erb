@@ -19,7 +19,8 @@
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <a class="navbar-brand" href="/users/<%= @user.id %>"/><%= @user.name%>'s profile</a>
-        <a class="navbar-brand" href="/users/logout"/>Log Out</a>
+        <!-- <a class="navbar-brand" data-method="delete" href="/session"/>Log Out</a> -->
+        <li><%= link_to "Log Out", signout_path, method: :delete %></li>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

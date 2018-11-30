@@ -3,20 +3,22 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
-    if self.user.tickets < self.attraction.tickets
-      if self.user.height < self.attraction.min_height
+    user = User.find_by_id(self.user_id)
+    attraction = Attraction.find_by_id(self.attraction_id)
+    if user.tickets < attraction.tickets
+      if user.height < attraction.min_height
        "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
       else
-      "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
+      "Sorry. You do not have enough tickets to ride the #{attraction.name}."
       end
-    elsif self.user.tickets >= self.attraction.tickets
-      if self.user.height < self.attraction.min_height
+    elsif user.tickets >= attraction.tickets
+      if user.height < attraction.min_height
         "Sorry. You are not tall enough to ride the #{attraction.name}."
       else
-        self.user.tickets = self.user.tickets - self.attraction.tickets
-        self.user.nausea = self.user.nausea + self.attraction.nausea_rating
-        self.user.happiness = self.user.happiness + self.attraction.happiness_rating
-        self.user.save
+        user.tickets = user.tickets - attraction.tickets
+        user.nausea = user.nausea + attraction.nausea_rating
+        user.happiness = user.happiness + attraction.happiness_rating
+        user.save
       end
     end
   end
