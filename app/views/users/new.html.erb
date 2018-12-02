@@ -1,20 +1,34 @@
 <h1>Signup</h1>
 
-<%= form_for(@user) do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br>
-  <%= f.label :height, "Height (in inches)" %><br>
-  <%= f.text_field :height %><br>
-  <%= f.label :happiness, "How happy are you? (1-5 scale)" %><br>
-  <%= f.text_field :happiness %><br>
-  <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %><br>
-  <%= f.text_field :nausea %><br>
-  <%= f.label :tickets, "How many dollars are in your pocket?" %><br>
-  <%= f.text_field :tickets %><br>
-  <%= f.label :admin, "Checkbox if you are a themepark owner" %>
-  <%= f.check_box :admin %><br><br>
-  <%= f.label :password %><br>
-  <%= f.password_field :password %><br><br>
+<%= form_for(@user, html:{class: "new_user"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :height, "Height (in inches)" %><br>
+    <%= f.text_field :height, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :happiness, "How happy are you? (1-5 scale)" %><br>
+    <%= f.text_field :happiness, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %><br>
+    <%= f.text_field :nausea, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :tickets, "How many dollars are in your pocket?" %><br>
+      <%= f.text_field :tickets, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :admin, "Checkbox if you are a themepark owner" %>
+    <%= f.check_box :admin %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
   <%= f.submit "Create User" %>
 <% end %>
 
