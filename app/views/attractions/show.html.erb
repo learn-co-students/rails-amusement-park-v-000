@@ -1,0 +1,5 @@
+<h1><%= @attraction.name %></h1>
+<%= form_tag user_path(current_user), method: :get do %>
+  <%= hidden_field_tag 'att_id', @attraction.id %>
+  <%= submit_tag "Go on this ride" %>
+<% end %>
