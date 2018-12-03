@@ -4,8 +4,8 @@
 
 <div class= "center">
   <div class="info">
+    <%= render 'admin' if @user.admin? %>
     <p><strong>Name: </strong><%= @user.name %></p>
-
     <p><strong>Mood: </strong><%= @user.mood if @user.happiness != nil%></p>
     <p><strong>Tickets: </strong><%= @user.tickets if @user.tickets != nil%></p>
     <p><strong>Height: </strong><%= @user.height if @user.height != nil%> inches</p>

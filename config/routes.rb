@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get 'attractions/create'
   get 'attractions/:id' => "attractions#show", as: "attraction"
   get 'attractions/:id/ride' => "attractions#ride", as: "ride"
+  get 'attractions/:id/edit' => "attractions#edit", as: "edit_ride"
+  patch 'attractions/:id' => "attractions#update"
   get 'attractions' => "attractions#index"
+
   get 'sessions/new'
   post 'attractions' => "attractions#create"
   root 'application#index'

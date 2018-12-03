@@ -20,9 +20,6 @@
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <% if logged_in? %>
           <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%=current_user.name%>'s profile</a>
-          <% if current_user.admin %>
-            <a class="navbar-brand" href="<%= user_path(current_user) %>"/>ADMIN</a>
-          <% end %>
           <a id="Log Out" class="navbar-brand" href="<%= logout_path %>"/>Log Out</a>
         <% else %>
           <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
