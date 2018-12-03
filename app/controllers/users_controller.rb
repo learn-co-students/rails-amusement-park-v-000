@@ -13,10 +13,6 @@ class UsersController < ApplicationController
   def show
     # byebug
     @user = User.find_by_id(session[:user_id])
-    if !att_params.empty?
-      r = Ride.create(user_id: @user.id, attraction_id: att_params[:att_id])
-      r.take_ride
-    end
     redirect_to root_path if @user.nil?
   end
 

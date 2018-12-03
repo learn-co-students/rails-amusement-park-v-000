@@ -15,6 +15,7 @@ class Ride < ActiveRecord::Base
       u = self.user
       a = self.attraction
       u.update(tickets: (u.tickets - a.tickets), happiness: (u.happiness + a.happiness_rating), nausea: (u.nausea + a.nausea_rating))
+      return "Thanks for riding the #{a.name}!"
     end
   end
 end

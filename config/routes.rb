@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   delete '/users/delete', to: 'users#destroy', as: 'delete'
 
   resources :users, only: [:new, :create, :show]
-  resources :attractions, only: [:index, :show]
+  resources :attractions, only: [:index, :show, :edit, :update, :new, :create]
 end
