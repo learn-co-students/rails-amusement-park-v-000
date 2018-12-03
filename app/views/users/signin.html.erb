@@ -1,0 +1,5 @@
+<%= form_for @user, url: login_path do |f| %>
+  <%= f.select :name, User.all.collect{|p| [p.name]}%>
+  <input type='text' name='password'>
+  <%= f.submit "Sign In" %>
+<% end %>
