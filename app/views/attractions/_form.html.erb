@@ -1,0 +1,23 @@
+<%= form_for(attraction, html: {class: "new_attraction"}) do |f| %>
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "Name" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :tickets%>
+        <%= f.text_field :tickets, placeholder: "No. of tickets" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :nausea_rating%>
+        <%= f.text_field :nausea_rating, placeholder: "Nausea Rating" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :happiness_rating%>
+        <%= f.text_field :happiness_rating, placeholder: "Happiness Rating" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :min_height, "Minimum Height"%>
+        <%= f.text_field :min_height, placeholder: "Minimum Height" %>
+    </div>
+    <%= f.submit class: "btn btn-primary"%>
+<% end %>

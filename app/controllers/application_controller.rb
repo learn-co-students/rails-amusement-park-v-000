@@ -9,12 +9,16 @@ class ApplicationController < ActionController::Base
 
   def authorize(user = nil)
     if user.nil?
-      not_authorized unless logged_in?
+      not_authorized("Login to view this page!") unless logged_in?
     else
       not_authorized unless user == current_user
     end
   end
 
+  def authorize_admin
+    authorize
+    not_authorized("You must be an admin to view this page.") unless current_user.admin
+  end
 
   def current_user_is?(user)
     user == current_user
@@ -28,8 +32,8 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def not_authorized
-    flash[:alert] = "You are not authorized to view that page."
+  def not_authorized(msg = "You are not authorized to view that page.")
+    flash[:alert] = msg
     redirect_to root_path
   end
 
