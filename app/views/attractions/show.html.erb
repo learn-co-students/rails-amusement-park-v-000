@@ -1,0 +1,14 @@
+<div class="container" role="main">
+    <div class="centered">
+        <div class="info">
+            <p><strong>Name: </strong><%= @attraction.name %></p>
+            <p><strong>Total Number of Users: </strong><%= @attraction.users.length %></p>
+            <p><strong>Ticket Requirement: </strong><%= @attraction.tickets%></p>
+            <p><strong>Height Requirement: </strong><%= @attraction.min_height%></p>
+            <p><strong>Nausea Rating: </strong><%= @attraction.nausea_rating%></p>
+            <p><strong>Happiness Rating: </strong><%= @attraction.happiness_rating%></p>
+            
+            <%= attraction_action %>
+        </div>
+    </div>
+</div>
