@@ -1,0 +1,19 @@
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>  <!-- there is no session model -->
+
+  <div class="form-group">
+      <%= f.label :name, "name" %>
+      <%= f.text_field :name, class: "form-control" %>
+      <br>
+  <div class="field">
+      <%= f.label :user_name, "user name" %><br>
+      <%= f.collection_select(:id, @users, :id, :name, {}, {:id=>'user_name'}) %>
+  <br>
+  </div>
+      <%= f.label :password, "password" %>
+      <%= f.password_field :password, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign In" %>
+  </div>
+<% end %>
