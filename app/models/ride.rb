@@ -3,7 +3,16 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
-
+    enough_tickets, tall_enough = meet_requirements
+    if enough_tickets && tall_enough
+      start_ride
+    elsif tall_enough && !enough_tickets
+      "Sorry. " + ticket_issue
+    elsif enough_tickets && !tall_enough
+      "Sorry. " + height_issue
+    else
+      "Sorry. " + ticket_issue + " " + height_issue
+    end
   end
 
   def meet_requirements
@@ -18,15 +27,23 @@ class Ride < ActiveRecord::Base
   end
 
   def start_ride
-    
+    new_happiness = self.user.happiness + self.attraction.happiness_rating
+    new_nausea = self.user.nausea + self.attraction.nausea_rating
+    current_tickets = self.user.tickets - self.attraction.tickets
+    self.user.update(
+      :happiness => new_happiness,
+      :nausea => new_nausea,
+      :tickets => current_tickets
+    )
+    "Thanks for riding the #{self.attraction.name}!"
   end
 
   def ticket_issue
-    "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
+    "You do not have enough tickets to ride the #{self.attraction.name}."
   end
 
   def height_issue
-    "Sorry. You are not tall enough to ride the #{self.attraction.name}."
+    "You are not tall enough to ride the #{self.attraction.name}."
   end
 
 end
