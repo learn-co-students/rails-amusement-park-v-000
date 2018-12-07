@@ -1,7 +1,7 @@
+require 'pry'
 class User < ActiveRecord::Base
-  # include ActiveModel::Validations
-  # validates :name, presence: true
-  # validates :password, presence: true
+  validates :name, presence: true
+  validates :password, presence: true
   # validates :happiness, presence: true
   # validates :nausea, presence: true
   # validates :height, presence: true

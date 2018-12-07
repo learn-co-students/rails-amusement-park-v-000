@@ -9,22 +9,29 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    if current_user.nil?
+      redirect_to root_url
+    else
+      @user = User.find_by(id: params[:id])
+    end
   end
 
   def create
-    binding.pry
     @user = User.new(user_params)
 
+    @user.toggle!(:admin) if params[:user][:admin] == "1"
+
     if @user.save
+      log_in(@user)
       redirect_to @user # user_url(@user)
     else
-      render 'new'
+      render new_user_path
     end
   end
 
   private
 
+    # no admin
     def user_params
       params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height)
     end
