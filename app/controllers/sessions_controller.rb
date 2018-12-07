@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find(params[:session][:user_id])
     if user && user.authenticate(params[:session][:password])
-      redirect_to user_path(user)
+      log_in user
+      redirect_to user_path user
     else
       flash.now[:danger] = 'Password incorrect'
       render 'new'
