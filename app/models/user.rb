@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   # validates :height, presence: true
   # validates :tickets, presence: true
 
+  has_secure_password
+
   has_many :rides
   has_many :attractions, through: :rides
 
