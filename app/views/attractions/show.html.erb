@@ -1,0 +1,18 @@
+<% require 'pry' %>
+<div class="center">
+  <div class="info">
+
+    <p><strong>Name:</strong> <%= @attraction.name %> </p>
+    <p><strong>Total Number of Users:</strong>  </p>
+    <p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
+    <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches </p>
+    <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %> </p>
+    <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %> </p>
+    <% if current_user.admin %>
+      <a href="/attractions/<%= @attraction.id %>/edit">Edit Attraction</a></p>
+    <% else %>
+      <% # this needs to direct to rides? then to user#show %>
+      <a href="/attractions/<%= @attraction.id %>/edit">Go on this ride</a></p>
+    <% end %>
+  </div>
+</div>
