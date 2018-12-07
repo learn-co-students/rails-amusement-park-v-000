@@ -3,7 +3,7 @@
   <%= f.label :name %>
   <%= f.collection_select(:name, User.all, :id, :name) %>
 
-  <%= f.label :password %>
+  <%= f.label :password, "Enter your password" %>
   <%= f.password_field :password %>
 
   <%= f.submit "Sign In" %>
