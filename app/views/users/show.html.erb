@@ -1,7 +1,14 @@
-<h2>Name: <%= @user.name %></h2>
+<div class="center">
 
-<h2>Tickets: <%= @user.tickets %></h2>
+  <div class="info">
+    <% if @user.admin %>
+      <p><strong>ADMIN</strong></p>
+    <% end %>
+    <p><strong>Name:</strong> <%= @user.name %></p>
+    <p><strong>Tickets:</strong> <%= @user.tickets %></p>
+    <p><strong>Mood:</strong> <%= @user.mood %></p>
+    <p><strong>Height:</strong> <%= @user.height %></p>
+    <p><%= link_to "See attractions", attractions_path %></p>
+  </div>
 
-<h2>Mood: <%= @user.mood %></h2>
-
-<h2>Height: <%= @user.height %></h2>
+</div>

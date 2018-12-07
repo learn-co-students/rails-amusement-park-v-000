@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    
+    if logged_in?
+      @user = User.find_by(id: params[:id])
+    else
+      redirect_to root_url
+    end
   end
 
   def new
@@ -22,10 +25,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def set_user
-    @user = User.find_by(params[:id])
-  end
 
   def user_params
     params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets, :admin)
