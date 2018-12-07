@@ -1,4 +1,4 @@
-  <%= form_for(@user) do |f| %>
+  <%= form_for @user do |f| %>
 
     <%= f.label :name %>
     <br>
@@ -20,14 +20,9 @@
     <%= f.number_field :nausea, in: 1...6, class: 'form-control' %>
     <br>
 
-    <%= f.label :dollars, "How many dollars are in your pocket?" %>
+    <%= f.label :tickets, "How many dollars are in your pocket?" %>
      <br>
-    <%= f.number_field :height, class: 'form-control' %>
-    <br>
-
-    <%= f.label :name %>
-    <br>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.number_field :tickets, class: 'form-control' %>
     <br>
 
     <%# <%= f.label :admin, "Check box if you are a theme park owner" %>
@@ -37,5 +32,7 @@
     <br>
     <%= f.text_field :password, class: 'form-control' %>
     <br>
+
+    <%= f.submit class: 'btn btn-primary' %>
 
   <% end %>

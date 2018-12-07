@@ -1,13 +1,20 @@
 class UsersController < ApplicationController
 
-  def show
-    @user = User.find(params[:id])
+  def welcome
   end
 
   def new
     @user = User.new
+  end
+
+  def show
+    @user = User.find(session[:user_id])
+  end
+
+  def create
+    @user = User.new(user_params)
     if @user.save
-      # woo saving
+      redirect_to @user # user_url(@user)
     else
       render 'new'
     end
@@ -16,7 +23,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:name, :password, :nausea, :happiness, :tickets, :height)
+      params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height)
     end
 
 end # class UsersController

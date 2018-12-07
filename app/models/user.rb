@@ -14,21 +14,22 @@ class User < ActiveRecord::Base
     happiness > nausea ? "happy" : "sad"
   end
 
-  def taller_than?
-    self.height >= 40
-  end
-
-  def more_tickets_than?
-    self.tickets > 1
-  end
-
-  def rating_increase
-    self.happiness += 1
-    self.nausea += 1
-  end
-
-  def ticket_decrease
-    self.tickets -= 1
-  end
+  # def taller_than?
+  #   # cannot hardcode :(
+  #   self.height >= 40
+  # end
+  #
+  # def more_tickets_than?
+  #   self.tickets > 1
+  # end
+  #
+  # def rating_increase
+  #   self.happiness += 1
+  #   self.nausea += 1
+  # end
+  #
+  # def ticket_decrease
+  #   self.tickets -= 1
+  # end
 
 end
