@@ -17,6 +17,7 @@ class Ride < ActiveRecord::Base
 
   def meet_requirements
     enough_tickets, tall_enough = false
+    # binding.pry
     if self.user.tickets >= self.attraction.tickets
       enough_tickets = true
     end
