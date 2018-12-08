@@ -1,0 +1,40 @@
+  <%= form_for @user do |f| %>
+
+    <%= f.label :name %>
+    <br>
+    <%= f.text_field :name, class: 'form-control' %>
+    <br>
+
+    <%= f.label :height, "Height (in inches)" %>
+     <br>
+    <%= f.number_field :height, max: 108, class: 'form-control' %>
+    <br>
+
+    <%= f.label :happiness, "How happy are you? (1-5 scale)" %>
+    <br>
+    <%= f.number_field :happiness, in: 1...6, class: 'form-control' %>
+    <br>
+
+    <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %>
+    <br>
+    <%= f.number_field :nausea, in: 1...6, class: 'form-control' %>
+    <br>
+
+    <%= f.label :tickets, "How many dollars are in your pocket?" %>
+     <br>
+    <%= f.number_field :tickets, class: 'form-control' %>
+    <br>
+
+    <%= f.label "Check box if you are a theme park owner" %>
+    <%= f.check_box :admin %>
+    <br>
+    <br>
+
+    <%= f.label :password %>
+    <br>
+    <%= f.text_field :password, class: 'form-control' %>
+    <br>
+
+    <%= f.submit class: 'btn btn-primary' %>
+
+  <% end %>

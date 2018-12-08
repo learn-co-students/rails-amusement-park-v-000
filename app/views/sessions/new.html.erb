@@ -1,0 +1,12 @@
+<%= form_for(:user, url: signin_path) do |f| %>
+
+  <%= f.label :name, "Your name:" %>
+  <%= f.collection_select :name, User.all, :id, :name,
+  { :prompt => "Please select your username from this dropdown" }, class: 'form-group'%>
+  <br>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password, nil, class: 'form-control' %>
+  <br>
+  <%= f.submit "Sign In"%>
+<% end %>
