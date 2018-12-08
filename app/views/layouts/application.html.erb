@@ -21,7 +21,7 @@
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <% if current_user %>
           <a class="navbar-brand" href="<%= user_path current_user %>"/><%= current_user.name %>'s profile</a>
-          <%= link_to "Log Out", logout_path, method: :get, :class => "navbar-brand" %>
+          <%= link_to "Log Out", logout_path, method: :get, class: "navbar-brand" %>
         <% else  %>
           <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
           <a class="navbar-brand" href="<%= signin_url %>"/>Log In</a>
