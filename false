@@ -1,0 +1,4 @@
+      invoke  active_record
+      create    db/migrate/20181212200024_create_users.rb
+    conflict    app/models/user.rb
+  Overwrite /Users/amitsmacbook/Development/code/rails-amusement-park-v-000/app/models/usser.rb? (enter "h" for help) [Ynaqdhm] 
