@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  get 'welcome/home'
-  resources :users
 
-  get '/auth/facebook/callback' => 'sessions#create'
+  get 'attractions/index'
+  resources :users
+  resources :attractions
+
+  get 'welcome/home'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   root 'welcome#home'
 end
