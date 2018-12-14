@@ -6,9 +6,9 @@ class User < ApplicationRecord
 
   def mood
     if self.happiness < self.nausea
-      mood = "sad"
+       mood = "sad"
     else
-     mood = "happy"
+       mood = "happy"
     end
   end
 end
