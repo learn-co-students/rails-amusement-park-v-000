@@ -1,0 +1,31 @@
+      invoke  active_record
+      create    db/migrate/20181217235351_create_attractions.rb
+   identical    app/models/attraction.rb
+      invoke    rspec
+    conflict      spec/models/attraction_spec.rb
+    Overwrite /Users/danielschoch/dev/learn/rails/rails-amusement-park-v-000/spec/models/attraction_spec.rb? (enter "h" for help) [Ynaqdhm]       :tickkets => 5,
+            Y - yes, overwrite
+        n - no, do not overwrite
+        a - all, overwrite this and all others
+        q - quit, abort
+        d - diff, show the differences between the old and the new
+        h - help, show this help
+        m - merge, run merge tool
+    Overwrite /Users/danielschoch/dev/learn/rails/rails-amusement-park-v-000/spec/models/attraction_spec.rb? (enter "h" for help) [Ynaqdhm]       :naussea_rating => 2,
+            Y - yes, overwrite
+        n - no, do not overwrite
+        a - all, overwrite this and all others
+        q - quit, abort
+        d - diff, show the differences between the old and the new
+        h - help, show this help
+        m - merge, run merge tool
+    Overwrite /Users/danielschoch/dev/learn/rails/rails-amusement-park-v-000/spec/models/attraction_spec.rb? (enter "h" for help) [Ynaqdhm]       :happpiness_rating => 4,
+            Y - yes, overwrite
+        n - no, do not overwrite
+        a - all, overwrite this and all others
+        q - quit, abort
+        d - diff, show the differences between the old and the new
+        h - help, show this help
+        m - merge, run merge tool
+    Overwrite /Users/danielschoch/dev/learn/rails/rails-amusement-park-v-000/spec/models/attraction_spec.rb? (enter "h" for help) [Ynaqdhm]       :min__height[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K

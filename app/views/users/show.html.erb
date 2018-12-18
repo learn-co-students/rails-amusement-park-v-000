@@ -1,0 +1,27 @@
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>
+
+
+<% if @user.admin %>
+    <h2>ADMIN</h2>
+<% end %>
+
+<h3>Name:</h3>
+<p><%= @user.name %></p>
+<h3>Height:</h3>
+<p><%= @user.height%></p>
+<h3>Tickets:</h3>
+<p><%= @user.tickets %></p>
+<h3>Nausea</h3>
+<p><%= @user.nausea %></p>
+<h3>Happiness:</h3>
+<p><%= @user.happiness %></p>
+<h3>Mood:</h3>
+<p><%= @user.mood %></p>
+
+<h4><%= link_to 'See attractions', attractions_path %></h4>
+
+<%= link_to('Log Out', signout_path, method: :delete) %> 
