@@ -23,7 +23,7 @@ class Ride < ActiveRecord::Base
      when "too short"
        "Sorry. You are not tall enough to ride the #{ride_attraction.name}."
     else
-       "Thanks for riding the #{self.attraction.name}!"
+       "Thanks for riding the #{ride_attraction.name}!"
      end
 
 
