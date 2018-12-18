@@ -1,2 +1,11 @@
-<h1>Attractions#index</h1>
-<p>Find me in app/views/attractions/index.html.erb</p>
+<h1>Listing Attractions</h1>
+
+<ul>
+  <% @attractions.each do |attraction| %>
+    <li><%= attraction.name %> - Requires <%= attraction.tickets %> Tickets - <%= link_to current_user.admin ? "Show #{attraction.name}" : "Go on #{attraction.name}", attraction_path(attraction) %></li>
+  <% end %>
+</ul>
+
+<% if current_user.admin %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
