@@ -1,0 +1,25 @@
+
+ <%= form_with model: @user do |form| %>
+   <%= form.label :name, "Name:"%>
+   <%= form.text_field :name %>
+   <br>
+   <%= form.label :height, "Height:"%>
+   <%= form.number_field :height %>
+   <br>
+   <%= form.label :happiness, "Happiness:"%>
+   <%= form.number_field :happiness %>
+   <br>
+   <%= form.label :nausea, "Nausea:"%>
+   <%= form.number_field :nausea %>
+   <br>
+   <%= form.label :tickets, "Tickets:"%>
+   <%= form.number_field :tickets %>
+   <br>
+   <%= form.label :admin, "Check if Admin:"%>
+   <%= form.check_box :admin, id: :user_admin %>
+   <br>
+   <%= form.label :password, "Password:"%>
+   <%= form.text_field :password %>
+   <br>
+   <%= form.submit "Create User"%>
+ <% end %>
