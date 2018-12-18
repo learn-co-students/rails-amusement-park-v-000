@@ -1,4 +1,19 @@
 <%= form_for @attraction do |f| %>
+
+  <% if @attraction.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@attraction.errors.count, "error") %> prohibited this user from being saved:
+      </h2>
+
+      <ul>
+      <% @attraction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <%= f.label :name %>
     <br>
