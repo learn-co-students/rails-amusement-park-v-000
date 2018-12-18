@@ -1,8 +1,10 @@
-<h1>Sign In Below </h1>
-<%= form_for @user  do |f| %>
-<%= f.label :name %>
-<%= f.collection_select(:name, @users, :id, :name) %>
-<%= f.label :password, "Enter your password" %><br>
-<%= f.password_field :password %>
-<%= f.submit "Sign In" %>
-<% end %>
+
+ <h1>Sign in Here</h1>
+
+  <%= form_tag signin_path do %>
+   <label>Select Your Name Below:</label><br>
+   <%= select_tag :'user_name', options_from_collection_for_select(User.all, :name, :name) %><br>
+   <label>Password</label><br>
+   <%= password_field_tag :'password' %><br>
+   <%= submit_tag "Sign In" %>
+ <% end %>

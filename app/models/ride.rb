@@ -14,6 +14,7 @@ class Ride < ActiveRecord::Base
       user.tickets  = user.tickets -= attraction.tickets
 
       user.save!
+      "Thanks for riding the #{attraction.name}!"
 
     elsif
       attraction.min_height > user.height && attraction.tickets > user.tickets
