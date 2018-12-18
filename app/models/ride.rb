@@ -12,15 +12,18 @@ class Ride < ActiveRecord::Base
        sitrep = "too short"
      else
        update_user_after_ride
+
      end
 
      case sitrep
      when "too poor and short"
-       "Sorry. You do not have enough tickets to ride the #{ride_attraction.name}. You are not tall enough to ride the #{ride_attraction.name}."
+      "Sorry. You do not have enough tickets the #{ride_attraction.name}. You are not tall enough to ride the #{ride_attraction.name}."
      when "too poor"
-       "Sorry. You do not have enough tickets to ride the #{ride_attraction.name}."
+       "Sorry. You do not have enough tickets the #{ride_attraction.name}."
      when "too short"
        "Sorry. You are not tall enough to ride the #{ride_attraction.name}."
+    else
+       "Thanks for riding the #{self.attraction.name}!"
      end
 
 
@@ -30,16 +33,15 @@ class Ride < ActiveRecord::Base
      ride_user.tickets = ride_user.tickets - ride_attraction.tickets
      ride_user.nausea += ride_attraction.nausea_rating
      ride_user.happiness += ride_attraction.happiness_rating
-     binding.pry 
      ride_user.save
 
    end
 
    def ride_user
-     User.find(self.user_id)
+      self.user
    end
 
    def ride_attraction
-     Attraction.find(self.attraction_id)
+      self.attraction
    end
 end
