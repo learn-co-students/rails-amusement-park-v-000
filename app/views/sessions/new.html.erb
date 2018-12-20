@@ -1,0 +1,18 @@
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+    <%= f.label :name, " Select your name" %><br>
+    <%= f.collection_select(:id, @users, :id, :name) %>
+    <%# <select name="user[user_id]">
+    <% @users.each do |user| %>
+        <%# <option value="<%= user.id %>
+        <%# <%= user.name %>
+        <%# </option> %>
+    <%# <% end %>
+    <%# </select><br> %>
+
+    <%# <%= f.label :admin, "Check box if you are a theme park owner" %>
+    <%# <%= f.check_box :admin %>
+
+    <%= f.label "Password" %><br>
+    <%= f.text_field :password %><br>
+    <%= f.submit 'Signin'%>
+<% end %>
