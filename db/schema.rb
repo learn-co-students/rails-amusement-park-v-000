@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2) do
     t.integer "nausea"
     t.integer "tickets"
     t.integer "height"
-    t.boolean "admin"
+    t.boolean "admin", default: false, null: false
   end
 
 end
