@@ -1,0 +1,7 @@
+<h1>Welcome</h1>
+<% if session[:user_id] %>
+   <h1> <%= @user.name %> </h1>
+   <%else%>
+   <a class="navbar-brand" href="<%= login_path %>"/>Log in</a>
+   <a class="navbar-brand" href="<%= signup_path %>"/>Sign up</a>
+<% end %>

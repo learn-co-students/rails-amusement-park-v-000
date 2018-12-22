@@ -1,0 +1,16 @@
+<%= form_for :user do |f| %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label "Happiness (1-5 scale)" %><br>
+    <%= f.text_field :happiness %><br>
+    <%= f.label "Nausea (1-5 scale)" %><br>
+    <%= f.text_field :nausea %><br>
+    <%= f.label :tickets %><br>
+    <%= f.text_field :tickets %><br>
+    <%= f.label :height %><br>
+    <%= f.text_field :height %><br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password_digest %><br>
+    <br>
+    <%= f.submit "Sign up" %>
+    <% end %>
