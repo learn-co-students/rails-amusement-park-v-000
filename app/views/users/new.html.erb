@@ -9,6 +9,8 @@
     <%= f.text_field :tickets %><br>
     <%= f.label :height %><br>
     <%= f.text_field :height %><br>
+        <%= f.label :admin, "Check box if you are a theme park owner" %>
+        <%= f.check_box :admin, class: "form-check-input" %><br>
     <%= f.label :password %><br>
     <%= f.password_field :password_digest %><br>
     <br>
