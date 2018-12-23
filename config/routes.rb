@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     post '/signout' => 'sessions#destroy'
     delete "/signout", to: "sessions#destroy"
 
-    resources :users
+    resources :attractions
     resources :users, only: [:new, :create, :show]
 
 
