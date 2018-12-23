@@ -5,11 +5,10 @@ class User < ActiveRecord::Base
     # validates :happiness, :nausea, :tickets, :height, :password, :name, presence: true
  
     def mood 
-        if self.happiness <= self.nausea
-            'sad'
-        else
-            'happy'
-        end
+        if self.happiness && self.nausea
+            mood = self.happiness - self.nausea
+            mood > 0 ? "happy" : "sad"
+          end
     end    
 
 

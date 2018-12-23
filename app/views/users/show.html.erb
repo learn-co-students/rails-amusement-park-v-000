@@ -1,5 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>
+
+
+
+
+<% if @user.admin %>
+    <p><strong>ADMIN</strong></p>
+<% end %><br>
+
 <strong> Name: <%= @user.name %> </strong> <br>
 <strong> Mood: <%= @user.mood %> </strong> <br>
 <strong> Tickets: <%= @user.tickets %> </strong> <br>
 <strong> Height: <%= @user.height %> inches</strong> <br>
-<%= link_to "See attractions", attractions_path %>
+<br>
+<%= link_to "See attractions", attractions_path, class:"btn btn-primary btn-light" %><br> <br>
+<p><%= link_to 'Edit Profile', edit_user_path(@user), class:"btn btn-primary btn-light" %></p>
+   
