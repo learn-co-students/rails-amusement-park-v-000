@@ -1,10 +1,10 @@
 <h1>Sign in</h1>
-<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+<%= form_for :user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
   <%= f.label "Your Name" %>
-  <%= f.collection_select :name, User.all, :id, :name %><br>
+  <%= f.collection_select :name, User.all, :name, :name %><br>
   <%= f.label :password %>
   <%= f.password_field :password %><br>
   <br>
-  <%= f.submit "Signin" %>
+  <%= f.submit "Sign In" %>
 
 <% end %>
