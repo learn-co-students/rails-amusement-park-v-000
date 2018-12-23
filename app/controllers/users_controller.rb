@@ -17,6 +17,9 @@ skip_before_action :redirect_if_not_logged_in, only: [:new, :create]
     def show
     end
 
+    def update
+    end
+
     private
 
     def user_params

@@ -8,4 +8,5 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find_by_id(params[:id])
   end
 
+
 end

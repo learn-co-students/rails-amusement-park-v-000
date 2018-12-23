@@ -5,8 +5,10 @@
 <p>Height: <%= @user.height %></p>
 <p>Tickets: <%= @user.tickets %></p>
 <p>Mood: <%= @user.mood %></p>
+<div class="navbar-toggle navbar-brand">
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
     <input type=submit value='Log Out'>
     <% end %>
+    </div>
 
 <%= link_to "See attractions", attractions_path %>

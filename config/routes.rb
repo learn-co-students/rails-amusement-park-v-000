@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :attractions
     resources :users, only: [:new, :create, :show]
 
+    post '/take_ride' => 'rides#take_ride'
+
 
 
 end

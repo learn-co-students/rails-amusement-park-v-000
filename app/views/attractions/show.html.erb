@@ -3,4 +3,9 @@
 <p>Nausea Rating: <%= @attraction.nausea_rating %></p>
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 <p>Tickets Required: <%= @attraction.tickets %></p>
-<button href="#">Go on this ride</button>
+
+<%= form_tag ({controller: 'rides', action: 'take_ride', method: 'post'}) do %>
+  <%= hidden_field_tag 'user_id', @user.id %>
+  <%= hidden_field_tag 'attraction_id', @attraction.id %>
+    <input type=submit value='Go on this ride'>
+    <% end %>
