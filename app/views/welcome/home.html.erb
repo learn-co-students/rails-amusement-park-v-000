@@ -4,8 +4,4 @@
     <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
         <input type=submit value='logout'>
         <% end %>
-
-   <%else%>
-   <a class="navbar-brand" href="<%= signin_path %>"/>Log in</a>
-   <a class="navbar-brand" href="<%= new_user_path %>"/>Sign up</a>
 <% end %>

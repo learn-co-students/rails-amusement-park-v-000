@@ -1,7 +1,10 @@
 <h1>Name: <%= @user.name %></h1>
+<% if @user.admin%>
+  <h2>ADMIN</h2>
+  <% end %>
 <p>Height: <%= @user.height %></p>
 <p>Tickets: <%= @user.tickets %></p>
 <p>Mood: <%= @user.mood %></p>
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-    <input type=submit value='logout'>
+    <input type=submit value='Log Out'>
     <% end %>
