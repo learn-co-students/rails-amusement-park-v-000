@@ -5,7 +5,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    return redirect_to '/signup'
+    return redirect_to '/users/new' unless @user.save
+    session[:user_id] = @user.id
+    redirect_to '/'
   end
 
   private
