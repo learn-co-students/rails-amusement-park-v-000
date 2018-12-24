@@ -5,14 +5,14 @@
     <title>Sign Up</title>
   </head>
   <body>
-    <%= form_for :user, url: '/users' do |f| %>
+    <%= form_for :user, controller: 'users', action: 'create' do %>
       Name: <%= f.text_field :name %>
       Height: <%= f.text_field :height %>
       Happiness <%= f.text_field :happiness %>
       Nausea <%= f.text_field :nausea %>
       Tickets <%= f.text_field :tickets %>
-      Password <%= f.text_field :password %>
-      Password Confirmation <%= f.text_field :password_confirmation %>
+      Password <%= f.password_field :password %>
+      Password Confirmation <%= f.password_field :password_confirmation %>
       <%= f.submit "Create User" %>
     <% end %>
   </body>
