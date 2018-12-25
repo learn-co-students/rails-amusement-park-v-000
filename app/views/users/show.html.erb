@@ -12,5 +12,11 @@
     <p>Happiness: <%= @user.happiness %></p>
     <p>Nausea: <%= @user.nausea %></p>
     <p>Tickets: <%= @user.tickets %></p>
+
+
+    <%= link_to "Log Out", destroy_session_path %>
+    <%# form_tag({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+      <%#input type="submit" value="Log Out">
+    <% end %>
   </body>
 </html>
