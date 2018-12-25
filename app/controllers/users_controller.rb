@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    render :layout => "admin" if @user.admin
   end
 
   private
