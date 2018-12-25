@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get 'users/new' => 'users#new'
   post 'users/new' => 'users#create'
   resources :users, except: [:new]
+
+  resources :attractions
 end
