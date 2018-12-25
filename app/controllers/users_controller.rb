@@ -14,12 +14,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render :layout => "admin" if @user.admin
+    render :layout => "admin" unless !@user.admin
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :password_confirmation)
+    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :password_confirmation, :admin)
   end
 
   def require_login

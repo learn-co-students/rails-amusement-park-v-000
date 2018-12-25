@@ -5,14 +5,7 @@
     <title></title>
   </head>
   <body>
-    <h2>Hi, <%= @user.name %>!</h2>
-
-    <p>Mood: <%= @user.mood %></p>
-    <p>Height: <%= @user.height %></p>
-    <p>Happiness: <%= @user.happiness %></p>
-    <p>Nausea: <%= @user.nausea %></p>
-    <p>Tickets: <%= @user.tickets %></p>
-
+    <%= render 'user' unless @user.admin%>
 
     <%= link_to "Log Out", '/logout' %>
   </body>
