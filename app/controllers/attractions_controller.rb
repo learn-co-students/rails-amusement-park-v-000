@@ -6,8 +6,4 @@ class AttractionsController < ApplicationController
   def show
     @attraction = Attraction.find(params[:id])
   end
-
-  def take_ride
-    @user.rides << self.ride
-  end
 end
