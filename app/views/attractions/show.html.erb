@@ -5,4 +5,4 @@
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 <p>Minimum Height: <%= @attraction.min_height %></p>
 
-<%= link_to "Go on this ride" %>
+<%= button_to "Go on this ride", attraction_url(@attraction) %>
