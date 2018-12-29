@@ -1,8 +1,3 @@
-<h2><%= @attraction.name %></h2>
-
-<p>Tickets: <%= @attraction.tickets %></p>
-<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
-<p>Happiness Rating: <%= @attraction.happiness_rating %></p>
-<p>Minimum Height: <%= @attraction.min_height %></p>
+<%= render 'attraction', locals: {attraction: @attraction} %>
 
 <%= button_to "Go on this ride", take_ride_url(@attraction) %>

@@ -1,0 +1,3 @@
+<% @attractions.each do |attraction| %>
+  <p><%= link_to "Show #{attraction.name}", admin_attraction_path(attraction) %></p>
+<% end %>

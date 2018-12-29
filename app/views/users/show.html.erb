@@ -5,13 +5,9 @@
     <title></title>
   </head>
   <body>
-    <% if @user.admin %>
-      <h4>ADMIN</h4>
-    <% end %>
 
-    <%= render 'user' %>
+    <%= render 'user' unless @user.admin %>
 
-    <%= link_to "See attractions", attractions_path %>
     <%= link_to "Log Out", '/logout' %>
   </body>
 </html>

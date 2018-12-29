@@ -5,7 +5,8 @@
     <title>Admin</title>
   </head>
   <body>
+    <h2>Welcome ADMIN <%= @user.name %>.</h2>
     <%= yield %>
-    <%= link_to "New Attraction", %>
+    <%= link_to "See Attractions", admin_attractions_path %>
   </body>
 </html>
