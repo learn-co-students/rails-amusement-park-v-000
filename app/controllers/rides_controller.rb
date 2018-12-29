@@ -14,6 +14,7 @@ class RidesController < ApplicationController
         nausea: @user.nausea + @attraction.nausea_rating)
         @user.save
 
+        flash[:message] = "Thanks for riding the #{@attraction.name}!"
         redirect_to @user
 
       else
@@ -23,13 +24,13 @@ class RidesController < ApplicationController
 
     private
 
-    def ticket_check(user, attraction)
-      user.tickets >= attraction.tickets
-    end
+        def ticket_check(user, attraction)
+          user.tickets >= attraction.tickets
+        end
 
-    def height_check(user, attraction)
-      !user.height.nil? && user.height >= attraction.min_height
-    end
+        def height_check(user, attraction)
+          !user.height.nil? && user.height >= attraction.min_height
+        end
 
 
 end

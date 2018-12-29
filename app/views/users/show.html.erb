@@ -1,3 +1,8 @@
+<% if flash[:message] %>
+<div class="alert alert-info">
+  <%= flash[:message] %>
+  </div>
+<% end %>
 <h1>Name: <%= @user.name %></h1>
 <% if @user.admin%>
   <h2>ADMIN</h2>
