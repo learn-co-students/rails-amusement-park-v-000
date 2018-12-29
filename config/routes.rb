@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   post 'users/new' => 'users#create'
   resources :users, except: [:new]
 
-  resources :attractions
+  resources :attractions, only: [:index, :show]
+  post 'attractions/:id' => 'attractions#take_ride', as: :take_ride
 end
