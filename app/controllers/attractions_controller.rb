@@ -10,7 +10,8 @@ class AttractionsController < ApplicationController
   def take_ride
     @attraction = Attraction.find(params[:id])
     ride = Ride.create(user_id: session[:user_id], attraction_id: @attraction.id)
-    ride.take_ride
+    flash[:alert] = "#{ride.take_ride}"
+    flash[:notice] = "Thanks for riding the #{@attraction.name}!"
     redirect_to '/'
   end
 end

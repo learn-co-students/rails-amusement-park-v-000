@@ -1,3 +1,9 @@
+<% if flash[:alert] != "true"%>
+  <%= content_tag :div, flash[:alert] %>
+<% else %>
+  <%= content_tag :div, flash[:notice] %>
+<% end %>
+
 <h2>Hi, <%= @user.name %>!</h2>
 
 <p>Mood: <%= @user.mood %></p>
