@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, url: { action: "create", controller: "sessions" } do |f| %>
   <p>Your name:</p><%= f.collection_select(:name, User.all, :id, :name) %><br>
   <p>Your password:</p><br>
   <%= f. password_field(:password, :id => "password") %>

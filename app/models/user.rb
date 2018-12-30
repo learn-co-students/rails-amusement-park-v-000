@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  validates :name, :nausea, :happiness, :tickets, :height, :password, presence: true
   has_many :rides
   has_many :attractions, :through => :rides
 

@@ -5,19 +5,23 @@ class UsersController < ApplicationController
   end
 
   def create
-    #binding.pry
-    @user = User.create(user_params)
-    session[:user_id] = @user.id
-    redirect_to user_path(@user)
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to new_user_path
+    end
   end
 
   def show
-    #binding.pry
+    if User.find(params[:id])
       @user = User.find(params[:id])
-    #   render :show
-    # else
-    #   redirect_to new_user_path
-    # end
+      render :show
+    else
+      redirect_to new_user_path
+    end
   end
 
   private
