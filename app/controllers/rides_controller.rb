@@ -6,7 +6,8 @@ class RidesController < ApplicationController
      :attraction_id => params[:attraction_id]
    )
    @message = @ride.take_ride
-   redirect_to user_path(@ride.user, :message => @message)
+   flash[:message] = "#{@message}"
+   redirect_to user_path(@ride.user)
  end
 
 end
