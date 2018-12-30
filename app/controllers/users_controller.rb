@@ -12,11 +12,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    if User.find(params[:id])
+    #binding.pry
       @user = User.find(params[:id])
-    else
-      redirect_to new_user_path
-    end
+    #   render :show
+    # else
+    #   redirect_to new_user_path
+    # end
   end
 
   private

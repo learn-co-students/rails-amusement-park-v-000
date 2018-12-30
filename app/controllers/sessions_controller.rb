@@ -5,8 +5,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(params[:id])
-    session[:name] = @user.name
+    #binding.pry
+    @user = User.find(params[:id])
+    session[:user_id] = @user.id
     redirect_to user_path(@user)
   end
 
