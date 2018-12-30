@@ -1,11 +1,17 @@
+<% if flash[:message] %>
+<div class="alert alert-info">
+  <%= flash[:message] %>
+  </div>
+<% end %>
 <h1><%= @attraction.name %></h1>
 <p>Minimum Height: <%= @attraction.min_height %></p>
 <p>Nausea Rating: <%= @attraction.nausea_rating %></p>
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 <p>Tickets Required: <%= @attraction.tickets %></p>
 
-<%= form_tag ({controller: 'rides', action: 'take_ride', method: 'post'}) do %>
-  <%= hidden_field_tag 'user_id', @user.id %>
-  <%= hidden_field_tag 'attraction_id', @attraction.id %>
-    <input type=submit value='Go on this ride'>
-    <% end %>
+<form action="rides/new" method="post">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+  <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+  <input type="submit" value="Go on <%=@attraction.name%>"
+  </form>
