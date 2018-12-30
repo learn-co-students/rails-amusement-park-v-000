@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
           mood > 0 ? "happy" : "sad"
         end
     end
+
+    def admin?
+      self.admin
+    end
 end
