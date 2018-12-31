@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if User.find(params[:id])
+    if User.find(params[:id]) && session[:user_id]
       @user = User.find(params[:id])
       render :show
     else
