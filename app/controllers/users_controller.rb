@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       if params[:user][:admin] == "1"
         @user.admin = true
       end
+      binding.pry
       @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
