@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.valid?
+      if params[:user][:admin] == "1"
+        @user.admin = true
+      end
       @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -20,14 +23,14 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       render :show
     else
-      redirect_to new_user_path
+      redirect_to root_url
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
+    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :admin, :password)
   end
 
 end
