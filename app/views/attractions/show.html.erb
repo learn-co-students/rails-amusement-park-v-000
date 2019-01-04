@@ -1,3 +1,5 @@
 <%= render 'attraction', locals: {attraction: @attraction} %>
 
-<%= button_to "Go on this ride", take_ride_url(@attraction) %>
+<%= button_to "Go on this ride", take_ride_url(@attraction) unless current_user.admin? %>
+
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
