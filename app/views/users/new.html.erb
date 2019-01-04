@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+
 <%= form_for @user do |f| %>
 Name<br>
 <%= f. text_field :name %><br>

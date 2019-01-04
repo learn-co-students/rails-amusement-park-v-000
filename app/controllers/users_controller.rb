@@ -10,11 +10,12 @@ class UsersController < ApplicationController
       if params[:user][:admin] == "1"
         @user.admin = true
       end
-      binding.pry
       @user.save
+      #binding.pry
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      flash[:notice] = "Invalid entry"
       redirect_to new_user_path
     end
   end
