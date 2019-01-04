@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <%= render 'user' unless @user.admin %>
+    
+    <%= link_to "Log Out", '/logout' %>
+  </body>
+</html>

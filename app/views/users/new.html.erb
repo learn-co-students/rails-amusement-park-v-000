@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <%= form_for @user do |f| %>
+      Name: <%= f.text_field :name %>
+      Height: <%= f.text_field :height %>
+      Happiness <%= f.text_field :happiness %>
+      Nausea <%= f.text_field :nausea %>
+      Tickets <%= f.text_field :tickets %>
+      Password <%= f.password_field :password %>
+      Admin <%= f.check_box :admin %>
+      <%= f.submit "Create User" %>
+    <% end %>
+  </body>
+</html>

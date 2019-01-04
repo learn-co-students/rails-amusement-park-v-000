@@ -1,0 +1,6 @@
+<h2>Edit <%= @attraction.name %></h2>
+
+<%= form_for @attraction do |f| %>
+  <%= render "form" , f: f %>
+  <%= f.submit "Update Attraction" %>
+<% end %>

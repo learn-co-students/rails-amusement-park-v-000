@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+  </head>
+  <body>
+    <h2>Welcome ADMIN <%= @user.name %>.</h2>
+    <%= yield %>
+    <%= link_to "See attractions", admin_attractions_path %>
+  </body>
+</html>
