@@ -4,6 +4,7 @@ class StaticController < ApplicationController
   end
 
   def signin
+    User.find_by(name: params[:name], password: params[:password])
   end
 
   def logout
