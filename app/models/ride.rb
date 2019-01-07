@@ -10,11 +10,12 @@ class Ride < ActiveRecord::Base
     if self.user.tickets < self.attraction.tickets
       ride_err << "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     end
-    else
+    if ride_err.empty?
       self.user.tickets -= self.attraction.tickets
       self.user.happiness += self.attraction.happiness_rating
       self.user.nausea += self.attraction.nausea_rating
+    else
+      ride_err
     end
-    ride_err.empty? ? self : ride_err
   end
 end
