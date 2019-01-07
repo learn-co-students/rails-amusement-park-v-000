@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'static/signup' => 'users#new'
   get 'static/logout'
 
-  resources :users, only:[:show, :new, :create, :destroy, :edit, :update]
+  resources :users, only:[:new, :create, :show, :edit, :update, :destroy]
 
 end
