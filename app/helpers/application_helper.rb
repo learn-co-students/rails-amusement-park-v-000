@@ -7,5 +7,5 @@ module ApplicationHelper
   def current_user
     session[:user_id] if logged_in
   end
-  
+
 end

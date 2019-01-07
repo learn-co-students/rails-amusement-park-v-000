@@ -16,19 +16,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    if session[:user_id] == params[:id]
-      @user = User.find_by(params[:id])
-      render :show
-    else
-      redirect_to root_path
-    end
+    render :show
+    @user = User.find_by(params[:id])
   end
 
   def destroy
-    if session[:user_id] == params[:id]
-      User.destroy(params[:id])
-      session.destroy(:user_id)
-    end
+    User.destroy(params[:id])
+    session.destroy(:user_id)
     redirect_to root_path
   end
 
@@ -43,5 +37,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password, :nausea,
     :happiness, :tickets, :height, :admin)
+  end
+
+  def require_login
+    redirect_to root_path unless session[:user_id] == params[:id]
   end
 end
