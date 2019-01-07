@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       User.destroy(params[:id])
       session.destroy(:user_id)
     end
-    redirect_to root_url
+    redirect_to root_path
   end
 
   def edit
