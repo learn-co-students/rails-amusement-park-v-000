@@ -5,6 +5,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    if @user.valid?
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      @errors = @user.errors.messages
+      render :new
   end
 
   def show
@@ -22,7 +28,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permid(:name, :password, :nausea,
+    params.require(:user).permit(:name, :password, :nausea,
     :happiness, :tickets, :height, :admin)
   end
 end
