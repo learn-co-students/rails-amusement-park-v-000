@@ -3,7 +3,7 @@ class StaticController < ApplicationController
   def home
   end
 
-  def login
+  def signin
   end
 
   def logout
