@@ -15,6 +15,7 @@ class Ride < ActiveRecord::Base
       user.happiness = user.happiness + attraction.happiness_rating
       user.nausea = user.nausea + attraction.nausea_rating
       user
+      binding.pry
     else
       "Sorry." + ride_err
     end
