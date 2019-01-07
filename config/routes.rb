@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, only:[:new, :create, :show, :edit, :update, :destroy]
   resources :attractions
-  
+
   post 'rides/:user_id/:attraction_id', to: 'rides#create'
 end
