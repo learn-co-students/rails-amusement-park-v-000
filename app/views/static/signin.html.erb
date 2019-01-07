@@ -1,8 +1,8 @@
 <h1>sign in:</h1>
 <%= form_tag '/login', method: 'post' do %>
-  <%= label :name %>
-  <%= text_field :name %>
-  <%= label :password %>
-  <%= text_field :password %>
+  <%= label_tag :name, "name" %>
+  <%= text_field_tag :name %>
+  <%= label_tag :password, "password" %>
+  <%= text_field_tag :password %>
   <%= submit_tag "sign in"%>
 <% end %>
