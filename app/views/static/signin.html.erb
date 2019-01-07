@@ -1,2 +1,7 @@
-<h1>Static#login</h1>
-<p>Find me in app/views/static/login.html.erb</p>
+<h1>sign in:</h1>
+<%= form_tag '/login', method: 'post' do %>
+  <%= label :name %>
+  <%= text_field :name %>
+  <%= label :password %>
+  <%= text_field :password %>
+<% end %>
