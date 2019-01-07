@@ -3,6 +3,9 @@ class StaticController < ApplicationController
   def home
   end
 
+  def signin
+  end
+  
   def login
     @user = User.find_by(name: params[:name], password: params[:password])
     if @user
@@ -13,8 +16,6 @@ class StaticController < ApplicationController
     end
   end
 
-  def signin
-  end
 
   def logout
     session.delete(:user_id) if session[:user_id]
