@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show, :destroy, :edit, :update]
 
   def new
     @user = User.new
@@ -16,8 +17,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    render :show
     @user = User.find_by(params[:id])
+    render :show
   end
 
   def destroy
