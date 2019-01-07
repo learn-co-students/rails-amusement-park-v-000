@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @user = User.find_by(params[:id])
       render :show
     else
-      root_path
+      redirect_to root_path
     end
   end
 
