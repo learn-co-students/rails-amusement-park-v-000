@@ -14,8 +14,7 @@ class Ride < ActiveRecord::Base
       user.tickets = user.tickets - attraction.tickets
       user.happiness = user.happiness + attraction.happiness_rating
       user.nausea = user.nausea + attraction.nausea_rating
-      user
-      binding.pry
+      user.update
     else
       "Sorry." + ride_err
     end
