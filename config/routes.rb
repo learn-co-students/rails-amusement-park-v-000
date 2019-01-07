@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get 'static/login'
   get 'static/signup'
 
-  resources :users
+  resources :users, only:[:show, :new, :create, :destroy, :edit, :update]
 
 end
