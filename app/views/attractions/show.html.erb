@@ -1,2 +1,10 @@
-<h1>Attractions#show</h1>
-<p>Find me in app/views/attractions/show.html.erb</p>
+<p><%= @attraction.name %></p>
+<p>tickets: <%= @attraction.tickets %></p>
+<p>nausea rating: <%= @attraction.nausea_rating %></p>
+<p>happiness rating: <%= @attraction.happiness_rating %></p>
+<p>min height: <%= @attraction.min_height %></p>
+<p><%= @attraction.height %></p>
+t.integer :tickets
+t.integer :nausea_rating
+t.integer :happiness_rating
+t.integer :min_height
