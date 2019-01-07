@@ -10,7 +10,7 @@ class Ride < ActiveRecord::Base
     if self.user.height < self.attraction.min_height
       ride_err << " You are not tall enough to ride the #{attraction.name}."
     end
-    if ride_err.empty?
+    if ride_err == ''
       self.user.tickets = self.user.tickets - self.attraction.tickets
       self.user.happiness = self.user.happiness + self.attraction.happiness_rating
       self.user.nausea = self.user.nausea + self.attraction.nausea_rating
