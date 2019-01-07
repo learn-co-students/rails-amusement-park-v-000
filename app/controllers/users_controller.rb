@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def new
     @user = User.new
   end
@@ -16,7 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:id])
+    if session[:user_id] == params[:id]
+      @user = User.find_by(params[:id])
+      render :show
+    else
+      root_path
+    end
   end
 
   def destroy
