@@ -8,4 +8,8 @@ class StaticController < ApplicationController
 
   def signup
   end
+
+  def logout
+    session.clear(:user_id)
+  end
 end
