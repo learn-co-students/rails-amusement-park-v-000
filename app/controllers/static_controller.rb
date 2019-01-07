@@ -4,6 +4,7 @@ class StaticController < ApplicationController
   end
 
   def signin
+    @users = User.all
   end
 
   def login
