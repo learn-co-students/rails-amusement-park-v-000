@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root '/'
+  root 'static#home'
 
   resources :users
 
