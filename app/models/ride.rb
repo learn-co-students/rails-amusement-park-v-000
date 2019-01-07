@@ -11,7 +11,7 @@ class Ride < ActiveRecord::Base
       ride_err << " You are not tall enough to ride the #{attraction.name}."
     end
     if ride_err.empty?
-      self.user.tickets -= self.attraction.tickets
+      self.user.tickets =- self.attraction.tickets
       self.user.happiness += self.attraction.happiness_rating
       self.user.nausea += self.attraction.nausea_rating
     else
