@@ -4,7 +4,7 @@ class StaticController < ApplicationController
   end
 
   def signin
-    @users = User.all
+    @user_names = User.all.map do {|u| u.name}
   end
 
   def login
