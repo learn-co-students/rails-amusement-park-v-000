@@ -19,7 +19,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.destroy(params[:id])
+    if session[:user_id] == params[:id]
+      User.destroy(params[:id])
+      session.destroy(:user_id)
+    end
+    redirect_to root_path
   end
 
   def edit
