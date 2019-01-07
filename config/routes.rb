@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root '/'
+
   resources :users
-  root 
+
 end
