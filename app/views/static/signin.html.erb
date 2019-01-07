@@ -1,7 +1,7 @@
 <h1>sign in:</h1>
 <%= form_tag '/login', method: 'post' do %>
   <%= label_tag :user_name, "username" %>
-  <%= text_field_tag :user_name %>
+  <%= select_tag :user_name, options_for_select(@user_names)%>
   <%= label_tag :password, "password" %>
   <%= text_field_tag :password %>
   <%= submit_tag "sign in"%>
