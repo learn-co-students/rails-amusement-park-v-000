@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get '/logout' => 'static#logout'
 
   resources :users, only:[:new, :create, :show, :edit, :update, :destroy]
+  resources :attractions
 
 end
