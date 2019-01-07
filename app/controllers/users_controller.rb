@@ -44,6 +44,8 @@ class UsersController < ApplicationController
   def require_login
     puts helpers.current_user
     puts params[:id]
-    redirect_to root_path unless helpers.current_user == params[:id]
+    unless helpers.current_user == params[:id]
+      redirect_to root_path
+    end
   end
 end
