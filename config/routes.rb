@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'rides/create'
   root 'static#home'
   get '/signin' => 'static#signin'
   post '/login' => 'static#login'

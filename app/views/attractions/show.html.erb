@@ -3,4 +3,4 @@
 <p>nausea rating: <%= @attraction.nausea_rating %></p>
 <p>happiness rating: <%= @attraction.happiness_rating %></p>
 <p>min height: <%= @attraction.min_height %></p>
-<p><%= link_to "Go on #{@attraction.name}", rides_path(current_user, @attraction.id), method: :post%></p>
+<p><%= link_to "Go on #{@attraction.name}", rides_path(current_user, @attraction.id), method: :post %></p>
