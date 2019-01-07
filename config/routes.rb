@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static#home'
-  get '/signin' => 'static#login'
+  get '/signin' => 'static#signin'
   get '/signup' => 'users#new'
   get '/logout' => 'static#logout'
 
