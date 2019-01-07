@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(params[:id])
+    puts @user.id
   end
 
   def destroy
