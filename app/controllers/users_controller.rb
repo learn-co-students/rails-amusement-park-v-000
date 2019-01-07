@@ -41,6 +41,6 @@ class UsersController < ApplicationController
   end
 
   def require_login
-    redirect_to root_path unless session[:user_id] == params[:id]
+    redirect_to root_path unless current_user == params[:id]
   end
 end
