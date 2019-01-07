@@ -1,7 +1,4 @@
-<h1>Greetings <%= @user.name %>! <%= @user.id %></h1>
-<% if @user.admin %>
-  <p>ADMIN</p>
-<% end %>
+<h1>Greetings<%= " ADMIN" if @user.admin %> <%= @user.name %>! <%= @user.id %></h1>
 <p>Height: <%=@user.height%></p>
 <p>tickets: <%=@user.tickets%></p>
 <p>Mood: <%=@user.mood%></p>
