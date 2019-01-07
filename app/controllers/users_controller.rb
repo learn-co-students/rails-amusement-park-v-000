@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     else
       @errors = @user.errors.messages
       render :new
+    end
   end
 
   def show
