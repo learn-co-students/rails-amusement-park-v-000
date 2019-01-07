@@ -11,9 +11,9 @@
   <%= f.text_field :tickets %></br>
   <%= f.label :height %>
   <%= f.text_field :height %></br>
-  <%= f.label :admin, "False" %>
+  <%= f.label :admin, "Not Admin" %>
   <%= f.radio_button :admin, false, checked: :true %>
-  <%= f.label :admin, "True" %>
-  <%= f.radio_button :admin, true %>
+  <%= f.label :admin, "Admin" %>
+  <%= f.radio_button :admin, true %><br>
   <%= f.submit %>
 <% end %>
