@@ -10,6 +10,6 @@ class StaticController < ApplicationController
   end
 
   def logout
-    session.clear(:user_id)
+    session.delete(:user_id)
   end
 end
