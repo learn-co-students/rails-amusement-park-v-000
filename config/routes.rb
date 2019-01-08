@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  # resource :users, only: [:new, :create, :show]
-  get '/users/new', to: 'users#new', as: 'signup'
-  post '/users', to: 'users#create'
-  get '/users/:id', to: 'users#show', as:'user'
   get '/', to: 'users#welcome', as: 'root'
+  
+  get '/users/new', to: 'users#new', as: 'signup'
+  post '/users/:id', to: 'users#take_ride', as: 'user_take_ride'
+  resources :users, only: [:create, :show]
 
   get '/signin', to: 'sessions#new'
   post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
-  get '/attractions', to: 'attractions#index', as: 'attractions'
-  get '/attraction/:id', to: 'attractions#show', as: "attraction"
-
+  resources :attractions, only: [:new, :create, :index, :show, :edit, :update]
 end

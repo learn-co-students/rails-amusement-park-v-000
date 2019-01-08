@@ -15,12 +15,30 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # binding.pry if User.find(params[:id]).admin == true
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
+
+  def take_ride
+    @user = User.find(params[:id])
+    user_ride =   @user.rides.create(attraction_id: params[:attraction_id]).take_ride
+    if user_ride == true
+      flash[:message] = "Thanks for riding the #{Attraction.find(params[:attraction_id]).name}!"
+    else
+      flash[:message] = user_ride
+    end
+
+    redirect_to user_path(@user)
+  end
+
 
   private
 
   def user_params
-    params.require(:user).permit(:name,:password, :nausea, :tickets, :happiness, :height, :admin)
+    params.require(:user).permit(:name,:password, :nausea, :tickets, :happiness, :height, :admin, :attraction_id, attraction_attributes: [:happiness, :nausea, :tickets])
   end
 end

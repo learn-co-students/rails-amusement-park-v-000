@@ -27,13 +27,13 @@
 
     <div class="form-group">
       <%= f.label "Check box if you are a theme park owner" %>      
+      <%= f.hidden_field :admin, value: 0 %>
       <%= f.check_box :admin, class: 'form-check-input'%>
     </div>
 
     <div class="form-group">
       <%= f.label :password %><br>
-      <%= f.hidden_field :admin, value: 0 %>
-      <%= f.text_field :password, class: 'form-control'%>
+      <%= f.password_field :password, class: 'form-control'%>
 
       <div class="actions">
         <br>

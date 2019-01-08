@@ -5,13 +5,15 @@ class User < ApplicationRecord
   has_secure_password
 
   def mood
-    self.nausea > self.happiness ? "sad" : "happy"
+    if !self.admin
+      self.nausea > self.happiness ? "sad" : "happy"
+    end
   end
 
   def update_stats(attraction_stats)
-    self.nausea += attraction_stats[:nausea]
-    self.happiness += attraction_stats[:happiness]
-    self.tickets -= attraction_stats[:tickets]
+    self.nausea += attraction_stats[:nausea].to_i
+    self.happiness += attraction_stats[:happiness].to_i
+    self.tickets -= attraction_stats[:tickets].to_i
     
     self.save
   end

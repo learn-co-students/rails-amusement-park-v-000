@@ -1,4 +1,4 @@
 <h1>Attractions</h1>
 <% @attractions.each do |atr| %>
-  <%= link_to atr.name, attraction_path(atr) %> <br>
+  <%= attraction_list_item(atr) %> <br> 
 <% end %>
