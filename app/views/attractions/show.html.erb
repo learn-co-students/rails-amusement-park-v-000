@@ -4,3 +4,4 @@
 <p>happiness rating: <%= @attraction.happiness_rating %></p>
 <p>min height: <%= @attraction.min_height %></p>
 <p><%= button_to "Go on this ride", rides_path(current_user, @attraction.id), action: :post %></p>
+<p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) if is_admin? %></p>

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login
-  skip_before_action :require_login, only: [:new, :create]
+  before_action :require_user_authentication, except: [:new, :create]
 
   def new
     @user = User.new
@@ -38,9 +37,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password, :nausea,
     :happiness, :tickets, :height, :admin)
-  end
-
-  def require_login
-    redirect_to root_path unless helpers.current_user == params[:id].to_i
   end
 end

@@ -8,4 +8,8 @@ module ApplicationHelper
     session[:user_id] if logged_in?
   end
 
+  def is_admin?
+    logged_in? ? User.where("id = ?", current_user).select("admin").first[:admin] : nil
+  end
+
 end
