@@ -1,6 +1,21 @@
-<%= @user.name %>
-<label> Mood: <label>
-<%= @user.mood %>
-<%= @user.tickets %>
-<%= @user.height %>
-<%= @user.nausea %> 
+<% if @message %>
+<%= @message %>
+<% end %>
+
+<% if @user.admin? %>
+  <label> ADMIN </label>
+  <%= @user.name %>
+<% else %>
+  <%= @user.name %>
+  <label> Mood: </label>
+  <%= @user.mood %>
+  <label> Tickets: </label>
+  <%= @user.tickets %>
+  <label> Height: </label>
+  <%= @user.height %>
+  <label> Nausea: </label>
+  <%= @user.nausea %>
+<% end%>
+
+<%= link_to 'Log Out', signout_path, method: :delete %>
+<%= link_to 'See attractions', attractions_path %>
