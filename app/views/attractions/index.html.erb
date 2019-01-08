@@ -1,0 +1,5 @@
+<% if is_admin? %>
+  <p><%= link_to "New Attraction", new_attraction_path %></p>
+<% end %>
+<%= render @attractions %>
+  
