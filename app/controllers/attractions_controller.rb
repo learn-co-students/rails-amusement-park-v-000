@@ -1,11 +1,12 @@
 class AttractionsController < ApplicationController
+   before_action :set_attraction, only: [:show, :edit, :update, :destroy]
+
   def index
     @attractions = Attraction.all
-
+    @user = current_user
   end
 
   def show
-    @attraction = Attraction.find_by(id: params[:id])
     @user = current_user
     @ride = Ride.new(user_id: @user.id, attraction_id: @attraction.id)
   end
@@ -15,6 +16,7 @@ class AttractionsController < ApplicationController
   end
 
   def edit
+  
   end
 
   def create
@@ -28,7 +30,8 @@ class AttractionsController < ApplicationController
 
 
   def update
-      if @attraction.update(attraction_params)
+      if @attraction
+        @attraction.update(attraction_params)
          redirect_to attraction_path(@attraction)
       else
          render :edit
