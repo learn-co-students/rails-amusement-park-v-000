@@ -1,0 +1,7 @@
+<%= form_tag(user_take_ride_path(current_user), method: 'post') do %>
+  <%= hidden_field_tag "attraction_attributes[happiness]", attraction.happiness_rating %>
+  <%= hidden_field_tag "attraction_attributes[nausea]", attraction.nausea_rating %>
+  <%= hidden_field_tag "attraction_attributes[tickets]", attraction.tickets%>
+  <%= hidden_field_tag "attraction_id", attraction.id%>
+  <%= submit_tag('Go on this ride')%>
+<%end%>

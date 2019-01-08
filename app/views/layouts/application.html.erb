@@ -19,15 +19,13 @@
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <% if logged_in? %>
-          <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%=current_user.name.capitalize%>'s Profile</a> 
-          <a class="navbar-brand" href="<%= logout_path %>" id="Log Out"/>Log Out</a>
+          <%=link_to "#{current_user.name}'s Profile", user_path(current_user), class: 'navbar-brand'%>
+          <%=link_to "Log Out", logout_path, class: 'navbar-brand' %>
         <%else%>
-          <a class="navbar-brand" href="<%= signup_path %>"/>Sign Up</a> 
-          <a class="navbar-brand" href="<%= signin_path %>"/>Log In</a>
+          <%= link_to "Sign Up", signup_path, class: 'navbar-brand' %>
+          <%= link_to "Sign In", signin_path, class: 'navbar-brand' %>
         <%end%>
-        <% if logged_in? && current_user.admin %>
-          <a class="navbar-brand" href="<%= new_attraction_path %>" id="New Attraction"/>New Attraction</a> 
-        <% end %>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

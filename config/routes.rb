@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get '/', to: 'users#welcome', as: 'root'
   
   get '/users/new', to: 'users#new', as: 'signup'
@@ -9,5 +10,6 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :attractions, only: [:new, :create, :index, :show, :edit, :update]
+  resources :attractions
+  
 end

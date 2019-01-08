@@ -1,18 +1,6 @@
 <h1><%=@attraction.name%></h1>
 
-<% if !current_user.admin %>
-  <%= form_tag(user_take_ride_path(current_user), method: 'post') do %>
-    <input type="hidden" name="attraction_attributes[happiness]" value=<%=@attraction.happiness_rating%> />
-    <input type="hidden" name="attraction_attributes[nausea]" value=<%=@attraction.nausea_rating%> />
-    <input type="hidden" name="attraction_attributes[tickets]" value=<%=@attraction.tickets%> />
-    <input type="hidden" name="attraction_id" value=<%=@attraction.id%> />
-    <button type="submit">Go on this ride</button>
-  <%end%>
-
-<% else %>
-  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
-
-<% end %>
+<%= user_action(@attraction) %>
 
 <ul>
   <li> Tickets: <%=@attraction.tickets %> </li>
