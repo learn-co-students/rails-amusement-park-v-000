@@ -1,0 +1,15 @@
+<h1>Attractions#show</h1>
+
+<ul>
+    <li><%= @attraction.name %></li>
+    <li><%= @attraction.tickets %></li>
+    <li><%= @attraction.nausea_rating %></li>
+    <li><%= @attraction.happiness_rating %></li>
+    <li><%= @attraction.min_height %></li>
+
+    <%= form_for @current_user, url: attraction_user_path(@attraction, @current_user) do |f| %>
+        <% f.submit "Go on this ride" %>
+    <% end %>
+       
+</ul>
+

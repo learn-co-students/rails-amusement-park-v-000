@@ -1,0 +1,18 @@
+<h1>User#new</h1>
+<%= form_for :user do |f| %>
+    Name: <%= f.text_field :name %>
+
+    Height: <%= f.text_field :height %>
+
+    Happiness: <%= f.text_field :happiness %>
+
+    Nausea: <%= f.text_field :nausea %>
+
+    Tickets: <%= f.text_field :tickets %>
+
+    Password: <%= f.text_field :password %>
+
+    <%= f.check_box :admin %>
+    
+    <%= f.submit "Create User" %>
+<% end %>

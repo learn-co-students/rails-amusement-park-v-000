@@ -1,0 +1,15 @@
+<h1><%= @current_user.name %></h1>
+
+<ul>
+    Mood: <li><%= @current_user.mood %></li>
+    Height: <li><%= @current_user.height %></li>
+    Nausea: <li><%= @current_user.nausea %></li>
+    Tickets: <li><%= @current_user.tickets %></li>
+    <% if !!@current_user.admin %>
+        Status: <li>ADMIN</li>
+    <% end %>
+
+    <li><%= link_to "Log Out", logout_path %></li>
+    <li><%= link_to "See attractions", attractions_path %></li>
+</ul>
+
