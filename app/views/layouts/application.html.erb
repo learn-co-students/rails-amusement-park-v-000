@@ -32,6 +32,15 @@
 
     <!-- content -->
     <div class="container"  role="main">
+
+    <% if flash[:message] %>
+      <p><%= flash[:message] %></p>
+    <% end %>
+
+    <% if flash[:error] %>
+      <p><%= flash[:error] %></p>
+    <% end %>
+
       <%= yield %>
     </div>
   </body>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do  
 
-  get 'rides/create'
+  post 'rides/create'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'  
@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   post '/' => 'users#create'
 
 
-  resources :users, only: [:new, :create, :show, :update]
+  resources :users, only: [:new, :create, :show]
 
-  resources :attractions, only: [:index, :show]
+  
 
-  resources :attractions do
+  resources :attractions, except: [:destroy] do
     resources :users, only: [:update]
-  end
+  end  
   
 end
