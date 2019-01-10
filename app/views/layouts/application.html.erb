@@ -21,9 +21,11 @@
 
         <% if current_user %>
           <%= link_to "#{current_user.name}'s profile", user_path(current_user) %>
+          <br>
           <%= link_to "Logout", session_path, method:"delete" %>
         <% else %>  
           <%= link_to "Sign Up", new_user_path %>
+          <br>
           <%= link_to "Log In", signin_path %>
         <% end %>
    
