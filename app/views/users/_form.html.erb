@@ -4,23 +4,23 @@
     <%= f.text_field :name %>
     <br>
     <%= f.label :height %>
-    <%= f.text_field :height %>
+    <%= f.number_field :height %>
     <br>
-    <%= f.label :happiness, "How happy are you? (1-5 scale)" %>
+    <%= f.label :happiness %>
     <%= f.number_field :happiness %>
     <br>
-    <%= f.label :nausea, "How nauseous are you? (1-5 scale)" %>
+    <%= f.label :nausea %>
     <%= f.number_field :nausea %>
     <br>
     <%= f.label :tickets, "How many dollars are in your pocket?" %>
-    <%= f.text_field :tickets %>
-    <br>
-    <%= f.label :admin, "Check box if you are a theme park owner" %>
-    <%= f.check_box :admin %>
+    <%= f.number_field :tickets %>
     <br>
     <%= f.label :password %>
     <%= f.password_field :password %>
     <br>
+    <%= f.label :admin, "ADMIN" %>
+    <%= f.check_box :admin %>
+  
     <br>
     <%= f.submit %>
     

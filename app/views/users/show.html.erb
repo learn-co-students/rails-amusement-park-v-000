@@ -1,7 +1,17 @@
 <h1>See a user</h1>
-<% binding.pry %>
-<p><%= @user.name %></p>
-<p><%= @user.password %></p>
-<p><%= @user.height %></p>
-<p><%= @user.happiness %></p>
-<p><%= @user.mood %></p>
+
+<p>Name: <%= @user.name %></p>
+<p>Password: <%= @user.password %></p>
+<p>Height: (inches) <%= @user.height %></p>
+<p>Happiness: <%= @user.happiness %></p>
+<p>Nausea: <%= @user.nausea %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<% if @user.admin %>
+    <p>ADMIN:</p> 
+<% end %>
+<br>
+<%= link_to "Log Out", session_path, method:"delete" %>
+<%= link_to "See attractions", attractions_path %>
+
+

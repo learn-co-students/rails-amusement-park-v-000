@@ -1,0 +1,14 @@
+<h1>List of all attractions</h1>
+
+<ol>
+<% @attractions.each do |attraction| %>
+    <li>
+    <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></li>
+    <%= attraction.name %>
+    <%= attraction.min_height %>
+    <%= attraction.tickets %>
+    <%= attraction.nausea_rating %>
+    <%= attraction.happiness_rating %>
+    </li>
+<% end %>
+</ol>

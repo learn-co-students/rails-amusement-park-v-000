@@ -9,10 +9,9 @@ class UsersController < ApplicationController
 
     def create
         @user=User.new(user_params)
-        binding.pry
+        @user.save
         if @user.valid?
             session[:user_id]=@user.id
-            binding.pry
             redirect_to user_path(@user)
         else
             render :new
@@ -20,9 +19,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        binding.pry
         @user = User.find_by(:id => params[:id])
-        binding.pry
         # @user=User.find(params[:id])
     end
 
