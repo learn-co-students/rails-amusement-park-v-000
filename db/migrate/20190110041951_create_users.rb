@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration[5.2]
+class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :name
@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :tickets
       t.integer :height
       t.integer :nausea
-      t.boolean :admin
+      t.boolean :admin, default: false
 
       t.timestamps
     end

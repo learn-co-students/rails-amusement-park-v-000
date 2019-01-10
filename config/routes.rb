@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
     root "static_pages#home"
-    resources :users
+    resources :users, only: [:new, :create, :show]
 
 end

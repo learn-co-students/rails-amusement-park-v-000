@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
 
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-    def show
-        @message = params[:message] if params[:message]
-        @message ||= false
-    end
+    before_action :require_login, except: [:new, :create]
+    
 
     def new
         @user=User.new
@@ -13,24 +9,23 @@ class UsersController < ApplicationController
 
     def create
         @user=User.new(user_params)
-        if @user.save
-            session[:id]=@user.id
+        binding.pry
+        if @user.valid?
+            session[:user_id]=@user.id
+            binding.pry
             redirect_to user_path(@user)
         else
             render :new
         end
     end
 
-    def edit
+    def show
+        binding.pry
+        @user = User.find_by(:id => params[:id])
+        binding.pry
+        # @user=User.find(params[:id])
     end
 
-    def update
-        if @user.update(user_params)
-            redirect_to @user
-        else
-            render :edit
-        end
-    end
 
     private
 
