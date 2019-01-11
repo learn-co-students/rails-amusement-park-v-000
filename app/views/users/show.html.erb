@@ -1,8 +1,7 @@
 <h1>See a user</h1>
 
 <p>Name: <%= @user.name %></p>
-<p>Password: <%= @user.password %></p>
-<p>Height: (inches) <%= @user.height %></p>
+<p>Height (inches): <%= @user.height %></p>
 <p>Happiness: <%= @user.happiness %></p>
 <p>Nausea: <%= @user.nausea %></p>
 <p>Mood: <%= @user.mood %></p>
@@ -11,8 +10,6 @@
     <p>ADMIN:</p> 
 <% end %>
 <br>
-<%= link_to "Log Out", session_path, method:"delete" %>
-<br>
 <%= link_to "See attractions", attractions_path %>
-
-
+<br>
+<%= link_to "Log Out", session_path, method:"delete" %>

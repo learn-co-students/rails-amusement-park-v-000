@@ -10,7 +10,6 @@ class AttractionsController < ApplicationController
 
     def update
         find_attraction
-        binding.pry
         @attraction.update(attraction_params)
         if @attraction.save
             redirect_to attraction_path(@attraction)
