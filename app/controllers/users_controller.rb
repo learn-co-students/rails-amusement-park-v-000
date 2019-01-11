@@ -4,8 +4,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to user_path(@user)
+    if !user_params.blank?
+      @user = User.create(user_params)
+      session[:user_id] = @user.id
+    
+      redirect_to user_path(@user)
+    else
+      flash[:alert] = "Please fill out all fields"
+      redirect_to '/signup'
+    end
+  end
+
+  def signin
   end
 
   def show
