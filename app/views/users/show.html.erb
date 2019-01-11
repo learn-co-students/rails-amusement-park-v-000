@@ -1,4 +1,12 @@
+<% if @user.admin %>
+    <p><strong>ADMIN</strong></p>
+<% end %>
+
 Name: <%= @user.name %>
 Mood: <%= @user.mood %>
 Tickets: <%= @user.tickets %>
 Height: <%= @user.height %>
+
+<br>
+
+<%= link_to "Log Out", session_path, :method => :delete %> 
