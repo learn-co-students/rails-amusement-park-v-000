@@ -22,7 +22,10 @@ class UsersController < ApplicationController
 
     def show
         if !logged_in?
-            binding.pry
+            # binding.pry
+            # @user = User.find_by(id: session[:user_id])
+            redirect_to root_path
+        else
             @user = User.find_by(id: session[:user_id])
         end
         
