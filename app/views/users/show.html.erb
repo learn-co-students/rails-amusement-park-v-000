@@ -4,7 +4,15 @@
         <p>ADMIN</p>
     <% end %>
     <p> <%= @user.name %> </p>
-    <p> Mood: happy </p>
-    <p> <%= @user.tickets %> <%= @user.height %></p>
+    <p> Mood: <%= @user.mood %>> </p>
+    <p> Tickets: <%= @user.tickets %> <%= @user.height %></p>
     <p><%= link_to 'See attractions', attractions_path%></p>
 </div>
+
+    <% if params[:message] %>
+    <div>
+        <p><%= params[:message] %></p>
+    </div>
+
+    <% end %>
+    
