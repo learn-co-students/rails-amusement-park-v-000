@@ -21,6 +21,22 @@ class AttractionsController < ApplicationController
         @attraction = Attraction.find(params[:id])
     end 
 
+    def update 
+        # binding.pry
+        @attraction = Attraction.find(params[:id])
+        if @attraction.update(attraction_params)
+            redirect_to attraction_path(@attraction)
+        else
+            render :new
+        end
+    end 
+
+    def edit
+        @attraction = Attraction.find(params[:id])
+    end
+
+
+
     private 
 
     def attraction_params
