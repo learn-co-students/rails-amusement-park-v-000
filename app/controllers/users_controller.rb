@@ -22,6 +22,8 @@ class UsersController < ApplicationController
             redirect_to root_path
         else
             @user = User.find_by(id: session[:user_id])
+            @message = params[:message]
+            # binding.pry
         end
         
     end 
