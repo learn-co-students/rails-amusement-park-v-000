@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
+  before_action :current_user
+  before_action :require_logged_in, except: [:new, :create, :home]
+
+
   def logged_in?
     !!session[:user_id]
   end

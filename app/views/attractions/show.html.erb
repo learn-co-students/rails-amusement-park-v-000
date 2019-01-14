@@ -1,0 +1,12 @@
+<h1>Attraction Show Page</h1>
+
+<ul>
+  <li>Name: <%= @attraction.name %></li>
+  <li>Number of Tickets: <%= @attraction.tickets %></li>
+  <li>Height Requirements: <%= @attraction.min_height %></li>
+</ul>
+<% if current_user.admin == false %>
+  <%= button_to "Go on this ride", user_path(current_user) %>
+<% else %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>

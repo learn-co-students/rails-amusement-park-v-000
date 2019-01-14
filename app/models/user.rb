@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
         if self.happiness && self.nausea 
             self.happiness > self.nausea ? 'happy' : 'sad'
         end
-            
     end 
 
 end
