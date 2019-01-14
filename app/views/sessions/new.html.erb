@@ -1,7 +1,8 @@
-<h1>Signin</h1>
+<h1>Sign In</h1>
 <%= form_for(:user, url: sessions_create_path) do |f| %>
   <%= f.label :name %><br>
-  <%= f.collection_select(:id, @users, :id, :name) %><br>
+  <%= f.collection_select(:id, @users, :id, :name, {}, :id =>'user_name') %><br>
+  
   <%= f.label :password %><br>
   <%= f.password_field :password %><br>
 

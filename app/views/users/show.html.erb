@@ -1,3 +1,7 @@
+<% if @user.admin %>
+  <h1>ADMIN</h1>
+<% end %>
+
 <h1>Welcome, <%= @user.name %></h1>
 <p>Height: <%= @user.height %></p><br>
 <p>Mood: <%= @user.mood %></p><br>
