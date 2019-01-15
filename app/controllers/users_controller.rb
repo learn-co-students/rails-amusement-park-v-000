@@ -15,9 +15,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def signin
-  # end
-
   def show
     if logged_in?
       @user = User.find(params[:id])
@@ -33,11 +30,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :password, :height, :nausea, :happiness, :tickets, :admin)
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
 
-  def logged_in?
-    !!current_user
-  end
 end

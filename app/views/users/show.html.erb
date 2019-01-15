@@ -6,4 +6,6 @@
 <p>Height: <%= @user.height %></p><br>
 <p>Mood: <%= @user.mood %></p><br>
 <p>Tickets Remaining: <%= @user.tickets %></p><br>
-<p>Admin? <%= @user.admin %><p>
+
+<%= link_to "See attractions", attractions_path %><br>
+<%= link_to "Log Out", sessions_path, method: :delete %>

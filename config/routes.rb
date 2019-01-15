@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'users#new'
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
-  post '/sessions/create', to: 'sessions#create'
+  resource :sessions, only: [:create, :destroy]
   resources :attractions
   resources :rides
   resources :users
