@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     def new
+      # raise current_user.inspect
         @user = User.new
     end
 
