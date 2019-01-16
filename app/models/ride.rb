@@ -3,6 +3,8 @@ class Ride < ActiveRecord::Base
   belongs_to :attraction
 
   def take_ride
+
+    
     if attraction.tickets > user.tickets && user.height < attraction.min_height
       "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
     elsif user.height < attraction.min_height
