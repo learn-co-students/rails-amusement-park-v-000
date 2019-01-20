@@ -1,0 +1,11 @@
+<%= form_for @user, :url => url_for(controller: "sessions", action: "create") do |f| %>
+<%= f.label :name, "Your name:" %><br>
+<%= f.collection_select :name, User.all, :id, :name, :include_blank => "Please select" %>
+<br>
+<%= f.label :password, "Your password:" %><br>
+<%= f.password_field :password %>
+<br>
+<%= f.submit "Sign In" %>
+<% end %>
+or
+<%= link_to "Sign Up", new_user_path %>
