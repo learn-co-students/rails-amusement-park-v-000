@@ -1,2 +1,2 @@
-class Ride < ActiveRecord::Base
+class Ride < ApplicationRecord
 end
