@@ -22,7 +22,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Sign Up", new_user_path unless logged_in? %></li>
-            <li><%= link_to "Sign In", signin_path %></li>
+            <li><%= link_to "Sign In", signin_path unless logged_in? %></li>
           </ul>
         </div>
         <!--/.nav-collapse -->
