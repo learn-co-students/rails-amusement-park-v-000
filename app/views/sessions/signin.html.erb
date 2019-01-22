@@ -1,8 +1,0 @@
-<h1>Login</h1>
- <h2>Name:</h2>
- <%= form_tag '/sessions' do |f| %>
-  <%= collection_select :user, :name, User.all, :name, :name, include_blank: 'Please select your username from dropdown' %><br>
-  <h2>Password:</h2>
-  <%= password_field_tag :password, nil, class:'form-control' %><br>
-  <%= submit_tag "Sign In" %>
-<% end %>
