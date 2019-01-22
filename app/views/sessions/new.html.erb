@@ -1,1 +1,16 @@
-login
+<%= form_tag("/signin") do%><!--maybe not form_for-->
+  <%=label_tag('user[user_name]',"Name")%>
+  <br>
+  <%@users.each do |user|%>
+    <%=label_tag('user[user_name]',user.name)%>
+    <%=radio_button_tag('user[user_name]', user.name)%>
+    <br>
+  <%end%>
+
+  <%=label_tag('user[password]',"Passord")%>
+  <%=text_field_tag('user[password]')%>
+
+  <%=submit_tag("Sign In")%>
+  <%end%>
+
+<!--button should say Sign In-->
