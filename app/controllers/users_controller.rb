@@ -14,6 +14,11 @@ class UsersController < ApplicationController
   def show
     if session[:user_id] == params[:id].to_i
       @user = User.find_by_id(session[:user_id])
+      if params[:attraction]
+        @ride = Ride.new(user_id: @user.id, attraction_id: params[:attraction])
+        flash[:message] = @ride.take_ride
+        @user = User.find_by_id(session[:user_id])
+      end
     else
       redirect_to '/'
     end

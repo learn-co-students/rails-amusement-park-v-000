@@ -1,3 +1,6 @@
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
 
 <%=@user.name%>
 <%if @user.admin%>
@@ -6,7 +9,8 @@
   Mood
   <%=@user.mood%>
   <%=@user.nausea%>
-  <%=@user.tickets%>
+  <%="Tickets: #{@user.tickets}"%>
   <%=@user.happiness%>
   <%=@user.height%>
 <%end%>
+<%=link_to "See attractions", attractions_path%>
