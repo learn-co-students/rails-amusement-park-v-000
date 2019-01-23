@@ -2,3 +2,8 @@
 Mood: <%= @user.mood %><br>
 Tickets: <%= @user.tickets %><br>
 Height: <%= @user.height %><br>
+
+<h4><%= "ADMIN" if @user.admin? %></h4>
+
+
+<%= link_to "See attractions", attractions_path %>
