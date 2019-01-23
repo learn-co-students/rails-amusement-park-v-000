@@ -1,17 +1,9 @@
-<% if flash[:message] %>
-  <%= flash[:message] %>
-<% end %>
-<%= form_tag("/signin") do%><!--maybe not form_for-->
-  <%=label_tag('user[user_name]',"Name")%>
-  <br>
-  <%@users.each do |user|%>
-    <%=label_tag('user[user_name]',user.name)%>
-    <%=radio_button_tag('user[user_name]', user.name)%>
-    <br>
-  <%end%>
+<%= form_tag("/signin") do%>
+  <%=label_tag('user[name]', "Name")%>
+  <%=select_tag'user[name]', options_from_collection_for_select(@users, "name", "name")%>
 
-  <%=label_tag('user[password]',"Passord")%>
-  <%=text_field_tag('user[password]')%>
+  <%=label_tag('password')%>
+  <%=text_field_tag('password')%>
 
-  <%=submit_tag("Sign In")%>
-  <%end%>
+  <%=submit_tag('Sign In')%>
+<%end%>
