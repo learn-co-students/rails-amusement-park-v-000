@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users
-  resources :attractions, only: [:index, :show]
+  resources :attractions
 
   get "/" => 'application#welcome'
   get "/signin" => 'sessions#new'

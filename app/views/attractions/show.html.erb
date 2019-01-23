@@ -1,4 +1,4 @@
-a ride
+<%=@attraction.name%>
 <%=form_tag(user_path(@user), method: :get) do%>
   <%=hidden_field_tag 'attraction', @attraction.id%>
   <%=submit_tag "Go on this ride"%>
