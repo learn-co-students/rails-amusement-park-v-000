@@ -1,3 +1,6 @@
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
 <%= form_tag("/signin") do%><!--maybe not form_for-->
   <%=label_tag('user[user_name]',"Name")%>
   <br>
@@ -12,5 +15,3 @@
 
   <%=submit_tag("Sign In")%>
   <%end%>
-
-<!--button should say Sign In-->
