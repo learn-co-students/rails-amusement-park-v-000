@@ -1,8 +1,12 @@
 
 <%=@user.name%>
-Mood
-<%=@user.mood%>
-<%=@user.nausea%>
-<%=@user.tickets%>
-<%=@user.happiness%>
-<%=@user.height%>
+<%if @user.admin%>
+  ADMIN
+<%else%>
+  Mood
+  <%=@user.mood%>
+  <%=@user.nausea%>
+  <%=@user.tickets%>
+  <%=@user.happiness%>
+  <%=@user.height%>
+<%end%>
