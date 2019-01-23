@@ -15,4 +15,9 @@ class SessionsController < ApplicationController
       render '/signin'
     end
   end
+
+  def destroy
+    session.delete(:user_id)
+    redirect_to '/'
+  end
 end
