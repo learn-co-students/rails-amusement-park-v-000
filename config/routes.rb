@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/welcome/home'
   root 'welcome#home'
-  resources :users, only: [:new, :create]
+  resources :users
+  get '/signin' => 'sessions#create'
 end

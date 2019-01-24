@@ -1,26 +1,26 @@
 <h1>Sign Up</h1>
 <%= form_for @user do |f| %>
 <%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.text_field :name %><br>
 
 <%= f.label :password %>
-<%= f.password_field :password %>
+<%= f.password_field :password %><br>
 
 <%= f.label :number_of_tickets %>
-<%= f.text_field :tickets %>
+<%= f.text_field :tickets %><br>
 
 <%= f.label :height_in_inches %>
-<%= f.text_field :height %>
+<%= f.text_field :height %><br>
 
 <%= f.label :how_happy_are_you? %>
-<%= f.text_field :happiness %>
+<%= f.text_field :happiness %><br>
 
 <%= f.label :how_nauseous_are_you? %>
-<%= f.text_field :nausea %>
+<%= f.text_field :nausea %><br>
 
 <%= f.label :admin? %>
-<%= f.check_box :admin %>
+<%= f.check_box :admin %><br>
 
-<%= f.submit %>
+<%= f.submit 'Create User'%>
 
 <% end %>

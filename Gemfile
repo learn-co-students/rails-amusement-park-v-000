@@ -38,6 +38,7 @@ gem 'pry'
 gem 'thin'
 
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
