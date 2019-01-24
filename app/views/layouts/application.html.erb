@@ -30,11 +30,11 @@
       </div>
     </div>
 
-    
+
     <div class="container" role="main">
 
       <% if flash[:notice] %>
-        <div class="notice"><%= flash[:notice] %></div>
+        <div class="notice alert alert-info"><%= flash[:notice] %></div>
       <% end %>
 
       <%= yield %>

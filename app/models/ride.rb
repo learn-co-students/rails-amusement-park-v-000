@@ -4,12 +4,12 @@ class Ride < ActiveRecord::Base
 
   def take_ride
 
-    
-    if attraction.tickets > user.tickets && user.height < attraction.min_height
+
+    if !enough_tickets? && !tall_enough?
       "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
-    elsif user.height < attraction.min_height
+    elsif !tall_enough?
       "Sorry. You are not tall enough to ride the #{attraction.name}."
-    elsif attraction.tickets > user.tickets
+    elsif !enough_tickets?
       "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     else
       user.tickets -= attraction.tickets
@@ -17,5 +17,14 @@ class Ride < ActiveRecord::Base
       user.happiness += attraction.happiness_rating
       user.save
     end
+  end
+
+
+  def tall_enough?
+    user.height >= attraction.min_height
+  end
+
+  def enough_tickets?
+    user.tickets >= attraction.tickets
   end
 end
