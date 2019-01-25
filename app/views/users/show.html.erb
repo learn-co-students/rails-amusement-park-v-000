@@ -1,4 +1,14 @@
+  <% if @user.admin %>
+    <div id="user_admin">
+      <h3><strong>ADMIN</strong></h3>
+    </div>
+  <% end %>
+
   <h1>Welcome to the park, <%=@user.name%>!</h1>
   <h2>Tickets: <%= @user.tickets %></h2>
   <h2>Mood: <%= @user.mood %></h2>
   <h2>Height: <%= @user.height %> inches</h2>
+
+  <%= form_tag({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type="submit" value="logout"/>
+<% end %>
