@@ -17,6 +17,7 @@ class Ride < ActiveRecord::Base
       :nausea => ride.user.nausea + ride.attraction.nausea_rating,
       :happiness => ride.user.happiness + ride.attraction.happiness_rating
       )
+      "Thanks for riding the #{self.attraction.name}!"
     end
   end
 
