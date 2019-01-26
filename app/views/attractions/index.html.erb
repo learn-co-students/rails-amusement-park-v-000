@@ -1,0 +1,12 @@
+<h1>Listing Attractions</h1>
+
+<% @attractions.each do |attraction| %>
+   <%= attraction.name %>
+      <%= link_to_if(current_user.admin, "Show #{attraction.name}", attraction_path(attraction)) %>
+      Tickets: <%= attraction.tickets %>
+        <% if !current_user.admin %>
+          <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+        <% end %>
+      <% end %>
+
+ <%= link_to_if(current_user.admin, "New Attraction", '/attractions/new') %>

@@ -1,0 +1,13 @@
+<br>
+
+  <h2>Guest Profiles</h2>
+  <%@users.each do |user|%>
+  <br>
+  <h4>Name: <%=user.name %><h4>
+  Tickets: <%=user.tickets%>
+  Nausea rating: <%=user.nausea%>
+  Happiness rating: <%=user.happiness%>
+  Height: <%=user.height%><br>
+  <%end%>
+
+<h4><%= link_to "Log Out", '/sessions/destroy' %></h4>
