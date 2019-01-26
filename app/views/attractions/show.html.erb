@@ -1,0 +1,11 @@
+<h1><%= @attraction.name %></h1>
+<br>
+ <%= form_for @ride do |f| %>
+  <%= f.hidden_field :attraction_id %>
+  <%= f.hidden_field :user_id %>
+  <%= f.submit "Go on this ride" %>
+<% end %>
+
+ <% if authorized_user? %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
