@@ -1,6 +1,6 @@
-  <% if @message %>
-    <p><%= @message %></p>
-  <% end %> 
+  <% if flash[:message] %>
+    <h3><%= flash[:message] %></h3>
+  <% end %>
 
   <% if @user.admin %>
     <div id="user_admin">

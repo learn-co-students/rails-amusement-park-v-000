@@ -1,4 +1,12 @@
-<h1>Step Right Up, That's Right Folks!</h1>
-<% @attractions.each do |attraction| %>
-<li><%= link_to "Go on #{attraction.name}", attraction_path(attraction)%> </li>
+<% if !@current_user.admin %>
+  <h1>Step Right Up, That's Right Folks!</h1>
+  <% @attractions.each do |attraction| %>
+    <li><%= link_to "Go on #{attraction.name}", attraction_path(attraction)%> </li>
+  <% end %>
+<% else %>
+  <h3><strong>Welcome to the backlot.</strong></h3>
+  <h1><%= link_to "New Attraction", "/attractions/new"%></h1>
+  <% @attractions.each do |attraction| %>
+    <li><%= link_to "Show #{attraction.name}", attraction_path(attraction)%></li>
+  <% end %>
 <% end %>
