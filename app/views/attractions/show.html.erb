@@ -1,0 +1,12 @@
+<div class="center">
+  <div class="info">
+    <strong>Name: </strong><%= @attraction.name %><br>
+    <strong>Ticket Requirement: </strong><%= @attraction.tickets %><br>
+    <strong>Total Number of Users: </strong><br>
+    <strong>Height Requirement: </strong><%= @attraction.min_height %><br>
+    <strong>Nausea Rating: </strong><%= @attraction.nausea_rating %><br>
+    <strong>Happiness Rating: </strong><%= @attraction.happiness_rating %><br>
+    <%= (link_to "Edit Attraction", edit_attraction_path(@attraction)) if admin? %><br>
+    <%= render "attractions/ride_button", locals: {attraction: @attraction} if !admin? %>
+  </div>
+</div>

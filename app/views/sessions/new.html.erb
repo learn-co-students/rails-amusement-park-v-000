@@ -1,0 +1,7 @@
+<%= form_tag sessions_path do %>
+  <%= label_tag "Your name:" %>
+  <%= select_tag "user_name", options_from_collection_for_select(@users, "id", "name") %><br>
+  <%= label_tag "Your Password:" %>
+  <%= text_field_tag "password"  %><br>
+  <%= submit_tag "Sign In" %>
+<% end %>

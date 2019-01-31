@@ -1,0 +1,16 @@
+<%= flash[:thanks] if flash[:thanks] %>
+<%= flash[:sorry] if flash[:sorry] %>
+<div class="center">
+  <div class="info">
+    <strong><%= "ADMIN" if admin? %></strong><br>
+    Name: <%= @user.name %><br>
+    Tickets: <%= @user.tickets %><br>
+    Mood: <%= @user.mood %><br>
+    Height: <%= @user.height %><br>
+
+    <%= link_to "See attractions", attractions_path %><br>
+
+    <%= (link_to "Log Out", logout_path) if logged_in? %>
+
+  </div>
+</div>
