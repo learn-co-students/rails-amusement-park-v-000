@@ -18,15 +18,21 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= signup_path %>"/>Sign Up</a>
+        <% if logged_in? %>
+          <a class="navbar-brand" href="/logout"/>Log Out</a>
+        <% else %>
+          <a class="navbar-brand" href="<%= login_path %>"/>Log in</a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
+  
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>
