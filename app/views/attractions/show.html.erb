@@ -1,0 +1,7 @@
+<h1> <%= @attraction.name %> </h1>
+
+<% if admin? %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+  <%= button_to "Go on this ride", update_user_path(current_user), method: :post, params: {attraction_id: @attraction.id} %>
+<% end %>

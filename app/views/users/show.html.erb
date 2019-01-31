@@ -1,0 +1,25 @@
+<h1><%= current_user.name %></h1>
+<% if !!@ride_message %>
+  <p> <%= @ride_message %> </p>
+<% end %>
+
+<% if admin? %>
+ <h3> ADMIN </h3>
+
+ <% else %>
+  <ul>
+    <li>
+      Mood: <%= current_user.mood %>
+    </li>
+    <li>
+      Tickets: <%= current_user.tickets %>
+    </li>
+    <li>
+      Height: <%= current_user.height %>
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to "See attractions", attractions_path  %>
+
+<%= link_to "Log Out", "/logout" %>
