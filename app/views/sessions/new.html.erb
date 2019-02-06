@@ -1,0 +1,7 @@
+<h1>Login</h1>
+
+<%= form_for :user do |f| %>
+Name: <%= f.select :name, options_from_collection_for_select(User.all, :id, :name) %><br>
+Password: <%= f.password_field :password %><br>
+<%= f.submit "Submit" %>
+<% end %>

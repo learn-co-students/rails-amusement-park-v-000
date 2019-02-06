@@ -1,0 +1,19 @@
+<% if @user.admin == true %>
+  <p>ADMIN PAGE </p>
+  <%= link_to "Add an Attraction", new_attraction_path %>
+<% end %>
+
+
+<h1>User Show Page</h1>
+<p>Name: <%= @user.name %></p>
+<p>Nausea: <%= @user.nausea %></p>
+<p>Happiness: <%= @user.happiness %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+<p>Mood: <%#= @user.mood %></p>
+<%= link_to "See attractions", attractions_path %>
+<%= session[:user_id].inspect %>
+
+
+
+<% current_user.name %>
