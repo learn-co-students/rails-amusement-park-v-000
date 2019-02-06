@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<% if @user.admin == true %>
+  <h1>ADMIN</h1>
+<% end %>
+  <h1><%= @user.name %></h1>
+  <%= link_to('Log Out', logout_path, method: :post) %>
+  <%= link_to "See attractions", attractions_path %>
+
+  <% if @user.admin == false %>
+  <ul>
+    <li> Mood: <%= @user.mood %> </li>
+    <li> Height: <%= @user.height %> </li>
+    <li> Tickets: <%= @user.tickets %> </li>
+  </ul>
+<% end %>
