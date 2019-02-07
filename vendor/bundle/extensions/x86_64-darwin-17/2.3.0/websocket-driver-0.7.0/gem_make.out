@@ -1,0 +1,15 @@
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/websocket-driver-0.7.0/ext/websocket-driver
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/bin/ruby -I /Users/ericfiorani/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0 -r ./siteconf20190118-53328-8i9f26.rb extconf.rb
+creating Makefile
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20190118-53328-1fh573i

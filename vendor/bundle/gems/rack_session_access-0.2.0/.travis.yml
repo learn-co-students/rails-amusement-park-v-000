@@ -1,0 +1,15 @@
+sudo: required
+addons:
+  chrome: stable
+language: ruby
+rvm:
+  - 2.4.1
+gemfile:
+  - Gemfile.rails4
+  - Gemfile.rails5
+cache: bundler
+script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+  - bundle exec rspec
