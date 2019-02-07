@@ -1,0 +1,15 @@
+<p>Go on <%= @attraction.name %> </p>
+<p>Ticket Requirement: <%= @attraction.tickets %></p>
+<p>Height Requirement: <%= @attraction.min_height %></p>
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
+<p>Happiness Rating: <%= @attraction.happiness_rating %></p>
+<% if !current_user.admin %>
+  <%= form_tag("/rides/new", method: 'post') do %>
+    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+    <%= hidden_field_tag 'attraction_id', @attraction.id %>
+    <%= hidden_field_tag 'user_id', current_user.id %>
+    <%= submit_tag 'Go on this ride' %>
+  <% end %>
+<% else %>
+  <%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %>
+<% end %>
