@@ -1,0 +1,22 @@
+<h1>Attractions Index Page</h1>
+
+<% if current_user.admin %>
+  <%= link_to "New Attraction", new_attraction_path %><br>
+  <ul>
+    <% @attractions.each do |attraction| %>
+      <li><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul>
+    <% @attractions.each do |attraction| %>
+      <li>Attraction Name: <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></li>
+      <ul>
+        <li>Tickets Needed: <%= attraction.tickets %></li>
+        <li>Nausea Rating: <%= attraction.nausea_rating %></li>
+        <li>Happiness Rating: <%= attraction.happiness_rating %></li>
+        <li>Minimum Required Height: <%= attraction.min_height %></li><br>
+      </ul>
+    <% end %>
+  </ul>
+<% end %>

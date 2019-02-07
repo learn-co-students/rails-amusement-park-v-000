@@ -1,0 +1,18 @@
+<% if current_user.admin == true %>
+  <p>ADMIN PAGE <%= @user.name %></p>
+  <%= link_to "Add an Attraction", new_attraction_path %>
+<% else %>
+  <ul>
+    <li>User Mood: <%= @user.mood %></li>
+    <li>Name: <%= @user.name %></li>
+    <li>Nausea: <%= @user.nausea %></li>
+    <li>Happiness: <%= @user.happiness %></li>
+    <li>Tickets: <%= @user.tickets %></li>
+    <li>Height: <%= @user.height %></li>
+  </ul>
+<% end %>
+<%= link_to "See attractions", attractions_path %>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
