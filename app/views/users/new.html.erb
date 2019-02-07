@@ -1,9 +1,10 @@
 <h1>Signup</h1>
 
+
 <%= form_for @user do |f| %>
   <%= f.label :name %><br>
   <%= f.text_field :name %><br>
-  <%= f.label :password %><br>
+  <%= f.label "password" %><br>
   <%= f.password_field :password %><br>
   <%= f.label :height %><br>
   <%= f.number_field :height %><br>
@@ -17,16 +18,3 @@
   <%= f.check_box :admin %><br>
   <%= f.submit "Create User" %>
 <% end %>
-
-
-
-<!--<%#= form_for :user, url: '/signup' do |f| %>
-  Check box if you are a park owner: <%#= f.check_box :admin %><br>
-  Name: <%#= f.text_field :name %><br>
-  Password: <%#= f.password_field :password %><br>-->
-  <!--Password Confirmation: <%#= f.password_field :password_confirmation %><br><br>-->
-<!--  Nausea: <%#= f.text_field :nausea %><br>
-  Happiness: <%#= f.text_field :happiness %><br>
-  Tickets: <%#= f.text_field :tickets %><br>
-  Height: <%#= f.text_field :height %><br>
-  <%#= f.submit "Create User" %>

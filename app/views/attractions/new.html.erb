@@ -1,10 +1,1 @@
-<h1>Add a new attraction </h1>
-
-<%= form_for :attraction, url: '/attractions' do |f| %>
-  Name: <%= f.text_field :name %><br>
-  Tickets Needed: <%= f.text_field :tickets %><br>
-  Nausea Rating: <%= f.text_field :nausea_rating %><br>
-  Happiness Rating: <%= f.text_field :happiness_rating %><br>
-  Min Height Required: <%= f.text_field :min_height %><br>
-  <%= f.submit "Submit" %>
-<% end %>
+<%= render partial: 'form', locals: {attraction: @attraction} %>

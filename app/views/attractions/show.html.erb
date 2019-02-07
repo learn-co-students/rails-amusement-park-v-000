@@ -1,19 +1,18 @@
 <h1>Attraction Show Page </h1>
-Name: <%= @attraction.name %><br>
-Tickets Needed: <%= @attraction.tickets %><br>
-Nausea: <%= @attraction.nausea_rating %><br>
-Happiness: <%= @attraction.happiness_rating %><br>
-Minimum Height: <%= @attraction.min_height %><br>
+<ul>
+  <li>Name: <%= @attraction.name %></li>
+  <li>Tickets Needed: <%= @attraction.tickets %></li>
+  <li>Nausea: <%= @attraction.nausea_rating %></li>
+  <li>Happiness: <%= @attraction.happiness_rating %></li>
+  <li>Minimum Height: <%= @attraction.min_height %></li>
+</ul>
 
-<%#= link_to "Go on this ride", attraction_path(@attraction)%>
-
-
-
-
-
-
-
-
-<!--<%# if @user.admin == true %>
-<%#= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
-<%# end %>-->
+<% if current_user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+  <form action="/rides" method="post">
+    <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+    <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+    <input type="submit" value="Go on this ride">
+  </form>
+<% end %>

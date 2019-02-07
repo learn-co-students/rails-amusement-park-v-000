@@ -4,31 +4,34 @@ class AttractionsController < ApplicationController
     @attractions = Attraction.all
   end
 
-  def new
-  end
-
   def show
     @attraction = Attraction.find(params[:id])
   end
-  #
-  #
-  # def create #can only create a ride if you are an owner (admin)
-  #   #if @user.admin
-  #     @attraction = Attraction.new(attraction_params)
-  #   #   @attraction.save #validate that all fields are entered?
-  #   #   redirect_to attraction_path(@attraction)
-  #   # else
-  #   #   redirect_to new_attraction_path
-  #   #   #flash error
-  #   # end
-  # end
+
+  def new
+    @attraction = Attraction.new
+  end
+
+  def create
+    if current_user.admin
+      @attraction = Attraction.new(attraction_params)
+      @attraction.save
+      redirect_to attraction_path(@attraction)
+    else
+      flash.alert = "You cannot add an attraction unless you are an admin."
+      redirect_to attractions_path
+    end
+  end
 
   def edit
+    @attraction = Attraction.find(params[:id])
   end
 
   def update
+  	 @attraction = Attraction.find(params[:id])
+  	 @attraction.update(attraction_params)
+  	 redirect_to attraction_path(@attraction)
   end
-  
 
   private
 
