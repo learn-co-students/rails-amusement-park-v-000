@@ -1,0 +1,34 @@
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/sqlite3-1.3.13/ext/sqlite3
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/bin/ruby -I /Users/ericfiorani/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0 -r ./siteconf20190118-53328-1s2rmwk.rb extconf.rb
+extconf.rb:14: warning: Insecure world writable dir /Users/ericfiorani in PATH, mode 040777
+checking for sqlite3.h... yes
+checking for pthread_create() in -lpthread... yes
+checking for sqlite3_libversion_number() in -lsqlite3... yes
+checking for rb_proc_arity()... yes
+checking for rb_integer_pack()... yes
+checking for sqlite3_initialize()... yes
+checking for sqlite3_backup_init()... yes
+checking for sqlite3_column_database_name()... yes
+checking for sqlite3_enable_load_extension()... yes
+checking for sqlite3_load_extension()... yes
+checking for sqlite3_open_v2()... yes
+checking for sqlite3_prepare_v2()... yes
+checking for sqlite3_int64 in sqlite3.h... yes
+checking for sqlite3_uint64 in sqlite3.h... yes
+creating Makefile
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/sqlite3-1.3.13/ext/sqlite3
+make "DESTDIR=" clean
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/sqlite3-1.3.13/ext/sqlite3
+make "DESTDIR="
+compiling sqlite3.c
+compiling database.c
+compiling exception.c
+compiling backup.c
+compiling statement.c
+linking shared-object sqlite3/sqlite3_native.bundle
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/sqlite3-1.3.13/ext/sqlite3
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 sqlite3_native.bundle ./.gem.20190118-53328-10nmmi3/sqlite3

@@ -1,0 +1,51 @@
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/bcrypt-3.1.12/ext/mri
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/bin/ruby -I /Users/ericfiorani/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0 -r ./siteconf20190118-53328-1qb96qc.rb extconf.rb
+creating Makefile
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" clean
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR="
+compiling crypt_gensalt.c
+compiling crypt.c
+crypt.c:15:26: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+      NIL_P(input) ? 0 : RSTRING_LEN(input));
+                         ^~~~~~~~~~~~~~~~~~
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/include/ruby-2.3.0/ruby/ruby.h:994:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/include/ruby-2.3.0/ruby/ruby.h:990:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+crypt.c:15:26: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+      NIL_P(input) ? 0 : RSTRING_LEN(input));
+                         ^~~~~~~~~~~~~~~~~~
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/include/ruby-2.3.0/ruby/ruby.h:995:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+2 warnings generated.
+compiling bcrypt_ext.c
+bcrypt_ext.c:17:25: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+            NIL_P(input) ? 0 : RSTRING_LEN(input));
+                               ^~~~~~~~~~~~~~~~~~
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/include/ruby-2.3.0/ruby/ruby.h:994:6: note: expanded from macro 'RSTRING_LEN'
+     RSTRING_EMBED_LEN(str) : \
+     ^~~~~~~~~~~~~~~~~~~~~~
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/include/ruby-2.3.0/ruby/ruby.h:990:6: note: expanded from macro 'RSTRING_EMBED_LEN'
+     (long)((RBASIC(str)->flags >> RSTRING_EMBED_LEN_SHIFT) & \
+     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bcrypt_ext.c:17:25: warning: implicit conversion loses integer precision: 'long' to 'int' [-Wshorten-64-to-32]
+            NIL_P(input) ? 0 : RSTRING_LEN(input));
+                               ^~~~~~~~~~~~~~~~~~
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/include/ruby-2.3.0/ruby/ruby.h:995:28: note: expanded from macro 'RSTRING_LEN'
+     RSTRING(str)->as.heap.len)
+     ~~~~~~~~~~~~~~~~~~~~~~^~~
+2 warnings generated.
+compiling wrapper.c
+compiling crypt_blowfish.c
+linking shared-object bcrypt_ext.bundle
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bcrypt_ext.bundle ./.gem.20190118-53328-1ct4jxg

@@ -1,0 +1,19 @@
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+/Users/ericfiorani/.rvm/rubies/ruby-2.3.3/bin/ruby -I /Users/ericfiorani/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0 -r ./siteconf20190118-53328-b2uzzd.rb extconf.rb
+creating Makefile
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR="
+compiling locker.c
+compiling byebug.c
+compiling context.c
+compiling breakpoint.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/ericfiorani/rails-amusement-park-v-000/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 byebug.bundle ./.gem.20190118-53328-1fp0l52/byebug
