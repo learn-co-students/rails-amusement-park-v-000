@@ -1,0 +1,13 @@
+<% if session[:ride_result] %>
+    <%= session[:ride_result] %>
+<% end %>
+
+<h2>Name: <%= @user.name %></h2>
+<% if @user.admin == true %>
+    <h3>ADMIN</h3>
+<% end %>
+Mood: <%= @user.mood %><br>
+Tickets: <%= @user.tickets %><br>
+Height: <%= @user.height %>
+
+<%= link_to "See attractions", attractions_path %>
