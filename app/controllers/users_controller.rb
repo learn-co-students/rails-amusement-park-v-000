@@ -9,7 +9,7 @@ class UsersController < ApplicationController
             @user = User.find(session[:user_id])
             render 'show'
         else
-            redirect_to new_user
+            redirect_to '/'
         end
     end
 
