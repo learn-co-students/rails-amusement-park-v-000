@@ -1,0 +1,5 @@
+      invoke  active_record
+      create    db/migrate/20190211205852_create_users.rb
+    conflict    app/models/user.rb
+  Overwrite /home/learn/Development/Code/rails-amusement-park-v-000/app/models/user.rb? (enter "h" for help) [Ynaqdhm] 
+       force    app/models/user.rb
