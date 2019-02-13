@@ -1,0 +1,10 @@
+<h1>Edit Attraction</h1>
+
+<%= form_for @attraction, url: attraction_path(@attraction) do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :tickets %>
+    <%= f.text_field :nausea_rating %>
+    <%= f.text_field :happiness_rating %>
+    <%= f.text_field :min_height %>
+    <%= f.submit "Update Attraction" %>
+<% end %>

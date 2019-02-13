@@ -1,0 +1,21 @@
+<h1>Attractions#show</h1>
+
+<ul>
+    <li><%= @attraction.name %></li>
+    <li><%= @attraction.tickets %></li>
+    <li><%= @attraction.nausea_rating %></li>
+    <li><%= @attraction.happiness_rating %></li>
+    <li><%= @attraction.min_height %></li>
+
+    <%= form_for :rides, url: rides_create_path do |f| %>
+        <%= f.hidden_field(:user_id, :value => @current_user.id) %>
+        <%= f.hidden_field(:attraction_id, :value => @attraction.id) %>
+        <%= f.submit "Go on this ride" %>
+    <% end %>
+
+    <% if @current_user.admin %>
+        <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+    <% end %>
+       
+</ul>
+
