@@ -13,13 +13,14 @@ class Ride < ActiveRecord::Base
 
   def take_ride
     if error_msg.blank?
-      user.tickets -= attraction.tickets
-      user.nausea += attraction.nausea_rating
-      user.happiness += attraction.happiness_rating
-      user.save
+      user.take_ride(self)
     else
       error_msg
     end
+  end
+
+  def error_msg
+    too_short_msg(not_enough_tickets_msg)
   end
 
   private
@@ -42,10 +43,6 @@ class Ride < ActiveRecord::Base
       end
     end
     msg
-  end
-
-  def error_msg
-    too_short_msg(not_enough_tickets_msg)
   end
 
 end
