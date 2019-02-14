@@ -1,0 +1,19 @@
+<div class="container" role="main">
+  <h1>Sign In</h1>
+  <%= form_tag('/sessions', method: 'post') do %>
+    <div class="form-group">
+      <%= label_tag "Your name:" %>
+      <%= collection_select(:user, :name, User.all, :name, :name) %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag "Your password:" %>
+      <%= password_field_tag 'password', nil, class: 'form-control'%>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag 'Sign In' %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<div class="container" role="main">
+  <p id="notice"></p>
+  <div class="center">
+
+    <% if flash[:message] %>
+    <h3> <%=flash[:message]%></h3>
+    <% end %>
+
+    <div class="info">
+      <strong><%='ADMIN' if @user.admin %></strong>
+      <%= render 'user_info', user: @user %>
+      <p><a href="/attractions">See attractions</a></p>
+    </div>
+    
+  </div>
+</div>
