@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
-  before_action :redirect_if_logged_out, only: [:show]
 
   def new
     @user = User.new
@@ -21,16 +19,22 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
 
+    @message = params[:message] if params[:message]
   end
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
-
-    def user_params
-      params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
-    end
+  def user_params
+    params.require(:user).permit(
+      :name,
+      :height,
+      :happiness,
+      :nausea,
+      :tickets,
+      :admin,
+      :password
+      )
+  end
 end

@@ -1,13 +1,9 @@
-<h1>Sign In</h1>
-
-<%= form_tag signin_path, method: 'POST' do %>
-  <%= label_tag 'user[name]', 'Name' %>
+<%= form_for @user, url: '/signin' do |f| %>
+  <%= f.label :name, "Your name:" %>
+  <%= f.select :name, options_from_collection_for_select(@users, :name, :name) %>
   <br>
-  <%= collection_select :user, :name, User.all, :id, :name, include_blank: true %>
+  <%= f.label :password, "Your password:" %>
+  <%= f.password_field :password %>
   <br>
-  <%= label_tag :password, 'Password' %>
-  <br>
-  <%= password_field_tag :password %>
-  <br>
-  <%= submit_tag 'Sign In' %>
+  <%= f.submit "Sign In" %>
 <% end %>
