@@ -31,6 +31,14 @@
     </div>
 
     <!-- content -->
+    <!-- KJW - flash messages -->
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <%= content_tag :div, msg, :class => "flash_#{name}" %>
+      <% end %>
+    <% end %>
+    <!-- END KJW - flash messages -->
+
     <div class="container"  role="main">
       <%= yield %>
     </div>

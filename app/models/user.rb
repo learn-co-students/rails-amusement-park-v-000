@@ -12,4 +12,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def take_ride(ride)
+    attraction = ride.attraction
+    self.tickets -= attraction.tickets
+    self.happiness += attraction.happiness_rating
+    self.nausea += attraction.nausea_rating
+    self.save
+  end
+
 end

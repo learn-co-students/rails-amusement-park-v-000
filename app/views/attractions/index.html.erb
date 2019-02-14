@@ -1,0 +1,18 @@
+<h1>Welcome to the Attractions index page!</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Tickets</th>
+    <th>Details</th>
+  </tr>
+
+  <% @attractions.each do |a| %>
+    <tr>
+      <td><%= a.name %></td>
+      <td><%= a.tickets %></td>
+      <td><%= link_to "Go on #{a.name}", attraction_path(a) %></td>
+    </tr>
+  <% end %>
+
+</table>

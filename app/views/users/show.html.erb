@@ -5,6 +5,6 @@
 <h3>Height: <%= @user.height %> inches</h3>
 <h3><%= 'ADMIN' if @user.admin %></h3>
 
-link_to 'Log Out', logout_path
+<%= link_to "See attractions", attractions_path %></br>
 
 <%= link_to "Log out", signin_path, method: "delete" %>

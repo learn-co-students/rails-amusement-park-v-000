@@ -2,6 +2,15 @@ class Ride < ActiveRecord::Base
   belongs_to :user
   belongs_to :attraction
 
+  def attraction_name
+    self.attraction.name
+  end
+
+  def user_too_short?
+    self.user.height < self.attraction.min_height
+  end
+
+
   def take_ride
     if error_msg.blank?
       user.tickets -= attraction.tickets
