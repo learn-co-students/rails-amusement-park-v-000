@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
+  before_action :redirect_if_logged_out, only: [:show]
 
   def new
     @user = User.new
@@ -19,7 +20,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+
+  end
 
   private
 
@@ -30,5 +33,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
     end
-
 end
