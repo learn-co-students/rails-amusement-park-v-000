@@ -1,0 +1,21 @@
+<% if @user.admin %>
+    <p><strong>ADMIN</strong></p>
+<% end %>
+
+Name: <%= @user.name %>
+Mood: <%= @user.mood %>
+Tickets: <%= @user.tickets %>
+Height: <%= @user.height %>
+
+
+<% if @message %>
+    <%= @message %>
+<% end %>
+
+<br>
+
+<%= link_to "Log Out", session_path, :method => :delete %><br>
+
+<br>
+
+<%= link_to "See attractions", attractions_path %>

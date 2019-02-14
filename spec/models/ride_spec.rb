@@ -23,7 +23,10 @@ RSpec.describe Ride, :type => :model do
   }
 
   let(:ride) {
-    Ride.create(user_id: user.id, attraction_id: attraction.id)
+    Ride.create(
+      user_id: user.id, 
+      attraction_id: attraction.id
+      )
   }
 
   it "is valid with a user_id and a attraction_id" do
