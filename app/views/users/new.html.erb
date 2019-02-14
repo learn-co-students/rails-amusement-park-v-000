@@ -1,0 +1,32 @@
+<% if @user.errors.any? %>
+  <ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user, url: '/users' do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+  <br>
+  <%= f.label :height %><br>
+  <%= f.text_field :height %><br>
+  <br>
+  <%= f.label :happiness %><br>
+  <%= f.text_field :happiness %><br>
+  <br>
+  <%= f.label :nausea %><br>
+  <%= f.text_field :nausea %><br>
+  <br>
+  <%= f.label :tickets %><br>
+  <%= f.text_field :tickets %><br>
+  <br>
+  <%= f.label :admin %><br>
+  <%= f.check_box :admin %>
+  <br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+  <br>
+  <%= f.submit %>
+<% end %>
