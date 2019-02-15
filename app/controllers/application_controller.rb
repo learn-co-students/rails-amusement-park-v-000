@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :require_logged_in, except: [:new, :create, :home]
+   before_action :require_login, except: [:new, :create, :index]
 
 
 
@@ -23,9 +23,11 @@ class ApplicationController < ActionController::Base
  end
 
    def require_login
-     unless logged_in?
-       flash[:error] = "You must be logged in to access this section"
-       redirect_to '/' # halts request cycle
+  
+     if !logged_in?
+       #flash[:error] = "You must be logged in to access this section"
+       redirect_to root_path # halts request cycle
+
      end
    end
 end

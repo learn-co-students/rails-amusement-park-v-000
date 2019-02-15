@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
-  def index
-  end
 
+  def index
+
+  end
 
   def new
     @user = User.new
@@ -12,14 +13,16 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
       if @user.save
         session[:user_id] = @user.id
+
         redirect_to user_path(@user)
+
       else
-        render 'index'
+        redirect_to root_path
       end
   end
 
   def show
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
   end
 
 

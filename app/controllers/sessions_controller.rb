@@ -17,8 +17,14 @@ class SessionsController < ApplicationController
   def current_user
     @current_user ||= session[:user_id] &&
       User.find_by(id: session[:user_id])
+    
   end
 
-  def signin
+
+  def destroy
+
+    session.delete :user_name
+
+    redirect_to root_path
   end
 end

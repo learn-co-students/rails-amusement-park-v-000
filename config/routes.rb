@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   post '/signin' => 'sessions#create'
 
-  post '/signout' => 'sessions#destroy'
+  delete '/signout' => 'sessions#destroy'
 
   resources :users, only: [:new, :create, :show]
 
