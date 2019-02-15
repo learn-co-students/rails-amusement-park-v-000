@@ -1,5 +1,5 @@
 <h1>Sign Up</h1>
-<%= form_for(@user) do |f| %>
+<%= form_for @user do |f| %>
   <%= f.label :name %><br>
   <%= f.text_field :name %><br>
   <%= f.label :height %><br>
@@ -10,6 +10,8 @@
   <%= f.text_field :nausea %><br>
   <%= f.label :tickets %><br>
   <%= f.text_field :tickets %><br>
+  <%= f.label 'Check box if you are a theme park owner' %><br>
+  <%= f.check_box :admin %><br>
   <%= f.label :password %><br>
   <%= f.password_field :password %><br>
   <%= f.submit %>
