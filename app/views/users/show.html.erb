@@ -6,4 +6,6 @@ Admin: <% if @user.admin %>
           <p>ADMIN</p>
           <%end%>
 
-<%= link_to "Log Out", signout_path(@user) %>
+
+<%= link_to "See attractions", attractions_path %>
+<%= link_to "Log Out", signout_path %>

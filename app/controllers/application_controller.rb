@@ -19,11 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
  def logged_in?
-     !current_user.nil?
+     !!current_user
  end
 
    def require_login
-  
+
      if !logged_in?
        #flash[:error] = "You must be logged in to access this section"
        redirect_to root_path # halts request cycle

@@ -1,0 +1,4 @@
+
+<% @attractions.each do |a| %>
+Go on <%= link_to a.name, ride_path(a.id) %>
+<%end%>

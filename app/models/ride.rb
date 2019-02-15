@@ -4,9 +4,11 @@ class Ride < ActiveRecord::Base
 
   def take_ride
     user = self.user
+
     attraction = self.attraction
     if user.height < attraction.min_height
-      "Not tall enough"
+      "Sorry. You are not tall enough to ride the #{attraction.name}."
+
     end
   end
 end
