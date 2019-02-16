@@ -1,0 +1,15 @@
+Name:<%= @attraction.name %>
+Total Number of Users: <%= @attraction.users.count %><br>
+Ticket Requirement: <%= @attraction.tickets %><br>
+Height Requirement: <%= @attraction.min_height %> in. <br>
+Nausea Rating: <%= @attraction.tickets %><br>
+Happiness Rating: <%= @attraction.tickets %><br>
+
+
+<% if current_user.admin %>
+  <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></p>
+<% else %>
+  <%= button_to "Go on this ride", rides_path(ride: {attraction_id: @attraction.id, user_id: @user.id }) %>
+
+
+<% end %>
