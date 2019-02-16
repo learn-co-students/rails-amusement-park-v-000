@@ -1,10 +1,14 @@
 <% if @user.admin %>
   <h1>ADMIN</h1>
 <% end %>
+
+<% if @ride %>
+  <%= @ride.take_ride %>
+<% end %>
 <h3><%= @user.name %></h3>
 <h3>Height: <%= @user.height %></h3>
 <h3>Mood: <%= @user.mood %></h3>
-<h3>Number of tickets: <%= @user.tickets %></h3>
+<h3>Tickets: <%= @user.tickets %></h3>
 
 
 <%= link_to "Log Out", '/logout' %>
