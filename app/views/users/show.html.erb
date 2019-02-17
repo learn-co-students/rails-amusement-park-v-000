@@ -5,6 +5,7 @@
 <% if @ride %>
   <%= @ride.take_ride %>
 <% end %>
+
 <h3><%= @user.name %></h3>
 <h3>Height: <%= @user.height %></h3>
 <h3>Mood: <%= @user.mood %></h3>
@@ -12,4 +13,5 @@
 
 
 <%= link_to "Log Out", '/logout' %>
+<br></br>
 <%= link_to "See attractions", attractions_path %>

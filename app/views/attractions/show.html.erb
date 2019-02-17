@@ -4,4 +4,9 @@
 <p>Happiness rating: <%= @attraction.happiness_rating %></p>
 <p>height required: <%= @attraction.min_height %></p>
 <br></br>
-<p><%= button_to "Go on this ride", user_path(current_user.id) , method: :get %></p>
+
+<% if !current_user.admin %>  
+  <p><%= button_to "Go on this ride", user_path(current_user.id) %></p>
+<% else %>
+  <p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></p>
+<% end %>

@@ -18,8 +18,10 @@ class UsersController < ApplicationController
 
     def show 
       @user = User.find(params[:id])
+
       if session[:attraction_id]
         @ride = Ride.create(:user_id => @user.id, :attraction_id => session[:attraction_id])
+        @user = @ride.user
       end
     end
 
