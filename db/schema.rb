@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_180938) do
+ActiveRecord::Schema.define(version: 2019_02_15_234242) do
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2019_02_14_180938) do
     t.datetime "updated_at", null: false
     t.integer "tickets"
     t.boolean "admin", default: false
-    t.string "nausea"
-    t.string "happiness"
+    t.integer "nausea"
+    t.integer "happiness"
     t.integer "height"
     t.string "mood"
   end

@@ -3,9 +3,10 @@ Mood: <%= @user.mood %><br>
 Tickets: <%= @user.tickets %><br>
 Height: <%= @user.height %><br>
 Admin: <% if @user.admin %>
+
           <p>ADMIN</p>
-          <%end%>
+          <%end%><br><br>
 
-
+<%=   flash[:success] %>
 <%= link_to "See attractions", attractions_path %>
 <%= link_to "Log Out", signout_path %>

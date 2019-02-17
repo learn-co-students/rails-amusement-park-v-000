@@ -1,4 +1,11 @@
-
 <% @attractions.each do |a| %>
-Go on <%= link_to a.name, ride_path(a.id) %>
-<%end%>
+
+<% if  !@current_user.admin? %>
+ <%= link_to "Go on #{a.name}", attraction_path(a.id) %><br>
+ <% elsif @current_user.admin? %>
+ <%= link_to "Show #{a.name}", attraction_path(a.id) %>
+<% end %>
+<% end %>
+
+
+<%= link_to "New Attraction", new_attraction_path %>
