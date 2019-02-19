@@ -1,0 +1,19 @@
+<div class="center">
+  <div class="info">
+    <p><strong>Name: </strong><%= @attraction.name %></p>
+
+    <p><strong>Total Number of Users: </strong><%= @attraction.users.count if !@attraction.users.empty?%></p>
+    <p><strong>Ticket Requirement: </strong><%= @attraction.tickets if @attraction.tickets != nil%></p>
+    <p><strong>Height Requirement: </strong><%= @attraction.min_height if @attraction.min_height != nil%> inches</p>
+    <p><strong>Nausea Rating: </strong><%= @attraction.nausea_rating if @attraction.nausea_rating != nil%></p>
+    <p><strong>Happiness Rating: </strong><%= @attraction.happiness_rating if @attraction.happiness_rating != nil%></p><br>
+
+    <% if current_user.admin? %>
+      <%= link_to "Edit Attraction", edit_ride_path%>
+    <% else %>
+      <%= form_for(@attraction, method: "get",url: ride_path) do |f| %>
+        <%= f.button "Go on this ride"%>
+      <% end %>
+    <% end %>
+  </div>
+</div>
