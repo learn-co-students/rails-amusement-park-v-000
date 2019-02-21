@@ -1,0 +1,13 @@
+<h1><%= @attraction.name %></h1>
+Nausea rating: <%= @attraction.nausea_rating %><br>
+Happiness rating: <%= @attraction.happiness_rating %><br>
+Ticket cost: <%= @attraction.tickets %><br>
+<% if is_admin? %>
+	<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %><br>
+	<%= link_to "Delete Attraction", attraction_path(@attraction), :method => 'delete' %>
+<% else %>
+	<%= form_for current_user do |f| %>
+		<%= hidden_field_tag "user[attraction_id]", @attraction.id %>
+		<%= submit_tag "Go on this ride" %>
+	<% end %>
+<% end %>
