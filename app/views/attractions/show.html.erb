@@ -1,0 +1,13 @@
+Name: <%= @attraction.name %>
+Total Number of Users: <%= @attraction.rides.count %>
+Ticket Requirement: <%= @attraction.tickets %>
+Height Requirement: <%= @attraction.min_height %>
+Nausea Rating: <%= @attraction.nausea_rating %>
+Happiness Rating: <%= @attraction.happiness_rating %>
+
+ <%= button_to("Go on this ride", {:controller => "rides", :action => "create", :attraction_id => @attraction.id}, :method => :post) %>
+
+  <% if current_user.admin == true %>
+  ADMIN
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
