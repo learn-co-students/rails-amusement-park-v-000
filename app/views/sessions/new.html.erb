@@ -1,0 +1,14 @@
+<%= form_for @user, :url => sessions_create_path do |f| %>
+
+  <div class="field"><%= f.label :name, "Select your name" %><br>
+    <%= f.collection_select(:name, @users, :name, :name) %>
+  </div>
+
+  <div class="field"><%= f.label :password %><br>
+    <%= f.password_field :password, id: 'password' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign In"  %>
+  </div>
+<% end %>
