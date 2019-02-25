@@ -6,14 +6,14 @@ class Ride < ActiveRecord::Base
     fail_req = []
     
      if !!meet_requirements
-      # update_user
-      return "Thanks for riding the #{self.attraction.name}!"
+       update_user
+     "Thanks for riding the #{self.attraction.name}!"
     end
     
-    if user.tickets < attraction.tickets
+    if self.user.tickets < self.attraction.tickets
       fail_req <<  "You do not have enough tickets to ride the #{attraction.name}."
     end
-    if user.height < attraction.min_height
+    if self.user.height < self.attraction.min_height
       fail_req << "You are not tall enough to ride the #{attraction.name}."
     end
     if !fail_req.empty?
@@ -24,4 +24,11 @@ class Ride < ActiveRecord::Base
    def meet_requirements
     self.user.tickets >= self.attraction.tickets && self.user.height >= self.attraction.min_height
   end
+  
+  def update_user
+    self.user.tickets -= self.attraction.tickets
+    self.user.nausea += self.attraction.nausea_rating
+    self.user.happiness += self.attraction.happiness_rating
+    self.user.save
+ end
 end
