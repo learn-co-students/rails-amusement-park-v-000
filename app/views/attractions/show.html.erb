@@ -1,0 +1,14 @@
+<p>Name:</strong> <%= @attraction.name %></p>
+<p>Ticket:<%= @attraction.tickets %></p>
+<p>Happiness:<%= @attraction.happiness_rating %></p>
+<p>Nausea:<%= @attraction.nausea_rating %></p>
+<p>Height:<%= @attraction.min_height %></p>
+
+<% if current_user.admin %>
+  <p><%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
+<% else %>
+  <form action="/rides/new" method="post">
+    <input type="hidden" name="attraction_id" value= <%=@attraction.id%> >
+    <input type="submit" value="Go on this ride">
+  </form>
+<% end %>
