@@ -28,20 +28,20 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!-- /.nav-collapse -->
       </div>
     </div>
 
     <div class="container"  role="main">
-      
+
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: flash_class(name) %>
       <% end %>
-      
+
       <%= yield %>
-      
+
     </div>
   </body>
 </html>
