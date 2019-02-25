@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   def show
     require_logged_in
     @user = current_user
-    render '/users/show'
   end
 
    private

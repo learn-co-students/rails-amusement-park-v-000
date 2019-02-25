@@ -4,14 +4,14 @@
   <%= attraction.name %> |
   <%= attraction.tickets %> tickets |
 
-  <% if current_user.admin %>
+  <% if current_user.admin? %>
     <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
   <% else %>
-    <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+    <%= button_to "Go on #{attraction.name}", attraction_path(attraction), method: :get %>
   <% end %>
 
 <% end %>
 
 </br>
 
-<%= link_to "New Attraction", new_attraction_path %>
+<%= button_to "New Attraction", new_attraction_path, method: :get %>

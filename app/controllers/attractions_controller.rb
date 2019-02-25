@@ -32,13 +32,14 @@ class AttractionsController < ApplicationController
     @ride = Ride.create(:user_id => current_user.id, :attraction_id => @attraction.id)
     message = @ride.take_ride
     if message.blank?
-      flash[:alert] = "Thanks for riding the #{@attraction.name}!"
+      flash[:success] = "Thanks for riding the #{@attraction.name}!"
     else
       flash[:alert] = message
     end
-
-    redirect_to user_path(@ride.user)
+    redirect_to user_path(current_user)
   end
+
+
 
   private
 
