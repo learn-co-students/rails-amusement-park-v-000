@@ -1,0 +1,17 @@
+  <% if flash[:message] %>
+    <h3><%= flash[:message] %></h3>
+  <% end %>
+
+  <% if @user.admin %>
+    <div id="user_admin">
+      <h3><strong>ADMIN</strong></h3>
+    </div>
+  <% end %>
+
+  <h1>Welcome to the park, <%=@user.name%>!</h1>
+  <h2>Tickets: <%= @user.tickets %></h2>
+  <h2>Mood: <%= @user.mood %></h2>
+  <h2>Height: <%= @user.height %> inches</h2>
+
+  <li><%= link_to "See attractions", attractions_path %></li>
+  <li><%= link_to "Log Out", signout_path, method: :delete %></li>

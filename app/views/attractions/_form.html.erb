@@ -1,0 +1,10 @@
+<%= flash[:message] if flash[:message] %>
+
+<%= form_for @attraction do |f| %>
+  <h1>Name: <%= f.text_field :name %> </h1>
+  <h2>Minimum Height: <%= f.text_field :min_height %></h2>
+  <h2>Number of Tickets: <%= f.text_field :tickets %></h2>
+  <h2>Nausea Rating: <%= f.text_field :nausea_rating %></h2>
+  <h2>Happiness Rating: <%= f.text_field :happiness_rating %></h2>
+<%= f.submit %>
+<% end %>

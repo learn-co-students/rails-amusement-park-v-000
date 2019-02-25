@@ -1,0 +1,10 @@
+<h1>Log in to enter the park!</h1>
+
+<%= form_for @user, url: signin_path, method: :post do |f| %>
+<%= f.label :name %>
+<%= f.collection_select :name, @users, :name, :name %><br>
+<label>Password:</label>
+<%= password_field_tag :password%>
+
+<%= f.submit "Sign In" %>
+<% end %>
