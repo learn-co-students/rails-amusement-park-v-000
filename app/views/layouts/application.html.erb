@@ -19,8 +19,8 @@
           </button>
         <a class="navbar-brand" href="<%= root_path %>"/>Home</a>
         <% if logged_in? %>
-          <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%=current_user.name%>'s profile</a>
-          <a id="Log Out" class="navbar-brand" href="<%= logout_path %>"/>Log Out</a>
+          <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%=current_user.name%>'s Profile</a>
+          <a id="Log Out" class="navbar-brand" <%= link_to "Log Out", logout_path, method: :post %></a>
         <% else %>
           <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
           <a class="navbar-brand" href="<%= login_path %>"/>Login</a>
@@ -37,7 +37,7 @@
     <div class="container"  role="main">
 
       <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: flash_class(name) %>
+        <%= content_tag :div, msg, :class => "center #{flash_class(name)}" %>
       <% end %>
 
       <%= yield %>
