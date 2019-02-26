@@ -1,0 +1,17 @@
+<div class="center">
+  <% if flash[:notice] %>
+    <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+  <div class="info">
+    <% if @user.admin == true %>
+    <p><strong>ADMIN</strong>
+    <% end %>
+    <p><strong>Name:</strong> <%= @user.name%></p>
+    <p><strong>Tickets:</strong> <%= @user.tickets%></p>
+    <p><strong>Mood:</strong> <% if @user.admin == false %><%= @user.mood%><% end %> </p>
+    <p><strong>Height:</strong> <%= @user.height%></p>
+
+    <p><%= link_to "See attractions", attractions_path %></p>
+    <%= button_to "See All Users", users_path, method: :get %>
+  </div>
+</div>
