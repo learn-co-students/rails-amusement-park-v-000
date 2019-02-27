@@ -1,0 +1,18 @@
+:user_keys =>
+  ["name", "nausea", "happiness", "tickets", "height", "password", admin:boolean],
+  rails g resource User name:string password_digest:string nausea:integer happiness:integer tickets:integer height:integer admin:boolean
+
+
+:attraction_keys =>
+ ["name", "nausea_rating", "happiness_rating", "tickets", "min_height"],
+ rails g resource Attraction name:string tickets:integer nausea_rating:integer happiness_rating:integer min_height:integer
+
+
+ride:
+rails g resource Ride user_id:integer attraction_id:integer
+
+
+:admins => [
+  "Mary Elitch Long",
+  "John Elitch"
+]
