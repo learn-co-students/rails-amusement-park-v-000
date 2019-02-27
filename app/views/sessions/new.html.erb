@@ -1,0 +1,11 @@
+<h1>Sign in</h1>
+
+<%= form_tag('/signin', :method => :post) do %>
+  <%= label_tag :name %>
+  <%= select_tag "user_name", options_for_select(@users.collect { |u| u.name }) %>
+  <br>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <br>
+  <%= submit_tag "Sign In" %>
+<% end %>
