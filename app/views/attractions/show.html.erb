@@ -1,0 +1,17 @@
+<h2><%=@attraction.name%></h2>
+
+<li><%=@attraction.tickets%></li>
+<li><%=@attraction.nausea_rating%></li>
+<li><%=@attraction.happiness_rating%></li>
+<li><%=@attraction.min_height%></li>
+
+<%if current_user.admin == true%>
+<p><%= link_to "Edit Attraction", edit_attraction_path(@attraction) %></p>
+<%end%>
+
+
+
+<%= form_for :user, url: user_path(current_user), method: :patch do |f| %>
+  <input type="hidden" name="attraction_id" value=<%=@attraction.id%>>
+  <%= f.submit "Go on this ride" %>
+<% end %>
