@@ -1,0 +1,12 @@
+<div class="center">
+  <div class="info">
+    <% if @user.admin %>
+      <p><strong>ADMIN</strong></p>
+    <% end %>
+    <p><b>Name:</b> <%= @user.name %></p> 
+    <p><b>Tickets:</b> <%= @user.tickets %></p>
+    <p><b>Mood:</b> <%= @user.mood if @user.mood %></p>
+    <p><b>Height:</b> <%= @user.height %></p>
+    <p><%= link_to "See attractions", attractions_path %></p>
+  </div>
+</div>
