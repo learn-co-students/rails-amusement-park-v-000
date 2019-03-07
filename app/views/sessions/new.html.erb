@@ -4,18 +4,17 @@
 	<%= f.label :name, 'Your name:' %><br>
 
 
-	<select name="user[user_id]">
+	<select name="user[name]" id="user_name">
 	    <% User.all.each do |u| %>
-	        <option value="<%= u.id %>"><%= u.name %></option>
+	        <option value="<%= u.name %>"><%= u.name %></option>
 	    <% end %>
 	</select>
 	<br>
 	<br>
 
-  <%= f.label :password %> <br>
-	<%= f.password_field :password %> <br>
+	<%= password_field_tag(:password) %>
 
 
-	<%= f.submit 'Sign in'%>
+	<%= f.submit 'Sign In'%>
 
 	<% end %>

@@ -14,16 +14,14 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_path
     end
-  end
 
+  end
 
 
     def show
       if logged_in?
           @user = current_user
-          redirect_to user_path(@user)
         else
-        
           redirect_to root_url
         end
     end
@@ -31,7 +29,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :password_confirmation, :admin)
+        params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
     end
 
 

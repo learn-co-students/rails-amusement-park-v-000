@@ -6,7 +6,7 @@ resources :users, only: [:new, :create, :show]
    post '/signin' => 'sessions#create'
 
    get '/login' => 'sessions#new'
-   post '/login' => 'users#show'
+   post '/login' => 'sessions#create'
 
    get '/logout' => 'sessions#destroy'
 
