@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+<%= @user.name %>
+<h5>Mood:</h5> <%= @user.mood %>
+Tickets: <%= @user.tickets %>
+<%= @user.nausea %>
+<%= @user.height %>
+<%= @user.happiness %>
+
+<p class = "user_admin" id="user_admin">ADMIN</p>
+<%= @user.admin %>
+<a href = "/attractions">See attractions</a>
+<a href = "/logout">Log Out</a>
