@@ -1,0 +1,19 @@
+<table>
+  <tbody>
+<tr>
+  <% @users.each do |user| %>
+  <table>
+     <%= user.name %>
+     </tr>
+     <%= user.tickets %>
+     </tr>
+     <%= user.nausea %>
+    </tr>
+    <%= user.happiness %>
+    </tr>
+    <%= user.height %>
+    </tr>
+    <%= user.admin %>
+  <% end %>
+  </tbody>
+</table>
