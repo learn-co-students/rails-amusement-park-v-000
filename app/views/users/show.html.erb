@@ -1,0 +1,11 @@
+<p> Hey <%= @user.name %> </p>
+<p> Your Mood is: <%= @user.mood %> </p>
+<p> You have: <%= @user.tickets %> tickets </p>
+<p> Your height: <%= @user.height %> </p>
+
+<% if @user.admin %>
+<p> ADMIN </p>
+<% end %>
+
+
+ <a href="/logout"> Logout</a>
