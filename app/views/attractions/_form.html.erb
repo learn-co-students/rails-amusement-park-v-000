@@ -1,0 +1,32 @@
+<%= form_with(model: attraction, local: true) do |form| %>
+  <% if attraction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attraction.errors.count, "error") %> prohibited this attraction from being saved:</h2>
+
+      <ul>
+      <% attraction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.label :name, for: "attraction_name" %>
+    <%= form.text_field :name, id: :attraction_name %>
+    <br>
+    <%= form.label :tickets, for: "attraction_tickets" %>
+    <%= form.number_field :tickets, id: :attraction_tickets %>
+    <br>
+    <%= form.label :nausea_rating, for: "attraction_nausea_rating" %>
+    <%= form.number_field :nausea_rating, id: :attraction_nausea_rating %>
+    <br>
+    <%= form.label :happiness_rating, for: "attraction_happiness_rating" %>
+    <%= form.number_field :happiness_rating, id: :attraction_happiness_rating %>
+    <br>
+    <%= form.label :min_height, for: "attraction_min_height" %>
+    <%= form.number_field :min_height, id: :attraction_min_height %>
+    <br>
+    <%= form.submit %>
+  </div>
+<% end %>

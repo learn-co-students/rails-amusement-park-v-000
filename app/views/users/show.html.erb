@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<ul>
+<% flash.each do |k, v| %>
+	<li><%= "#{k}: #{v}" %></li>
+<% end %>
+</ul>
+<p>Name: <%= @user.name %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Height: <%= @user.height %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<%= "<p>ADMIN</p>" if @user.admin %>
+
+<%= link_to "See attractions", attractions_path %>
+
+<%= link_to('Log Out', sessions_path, method: :delete) %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
