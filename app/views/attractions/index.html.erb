@@ -1,0 +1,8 @@
+<h1>Attractions</h1>
+
+<% @attractions.each do |attraction| %>
+  <%= attraction.name %>
+  <%= show_or_go_attraction(@user, attraction) %>
+<% end %>
+
+<%= add_new_attraction(@user) %>

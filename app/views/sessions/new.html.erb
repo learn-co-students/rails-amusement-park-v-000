@@ -1,0 +1,10 @@
+
+<%= form_tag '/sessions' do |f| %>
+  <label>Name</label>
+  <%= select_tag "user_name", options_from_collection_for_select(User.all, "name", "name") %><br />
+
+  <label>Password</label>
+  <%= password_field_tag 'password' %>
+
+<%= submit_tag "Sign In" %>
+<%end%>
