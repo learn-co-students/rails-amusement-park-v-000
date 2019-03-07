@@ -379,7 +379,7 @@ describe 'Feature Test: Admin Flow', :type => :feature do
     click_link("Edit Attraction")
     fill_in("attraction[name]", :with => "Nitro")
     click_button("Update Attraction")
-    expect(current_path).to eq("/attractions/1")
+    expect(current_path).to eq("/attractions/4")
     expect(page).to have_content("Nitro")
   end
 end

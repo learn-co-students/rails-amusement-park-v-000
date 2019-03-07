@@ -1,0 +1,19 @@
+<h1><%= @attraction.name %></h1>
+<a href = "/attractions">See attractions</a>
+<h4>Tickets needed: <%= @attraction.tickets %></h4>
+
+<% if @user.admin == false %>
+<%= form_for @ride do |r| %>
+<%= r.hidden_field :user_id %>
+<%= r.hidden_field :attraction_id %>
+<%= r.submit "Go on this ride" %>
+<% end %>
+<% end %>
+
+
+Nausea rating:<%= @attraction.nausea_rating %>
+Min height:<%= @attraction.min_height %>
+Happiness rating:<%= @attraction.happiness_rating %>
+<% if @user.admin %>
+<%= link_to "Edit Attraction", attractions_edit_path(@attraction) %>
+<% end %>
