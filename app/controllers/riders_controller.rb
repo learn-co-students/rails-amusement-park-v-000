@@ -1,2 +1,0 @@
-class RidersController < ApplicationController
-end
