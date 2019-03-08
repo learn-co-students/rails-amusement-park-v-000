@@ -1,33 +1,39 @@
-class UsersController < ApplicationController
+require 'pry'
 
-  def index
-    @users = User.all
-  end
+class UsersController < ApplicationController
+  before_action :authenticate_user, only: [:show]
 
   def new
+    @user = User.new
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
-      redirect_to new_path
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     else
-      redirect_to welcome_path
+      render 'new'
     end
   end
 
-
-
+    def show
+      @user = User.find_by(id: params[:id])
+      if !current_user.admin
+        if current_user != @user
+        redirect_to root_path
+        end
+      end
+    end
 
 
   def destroy
-    User.find(params[:id]).destroy
-      redirect_to welcome_path
+  #  User.find(params[:id]).destroy
+  #    redirect_to welcome_path
     end
 
 
 private
-
 
   def user_params
     params.require(:user).permit(:name, :tickets, :nausea, :happiness, :height, :password, :admin)
