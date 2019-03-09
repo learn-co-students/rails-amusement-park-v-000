@@ -6,7 +6,7 @@ class Ride < ActiveRecord::Base
     user = self.user
     attraction = self.attraction
 
-    if user.tickets < self.attraction.tickets && user.height < attraction.min_height
+    if user.tickets < attraction.tickets && user.height < attraction.min_height
       "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
     elsif user.tickets < attraction.tickets
       "Sorry. You do not have enough tickets to ride the #{attraction.name}."
@@ -14,7 +14,7 @@ class Ride < ActiveRecord::Base
       "Sorry. You are not tall enough to ride the #{attraction.name}."
     else
       user.update(tickets: user.tickets-attraction.tickets, nausea: user.nausea+attraction.nausea_rating, happiness: user.happiness+attraction.happiness_rating )
-
+      "Thanks for riding the `#{attraction.name}`!"
     end
 
   end
