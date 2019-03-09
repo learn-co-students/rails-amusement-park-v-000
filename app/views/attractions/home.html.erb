@@ -1,0 +1,18 @@
+<h1>Listing attractions</h1>
+<div>
+  <tr>
+  <strong>   <td> Name </td>    </strong>
+  <strong>   <td> Tickets </td> </strong>
+  <strong>   <td> Details </td> </strong>
+  </tr>
+	    <% Attraction.all.each do |u| %>
+    <div>
+	    <td><%= u.name %></td>
+      <td><%= u.tickets %></td>
+      <td><p>Go on <%=link_to  u.name %> </p></td>
+    </div>
+	    <% end %>
+
+	<br>
+	<br>
+</div>
