@@ -6,13 +6,14 @@
   <p>Happiness Rating: <%= @attraction.happiness_rating %></p>
 
   <% if current_user.admin%>
-  <%= link_to "Edit Attraction", edit_attraction_path %><br>
-  <% else %>
-  <%= form_for @ride do |f| %>
-  <%= f.hidden_field :attraction_id, value: @attraction.id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit "Go on this ride" %>
-  <% end %>
+    <%= link_to "Edit Attraction", edit_attraction_path %><br>
+    <%= link_to "Show #{@attraction.name}", edit_attraction_path %><br>
+    <% else %>
+    <%= form_for @ride do |f| %>
+    <%= f.hidden_field :attraction_id, value: @attraction.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "Go on this ride" %>
+    <% end %>
   <% end %>
 
 </div>
