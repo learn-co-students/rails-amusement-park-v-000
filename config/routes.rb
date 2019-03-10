@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
 resources :users, only: [:new, :create, :show]
-resources :rides
+resources :rides, only: [:new, :create, :show]
+resources :attractions 
+
 
    get '/signin' => 'sessions#new'
    post '/signin' => 'sessions#create'
@@ -9,9 +11,6 @@ resources :rides
    post '/login' => 'sessions#create'
    get '/logout' => 'sessions#destroy'
    get '/attractions' => 'attractions#home'
-   resources :attractions
-
-   patch '/attractions/:id'=> 'attractions#update'
 
   root 'users#home'
 
