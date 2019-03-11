@@ -1,0 +1,15 @@
+<% if @message %>
+  <p><%= @message %></p>
+<% end %>
+
+
+<% if @user.admin == true %>
+  <h1>ADMIN</h1>
+<% end %>
+<h1><%= @user.name %></h1>
+<h4>Mood  <%=@user.mood%></h4>
+<h4>Height: <%=@user.height.to_s%> inches</h4>
+<h4>Tickets: <%=@user.tickets.to_s%></h4>
+<%= link_to "See attractions", attractions_path %>
+<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to "Log Out", signout_path, method: 'delete' %>

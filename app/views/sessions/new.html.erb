@@ -1,0 +1,13 @@
+<h1>Sign In</h1>
+<h2>You're on this page</h2>
+
+<%= form_for @user, url: sessions_create_path do |f| %>
+ <select name="user[id]" id="user_name">
+  <% User.all.each do |user| %>
+    <option value="<%= user.id %>"><%= user.name %></option>
+  <% end %>
+  </select>
+  <%= f.label :password, "Password:" %>
+  <%= f.password_field :password, id: "password" %>
+  <%= f.submit "Sign In" %>
+<% end %>
