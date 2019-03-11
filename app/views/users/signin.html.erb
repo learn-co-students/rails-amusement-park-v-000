@@ -1,0 +1,7 @@
+<%= form_for :user do |f| %>
+Your Name:<%= f.collection_select :name, User.all, :name :name, {prompt: "Please select your username from this dropdown"} %><br>
+Your Password<br><%= f.text_field :password %><br>
+<%= f.submit "Sign In"%>
+binding.pry
+<% end %>
+
