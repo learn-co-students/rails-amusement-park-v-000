@@ -1,0 +1,24 @@
+
+
+<%if !session[:message].blank? || session[:message] == nil %>
+<%=session[:message]%>
+<%end%>
+
+
+<% if @user.admin == false %>
+
+  Name: <%=@user.name%>
+  Mood: <%=@user.mood%>
+  Height: <%=@user.height%>
+  Tickets: <%=@user.tickets%>
+  Nausea: <%=@user.nausea%>
+  Happiness: <%=@user.happiness%>
+
+<%else%>
+  ADMIN
+  Name: <%=@user.name%>
+
+<%end%>
+
+<%= link_to('Log Out', logout_path) %>
+<%= link_to('See attractions', attractions_path) %>

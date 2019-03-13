@@ -1,0 +1,10 @@
+
+
+<%= form_tag("/signin", method: "post") do %>
+
+  <%= collection_select :user, :name, User.all, :id, :name%><br>
+  password: <input type="text" name="password" id='password'><br>
+
+  <%= submit_tag("Sign In") %>
+
+<% end %>

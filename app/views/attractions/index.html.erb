@@ -1,0 +1,11 @@
+<%if User.find(session[:user_id]).admin == true %>
+  <%=link_to("New Attraction", new_attraction_path)%>
+<%end%>
+
+<%Attraction.all.each do |attr|%>
+   <%if User.find(session[:user_id]).admin == true %>
+      <%= link_to('Show ' + attr.name, attraction_path(attr))%>
+    <%else  %>
+      <%= link_to('Go on ' + attr.name, attraction_path(attr), :page => params[:page]) %>
+   <%end%>
+<%end%>

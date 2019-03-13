@@ -1,0 +1,13 @@
+Sign Up!
+
+<%= form_for @user do |f| %>
+  name: <%= f.text_field :name %><br />
+  height: <%= f.text_field :height %><br />
+  happiness: <%= f.text_field :happiness %><br />
+  nausea: <%= f.text_field :nausea %><br />
+  tickets: <%= f.text_field :tickets %><br />
+  password: <%= f.text_field :password %><br />
+  admim: <%= f.text_field :admin %><br />
+
+  <%= submit_tag("Create User") %>
+<% end %>
