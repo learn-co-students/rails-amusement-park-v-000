@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def sign_in
     @user = User.new
-    render :new
+    render :signin
   end
 
   def create

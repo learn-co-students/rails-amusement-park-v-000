@@ -5,7 +5,7 @@ class CreateAttractions < ActiveRecord::Migration[5.2]
       t.integer :tickets
       t.integer :nausea_rating
       t.integer :happiness_rating
-      t.string :min_height
+      t.integer :min_height
     end
   end
 end

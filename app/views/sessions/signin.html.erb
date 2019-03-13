@@ -1,21 +1,9 @@
-<%= form_for @user, url: signin_path(@user) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+<%= form_for @user, url: signin_path do |f| %>
+<%= f.label "User Name" %>
+<%= f.text_field :name %><br><br>
 
-  <%= f.label :nausea %>
-    <%= f.text_field :nausea %>
-
-    <%= f.label :happiness %>
-      <%= f.text_field :happiness %>
-
-      <%= f.label :height %>
-        <%= f.text_field :height %>
-
-        <%= f.label :tickets %>
-          <%= f.text_field :tickets %>
-
-  <%= f.label :password %>
-  <%= f.text_field :password %>
+<%= f.label "Password" %>
+<%= f.text_field :password %><br><br>
 
 <%= f.submit "Sign In" %>
 
