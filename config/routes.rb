@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#sign_in', as: 'signin'
   post '/signin', to: 'sessions#create'
 
-  root 'welcome#home'
+#  root 'welcome#home'
 
 end
