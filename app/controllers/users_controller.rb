@@ -1,7 +1,7 @@
 require 'pry'
 
 class UsersController < ApplicationController
-  # before_action :authenticate_user, only: [:show]
+   before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 private
 
   def destroy
+    session.delete :user
   #  User.find(params[:id]).destroy
   #    redirect_to welcome_path
     end

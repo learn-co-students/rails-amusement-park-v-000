@@ -1,21 +1,21 @@
 <%= form_for @user do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %><br>
+  <%= f.text_field :name %><br><br>
 
   <%= f.label :nausea %>
-  <%= f.number_field :nausea %>
+  <%= f.number_field :nausea %><br><br>
 
   <%= f.label :happiness %>
-  <%= f.number_field :happiness %>
+  <%= f.number_field :happiness %><br><br>
 
   <%= f.label :height %>
-<%= f.number_field :height %>
+<%= f.number_field :height %><br><br>
 
 <%= f.label :tickets %>
-<%= f.number_field :tickets %>
+<%= f.number_field :tickets %><br><br>
 
   <%= f.label :password %>
-  <%= f.text_field :password %>
+  <%= f.password_field :password %><br><br>
 
 <%= f.submit "Create User" %>
 

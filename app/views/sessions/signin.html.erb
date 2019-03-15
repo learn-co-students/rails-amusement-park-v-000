@@ -1,10 +1,14 @@
-<%= form_for @user, url: signin_path do |f| %>
-<%= f.label "User Name" %>
-<%= f.text_field :name %><br><br>
 
-<%= f.label "Password" %>
-<%= f.text_field :password %><br><br>
+<%= form_for @user do |f| %>
 
-<%= f.submit "Sign In" %>
-
+<%= f.label :name %>
+  <%= f.collection_select :name, User.all, :id, :name %>
+    <datalist id=":name_autocomplete">
+      <% User.all.each do |user| %>
+    </datalist>
+    <% end %>
+    <br>
+<%= f.label :password %>
+<%= f.password_field :password %>
+<%= f.submit 'Sign In' %>
 <% end %>
