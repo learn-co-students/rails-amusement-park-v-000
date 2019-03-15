@@ -1,16 +1,15 @@
 class UsersController < ApplicationController
 
   def new
+  end
 
+  def home
   end
 
   def create
     @user = User.create(user_params)
     session[:user_id] = @user.id
     redirect_to "/users/#{@user.id}"
-  end
-
-  def home
   end
 
   def show
