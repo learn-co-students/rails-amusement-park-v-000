@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
- 
 get '/' => 'users#home'
 get 'users/new' => 'users#new'
 get '/signup' => 'users#new'
