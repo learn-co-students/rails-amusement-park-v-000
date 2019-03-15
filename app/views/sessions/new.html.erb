@@ -1,0 +1,20 @@
+<h1>Login </h1>
+
+<%= form_for(@user, url:login_path) do |f| %>
+	<%= f.label :name, 'Your name:' %><br>
+
+
+	<select name="user[name]" id="user_name">
+	    <% User.all.each do |u| %>
+	        <option value="<%= u.name %>"><%= u.name %></option>
+	    <% end %>
+	</select>
+	<br>
+	<br>
+
+	<%= password_field_tag(:password) %>
+
+
+	<%= f.submit 'Sign In'%>
+
+	<% end %>

@@ -1,0 +1,22 @@
+<%= debug flash %>
+<p> Hey <%= @user.name %> </p>
+<p> Mood: <%= @user.mood %> </p>
+<p> Tickets: <%= @user.tickets %> tickets </p>
+<p> Height: <%= @user.height %> </p>
+
+<p> <%= link_to "See attractions", attractions_path %> </p>
+
+<% if @user.admin %>
+<p> ADMIN </p>
+<p> <%= link_to "New Attraction", new_attraction_path %> </p>
+<br>
+<br>
+<% end %>
+
+
+
+<% if @message %>
+	<h3> <%=flash[:message] = @message %> </h3>
+<% end %>
+
+ <a href="/logout"> Logout</a>
