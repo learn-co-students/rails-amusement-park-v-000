@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :users
 
-  get '/signin', to: 'sessions#sign_in', as: 'signin'
+  get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
 
-  get '/logout', to: 'users#destroy'
+  get '/logout', to: 'sessions#destroy'
 
 #  root 'welcome#home'
 
