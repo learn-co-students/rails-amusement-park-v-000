@@ -1,7 +1,7 @@
 <h1> Sign In </h1>
 <%= form_for @user, url: signin_path(@user) do |f| %>
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.collection_select(:id, @users, :id, :name) %>
   <%= f.label :password %>
   <%= f.password_field :password %>
 
