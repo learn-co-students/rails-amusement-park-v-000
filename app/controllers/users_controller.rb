@@ -1,11 +1,12 @@
 require 'pry'
 
 class UsersController < ApplicationController
-#   before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
+   before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 
-#  def index
-#    @users = User.all
-#  end
+def show
+#  @user = User.find_by(id: params[:id])
+  set_user
+  end
 
   def new
     @user = User.new
@@ -21,25 +22,20 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    return head(:forbidden) unless session.include? :user_id
-    @user = User.find(params[:id])
-    #  params[:id] = session[:user_id]
-    #  session[:user_id] = @user.id
-    #  if !current_user.admin
-    #    if current_user != @user
-  #      redirect_to new_path
-  #      end
-  #    end
+    def edit
     end
 
     def update
-      @user = User.find(params[:id])
+      set_user
       @user.update(user_params)
       redirect_to user_path(@user)
     end
 
     private
+
+    def set_user
+      @user = User.find(params[:id])  #User callbacks to share common setup
+    end
 
     def user_params
       params.require(:user).permit(

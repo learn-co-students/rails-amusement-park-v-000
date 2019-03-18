@@ -2,3 +2,7 @@
 Mood: <%= @user.mood %> <br><br>
 Tickets: <%= @user.tickets %><br><br>
 Height: <%= @user.height %><br><br>
+
+<% if @user.admin %>
+  <p> user_admin </p>
+<% end %>

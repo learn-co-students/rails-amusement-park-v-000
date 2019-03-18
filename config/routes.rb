@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
   resources :users
+  resources :attractions
 
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
 
-  get '/logout', to: 'sessions#destroy'
+  delete '/signout', to: 'sessions#destroy'
 
-#  root 'welcome#home'
+  post '/rides/new', to: 'rides#new'
+
+  root 'welcome#home'
+
+  namespace :user_admin do
+    resources :user_admin, only: [:index]
+  end
+
 
 end
