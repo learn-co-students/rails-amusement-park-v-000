@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @message = params[:message] if params[:message]
+    @message ||= false
     @user = User.find_by(id: params[:id])
     if current_user != @user
       redirect_to root_path
