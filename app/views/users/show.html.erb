@@ -2,6 +2,10 @@
     <p><%= @message %></p>
 <% end %>
 
+<% if @user.admin %>
+    <p>ADMIN</p>
+<% end %><br>
+
 <%= @user.name %>
 Mood: <%= @user.mood %>
 Tickets: <%= @user.tickets %>
