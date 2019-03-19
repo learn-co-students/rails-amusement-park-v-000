@@ -1,3 +1,5 @@
+<h2> User Sign Up </h2>
+
 <%= form_for @user do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br><br>
@@ -9,13 +11,16 @@
   <%= f.number_field :happiness %><br><br>
 
   <%= f.label :height %>
-<%= f.number_field :height %><br><br>
+  <%= f.number_field :height %><br><br>
 
-<%= f.label :tickets %>
-<%= f.number_field :tickets %><br><br>
+  <%= f.label :tickets %>
+  <%= f.number_field :tickets %><br><br>
 
   <%= f.label :password %>
   <%= f.password_field :password %><br><br>
+
+  <%= f.label :admin, "Check box if you are a theme park caset member" %>
+  <%= f.check_box :admin %>
 
 <%= f.submit "Create User" %>
 

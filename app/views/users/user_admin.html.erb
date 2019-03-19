@@ -1,0 +1,13 @@
+"user_admin"
+<% find('#user_admin', :visible => true).click %>
+
+<%= form_for @user do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+  <%= f.label :password %>
+  <%= f.password_field :password %><br><br>
+  <%= f.label :user_admin, "Check box if you are a theme park owner" %>
+      <%= f.check_box :user_admin, class: "form-check-input" %>
+<%= f.submit "Create User" %>
+
+<% end %>
