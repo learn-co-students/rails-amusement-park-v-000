@@ -25,6 +25,15 @@ class AttractionsController < ApplicationController
     end
   end
 
+  def create 
+    @attraction = Attraction.new(attraction_params)
+      if @attraction.save
+          redirect_to attraction_path(@attraction, notice: 'Attraction was successfully created.')
+      else
+          redirect_to new_attraction_path
+      end
+  end
+
   private 
 
   def attraction_params
