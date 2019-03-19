@@ -1,9 +1,13 @@
-<h1> Sign In </h1>
-<%= form_for @user, url: signin_path(@user) do |f| %>
-  <%= f.label :name %>
-  <%= f.collection_select(:id, @users, :id, :name) %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+<%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
 
-  <%= f.submit "Sign In" %>
+    <%= f.label :user_name, "Select your name" %><br>
+    <%= f.collection_select(:id, @users, :id, :name) %>
+
+    <%= label_tag :name %>
+<%= text_field_tag 'user[name]' %>
+
+    <%= f.label :password, "Enter your password" %><br>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Sign In"  %>
 <% end %>
