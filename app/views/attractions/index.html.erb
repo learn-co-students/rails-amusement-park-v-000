@@ -1,0 +1,11 @@
+<% @attractions.each do |attraction| %>
+    <% if current_user.admin %>
+        <%= link_to "Show #{attraction.name}", attraction_path(attraction)%><br>
+    <% else %>
+        <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br>
+    <% end %><br>
+<% end %>
+
+<% if current_user.admin %>
+    <%= link_to 'New Attraction', new_attraction_path, class:"btn btn-primary btn-light"  %></p>
+<% end %>
