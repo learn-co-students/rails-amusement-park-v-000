@@ -1,9 +1,15 @@
 
 <h3>Name: <%=  @user.name %></h3><br>
 
-<h3>Tickets: <%=  @user.tickets %></h3><br>
+<% if admin %>
+<h3>ADMIN</h3>
+<% end %>
 
-<h3>Mood: <%= @user.mood %></h3><br>
+<% if !admin %>
+  <h3>Tickets: <%=  @user.tickets %></h3><br>
+  <h3>Mood: <%= @user.mood %></h3><br>
+  <h3>Height: <%= @user.height %></h3><br>
+<% end %>
 
-<h3>Height: <%= @user.height %></h3><br>
+
 See attractions

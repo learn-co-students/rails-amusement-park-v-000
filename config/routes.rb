@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
   get '/users/:id' => 'users#show'
   get '/signin' => 'sessions#new'
-  post '/singin' => 'sessions#create'
+  post '/signin' => 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   # resources :sessions
 end

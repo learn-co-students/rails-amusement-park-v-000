@@ -10,7 +10,7 @@
 
   <b>How many dollars are in your pocket?</b><br><%= f.text_field :tickets %><br> 
 
-  <b>Check box if you are a theme park owner</b><%= f.check_box :admin %><br><br>
+  <b>Check box if you are a theme park owner</b><%= f.check_box :admin, {checked: false}%><br><br>
 
   <b>Password</b><br><%= f.password_field :password %><br><br>
 

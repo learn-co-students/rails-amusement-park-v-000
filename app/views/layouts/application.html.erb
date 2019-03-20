@@ -18,6 +18,13 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <% if !logged_in? %>
+          <a class="navbar-brand" href="/users/new">Sign Up</a>
+          <a class="navbar-brand" href="/signin">Log in</a>
+          <% else %>
+          <%# <a class="navbar-brand" href="/users/953">Kazumi's profile</a> %>
+          <a class="navbar-brand" rel="nofollow" data-method="delete" href="/logout">Log Out</a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
