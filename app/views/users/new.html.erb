@@ -1,2 +1,26 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>New User Sign Up</h1>
+
+<%= form_tag users_path do %>
+  <label>Name:</label><br>
+  <%= text_field_tag :name %><br>
+
+  <label>Height (in inches)</label><br>
+  <%= text_area_tag :height %><br>
+
+  <label>How happy are you? (1-5 scale)</label><br>
+  <%= text_field_tag :happiness %><br>
+
+  <label>How nauseous are you? (1-5 scale)</label><br>
+  <%= text_area_tag :nausea %><br>
+
+  <label>How many dollars are in your pocket? </label><br>
+  <%= text_area_tag :tickets %><br>
+
+  <label>Check box if you are a theme park owner</label><br>
+  <%= check_box_tag :admin %><br>
+
+  <label>Password</label><br>
+  <%= password_field_tag :password_digest %><br>
+
+  <%= submit_tag "Create User" %>
+<% end %>
