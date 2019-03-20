@@ -1,5 +1,9 @@
 <h2> Toggle navigation Welcome </p>
 
+
   <% @attractions.each do |attraction| %>
-    Attraction Name: <%= attraction.name %> - <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br> <br>
+    Attraction Name: <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br> <br>
+    Tickets: <%= attraction.tickets %>
   <% end %>
+
+ <p><%= link_to 'New Attraction', new_attraction_path %></p>
