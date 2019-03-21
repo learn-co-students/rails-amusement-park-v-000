@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create]
 
-  get '/login', to: "sessions#new"
-  get '/login', to: "sessions#create"
+  get '/signup', to: "sessions#new"
+  get '/signin', to: "sessions#create"
   get '/logout', to: "sessions#logout"
 
 end
