@@ -36,6 +36,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 
+gem 'omniauth'
+
+gem 'omniauth-facebook'
+
+gem 'dotenv-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -48,6 +53,7 @@ group :development, :test do
   gem "database_cleaner"
   gem "rspec-rails"
   gem "rack_session_access"
+  gem "pry"
 end
 
 group :development do
