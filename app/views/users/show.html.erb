@@ -1,0 +1,18 @@
+
+<div>
+    <% if @user.admin %>
+        <p>ADMIN</p>
+    <% end %>
+    <p> <%= @user.name %> </p>
+    <p> Mood: <%= @user.mood %>> </p>
+    <p> Tickets: <%= @user.tickets %> <%= @user.height %></p>
+    <p><%= link_to 'See attractions', attractions_path%></p>
+</div>
+
+    <% if params[:message] %>
+    <div>
+        <p><%= params[:message] %></p>
+    </div>
+
+    <% end %>
+    

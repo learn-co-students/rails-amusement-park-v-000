@@ -1,0 +1,18 @@
+<%= form_for(attraction) do |f|%>
+    Attraction Name: <br>
+    <%= f.text_field :name %>
+    Minimum Height Requirement:
+    <%= f.text_field :min_height %>
+    Happiness Rating:
+    <%= f.text_field :happiness_rating %>
+    Nausea Rating:
+    <%= f.text_field :nausea_rating %>
+    Tickets Required:
+    <%= f.text_field :tickets %>
+
+    <% if !attraction.id %>
+        <%= f.submit 'Create Attraction' %>
+    <% else %>
+        <%= f.submit 'Update Attraction' %>
+    <% end %>
+<% end %>
