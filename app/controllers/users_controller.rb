@@ -5,14 +5,18 @@ class UsersController < ApplicationController
   end
   
   def create
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
+
     @user = User.create(user_params)
     return redirect_to '/users/new' unless @user.save
     session[:user_id] = @user.id
     redirect_to "/users/#{@user.id}"
   end
-  
+
   def show
-    if session[:user_id].present?    
+    if session[:user_id].present?   
       @user = User.find_by(id: params[:id])
     else
       redirect_to '/'
@@ -24,6 +28,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password, :happiness, :nausea, :tickets, :height, :admin)
   end
+  # def user_params(*args)
+  #   params.require(:user).permit(*args)
+  # end
 
 
 end
