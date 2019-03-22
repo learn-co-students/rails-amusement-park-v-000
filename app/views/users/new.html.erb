@@ -1,0 +1,18 @@
+<%= form_for @user, controller: 'users', action: 'create' do |f| %>
+  
+  <b>Name</b><br><%= f.text_field :name %><br>
+
+  <b>Height (in inches)</b><br><%= f.text_field :height %><br>
+
+  <b>How happy are you? (1-5 scale)/b><br><%= f.text_field :happiness %><br>
+
+  <b>How nauseous are you? (1-5 scale)</b><br><%= f.text_field :nausea %><br>
+
+  <b>How many dollars are in your pocket?</b><br><%= f.text_field :tickets %><br> 
+
+  <b>Check box if you are a theme park owner</b><%= f.check_box :admin, {checked: false}%><br><br>
+
+  <b>Password</b><br><%= f.password_field :password %><br><br>
+
+  <%= f.submit "Create User" %>
+<% end %>

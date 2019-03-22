@@ -1,0 +1,8 @@
+<%= form_for @user, url: signin_path, method: :post do |f| %>
+  <%= f.label :name %>
+  <%= f.collection_select :name, User.all, :name, :name, {:prompt => 'Please select your name from this dropdown'}%><br><br>
+
+  <b><%= f.label :password, 'Enter your password' %> </b><br><%= f.password_field :password %><br><br>
+  <%= f.submit "Sign In" %>
+  Or <%= link_to 'Sign Up', new_user_path  %>
+<% end %>
