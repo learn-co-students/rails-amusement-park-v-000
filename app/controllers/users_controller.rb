@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @message = params[:message] if params[:message]
+    @message ||= false
     if session[:user_id].present?   
       @user = User.find_by(id: params[:id])
     else
@@ -28,9 +30,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password, :happiness, :nausea, :tickets, :height, :admin)
   end
-  # def user_params(*args)
-  #   params.require(:user).permit(*args)
-  # end
-
-
+  
 end
