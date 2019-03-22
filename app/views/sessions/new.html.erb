@@ -1,8 +1,13 @@
 <h1>Sign In</h1>
-<% form_tag signin_path do %>
-<label>Your name:</label>
-<%= select_tag "user_name", options_from_collection_for_select(User.all, "id", "name") %>
-<label>Your password:</label>
-<%= password_field_tag :'user[password]' %>
-<%= submit_tag "Log In" %>
+<%= form_for(:session, url: signin_path) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field "user_name" %>
+  <br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.submit "Log in" %>
 <% end %>
+<br>
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>
