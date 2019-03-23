@@ -2,12 +2,13 @@
 <%= form_for(:session, url: signin_path) do |f| %>
 
   <%= f.label :name %>
-  <%= f.text_field "user_name" %>
-  <br>
+  <%= f.select :user_name, User.all.collect {|p| [p.name, p.id]} %> <br>
+
   <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
+  <%= f.password_field :password %><br>
+
   <%= f.submit "Log in" %>
+
 <% end %>
 <br>
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
