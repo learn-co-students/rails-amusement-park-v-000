@@ -2,7 +2,7 @@
 <%= form_for(:session, url: signin_path) do |f| %>
 
   <%= f.label :name %>
-  <%= f.select :user_name, User.all.collect {|p| [p.name, p.id]} %> <br>
+  <%= f.select "user_name", User.all.collect {|p| [p.name, p.id]}, :disabled => false %> <br>
 
   <%= f.label :password %>
   <%= f.password_field :password %><br>
