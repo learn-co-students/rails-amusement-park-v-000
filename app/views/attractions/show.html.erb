@@ -1,3 +1,12 @@
-<form action ="/rides/new" method ="post">
-Name: <%= @attraction.name %>
-<%= submit_tag "Go on this ride" %>
+<p> Name: <%= @attraction_name %>
+<p> Tickets <%= @attraction_tickets %>
+
+  <% if current_user.admin %>
+  <%= link_to 'Edit Attraction', @attraction %> </p>
+  <%= link_to "Show @attraction.name", @attraction %>
+  <% else %>
+  <form action ="/rides/new" method ="post">
+    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+    <%= submit_tag "Go on this ride" %>
+  </form>
+  <% end %>

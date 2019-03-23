@@ -1,4 +1,5 @@
-"Toggle navigation Welcome Name:" <% @attraction.name  - Edit Attraction %>
+"Toggle navigation Welcome Name:"
+<% @attraction.name %>
 
 <%= form_for @attraction do |f| %>
   <%= f.label :name %>
@@ -16,17 +17,6 @@
   <%= f.label :tickets %>
   <%= f.number_field :tickets %><br><br>
 
-<%= f.submit 'Update Attraction' %>
+<%= f.submit 'Create Attraction' %>
 
 <% end %>
-
-<div> <% if @attraction.user.admin? %>
-<%= link_to "Show @attraction.name" @attraction_path(@attraction) %>
-<% end %></div>
-
-
-
-
-
-<%= click_link "Show #{@attraction.name}", @attraction %> |
-<%= link_to 'Back', attractions_path %>
