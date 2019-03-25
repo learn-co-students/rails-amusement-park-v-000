@@ -19,4 +19,8 @@ class UsersController < ApplicationController
     redirect_to '/' unless current_user
     @user = User.find(params[:id])
   end
+
+  def update
+    redirect_to user_path(@user)
+  end
 end

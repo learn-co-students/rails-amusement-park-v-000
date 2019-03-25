@@ -1,5 +1,5 @@
 <h1>Attractions#index</h1>
 <p>Find me in app/views/attractions/index.html.erb</p>
 <% @attractions.each do |attraction| %>
-  <p>attraction.name <%=link_to "Go to "+attraction.name, attraction_path(attraction)%></p>
+  <p><%=attraction.name%> <%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></p>
 <% end %>
