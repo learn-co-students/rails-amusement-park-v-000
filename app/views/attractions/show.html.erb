@@ -7,6 +7,6 @@
   <% else %>
   <form action ="/rides/new" method ="post">
     <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-    <%= submit_tag "Go on this ride" %>
+    <input class="btn btn-light" type="submit" value="Go on this ride">
   </form>
   <% end %>
