@@ -1,0 +1,12 @@
+<%= form_tag signin_path do %>
+  <div>
+    <%= label_tag :"user[name]", "Your name:" %> <br>
+    <%= select_tag :"user[name]", options_from_collection_for_select(@users, :id, :name), include_blank: true %>
+
+    <%= label_tag :password, "Your password:" %> <br>
+    <%= text_field_tag :password %>
+
+    <%= submit_tag "Sign In" %>
+  </div>
+
+<% end %>
