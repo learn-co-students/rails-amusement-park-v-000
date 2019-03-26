@@ -1,4 +1,7 @@
 <h1>Attractions#show</h1>
 <p>Find me in app/views/attractions/show.html.erb</p>
 
-<%= button_to "Go on this ride", user_path(current_user)  %>
+<%=form_for @attraction.rides.build do |f| %>
+
+<%= f.submit "Go on this ride"%>
+<%end%>
