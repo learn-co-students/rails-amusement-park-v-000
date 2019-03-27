@@ -1,7 +1,10 @@
 <h1>Attractions#show</h1>
 <p>Find me in app/views/attractions/show.html.erb</p>
 
-<%=form_for @attraction.rides.build do |f| %>
+Name: <%= @attraction.name %>
 
-<%= f.submit "Go on this ride"%>
-<%end%>
+<%= form_tag rides_path, method: :post  do %>
+
+<%= submit_tag "Go on this ride"%>
+
+<% end %>

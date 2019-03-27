@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create, :update]
   resources :attractions
+  resources :rides, only: [:create]
 
   get '/signup', to: "users#new"
   get '/signin', to: "sessions#new"
