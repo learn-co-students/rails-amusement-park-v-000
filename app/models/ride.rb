@@ -11,6 +11,9 @@ class Ride < ActiveRecord::Base
     elsif self.user.tickets < self.attraction.tickets
       "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
     else
+      self.user.tickets ||= 0
+      self.user.nausea ||= 0
+      self.user.happiness ||= 0
       self.user.tickets -= self.attraction.tickets
       self.user.nausea += self.attraction.nausea_rating
       self.user.happiness += self.attraction.happiness_rating
