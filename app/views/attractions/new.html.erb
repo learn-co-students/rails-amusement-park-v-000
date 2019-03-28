@@ -1,21 +1,22 @@
-<h1>Attractions#new</h1>
+<h1>New Attraction/h1>
 <p>Find me in app/views/attractions/new.html.erb</p>
 
-<%=form_for @attraction do |f|%>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<%=form_tag attractions_path do %>
+  <label>Name:</label><br>
+  <%= text_field_tag :'attraction[name]'%>
 
-  <%= f.label :tickets %>
-  <%= f.text_field :tickets %>
+  <label>Height Requirement (in inches)</label><br>
+  <%= text_field_tag :'attraction[min_height]'%>
 
-  <%= f.label :nausea_rating %>
-  <%= f.text_field :nausea_rating %>
+  <label>How fun is it? (1-5 scale)</label><br>
+  <%= text_field_tag :'attraction[happiness_rating]'%>
 
-  <%= f.label :happiness_rating %>
-  <%= f.text_field :happiness_rating %>
+  <label>How nausea-inducing is it? (1-5 scale)</label><br>
+  <%= text_field_tag :'attraction[nausea_rating]'%>
 
-  <%= f.label :min_height %>
-  <%= f.text_field :min_height %>
+  <label>How many tickets does it cost?</label><br>
+  <%= text_field_tag :'attraction[tickets]'%>
 
-  <%= f.submit %>
+  <%= submit_tag "Create Attraction" %>
+
 <% end %>

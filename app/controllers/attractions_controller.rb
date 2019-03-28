@@ -4,6 +4,8 @@ class AttractionsController < ApplicationController
   end
 
   def create
+    @attraction = Attraction.create(attraction_params)
+    redirect_to attraction_path(@attraction)
   end
 
   def new
@@ -22,4 +24,10 @@ class AttractionsController < ApplicationController
 
   def destroy
   end
+end
+
+private
+
+def attraction_params
+  params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
 end
