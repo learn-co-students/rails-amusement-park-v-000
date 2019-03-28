@@ -1,0 +1,6 @@
+<h1>Attractions#edit</h1>
+<p>Find me in app/views/attractions/edit.html.erb</p>
+<%= form_tag attraction_path(@attraction), method: :patch do%>
+<%= render 'form' %>
+<%= submit_tag "Update Attraction" %>
+<% end %>

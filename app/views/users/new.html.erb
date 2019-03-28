@@ -1,0 +1,26 @@
+<h1>New User Sign Up</h1>
+
+<%= form_tag users_path do %>
+  <label>Name:</label><br>
+  <%= text_field_tag :'user[name]' %><br>
+
+  <label>Height (in inches)</label><br>
+  <%= text_field_tag :'user[height]' %><br>
+
+  <label>How happy are you? (1-5 scale)</label><br>
+  <%= text_field_tag :'user[happiness]' %><br>
+
+  <label>How nauseous are you? (1-5 scale)</label><br>
+  <%= text_field_tag :'user[nausea]' %><br>
+
+  <label>How many dollars are in your pocket? </label><br>
+  <%= text_field_tag :'user[tickets]' %><br>
+
+  <label>Check box if you are a theme park owner</label>
+  <%= check_box_tag :'user[admin]' %><br>
+
+  <label>Password</label><br>
+  <%= password_field_tag :'user[password]' %><br><br>
+
+  <%= submit_tag "Create User" %>
+<% end %>

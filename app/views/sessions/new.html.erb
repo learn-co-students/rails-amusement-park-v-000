@@ -1,0 +1,13 @@
+<h1>Sign In</h1>
+<%= form_tag signin_path do %>
+
+  <label>Name: </label>
+  <%= select_tag :user_name, options_for_select(User.all.collect {|p| [p.name, p.name]}), :disabled => false, :include_blank => "Please select your username from this dropdown" %><br>
+
+  <label>Password: </label>
+  <%= password_field_tag :password %><br>
+  <%= submit_tag "Sign In"%>
+<% end %>
+
+<br>
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>

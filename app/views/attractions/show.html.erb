@@ -1,0 +1,15 @@
+<h1>Attractions#show</h1>
+<p>Find me in app/views/attractions/show.html.erb</p>
+
+Name: <%= @attraction.name %>
+
+<%= form_tag rides_path, method: :post  do %>
+<%= hidden_field_tag(:user_id, current_user.id) %>
+<%= hidden_field_tag(:attraction_id, @attraction.id) %>
+<% if current_user.admin == true %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction)%>
+<% else %>
+  <%= submit_tag "Go on this ride"%>
+<% end %>
+
+<% end %>

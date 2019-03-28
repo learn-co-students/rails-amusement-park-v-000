@@ -1,0 +1,12 @@
+<h1>Attractions#index</h1>
+<p>Find me in app/views/attractions/index.html.erb</p>
+<% @attractions.each do |attraction| %>
+  <% if current_user.admin == true %>
+    <p><%=attraction.name%> <%= link_to "Show #{attraction.name}", attraction_path(attraction)%></p>
+  <% else %>
+    <p><%=attraction.name%> <%= link_to "Go on #{attraction.name}", attraction_path(attraction)%></p>
+  <% end %>
+<% end %>
+<% if current_user.admin == true %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
