@@ -13,6 +13,7 @@ class AttractionsController < ApplicationController
   end
 
   def edit
+    @attraction = Attraction.find(params[:id])
   end
 
   def show
@@ -20,6 +21,13 @@ class AttractionsController < ApplicationController
   end
 
   def update
+    @attraction = Attraction.find(params[:id])
+    if @attraction.update_attributes(attraction_params)
+      redirect_to attraction_path(@attraction)
+    else
+      render 'edit'
+    end
+
   end
 
   def destroy
