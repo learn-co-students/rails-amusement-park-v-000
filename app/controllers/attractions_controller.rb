@@ -1,3 +1,5 @@
+require 'pry'
+
 class AttractionsController < ApplicationController
 
   def index
@@ -6,12 +8,15 @@ class AttractionsController < ApplicationController
 
   def show
     set_attraction
-    @ride = Ride.new
-
+  #  @ride = Ride.new
   end
 
   def new
     @attraction = Attraction.new
+  end
+
+  def edit
+    set_attraction
   end
 
   def create
@@ -23,18 +28,16 @@ class AttractionsController < ApplicationController
     end
   end
 
-  def edit
-    set_attraction
-  end
 
   def update
     respond_to do |format|
+      set_attraction
       if @attraction.update(attraction_params)
-        format.html{redirect_to @attraction, notie: 'Attraction was successfully updated.'}
+        format.html { redirect_to @attraction, notice: 'Attraction was successfully updated.' }
       else
-         format.html {render :edit}
-       end
-     end
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
@@ -49,12 +52,13 @@ class AttractionsController < ApplicationController
   end
 
   def attraction_params
-    params.require(:attraction).permit(
-    :name,
-    :min_height,
-    :tickets,
-    :happiness_rating,
-    :nausea_rating)
-  end
+     params.require(:attraction).permit(
+       :name,
+       :min_height,
+       :tickets,
+       :happiness_rating,
+       :nausea_rating
+     )
+   end
 
 end
