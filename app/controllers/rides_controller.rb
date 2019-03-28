@@ -12,6 +12,7 @@ class RidesController < ApplicationController
 
   def show
     @ride = Ride.find_by(id: params[:id])
+    redner :users
   end
 
   def update
