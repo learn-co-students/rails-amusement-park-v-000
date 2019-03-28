@@ -12,7 +12,7 @@ class RidesController < ApplicationController
 
   def show
     @ride = Ride.find_by(id: params[:id])
-    redner :users
+    redirect_to @user
   end
 
   def update
