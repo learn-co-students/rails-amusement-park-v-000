@@ -1,25 +1,26 @@
-"Toggle navigation Welcome Name:" <% @attraction.name  - Edit Attraction %>
+<%= form_for(@attraction) do |f| %>
 
-<%= form_for @attraction do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br><br>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %></div>
 
-  <%= f.label :nausea_rating %>
-  <%= f.number_field :nausea_rating %><br><br>
+  <div class="form-group">
+    <%= f.label :min_height, "Height Requirement (in inches)" %><br>
+    <%= f.number_field :min_height, class: "form-control" %></div>
 
-  <%= f.label :happiness_ratint %>
-  <%= f.number_field :happiness_rating %><br><br>
+  <div class="form-group">
+    <%= f.label :happiness_rating, "How fun is it? (1-5 scale)" %><br>
+    <%= f.number_field :happiness_rating, class: "form-control" %></div>
 
-  <%= f.label :min_height %>
-  <%= f.number_field :min_height %><br><br>
+  <div class="form-group">
+    <%= f.label :nausea_rating, "How nausea-inducing is it? (1-5 scale)" %><br>
+    <%= f.number_field :nausea_rating, class: "form-control" %></div>
 
-  <%= f.label :tickets %>
-  <%= f.number_field :tickets %><br><br>
+  <div class="form-group">
+    <%= f.label :tickets, "How many tickets does it cost?" %><br>
+    <%= f.number_field :tickets, class: "form-control" %></div>
 
-<%= f.submit 'Edit Attraction' %>
-
-<% end %>
-
-<% if current_user.admin %>
-  <%= link_to "Edit Attraction" @attraction.name, @attraction %>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
 <% end %>

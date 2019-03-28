@@ -5,14 +5,13 @@ class AttractionsController < ApplicationController
   end
 
   def show
+    set_attraction
     @ride = Ride.new
+
   end
 
   def new
     @attraction = Attraction.new
-  end
-
-  def edit
   end
 
   def create
@@ -24,12 +23,19 @@ class AttractionsController < ApplicationController
     end
   end
 
+  def edit
+    set_attraction
+  end
+
   def update
+    respond_to do |format|
       if @attraction.update(attraction_params)
-        redirect_to @attraction
-         render :edit
-      end
-    end
+        format.html{redirect_to @attraction, notie: 'Attraction was successfully updated.'}
+      else
+         format.html {render :edit}
+       end
+     end
+  end
 
   def destroy
     @attraction.destroy

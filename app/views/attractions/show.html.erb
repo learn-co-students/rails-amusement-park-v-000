@@ -1,15 +1,15 @@
-<p> Name: <%= @attraction_name %>
-<p> Tickets <%= @attraction_tickets %>
+<p> Name: <%= @attraction.name %>
+<p> Tickets <%= @attraction.tickets %><br> <br>
 
   <% if current_user.admin %>
-  <%= link_to 'Edit Attraction', @attraction %> </p>
-  <%= link_to "Show @attraction.name", @attraction %>
+  <%= link_to "Edit Attraction" , edit_attraction_url %> </p><br> <br>
+  <%= link_to "Show Attraction", @attraction %><br> <br>
   <% else %>
   <form action ="/rides/new" method ="post">
     <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
     <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
     <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+    <label> <input class="btn btn-primary" type="button" name = "button" value="Go on this ride"> </label>
+    </form>
 
-    <input class="btn btn-light" type="submit" value="Go on this ride">
-  </form>
-  <% end %>
+    <% end %>
