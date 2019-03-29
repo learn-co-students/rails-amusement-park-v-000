@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p><%= notice %></p>
 
 <div class="center">
 
@@ -16,6 +16,7 @@
         <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
         <input class="btn btn-light" type="submit" value="Go on this ride">
       </form>
+      <br>
       <%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
     <%= link_to 'back', attractions_path, class: "btn btn-primary btn-light" %></p>
   </div>

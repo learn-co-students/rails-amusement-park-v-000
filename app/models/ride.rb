@@ -9,6 +9,7 @@ class Ride < ActiveRecord::Base
     enough_tickets, tall_enough = meet_requirements
     if enough_tickets && tall_enough
       start_ride
+      "Thanks for riding the #{self.attraction.name}!"
     elsif tall_enough && !enough_tickets
       "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
     elsif enough_tickets && !tall_enough
