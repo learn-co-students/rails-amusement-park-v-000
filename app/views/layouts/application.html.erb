@@ -21,7 +21,12 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+            <% if !logged_in? %>
+              <li><%= link_to 'Sign Up', new_user_url %></li>
+              <li><%= link_to 'Sign In', signin_url %></li>
+            <% else %>
+              <li><%= link_to 'Sign Out', signout_url %></li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
