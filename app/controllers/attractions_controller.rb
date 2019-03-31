@@ -3,13 +3,12 @@ require 'pry'
 class AttractionsController < ApplicationController
   before_action :set_attraction, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @attractions = Attraction.all
   end
 
   def show
-  #  @ride = Ride.new
+    @ride = Ride.new
     set_attraction
   end
 

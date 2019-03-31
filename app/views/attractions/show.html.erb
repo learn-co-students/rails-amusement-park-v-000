@@ -1,4 +1,4 @@
-<p><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
 <div class="center">
 
@@ -10,14 +10,14 @@
     <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
     <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
 
-      <form action=/users/id method="get">
+      <form action="/rides/new" method="get">
         <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
         <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
         <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
         <input class="btn btn-light" type="submit" value="Go on this ride">
       </form>
-      <br>
+
       <%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
-    <%= link_to 'back', attractions_path, class: "btn btn-primary btn-light" %></p>
+    <%= link_to 'Back', attractions_path,class: "btn btn-primary btn-light" %></p>
   </div>
 </div>

@@ -3,11 +3,6 @@ require 'pry'
 class UsersController < ApplicationController
    before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
 
-def show
-#  @user = User.find(params[:id])
-  set_user
-  end
-
   def new
     @user = User.new
   end
@@ -21,6 +16,13 @@ def show
       render :new
     end
   end
+
+  def show
+    set_user
+  #  @message = params[:message] if params[:message]
+  #  @message ||= false
+    end
+
 
     def edit
     end
@@ -36,8 +38,12 @@ def show
 
     private
 
+  #  def set_admin
+  #    @admin = create_standard_and_admin_user
+  #  end
+
     def set_user
-      @user = User.find(params[:id])  #User callbacks to share common setup
+      @user = User.find_by(id: params[:id])
     end
 
     def user_params
@@ -48,7 +54,8 @@ def show
         :height,
         :tickets,
         :password,
-        :admin)
+        :admin
+        )
     end
 
 
