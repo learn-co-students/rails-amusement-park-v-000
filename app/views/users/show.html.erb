@@ -1,21 +1,21 @@
 
 <h2> Toggle navigation Welcome </h2>
 
-<% if @message %>
-  <div class="center alert">
-    <p> <%= @message %> </p>
-  </div>
-  <% end %>
-
 <% if @user.admin %>
+
   <p> ADMIN </p>
 <br>
 <% end %>
+
+<% if @message %>
+  <p> <%= @message %> </p>
+  </div>
+  <% end %>
+
 Name: <%= @user.name %>
 Mood: <%= @user.mood %> <br><br>
 Tickets: <%= @user.tickets %><br><br>
 Height: <%= @user.height %><br><br>
-
-<p> See attractions <%= link_to "See attractions", attractions_path %> </P>
-
+<br>
+<p> See attractions <%= link_to "See attractions", attractions_path %> </P><br>
 <p> Log Out <%= link_to "Log Out", signout_path %> </p>

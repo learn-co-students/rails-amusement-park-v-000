@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+      if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -19,8 +19,7 @@ class UsersController < ApplicationController
 
   def show
     set_user
-  #  @message = params[:message] if params[:message]
-  #  @message ||= false
+    @message = params[:message] if params[:message]
     end
 
 
@@ -37,10 +36,6 @@ class UsersController < ApplicationController
     end
 
     private
-
-  #  def set_admin
-  #    @admin = create_standard_and_admin_user
-  #  end
 
     def set_user
       @user = User.find_by(id: params[:id])
