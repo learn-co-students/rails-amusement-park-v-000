@@ -9,7 +9,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    @ride = Ride.new
+  #  @ride = Ride.new
     set_attraction
   end
 
