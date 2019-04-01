@@ -13,14 +13,13 @@ class Ride < ActiveRecord::Base
     else #user.tickets >= attraction.tickets && user.height >= attraction.min_height
       new_balance = user.tickets - attraction.tickets
       user.tickets = new_balance
+
+      new_nausea_level = user.nausea + attraction.nausea_rating
+      user.nausea == new_nausea_level
+
+      new_happiness_level = user.happiness + attraction.happiness_rating
+      user.happiness == new_happiness_level
     end
-
-    new_nausea_level == user.nausea + attraction.nausea_rating
-    user.nausea = new_nausea_level
-
-    new_happiness_level == user.happiness + attraction.happiness_rating
-    user.happiness = new_happiness_level
-
   end
 
 
