@@ -10,12 +10,12 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect_to(controller: 'users', action: 'show')
       else
-        redirect_to(controller: 'users', action: 'new')
+        redirect_to(controller: 'users', action: 'home')
       end
     end
 
     def home
-      redirect_to(controller: 'users', action: 'new') unless current_user
+      redirect_to(controller: 'users', action: 'home') unless current_user
 
     end
 
