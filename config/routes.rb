@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root 'users#home'
   resources :users
   resources :attractions
-  #resources :sessions 
+  #resources :sessions
 
-  get '/login' => 'sessions#new'
+  get '/signin' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
