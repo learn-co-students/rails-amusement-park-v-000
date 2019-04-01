@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def show
     set_user
     @message = params[:message] if params[:message]
-    end
+  end
 
 
     def edit

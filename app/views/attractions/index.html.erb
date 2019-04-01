@@ -5,7 +5,8 @@
           <%= attraction.tickets %><br>
 
             <%= link_to "Show #{attraction.name}", attraction_path(attraction) %><br>
-              <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br><br>
+              <%= link_to "Go on #{attraction.name}", attraction_path(attraction) if !current_user.admin %><br><br>
+
           <% end %>
 
   <% if @user %>
