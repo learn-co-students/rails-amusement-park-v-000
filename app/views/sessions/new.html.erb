@@ -1,0 +1,17 @@
+<%= form_for @user, url: signin_path(@user), method: :post do |f| %>
+<%= f.label :name %>
+  <%= f.collection_select :name, User.all, :id, :name %>
+    <datalist id=":name_autocomplete">
+      <% User.all.each do |user| %>
+    </datalist>
+    <% end %>
+    <br><br>
+  <div class="form-group">
+    <%= f.label :password, "Enter your password" %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.submit 'Sign In' %>
+  <% end %>
+
+  

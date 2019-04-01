@@ -1,0 +1,18 @@
+<h2> Toggle navigation Welcome
+
+  <% @attractions.each do |attraction| %>
+          <%= attraction.name %>
+          <%= attraction.tickets %><br>
+
+            <%= link_to "Show #{attraction.name}", attraction_path(attraction) %><br>
+              <%= link_to "Go on #{attraction.name}", attraction_path(attraction) if !current_user.admin %><br><br>
+
+          <% end %>
+
+  <% if @user %>
+    <p>
+      <%= link_to "Back to profile", user_path(@user) %>
+    </p>
+  <% else %>
+    <p><%= link_to 'New Attraction', new_attraction_path %></p>
+  <% end %>
