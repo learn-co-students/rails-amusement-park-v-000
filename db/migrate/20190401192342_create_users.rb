@@ -5,9 +5,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.integer :nausea
       t.integer :happiness
-      t.ingeger :tickets
+      t.integer :tickets
       t.integer :height
-      t.boolean :admin, default: false 
+      t.boolean :admin, default: false
       t.timestamps
     end
   end
