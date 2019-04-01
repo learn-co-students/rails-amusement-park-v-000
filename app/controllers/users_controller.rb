@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  def home
-  end
+  skip_before_action :verify_user_is_authenticated, only: [:new,:create]
 
   def new
     @user = User.new
   end
 
   def create
+    #binding.pry
     if user = User.create(user_params)
       session[:user_id]= user.id
       redirect_to user_path(user)
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+   # binding.pry
     @user = User.find_by_id(params[:id])
   end
 
