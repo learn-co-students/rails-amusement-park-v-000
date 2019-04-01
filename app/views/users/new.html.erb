@@ -1,0 +1,19 @@
+<h2> Sign Up </h2>
+
+<%= form_for :user, url: '/users' do |f| %>
+  Username: <%= f.text_field :name %>
+  Height: <%= f.text_field :height %>
+  Happiness Level (0-10): <%= f.text_field :happiness %>
+  Nausea Level (0-10): <%= f.text_field :nausea %>
+  How many dollars are in your pocket?: <%= f.text_field :tickets %>
+  Password: <%= f.password_field :password %>
+  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <%= f.submit "Sign Up" %>
+<% end %>
+
+<p> Or <%= link_to "click here", controller: "sessions", action: "new" %> to login with an existing account. </p>
+
+user[height]", :with => "58")
+fill_in("user[happiness]", :with => "3")
+fill_in("user[nausea]", :with => "2")
+fill_in("user[tickets]", :with => "15")
