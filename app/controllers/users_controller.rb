@@ -8,18 +8,22 @@ class UsersController < ApplicationController
     if params[:user][:password] == params[:user][:password_confirmation]
         @user = User.create(user_params)
         session[:user_id] = @user.id
-        redirect_to(controller: 'users', action: 'show')
+        redirect_to('/users/#{@user.id}')
       else
         redirect_to(controller: 'users', action: 'home')
       end
     end
 
     def home
-      redirect_to(controller: 'users', action: 'home') unless current_user
+      #redirect_to(controller: 'users', action: 'home') unless current_user
 
     end
 
     def show
+
+    end
+
+    def index 
 
     end
 
