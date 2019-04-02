@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if params[:user][:password] == params[:user][:password_confirmation]
         @user = User.create(user_params)
         session[:user_id] = @user.id
-        redirect_to(user)
+        redirect_to(@user)
       else
         redirect_to(controller: 'users', action: 'home')
       end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     end
 
     def show
-
+      @user = User.find(params[:id])
     end
 
     def index 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   private
 
    def user_params
-     params.require(:user).permit(:name, :password, :password_confirmation)
+     params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :admin, :password, :password_confirmation)
    end
 
 
