@@ -18,7 +18,14 @@ class UsersController < ApplicationController
   def show
    # binding.pry
     @user = User.find_by_id(params[:id])
+    binding.pry
   end
+
+  #def update
+    #@user = User.find(params[:id])
+    #ride = Ride.create(user_id: params[:id], attraction_id:params[:attraction_id])
+    #redirect_to user_path(@user)
+  #end
 
   def user_params
     params.require(:user).permit(
@@ -30,5 +37,5 @@ class UsersController < ApplicationController
         :password, 
         :admin
     )
-end 
+  end 
 end

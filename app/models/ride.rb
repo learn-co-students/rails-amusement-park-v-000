@@ -17,4 +17,5 @@ class Ride < ActiveRecord::Base
             self.user.update(happiness: self.user.happiness += self.attraction.happiness_rating)
         end
     end
+
 end
