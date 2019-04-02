@@ -1,5 +1,6 @@
 class AttractionsController < ApplicationController
   before_action :require_admin 
+  skip_before_action :require_admin, only: [:index, :show]
   
   def new
   end
