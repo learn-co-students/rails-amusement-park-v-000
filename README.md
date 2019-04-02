@@ -21,4 +21,7 @@ You're going to be building an amusement park. There will be users, attractions,
 * [Sessions in Rails](http://guides.rubyonrails.org/security.html#sessions)
 * [`has_secure_password`](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html)
 
+
+
+
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/rails-amusement-park' title='Rails Amusement Park'>Rails Amusement Park</a> on Learn.co and start learning to code for free.</p>
