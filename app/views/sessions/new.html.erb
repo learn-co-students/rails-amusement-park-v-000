@@ -1,7 +1,6 @@
 
 <%= form_for :user, url: '/signin', method: :post do |f| %>
-  Your name: <%= f.collection_select :user_name, @users, :name %> <br>
+  Your name: <%= f.collection_select :user_name, User.all, :id, :name %> <br>
   Password: <%= f.password_field :password %> <br>
-
   <%= f.submit "Sign In" %>
 <% end %>
