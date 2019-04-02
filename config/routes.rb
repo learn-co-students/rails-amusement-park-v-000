@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   #resources :sessions
 
   get '/signin' => 'sessions#new'
-  post '/login' => 'sessions#create'
+  post '/signin' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
 end

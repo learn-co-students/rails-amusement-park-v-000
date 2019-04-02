@@ -1,0 +1,14 @@
+<h1> Listing Attractions </h1>
+
+<table>
+  <tr>
+    <th> Name </th>
+    <th> Tickets </th>
+    <th> Details </th>
+  </tr>
+  <tr> <%= @attractions.each do |a| %>
+    <td><%= a.name %> </td>
+    <td><%= a.tickets %> </td>
+    <td><%= link_to "Go on #{a.name}", "/attractions/#{a.id}" %> </td>
+  </tr>
+</table>
