@@ -5,26 +5,31 @@ class Ride < ActiveRecord::Base
 
   def take_ride
 
-    current_ride = Ride.new(:attraction_id => attraction.id, :user_id => user.id) #somehow link attraction to ride
-    
-    user.rides << current_ride
-    attraction.rides << current_ride
+    #current_ride = Ride.new(:attraction_id => attraction.id, :user_id => user.id) #somehow link attraction to ride
 
-    if user.tickets < attraction.tickets && user.height < attraction.min_height
+    #user.rides << current_ride
+    #attraction.rides << current_ride
+
+    if self.user.tickets < self.attraction.tickets && self.user.height < self.attraction.min_height
       "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
-    elsif user.tickets < attraction.tickets
+    elsif self.user.tickets < self.attraction.tickets
       "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     elsif user.height < attraction.min_height
       "Sorry. You are not tall enough to ride the #{attraction.name}."
     else #user.tickets >= attraction.tickets && user.height >= attraction.min_height
-      new_balance = user.tickets - attraction.tickets
-      user.tickets = new_balance
+      take_the_ride
+    end
 
-      new_nausea_level = user.nausea + attraction.nausea_rating
-      user.nausea = new_nausea_level
+    def take_the_ride
+      binding.pry 
+      new_balance = self.user.tickets - self.attraction.tickets
+      self.user.tickets = new_balance
 
-      new_happiness_level = user.happiness + attraction.happiness_rating
-      user.happiness = new_happiness_level
+      new_nausea_level = self.user.nausea + self.attraction.nausea_rating
+      self.user.nausea = new_nausea_level
+
+      new_happiness_level = self.user.happiness + self.attraction.happiness_rating
+      self.user.happiness = new_happiness_level
     end
   end
 

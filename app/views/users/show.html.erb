@@ -1,6 +1,8 @@
 
-<%= if @user.admin == true <p> ADMIN </p> %>
-
+<%= if @user.admin == true  %>
+  <p> ADMIN </p>
+<%end %>
+  
 Name: <%= @user.name %> <br>
 Tickets: <%= @user.tickets %> <br>
 Mood: <%= @user.mood %> <br>

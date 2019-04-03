@@ -1,0 +1,10 @@
+<h2> Editing attraction </h2>
+
+<%= form_for :attraction, url: '/attractions', method: :patch do |f| %>
+  Name: <%= f.text_field :name %>
+  Height Requirement (in inches): <%= f.text_field :height %>
+  How fun is it? (1-5 scale): <%= f.text_field :happiness_rating %>
+  How nauseous-inducing is it? (1-5 scale): <%= f.text_field :nausea_rating %>
+  How many tickets does it cost?: <%= f.text_field :tickets %>
+  <%= f.submit "Update Attraction" %>
+<% end %>
