@@ -13,3 +13,7 @@
     <% end %>
   </tr>
 </table>
+
+<%= if current_user.admin == true %>
+<%= link_to "New Attraction", "/attraction/new" %>
+<% end %>
