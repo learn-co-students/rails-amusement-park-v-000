@@ -17,11 +17,6 @@ class Ride < ActiveRecord::Base
     elsif user.height < attraction.min_height
       "Sorry. You are not tall enough to ride the #{attraction.name}."
     else #user.tickets >= attraction.tickets && user.height >= attraction.min_height
-      take_the_ride
-    end
-
-    def take_the_ride
-      binding.pry 
       new_balance = self.user.tickets - self.attraction.tickets
       self.user.tickets = new_balance
 
@@ -31,6 +26,7 @@ class Ride < ActiveRecord::Base
       new_happiness_level = self.user.happiness + self.attraction.happiness_rating
       self.user.happiness = new_happiness_level
     end
+
   end
 
 
