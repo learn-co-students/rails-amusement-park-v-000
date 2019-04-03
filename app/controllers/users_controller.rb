@@ -16,12 +16,10 @@ class UsersController < ApplicationController
   end
 
   def show
-   # binding.pry
     @user = User.find_by_id(params[:id])
-    binding.pry
   end
 
-  #def update
+  #ef update
     #@user = User.find(params[:id])
     #ride = Ride.create(user_id: params[:id], attraction_id:params[:attraction_id])
     #redirect_to user_path(@user)

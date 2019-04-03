@@ -1,14 +1,25 @@
 class RidesController < ApplicationController
 
+    #def new
+        #@ride = Ride.create(ride_params)
+        #@message = ride.take_ride
+        #redirect_to user_path(current_user, message: @message)
+    #end
+
     def create
-        #@attraction = Attraction.find_by_id(params[:id])
         #binding.pry
-        @ride = Ride.create(ride_params)
-        redirect_to user_path(@ride.user_id)
-    end
+        @ride = Ride.new(ride_params)
+        if @ride.save
+            @message =  @ride.take_ride
+            redirect_to user_path(current_user, message: @message)
+        end
+      end
 
     private
-    def ride_params
-        params.require(:ride).permit(:user_id, :attraction_id)
-    end
-end
+    def ride_params 
+        params.require(:ride).permit(
+            :user_id,
+            :attraction_id
+        )
+    end 
+ end
