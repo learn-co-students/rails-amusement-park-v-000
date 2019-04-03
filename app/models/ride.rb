@@ -4,10 +4,11 @@ class Ride < ActiveRecord::Base
 
 
   def take_ride
-    
-    current_ride = Ride.new(:attraction_id => attraction.id, :user_id => user.id) #somehow link attraction to ride
 
+    current_ride = Ride.new(:attraction_id => attraction.id, :user_id => user.id) #somehow link attraction to ride
+    
     user.rides << current_ride
+    attraction.rides << current_ride
 
     if user.tickets < attraction.tickets && user.height < attraction.min_height
       "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
