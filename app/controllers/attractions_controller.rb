@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-
+    
     def index
         @attractions = Attraction.all
     end
@@ -29,7 +29,6 @@ class AttractionsController < ApplicationController
     def update
         @attraction = Attraction.find(params[:id])
         @attraction.update(attraction_params)
-        #ride = Ride.update(user_id: params[:id], attraction_id:params[:attraction_id])
         redirect_to attraction_path(@attraction)
     end
 
