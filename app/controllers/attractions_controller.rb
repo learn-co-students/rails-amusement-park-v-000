@@ -21,6 +21,10 @@ class AttractionsController < ApplicationController
     @attraction = Attraction.find(params[:id])
   end
 
+  def edit
+
+  end
+
   def update
     @attraction = Attraction.find_by(id: params[:id])
   end
