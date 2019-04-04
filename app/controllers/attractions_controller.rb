@@ -7,11 +7,13 @@ class AttractionsController < ApplicationController
 
   def create
 
-      @attraction = Attraction.create(attraction_params)
-      if @attraction.save
+      attraction = Attraction.new(attraction_params)
+
+      if attraction.valid?
+        @attraction = Attraction.create(attraction_params)
         render :show
       else
-        #add a flash message here for errors
+        flash[:notice] = "Please complete the form with valid entries."
         redirect_to(controller: 'attractions', action: 'new')
       end
   end

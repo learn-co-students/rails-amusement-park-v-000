@@ -8,3 +8,7 @@
   How many tickets does it cost?: <%= f.text_field :tickets %> <br>
   <%= f.submit "Create Attraction" %>
 <% end %>
+
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+ <% end %>

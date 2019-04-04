@@ -17,6 +17,9 @@ class Ride < ActiveRecord::Base
     elsif user.height < attraction.min_height
       flash[:notice] = "Sorry. You are not tall enough to ride the #{attraction.name}."
     else #user.tickets >= attraction.tickets && user.height >= attraction.min_height
+
+      flash[:notice] = "Thank you for riding the #{attraction.name}."
+      
       new_balance = self.user.tickets - self.attraction.tickets
       self.user.tickets = new_balance
 

@@ -5,7 +5,7 @@ class RidesController < ApplicationController
   # end
 
   def create
-    binding.pry
+    
     ride = Ride.new(user_id: current_user)
     @user = User.find(params[:id])
 
