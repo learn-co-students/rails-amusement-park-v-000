@@ -14,7 +14,7 @@ Happiness Rating: <%= @attraction.happiness_rating %> <br>
     <% end %>
 
 <br>
-  <%= link_to "Edit Attraction", edit_attraction %>
+  <%= link_to "Edit Attraction", '/attractions/#{@attraction.id}/edit' %>
 
   <% if flash[:notice] %>
    <div class="notice"><%= flash[:notice] %></div>
