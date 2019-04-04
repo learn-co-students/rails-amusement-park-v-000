@@ -8,7 +8,6 @@ class AttractionsController < ApplicationController
   def create
 
       @attraction = Attraction.create(attraction_params)
-      binding.pry
       if @attraction.save
         render :show
       else
@@ -18,6 +17,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
+
     @attraction = Attraction.find(params[:id])
   end
 
@@ -32,7 +32,7 @@ class AttractionsController < ApplicationController
   end
 
   def index
-
+    @user = User.find_by(id: current_user)
     @attractions = Attraction.all
   end
 
@@ -46,7 +46,7 @@ class AttractionsController < ApplicationController
 
    user = User.find_by(id: current_user)
    redirect_to root_path unless user.admin
-   #add flash message and redirect to show page 
+   #add flash message and redirect to show page
  end
 
 end

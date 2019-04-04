@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/ride' => 'rides#create'
-  #post '/ride' => 'rides#create'
+  post '/ride' => 'rides#create'
 
 end
