@@ -45,7 +45,8 @@ class AttractionsController < ApplicationController
  def require_admin
 
    user = User.find_by(id: current_user)
-   redirect_to "/users/home" unless user.admin
+   redirect_to root_path unless user.admin
+   #add flash message and redirect to show page 
  end
 
 end

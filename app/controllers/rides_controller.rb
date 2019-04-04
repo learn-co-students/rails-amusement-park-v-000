@@ -1,9 +1,11 @@
 class RidesController < ApplicationController
 
-  def new
-  end
+  # def new
+  #   ride = Ride.new(user_id: current_user)
+  # end
 
   def create
+    ride = Ride.new(user_id: current_user)
     @user = User.find(params[:id])
 
     @user.take_ride
