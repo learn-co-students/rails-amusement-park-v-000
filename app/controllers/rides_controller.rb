@@ -10,7 +10,7 @@ class RidesController < ApplicationController
     #@user = User.find(params[:id])
 
     ride.take_ride
-
+    binding.pry 
     render :'users/#{ride.user_id}'
 
   end
