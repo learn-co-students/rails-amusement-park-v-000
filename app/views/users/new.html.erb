@@ -11,3 +11,7 @@
   Password Confirmation: <%= f.password_field :password_confirmation %> <br>
   <%= f.submit "Create User" %>
 <% end %>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         render :show
       else
-        #add a flash message here for errors
+        flash[:notice] = "Please complete the form with valid entries."
         redirect_to(controller: 'users', action: 'new')
       end
     end

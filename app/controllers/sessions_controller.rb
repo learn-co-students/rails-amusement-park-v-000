@@ -6,11 +6,14 @@ class SessionsController < ApplicationController
 
   def create
    @user = User.find_by(id: params[:user][:name])
-   binding.pry
-   return redirect_to(controller: 'sessions', action: 'new') unless @user.authenticate(params[:user][:password])
-   session[:user_id] = @user.id
 
-   render 'users/show'
+   if @user.authenticate(params[:user][:password])
+     session[:user_id] = @user.id
+     render '/users/show'
+   else
+     flash[:notice] = "Please enter a valid password or Sign Up to create an account."
+     redirect_to(controller: 'sessions', action: 'new')
+   end
  end
 
    def destroy
