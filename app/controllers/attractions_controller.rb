@@ -25,7 +25,7 @@ class AttractionsController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:id])
+
     @attractions = Attraction.all
   end
 
@@ -36,7 +36,9 @@ class AttractionsController < ApplicationController
  end
 
  def require_admin
-   redirect_to "/users/home" unless current_user.admin == true
+   binding.pry 
+   user = User.find_by(id: current_user)
+   redirect_to "/users/home" unless user.admin
  end
 
 end
