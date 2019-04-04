@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-   @user = User.find_by(id: params[:user][:user_name])
+   @user = User.find_by(id: params[:user][:name])
+   binding.pry
    return redirect_to(controller: 'sessions', action: 'new') unless @user.authenticate(params[:user][:password])
    session[:user_id] = @user.id
 
@@ -15,6 +16,6 @@ class SessionsController < ApplicationController
    def destroy
      session.delete :user_id
 
-     redirect_to root_path 
+     redirect_to root_path
    end
 end
