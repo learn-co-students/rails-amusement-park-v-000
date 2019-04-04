@@ -8,9 +8,10 @@ class AttractionsController < ApplicationController
   def create
 
       @attraction = Attraction.create(attraction_params)
-      render :show
-
-      if !@attraction.save
+      binding.pry
+      if @attraction.save
+        render :show
+      else
         #add a flash message here for errors
         redirect_to(controller: 'attractions', action: 'new')
       end
@@ -21,7 +22,7 @@ class AttractionsController < ApplicationController
   end
 
   def update
-
+    @attraction = Attraction.find_by(id: params[:id])
   end
 
   def index
@@ -36,7 +37,7 @@ class AttractionsController < ApplicationController
  end
 
  def require_admin
-   binding.pry 
+
    user = User.find_by(id: current_user)
    redirect_to "/users/home" unless user.admin
  end

@@ -1,10 +1,11 @@
 <h2> Editing attraction </h2>
 
 <%= form_for :attraction, url: '/attractions', method: :patch do |f| %>
-  Name: <%= f.text_field :name %>
-  Height Requirement (in inches): <%= f.text_field :height %>
-  How fun is it? (1-5 scale): <%= f.text_field :happiness_rating %>
-  How nauseous-inducing is it? (1-5 scale): <%= f.text_field :nausea_rating %>
-  How many tickets does it cost?: <%= f.text_field :tickets %>
+  <% binding.pry %>
+  Name: <%= f.text_field :name, :value => @attraction.name %> <br>
+  Height Requirement (in inches): <%= f.text_field :min_height, :value => params[:min_height] %> <br>
+  How fun is it? (1-5 scale): <%= f.text_field :happiness_rating, :value => params[:happiness_rating] %> <br>
+  How nauseous-inducing is it? (1-5 scale): <%= f.text_field :nausea_rating %> <br>
+  How many tickets does it cost?: <%= f.text_field :tickets %> <br>
   <%= f.submit "Update Attraction" %>
 <% end %>
