@@ -5,13 +5,13 @@ class RidesController < ApplicationController
   # end
 
   def create
-    
+
     ride = Ride.new(user_id: current_user)
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
 
-    @user.take_ride
+    ride.take_ride
 
-    render :'users/#{@user.id}'
+    render :'users/#{ride.user_id}'
 
   end
 

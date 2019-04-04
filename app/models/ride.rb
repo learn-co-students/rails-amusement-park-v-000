@@ -5,10 +5,10 @@ class Ride < ActiveRecord::Base
 
   def take_ride
 
-    #current_ride = Ride.new(:attraction_id => attraction.id, :user_id => user.id) #somehow link attraction to ride
+    current_ride = Ride.create(:attraction_id => attraction.id, :user_id => user.id) #somehow link attraction to ride
 
-    #user.rides << current_ride
-    #attraction.rides << current_ride
+    user.rides << current_ride
+    attraction.rides << current_ride
 
     if self.user.tickets < self.attraction.tickets && self.user.height < self.attraction.min_height
       flash[:notice] = "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
@@ -19,7 +19,7 @@ class Ride < ActiveRecord::Base
     else #user.tickets >= attraction.tickets && user.height >= attraction.min_height
 
       flash[:notice] = "Thank you for riding the #{attraction.name}."
-      
+
       new_balance = self.user.tickets - self.attraction.tickets
       self.user.tickets = new_balance
 
