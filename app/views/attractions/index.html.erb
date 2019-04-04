@@ -20,3 +20,7 @@
 <br>
 
 <%= link_to "New Attraction", "/attractions/new" %>
+
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+ <% end %>

@@ -45,7 +45,8 @@ class AttractionsController < ApplicationController
  def require_admin
 
    user = User.find_by(id: current_user)
-   redirect_to root_path unless user.admin
+   flash[:notice] = "**Only accessible by administrators.**"
+   redirect_to attractions_path unless user.admin
    #add flash message and redirect to show page
  end
 
