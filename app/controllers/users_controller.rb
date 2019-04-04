@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if params[:user][:password] == params[:user][:password_confirmation]
         @user = User.create(user_params)
         session[:user_id] = @user.id
-        render :show 
+        render :show
       else
         #add a flash message here for errors
         redirect_to(controller: 'users', action: 'new')
@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     end
 
     def home
-      redirect_to(controller: 'users', action: 'home') unless current_user
 
     end
 
@@ -24,7 +23,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def index 
+    def index
 
     end
 

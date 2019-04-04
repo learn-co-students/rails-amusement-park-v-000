@@ -14,7 +14,6 @@ class AttractionsController < ApplicationController
         #add a flash message here for errors
         redirect_to(controller: 'attractions', action: 'new')
       end
-    end
   end
 
   def show
@@ -26,6 +25,7 @@ class AttractionsController < ApplicationController
   end
 
   def index
+    @user = User.find(params[:id])
     @attractions = Attraction.all
   end
 
