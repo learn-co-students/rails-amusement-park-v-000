@@ -22,7 +22,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   end
 
   it 'successfully logs in as non-admin' do
-    
+
     # user_login method is defined in login_helper.rb
     create_standard_user
     visit '/signin'
@@ -109,7 +109,7 @@ describe 'Feature Test: User Signout', :type => :feature do
   it "successfully destroys session hash when 'Log Out' is clicked" do
     visit '/users/new'
     # user_signup method is defined in login_helper.rb
-    user_signup
+    user_signup  
     click_link("Log Out")
     expect(page.get_rack_session).to_not include("user_id")
   end
