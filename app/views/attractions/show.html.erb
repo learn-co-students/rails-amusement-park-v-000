@@ -8,7 +8,7 @@ Happiness Rating: <%= @attraction.happiness_rating %> <br>
 
 <br>
 
-<%= form_for (@ride) do |f| %>
+<%= form_for :ride, url: '/rides', method: :post do |f| %>
     <%= f.hidden_field :user_id, value: session[:user_id] %>
     <%= f.hidden_field :attraction_id, value:"#{@attraction.id}" %>
     <%= f.submit "Go on this ride"%>

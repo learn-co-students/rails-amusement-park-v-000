@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     def show
       if session[:user_id] != nil
         @user = User.find(params[:id])
+        @message = params[:message]
       else
         redirect_to root_path
       end

@@ -1,7 +1,12 @@
 
+  <%= @message %>
+
+<br>
+
 <% if @user.admin  %>
   ADMIN
 <%end %>
+<br>
 
 Name: <%= @user.name %> <br>
 Tickets: <%= @user.tickets %> <br>
@@ -11,10 +16,5 @@ Height: <%= @user.height %> <br>
 <%= link_to "See attractions", '/attractions' %>
 <br>
 
-<% if flash[:notice] %>
- <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
-<br>
 
 <%= link_to "Log Out", '/logout' %>
