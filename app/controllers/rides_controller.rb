@@ -9,8 +9,7 @@ class RidesController < ApplicationController
     @ride = Ride.create(ride_params)
 
     if @ride.save
-
-      @message = @ride.take_ride
+      @message = @ride.take_ride  
       flash[:notice] = @message
       redirect_to user_path(@ride.user, message: @message)
 
