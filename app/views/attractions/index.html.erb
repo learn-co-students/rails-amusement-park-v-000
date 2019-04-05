@@ -7,7 +7,7 @@
     <th> Tickets </th>
     <th> Details </th>
   </tr>
-  <tr> <%= @attractions.each do |a| %>
+  <tr> <% @attractions.each do |a| %>
     <td><%= a.name %> </td>
     <td><%= a.tickets %> </td>
     <td><%if @user.admin %>

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_user_is_authenticated, only: [:new,:create]
-  
+
   def new
 
   end
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
    if @user.authenticate(params[:user][:password])
      session[:user_id] = @user.id
-     render '/users/show'
+     redirect_to ("/users/#{@user.id}")
    else
      flash[:notice] = "Please enter a valid password or Sign Up to create an account."
      redirect_to(controller: 'sessions', action: 'new')
