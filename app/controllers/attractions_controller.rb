@@ -11,7 +11,7 @@ class AttractionsController < ApplicationController
 
       if attraction.valid?
         @attraction = Attraction.create(attraction_params)
-        render :show
+        redirect_to ("/attractions/#{@attraction.id}")
       else
         flash[:notice] = "Please complete the form with valid entries."
         redirect_to(controller: 'attractions', action: 'new')
