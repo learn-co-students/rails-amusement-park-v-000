@@ -6,13 +6,17 @@ class RidesController < ApplicationController
 
   def create
 
-    ride = Ride.new(user_id: current_user)
+    ride = Ride.create(ride_params)
     #@user = User.find(params[:id])
 
     @message = ride.take_ride
-    #flash[:notice] = @message 
+    #flash[:notice] = @message
     render :'users/#{ride.user_id}'
 
+  end
+
+  def ride_params
+    params.require(:ride).permit(:user_id, :attraction_id)
   end
 
 end
