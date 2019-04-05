@@ -9,8 +9,8 @@ class RidesController < ApplicationController
     ride = Ride.new(user_id: current_user)
     #@user = User.find(params[:id])
 
-    ride.take_ride
-
+    @message = ride.take_ride
+    #flash[:notice] = @message 
     render :'users/#{ride.user_id}'
 
   end
