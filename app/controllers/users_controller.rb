@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     if user.valid? && params[:user][:password] == params[:user][:password_confirmation]
         @user = User.create(user_params)
         session[:user_id] = @user.id
-        render :show
-        
+        redirect_to ("/users/#{@user.id}")
+
       else
         flash[:notice] = "Please complete the form with valid entries."
         redirect_to(controller: 'users', action: 'new')
