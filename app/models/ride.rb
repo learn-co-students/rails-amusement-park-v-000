@@ -13,7 +13,7 @@ class Ride < ActiveRecord::Base
     else #user.tickets >= attraction.tickets && user.height >= attraction.min_height
       update_user
       "Thank you for riding the #{self.attraction.name}."
-      binding.pry
+  
     end
   end
 
@@ -35,7 +35,7 @@ class Ride < ActiveRecord::Base
       # self.user.happiness = new_happiness_level
 
       #self.user.save
-      
+
 
     end
 end
