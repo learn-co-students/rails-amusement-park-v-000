@@ -13,6 +13,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         session[:user_id] = @user.id
         render :show
+        
       else
         flash[:notice] = "Please complete the form with valid entries."
         redirect_to(controller: 'users', action: 'new')
@@ -24,10 +25,8 @@ class UsersController < ApplicationController
     end
 
     def show
-
-        @user = User.find(params[:id])
-        @message = params[:message]
-      
+      @user = User.find(params[:id])
+      @message = params[:message]
     end
 
   private
