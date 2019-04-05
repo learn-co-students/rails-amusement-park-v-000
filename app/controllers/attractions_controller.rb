@@ -21,7 +21,7 @@ class AttractionsController < ApplicationController
   def show
 
     @attraction = Attraction.find(params[:id])
-    @ride = Ride.new  
+    @ride = Ride.new
   end
 
   def edit
@@ -35,7 +35,7 @@ class AttractionsController < ApplicationController
   end
 
   def index
-    @user = User.find_by(id: current_user)
+    @user = User.find_by(id: current_user_id)
     @attractions = Attraction.all
   end
 
@@ -47,7 +47,7 @@ class AttractionsController < ApplicationController
 
  def require_admin
 
-   user = User.find_by(id: current_user)
+   user = User.find_by(id: current_user_id)
    flash[:notice] = "**Only accessible by administrators.**"
    redirect_to attractions_path unless user.admin
    #add flash message and redirect to show page

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :require_login
-  # skip_before_action :require_login, only: [:new, :home]
+  skip_before_action :verify_user_is_authenticated, only: [:new, :create, :home]
 
   def new
 
@@ -25,12 +24,10 @@ class UsersController < ApplicationController
     end
 
     def show
-      if session[:user_id] != nil
+
         @user = User.find(params[:id])
         @message = params[:message]
-      else
-        redirect_to root_path
-      end
+      
     end
 
   private
@@ -38,11 +35,6 @@ class UsersController < ApplicationController
    def user_params
      params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :admin, :password, :password_confirmation)
    end
-
-  #  def require_login
-  #    redirect_to root_path unless session[:user_id] != nil
-  #    #add flash message and redirect to show page
-  #  end
 
 
 end
