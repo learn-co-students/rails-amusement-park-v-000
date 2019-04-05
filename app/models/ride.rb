@@ -4,7 +4,7 @@ class Ride < ActiveRecord::Base
 
 
   def take_ride
-    binding.pry
+  
     current_ride = Ride.create(:attraction_id => attraction.id, :user_id => user.id) #somehow link attraction to ride
 
     # user.rides << current_ride
