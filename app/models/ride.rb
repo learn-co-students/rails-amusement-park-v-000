@@ -1,8 +1,11 @@
+require 'pry'
+
 class Ride < ActiveRecord::Base
     belongs_to :user
     belongs_to :attraction
 
     def take_ride
+        binding.pry
         if self.user.tickets < self.attraction.tickets || self.user.height < self.attraction.min_height
             messages = 'Sorry.'
             if self.user.tickets < self.attraction.tickets
