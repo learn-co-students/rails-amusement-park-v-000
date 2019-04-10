@@ -31,9 +31,8 @@ class AttractionsController < ApplicationController
 	 
 	def update
 	  
-	  @attraction.update_atributes(attraction_params)
-	  if @attraction.valid?
-	  	@attraction.save
+	  @attraction.update(attraction_params)
+	  if @attraction.save
 	  	redirect_to attraction_path(@attraction)
 	  else 
 	  	render :edit
