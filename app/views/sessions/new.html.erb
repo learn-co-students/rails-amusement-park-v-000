@@ -1,0 +1,11 @@
+<h1>Log In</h1>
+<%= form_for :user, url: '/signin', method: :POST do |f| %>
+    Name: <br>
+    <%= f.collection_select(:name, @users, :name, :name) %>
+    <br>
+    Password: <br>
+    <%= f.password_field :password %>
+    <br>
+    <br>
+    <%= f.submit "Sign In" %>
+<% end %>
