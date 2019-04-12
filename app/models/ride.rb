@@ -16,7 +16,7 @@ class Ride < ActiveRecord::Base
 
         else
             update_user
-            "Thanks for riding the #{self.attraction.name}."
+            "Thanks for riding the #{self.attraction.name}!"
         end
   end 
 

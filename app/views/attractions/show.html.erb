@@ -1,6 +1,3 @@
-<% if flash[:notice] %>
-        <p class="flash-notice"><%= flash[:notice] %></p>
-<% end %>
 
 <% if @attraction.errors.any? %>
     <% @attraction.errors.full_messages.each do |message| %>

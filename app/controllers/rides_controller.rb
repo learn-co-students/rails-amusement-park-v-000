@@ -4,13 +4,10 @@ class RidesController < ApplicationController
   def create
 
     @ride = Ride.create(ride_params)
-
-    if @ride.take_ride.class == String
-      flash[:notice] = @ride.take_ride
-    else
-      flash[:notice] = "Thanks for riding the #{@ride.attraction.name}!"
-    end
-    redirect_to user_path(@ride.user, notice: flash[:notice])
+    
+    flash[:notice] = @ride.take_ride
+       
+    redirect_to user_path(@ride.user)
   end
 
   private
