@@ -1,9 +1,10 @@
-class CreateRides < ActiveRecord::Migration[5.2]
+class CreateRides < ActiveRecord::Migration[5.1]
   def change
     create_table :rides do |t|
-    	t.integer :user_id 
-      t.integer :attraction_id
-      t.timestamps null: false      
+      t.belongs_to :user, foreign_key: true
+      t.belongs_to :attraction, foreign_key: true
+
+      t.timestamps null: false   
     end
   end
 end

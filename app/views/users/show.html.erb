@@ -9,3 +9,11 @@
 <p>Height: <%= @user.height %></p>
 <br>
 <%= link_to "See attractions", attractions_path %>
+<br>
+<br>
+Visited Rides:
+<ul>
+<% @user.rides.each do |ride| %>
+	<li><%= ride.attraction.name %> - <%= ride.attraction.tickets %> tickets</li>
+<% end %>
+</ul>

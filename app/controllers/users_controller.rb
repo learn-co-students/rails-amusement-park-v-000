@@ -9,9 +9,11 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.valid?
+      flash[:notice] = 'Sign up was successful.'
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
+      flash[:notice] = 'Sign up was not successful.'
       render :new
     end
   end

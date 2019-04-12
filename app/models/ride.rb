@@ -1,35 +1,31 @@
 class Ride < ActiveRecord::Base
-    belongs_to :user
-    belongs_to :attraction
+  belongs_to :user
+  belongs_to :attraction
 
-    def take_ride
-        if self.user.tickets < self.attraction.tickets || self.user.height < self.attraction.min_height
-            messages = 'Sorry.'
-            if self.user.tickets < self.attraction.tickets
-                messages << " You do not have enough tickets to ride the #{self.attraction.name}."
-            end
-            if self.user.height < self.attraction.min_height
-                messages << " You are not tall enough to ride the #{self.attraction.name}."
-            end
-            return messages
-        elsif self.user.tickets < self.attraction.tickets && self.user.height < self.attraction.min_height
-            return "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
-            
-        else
-            go_on_ride
-        end
-    end 
+  def take_ride
+    @user = User.find_by(id: user_id)
+    @attraction = Attraction.find_by(id: attraction_id)
+    can_ride?(@user, @attraction)
+  end
 
-    def go_on_ride
-        new_happiness = self.user.happiness + self.attraction.happiness_rating
-        new_nausea = self.user.nausea + self.attraction.nausea_rating
-        new_tickets =  self.user.tickets - self.attraction.tickets
-        self.user.update(
-          :happiness => new_happiness,
-          :nausea => new_nausea,
-          :tickets => new_tickets
-        )
-        "Thanks for riding the #{self.attraction.name}!"
+  def can_ride?(user, attraction)
+    if attraction.tickets > user.tickets && attraction.min_height > user.height
+      "Sorry. You do not have enough tickets to ride the #{@attraction.name}. You are not tall enough to ride the #{@attraction.name}."
+    elsif attraction.tickets > user.tickets 
+      "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
+    elsif attraction.min_height > user.height
+      "Sorry. You are not tall enough to ride the #{@attraction.name}."
+    else
+      update_user(user, attraction)
     end
-    
+  end
+
+
+  def update_user(user, attraction)
+    user.tickets = user.tickets - attraction.tickets
+    user.nausea = user.nausea + attraction.nausea_rating
+    user.happiness = user.happiness + attraction.happiness_rating
+    user.save
+  end
+
 end

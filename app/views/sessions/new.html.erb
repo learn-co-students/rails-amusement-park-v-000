@@ -1,11 +1,11 @@
-<h1>Log In</h1>
-<%= form_for :user, url: '/signin', method: :POST do |f| %>
-    Name: <br>
-    <%= f.collection_select(:name, @users, :name, :name) %>
-    <br>
-    Password: <br>
-    <%= f.password_field :password %>
-    <br>
-    <br>
-    <%= f.submit "Sign In" %>
+<% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+<% end %>
+
+<%= form_for @user, url: '/signin', method:'post' do |f| %>
+  Username: <%= f.collection_select(:name, User.all, :name, :name) %><br>
+  Password: <%= f.password_field :password %><br>
+  <%= f.submit "Submit" %>
 <% end %>

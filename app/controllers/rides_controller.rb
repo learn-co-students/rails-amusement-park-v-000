@@ -1,17 +1,12 @@
 class RidesController < ApplicationController
-	before_action :require_login
-
-  def new
-      @ride = Ride.new
-  end
+  before_action :require_login
 
   def create
-    @ride = Ride.create(
-      :user_id => params[:user_id],
-      :attraction_id => params[:attraction_id]
-    )
-    flash[:notice] = @ride.take_ride
-    redirect_to user_path(@ride.user, :notice => flash[:notice])
+      @ride = Ride.new(user_id: current_user.id, attraction_id: params[:attraction_id])
+      if @ride.save
+          @message =  @ride.take_ride
+          redirect_to user_path(@ride.user, message: @message)
+      end
   end
-  
+
 end
