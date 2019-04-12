@@ -1,11 +1,8 @@
-<% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-<% end %>
-
-<%= form_for @user, url: '/signin', method:'post' do |f| %>
-  Username: <%= f.collection_select(:name, User.all, :name, :name) %><br>
-  Password: <%= f.password_field :password %><br>
-  <%= f.submit "Submit" %>
+<h1>Sign In</h1>
+<%= form_tag("/signin", method: "post") do %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <p>Select a User:</p>
+  <%= collection_select(:user, :name, User.all, :name, :name) %><br />
+  <p>Password: <%= password_field_tag :password %></p>
+  <%= submit_tag "Sign In" %>
 <% end %>
