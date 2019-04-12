@@ -10,7 +10,7 @@ class RidesController < ApplicationController
     else
       flash[:notice] = "Thanks for riding the #{@ride.attraction.name}!"
     end
-    redirect_to user_path(@ride.user)
+    redirect_to user_path(@ride.user, notice: flash[:notice])
   end
 
   private
