@@ -18,12 +18,14 @@ Min. Height: <%= @attraction.min_height %><br />
 <% if current_user.admin %>
   <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
 <% else %>
-  <%= form_tag("/rides", method: "post") do %>
+
+<%= form_tag("/rides", method: "post") do %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag :user_id, current_user.id %>
     <%= hidden_field_tag :attraction_id, @attraction.id %>
     <%= button_tag "Go on this ride" %>
-  <% end %>
+<% end %>
+
 <% end %>
 <br>
 <br>
