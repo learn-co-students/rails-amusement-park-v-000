@@ -37,13 +37,21 @@ DATA = {
   :admins => [
     "Mary Elitch Long",
     "John Elitch"
+  ],
+  :ride_keys =>
+    ["user_id", "attraction_id"],
+  :rides => [
+    [3, 2],
+    [5, 4],
+    [9, 6]
   ]
 }
 
 def main
   make_users
   make_admin
-  make_attractions_and_rides
+  make_attractions
+  make_rides
 end
 
 def make_users
@@ -62,20 +70,40 @@ def make_admin
   end
 end
 
-def make_attractions_and_rides
+def make_attractions
   DATA[:attractions].each do |attraction|
     new_attraction = Attraction.new
     attraction.each_with_index do |attribute, i|
       new_attraction.send(DATA[:attraction_keys][i] + "=", attribute)
     end
-    rand(1..8).times do
-      customers = []
-      User.all.each {|u| customers << u if u.admin != true}
-      new_attraction.users << customers[rand(0...customers.length)]
-    end
-    new_attraction.users.each {|c| c.save}
     new_attraction.save
   end
 end
+
+def make_rides
+  DATA[:rides].each do |ride|
+    new_ride = Ride.new
+    ride.each_with_index do |attribute, i|
+      new_ride.send(DATA[:ride_keys][i]+"=", attribute)
+    end
+    new_ride.save
+  end
+end
+
+# def make_attractions_and_rides
+#   DATA[:attractions].each do |attraction|
+#     new_attraction = Attraction.new
+#     attraction.each_with_index do |attribute, i|
+#       new_attraction.send(DATA[:attraction_keys][i] + "=", attribute)
+#     end
+#     rand(1..8).times do
+#       customers = []
+#       User.all.each {|u| customers << u if u.admin != true}
+#       new_attraction.users << customers[rand(0...customers.length)]
+#     end
+#     new_attraction.users.each {|c| c.save}
+#     new_attraction.save
+#   end
+# end
 
 main
