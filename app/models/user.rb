@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
 
   def mood
-    self.nausea > self.happiness ? 'sad' : 'happy'
+    if self.happiness && self.nausea
+      mood = self.happiness - self.nausea
+      mood > 0 ? "happy" : "sad"
+    end
   end
 
 end
