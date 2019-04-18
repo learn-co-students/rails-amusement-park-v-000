@@ -4,15 +4,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def index
-  end
+  # def index
+  # end
 
   def create
     # raise params.inspect
     @user = User.create(user_params)
-    # return redirect_to new_user_path unless @user.save
+    return redirect_to new_user_path unless @user.save
     session[:user_id] = @user.id
-    redirect_to users_path(@user)
+    redirect_to user_path(@user)
   end
 
   def show
