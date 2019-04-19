@@ -1,0 +1,7 @@
+<%= form_tag '/signin' do %>
+  <label>Your Name:</label>
+  <%= select_tag :'user[id]', options_from_collection_for_select(@users, :id, :name), prompt: 'choose your name', id: 'user_name' %>
+  <%= label_tag :password %>
+  <%= password_field :user, :password, id: 'password' %> 
+  <%= submit_tag :'Sign In' %> 
+<% end %>
