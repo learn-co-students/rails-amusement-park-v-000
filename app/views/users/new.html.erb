@@ -1,0 +1,12 @@
+<h2>Sign Up!!</h2><br>
+
+<%= form_tag users_path, method: "post" do %>
+
+<%= label_tag "name", "Name" %>
+<%= text_field_tag "name", @user.name %>
+
+<%= label_tag "password", "Password" %>
+<%= text_field_tag "password", @user.password %>
+
+<%= submit_tag "sign up" %>
+<% end %>
