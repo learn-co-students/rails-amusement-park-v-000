@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # raise params.inspect
     user = User.find_by(name: params[:user][:name])
     user = user.try(:authenticate, params[:user][:password])
     return redirect_to new_user_path unless user

@@ -35,6 +35,10 @@
     </div>
 
     <!-- content -->
+    <% if flash[:notice] %>
+      <div class="center alert" id="notice"><%= flash[:notice] %></div>
+    <% end %>
+
     <div class="container"  role="main">
       <%= yield %>
     </div>
