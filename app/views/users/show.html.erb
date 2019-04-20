@@ -1,0 +1,10 @@
+<div class="center">
+  <div class="info">
+    <%= "ADMIN" if @user.admin %><br>
+    <p><strong>Name:</strong> <%= @user.name %></p>
+    <p><strong>Tickets:</strong> <%= @user.tickets %></p>
+    <p><strong>Mood:</strong> <%= @user.mood %></p>
+    <p><strong>Height:</strong> <%= @user.height %> inches</p>
+    <p><%= link_to "See attractions", attractions_path %></p>   
+  </div>
+</div>
