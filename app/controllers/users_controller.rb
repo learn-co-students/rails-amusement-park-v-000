@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
 	def show
-		binding.pry
-		@user = User.find(params[:id])
+		require_logged_in
+		@user = User.find_by(id: params[:id])
+		# binding.pry
 	end
 
 	def new
