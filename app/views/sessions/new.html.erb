@@ -1,0 +1,6 @@
+<%= form_tag("/signin", method: "post") do %>
+
+  <%= collection_select (:user, :user_name, User.all, :id, :name) %>
+  <%= submit_tag "Sign In" %>
+
+<% end %>
