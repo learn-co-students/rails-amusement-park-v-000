@@ -1,12 +1,27 @@
 <h2>Sign Up!!</h2><br>
 
-<%= form_tag users_path, method: "post" do %>
+<%= form_for(@user) do |f| %>
 
-<%= label_tag "name", "Name" %>
-<%= text_field_tag "name", @user.name %>
+<%= f.label "Name" %>
+<%= f.text_field :name %>
 
-<%= label_tag "password", "Password" %>
-<%= text_field_tag "password", @user.password %>
+<%= f.label "Password" %>
+<%= f.text_field :password %>
 
-<%= submit_tag "sign up" %>
+<%= f.label "Height" %>
+<%= f.text_field :height %>
+
+<%= f.label "Nausea" %>
+<%= f.text_field :nausea %>
+
+<%= f.label "Tickets" %>
+<%= f.text_field :tickets %>
+
+<%= f.label "Happiness" %>
+<%= f.text_field :happiness %>
+
+<%= f.label "Check if you are an authorized administrator of the park" %>
+<%= f.check_box :admin %>
+
+<%= f.submit "Create User" %>
 <% end %>
