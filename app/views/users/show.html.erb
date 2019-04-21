@@ -1,0 +1,32 @@
+<h2>Hello <%= @user.name %>!!</h2>
+
+<% if @ride %>
+
+<% if @ride.user.height >= @ride.attraction.min_height && @ride.user.tickets >= @ride.attraction.tickets %>
+  <% @ride.take_ride %>
+  <%= "Thanks for riding the #{@ride.attraction.name}!" %>
+<% elsif @ride.user.height < @ride.attraction.min_height && @ride.user.tickets < @ride.attraction.tickets %>
+  <%= "You do not have enough tickets to ride the #{@ride.attraction.name}. You are not tall enough to ride the #{@ride.attraction.name}." %>
+  <% @ride.delete %>
+<% elsif @ride.user.height < @ride.attraction.min_height %>
+  <%= "You are not tall enough to ride the #{@ride.attraction.name}" %>
+  <% @ride.delete %>
+<% elsif @ride.user.tickets < @ride.attraction.tickets %>
+  <%= "You do not have enough tickets to ride the #{@ride.attraction.name}" %>
+  <% @ride.delete %>
+<% end %>
+
+<% end %>
+
+<% if @user.admin == true %>
+  <h3>You are and ADMINistrator of this park.</h3>
+<% end %>
+
+<p>Your Happiness: <%= @user.happiness %></p>
+<p>Your Nausea: <%= @user.nausea %></p>
+<p>Your Mood: <%= @user.mood %></p>
+<p>Your Tickets: <%= @user.tickets %></p>
+<p>Your Height: <%= @user.height %></p>
+
+<%= link_to "See attractions", attractions_path %>
+<%= link_to "Log Out", "/logout" %>
