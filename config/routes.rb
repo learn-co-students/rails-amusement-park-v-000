@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users
-  resources :attractions, only: [:index]
+  resources :attractions, only: [:index, :show, :edit]
 
   root 'welcome#home'
 end

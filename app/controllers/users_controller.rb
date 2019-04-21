@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 	def show
+		binding.pry
 		@user = User.find(params[:id])
 	end
 
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.create(user_params)
-		# binding.pry
 		return redirect_to root_path unless @user.save
 		session[:user_id] = @user.id 
 		redirect_to user_path(@user)
@@ -23,9 +23,3 @@ class UsersController < ApplicationController
 	end
 
 end
-
-
-		# if logged_in? && current_user == @user
-		# else
-			# redirect_to root_path
-		# end

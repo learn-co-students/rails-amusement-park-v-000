@@ -1,0 +1,20 @@
+<strong>Name:</strong>
+<%= @attraction.name %><br>
+
+<strong>Total Number of Users:</strong>
+<%=  %><br>
+
+<strong>Ticket Requirement:</strong>
+<%= @attraction.tickets %><br>
+
+<strong>Height Requirement:</strong>
+<%= @attraction.min_height %><br>
+
+<strong>Nausea Rating:</strong>
+<%= @attraction.nausea_rating %><br>
+
+<strong>Happiness Rating:</strong>
+<%= @attraction.happiness_rating %><br><br>
+
+<%= button_to 'Go on this ride', user_path, method: 'get' %><br>
+<%= link_to	'Edit Attraction', edit_attraction_path %><br>
