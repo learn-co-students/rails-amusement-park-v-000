@@ -28,11 +28,6 @@ class UsersController < ApplicationController
 
   end
 
-  def signin
-    # binding.pry
-    @users = User.all
-    # session[:user_id] = @user.id
-  end
 
 
   private

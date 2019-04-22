@@ -1,0 +1,21 @@
+<%# binding.pry %>
+
+<%#= collection_select @user, :name, User.all, :name %>
+
+<!-- 1- i could iterate through all users somehow and give each user to the form_for
+
+2- maybe i can use select_tag -->
+
+
+
+
+<%= form_for @user do |f| %>
+
+  <%= f.collection_select :name, User.all, :id, :name %><br>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %><br/>
+<%# binding.pry %>
+
+  <%= f.submit %>
+<% end %>
