@@ -13,8 +13,8 @@
 
   <%= f.collection_select :name, User.all, :id, :name %><br>
 
-  <%= f.label :password %>
-  <%= f.text_field :password %><br/>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %><br/>
 <%# binding.pry %>
 
   <%= f.submit %>

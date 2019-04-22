@@ -2,10 +2,10 @@
 
 <!-- consider looking more at patterns as opposed to remembering stuff like memorizing syntax for example  -->
 
-<!-- 
+<!--
 this is more about sessions
 
 user signs in and submits the form > goes to sessions controller >
 they will logged in if their info is valid > redirect somewhere
 
--as a programmer and engineer, it's not about learning syntax. but rather if you see a method like colleciton_select, how can we make it work for you. it's creativity  -->
+-as a programmer and engineer, it's not about learning syntax. but rather if you see a method like collection_select, how can we make it work for you. it's creativity  -->
