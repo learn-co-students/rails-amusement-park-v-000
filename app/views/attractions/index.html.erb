@@ -3,8 +3,5 @@
 <strong>Tickets</strong>
 <strong>Details</strong><br>
 <% @attractions.each do |attraction| %>
-				<td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>		
-			<% end %>
-		</tr>
-	</tbody>
-</table>
+	<%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>	
+<% end %>

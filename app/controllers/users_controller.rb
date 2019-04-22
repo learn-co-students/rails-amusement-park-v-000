@@ -2,8 +2,7 @@ class UsersController < ApplicationController
 
 	def show
 		require_logged_in
-		@user = User.find_by(id: params[:id])
-		# binding.pry
+		@user = current_user
 	end
 
 	def new
