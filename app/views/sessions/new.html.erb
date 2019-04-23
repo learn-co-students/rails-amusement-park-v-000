@@ -1,21 +1,13 @@
-<%# binding.pry %>
-
-<%#= collection_select @user, :name, User.all, :name %>
-
-<!-- 1- i could iterate through all users somehow and give each user to the form_for
-
-2- maybe i can use select_tag -->
+<% binding.pry %>
 
 
+<%= form_tag signin_path do %>
+<% binding.pry %>
 
+<%= collection_select :user, :name, User.all, :id, :name %><br>
+<label> Password: </label><br>
+<%= text_field_tag :password %><br>
 
-<%= form_for @user do |f| %>
-
-  <%= f.collection_select :name, User.all, :id, :name %><br>
-
-  <%= f.text_field :password %>
-  <%= f.text_field :password_confirmation %><br/>
-<%# binding.pry %>
-
-  <%= f.submit %>
+<%= submit_tag 'Sign In' %>
+<% binding.pry %>
 <% end %>
