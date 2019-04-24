@@ -1,0 +1,11 @@
+<h1>Listing attractions</h1>
+<%= if_admin_add_attraction %><br>
+<% if @user.admin? %>
+	<% @attractions.map do |attraction| %>
+		<%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+	<% end %>
+<% else %>
+	<% @attractions.map do |attraction| %>
+		<%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br>
+	<% end %>
+<% end %>

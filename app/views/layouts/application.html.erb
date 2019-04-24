@@ -21,14 +21,18 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
+    
     <!-- content -->
+
     <div class="container"  role="main">
+    <% if flash[:notice] %>
+      <div class='notice'><%= flash[:notice] %></div>
+    <% end %>
       <%= yield %>
     </div>
   </body>
