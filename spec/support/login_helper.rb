@@ -13,6 +13,7 @@ module LoginHelper
   def user_login
     # binding.pry
     select 'Mindy',from:'user_name'
+    # it breaks on the fill in password line below
     fill_in("password", :with => "password")
     click_button('Sign In')
   end
