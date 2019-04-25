@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # binding.pry
+    binding.pry
     if @user = User.find_by(params[:id])
       render :show
     else
