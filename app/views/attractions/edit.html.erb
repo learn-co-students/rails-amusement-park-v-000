@@ -1,0 +1,21 @@
+<h2>Edit Attraction</h2><br>
+
+<%= form_tag ({controller: "attractions", action: "update", method: "post"}) do %>
+
+<label>Name:</label>
+<%= text_field_tag "attraction[name]" %>
+
+<label>Minimum Height:</label>
+<%= text_field_tag "attraction[min_height]" %>
+
+<label>Happiness Rating:</label>
+<%= text_field_tag "attraction[happiness_rating]" %>
+
+<label>Nausea Rating:</label>
+<%= text_field_tag "attraction[nausea_rating]" %>
+
+<label>Tickets:</label>
+<%= text_field_tag "attraction[tickets]" %>
+
+<%= submit_tag "Update Attraction" %>
+<% end %>
