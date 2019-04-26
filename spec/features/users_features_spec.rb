@@ -57,9 +57,13 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(current_path).to eq('/users/new')
     # admin_signup method is defined in login_helper.rb
     admin_signup
+    # binding.pry
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Walt Disney")
+    # binding.pry
+
     expect(page).to have_content("ADMIN")
+
   end
 
   it "on sign up for admin, successfully adds a session hash" do
