@@ -3,3 +3,5 @@ Nausea level: <%= @user.nausea %><br>
 Mood: <%= @user.mood %><br>
 Tickets: <%= @user.tickets %><br>
 Height: <%= @user.height %>
+
+<%= link_to('Log Out', {:controller => "sessions", :action => 'destroy'}, :method => :post) %>
