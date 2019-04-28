@@ -1,0 +1,7 @@
+<%= @attraction.name %>
+<%#= link_to "See Attraction Page!", attraction_path(@attraction)  %>
+<%# binding.pry %>
+<%#= link_to "Go on this ride", user_path(session[:user_id]) %>
+<%#= button_to "Go on this ride", user_path(session[:user_id]), method: "get" %>
+
+<%= button_to "Go on this ride", {action: :go_on_ride, controller: "attractions"} %>

@@ -1,4 +1,6 @@
 <%# binding.pry %>
+<%# "Thanks for riding the #{@user.rides.attraction.name}!" %>
+
 Name: <%= @user.name %>
 happy: <%= @user.happiness %>
 Height: <%= @user.height %>
@@ -6,3 +8,7 @@ Nausea: <%= @user.nausea %>
 Tickets: <%= @user.tickets %>
 Mood: <%= @user.mood %>
 ADMIN: <%= @user.admin %>
+
+
+<%= link_to "Log Out", @user, method: :delete %>
+<%= link_to "See attractions", attractions_path %>

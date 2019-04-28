@@ -21,6 +21,14 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
     # binding.pry
   end
+  # 
+  # def go_on_ride
+  #   # "hi"
+  #   # take_ride
+  #   binding.pry
+  #   ride = Ride.new
+  #   redirect_to user_path(session[:user_id])
+  # end
 
   def show
     # binding.pry
@@ -37,6 +45,11 @@ class UsersController < ApplicationController
 
     # end
 
+  end
+
+  def destroy
+    session.clear
+    redirect_to '/'
   end
 
 
