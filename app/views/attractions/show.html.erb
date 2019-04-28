@@ -6,3 +6,7 @@
 <%= f.submit "Go on this ride" %>
 
 <% end %>
+
+<% if @user.admin == true %>
+  <%= link_to "Edit Attraction", edit_attraction_path %>
+<% end %>
