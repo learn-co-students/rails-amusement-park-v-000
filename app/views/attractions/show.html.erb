@@ -1,1 +1,8 @@
 <%= @attraction.name %>
+
+
+<%= form_for @attraction, :url => { :controller => "rides", :action => "create" }, :html => {:method => :post} do |f| %>
+<%= f.hidden_field :attraction_id, :value => @attraction.id %>
+<%= f.submit "Go on this ride" %>
+
+<% end %>
