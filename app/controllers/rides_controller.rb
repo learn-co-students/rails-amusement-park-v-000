@@ -7,7 +7,7 @@ class RidesController < ApplicationController
     @ride.user = @user
     @ride.attraction = @attraction
     if @ride.save
-      @ride.take_ride
+      flash[:message] = @ride.take_ride
       redirect_to user_path(@ride.user)
     end
   end
