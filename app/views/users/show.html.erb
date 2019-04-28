@@ -1,0 +1,15 @@
+<%= flash[:message] %>
+
+Name: <%= @user.name %><br><br>
+Nausea level: <%= @user.nausea %><br>
+Mood: <%= @user.mood %><br>
+Tickets: <%= @user.tickets %><br>
+Height: <%= @user.height %>
+
+<% if @user.admin == true %>
+ADMIN
+<% end %>
+
+<%= link_to("See attractions", :controller => "attractions", :action => "index") %>
+
+<%= link_to('Log Out', {:controller => "sessions", :action => 'destroy'}, :method => :post) %>
