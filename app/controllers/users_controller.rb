@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
     # binding.pry
   end
-  # 
+  #
   # def go_on_ride
   #   # "hi"
   #   # take_ride
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def show
     # binding.pry
-    @user = User.find_by(params[:id])
+    @user = User.find_by_id(params[:id])
     # if require_login
     # if session[:user_id] == @user.id
   # this above conditional works and renders show, but the test
