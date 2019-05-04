@@ -343,6 +343,7 @@ describe 'Feature Test: Admin Flow', :type => :feature do
     fill_in("attraction[tickets]", :with => "4")
     click_button('Create Attraction')
     expect(current_path).to eq("/attractions/4")
+    # binding.pry
     expect(page).to have_content("Haunted Mansion")
   end
 

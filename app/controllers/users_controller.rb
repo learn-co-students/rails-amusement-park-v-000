@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     # else
       # redirect_to "/signup"
       # redirect_to "/"
-
+    @message =  params[:message]
     # end
 
   end
