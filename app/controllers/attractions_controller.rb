@@ -1,4 +1,4 @@
-  class AttractionsController < ApplicationController
+class AttractionsController < ApplicationController
 
     def index
       @attractions = Attraction.all
@@ -11,20 +11,50 @@
 
 
 
-      def create
-        # binding.pry
-        @attraction = Attraction.create(attraction_params)
-        # binding.pry
-        session[:attraction_id] = @attraction.id
-        # binding.pry
-        redirect_to attraction_path(@attraction)
-        # render :show
-        # binding.pry
-      end
+    def create
+      # binding.pry
+      @attraction = Attraction.create(attraction_params)
+      # binding.pry
+      session[:attraction_id] = @attraction.id
+      # binding.pry
+      redirect_to attraction_path(@attraction)
+      # render :show
+      # binding.pry
+    end
+
+  # something was wrong iwth the find or find by or something
+  # the admin thing, needed to go in strong params in a controller
+
 
     def show
       # binding.pry
-      @attraction = Attraction.find_by(params[:id])
+      require_login
+      @attraction = Attraction.find(params[:id])
+      # binding.pry
+
+      # @user = User.find_by(session[:user_id])
+    end
+
+    def edit
+      @attraction = Attraction.find(params[:id])
+      # binding.pry
+    end
+
+
+
+
+    def update
+      # binding.pry
+      @attraction = Attraction.find(params[:id])
+      @attraction.update(
+      name: params[:attraction][:name],
+      min_height: params[:attraction][:min_height],
+      nausea_rating: params[:attraction][:nausea_rating],
+      happiness_rating: params[:attraction][:happiness_rating],
+      tickets: params[:attraction][:tickets])
+      # binding.pry
+      # @attraction.name = params[:name]
+      redirect_to attraction_path(@attraction)
     end
 
 
@@ -53,14 +83,14 @@
       # and instantiated again in the users controller. finally you can call on it
       # in the user show
       redirect_to user_path(session[:user_id], message: @message)
-      
+
       # binding.pry
     end
 
     private
 
     def attraction_params(*args)
-      params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :tickets)
+      params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :tickets, :attraction)
     end
 
 

@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def new
     # binding.pry
-
     @user = User.new
     # binding.pry
   end
@@ -57,7 +56,7 @@ class UsersController < ApplicationController
   private
 
   def user_params(*args)
-    params.require(:user).permit(:name, :password, :nausea, :height, :tickets)
+    params.require(:user).permit(:name, :password, :nausea, :height, :tickets, :admin)
   end
 
 
