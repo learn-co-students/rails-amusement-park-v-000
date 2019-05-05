@@ -1,0 +1,13 @@
+<%# binding.pry %>
+
+
+<%= form_tag signin_path do %>
+<%# binding.pry %>
+
+<%= collection_select :user, :name, User.all, :id, :name %><br>
+<label> Password: </label><br>
+<%= text_field_tag :password %><br>
+
+<%= submit_tag 'Sign In' %>
+<%# binding.pry %>
+<% end %>
