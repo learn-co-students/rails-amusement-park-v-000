@@ -1,13 +1,13 @@
-<% if @message %>
-    <p><%= @message %></p>
+<%= @message %>
+
+<% if @user.admin %>
+   <h2>ADMIN</h2>
 <% end %>
 
-<p>Name: <%=@user.name%></p><br>
-<p>Height: <%=@user.height%></p><br>
-<p>Mood: <%=@user.mood%></p><br>
-<p>Happiness: <%=@user.happiness%></p><br>
-<p>Nausea: <%=@user.nausea%></p><br>
-<p>Tickets: <%=@user.tickets%></p><br>
-<p>ADMIN: <%=@user.admin%></p><br>
+<h2>Name: <%= @user.name %></h2>
+<h2>Tickets: <%= @user.tickets %></h2>
+<h2>Mood: <%= @user.mood %></h2>
+<h2>Height: <%= @user.height %></h2>
+
 <%= link_to "Log Out", signout_path, method: :delete %>
 <%= link_to "See attractions", attractions_path %>

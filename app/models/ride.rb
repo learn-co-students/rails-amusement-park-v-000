@@ -3,38 +3,25 @@ class Ride < ActiveRecord::Base
  belongs_to :user
 
  def take_ride
-   if !tall_enough && !enough_tickets
-     "Sorry. " + too_few_tickets + " " + not_tall_enough
-   elsif !enough_tickets
-     "Sorry. " + too_few_tickets
-   elsif !tall_enough
-     "Sorry. " + not_tall_enough
-   else
-     start_ride
-   end
- end
+        if self.attraction.tickets <= self.user.tickets && self.attraction.min_height <= self.user.height
+            new_attr
+            "Thanks for riding the #{self.attraction.name}!"
+        elsif self.user.tickets < self.attraction.tickets && self.user.height < self.attraction.min_height
+            "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
+        elsif self.user.tickets < self.attraction.tickets
+            "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+        elsif self.user.height < self.attraction.min_height
+            "Sorry. You are not tall enough to ride the #{attraction.name}."
 
- def tall_enough
-   self.user.height >= self.attraction.min_height
- end
+        end
+    end
 
- def enough_tickets
-   self.user.tickets >= self.attraction.tickets
- end
+    def new_attr
+        self.user.update(
+            tickets: self.user.tickets - self.attraction.tickets,
+            nausea: self.attraction.nausea_rating + self.user.nausea,
+            happiness: self.attraction.happiness_rating + self.user.happiness
+        )
+    end
 
- def start_ride
-   self.user.tickets -= self.attraction.tickets
-   self.user.nausea += self.attraction.nausea_rating
-   self.user.happiness += self.attraction.happiness_rating
-   self.user.save
-   "Thanks for riding the #{self.attraction.name}!"
- end
-
- def too_few_tickets
-   "You do not have enough tickets to ride the #{self.attraction.name}."
- end
-
- def not_tall_enough
-   "You are not tall enough to ride the #{self.attraction.name}."
- end
 end

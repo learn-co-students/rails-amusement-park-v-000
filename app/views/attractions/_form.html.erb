@@ -1,19 +1,19 @@
-<%= form_for(@attraction) do |f| %>
+<%= form_for @attraction do |f| %>
 <%= f.label :name %><br>
   <%= f.text_field :name %><br>
-
+<br>
   <%= f.label :tickets %><br>
   <%= f.number_field :tickets %><br>
-
+<br>
   <%= f.label :nausea_rating %><br>
   <%= f.number_field :nausea_rating %><br>
-
+<br>
   <%= f.label :happiness_rating %><br>
   <%= f.number_field :happiness_rating %><br>
-
+<br>
   <%= f.label :min_height %><br>
   <%= f.number_field :min_height %><br>
-
+<br>
   <%= f.submit %>
 
 <% end %>
