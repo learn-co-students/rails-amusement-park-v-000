@@ -1,10 +1,10 @@
-<%= form_for @user, url: signin_path, method: :post do |f|%>
-<%= f.label :name, "Your Name: " %>
-    <%= f.collection_select :name, User.all, :id, :name, prompt: "Please select your username from this dropdown"%>
+<%= form_tag({controller: 'sessions', action: 'create', method: 'post'})  do %>
+<%= label_tag :name, "Your Name: " %>
+    <%= collection_select :user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown"%>
     <br>
-    <%= f.label :password, "Your Password: " %>
-    <%= f.password_field :password, id: 'password' %>
+    <%= label_tag :password, "Your Password: " %>
+    <%= password_field_tag :password, id: 'password' %>
     <br>
-    <%= f.submit "Sign In" %>
+    <%= submit_tag "Sign In" %>
 
 <%end%>
