@@ -1,0 +1,16 @@
+<%= form_for @user, url: signin_path, method: :post do |f|%>
+
+  <div>
+    <%= f.label :name%>
+    <%= f.text_field :name%>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+  </div>
+
+  <div>
+    <%= f.submit "Sign In" %>
+  </div>
+<%end%>
