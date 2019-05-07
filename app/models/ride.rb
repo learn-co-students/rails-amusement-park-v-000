@@ -20,6 +20,12 @@ class Ride < ActiveRecord::Base
                 @user.tickets = @user.tickets - @attraction.tickets
                 @user.save 
             end 
-        # binding.pry 
+    end 
+
+    def can_ride 
+        self.user.update(:tickets => (self.user.tickets - self.attraction.tickets),
+        :happiness => (self.user.happiness - self.attraction.happiness),
+        :nausea => (self.user.nausea - self.attraction.nausea)
+        )
     end 
 end

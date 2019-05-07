@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+   before_action :require_login, except: [:new, :create]
 
   def new 
     @user = User.new
@@ -7,17 +8,14 @@ class UsersController < ApplicationController
     def create 
         @user = User.create(user_params)
         # binding.pry 
+        if @user.valid?
         session[:user_id] = @user.id
+        redirect_to user_path(@user)
+        else 
+          render :new 
+        end 
     end 
-    
-    # User.create(
-    #     :name => "Mindy",
-    #     :password => "password",
-    #     :nausea => 5,
-    #     :happiness => 3,
-    #     :tickets => 4,
-    #     :height => 34
-    #   )
+  
 
     def show 
       @user = User.find_by(:id => params[:id])
