@@ -8,24 +8,22 @@ class Ride < ActiveRecord::Base
         @attraction = Attraction.find_by(id: self.attraction.id)
 
         if @user.tickets < @attraction.tickets && @user.height < @attraction.min_height 
-                "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
+             "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
             elsif @user.tickets < @attraction.tickets 
-                "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
+                 "Sorry. You do not have enough tickets to ride the #{@attraction.name}."
             elsif @user.height < @attraction.min_height
                 
-                    "Sorry. You are not tall enough to ride the #{@attraction.name}."
+                  "Sorry. You are not tall enough to ride the #{@attraction.name}."
             else 
-                @user.nausea = @user.nausea + @attraction.nausea_rating
-                @user.happiness = @user.happiness + @attraction.happiness_rating
-                @user.tickets = @user.tickets - @attraction.tickets
-                @user.save 
+                go_on_a_ride
+                  "Thanks for riding the #{self.attraction.name}"
             end 
     end 
 
-    def can_ride 
+    def go_on_a_ride 
         self.user.update(:tickets => (self.user.tickets - self.attraction.tickets),
-        :happiness => (self.user.happiness - self.attraction.happiness),
-        :nausea => (self.user.nausea - self.attraction.nausea)
+        :happiness => (self.user.happiness + self.attraction.happiness_rating),
+        :nausea => (self.user.nausea + self.attraction.nausea_rating)
         )
     end 
 end
