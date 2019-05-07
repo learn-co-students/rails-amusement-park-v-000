@@ -1,5 +1,6 @@
 require 'pry'
 class UsersController < ApplicationController
+   before_action :require_login
 
   def home
     render "layouts/application"
@@ -15,12 +16,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def create
     @user = User.create(user_params)
-    redirect_to user_path(@user)
+    if @user
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to new_user_path
+    end
   end
 
   def update
@@ -33,6 +39,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end
 
 end

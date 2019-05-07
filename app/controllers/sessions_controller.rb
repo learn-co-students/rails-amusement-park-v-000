@@ -6,9 +6,9 @@
 
   def create
       user = User.find_by(name: params[:user_name])
-    if user && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to '/'
+      render '/'
     else
       redirect_to '/users/new'
     end
