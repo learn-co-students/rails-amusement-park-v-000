@@ -1,1 +1,10 @@
-<p>this will be a signup page</p>
+<%= form_for @user do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :height %>
+    <%= f.text_field :happiness %>
+    <%= f.text_field :nausea %>
+    <%= f.text_field :tickets %>
+    <%= f.check_box :admin %>
+    <%= f.text_field :password %>
+    <%= f.submit "Create User" %>
+<% end %>
