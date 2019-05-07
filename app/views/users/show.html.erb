@@ -10,6 +10,10 @@ Mood: <%= @user.mood %></p>
 <p>ADMIN</p>
 <%end%>
 
+<% if flash[:notice] %>
+  <p ><%= flash[:notice] %></p>
+<% end %>
+
 <%= link_to "See attractions", attractions_path %>
 
 <%= link_to "Log Out", "/logout" %>
