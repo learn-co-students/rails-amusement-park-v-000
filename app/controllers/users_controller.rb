@@ -1,6 +1,6 @@
 require 'pry'
 class UsersController < ApplicationController
-   before_action :require_login
+   before_action :require_login, only: [:show]
 
   def home
     render "layouts/application"
