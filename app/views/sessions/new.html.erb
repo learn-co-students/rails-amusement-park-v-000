@@ -1,0 +1,7 @@
+<h1>login page</h1>
+
+<%= form_tag('/sessions') do %>
+  <%= collection_select(:user, :name, User.all, :name, :name) %>
+  <%= text_field_tag(:password) %>
+  <%= submit_tag('Sign In') %>
+<% end %>
