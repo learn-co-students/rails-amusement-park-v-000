@@ -1,5 +1,5 @@
-<%= form_tag({controller:"sessions", action:"create", method:"POST"}) do %>
-  Username: <%= text_field_tag :username %>
+<%= form_tag '/signin' do%>
+  Username: <%= collection_select(:user, :name, @users, :name, :name )  %>
   Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+  <%= submit_tag "Sign In" %>
 <% end %>
