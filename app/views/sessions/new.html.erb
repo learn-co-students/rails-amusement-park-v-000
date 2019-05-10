@@ -1,0 +1,7 @@
+<h1>Sign In Here:</h1>
+
+<%= form_for(@user) do |f| %>
+  Name: <%= f.collection_select :name, User.all, :id, :name %><br>
+  Password: <%= f.password_field :password %>
+  <%= f.submit%>
+<%end%>

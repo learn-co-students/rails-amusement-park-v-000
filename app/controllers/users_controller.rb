@@ -18,9 +18,12 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+  def signin
+  end
+
   private
     def user_params
-      params.require(:user).permit(:name, :password_digest, :height, :happiness, :nausea, :tickets)
+      params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets)
     end
 
 end
