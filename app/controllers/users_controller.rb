@@ -5,22 +5,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.find_or_create_by(user_params)
+    @user = User.create(user_params)
     if @user
-      redirect_to user_path
+      redirect_to user_path(@user)
     else 
       render :new
     end
   end
 
-  # "user"=>{"name"=>"Amy Poehler", "height"=>"58", "happiness"=>"3", "nausea"=>"2", "tickets"=>"15", "password"=>"password"}
-
   def show
+    @user = User.find_by(id: params[:id])
   end
 
   private
     def user_params
-      params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password_digest)
+      params.require(:user).permit(:name, :password_digest, :height, :happiness, :nausea, :tickets)
     end
 
 end
