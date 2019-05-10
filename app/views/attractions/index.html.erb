@@ -3,3 +3,8 @@
         <%= att.tickets %> tickets
         <%= link_to "Go on #{att.name}", attraction_path(att) %><br><br></li>
 <% end %></ul>
+
+
+<% if @user.admin %>
+    <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
