@@ -2,6 +2,6 @@
 
 <%= form_for(@user) do |f| %>
   Name: <%= f.collection_select :name, User.all, :id, :name, prompt: true %><br>
-  Password: <%= f.password_field :password id="password"%><br>
-  <%= f.submit value="Log In"%>
+  Password: <%= f.password_field :password, id: "password", placeholder: "Password" %><br>
+  <%= f.submit "Sign In"%>
 <%end%>
