@@ -1,0 +1,6 @@
+<h1>Sign In</h1>
+<%= form_tag('/sessions', method: 'post') do %>
+ <%= select_tag :user_name, options_for_select(@users.collect{|u| u.name }) %>
+ <%= password_field_tag(:password) %>
+ <%= submit_tag('Sign In') %>
+<% end %>
