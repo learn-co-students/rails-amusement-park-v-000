@@ -6,7 +6,7 @@ class AttractionsController < SessionsController
 
   def show
       @attraction = Attraction.find_by(id: params[:id])
-      binding.pry
+
   end
 
 end
