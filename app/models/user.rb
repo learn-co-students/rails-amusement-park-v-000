@@ -5,11 +5,13 @@ class User < ActiveRecord::Base
     has_secure_password
 
     def mood
-        #byebug
-        if self.nausea > self.happiness
-            "sad"
-        else
-            "happy"
-        end 
+        #binding.pry
+        if !self.admin?
+            if self.nausea > self.happiness
+                "sad"
+            else
+                "happy"
+            end 
+        end
     end
 end
