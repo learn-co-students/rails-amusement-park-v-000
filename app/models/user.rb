@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
     has_secure_password
 
     def mood
-        #binding.pry
         if !self.admin?
             if self.nausea > self.happiness
                 "sad"

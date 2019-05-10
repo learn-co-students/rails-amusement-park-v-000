@@ -1,0 +1,12 @@
+
+<h1><b><%= @attraction.name %></b></h1>
+<h3><b>Ticket Requirement: </b><%= @attraction.tickets %></h3>
+<h3><b>Height Requirement: </b><%= @attraction.min_height %> inches</h3>
+<h3><b>Nausea Rating: </b><%= @attraction.nausea_rating %> </h3>
+<h3><b>Happiness Rating: </b><%= @attraction.happiness_rating %></h3><br><br>
+
+<%= form_tag("/rides", :method => "POST") do %>
+    <%= hidden_field(:ride, :user_id) %>
+    <%= hidden_field(:ride, :attraction, :value => @attraction.id)%>
+    <%= submit_tag("Go on this ride") %>
+<% end %>
