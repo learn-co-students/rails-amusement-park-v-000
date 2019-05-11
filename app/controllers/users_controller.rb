@@ -1,7 +1,7 @@
 require 'pry'
 class UsersController < ApplicationController
-   before_action :require_login, only: [:show]
-   skip_before_action :require_login, only:[:new, :create]
+   # before_action :require_login, only: [:show]
+   # skip_before_action :require_login, only:[:new, :create]
 
 
   def home
@@ -18,7 +18,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    if logged_in?
+      @user = User.find_by(id: params[:id])
+    else
+      redirect_to root_url
+    end
   end
 
   def create
@@ -43,10 +47,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
   end
 
-  def require_login
-    if !session.include? :user_id
-      redirect_to '/'
-    end
   end
-
-end

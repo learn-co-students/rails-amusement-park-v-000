@@ -1,2 +1,5 @@
 
-<button type="button"> "<%=link_to "Go on this ride", user_path%>" </button>
+<%= button_to "Go on this ride", user_path(current_user), method: :get%>
+create form -- with this button
+use form to post to create a new ride for Users
+call the take_ride method to update all the users info
