@@ -5,8 +5,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    # binding.pry
     @user = User.create(user_params)
-    # byebug
+    @user.admin = true if params[:user][:admin] == true
+    @user.save
     if @user
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets)
+      params.require(:user).permit(:name, :password, :height, :happiness, :nausea, :tickets, :admin)
     end
 
 end
