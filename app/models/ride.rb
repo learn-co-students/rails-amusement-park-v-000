@@ -18,8 +18,5 @@ class Ride < ActiveRecord::Base
     end
   end
 
-  def mood
-
-  end
   
 end
