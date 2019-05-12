@@ -1,3 +1,5 @@
-<%= @attractions.each do |att| %>
-  <a href='<%=attraction_path(att)%>'>Go on <%=att.name%></a>
+<% @attractions.each do |att| %>
+  <li>
+    <a href='<%=attraction_path(att)%>'>Go on <%=att.name%></a>
+  </li>
 <%end%>
