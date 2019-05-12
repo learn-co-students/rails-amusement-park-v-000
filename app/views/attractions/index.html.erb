@@ -1,0 +1,3 @@
+<%= @attractions.each do |att| %>
+  <a href='<%=attraction_path(att)%>'>Go on <%=att.name%></a>
+<%end%>
