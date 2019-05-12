@@ -1,9 +1,13 @@
 <%= form_tag('/signin') do %>
   <strong>Your name: </strong>
   <%= collection_select(:user, :name, User.all, :id, :name, prompt: true) %>
+  
   <br><br>
+  
   <strong>Your password:</strong><br>
   <%= password_field_tag "password"%>
+  
   <br><br>
+  
   <%= submit_tag "Sign In"%>
 <%end%>
