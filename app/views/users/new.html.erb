@@ -1,10 +1,18 @@
 <h2>Create a user</h2>
 <%= form_for(@user) do |f| %>
-  <strong>Name </strong><br><%= f.text_field :name %><br>
-  <strong>Height (in inches)</strong><br> <%= f.number_field :height %><br>
-  <strong>How happy are you? (1-5 scale)</strong><br> <%= f.number_field :happiness %><br>
-  <strong>How nauseous are you? (1-5 scale)</strong><br><%= f.number_field :nausea %><br>
-  <strong>How many dollars are in your pocket?</strong><br><%= f.number_field :tickets %><br>
-  <strong>Password</strong><br><%= f.password_field :password%><br>
+  <p><strong>Name </strong><br><%= f.text_field :name %></p><br>
+  
+  <p><strong>Height (in inches)</strong><br> <%= f.number_field :height %></p><br>
+  
+  <p><strong>How happy are you? (1-5 scale)</strong><br> <%= f.number_field :happiness %></p><br>
+  
+  <p><strong>How nauseous are you? (1-5 scale)</strong><br><%= f.number_field :nausea %></p><br>
+  
+  <p><strong>How many dollars are in your pocket?</strong><br><%= f.number_field :tickets %></p><br>
+  
+  <p><strong>Check box if you are a theme park owner</strong> <%= f.check_box :admin, {checked: false}, true %></p><br>
+  
+  <p><strong>Password</strong><br><%= f.password_field :password%></p><br>
+  
   <%= f.submit %>
 <%end%>

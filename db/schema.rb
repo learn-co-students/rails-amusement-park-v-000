@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_151835) do
     t.integer "happiness"
     t.integer "tickets"
     t.integer "height"
+    t.boolean "admin", default: false
   end
 
 end

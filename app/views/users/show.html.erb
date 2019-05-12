@@ -1,4 +1,8 @@
 <h1><%= @user.name %></h1>
+<%byebug%>
+<% if @user.admin %>
+  <h3>ADMIN</h3>
+<%end%>
 
 <p>Height: <%= @user.height%></p>
 
