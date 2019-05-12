@@ -21,7 +21,7 @@
 
         <% if logged_in?%>
           <a class="navbar-brand" href="<%= user_path %>"><%=current_user.name%>'s profile</a>
-          <a class="navbar-brand" href="<%= session_path %>">Log Out</a>
+          <a class="navbar-brand" href="<%= logout_path %>">Log Out</a>
         <%end%>
         </div>
         <div class="navbar-collapse collapse">
