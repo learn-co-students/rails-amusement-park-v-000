@@ -22,7 +22,10 @@ class AttractionsController < ApplicationController
   end
 
   def update
-
+    # binding.pry
+    @attraction = Attraction.find_by(id: params[:id])
+    @attraction.update(attraction_params)
+    redirect_to @attraction
   end
 
   private
