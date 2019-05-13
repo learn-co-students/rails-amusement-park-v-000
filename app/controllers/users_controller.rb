@@ -6,9 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    # @user.admin = params[:user][:admin]
     @user.save
-    # binding.pry
     if @user
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -16,22 +14,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-# #<User:0x00007feafa9dadb8
-# id: nil,
-# name: "Walt Disney",
-# password_digest: "$2a$04$8Fm./57rXUyLyD.r/wVmJuDCXpviYAUYQqOnb/0ZRk5gvd2h7ZZJu",
-# nausea: nil,
-# happiness: nil,
-# tickets: nil,
-# height: nil,
-# admin: true>
-# [10] pry(#<UsersController>)> @user.save
-# => false
-
-
-
-
 
   def show
     if current_user && logged_in?
