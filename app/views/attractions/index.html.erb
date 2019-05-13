@@ -1,5 +1,9 @@
 <% @attractions.each do |att| %>
-  <li>
+  <ul>
     <a href='<%=attraction_path(att)%>'>Go on <%=att.name%></a>
-  </li>
+  </ul>
+<%end%>
+
+<% if current_user.admin %>
+  <%= link_to "New Attraction", new_attraction_path %>
 <%end%>

@@ -20,8 +20,11 @@
         <a class="navbar-brand" href="<%= root_url %>">Home</a>
 
         <% if logged_in?%>
-          <a class="navbar-brand" href="<%= user_path %>"><%=current_user.name%>'s profile</a>
+          <a class="navbar-brand" href="<%= user_path(current_user) %>"><%=current_user.name%>'s profile</a>
           <a class="navbar-brand" href="<%= logout_path %>">Log Out</a>
+        <% else %>
+          <a class="navbar-brand" href="<%= new_user_path %>">Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_path %>">Log In</a>
         <%end%>
         </div>
         <div class="navbar-collapse collapse">
@@ -33,15 +36,18 @@
     </div>
 
     <!-- content -->
-    <div class="container center"  role="main">
+    <div class="container"  role="main">
       <br>
-      <div>
+      <div class="center">
         <% flash.each do |key, value| %>
           <div><%= value %></div>
         <% end %>
       </div>
-      <br>
-      <%= yield %>
+      
+      <div>
+        <%= yield %>
+      </div>
+
     </div>
   </body>
 </html>
