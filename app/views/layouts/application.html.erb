@@ -30,6 +30,13 @@
 
     <!-- content -->
     <div class="container"  role="main">
+
+    <div class="center">
+        <% flash.each do |key, value| %>
+          <div><%= value %></div>
+        <% end %>
+      </div>
+
       <%= yield %>
     </div>
   </body>
