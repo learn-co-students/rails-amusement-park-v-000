@@ -1,6 +1,10 @@
 <% @attractions.each do |att| %>
   <ul>
-    <a href='<%=attraction_path(att)%>'>Go on <%=att.name%></a>
+    <%if current_user.admin %>
+      <a href='<%=attraction_path(att)%>'>Show <%=att.name%></a>
+    <%else%>
+      <a href='<%=attraction_path(att)%>'>Go on <%=att.name%></a>
+    <%end%>
   </ul>
 <%end%>
 
