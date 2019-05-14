@@ -24,6 +24,9 @@
           <ul class="nav navbar-nav">
             <li><%= link_to 'Sign Up', new_user_path %></li>
             <li><%= link_to 'Sign In', signin_path %></li>
+            <%if logged_in?%>
+            <li><%=link_to "Log Out", logout_path%></li>
+            <%end%>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

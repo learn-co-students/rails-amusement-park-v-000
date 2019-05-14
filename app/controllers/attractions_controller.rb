@@ -26,7 +26,6 @@ class AttractionsController < SessionsController
     if current_user.admin
       @attraction = Attraction.update(attraction_params)
     end
-
     redirect_to attraction_path(@attraction[0][:id])
   end
 
