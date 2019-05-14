@@ -8,13 +8,26 @@ class AttractionsController < SessionsController
       @attraction = Attraction.find_by(id: params[:id])
   end
 
+  def new
+    @attraction = Attraction.new
+  end
+
   def create
-    @attraction = Attraction.new(attraction_params)
+    @attraction = Attraction.create(attraction_params)
+    redirect_to attraction_path(@attraction)
+    end
+
+    def edit
+      @attraction = Attraction.find_by(id: params[:id])
     end
 
 
   def update
-    @attraction = Attraction.update(attraction_params)
+    if current_user.admin
+      @attraction = Attraction.update(attraction_params)
+    end
+
+    redirect_to attraction_path(@attraction[0][:id])
   end
 
   private
