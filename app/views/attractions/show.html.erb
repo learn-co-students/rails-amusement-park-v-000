@@ -5,6 +5,8 @@ Happiness Rating: <%=@attraction.happiness_rating%><br><p>
 Nausea Rating: <%=@attraction.nausea_rating%><br><p>
 Tickets: <%=@attraction.tickets%><br><p>
 
+<%=link_to "Edit Attraction", edit_attraction_path(@attraction)%>
+
   <form action="/rides", method="post">
   <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
   <input type="hidden" name="attraction_id" value=<%=@attraction.id%>>
