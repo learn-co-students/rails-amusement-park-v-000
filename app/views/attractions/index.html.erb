@@ -1,7 +1,11 @@
 <ul><% @attractions.each do |att| %>
     <li><%= att.name %> <br>
         <%= att.tickets %> tickets
-        <%= link_to "Go on #{att.name}", attraction_path(att) %><br><br></li>
+        <% if @user.admin %>
+            <%= link_to "Show #{att.name}", attraction_path(att) %>
+        <% else %>
+            <%= link_to "Go on #{att.name}", attraction_path(att) %><br><br></li>
+        <% end %>
 <% end %></ul>
 
 
