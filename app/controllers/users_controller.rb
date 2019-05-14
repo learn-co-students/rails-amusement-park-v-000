@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @message = params[:message]
     if logged_in?
       @user = User.find_by(id: params[:id])
     else
@@ -36,6 +37,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    current_user.update(user_params)
+    redirect_to user_path(current_user)
   end
 
   def destroy

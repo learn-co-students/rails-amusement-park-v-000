@@ -1,7 +1,9 @@
 class RidesController < ApplicationController
-  def create
-    how to pass attractions_id, to create a connection between attraction and user to create a RidesController
 
+  def create
+    @ride = Ride.create(user_id: params[:user_id],attraction_id: params[:attraction_id])
+    @message = @ride.take_ride
+    redirect_to user_path(current_user, :message => @message)
   end
 
 end

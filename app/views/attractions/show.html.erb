@@ -1,5 +1,13 @@
+<h1> Attractions </h1><p>
+Name: <%=@attraction.name%><br><p>
+Height Requirement: <%=@attraction.min_height%><br><p>
+Happiness Rating: <%=@attraction.happiness_rating%><br><p>
+Nausea Rating: <%=@attraction.nausea_rating%><br><p>
+Tickets: <%=@attraction.tickets%><br><p>
 
-<%= button_to "Go on this ride", user_path(current_user), method: :get%>
-create form -- with this button
-use form to post to create a new ride for Users
-call the take_ride method to update all the users info
+  <form action="/rides", method="post">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <input type="hidden" name="attraction_id" value=<%=@attraction.id%>>
+  <input type="hidden" name="user_id" value=<%=current_user.id%>>
+  <input type="submit" value="Go on this ride">
+  </form>
