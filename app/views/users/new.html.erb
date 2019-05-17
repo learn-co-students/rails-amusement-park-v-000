@@ -18,5 +18,8 @@
   <%= f.label 'Password' %><br>
   <%= f.password_field :password %><br>
 
+  <%= f.label :admin, "Check box if you are an admin" %>
+  <%= f.check_box :admin %>
+
   <%= f.submit "Create User" %>
 <% end %>

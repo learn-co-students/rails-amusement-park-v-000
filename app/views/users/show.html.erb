@@ -2,3 +2,7 @@
 <p>Mood: <%= @user.mood %></p>
 <p>Number of tickets: <%= @user.tickets %></p>
 <p>Height (in inches): <%= @user.height %></p>
+<% if @user.admin %>
+<p><strong>ADMIN</strong></p>
+<% end %>
+<%= link_to "Log Out", signout_path, method: :delete %>
