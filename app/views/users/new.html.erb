@@ -1,25 +1,25 @@
 <h3>Sign Up</h3>
 <%= form_for :user, url: '/users' do |f| %>
   <%= f.label 'Name' %><br>
-  <%= f.text_field :name %><br>
+  <%= f.text_field :name %><br><br>
 
   <%= f.label 'Height (in inches)' %><br>
-  <%= f.number_field :height %><br>
+  <%= f.number_field :height %><br><br>
 
   <%= f.label 'How happy are you? (1-5 scale)' %><br>
-  <%= f.number_field :happiness %><br>
+  <%= f.number_field :happiness %><br><br>
 
   <%= f.label 'How nauseous are you? (1-5 scale)' %><br>
-  <%= f.number_field :nausea %><br>
+  <%= f.number_field :nausea %><br><br>
 
   <%= f.label 'How many tickets do you have?' %><br>
-  <%= f.number_field :tickets %><br>
+  <%= f.number_field :tickets %><br><br>
 
   <%= f.label 'Password' %><br>
-  <%= f.password_field :password %><br>
+  <%= f.password_field :password %><br><br>
 
   <%= f.label :admin, "Check box if you are an admin" %>
-  <%= f.check_box :admin %>
+  <%= f.check_box :admin %><br><br>
 
   <%= f.submit "Create User" %>
 <% end %>
