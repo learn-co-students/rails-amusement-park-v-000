@@ -1,0 +1,26 @@
+
+<h1>Attractions#index</h1>
+<p>Find me in app/views/attractions/index.html.erb</p>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Tickets</th>
+        <th>Details</th>
+    </tr>
+    <% @attractions.each do |a| %>
+        <tr>
+            <td><%= a.name %></td>
+            <td><%= a.tickets %></td>
+            <% if @user.admin == true %>
+                <td><%= link_to "Show #{a.name}", attraction_path(a) %></td>
+            <% else %>
+                <td><%= link_to "Go on #{a.name}", attraction_path(a) %></td>
+            <% end %>
+        </tr>
+    <% end %>
+</table>
+
+<% if @user.admin == true %>
+    <%= link_to "New Attraction", new_attraction_url %>
+<% end %>

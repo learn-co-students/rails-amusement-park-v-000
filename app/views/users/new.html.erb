@@ -1,0 +1,15 @@
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+
+
+<h2>Sign Up</h2>
+<%= form_for :user do |f| %>
+    Name: <%= f.text_field :name %><br>
+    Height (in inches): <%= f.text_field :height %><br>
+    How happy are you? (1-5 scale): <%= f.text_field :happiness %><br>
+    How nauseous are you? (1-5 scale): <%= f.text_field :nausea %><br>
+    How many dollars are in your pocket?: <%= f.text_field :tickets %><br>
+    Check box if you are a theme park owner: <%= f.check_box :admin %><br>
+    Password: <%= f.password_field :password %><br>
+    <%= f.submit "Create User" %>
+<% end %> 

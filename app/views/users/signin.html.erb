@@ -1,0 +1,7 @@
+
+
+<%= form_for :user do |f| %>
+    <%= f.select(:name, User.all.collect { |p| [p.name, p.id] }) %><br>
+    <%= f.password_field :password, id: "password" %><br>
+    <%= f.submit "Sign In" %>
+<% end %> 

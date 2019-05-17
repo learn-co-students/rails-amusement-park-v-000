@@ -1,0 +1,12 @@
+<h1>Attractions#new</h1>
+<p>Find me in app/views/attractions/new.html.erb</p>
+
+
+<%= form_for :attraction do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :min_height %>
+    <%= f.text_field :happiness_rating %>
+    <%= f.text_field :nausea_rating %>
+    <%= f.text_field :tickets %>
+    <%= f.submit "Create Attraction" %>
+<% end %> 
