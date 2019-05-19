@@ -18,6 +18,7 @@ class Ride < ActiveRecord::Base
         :nausea => new_nausea,
         :tickets => new_tickets
       )
+      "Thanks for riding the #{self.attraction.name}!"
     end
   end
 end

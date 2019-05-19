@@ -8,9 +8,15 @@
   <tr>
     <td><%= attraction.name %></td>
     <td><%= attraction.tickets %></td>
-    <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+    <td><% if @user.admin %>
+      <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+      <% else %>
+      <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+      <% end %></td>
   </tr>
   <% end %>
 </table>
 <br>
+<% if @user.admin %>
 <%= link_to "New Attraction", new_attraction_path %>
+<% end %>

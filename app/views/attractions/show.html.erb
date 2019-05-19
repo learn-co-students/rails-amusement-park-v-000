@@ -1,8 +1,17 @@
 <p><strong>Name: </strong><%= @attraction.name %></p><br>
-<p><strong>Total Number of Users: </strong><%= @attraction.name %></p><br>
+<p><strong>Total Number of Users: </strong><%= @attraction.users.count %></p><br>
 <p><strong>Ticket Requirement: </strong><%= @attraction.tickets %></p><br>
 <p><strong>Height Requirement: </strong><%= @attraction.min_height %></p><br>
 <p><strong>Nausea Rating: </strong><%= @attraction.nausea_rating %></p><br>
 <p><strong>Happiness Rating: </strong><%= @attraction.happiness_rating %></p><br><br>
 
-<button type="button"><%= link_to "Go on this ride", user_path(@user) %></button>
+<% if @user.admin %>
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+<form action="/rides/new" method="post">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <%= tag(:input, :type => "hidden", :name => :user_id, :value => @user.id) %>
+  <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+  <input type="submit" value="Go on this ride">
+</form>
+<% end %>

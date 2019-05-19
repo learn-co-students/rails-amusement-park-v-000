@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @message = params[:message] if params[:message]
+    @message ||= false 
   end
 
   def new
