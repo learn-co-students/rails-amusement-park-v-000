@@ -7,12 +7,14 @@ class SessionsController < ApplicationController
 
   def create
     #byebug
-    @user = User.find_by(name: params[:name])
-    byebug
+    @user = User.find_by(name: params[:user][:name])
+    #byebug
     #return head(:forbidden) unless @user.authenticate(params[:password])
-    if @user
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect_to @user
+    else
+      redirect_to '/'
     end
   end
 end

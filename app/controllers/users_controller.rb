@@ -10,22 +10,24 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    #byebug
-    @user.save
-    #byebug
-    #if @user
+    if @user.save
       session[:user_id] = @user.id
-
-    #byebug
-      #session[:user_id] = @user.id
-    redirect_to @user
-    #else
-      #render :new
-    #end
+      if logged_in?
+        redirect_to @user
+      else
+        redirect_to '/'
+      end
+    else
+      redirect_to '/signup'
+    end
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    if current_user && logged_in?
+      @user = User.find_by(id: params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def destroy
