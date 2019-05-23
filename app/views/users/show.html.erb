@@ -1,4 +1,2 @@
-Name: <%= current_user.name %>
-Mood: <%= current_user.mood %>
-Tickets: <%= current_user.tickets %>
-Height: <%= current_user.height %>
+<%= flash[:notice] if flash[:notice] %><br>
+<%= display_user %>

@@ -9,13 +9,14 @@ class Ride < ActiveRecord::Base
       new_happiness_level = user.happiness + attraction.happiness_rating
 
       user.update(tickets: remaining_tickets, nausea: new_nausea_level, happiness: new_happiness_level)
+      "Thanks for riding the #{attraction.name}!"
     else
       if !have_enough_tickets? && !is_tall_enough?
         "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
       elsif !have_enough_tickets?
         "Sorry. You do not have enough tickets to ride the #{attraction.name}."
       else !is_tall_enough?
-         "Sorry. You are not tall enough to ride the #{attraction.name}."
+        "Sorry. You are not tall enough to ride the #{attraction.name}."
       end
     end
   end
