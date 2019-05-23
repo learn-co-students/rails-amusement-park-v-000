@@ -3,7 +3,7 @@ class CreateAttractions < ActiveRecord::Migration[5.2]
     create_table :attractions do |t|
       t.string :name
       t.integer :tickets
-      t.string :nausea_rating_integer
+      t.integer :nausea_rating
       t.integer :happiness_rating
       t.integer :min_height
 
