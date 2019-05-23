@@ -1,8 +1,4 @@
 <%= link_to "New Attraction", new_attraction_path if current_user.admin %>
 <% @attractions.each do |attraction| %>
-  <% if current_user.admin %>
-    <%= render partial: 'show_attraction', locals: { attraction: attraction } %>
-  <% else %>
-    <%= render partial: 'go_on_attraction', locals: { attraction: attraction } %>
-  <% end %>
+  <%= link_to_attraction(attraction) %>
 <% end %>
