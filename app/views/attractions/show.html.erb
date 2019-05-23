@@ -7,3 +7,4 @@ Minimum Height: <%= @attraction.min_height %><br><br>
   <%= hidden_field_tag 'ride[attraction_id]', @attraction.id %>
   <%= submit_tag 'Go on this ride' %>
 <% end %>
+<%= render partial: 'edit_attraction', locals: { attraction: @attraction } %>
