@@ -1,4 +1,7 @@
 Name: <%= @user.name %><br>
 Height:<%= @user.height %><br>
 Mood: <%= @user.mood %><br>
-Tickets:<%= @user.tickets %>
+Tickets:<%= @user.tickets %><br>
+ADMIN: <%= @user.admin %><br>
+
+<%= link_to "Log Out", logout_path %>

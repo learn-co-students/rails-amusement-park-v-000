@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'signin' => 'sessions#new'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
   resources :rides
   resources :attractions
   resources :users, only: [:index, :new, :create, :show, :edit, :destroy]

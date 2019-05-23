@@ -5,19 +5,14 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   def mood
-    if self.nausea > self.happiness
-      "sad"
-    end
-    if self.nausea < self.happiness
-      "happy"
+    if !self.admin
+      if self.nausea > self.happiness
+        "sad"
+      elsif self.nausea < self.happiness
+        "happy"
+      end
     end
   end
 
-  def user_name=(name)
-    self.name = User.find_by(name: name)
-  end
 
-  def user_name
-    self.name
-  end
 end

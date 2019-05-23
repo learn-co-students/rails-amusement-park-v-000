@@ -10,7 +10,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    @user.save
+    #byebug
+    if @user
       session[:user_id] = @user.id
       if logged_in?
         redirect_to @user
