@@ -3,10 +3,23 @@ class Ride < ActiveRecord::Base
   belongs_to :user
 
   def take_ride
-    if !!User.enough_tickets
-      self.user.my_happiness = 1
+    if self.user.tickets > self.attraction.tickets
+      self.user.happiness = self.user.happiness + 1
     else
-      return "Sorry. You do not have enough tickets to ride the Roller Coaster."
+      return "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     end
+
+    if self.user.height > self.attraction.min_height
+      self.user.height
+    else
+      return "Sorry. You are not tall enough to ride the #{attraction.name}."
+    end
+
   end
+
+  # private
+  # def enough_tickets
+  #
+  # end
+
 end

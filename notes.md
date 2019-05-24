@@ -63,3 +63,6 @@ update(user):
 
 update(ride):
 - ticket_number
+---------------------
+
+Hi!! I am currently working on the Rails Amusement Park lab. I am working on the take_ride method. Specifically, user not having enough tickets
