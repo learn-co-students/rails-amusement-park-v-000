@@ -9,7 +9,9 @@ class Ride < ActiveRecord::Base
     end
 
     if self.user.tickets > self.attraction.tickets
-      self.user.happiness = self.user.happiness + 1
+      self.user.update(:tickets => self.user.tickets - self.attraction.tickets)
+      self.user.update(:nausea => self.user.nausea + self.attraction.nausea_rating)
+      self.user.update(:happiness => self.user.happiness + self.attraction.happiness_rating)
     else
       return "Sorry. You do not have enough tickets to ride the #{attraction.name}."
     end
