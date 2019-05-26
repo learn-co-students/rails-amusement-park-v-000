@@ -27,10 +27,20 @@ class UsersController < ApplicationController
   def show
     if current_user && logged_in?
       @user = User.find_by(id: params[:id])
+      #byebug
     else
       redirect_to '/'
     end
   end
+
+  def update(tickets: params[:tickets],nausea: params[:nausea], happiness: params[:happiness])
+    #byebug
+    @user = current_user
+    @user.update
+
+    redirect_to user_path(@user)
+  end
+
 
   def destroy
     @user = User.find_by(id: params[:id])

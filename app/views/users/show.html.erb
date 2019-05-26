@@ -1,8 +1,12 @@
 Name: <%= @user.name %><br>
 Height:<%= @user.height %><br>
 Mood: <%= @user.mood %><br>
-Tickets:<%= @user.tickets %><br>
+Tickets: <%= @user.tickets %><br>
 ADMIN: <%= @user.admin %><br>
+
+<% if flash[:message] %>
+  <div class="message"><%= flash[:message] %></div>
+<% end %>
 
 <%= link_to "Log Out", logout_path %><br>
 
