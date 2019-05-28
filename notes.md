@@ -65,4 +65,7 @@ update(ride):
 - ticket_number
 ---------------------
 
-Hi!! I am currently working on the Rails Amusement Park lab. I am working on the take_ride method. Specifically, user not having enough tickets
+Hi!! I am currently working on the the User Signup Feature Test in the following lab: 
+Rails Amusement Park Lab.
+I am curious to know what attribute that
+creates the value of "Mood".
