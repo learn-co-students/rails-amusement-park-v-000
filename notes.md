@@ -65,7 +65,18 @@ update(ride):
 - ticket_number
 ---------------------
 
-Hi!! I am currently working on the the User Signup Feature Test in the following lab: 
-Rails Amusement Park Lab.
-I am curious to know what attribute that
-creates the value of "Mood".
+Hi!! I am currently working on the User Signup Feature Test in the following lab:
+Rails Amusement Park Lab. I am getting an error regarding my collection select.
+
+
+ It seems that I am suppose to see a select box for the user's name. I am assuming I am suppose to make some type of login page but I am not to sure.
+
+That post should help you build out your selection collect for your login form:
+http://isaacvillicana.com/rails_collection_select_for_form_helpers
+
+
+<%= form_tag signin_path do %>
+  <%= collection_select :user_id, User.all, :id, :name %>
+  <%= text_field_tag 'password' %>
+  <%= submit_tag 'Sign In' %>
+<% end %>
