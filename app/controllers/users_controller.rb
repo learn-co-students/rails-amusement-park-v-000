@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+    #before_action :require_login
+    #skip_before_action :require_login, only: [:index]
+
     def new
         @user = User.new
     end
 
     def show
-        return new_user_path unless session.include? :user_id
+        require_login
         @user = User.find_by(:id => params[:id])
     end
 
@@ -17,5 +20,9 @@ class UsersController < ApplicationController
     private
     def user_params
         params.require(:user).permit(:name, :password, :happiness, :nausea, :height, :tickets, :admin)
+    end
+
+    def require_login
+        redirect_to '/' unless session.include? :user_id
     end
 end

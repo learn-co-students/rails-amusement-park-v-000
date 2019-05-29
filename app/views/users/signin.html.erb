@@ -1,4 +1,0 @@
-<%= form_for :user, url:users_path do |u| %>
-    <% u.collection_select :name, User.all, :name, :name %>
-    <% u.submit %>
-<% end %>
