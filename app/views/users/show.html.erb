@@ -1,3 +1,8 @@
+<%= link_to "Log out", logout_path(@user) %>
+
+<% if @user.admin == true %>
+<h2><%= "ADMIN" %></h2>
+<% end  %>
 <%= @user.name %>
 <%= @user.height %>
 <%= @user.happiness %>

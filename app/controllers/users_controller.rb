@@ -4,20 +4,36 @@ class UsersController < ApplicationController
   end
 
   def create
-    #raise params.inspect
-    if params[:user][:name] != nil && params[:user][:height] != "" && params[:user][:happiness] != ""&& params[:user][:nausea] != "" && params[:user][:tickets] != ""
-      @user = User.create(name: params[:user][:name], password: params[:user][:password], happiness: params[:user][:happiness], nausea: params[:user][:nausea], height: params[:user][:height], tickets: params[:user][:tickets])
-       session[:user_id] = @user.id
+    # binding.pry
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to new_user_path
+      render :new
     end
   end
 
   def show
-     @user = User.find(params[:id])
+    @user = User.find(params[:id])
+     if logged_in?
+       render :show
+     else
+       redirect_to root_path
+     end
   end
 
   def home
+  end
+
+  def destroy
+    raise session.inspect
+    #session.delete
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name,:password, :happiness, :nausea, :height, :tickets, :admin)
   end
 end

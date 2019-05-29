@@ -1,5 +1,5 @@
+<h1>Sign Up</h1>
 <%= form_for @user do |f| %>
-
   <%= f.label :name %>:
   <%= f.text_field :name %><br />
   <%= f.label :password %>:
@@ -12,5 +12,6 @@
   <%= f.text_field :nausea %><br />
   <%= f.label :tickets %>:
   <%= f.text_field :tickets %><br />
+  <%= f.check_box :admin %>
   <%= f.submit %>
 <% end %>
