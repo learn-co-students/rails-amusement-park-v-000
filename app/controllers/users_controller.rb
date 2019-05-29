@@ -26,10 +26,6 @@ class UsersController < ApplicationController
   def home
   end
 
-  def destroy
-    raise session.inspect
-    #session.delete
-  end
 
   private
 
