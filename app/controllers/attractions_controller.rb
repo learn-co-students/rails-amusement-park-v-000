@@ -12,13 +12,28 @@ class AttractionsController < ApplicationController
 
     def create
       @attraction = Attraction.new(attraction_params)
-      @attraction.save
+      if current_user.admin == true
+        @attraction.save
+        redirect_to @attraction
+      end
     end
 
     def show
         @attraction = Attraction.find_by(id: params[:id])
-
     end
+
+    def edit
+      @attraction = Attraction.find_by(id: params[:id])
+    end
+
+    def update
+      @attraction = Attraction.find_by(id: params[:id])
+      if current_user.admin == true
+        @attraction.update(attraction_params)
+      end
+      redirect_to attraction_path(@attraction)
+    end
+
 
     def destroy
       @attraction = Attraction.find_by(id: params[:id])
