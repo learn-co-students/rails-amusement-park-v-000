@@ -1,5 +1,6 @@
 
-<%= form_for :attraction , url: '/rides' do |f|%>
-<%= f.hidden_field :attraction_id, value: attraction.id %>
+<%= form_for @ride , url: '/rides' do |f|%>
+<%= f.hidden_field :attraction_id, value: @attraction.id %>
+<%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.button 'Go on this ride' %>
 <% end %>
