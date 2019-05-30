@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   resources :rides
   resources :users
   resources :attractions
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
+  resources :sessions, only: [:create, :destroy]
+
   post '/logout' => 'sessions#destroy'
 
-  get '/signin' => 'users#new'
-  post '/signin' => 'users#create'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
