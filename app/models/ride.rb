@@ -6,6 +6,8 @@ class Ride < ActiveRecord::Base
 
     if self.user.tickets < self.attraction.tickets && self.user.height < self.attraction.min_height
       return "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
+    # else
+    #   return "Thanks for riding the #{self.attraction.name}!"
     end
 
     if self.user.tickets > self.attraction.tickets
