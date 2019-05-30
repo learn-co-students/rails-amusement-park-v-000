@@ -1,5 +1,5 @@
 
-<%= form_for :attraction , url: '/rides' do |f|%>  <%#= changed this so the url was before the do %>
-<%= f.hidden_field :attraction_id%> <%#=you'll need to explicitly pass in attraction.id here %>
-  <%= f.submit 'Go on this ride' %>
+<%= form_for :attraction , url: '/rides' do |f|%>
+<%= f.hidden_field :attraction_id, value: attraction.id %>
+  <%= f.button 'Go on this ride' %>
 <% end %>

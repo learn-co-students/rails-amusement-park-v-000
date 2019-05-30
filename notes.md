@@ -80,3 +80,11 @@ http://isaacvillicana.com/rails_collection_select_for_form_helpers
   <%= text_field_tag 'password' %>
   <%= submit_tag 'Sign In' %>
 <% end %>
+
+
+What we did:
+1. created a form that takes the attraction object and sends that to
+the ride controller
+2. we want to pass attraction
+into the RidesController
+to associate the attraction with the user
