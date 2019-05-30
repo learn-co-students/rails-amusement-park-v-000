@@ -3,7 +3,8 @@
     #binding.pry
     @ride = Ride.create(ride_params)
     @user = User.find(current_user.id)
-    @ride.take_ride
+    flash[:notice] = @ride.take_ride
+
     redirect_to user_path(@user)
   end
 
