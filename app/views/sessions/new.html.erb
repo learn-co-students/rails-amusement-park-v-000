@@ -1,0 +1,7 @@
+<%= form_for(:user, url: signin_path) do |f| %>
+  <%= f.label :name %>
+  <%= f.collection_select(:name, User.all, :name, :name) %>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <%= f.submit %>
+<% end %>
