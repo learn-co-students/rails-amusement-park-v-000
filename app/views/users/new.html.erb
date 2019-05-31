@@ -1,0 +1,23 @@
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label "Password" %>
+  <%= f.text_field :password %>
+
+  <%= f.label "Height" %>
+  <%= f.text_field :height %>
+
+  <%= f.label "Nausea" %>
+  <%= f.text_field :nausea %>
+
+  <%= f.label "Happiness" %>
+  <%= f.text_field :happiness %>
+
+  <%= f.label "Tickets" %>
+  <%= f.text_field :tickets %>
+
+  <%= f.submit "Create User" %>
+<% end %>
