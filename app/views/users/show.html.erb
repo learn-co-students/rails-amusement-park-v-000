@@ -5,4 +5,7 @@
   <li> Happiness: <%= @user.happiness %></li>
   <li> Tickets: <%= @user.tickets %></li>
   <li> Height: <%= @user.height %></li>
+  <% if @user.admin %>
+    <li>ADMIN</li>
+  <% end %>  
 </ul>
