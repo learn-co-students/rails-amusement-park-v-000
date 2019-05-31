@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :rides
   resources :users
   resources :attractions
-  resources :sessions, only: [:create, :destroy]
 
   post '/logout' => 'sessions#destroy'
 
