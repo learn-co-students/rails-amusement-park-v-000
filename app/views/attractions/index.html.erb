@@ -3,5 +3,9 @@
 <% @attractions.each do |attraction| %>
     <p>Name: <%= attraction.name %></p>
     <p>Tickets: <%= attraction.tickets %></p>
-    <p>Details: <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></p>
+    <% if current_user.admin %>
+        <p>Details: <%= link_to "Show #{attraction.name}", attraction_path(attraction) %></p>
+    <% else %>
+        <p>Details: <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></p>
+    <% end %>
 <% end %>
