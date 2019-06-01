@@ -2,5 +2,10 @@
 <%= form_for @ride , url: '/rides' do |f|%>
 <%= f.hidden_field :attraction_id, value: @attraction.id %>
 <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.button 'Go on this ride' %>
+  <% if !current_user.admin %>
+    <%= f.button 'Go on this ride' %>
+  <% end %>
+  <% if current_user.admin %>
+    <%=link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+  <% end %>
 <% end %>
