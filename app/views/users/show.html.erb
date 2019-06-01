@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>  
 <ul>
   <li> Name: <%= @user.name %> </li>
   <li> Mood: <%= @user.mood %></li>
@@ -7,5 +10,5 @@
   <li> Height: <%= @user.height %></li>
   <% if @user.admin %>
     <li>ADMIN</li>
-  <% end %>  
+  <% end %>
 </ul>

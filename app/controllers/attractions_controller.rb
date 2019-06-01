@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-
+  helper_method :current_user
   def index
     @attractions = Attraction.all
   end

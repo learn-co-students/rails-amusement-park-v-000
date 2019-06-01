@@ -1,0 +1,13 @@
+<ul>
+  <li>Name: <%= @attraction.name%> </li>
+  <li>Tickets: <%= @attraction.tickets %></li>
+  <li>Height Requirement: <%= @attraction.min_height %></li>
+  <li> Nausea: <%= @attraction.nausea_rating %></li>
+  <li> Happiness: <%= @attraction.happiness_rating %></li>
+</ul>
+
+<%= form_tag ({controller: 'rides', action: 'create', method: 'post'}) do%>
+  <input type="hidden" name="ride[user_id]" value="<%= current_user.id %>">
+  <input type="hidden" name="ride[attraction_id]" value="<%= @attraction.id%>">
+  <input type="submit" value="Go on this ride">
+<% end %>
