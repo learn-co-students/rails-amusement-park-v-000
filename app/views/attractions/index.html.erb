@@ -4,6 +4,6 @@
   <%=link_to "Go on #{attraction.name}", attraction_path(attraction) %>
 <% end %>
 
-<%= if current_user.admin %>
+<% if current_user.admin %>
 <%=link_to "New Attraction", new_attraction_path %>
 <% end %>
