@@ -6,5 +6,6 @@
     How Nauseaus are you right now: <%= u.number_field :nausea %><br/>
     How many tickets do you have: <%= u.number_field :tickets %><br/>
     Create Password: <%= u.text_field :password %><br/>
+    Owner: <%= u.check_box :admin %>
     <%= u.submit "Create User" %>
 <% end %>
