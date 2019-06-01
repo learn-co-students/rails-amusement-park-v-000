@@ -19,7 +19,17 @@ class AttractionsController < ApplicationController
     end
 
     def edit
-        
+        @attraction = Attraction.find_by(id: params[:id])
+    end
+
+    def update
+        @attraction = Attraction.find_by(id: params[:id])
+        if @attraction.update(attraction_params)
+            flash[:message] = "Attraction was updated"
+            redirect_to attraction_path(@attraction)
+        else
+            render :edit
+        end
     end
 
     private

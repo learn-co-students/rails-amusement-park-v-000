@@ -1,0 +1,21 @@
+<h1>Edit Attraction</h1>
+
+<%= form_for @attraction do |f| %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+
+    <%= f.label :min_height, "Height (in inches)"%> 
+    <%= f.text_field :min_height %>
+
+    <%= f.label :happiness_rating, "How happy are you? (1-5 scale)" %>
+    <%= f.text_field :happiness_rating %>
+
+    <%= f.label :nausea_rating, "How nauseous are you? (1-5 scale)" %>
+    <%= f.text_field :nausea_rating %>
+
+    <%= f.label :tickets, "How many dollars are in your pocket?"%>
+    <%= f.text_field :tickets %>
+
+    <%= f.submit 'Update Attraction' %>
+        
+<% end %>
