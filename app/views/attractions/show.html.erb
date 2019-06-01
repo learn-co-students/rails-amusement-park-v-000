@@ -1,3 +1,9 @@
+<% if flash[:message] %>
+    <div class="center alert">
+        <p><%= flash[:message] %></p>
+    </div>
+<% end %>
+
 <p>Name: <%= @attraction.name %>  </p>
 <p>Total Number of Users:   </p>
 <p>Ticket Requirement: <%= @attraction.tickets %>  </p>
