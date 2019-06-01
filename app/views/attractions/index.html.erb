@@ -1,5 +1,9 @@
 <h1>Attraction index page</h1>
 <% @attractions.each do |attraction| %>
   <%= attraction.name %>
-  <%=link_to "Go on #{attraction.name}" , attraction_path(attraction) %>
+  <%=link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+<% end %>
+
+<%= if current_user.admin %>
+<%=link_to "New Attraction", new_attraction_path %>
 <% end %>
