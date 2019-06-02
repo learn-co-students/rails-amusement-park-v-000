@@ -22,7 +22,11 @@ class AttractionsController < ApplicationController
   end
 
   def update
+    @attraction = Attraction.find_by(id: params[:id])
+    @attraction.update(attractions_params)
+    redirect_to attraction_path(@attraction)
   end
+
   private
   def attractions_params
     params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :tickets)
