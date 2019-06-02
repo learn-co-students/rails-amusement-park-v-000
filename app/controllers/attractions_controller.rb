@@ -17,6 +17,12 @@ class AttractionsController < ApplicationController
     redirect_to attraction_path(@attraction)
   end
 
+  def edit
+    @attraction = Attraction.find_by(id: params[:id])
+  end
+
+  def update
+  end
   private
   def attractions_params
     params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :tickets)

@@ -6,8 +6,12 @@
   <li> Happiness: <%= @attraction.happiness_rating %></li>
 </ul>
 
-<%= form_tag ({controller: 'rides', action: 'create', method: 'post'}) do%>
-  <input type="hidden" name="ride[user_id]" value="<%= current_user.id %>">
-  <input type="hidden" name="ride[attraction_id]" value="<%= @attraction.id%>">
-  <input type="submit" value="Go on this ride">
+<% if current_user.admin %>  
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>  
+  <%= form_tag ({controller: 'rides', action: 'create', method: 'post'}) do%>
+    <input type="hidden" name="ride[user_id]" value="<%= current_user.id %>">
+    <input type="hidden" name="ride[attraction_id]" value="<%= @attraction.id%>">
+    <input type="submit" value="Go on this ride">
+  <% end %>
 <% end %>
