@@ -1,6 +1,7 @@
-Hello <%= @user.name %>
-Mood: <%= @user.mood %>
-Number of Tickets: <%= @user.tickets %>
-Happiness: <%= @user.happiness %>
-Nausea: <%= @user.nausea %>
-Height: <%= @user.height %>
+<%= "ADMIN" if @user.admin %><br/>
+Hello <%= @user.name %><br/>
+Mood: <%= @user.mood %><br/>
+Number of Tickets: <%= @user.tickets %><br/>
+Happiness: <%= @user.happiness %><br/>
+Nausea: <%= @user.nausea %><br/>
+Height: <%= @user.height %><br/>

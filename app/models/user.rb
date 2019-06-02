@@ -4,9 +4,12 @@ class User < ActiveRecord::Base
     has_many :attractions, through: :rides
 
     def mood
-        if self.nausea > self.happiness
+        binding.pry
+        if self.nausea.blank? || self.happiness.blank?
+            ""
+        elsif self.nausea > self.happiness
             "sad"
-        else self.happiness > self.nausea
+        elsif self.happiness > self.nausea
             "happy"
         end
     end
