@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
     has_many :attractions, through: :rides
 
     def mood
-        binding.pry
         if self.nausea.blank? || self.happiness.blank?
             ""
         elsif self.nausea > self.happiness

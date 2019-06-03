@@ -1,0 +1,6 @@
+Name: <%= @attraction.name %><br/>
+Tickets: <%= @attraction.tickets %><br/>
+Height: <%= @attraction.min_height %><br/>
+Happiness Rating: <%= @attraction.happiness_rating %><br/>
+Nausea Rating: <%= @attraction.nausea_rating %><br/>
+<%= button_to "Go on this ride", user_path(current_user), :method => :get %>

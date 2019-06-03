@@ -1,0 +1,5 @@
+<% @attractions.each do |a| %>
+    Go On <%= a.name %><br/>
+    Tickets: <%= a.tickets %><br/>
+    <%= link_to "Go on " + a.name, attraction_path(a) %><br/>
+<% end %>
