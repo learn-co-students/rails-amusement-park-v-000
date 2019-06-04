@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 2019_06_03_205532) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
-    t.boolean "administrator"
-    t.string "happiness"
-    t.string "nausea"
+    t.boolean "admin", default: false
+    t.integer "happiness"
+    t.integer "nausea"
     t.integer "height"
     t.integer "tickets"
     t.datetime "created_at", null: false
