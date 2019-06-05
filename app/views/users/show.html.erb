@@ -1,0 +1,21 @@
+<%= render 'shared/flash_messages' if flash.key?("successful_ride") || flash.key?("failed_ride") %>
+<br>
+<% if session[:sign_in] == "first" %>
+  <h2>Welcome back to the theme park!</h2>
+  <% session[:sign_in] = "not first" %>
+<% end %>
+
+<ul>
+  <li>Name: <%= @user.name %> </li>
+  <li>Mood: <%= @user.mood %> </li>
+  <li>Nausea: <%= @user.nausea %></li>
+  <li> Happiness: <%=@user.happiness %></li>
+  <li>Tickets: <%= @user.tickets%></li>
+  <li>Height: <%= @user.height %></li>
+  <% if @user.admin %>
+    <li>ADMIN</li>
+  <% end %>
+</ul>
+<%= link_to("See attractions", attractions_path) %>
+<%= link_to("Edit", edit_user_path(@user)) %>
+<%= link_to "Log Out", {:controller => "sessions", :action => "destroy"}, :method => :delete%>

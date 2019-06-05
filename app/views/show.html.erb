@@ -1,0 +1,17 @@
+<h1>Attraction</h1%>
+
+  <%= render 'shared/flash_messages' if flash.key?("failed_ride")%>
+  <%= render partial: "attraction", locals: {attraction: @attraction} %>
+
+  <% if !admin? %>
+    <%= form_tag("/attractions/#{@attraction.id}/ride", {method: "get"}) do%>
+      <%= submit_tag("Go on this ride") %><br>
+      <%= link_to("Back", attractions_path) %>
+    <% end %>
+  <% end %>
+
+  <% if policy(Attraction).update? %>
+    <%= link_to("Edit Attraction", edit_attraction_path(@attraction)) %>
+    <%= link_to 'Delete Attraction', "/attractions/#{@attraction.id}", method: :delete, data: { confirm: 'Are you sure?' } %><br>
+    <%= link_to("Back", attractions_path) %>
+  <% end %>

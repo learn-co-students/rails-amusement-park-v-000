@@ -1,0 +1,5 @@
+<h1>New Attraction</h1>
+
+<% if policy(Attraction).create? %>
+  <%= render partial: "add_edit_attraction", locals: {attraction: @attraction} %>
+<% end %>
