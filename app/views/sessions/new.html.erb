@@ -1,8 +1,8 @@
-<h2>Log in! </h2>
+<h2>Sign in! </h2>
 
 <%= form_for @user, url: login_path, method: :post do |f| %>
-  Username: <%= f.text_field :name %>
-  Password: <%= f.password_field :password %>
-  <%= f.submit "log in" %>
+  Choose Your Username: <%= f.collection_select :name, User.order(:name),:id,:name, include_blank: true %>
+  Password: <%= f.password_field :password, id: 'password' %>
+  <%= f.submit "Sign In" %>
   Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
 <% end %>
