@@ -1,3 +1,5 @@
+require 'pry'
+
 class User < ActiveRecord::Base
   has_many :rides
   has_many :attractions, through: :rides
@@ -5,10 +7,12 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def mood
-    if happiness > nausea
-      return "happy"
-    else happiness < nausea
-      return "sad"
+  if happiness != nil && nausea != nil
+      if happiness > nausea
+        "happy"
+      else happiness < nausea
+        "sad"
+      end
     end
   end
 
