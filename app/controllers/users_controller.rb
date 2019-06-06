@@ -12,6 +12,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if !logged_in?
+      redirect_to "/"
+    end
 	end
 
 
