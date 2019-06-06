@@ -1,9 +1,34 @@
-<%= form_tag({controller: 'sessions', action: 'create', method: 'post'}) do %>
-  <%= label_tag(:'user[name]', "Username") %>
-  <%= text_field_tag(:'user[name]', params[:login]) %><br>
-  <%= label_tag(:'user[password]', "Password") %>
-  <%= password_field_tag(:'user[password]', params[:password]) %><br><br>
-  <%= submit_tag("Sign In") %>
-<% end %>
-<br>
-<%= link_to("Sign Up", new_user_path)%><br>
+
+
+
+<form action="/session" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="tm7mSx4m0Tgx3jDznTSSDuHeljpNODyLeltJfeoVApp+glcXlIocKSNdHXB3SabKGu3VuTeg+6nRNwWz2LHkTw==">
+
+  <div class="form-group">
+    <label for="name">Your name:</label>
+    <select name="user[name]" id="user_name"><option value="">Please select your username from this dropdown</option>
+		<option value="Mary Elitch Long">Mary Elitch Long</option>
+		<option value="John Elitch">John Elitch</option>
+		<option value="Bobbert">Bobbert</option>
+		<option value="joe">joe</option>
+		<option value="joey michalina mariano">joey michalina mariano</option>
+		<option value="EdTest">EdTest</option>
+		<option value="Rachel">Rachel</option>
+		<option value="Richard">Richard</option>
+		<option value="Hunter">Hunter</option>
+		<option value="Bernard">Bernard</option>
+		<option value="Josie">Josie</option>
+		<option value="Yomaira">Yomaira</option>
+		<option value="NICOLE ">NICOLE </option>
+	</select>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Your password:</label>
+    <input type="password" name="password" id="password" class="form-control">
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Sign In" data-disable-with="Sign In">
+  </div>
+
+</form>
