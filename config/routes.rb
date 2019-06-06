@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :attractions
 
   get '/signin' => 'sessions#new', as: :signin
-  post '/signin' => 'sessions#create'
+  post '/create' => 'sessions#create'
   get '/attractions/:id/ride' => 'rides#ride'
 end
