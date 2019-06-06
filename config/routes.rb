@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root 'users#new'
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
+  get '/logoff' => 'sessions#destroy'
 end
