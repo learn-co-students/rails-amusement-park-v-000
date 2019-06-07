@@ -7,8 +7,7 @@ Rails.application.routes.draw do
 
 #  resources :users, only: [:new, :create]
 #  get '/users/:id', :to => 'users#show', :as => "user"
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
+
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
