@@ -1,7 +1,9 @@
 <% if @user.admin %>
-  <p><%= "ADMIN" %></p>
+  <p><strong><%= "ADMIN" %></strong></p>
 <% end %>
-<p>Name <%= @user.name %></p>
-<p>Tickets <%= @user.tickets %></p>
-<p>Mood <%= @user.mood %></p>
-<p>Height <%= @user.height %></p>
+<p><strong>Name: </strong><%= @user.name %></p>
+<p><strong>Tickets: </strong><%= @user.tickets %></p>
+<p><strong>Mood: </strong><%= @user.mood %></p>
+<p><strong>Height: </strong><%= @user.height %></p>
+
+<%= link_to "See attractions", attractions_path %>
