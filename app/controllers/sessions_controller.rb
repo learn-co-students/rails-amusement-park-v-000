@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @users = User.all
   end
 
   def create
@@ -16,12 +17,6 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to "/"
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :password, :admin, :happiness, :nausea, :height, :tickets)
   end
 
 

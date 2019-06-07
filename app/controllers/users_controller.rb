@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   def show
     if !logged_in?
       redirect_to "/"
+    else
+      @user = User.find_by(id:params[:id])
     end
 	end
 

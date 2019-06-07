@@ -1,0 +1,11 @@
+
+
+<h2><%= @attraction.name %> </h2>
+<p>Nausea rating: <%= @attraction.nausea_rating %> </p>
+<p>Happiness rating: <%= @attraction.happiness_rating %> </p>
+<p>Tickets: <%= @attraction.tickets %> </p>
+<p>Minimum Height: <%= @attraction.min_height %> </p>
+<%= form_tag rides_path do  %>
+<input type="hidden" name="attraction" value="<%= "#{@attraction.id}" %>">
+  <%= submit_tag "Go on this ride" %>
+<% end %>

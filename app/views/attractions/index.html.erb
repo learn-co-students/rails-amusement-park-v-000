@@ -4,8 +4,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Nausea Rating</th>
+      <<th>Go on </th>
+      <th>Nausea Rating </th>
       <th>Happiness Rating</th>
       <th>Tickets </th>
       <th>Min Height </th>
@@ -17,7 +17,7 @@
   <tbody>
 <% @attractions.each do |attraction| %>
   <tr>
-  <td><%= attraction.name %> </td>
+  <td> <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
   <td><%= attraction.nausea_rating %> </td>
   <td><%= attraction.happiness_rating %> </td>
   <td><%= attraction.tickets %></td>
