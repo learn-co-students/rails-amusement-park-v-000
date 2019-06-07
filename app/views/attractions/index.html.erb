@@ -1,0 +1,32 @@
+<h1>Attractions#index</h1>
+<p>Find me in app/views/attractions/index.html.erb</p>
+
+<h1>Listing Attractions</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Tickets</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attractions.each do |attraction| %>
+      <tr>
+        <td><%= attraction.name %></td>
+        <td><%= attraction.tickets %></td>
+        <td>
+          <% if current_user.admin %>
+            <%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+          <% else %>
+            <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user.admin %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
