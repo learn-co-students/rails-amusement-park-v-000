@@ -1,4 +1,5 @@
 <%= "ADMIN" if @user.admin %><br/>
+<%= flash[:message] %>
 Hello <%= @user.name %><br/>
 Mood: <%= @user.mood %><br/>
 Number of Tickets: <%= @user.tickets %><br/>
