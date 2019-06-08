@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   root 'welcome#home'
 
   resources :users
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :attractions
 
   get '/signin' => 'sessions#new', as: :signin
-  post '/create' => 'sessions#create'
+  post '/signin' => 'sessions#create'
   get '/attractions/:id/ride' => 'rides#ride'
+  
 end

@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
     self.nausea > self.happiness ? "sad" : "happy"
   end
 
+  def user_type
+    self.admin ? "ADMIN" : "USER"
+  end
+
 end

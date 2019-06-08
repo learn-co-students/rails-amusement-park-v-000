@@ -1,3 +1,25 @@
-<h1>New User</h1>
+<div class="row mt-5">
+  <div class="col">
+    <h3>Sign Up</h3>
+  </div>
+</div>
 
-<%= render partial: 'user', locals: {user: @user} %>
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col">
+    <%= form_for @user do |f| %>
+      <%= render partial: "form", locals: { f: f, submit_text: "Create User" } %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>

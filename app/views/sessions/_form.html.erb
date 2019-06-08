@@ -1,33 +1,41 @@
 
-<form action="create" accept-charset="UTF-8" method="post">
-
-  <div class="form-group">
-    <label for="name">Your name:</label>
-    <select name="user[name]" id="user_name"><option value="">Please select your username from this dropdown</option>
-		<option value="Mary Elitch Long">Mary Elitch Long</option>
-		<option value="John Elitch">John Elitch</option>
-		<option value="Bobbert">Bobbert</option>
-		<option value="joe">joe</option>
-		<option value="joey michalina mariano">joey michalina mariano</option>
-		<option value="EdTest">EdTest</option>
-		<option value="Rachel">Rachel</option>
-		<option value="Richard">Richard</option>
-		<option value="Hunter">Hunter</option>
-		<option value="Bernard">Bernard</option>
-		<option value="Josie">Josie</option>
-		<option value="Yomaira">Yomaira</option>
-		<option value="NICOLE ">NICOLE </option>
-	</select>
+ <div class="row mt-5">
+  <div class="col">
+    <h3>Sign In</h3>
   </div>
+</div>
 
-  <div class="form-group">
-    <label for="password">Your password:</label>
-    <input type="password" name="password" id="password" class="form-control">
+<div class="row">
+  <div class="col">
+    <hr>
   </div>
+</div>
 
-  <div class="actions">
-    <input type="submit" name="commit" value="Sign In" data-disable-with="Sign In">
+<div class="row mt-3">
+  <div class="col">
+    <%= form_tag(sessions_path) do %>
+      <div class="form-group">
+        <%= label_tag "Your name:" %>
+        <%= select_tag :user_name, 
+            options_for_select(@users.collect{ |u| [u.name, u.name] }, 
+            params[:name]), 
+            {:prompt => 'Please select your username from this dropdown'} 
+        %>
+      </div>
+      <div class="form-group">
+        <%= label_tag "Your password:" %>
+        <%= password_field_tag :password, params[:password], class: "form-control", placeholder: "Please enter a password" %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Login", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
+</div>
 
-</form>
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>
 
