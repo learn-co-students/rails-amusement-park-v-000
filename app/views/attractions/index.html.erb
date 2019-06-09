@@ -17,7 +17,15 @@
   <tbody>
 <% @attractions.each do |attraction| %>
   <tr>
+    <% if !@user.admin? %>
   <td> <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+  <% else %>
+  <td> <%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
+   <%= link_to "Edit Attraction", edit_attraction_path(attraction) %>
+
+  <% end %>
+
+
   <td><%= attraction.nausea_rating %> </td>
   <td><%= attraction.happiness_rating %> </td>
   <td><%= attraction.tickets %></td>
@@ -25,5 +33,10 @@
 
          </tr>
 <% end %>
+
   </tbody>
   </table>
+
+  <% if @user.admin? %>
+  <%= link_to "New Attraction", '/attractions/new' %>
+  <% end %>
