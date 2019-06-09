@@ -1,5 +1,12 @@
-<% @attractions.each do |a| %>
-    Go On <%= a.name %><br/>
-    Tickets: <%= a.tickets %><br/>
-    <%= link_to "Go on " + a.name, attraction_path(a) %><br/>
+<% if @user.admin %>
+    <%= link_to "New Attraction", new_attraction_path %><br/>
+    <% @attractions.each do |a| %>
+        <%= link_to "Show " + a.name, attraction_path(a) %><br/>
+    <% end %>    
+<% else %>
+    <% @attractions.each do |a| %>
+        Go On <%= a.name %><br/>
+        Tickets: <%= a.tickets %><br/>
+        <%= link_to "Go on " + a.name, attraction_path(a) %><br/>
+    <% end %>
 <% end %>
