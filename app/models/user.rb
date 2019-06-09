@@ -13,14 +13,8 @@ class User < ActiveRecord::Base
     on: :create
 
   def mood
-    # if the user is more nauseous than happy
-    mood = "okay"
-    if happiness > nausea
-      mood = "happy"
-    elsif nausea > happiness
-      mood = "sad"
-    end
-    mood
+  	# check if the user is more nauseous than happy
+    self.nausea > self.happiness ? "sad" : "happy"
   end
 
   def user_type
