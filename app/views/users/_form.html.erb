@@ -1,17 +1,52 @@
-<%= form_for @user do |f| %>
-  <%= f.label :name%>
-  <%= f.text_field :name %><br>
-  <%= f.label :nausea %>
-  <%= f.number_field :nausea %><br>
-  <%= f.label :happiness %>
-  <%= f.number_field :happiness %><br>
-  <%= f.label :tickets %>
-  <%= f.number_field :tickets %><br>
-  <%= f.label :height %>
-  <%= f.number_field :height %><br>
-  <%= f.label :password %>
-  <%= f.password_field :password%><br><br>
-  <%= f.label :admin%>
-  <%= f.check_box :admin%><br><br>
-  <%= f.submit %>
-<% end %>
+
+
+<form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post">
+
+  <div class="form-group">
+    <label for="user_name">Name</label>
+    <br>
+    <input class="form-control" type="text" name="user[name]" id="user_name">
+  </div>
+
+  <div class="form-group">
+    <label for="user_height">Height (in inches)</label>
+    <br>
+    <input class="form-control" type="number" name="user[height]" id="user_height">
+  </div>
+
+  <div class="form-group">
+    <label for="user_happiness">How happy are you? (1-5 scale)</label>
+    <br>
+    <input class="form-control" type="number" min="1" max="5" name="user[happiness]" id="user_happiness">
+  </div>
+
+  <div class="form-group">
+    <label for="user_nausea">How nauseous are you? (1-5 scale)</label>
+    <br>
+    <input class="form-control" type="number" min="1" max="5" name="user[nausea]" id="user_nausea">
+  </div>
+
+  <div class="form-group">
+    <label for="user_tickets">How many dollars are in your pocket?</label>
+    <br>
+    <input class="form-control" type="number" name="user[tickets]" id="user_tickets">
+  </div>
+
+  <div class="form-group">
+    <label for="user_admin">Check box if you are a theme park owner</label>
+    <input name="user[admin]" type="hidden" value="0"><input class="form-check-input" type="checkbox" value="1" name="user[admin]" id="user_admin">
+  </div>
+
+  <div class="form-group">
+    <label for="user_password">Password</label>
+    <br>
+    <input class="form-control" type="password" name="user[password]" id="user_password">
+
+  <div class="actions">
+    <br>
+    <input type="submit" name="commit" value="Create User" class="btn btn-primary" data-disable-with="Create User">
+  </div>
+  
+
+    </div>
+</form>
