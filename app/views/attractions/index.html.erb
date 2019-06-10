@@ -1,0 +1,47 @@
+
+<h1>Attractions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Go on </th>
+      <th> Edit </th>
+      <th>Nausea Rating </th>
+      <th>Happiness Rating</th>
+      <th>Tickets </th>
+      <th>Min Height </th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @attractions.each do |attraction| %>
+  <tr>
+    <% if !@user.admin? %>
+   <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+  <% else %>
+<td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
+  <td> <%= link_to "Edit Attraction", edit_attraction_path(attraction) %></td>
+
+  <% end %>
+
+
+  <td><%= attraction.nausea_rating %> </td>
+  <td><%= attraction.happiness_rating %> </td>
+  <td><%= attraction.tickets %></td>
+  <td><%= attraction.min_height %></td>
+
+</tr>
+<% end %>
+
+  </tbody>
+  </table>
+
+  <br></br>
+  <br></br>
+  <br></br>
+
+  <% if @user.admin? %>
+  <%= link_to "New Attraction", '/attractions/new' %>
+  <% end %>
