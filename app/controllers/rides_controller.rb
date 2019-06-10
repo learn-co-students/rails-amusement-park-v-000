@@ -7,7 +7,6 @@ class RidesController < ApplicationController
       flash[:successful_ride] = "Thanks for riding the #{Attraction.find(params[:ride][:attraction_id]).name}!"
       redirect_to user_path(current_user)
     else
-      debugger
       flash[:failed_ride] = ride_result
       redirect_to user_path(current_user)
     end

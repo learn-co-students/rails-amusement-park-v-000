@@ -1,4 +1,4 @@
-<%= error_messages_for(f.object) %>
+
 
 <div class="form-group">
   <%= f.label :name %>
@@ -6,18 +6,18 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :min_height %>
+  <%= f.label :min_height %> (in inches)
   <%= f.number_field :min_height, class: "form-control", placeholder: "Please enter a minimum height" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :happiness_rating %>
-  <%= f.number_field :happiness_rating, class: "form-control", placeholder: "Please enter a happiness rating" %>
+  <%= f.label :happiness_rating %> (1-5 scale)
+  <%= f.number_field :happiness_rating, class: "form-control", min: "1", max: "5", placeholder: "Please enter a happiness rating" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :nausea_rating %>
-  <%= f.number_field :nausea_rating, class: "form-control", placeholder: "Please enter a nausea rating" %>
+  <%= f.label :nausea_rating %> (1-5 scale)
+  <%= f.number_field :nausea_rating, class: "form-control", min: "1", max: "5", placeholder: "Please enter a nausea rating" %>
 </div>
 
 <div class="form-group">

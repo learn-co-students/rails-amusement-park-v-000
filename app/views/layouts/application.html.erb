@@ -19,30 +19,25 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="<%= root_url %>" class="navbar-brand"/>Home</a>
+          <a class="navbar-brand" href="javascript:window.location='/'">Home</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
            <!--  nav here -->
            <% if current_user %>
             <li>
-              <%= link_to "Hello, #{current_user.name}!", user_path(current_user) %>
+              <%= link_to "#{current_user.name}'s profile", user_path(current_user) %>
             </li>
-           <% end %>
-           <li>
-             <a href="/users/new">Sign Up</a>
-           </li>
-           <li>
-             <a href="/signin">Log In</a>
-           </li>
-           <% if current_user %>
             <li>
-              <a href="/attractions">Attractions</a>
+              <%= link_to "Log Out", "/sessions/destroy", method: :delete %>
             </li>
            <% end %>
-           <% if current_user %>
+           <% if !current_user %>
              <li>
-               <%= link_to "Log Out", "/sessions/destroy", method: :delete %>
+               <a href="/users/new">Sign Up</a>
+             </li>
+             <li>
+               <a href="/signin">Log In</a>
              </li>
            <% end %>
           </ul>

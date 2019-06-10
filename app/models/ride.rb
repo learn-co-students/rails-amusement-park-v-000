@@ -14,7 +14,6 @@ class Ride < ActiveRecord::Base
       elsif self.user.tickets < self.attraction.tickets
         "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
       elsif self.user.height < self.attraction.min_height
-        debugger
         "Sorry. You are not tall enough to ride the #{self.attraction.name}."
       end
     end
