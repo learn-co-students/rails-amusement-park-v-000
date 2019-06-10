@@ -3,14 +3,13 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
     ride_result = @ride.take_ride
-    if ride_result = "successful ride" && @ride.save
-      debugger
+    if ride_result == true
       flash[:successful_ride] = "Thanks for riding the #{Attraction.find(params[:ride][:attraction_id]).name}!"
-      redirect_to user_path(User.find(params[:ride][:user_id]))
+      redirect_to user_path(current_user)
     else
       debugger
-      flash.now[:failed_ride] = ride_result
-      redirect_to user_path(User.find(params[:ride][:user_id]))
+      flash[:failed_ride] = ride_result
+      redirect_to user_path(current_user)
     end
   end
 
