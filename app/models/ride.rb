@@ -8,7 +8,7 @@ class Ride < ActiveRecord::Base
         end
 
         if user.height < attraction.min_height
-            errors.messages[:height] = " You are not tall enough to ride the #{attraction.name}"
+            errors.messages[:height] = " You are not tall enough to ride the #{attraction.name}."
         end
 
         if errors.empty?
