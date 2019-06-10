@@ -1,5 +1,8 @@
 <div class="center"> 
 
+  <%= render 'shared/flash_messages' if flash.key?("successful_ride") || flash.key?("failed_ride") %>
+  <br>
+
   <div class="row mt-5">
     <div class="col">
       <h3>User Details</h3>
