@@ -1,11 +1,11 @@
 <h2>Edit attraction!</h2>
 
 <%= form_for @attraction do |f| %>
-  Ride name: <%= f.text_field :name %>
-  Nausea Raating: <%= f.text_field :nausea_rating %>
-  Happiness Rating: <%= f.text_field :happiness_rating %>
-  Tickers: <%= f.text_field :tickets %>
-  Min Height: <%= f.text_field :min_height %>
+  Ride name: <%= f.text_field :name %><br></br>
+  Nausea Raating: <%= f.text_field :nausea_rating %><br></br>
+  Happiness Rating: <%= f.text_field :happiness_rating %><br></br>
+  Tickers: <%= f.text_field :tickets %><br></br>
+  Min Height: <%= f.text_field :min_height %><br></br>
 
   <%= f.submit "Update Attraction" %>
 <% end %>
