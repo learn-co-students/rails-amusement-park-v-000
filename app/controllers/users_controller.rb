@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.happiness == 3
+      @happiness = "happy"
+    end
   end
 
   def new
