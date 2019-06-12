@@ -1,2 +1,86 @@
-<h1>UsersController#new</h1>
-<p>Find me in app/views/users_controller/new.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsAmusementPark</title>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="3DjH3mZYifecdKMb78rdrlMUNZwif9z+FV2Zp227oDA/v+YxHrAdNF/dXFxRoFoAbbyZmEzSvzklzuer7wGD8g==" />
+
+    <link rel="stylesheet" media="all" href="/assets/application-769c1912d961603b900b009b8d6fee74a531a1cd3b2acb652e7551930f60a1aa.css" data-turbolinks-track="reload" />
+    <script src="/assets/application-ea948cf6d7d6990260bea2ea504692090a4d67393184dbd669ff06e58c696c55.js" data-turbolinks-track="reload"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="https://flatiron-amusement-park.herokuapp.com/"/>Home</a>
+        
+          <a class="navbar-brand" href="/users/new"/>Sign Up</a>
+          <a class="navbar-brand" href="/signin">Log in</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="container"  role="main">
+      <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="LXTxI8j0LLYscD0kxwX7A7xBnUka3bsJiztTaCIrGI02rvuHpKrQy8XdH1xUL7o2pYJ4vsFjkwJswK7R0aoWQw==" />
+
+  <div class="form-group">
+    <label for="user_name">Name</label>
+    <br>
+    <input class="form-control" type="text" name="user[name]" id="user_name" />
+  </div>
+
+  <div class="form-group">
+    <label for="user_height">Height (in inches)</label>
+    <br>
+    <input class="form-control" type="number" name="user[height]" id="user_height" />
+  </div>
+
+  <div class="form-group">
+    <label for="user_happiness">How happy are you? (1-5 scale)</label>
+    <br>
+    <input class="form-control" type="number" name="user[happiness]" id="user_happiness" />
+  </div>
+
+  <div class="form-group">
+    <label for="user_nausea">How nauseous are you? (1-5 scale)</label>
+    <br>
+    <input class="form-control" type="number" name="user[nausea]" id="user_nausea" />
+  </div>
+
+  <div class="form-group">
+    <label for="user_tickets">How many dollars are in your pocket?</label>
+    <br>
+    <input class="form-control" type="number" name="user[tickets]" id="user_tickets" />
+  </div>
+
+  <div class="form-group">
+    <label for="user_admin">Check box if you are a theme park owner</label>
+    <input name="user[admin]" type="hidden" value="0" /><input class="form-check-input" type="checkbox" value="1" name="user[admin]" id="user_admin" />
+  </div>
+
+  <div class="form-group">
+    <label for="user_password">Password</label>
+    <br>
+    <input class="form-control" type="password" name="user[password]" id="user_password" />
+
+  <div class="actions">
+    <br/>
+    <input type="submit" name="commit" value="Create User" class="btn btn-primary" data-disable-with="Create User" />
+  </div>
+  
+</form>
+    </div>
+  </body>
+</html>
