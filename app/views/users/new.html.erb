@@ -1,0 +1,7 @@
+<h1>Please sign up below:</h1>
+
+<%= form_tag({controller: 'users', action: 'create', method 'post'}) do |f| %>
+  <label>Name: </label>
+  <%= text_field_tag :name %>
+
+<% end %>
