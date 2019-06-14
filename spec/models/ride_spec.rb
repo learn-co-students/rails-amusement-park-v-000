@@ -37,7 +37,7 @@ RSpec.describe Ride, :type => :model do
   it "belongs to one user" do
     expect(ride.user).to eq(user)
   end
-
+  
   it "has a method 'take_ride' that accounts for the user not having enough tickets" do
     ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
     expect(ride.take_ride).to eq("Sorry. You do not have enough tickets to ride the #{attraction.name}.")

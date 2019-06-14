@@ -1,6 +1,7 @@
 module LoginHelper
 
   def user_signup
+    # binding.pry
     fill_in("user[name]", :with => "Amy Poehler")
     fill_in("user[height]", :with => "58")
     fill_in("user[happiness]", :with => "3")
@@ -29,7 +30,7 @@ module LoginHelper
     click_button('Sign In')
   end
 
-  def create_standard_user 
+  def create_standard_user
     @mindy = User.create(
       name: "Mindy",
       password: "password",
@@ -55,5 +56,5 @@ module LoginHelper
       admin: true
     )
   end
-  
+
 end

@@ -1,0 +1,9 @@
+<h1><%= "ADMIN" if @user.admin %></h1>
+<h2>Name: <%= @user.name %></h2>
+<h2>Tickets: <%= @user.tickets %></h2>
+<h2>Mood: <%= @user.mood %></h2>
+<h2>Height: <%= @user.height %></h2>
+<br>
+<p><%= link_to "See attractions", attractions_path %></p>
+<br>
+<p><%= link_to "Log Out", logout_path %></p>

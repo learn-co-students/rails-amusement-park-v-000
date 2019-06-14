@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title>RSpec results</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-size: 80%;
+  }
+  </style>
+  <script type="text/javascript">
+    // <![CDATA[
+
+function addClass(element_id, classname) {
+  document.getElementById(element_id).className += (" " + classname);
+}
+
+function removeClass(element_id, classname) {
+  var elem = document.getElementById(element_id);
+  var classlist = elem.className.replace(classname,'');
+  elem.className = classlist;
+}
+
+function moveProgressBar(percentDone) {
+  document.getElementById("rspec-header").style.width = percentDone +"%";
+}
+
+function makeRed(element_id) {
+  removeClass(element_id, 'passed');
+  removeClass(element_id, 'not_implemented');
+  addClass(element_id,'failed');
+}
+
+function makeYellow(element_id) {
+  var elem = document.getElementById(element_id);
+  if (elem.className.indexOf("failed") == -1) {  // class doesn't includes failed
+    if (elem.className.indexOf("not_implemented") == -1) { // class doesn't include not_implemented
+      removeClass(element_id, 'passed');
+      addClass(element_id,'not_implemented');
+    }
+  }
+}
+
+function apply_filters() {
+  var passed_filter = document.getElementById('passed_checkbox').checked;
+  var failed_filter = document.getElementById('failed_checkbox').checked;
+  var pending_filter = document.getElementById('pending_checkbox').checked;
+
+  assign_display_style("example passed", passed_filter);
+  assign_display_style("example failed", failed_filter);
+  assign_display_style("example not_implemented", pending_filter);
+
+  assign_display_style_for_group("example_group passed", passed_filter);
+  assign_display_style_for_group("example_group not_implemented", pending_filter, pending_filter || passed_filter);
+  assign_display_style_for_group("example_group failed", failed_filter, failed_filter || pending_filter || passed_filter);
+}
+
+function get_display_style(display_flag) {
+  var style_mode = 'none';
+  if (display_flag == true) {
+    style_mode = 'block';
+  }
+  return style_mode;
+}
+
+function assign_display_style(classname, display_flag) {
+  var style_mode = get_display_style(display_flag);
+  var elems = document.getElementsByClassName(classname)
+  for (var i=0; i<elems.length;i++) {
+    elems[i].style.display = style_mode;
+  }
+}
+
+function assign_display_style_for_group(classname, display_flag, subgroup_flag) {
+  var display_style_mode = get_display_style(display_flag);
+  var subgroup_style_mode = get_display_style(subgroup_flag);
+  var elems = document.getElementsByClassName(classname)
+  for (var i=0; i<elems.length;i++) {
+    var style_mode = display_style_mode;
+    if ((display_flag != subgroup_flag) && (elems[i].getElementsByTagName('dt')[0].innerHTML.indexOf(", ") != -1)) {
+      elems[i].style.display = subgroup_style_mode;
+    } else {
+      elems[i].style.display = display_style_mode;
+    }
+  }
+}
+
+    // ]]>
+  </script>
+  <style type="text/css">
+#rspec-header {
+  background: #65C400; color: #fff; height: 4em;
+}
+
+.rspec-report h1 {
+  margin: 0px 10px 0px 10px;
+  padding: 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  font-size: 1.8em;
+  position: absolute;
+}
+
+#label {
+  float:left;
+}
+
+#display-filters {
+  float:left;
+  padding: 28px 0 0 40%;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+}
+
+#summary {
+  float:right;
+  padding: 5px 10px;
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+  text-align: right;
+}
+
+#summary p {
+  margin: 0 0 0 2px;
+}
+
+#summary #totals {
+  font-size: 1.2em;
+}
+
+.example_group {
+  margin: 0 10px 5px;
+  background: #fff;
+}
+
+dl {
+  margin: 0; padding: 0 0 5px;
+  font: normal 11px "Lucida Grande", Helvetica, sans-serif;
+}
+
+dt {
+  padding: 3px;
+  background: #65C400;
+  color: #fff;
+  font-weight: bold;
+}
+
+dd {
+  margin: 5px 0 5px 5px;
+  padding: 3px 3px 3px 18px;
+}
+
+dd .duration {
+  padding-left: 5px;
+  text-align: right;
+  right: 0px;
+  float:right;
+}
+
+dd.example.passed {
+  border-left: 5px solid #65C400;
+  border-bottom: 1px solid #65C400;
+  background: #DBFFB4; color: #3D7700;
+}
+
+dd.example.not_implemented {
+  border-left: 5px solid #FAF834;
+  border-bottom: 1px solid #FAF834;
+  background: #FCFB98; color: #131313;
+}
+
+dd.example.pending_fixed {
+  border-left: 5px solid #0000C2;
+  border-bottom: 1px solid #0000C2;
+  color: #0000C2; background: #D3FBFF;
+}
+
+dd.example.failed {
+  border-left: 5px solid #C20000;
+  border-bottom: 1px solid #C20000;
+  color: #C20000; background: #FFFBD3;
+}
+
+
+dt.not_implemented {
+  color: #000000; background: #FAF834;
+}
+
+dt.pending_fixed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+dt.failed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+
+#rspec-header.not_implemented {
+  color: #000000; background: #FAF834;
+}
+
+#rspec-header.pending_fixed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+#rspec-header.failed {
+  color: #FFFFFF; background: #C40D0D;
+}
+
+
+.backtrace {
+  color: #000;
+  font-size: 12px;
+}
+
+a {
+  color: #BE5C00;
+}
+
+/* Ruby code, style similar to vibrant ink */
+.ruby {
+  font-size: 12px;
+  font-family: monospace;
+  color: white;
+  background-color: black;
+  padding: 0.1em 0 0.2em 0;
+}
+
+.ruby .keyword { color: #FF6600; }
+.ruby .constant { color: #339999; }
+.ruby .attribute { color: white; }
+.ruby .global { color: white; }
+.ruby .module { color: white; }
+.ruby .class { color: white; }
+.ruby .string { color: #66FF00; }
+.ruby .ident { color: white; }
+.ruby .method { color: #FFCC00; }
+.ruby .number { color: white; }
+.ruby .char { color: white; }
+.ruby .comment { color: #9933CC; }
+.ruby .symbol { color: white; }
+.ruby .regex { color: #44B4CC; }
+.ruby .punct { color: white; }
+.ruby .escape { color: white; }
+.ruby .interp { color: white; }
+.ruby .expr { color: white; }
+
+.ruby .offending { background-color: gray; }
+.ruby .linenum {
+  width: 75px;
+  padding: 0.1em 1em 0.2em 0;
+  color: #000000;
+  background-color: #FFFBD3;
+}
+
+  </style>
+</head>
+<body>
+<div class="rspec-report">
+
+<div id="rspec-header">
+  <div id="label">
+    <h1>RSpec Code Examples</h1>
+  </div>
+
+  <div id="display-filters">
+    <input id="passed_checkbox"  name="passed_checkbox"  type="checkbox" checked="checked" onchange="apply_filters()" value="1" /> <label for="passed_checkbox">Passed</label>
+    <input id="failed_checkbox"  name="failed_checkbox"  type="checkbox" checked="checked" onchange="apply_filters()" value="2" /> <label for="failed_checkbox">Failed</label>
+    <input id="pending_checkbox" name="pending_checkbox" type="checkbox" checked="checked" onchange="apply_filters()" value="3" /> <label for="pending_checkbox">Pending</label>
+  </div>
+
+  <div id="summary">
+    <p id="totals">&#160;</p>
+    <p id="duration">&#160;</p>
+  </div>
+</div>
+
+
+<div class="results">
+<div id="div_group_1" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_1" class="passed">Feature Test: User Signup</dt>
+    <script type="text/javascript">moveProgressBar('1.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">successfully signs up as non-admin</span><span class='duration'>0.31777s</span></dd>
+    <script type="text/javascript">makeRed('rspec-header');</script>
+    <script type="text/javascript">makeRed('div_group_1');</script>
+    <script type="text/javascript">makeRed('example_group_1');</script>
+    <script type="text/javascript">moveProgressBar('3.2');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">on sign up, successfully adds a session hash</span>
+      <span class="duration">0.00289s</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>  Failure/Error: [0mfill_in([31m[1;31m&quot;[0m[31muser[name][1;31m&quot;[0m[31m[0m, [33m:with[0m =&gt; [31m[1;31m&quot;[0m[31mAmy Poehler[1;31m&quot;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible field &quot;user[name]&quot; that is not disabled
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:92:in `fill_in&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:4:in `user_signup&#39;
+  # ./spec/features/users_features_spec.rb:20:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:92:in `fill_in&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:4:in `user_signup&#39;
+./spec/features/users_features_spec.rb:20:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('4.8');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">successfully logs in as non-admin</span>
+      <span class="duration">0.00960s</span>
+      <div class="failure" id="failure_2">
+        <div class="message"><pre>  Failure/Error: [0mvisit [31m[1;31m&#39;[0m[31m/signin[1;31m&#39;[0m[31m[0m
+
+  ActionController::RoutingError:
+    uninitialized constant SessionController
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/tempfile_reaper.rb:15:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:28:in `block (2 levels) in &lt;top (required)&gt;&#39;
+  # ------------------
+  # --- Caused by: ---
+  # NameError:
+  #   uninitialized constant SessionController
+  #   /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:60:in `block in load_missing_constant&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/tempfile_reaper.rb:15:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:28:in `block (2 levels) in &lt;top (required)&gt;&#39;
+------------------
+--- Caused by: ---
+NameError:
+  uninitialized constant SessionController
+  /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:60:in `block in load_missing_constant&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">77</span>            <span class="comment"># If the constant was actually loaded, something else went wrong?</span>
+<span class="linenum">78</span>            raise(e) <span class="keyword">if</span> from_mod.const_defined?(const_name)
+<span class="offending"><span class="linenum">79</span>            <span class="constant">CoreExt</span>::<span class="constant">ActiveSupport</span>.without_bootsnap_cache { <span class="keyword">super</span> }</span>
+<span class="linenum">80</span>          <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('6.4');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">on log in, successfully adds a session hash</span>
+      <span class="duration">0.01127s</span>
+      <div class="failure" id="failure_3">
+        <div class="message"><pre>  Failure/Error: [0mvisit [31m[1;31m&#39;[0m[31m/signin[1;31m&#39;[0m[31m[0m
+
+  ActionController::RoutingError:
+    uninitialized constant SessionController
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/tempfile_reaper.rb:15:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:41:in `block (2 levels) in &lt;top (required)&gt;&#39;
+  # ------------------
+  # --- Caused by: ---
+  # NameError:
+  #   uninitialized constant SessionController
+  #   /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:60:in `block in load_missing_constant&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/tempfile_reaper.rb:15:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:41:in `block (2 levels) in &lt;top (required)&gt;&#39;
+------------------
+--- Caused by: ---
+NameError:
+  uninitialized constant SessionController
+  /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:60:in `block in load_missing_constant&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">77</span>            <span class="comment"># If the constant was actually loaded, something else went wrong?</span>
+<span class="linenum">78</span>            raise(e) <span class="keyword">if</span> from_mod.const_defined?(const_name)
+<span class="offending"><span class="linenum">79</span>            <span class="constant">CoreExt</span>::<span class="constant">ActiveSupport</span>.without_bootsnap_cache { <span class="keyword">super</span> }</span>
+<span class="linenum">80</span>          <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('8.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">prevents user from viewing user show page and redirects to home page if not logged in</span>
+      <span class="duration">0.04708s</span>
+      <div class="failure" id="failure_4">
+        <div class="message"><pre>  Failure/Error: [0m[32mexpect[0m(current_path).to eq([31m[1;31m&#39;[0m[31m/[1;31m&#39;[0m[31m[0m)
+
+    expected: &quot;/&quot;
+         got: &quot;/users/1&quot;
+
+    (compared using ==)
+  # ./spec/features/users_features_spec.rb:50:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>./spec/features/users_features_spec.rb:50:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">48</span>    create_standard_user
+<span class="linenum">49</span>    visit <span class="string"><span class="delimiter">'</span><span class="content">/users/1</span><span class="delimiter">'</span></span>
+<span class="offending"><span class="linenum">50</span>    <span class="keyword">expect</span>(current_path).to eq(<span class="string"><span class="delimiter">'</span><span class="content">/</span><span class="delimiter">'</span></span>)</span>
+<span class="linenum">51</span>    <span class="keyword">expect</span>(page).to have_content(<span class="string"><span class="delimiter">&quot;</span><span class="content">Sign Up</span><span class="delimiter">&quot;</span></span>)
+<span class="linenum">52</span>  <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('9.6');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">successfully signs up as admin</span>
+      <span class="duration">0.02720s</span>
+      <div class="failure" id="failure_5">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:58:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:58:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('11.2');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">on sign up for admin, successfully adds a session hash</span>
+      <span class="duration">0.02310s</span>
+      <div class="failure" id="failure_6">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:67:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:67:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('12.9');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">successfully logs in as admin</span>
+      <span class="duration">0.01453s</span>
+      <div class="failure" id="failure_7">
+        <div class="message"><pre>  Failure/Error: [0mvisit [31m[1;31m&#39;[0m[31m/signin[1;31m&#39;[0m[31m[0m
+
+  ActionController::RoutingError:
+    uninitialized constant SessionController
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/tempfile_reaper.rb:15:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:73:in `block (2 levels) in &lt;top (required)&gt;&#39;
+  # ------------------
+  # --- Caused by: ---
+  # NameError:
+  #   uninitialized constant SessionController
+  #   /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:60:in `block in load_missing_constant&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/tempfile_reaper.rb:15:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:73:in `block (2 levels) in &lt;top (required)&gt;&#39;
+------------------
+--- Caused by: ---
+NameError:
+  uninitialized constant SessionController
+  /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:60:in `block in load_missing_constant&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">77</span>            <span class="comment"># If the constant was actually loaded, something else went wrong?</span>
+<span class="linenum">78</span>            raise(e) <span class="keyword">if</span> from_mod.const_defined?(const_name)
+<span class="offending"><span class="linenum">79</span>            <span class="constant">CoreExt</span>::<span class="constant">ActiveSupport</span>.without_bootsnap_cache { <span class="keyword">super</span> }</span>
+<span class="linenum">80</span>          <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('14.5');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">on log in, successfully adds a session hash to admins</span>
+      <span class="duration">0.01186s</span>
+      <div class="failure" id="failure_8">
+        <div class="message"><pre>  Failure/Error: [0mvisit [31m[1;31m&#39;[0m[31m/signin[1;31m&#39;[0m[31m[0m
+
+  ActionController::RoutingError:
+    uninitialized constant SessionController
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/tempfile_reaper.rb:15:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:84:in `block (2 levels) in &lt;top (required)&gt;&#39;
+  # ------------------
+  # --- Caused by: ---
+  # NameError:
+  #   uninitialized constant SessionController
+  #   /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:60:in `block in load_missing_constant&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `block in load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:8:in `without_bootsnap_cache&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:79:in `rescue in load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:58:in `load_missing_constant&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack_session_access-0.2.0/lib/rack_session_access/middleware.rb:33:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/tempfile_reaper.rb:15:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/etag.rb:25:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/conditional_get.rb:25:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/head.rb:12:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:232:in `context&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/session/abstract/id.rb:226:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:38:in `call_app&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `block in call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/rack/logger.rb:26:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/engine.rb:524:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:68:in `block in call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `each&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-2.0.7/lib/rack/urlmap.rb:53:in `call&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/mock_session.rb:29:in `request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:266:in `process_request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:129:in `custom_request&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/rack-test-1.1.0/lib/rack/test.rb:58:in `get&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:69:in `process&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:41:in `process_and_follow_redirects&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/browser.rb:22:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/rack_test/driver.rb:44:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:274:in `visit&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:84:in `block (2 levels) in &lt;top (required)&gt;&#39;
+------------------
+--- Caused by: ---
+NameError:
+  uninitialized constant SessionController
+  /Users/heshie/.rvm/gems/ruby-2.6.1/gems/bootsnap-1.4.4/lib/bootsnap/load_path_cache/core_ext/active_support.rb:60:in `block in load_missing_constant&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">77</span>            <span class="comment"># If the constant was actually loaded, something else went wrong?</span>
+<span class="linenum">78</span>            raise(e) <span class="keyword">if</span> from_mod.const_defined?(const_name)
+<span class="offending"><span class="linenum">79</span>            <span class="constant">CoreExt</span>::<span class="constant">ActiveSupport</span>.without_bootsnap_cache { <span class="keyword">super</span> }</span>
+<span class="linenum">80</span>          <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<div id="div_group_2" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_2" class="passed">Feature Test: User Signout</dt>
+    <script type="text/javascript">makeRed('div_group_2');</script>
+    <script type="text/javascript">makeRed('example_group_2');</script>
+    <script type="text/javascript">moveProgressBar('16.1');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has a link to log out from the users/show page</span>
+      <span class="duration">0.04397s</span>
+      <div class="failure" id="failure_9">
+        <div class="message"><pre>  Failure/Error: [0m[32mexpect[0m(page).to have_content([31m[1;31m&quot;[0m[31mLog Out[1;31m&quot;[0m[31m[0m)
+    expected to find text &quot;Log Out&quot; in &quot;Toggle navigation Home Name: Amy Poehler Tickets: 15 Mood: happy Height: 58&quot;
+  # ./spec/features/users_features_spec.rb:98:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>./spec/features/users_features_spec.rb:98:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">96</span>    <span class="comment"># user_signup method is defined in login_helper.rb</span>
+<span class="linenum">97</span>    user_signup
+<span class="offending"><span class="linenum">98</span>    <span class="keyword">expect</span>(page).to have_content(<span class="string"><span class="delimiter">&quot;</span><span class="content">Log Out</span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">99</span>  <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('17.7');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">redirects to home page after logging out</span>
+      <span class="duration">0.03991s</span>
+      <div class="failure" id="failure_10">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&quot;[0m[31mLog Out[1;31m&quot;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;Log Out&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:105:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:105:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('19.3');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">successfully destroys session hash when &#39;Log Out&#39; is clicked</span>
+      <span class="duration">0.14486s</span>
+      <div class="failure" id="failure_11">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&quot;[0m[31mLog Out[1;31m&quot;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;Log Out&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:113:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:113:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('20.9');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has a link to log out from the users/show page when user is an admin</span>
+      <span class="duration">0.01966s</span>
+      <div class="failure" id="failure_12">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:120:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:120:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('22.5');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">redirects to home page after admin logs out when user is an admin</span>
+      <span class="duration">0.01382s</span>
+      <div class="failure" id="failure_13">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:127:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:127:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('24.1');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">successfully destroys session hash when &#39;Log Out&#39; is clicked as admin</span>
+      <span class="duration">0.01247s</span>
+      <div class="failure" id="failure_14">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:135:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:135:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<div id="div_group_3" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_3" class="passed">Feature Test: Go on a Ride</dt>
+    <script type="text/javascript">makeRed('div_group_3');</script>
+    <script type="text/javascript">makeRed('example_group_3');</script>
+    <script type="text/javascript">moveProgressBar('25.8');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has a link from the user show page to the attractions index page</span>
+      <span class="duration">0.05874s</span>
+      <div class="failure" id="failure_15">
+        <div class="message"><pre>  Failure/Error: [0m[32mexpect[0m(page).to have_content([31m[1;31m&quot;[0m[31mSee attractions[1;31m&quot;[0m[31m[0m)
+    expected to find text &quot;See attractions&quot; in &quot;Toggle navigation Home Name: Amy Poehler Tickets: 15 Mood: happy Height: 58&quot;
+  # ./spec/features/users_features_spec.rb:170:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>./spec/features/users_features_spec.rb:170:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">168</span>
+<span class="linenum">169</span>  <span class="keyword">it</span> <span class="string"><span class="delimiter">'</span><span class="content">has a link from the user show page to the attractions index page</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+<span class="offending"><span class="linenum">170</span>    <span class="keyword">expect</span>(page).to have_content(<span class="string"><span class="delimiter">&quot;</span><span class="content">See attractions</span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">171</span>    click_link(<span class="string"><span class="delimiter">'</span><span class="content">See attractions</span><span class="delimiter">'</span></span>)
+<span class="linenum">172</span>  <span class="keyword">end</span></code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('27.4');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">links from the user show page to the attractions index page</span>
+      <span class="duration">0.04547s</span>
+      <div class="failure" id="failure_16">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:175:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:175:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('29.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">prevents users from editing/deleting/adding rides on the index page</span>
+      <span class="duration">0.04718s</span>
+      <div class="failure" id="failure_17">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:180:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:180:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('30.6');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has titles of the rides on the attractions index page</span>
+      <span class="duration">0.04358s</span>
+      <div class="failure" id="failure_18">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:188:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:188:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('32.2');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has links on the attractions index page to the attractions&#39; show pages</span>
+      <span class="duration">0.03632s</span>
+      <div class="failure" id="failure_19">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:194:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:194:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('33.8');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">links from the attractions index page to the attractions&#39; show pages</span>
+      <span class="duration">0.03405s</span>
+      <div class="failure" id="failure_20">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:200:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:200:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('35.4');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">prevents users from editing/deleting a ride on the show page</span>
+      <span class="duration">0.07099s</span>
+      <div class="failure" id="failure_21">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:206:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:206:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('37.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has a button from the attraction show page to go on the ride</span>
+      <span class="duration">0.03349s</span>
+      <div class="failure" id="failure_22">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:213:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:213:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('38.7');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">clicking on &#39;Go on ride&#39; redirects to user show page</span>
+      <span class="duration">0.03858s</span>
+      <div class="failure" id="failure_23">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:220:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:220:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('40.3');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">clicking on &#39;Go on ride&#39; updates the users ticket number</span>
+      <span class="duration">0.04321s</span>
+      <div class="failure" id="failure_24">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:227:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:227:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('41.9');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">clicking on &#39;Go on ride&#39; updates the users mood</span>
+      <span class="duration">0.05000s</span>
+      <div class="failure" id="failure_25">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:234:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:234:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('43.5');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">when the user is tall enough and has enough tickets, clicking on &#39;Go on ride&#39; displays a thank you message</span>
+      <span class="duration">0.09359s</span>
+      <div class="failure" id="failure_26">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:241:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:241:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('45.1');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">when the user is too short, clicking on &#39;Go on ride&#39; displays a sorry message</span>
+      <span class="duration">0.04726s</span>
+      <div class="failure" id="failure_27">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:250:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:250:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('46.7');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">when the user doesn&#39;t have enough tickets, clicking on &#39;Go on ride&#39; displays a sorry message</span>
+      <span class="duration">0.03585s</span>
+      <div class="failure" id="failure_28">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:260:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:260:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('48.3');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">when the user is too short and doesn&#39;t have enough tickets, clicking on &#39;Go on ride&#39; displays a detailed sorry message</span>
+      <span class="duration">0.03176s</span>
+      <div class="failure" id="failure_29">
+        <div class="message"><pre>  Failure/Error: [0mclick_link([31m[1;31m&#39;[0m[31mSee attractions[1;31m&#39;[0m[31m[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible link &quot;See attractions&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/features/users_features_spec.rb:270:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/actions.rb:43:in `click_link&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/features/users_features_spec.rb:270:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<div id="div_group_4" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_4" class="passed">Feature Test: Admin Flow</dt>
+    <script type="text/javascript">makeRed('div_group_4');</script>
+    <script type="text/javascript">makeRed('example_group_4');</script>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">displays admin when logged in as an admin on user show page</span>
+      <span class="duration">0.01201s</span>
+      <div class="failure" id="failure_30">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('51.6');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">links to the attractions from the users show page when logged in as a admin</span>
+      <span class="duration">0.01341s</span>
+      <div class="failure" id="failure_31">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('53.2');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has a link from the user show page to the attractions index page when in admin mode</span>
+      <span class="duration">0.07437s</span>
+      <div class="failure" id="failure_32">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('54.8');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">allows admins to add an attraction from the index page</span>
+      <span class="duration">0.01882s</span>
+      <div class="failure" id="failure_33">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('56.4');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">allows admins to add an attraction</span>
+      <span class="duration">0.01437s</span>
+      <div class="failure" id="failure_34">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('58.0');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has link to attraction/show from attraction/index page for admins</span>
+      <span class="duration">0.01535s</span>
+      <div class="failure" id="failure_35">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('59.6');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">does not suggest that admins go on a ride</span>
+      <span class="duration">0.01438s</span>
+      <div class="failure" id="failure_36">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('61.2');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">links to attractions/show page from attractions/index</span>
+      <span class="duration">0.02506s</span>
+      <div class="failure" id="failure_37">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('62.9');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">does not suggest that an admin go on a ride from attractions/show page</span>
+      <span class="duration">0.01693s</span>
+      <div class="failure" id="failure_38">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('64.5');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">has a link for admin to edit attraction from the attractions/show page</span>
+      <span class="duration">0.03849s</span>
+      <div class="failure" id="failure_39">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('66.1');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">links to attraction/edit page from attraction/show page when logged in as an admin</span>
+      <span class="duration">0.03558s</span>
+      <div class="failure" id="failure_40">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+    <script type="text/javascript">moveProgressBar('67.7');</script>
+    <dd class="example failed">
+      <span class="failed_spec_name">updates an attraction when an admin edits it</span>
+      <span class="duration">0.03932s</span>
+      <div class="failure" id="failure_41">
+        <div class="message"><pre>  Failure/Error: [0mfind([33m:css[0m, [31m[1;31m&quot;[0m[31m#user_admin[1;31m&quot;[0m[31m[0m).set([1;36mtrue[0m)
+
+  Capybara::ElementNotFound:
+    Unable to find visible css &quot;#user_admin&quot;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+  # /Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+  # ./spec/support/login_helper.rb:22:in `admin_signup&#39;
+  # ./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/node/finders.rb:37:in `find&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
+/Users/heshie/.rvm/gems/ruby-2.6.1/gems/capybara-2.18.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
+./spec/support/login_helper.rb:22:in `admin_signup&#39;
+./spec/features/users_features_spec.rb:304:in `block (2 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
+<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
+<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
+<span class="linenum">315</span>          <span class="keyword">end</span>
+<span class="linenum">316</span>          result.first</code></pre>
+      </div>
+    </dd>
+  </dl>
+</div>
+<div id="div_group_5" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_5" class="passed">Attraction</dt>
+    <script type="text/javascript">moveProgressBar('69.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is valid with a name, min_height, nausea_rating, happiness_rating, and ticket number</span><span class='duration'>0.00408s</span></dd>
+    <script type="text/javascript">moveProgressBar('70.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">has many rides</span><span class='duration'>0.02871s</span></dd>
+    <script type="text/javascript">moveProgressBar('72.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">has many users through rides</span><span class='duration'>0.02254s</span></dd>
+  </dl>
+</div>
+<div id="div_group_6" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_6" class="passed">Ride</dt>
+    <script type="text/javascript">moveProgressBar('74.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">is valid with a user_id and a attraction_id</span><span class='duration'>0.01745s</span></dd>
+    <script type="text/javascript">moveProgressBar('75.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">belongs to one attraction</span><span class='duration'>0.00866s</span></dd>
+    <script type="text/javascript">moveProgressBar('77.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">belongs to one user</span><span class='duration'>0.03394s</span></dd>
+    <script type="text/javascript">moveProgressBar('79.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a method &#39;take_ride&#39; that accounts for the user not having enough tickets</span><span class='duration'>0.01372s</span></dd>
+    <script type="text/javascript">moveProgressBar('80.6');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a method &#39;take_ride&#39; that accounts for the user not being tall enough</span><span class='duration'>0.04402s</span></dd>
+    <script type="text/javascript">moveProgressBar('82.2');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a method &#39;take_ride&#39; that accounts for the user not being tall enough and not having enough tickets</span><span class='duration'>0.01000s</span></dd>
+    <script type="text/javascript">moveProgressBar('83.8');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a method &#39;take_ride&#39; that updates ticket number</span><span class='duration'>0.00959s</span></dd>
+    <script type="text/javascript">moveProgressBar('85.4');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a method &#39;take_ride&#39; that updates the user&#39;s nausea</span><span class='duration'>0.00898s</span></dd>
+    <script type="text/javascript">moveProgressBar('87.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a method &#39;take_ride&#39; that updates the user&#39;s happiness</span><span class='duration'>0.00991s</span></dd>
+  </dl>
+</div>
+<div id="div_group_7" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_7" class="passed">User</dt>
+    <script type="text/javascript">moveProgressBar('88.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">is valid with a name, password, happiness, nausea, height, and tickets</span><span class='duration'>0.00387s</span></dd>
+    <script type="text/javascript">moveProgressBar('90.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">is not valid without a password</span><span class='duration'>0.00154s</span></dd>
+    <script type="text/javascript">moveProgressBar('91.9');</script>
+    <dd class="example passed"><span class="passed_spec_name">is valid with an admin boolean</span><span class='duration'>0.00443s</span></dd>
+    <script type="text/javascript">moveProgressBar('93.5');</script>
+    <dd class="example passed"><span class="passed_spec_name">defaults to admin =&gt; false</span><span class='duration'>0.00419s</span></dd>
+    <script type="text/javascript">moveProgressBar('95.1');</script>
+    <dd class="example passed"><span class="passed_spec_name">has many rides</span><span class='duration'>0.01064s</span></dd>
+    <script type="text/javascript">moveProgressBar('96.7');</script>
+    <dd class="example passed"><span class="passed_spec_name">has many attractions through rides</span><span class='duration'>0.01066s</span></dd>
+    <script type="text/javascript">moveProgressBar('98.3');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a method &#39;mood&#39; that returns &#39;sad&#39; when the user is more nauseous than happy</span><span class='duration'>0.00412s</span></dd>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">has a method &#39;mood&#39; that returns &#39;happy&#39; when the user is more happy than nauseous</span><span class='duration'>0.00500s</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>2.49685 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "62 examples, 41 failures";</script>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+Feature Test: User Signup
+  -successfully signs up as non-admin
+  -on sign up, successfully adds a session hash (FAILED - 1)
+  -successfully logs in as non-admin (FAILED - 2)
+  -on log in, successfully adds a session hash (FAILED - 3)
+  -prevents user from viewing user show page and redirects to home page if not logged in (FAILED - 4)
+  -successfully signs up as admin
+  -on sign up for admin, successfully adds a session hash
+  -successfully logs in as admin (FAILED - 5)
+  -on log in, successfully adds a session hash to admins (FAILED - 6)
+
+  Feature Test: User Signout
+    -has a link to log out from the users/show page (FAILED - 5)
+    -redirects to home page after logging out (FAILED - 6)
+    -successfully destroys session hash when 'Log Out' is clicked (FAILED - 7)
+    -has a link to log out from the users/show page when user is an admin (FAILED - 8)
+    -redirects to home page after admin logs out when user is an admin (FAILED - 9)
+    -successfully destroys session hash when 'Log Out' is clicked as admin (FAILED - 10)
+
+   Feature Test: Go on a Ride
+     has a link from the user show page to the attractions index page (FAILED - 11)
+     links from the user show page to the attractions index page (FAILED - 12)
+     prevents users from editing/deleting/adding rides on the index page (FAILED - 13)
+     has titles of the rides on the attractions index page (FAILED - 14)
+     has links on the attractions index page to the attractions' show pages (FAILED - 15)
+     links from the attractions index page to the attractions' show pages (FAILED - 16)
+     prevents users from editing/deleting a ride on the show page (FAILED - 17)
+     has a button from the attraction show page to go on the ride (FAILED - 18)
+     clicking on 'Go on ride' redirects to user show page (FAILED - 19)
+     clicking on 'Go on ride' updates the users ticket number (FAILED - 20)
+     clicking on 'Go on ride' updates the users mood (FAILED - 21)
+     when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message (FAILED - 22)
+     when the user is too short, clicking on 'Go on ride' displays a sorry message (FAILED - 23)
+     when the user doesn't have enough tickets, clicking on 'Go on ride' displays a sorry message (FAILED - 24)
+     when the user is too short and doesn't have enough tickets, clicking on 'Go on ride' displays a detailed sorry m
+   essage (FAILED - 25)

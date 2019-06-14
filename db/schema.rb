@@ -14,27 +14,30 @@ ActiveRecord::Schema.define(version: 2019_06_12_004009) do
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
-    t.integer "tickets"
-    t.integer "nausea_rating"
-    t.integer "happiness_rating"
-    t.integer "min_height"
+    t.integer "tickets", default: 0
+    t.integer "nausea_rating", default: 0
+    t.integer "happiness_rating", default: 0
+    t.integer "min_height", default: 0
   end
 
   create_table "rides", force: :cascade do |t|
     t.string "name"
-    t.integer "tickets"
-    t.integer "nausea_rating"
-    t.integer "happiness_rating"
-    t.integer "min_height"
+    t.integer "tickets", default: 0
+    t.integer "nausea_rating", default: 0
+    t.integer "happiness_rating", default: 0
+    t.integer "min_height", default: 0
+    t.integer "user_id"
+    t.integer "attraction_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
-    t.integer "nausea"
-    t.integer "happiness"
-    t.integer "tickets"
-    t.integer "height"
+    t.integer "nausea", default: 0
+    t.integer "happiness", default: 0
+    t.integer "tickets", default: 0
+    t.integer "height", default: 0
+    t.boolean "admin", default: false, null: false
   end
 
 end
