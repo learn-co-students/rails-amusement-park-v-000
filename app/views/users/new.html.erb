@@ -1,7 +1,26 @@
 <h1>Please sign up below:</h1>
 
-<%= form_tag({controller: 'users', action: 'create', method 'post'}) do |f| %>
+<%= form_for(@user) do |f| %>
+
   <label>Name: </label>
-  <%= text_field_tag :name %>
+  <%= f.text_field :name %><br><br>
+  
+  <label>Password: </label>
+  <%= f.password_field :password %><br><br>
+
+  <label>Height: </label>
+  <%= f.number_field :height %><br><br>
+
+  <label>Happiness Rating: </label>
+  <%= f.number_field :happiness %><br><br>
+
+  <label>Nausea Rating: </label>
+  <%= f.number_field :nausea %><br><br>
+
+  <label>Number of Tickets: </label>
+  <%= f.number_field :tickets %><br><br>
+
+  <%= f.submit "Create User" %>
+
 
 <% end %>
