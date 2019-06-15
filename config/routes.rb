@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root 'application#home'
   get 'users_controller/new'
   get '/session', to: 'users#delete'
+  get '/signin', to: ''
   resources :users
 end
