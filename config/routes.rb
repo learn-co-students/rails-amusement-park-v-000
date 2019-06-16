@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'application#home'
   # get 'users_controller/new'
   # get '/session', to: 'users#delete'
-  # get '/signin', to: ''
+  get '/signin', to: 'sessions#new'
   resources :users
   resources :sessions, only: %i[new destroy]
   delete '/session', to: 'sessions#destroy'
