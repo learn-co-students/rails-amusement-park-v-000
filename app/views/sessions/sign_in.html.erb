@@ -1,12 +1,12 @@
 <h2>Please Sign in</h2>
 
-<%= form_for @user, url: signin_path(@user) do |f| %>
+<%= form_for @user do |f| %>
 
   <label>Username:</label>
   <%= f.select :name, User.pluck(:name)%><br>
 
   <label>Password:</label>
-  <%= f.password_field :password %><br>
+  <%= f.password_field :password, id: "password" %><br>
 
   <%= f.submit 'Sign In' %>
 

@@ -1,6 +1,10 @@
 <h1><%= current_user.name %></h1><br>
 
-<h3>Mood: <%= current_user.mood %></h3><br>
+<% if current_user.admin %>
+  <h3><%= "ADMIN" %></h3>
+  <% else %>
+  <h3>Mood: <%= current_user.mood %></h3><br>
+<% end %>
 
 <h3>Tickets: <%= current_user.tickets %></h3><br>
 
