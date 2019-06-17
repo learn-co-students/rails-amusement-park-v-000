@@ -1,9 +1,12 @@
-<%# Name: Chaos Exhilarator
-Total Number of Users: 73
-Ticket Requirement: 6
-Height Requirement: 60 inches
-Nausea Rating: 5
-Happiness Rating: 1
-Edit Attraction %>
 <h3>Name: <%= @attraction.name %></h3>
 <h3>Total Number of Users: <%= @attraction.users.count %></h3>
+<h3>Ticket Requirement: <%= @attraction.tickets %></h3>
+<h3>Height Requirement: <%= @attraction.min_height %></h3>
+<h3>Nausea Rating: <%= @attraction.nausea_rating %></h3>
+<h3>Happiness Rating: <%= @attraction.happiness_rating %></h3>
+<br>
+
+<%= button_to name= "Go on this ride", url: "/attractions/#{@attraction.id}" %>
+<br>
+
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>

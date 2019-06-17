@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#destroy'
 
+  post '/attractions/:id', to: 'attractions#take_ride'
+
   resources :users, only: [:new, :create, :show, :welcome]
 
   resources :attractions
