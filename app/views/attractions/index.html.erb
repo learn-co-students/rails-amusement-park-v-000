@@ -2,12 +2,12 @@
     <div class="alert"><%= flash[:alert] %></div>
 <% end %>
 
-<h1>Listing attractions</h1>
-<br>
+<h1>Listing attractions</h1><br>
+
 <ul>
   <% @attractions.each do |attraction| %>
     <li><%= attraction.name %> - <%= attraction.tickets %> - <%= user_level_link(attraction) %> </li>
   <% end %>
-</ul>
-<br>
+</ul><br>
+
 <%= link_to "New Attraction", new_attraction_path if current_user.admin? %>
