@@ -17,9 +17,12 @@ class UsersController < ApplicationController
 
     def show
       @user = User.find_by(id: params[:id])
+      # binding.pry
       if !current_user.admin
         if current_user != @user
           redirect_to root_path
+        else
+          current_user
         end
       else
         @user
