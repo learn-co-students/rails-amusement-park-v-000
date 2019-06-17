@@ -1,1 +1,1 @@
-[] def @users in sessions#new
+[] set up form_for in app/views/sessions/signin.html.erb
