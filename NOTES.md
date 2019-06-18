@@ -1,1 +1,1 @@
-[] set up form_for in app/views/sessions/signin.html.erb
+[] fix params from /signin

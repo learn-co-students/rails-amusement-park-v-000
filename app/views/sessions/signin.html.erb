@@ -1,6 +1,6 @@
 <%= form_for '/sessions' do | f |%>
  <p><strong>Your name: </strong><%= select_tag "users", options_from_collection_for_select(@users, "id", "name"), prompt: 'Please select your username from this dropdown' %></p>
  <p><strong>Your password:</strong></p>
- <%= f.text_field :password %>
- <%= submit_tag 'Sign In' %>
+ <p><%= f.text_field :password %></p>
+ <p><%= submit_tag 'Sign In' %></p>
 <% end %>
