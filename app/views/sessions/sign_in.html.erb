@@ -1,6 +1,6 @@
 <h2>Please Sign in</h2>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, url: signin_path do |f| %>
 
   <label>Username:</label>
   <%= f.select :name, User.pluck(:name)%><br>

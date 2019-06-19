@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(name: params[:user][:name])
+# binding.pry
+    if @user && @user.authenticate(params[:user][:password])
 
-    if @user && @user.authenticate(params[:password])
-      # binding.pry
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
@@ -16,4 +16,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session.delete :user
+    # binding.pry
+    redirect_to root_path
+
+  end
+
+# can include a session_params to permit the user and require name and password
 end

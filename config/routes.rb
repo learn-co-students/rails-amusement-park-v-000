@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show, :create]
   get '/signin' => 'sessions#sign_in'
   post '/signin' => 'sessions#create'
-  # delete '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy'
 end

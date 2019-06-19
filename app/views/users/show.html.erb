@@ -9,3 +9,5 @@
 <h3>Tickets: <%= current_user.tickets %></h3><br>
 
 <h3>Height: <%= current_user.height %></h3><br>
+
+<%= link_to "Log Out", logout_path, method: :delete %>
