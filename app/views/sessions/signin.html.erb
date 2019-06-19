@@ -1,6 +1,6 @@
-<%= form_for '/sessions' do | f |%>
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
  <p><strong>Your name: </strong><%= select_tag "users", options_from_collection_for_select(@users, "id", "name"), prompt: 'Please select your username from this dropdown' %></p>
  <p><strong>Your password:</strong></p>
- <p><%= f.text_field :password %></p>
+ <p><input name='password' type='text' id='password'></p>
  <p><%= submit_tag 'Sign In' %></p>
 <% end %>
