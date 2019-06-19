@@ -1,0 +1,11 @@
+<h1>Create New User</h1>
+<%= form_for @user do |u| %>
+    Name: <%= u.text_field :name %><br/>
+    How Happy Are You Right Now: <%= u.text_field :happiness %><br/>
+    Height: <%= u.number_field :height %><br/>
+    How Nauseaus are you right now: <%= u.number_field :nausea %><br/>
+    How many tickets do you have: <%= u.number_field :tickets %><br/>
+    Create Password: <%= u.text_field :password %><br/>
+    Admin: <%= u.check_box :admin %><br/>
+    <%= u.submit "Create User" %>
+<% end %>

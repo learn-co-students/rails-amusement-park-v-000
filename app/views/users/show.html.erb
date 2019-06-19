@@ -1,0 +1,10 @@
+<%= "ADMIN" if @user.admin %><br/>
+<%= flash[:message] %>
+Hello <%= @user.name %><br/>
+Mood: <%= @user.mood %><br/>
+Number of Tickets: <%= @user.tickets %><br/>
+Happiness: <%= @user.happiness %><br/>
+Nausea: <%= @user.nausea %><br/>
+Height: <%= @user.height %><br/>
+<%= link_to "See attractions", "/attractions" %><br/>
+<%= link_to "Log Out", '/logoff' %>
