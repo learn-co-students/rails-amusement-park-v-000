@@ -6,6 +6,8 @@ class CreateRides < ActiveRecord::Migration[5.2]
       t.integer :nausea_rating
       t.integer :happiness_rating
       t.integer :min_height
+      t.integer :attraction_id
+      t.integer :user_id
 
       t.timestamps
     end
