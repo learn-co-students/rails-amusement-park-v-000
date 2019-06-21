@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   resources :attractions, only: [:index, :show]
+
+  match 'attractions', to: 'attractions#show', via: [:get, :post]
+
 end
