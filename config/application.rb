@@ -18,9 +18,9 @@ module RailsAmusementPark
     
     config.generators do |g|
       g.test_framework false
-      g.stylesheets false
-      g.javascripts false
-      g.helpers false
+      g.assets false
+      g.helper false
+      g.jbuilder false
     end
   end
 end
