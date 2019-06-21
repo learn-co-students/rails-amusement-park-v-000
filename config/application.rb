@@ -17,7 +17,10 @@ module RailsAmusementPark
     # the framework and any gems in your application.
     
     config.generators do |g|
-
+      g.test_framework false
+      g.stylesheets false
+      g.javascripts false
+      g.helpers false
     end
   end
 end
