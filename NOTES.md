@@ -1,6 +1,7 @@
-[] finish new user form:
-https://learn.co/tracks/full-stack-web-development-v6/rails/intro-to-actionview/rails-form_tag
-https://github.com/ronsala/rails-form_tag-readme-v-000/blob/master/app/views/posts/new.html.erb
-https://guides.rubyonrails.org/form_helpers.html
+[]   1) Feature Test: User Signup successfully logs in as non-admin
+     Failure/Error: <p><strong>Your name: </strong><%= select_tag "user_name", options_from_collection_for_select(@users, "user_id", "name"), prompt: 'Please select your username from this dropdown' %></p>
+     
+     ActionView::Template::Error:
+       undefined method `user_id' for #<User:0x00007fb9d62d8a60>
 
 [] use password tags for passwords
