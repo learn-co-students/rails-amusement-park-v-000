@@ -7,8 +7,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if session[:user_id] == @user.id
-      if @user.happiness >= 3
-        @happiness = "happy"
+
+      if @user.happiness
+
+        if @user.happiness >= 3
+          @happiness = "happy"
+        end
       end
     else
       redirect_to '/'

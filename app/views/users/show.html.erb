@@ -46,6 +46,9 @@
     <p><strong>Tickets:</strong> <%= @user.tickets %></p>
     <p><strong>Mood:</strong>  <%= @happiness %></p>
     <p><strong>Height:</strong> <%= @user.height %></p>
+    <% if @user.admin == true %>
+      <p><strong>ADMIN</strong></p>
+    <% end %>
     <p><a href="/attractions">See attractions</a></p>
   </div>
 </div>
