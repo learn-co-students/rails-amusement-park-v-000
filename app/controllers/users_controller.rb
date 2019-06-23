@@ -5,8 +5,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user.happiness >= 3
-      @happiness = "happy"
+
+    if session[:user_id] == @user.id
+      if @user.happiness >= 3
+        @happiness = "happy"
+      end
+    else
+      redirect_to '/'
     end
   end
 
