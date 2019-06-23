@@ -77,6 +77,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     admin_login
     expect(current_path).to eq('/users/2')
     expect(page).to have_content("Walt Disney")
+    binding.pry
     expect(page).to have_content("ADMIN")
   end
 
