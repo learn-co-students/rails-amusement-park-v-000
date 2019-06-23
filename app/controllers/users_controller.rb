@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
-      #binding.pry
       redirect_to user_path(@user)
     else
       redirect_to '/'
@@ -16,8 +15,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    if User.find_by(params[:id]) && session[:user_id]
-      @user = User.find_by(params[:id])
+    if User.find_by(id: params[:id]) && session[:user_id]
+      @user = User.find_by(id: params[:id])
       render :show
     else
       redirect_to '/'
