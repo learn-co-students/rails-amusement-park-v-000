@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    
+    @user = User.find_by(id: session[:user_id])
   end
 
   # GET /users/1/edit
@@ -23,16 +23,19 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    # Create new user instance
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+    # If the user instance persists to the database (that means it passes all validations)...
+    if @user.save
+      # ...create a session ID for the user
+      session[:user_id] = @user.id
+      if params[:admin] == false
+        redirect_to @user, notice: 'User was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        redirect_to users_path, notice: 'Admin user was successfully created.'
       end
+    else
+      render :new
     end
   end
 
@@ -61,11 +64,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password, :password_confirmation, :nausea, :happiness, :tickets, :height, :admin)
+      params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
     end
 end
