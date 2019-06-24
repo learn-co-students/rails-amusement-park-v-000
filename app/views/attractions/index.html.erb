@@ -1,10 +1,8 @@
 <h1>Attractions</h1>
 <% @attractions.each do |attraction| %>
-    <% if admin? %>
         <%= render partial: 'admin_attraction', locals: {attraction: attraction}%>
-    <% else %>
         <%= render partial: 'attraction', locals: {attraction: attraction}%>
-    <% end %>
+
 <%end%>
 <br>
 <br>
