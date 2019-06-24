@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module RailsAmusementPark
   class Application < Rails::Application
+    # Add code to fix deprecation warning
+    config.active_record.sqlite3.represent_boolean_as_integer = true
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
