@@ -15,4 +15,15 @@ class Ride < ApplicationRecord
         user.happiness += attraction.happiness_rating  
         user.save 
     end
+
+    def update_user
+        user.tickets -=attraction.tickets
+        user.nausea += attraction.nausea_rating
+        user.happiness +=attraction.happiness_rating
+        user.save
+    end
+    
+     def good_ride?
+        user.tickets >= attraction.tickets && user.height >= attraction.min_height
+     end
 end
