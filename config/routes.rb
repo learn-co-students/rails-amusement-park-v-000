@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root '/', to: 'sessions#home'
+  
   resources :attractions
   resources :rides
   resources :users
