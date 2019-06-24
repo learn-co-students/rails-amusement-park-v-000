@@ -13,16 +13,16 @@
 ActiveRecord::Schema.define(version: 2019_06_21_203848) do
 
   create_table "attractions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rides", force: :cascade do |t|
     t.string "name"
     t.integer "tickets"
     t.integer "nausea_rating"
     t.integer "happiness_rating"
     t.integer "min_height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rides", force: :cascade do |t|
     t.integer "attraction_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
