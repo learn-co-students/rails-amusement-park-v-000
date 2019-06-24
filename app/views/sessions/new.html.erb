@@ -4,6 +4,6 @@
     <%= f.text_field :name %></br>
     <%= f.collection_select :name, User.all, :name, :name %>
     <%= f.label :password %>
-    <%= f.password_field :password %></br>
+    <%= f.password_field :password, id: "password" %>
     <%= f.submit "Sign In" %>
 <% end %>
