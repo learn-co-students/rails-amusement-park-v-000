@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # get '/session', to: 'users#delete'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
+  resources :attractions
   resources :users
   resources :sessions, only: %i[new create destroy]
   delete '/session', to: 'sessions#destroy'
