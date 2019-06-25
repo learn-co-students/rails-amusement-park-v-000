@@ -11,44 +11,41 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # POST /users
+  def create
+    @user = User.new(user_params) # Create new user instance
+    if @user.save # If the user instance persists to the database (that means it passes all validations)...
+      session[:user_id] = @user.id # ...create a session ID for the user
+      if @user.admin == false # If the user is not an admin...
+        redirect_to @user, notice: 'User was successfully created.' # ...redirect the user to their show page upon account creation
+      else # If the user is an admin...
+        redirect_to users_path, notice: 'Admin user was successfully created.' # ...redirect the user to the user index page upon account creation
+      end
+    else # if the user instance does not persist to the database (meaning it failed one or more validation)...
+      render :new # ...re-render the signup form
+    end
+  end
+
   # GET /users/1
   def show
-    @user = User.find_by(id: session[:user_id])
   end
 
   # GET /users/1/edit
   def edit
-    
-  end
-
-  # POST /users
-  def create
-    # Create new user instance
-    @user = User.new(user_params)
-    # If the user instance persists to the database (that means it passes all validations)...
-    if @user.save
-      # ...create a session ID for the user
-      session[:user_id] = @user.id
-      if params[:admin] == false
-        redirect_to @user, notice: 'User was successfully created.'
-      else
-        redirect_to users_path, notice: 'Admin user was successfully created.'
-      end
-    else
-      render :new
-    end
   end
 
   # PATCH/PUT /users/1
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+    # TODO: This controller action is incomplete
+    # If the user instance persists to the database (that means it passes all validations)...
+    if @user.update(user_params)
+      if @user.admin == false
+        redirect_to @user, notice: 'User was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        redirect_to users_path, notice: 'Admin user was successfully updated.'
       end
+    else
+      render :edit
     end
   end
 
