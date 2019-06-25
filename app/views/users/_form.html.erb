@@ -20,11 +20,6 @@
     <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
   
   <div class="field">
     <%= f.label :nausea %>
@@ -43,10 +38,10 @@
 
   <div class="field">
     <%= f.label :height %>
-    <%= f.number_field :height %>
+    <%= f.number_field :height %> inches
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <br><%= f.submit %>
   </div>
 <% end %>
