@@ -1,0 +1,6 @@
+
+<%= form_for(@user, url: signin_path(@user)) do |f| %>
+<%= f.collection_select(:name, User.all, :name, :name, prompt: true) %>
+Password: <%= f.text_field :password, id:"password" %><br />
+<%= f.submit  'Sign In'%>
+<% end %>
