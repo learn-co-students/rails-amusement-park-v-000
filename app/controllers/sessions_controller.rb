@@ -8,10 +8,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:name] == nil || params[:name].empty?
+    if params[:user][:name] == nil || params[:user][:name].empty?
       redirect_to signin_path
     else
-      @user = User.find_by(name: params[:name])
+      @user = User.find_by(id: params[:id])
+      # byebug
       if @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect_to user_path(@user)
