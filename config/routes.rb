@@ -3,12 +3,9 @@ Rails.application.routes.draw do
   root 'sessions#home'
 
   # Sessions
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
+  get '/signin', to: 'sessions#new'
+  post '/signin', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
-
-  # Users
-  get '/signin', to: 'users#new'
 
   resources :users
   resources :attractions
