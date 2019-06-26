@@ -18,8 +18,8 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        <% if @user %>
-          <a class="navbar-brand" href="/users/<%= @user.id %>"><%= @user.name %>'s profile</a>
+        <% if logged_in? %>
+          <a class="navbar-brand" href="/users/<%= current_user.id %>"><%= current_user.name %>'s profile</a>
         <% else %>
           <a class="navbar-brand" href="/users/new">Sign Up</a>
           <a class="navbar-brand" href="/signin">Log in</a>

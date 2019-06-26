@@ -1,54 +1,18 @@
+<!-- content -->
+<div class="container"  role="main">
+  <p id="notice"></p>
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>RailsAmusementPark</title>
-    <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="TGdKsGk3h+hRMmbh+epv/HbB15mjZyTAl2dWi62U3EOv4GtfEd8TK5KbmaZHgOhSSGl7nc3KRwen9CiHLy7/gQ==" />
+  <div class="center">
 
-    <link rel="stylesheet" media="all" href="/assets/application-769c1912d961603b900b009b8d6fee74a531a1cd3b2acb652e7551930f60a1aa.css" data-turbolinks-track="reload" />
-    <script src="/assets/application-ea948cf6d7d6990260bea2ea504692090a4d67393184dbd669ff06e58c696c55.js" data-turbolinks-track="reload"></script>
-  </head>
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        <a class="navbar-brand" href="https://flatiron-amusement-park.herokuapp.com/"/>Home</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+    <div class="info">
+      <p><strong>Name:</strong> <%= @user.name %></p>
+      <p><strong>Tickets:</strong> <%= @user.tickets %></p>
+      <p><strong>Mood:</strong>  <%= @happiness %></p>
+      <p><strong>Height:</strong> <%= @user.height %></p>
+      <% if @user.admin == true %>
+        <p><strong>ADMIN</strong></p>
+      <% end %>
+      <p><a href="/attractions">See attractions</a></p>
     </div>
-
-    <!-- content -->
-    <div class="container"  role="main">
-      <p id="notice"></p>
-
-
-
-
-<div class="center">
-
-  <div class="info">
-    <p><strong>Name:</strong> <%= @user.name %></p>
-    <p><strong>Tickets:</strong> <%= @user.tickets %></p>
-    <p><strong>Mood:</strong>  <%= @happiness %></p>
-    <p><strong>Height:</strong> <%= @user.height %></p>
-    <% if @user.admin == true %>
-      <p><strong>ADMIN</strong></p>
-    <% end %>
-    <p><a href="/attractions">See attractions</a></p>
   </div>
 </div>
-    </div>
-  </body>
-</html>
