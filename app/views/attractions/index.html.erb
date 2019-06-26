@@ -36,11 +36,11 @@
 
           <%= @attractions.each do | a | %>
             <tr>
-              <td>Chaos Exhilarator </td>
-              <td>6</td>
-              <td><a href="/attractions/26">Go on Chaos Exhilarator </a></td>
-      </tr>
-      <tr>
+              <td><%= a.name %> </td>
+              <td><%= a.tickets %></td>
+              <td><a href="/attractions/<%= a.id %>">Go on <%= a.name %></a></td>
+            </tr>
+          <% end %>
     
     <script src="" async defer></script>
   </body>
