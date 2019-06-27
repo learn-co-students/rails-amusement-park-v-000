@@ -14,7 +14,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
-    
+    @attraction = Attraction.find(params[:id])
   end
 
   def edit
@@ -28,4 +28,10 @@ class AttractionsController < ApplicationController
   def destroy
     
   end
+
+  # private
+
+  # def attraction_params
+  #   params.require(:attraction).permit(:name, :tickets, :happiness_rating, :min_height, :tickets, :height, :nausea_rating)
+  # end
 end
