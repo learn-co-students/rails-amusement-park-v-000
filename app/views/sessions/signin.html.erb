@@ -1,6 +1,6 @@
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
  <p><strong>Your name: </strong><%= select_tag "user_name", options_from_collection_for_select(@users, "name", "name"), prompt: 'Please select your username from this dropdown' %></p>
  <p><strong>Your password:</strong></p>
- <p><input name='password' type='text' id='password'></p>
+ <p><input name='password' type='password' id='password'></p>
  <p><%= submit_tag 'Sign In' %></p>
 <% end %>
