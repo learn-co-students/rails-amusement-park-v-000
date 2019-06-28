@@ -23,15 +23,15 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
 
-    respond_to do |format|
-      if @ride.save
-        format.html { redirect_to @ride, notice: 'Ride was successfully created.' }
-        format.json { render :show, status: :created, location: @ride }
-      else
-        format.html { render :new }
-        format.json { render json: @ride.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @ride.save
+    #     format.html { redirect_to @ride, notice: 'Ride was successfully created.' }
+    #     format.json { render :show, status: :created, location: @ride }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @ride.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /rides/1
@@ -59,7 +59,7 @@ class RidesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ride
-      @ride = Ride.find(params[:id])
+      @ride = Ride.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
