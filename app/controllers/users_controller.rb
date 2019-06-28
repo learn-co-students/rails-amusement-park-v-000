@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    render :show
   end
 
   # GET /users/1/edit
@@ -34,13 +35,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     # TODO: This controller action is incomplete
+    
     # If the user instance persists to the database (that means it passes all validations)...
     if @user.update(user_params)
-      if @user.admin == false
-        redirect_to @user, notice: 'User was successfully updated.'
-      else
-        redirect_to users_path, notice: 'Admin user was successfully updated.'
-      end
+      redirect_to @user, notice: 'User was successfully updated.'
     else
       render :edit
     end

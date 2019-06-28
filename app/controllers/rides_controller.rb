@@ -21,17 +21,15 @@ class RidesController < ApplicationController
 
   # POST /rides
   def create
-    @ride = Ride.new(ride_params)
+    attraction = Attraction.find_by(id: params[:attraction_id])
+    @ride = Ride.new(user_id: current_user.id, attraction_id: params[:attraction_id])
 
-    # respond_to do |format|
-    #   if @ride.save
-    #     format.html { redirect_to @ride, notice: 'Ride was successfully created.' }
-    #     format.json { render :show, status: :created, location: @ride }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @ride.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    if @ride.save
+      # TODO: Update user info
+      redirect_to user_path(current_user), notice: "#{attraction.name.upcase} was successfully ridden."
+    else
+      redirect_to attraction_path(attraction), notice: "#{attraction.name.upcase} was not ridden."
+    end
   end
 
   # PATCH/PUT /rides/1
