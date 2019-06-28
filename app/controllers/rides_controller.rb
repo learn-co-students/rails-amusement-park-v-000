@@ -2,13 +2,11 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update, :destroy]
 
   # GET /rides
-  # GET /rides.json
   def index
     @rides = Ride.all
   end
 
   # GET /rides/1
-  # GET /rides/1.json
   def show
   end
 
@@ -22,7 +20,6 @@ class RidesController < ApplicationController
   end
 
   # POST /rides
-  # POST /rides.json
   def create
     @ride = Ride.new(ride_params)
 
@@ -38,7 +35,6 @@ class RidesController < ApplicationController
   end
 
   # PATCH/PUT /rides/1
-  # PATCH/PUT /rides/1.json
   def update
     respond_to do |format|
       if @ride.update(ride_params)
@@ -52,7 +48,6 @@ class RidesController < ApplicationController
   end
 
   # DELETE /rides/1
-  # DELETE /rides/1.json
   def destroy
     @ride.destroy
     respond_to do |format|
@@ -69,6 +64,6 @@ class RidesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ride_params
-      params.require(:ride).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
+      params.fetch(:ride, {})
     end
 end

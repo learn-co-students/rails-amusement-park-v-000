@@ -2,13 +2,11 @@ class AttractionsController < ApplicationController
   before_action :set_attraction, only: [:show, :edit, :update, :destroy]
 
   # GET /attractions
-  # GET /attractions.json
   def index
     @attractions = Attraction.all
   end
 
   # GET /attractions/1
-  # GET /attractions/1.json
   def show
   end
 
@@ -22,7 +20,6 @@ class AttractionsController < ApplicationController
   end
 
   # POST /attractions
-  # POST /attractions.json
   def create
     @attraction = Attraction.new(attraction_params)
 
@@ -38,7 +35,6 @@ class AttractionsController < ApplicationController
   end
 
   # PATCH/PUT /attractions/1
-  # PATCH/PUT /attractions/1.json
   def update
     respond_to do |format|
       if @attraction.update(attraction_params)
@@ -52,7 +48,6 @@ class AttractionsController < ApplicationController
   end
 
   # DELETE /attractions/1
-  # DELETE /attractions/1.json
   def destroy
     @attraction.destroy
     respond_to do |format|
@@ -69,6 +64,6 @@ class AttractionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attraction_params
-      params.fetch(:attraction, {})
+      params.require(:attraction).permit(:name, :tickets, :nausea_rating, :happiness_rating, :min_height)
     end
 end
