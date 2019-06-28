@@ -25,7 +25,10 @@
     <%= @attraction.min_height %>
   </p><br><br>
 
-  <%= button_to "Go on this ride", user_path(current_user) %><br><br>
+  <%= form_tag('/rides', method: 'post') do %>
+    <%= hidden_field_tag('attraction_id', @attraction.id) %>
+    <%= submit_tag "Go on this ride" %>
+  <% end %><br><br>
 
 <%= link_to 'Edit', edit_attraction_path(@attraction) %> | 
 <%= link_to 'Back', attractions_path %> | 
