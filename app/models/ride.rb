@@ -15,6 +15,7 @@ class Ride < ActiveRecord::Base
     else # The user rides the attraction
       # Update the user's number of tickets, nausea, and happiness
       user.update(tickets: user.tickets -= attraction.tickets, nausea: user.nausea += attraction.nausea_rating, happiness: user.happiness += attraction.happiness_rating)
+      "Thanks for riding the #{attraction.name}!"
     end
   end
 end

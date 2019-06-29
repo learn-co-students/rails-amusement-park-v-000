@@ -21,12 +21,12 @@ class RidesController < ApplicationController
 
   # POST /rides
   def create
-    ride = Ride.new(user_id: current_user.id, attraction_id: params[:attraction_id])
-    if ride.save
-      ride.take_ride
-      redirect_to user_path(current_user)
+    @ride = Ride.new(user_id: current_user.id, attraction_id: params[:attraction_id])
+    if @ride.save
+      
+      redirect_to user_path(current_user), notice: @ride.take_ride
     else
-      redirect_to attraction_path(attraction), notice: "#{ride.attraction.name} was not ridden."
+      redirect_to attraction_path(attraction), notice: "#{@ride.attraction.name} was not ridden."
     end
   end
 
