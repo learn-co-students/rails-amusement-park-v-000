@@ -8,10 +8,11 @@
     <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
 
 
-    <form class="new_ride" id="new_ride" action="/rides" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="">
-        <input type="hidden" value="1138" name="ride[user_id]" id="ride_user_id"><br>
-        <input type="hidden" value="50" name="ride[attraction_id]" id="ride_attraction_id"><br>
-        <input type="submit" name="commit" value="Go on this ride" class="btn btn-light" data-disable-with="Go on this ride">
-</form>
+
+    <%= form_tag("/rides", method: :post) do %>
+    <%= hidden_field_tag :attraction_id, @attraction.id %>
+    <%= submit_tag 'Go on this ride' %>
+    <%  end %>
+
   </div>
 </div>
