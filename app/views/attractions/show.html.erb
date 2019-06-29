@@ -1,9 +1,17 @@
-<h2><%= @attraction.name %></h2>
+<div class="center">
+  <div class="info">
+    <p><strong>Name:</strong><%= @attraction.name %></p>
+    <p><strong>Total Number of Users:</strong> <%= @attraction.users.count %> </p>
+    <p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
+    <p><strong>Height Requirement:</strong> <%= @attraction.min_height %></p>
+    <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
+    <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
 
-<h4><%= button_to "Go on this ride", method: "get", user_path(current_user) %></h4>
-<form action="/rides/new" method="post">
-        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-        <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
-        <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
-        <input class="btn btn-light" type="submit" value="Go on this ride">
-      </form> 
+
+    <form class="new_ride" id="new_ride" action="/rides" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="">
+        <input type="hidden" value="1138" name="ride[user_id]" id="ride_user_id"><br>
+        <input type="hidden" value="50" name="ride[attraction_id]" id="ride_attraction_id"><br>
+        <input type="submit" name="commit" value="Go on this ride" class="btn btn-light" data-disable-with="Go on this ride">
+</form>
+  </div>
+</div>

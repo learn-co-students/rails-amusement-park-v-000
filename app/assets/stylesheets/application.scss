@@ -50,3 +50,17 @@ body {
   height: 290px;
   text-align: left;
 }
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+table {
+  display: table;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-color: grey;
+}

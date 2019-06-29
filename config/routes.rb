@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   match 'attractions', to: 'attractions#show', via: [:get, :post]
 
+  resources :rides, only: [:new, :show, :create]
+
 end
