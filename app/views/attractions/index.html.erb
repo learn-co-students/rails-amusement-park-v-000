@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Attractions</h1>
+<h1>Attractions</h1><br>
 
-<table>
+<table class="table">
   <thead>
-    <tr>
-      <th colspan="3">Name</th>
-      <th colspan="3">Tickets</th>
-      <th colspan="3">Details</th>
+    <tr class="row">
+      <th scope="col" class="col-4">Name</th>
+      <th scope="col" class="text-center col-1">Tickets</th>
+      <th scope="col" class="text-right col-4">Details</th>
     </tr>
   </thead>
 
   <tbody>
     <% @attractions.each do |attraction| %>
-      <tr>
-        <td colspan="3"><%= attraction.name %></td>
-        <td colspan="3"><%= attraction.tickets %></td>
-        <td colspan="3"><%= link_to table_display(attraction), attraction %></td>
+      <tr class="row">
+        <td class="col-4"><%= attraction.name %></td>
+        <td class="text-center col-1"><%= attraction.tickets %></td>
+        <td class="text-right col-4"><%= link_to table_display(attraction), attraction %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Attraction', new_attraction_path %>
+<%= link_to 'Create New Attraction', new_attraction_path %>
