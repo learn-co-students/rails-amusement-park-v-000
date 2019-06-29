@@ -10,7 +10,11 @@
       <p><strong>Ticket Requirement:</strong>  <%= @attraction.tickets %></p>
       <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
       <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
-      <input type="submit" name="commit" value="Go on this ride" class="btn btn-light" data-disable-with="Go on this ride">
+  <div class="btn btn-light" data-disable-with="Go on this ride">
+    <%= form_for @user do |f| %>
+      <%= f.submit "Go on this ride" %>
+    <% end %>
+  </div>
     </div>
   </div>
 </div>

@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    byebug
     @user = User.find(params[:id])
 
     @user.update(user_params)
