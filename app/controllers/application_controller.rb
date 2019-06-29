@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def admin_only
+    if !current_user.admin
+      redirect_to root_path, notice: "You do not have permission to view this page."
+    end
+  end
+
   private
     def require_login
       redirect_to root_path unless session.include? :user_id
