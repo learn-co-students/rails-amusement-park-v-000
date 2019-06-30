@@ -6,7 +6,7 @@ class RidesController < ApplicationController
         @ride = current_user.rides.create(attraction: @attraction)
         # binding.pry
         @message = @ride.take_ride
-        redirect_to user_path(@ride.user, :message => @message)
+        redirect_to user_path(@ride.user), flash: {message: @message}
     end
 
 
