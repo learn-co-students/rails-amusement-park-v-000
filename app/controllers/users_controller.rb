@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     def show
       @user = User.find_by(id: params[:id])
       # binding.pry
+      if params[:message]
+        flash[:message] = params[:message]
+
+      end
       if !current_user.admin
         if current_user != @user
           redirect_to root_path
@@ -35,5 +39,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
 
     end
-
 end

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  resources :attractions, only: [:index, :show]
+  resources :attractions, only: [:new, :create, :index, :show, :edit, :update]
 
   match 'attractions', to: 'attractions#show', via: [:get, :post]
 

@@ -24,14 +24,21 @@
       <tr>
         <td><%=attraction.name%></td>
         <td><%=attraction.tickets%></td>
-          <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
-        </td>
+        <% if current_user.admin %>
+          <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %>
+            <% else %>
+          <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+          <% end %>
+
       </tr>
         <% end %>
     </tbody>
   </table>
   <br>
 
+<% if current_user.admin %>
+  <%= link_to "New Attraction", new_attraction_path %>
+  <% end %>
 
 
 </div>
