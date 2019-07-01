@@ -40,9 +40,12 @@ class UsersController < ApplicationController
 
   def update
     # byebug
-    @user = User.find(params[:id])
+    @user = User.find(params[:user][:user_id])
+    attraction = Attraction.find(params[:user][:attraction_id])
 
-    @user.update(user_params)
+    new_user_tickets = @user.tickets - attraction.tickets
+
+    @user.update(tickets: new_user_tickets)
 
     if @user.save
       redirect_to @user
