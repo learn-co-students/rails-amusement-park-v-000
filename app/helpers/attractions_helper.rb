@@ -9,6 +9,7 @@ module AttractionsHelper
   end
 
   def show_page(attraction)
-
+    
   end
+
 end

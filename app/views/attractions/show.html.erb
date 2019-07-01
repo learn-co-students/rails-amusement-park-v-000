@@ -11,12 +11,12 @@
     <% if current_user.admin %>
       <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
     <% else %>
-    <%= form_tag("/rides", method: :post) do %>
-    <%= hidden_field_tag :attraction_id, @attraction.id %>
-    <%= submit_tag 'Go on this ride' %>
-    <%  end %>
-
+      <%= form_tag("/rides", method: :post) do %>
+      <%= hidden_field_tag :attraction_id, @attraction.id %>
+      <%= submit_tag 'Go on this ride' %>
+      <% end %>
     <% end %>
+
 
   </div>
 </div>
