@@ -11,7 +11,8 @@
       <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
       <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
   <div class="btn btn-light" data-disable-with="Go on this ride">
-    <%= form_tag @user do |f| %>
+    <%= form_for @user do |f| %>
+      <%= f.hidden_field :user_id, {:value => current_user.id} %>
       <%= f.submit "Go on this ride" %>
     <% end %>
   </div>
