@@ -10,8 +10,16 @@ class UsersController < ApplicationController
 
       if @user.happiness
 
-        if @user.happiness >= 3
+        # if @user.happiness >= 3
+        #   @happiness = "happy"
+        # end
+
+        case @user.happiness when 3
           @happiness = "happy"
+        when 2
+          @happiness = "sad"
+        else
+          @happiness = "unknown"
         end
       end
     else
@@ -43,9 +51,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:user][:user_id])
     attraction = Attraction.find(params[:user][:attraction_id])
 
-    new_user_tickets = @user.tickets - attraction.tickets
+    # new_user_tickets = @user.tickets - attraction.tickets
 
-    @user.update(tickets: new_user_tickets)
+    # @user.update(tickets: new_user_tickets)
+
+    @user.update(tickets: (@user.tickets - attraction.tickets), happiness: (@user.happiness - attraction.happiness_rating))
 
     if @user.save
       redirect_to @user
