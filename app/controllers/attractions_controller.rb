@@ -29,7 +29,6 @@ class AttractionsController < ApplicationController
   end
 
   def update
-    # byebug
     @attraction = Attraction.find(params[:id])
     @attraction.update(name: attraction_params[:name], tickets: attraction_params[:tickets], happiness_rating: attraction_params[:happiness_rating], min_height: attraction_params[:min_height], nausea_rating: attraction_params[:nausea_rating])
 
