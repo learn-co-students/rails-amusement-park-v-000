@@ -52,8 +52,12 @@ class UsersController < ApplicationController
     if @user.height >= attraction.min_height && @user.tickets >= attraction.tickets
       @user.update(tickets: (@user.tickets - attraction.tickets), happiness: (@user.happiness - attraction.happiness_rating))
       flash[:notice] = "Thanks for riding the #{attraction.name}!"
-    elsif @user.height < attraction.min_height
+    elsif @user.height < attraction.min_height && @user.tickets >= attraction.tickets
       flash[:notice] = "You are not tall enough to ride the #{attraction.name}"
+    elsif @user.tickets < attraction.tickets && @user.height >= attraction.min_height
+      flash[:notice] = "You do not have enough tickets to ride the #{attraction.name}"
+    else
+      flash[:notice] = "You are not tall enough to ride the #{attraction.name}. You do not have enough tickets to ride the #{attraction.name}. Tickets: #{@user.tickets}"
     end
 
     if @user.save
