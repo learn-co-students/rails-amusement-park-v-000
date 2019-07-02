@@ -25,11 +25,19 @@ class AttractionsController < ApplicationController
   end
 
   def edit
-    
+    @attraction = Attraction.find(params[:id])
   end
 
   def update
-    
+    # byebug
+    @attraction = Attraction.find(params[:id])
+    @attraction.update(name: attraction_params[:name], tickets: attraction_params[:tickets], happiness_rating: attraction_params[:happiness_rating], min_height: attraction_params[:min_height], nausea_rating: attraction_params[:nausea_rating])
+
+    if @attraction.save
+      redirect_to @attraction
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -39,6 +47,6 @@ class AttractionsController < ApplicationController
   private
 
   def attraction_params
-    params.require(:attraction).permit(:name, :tickets, :happiness_rating, :min_height, :tickets, :height, :nausea_rating)
+    params.require(:attraction).permit(:id, :name, :tickets, :happiness_rating, :min_height,  :nausea_rating)
   end
 end
