@@ -18,9 +18,9 @@ class UsersController < ApplicationController
         end
       end
 
-      # if flash[:notice]
-        
-      # end
+      if flash[:notice]
+        @msg = flash[:notice]
+      end
     else
       redirect_to '/'
     end
@@ -49,7 +49,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:user][:user_id])
     attraction = Attraction.find(params[:user][:attraction_id])
 
-    @user.update(tickets: (@user.tickets - attraction.tickets), happiness: (@user.happiness - attraction.happiness_rating))
+    if @user.height >= attraction.min_height && @user.tickets >= attraction.tickets
+      @user.update(tickets: (@user.tickets - attraction.tickets), happiness: (@user.happiness - attraction.happiness_rating))
+      flash[:notice] = "Thanks for riding the #{attraction.name}!"
+    elsif @user.height < attraction.min_height
+      flash[:notice] = "You are not tall enough to ride the #{attraction.name}"
+    end
 
     if @user.save
       redirect_to @user
