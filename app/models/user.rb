@@ -2,8 +2,8 @@ class User < ApplicationRecord
   has_many :rides
   has_many :attractions, through: :rides
 
-  validates :name, :password, presence: true 
-  validates :name, uniqueness: true
+  validates :name, :password, presence: true, on: :create
+  validates :name, uniqueness: true, on: :create
 
   has_secure_password
 

@@ -10,9 +10,10 @@ class Ride < ApplicationRecord
     elsif self.user.height < self.attraction.min_height
       "Sorry. You are not tall enough to ride the #{self.attraction.name}."
     elsif self.user.tickets >= self.attraction.tickets
-      self.user.update_column(:tickets, (self.user.tickets - self.attraction.tickets))
-      self.user.update_column(:nausea, (self.user.nausea + self.attraction.nausea_rating))
-      self.user.update_column(:happiness, (self.user.happiness + self.attraction.happiness_rating))
+      self.user.tickets = self.user.tickets -= self.attraction.tickets
+      self.user.nausea = self.user.nausea += self.attraction.nausea_rating
+      self.user.happiness = self.user.happiness += self.attraction.happiness_rating
+      self.user.save
       "Thanks for riding the #{self.attraction.name}!"
     end
 

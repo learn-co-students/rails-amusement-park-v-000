@@ -1,12 +1,18 @@
-<% if @message %>
-  <%= @message %>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
 <% end %>
 
 
-Name: <%= @user.name %> <br> 
-Tickets: <%= @user.tickets %> <br>
- Mood: <%= @user.mood %> <br>
- Height: <%= @user.height %> inches <br> 
+<h1><%= @user.name %></h1>
+
+<label>Mood</label>
+<p><%= @user.mood %></p>
+
+<label>Tickets:</label>
+<p><%= @user.tickets %></p>
+
+<label>Height</label>
+<p><%= @user.height %> inches</p>
 
 <%= display_admin(@user) %>
 

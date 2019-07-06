@@ -2,8 +2,8 @@ class RidesController < ApplicationController
 
   def create
     @ride = Ride.create(ride_params)
-    @message =  @ride.take_ride
-    redirect_to user_path(@ride.user, message: @message)
+    flash[:notice] = @ride.take_ride
+    redirect_to user_path(@ride.user)
   end
 
   private
