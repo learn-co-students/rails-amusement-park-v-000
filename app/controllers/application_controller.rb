@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-  	return redirect_to '/login' unless logged_in?
+    #binding.pry
+  	return redirect_to root_path unless logged_in?
   end
+
+  # def is_admin?
+  #   if current_user
+  #     current_user.admin
+  #   end
+  # end
 end

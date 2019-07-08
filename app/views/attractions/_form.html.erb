@@ -15,7 +15,7 @@
   <%= f.text_field :min_height, size: '100' %><br><br>
 
   <%= f.submit 'Create Attraction' %>
-  <% if @user.admin? %>
+  <% if @user.admin %>
   	<%= f.submit 'Update Attraction' %>
   <% end %>
 <% end %>

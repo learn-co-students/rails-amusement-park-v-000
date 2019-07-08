@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
 			'neutral'
 		end
 	end
+
+  def is_admin?
+		@admin
+	end
 end

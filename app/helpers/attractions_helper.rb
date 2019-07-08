@@ -1,7 +1,7 @@
 module AttractionsHelper
-  def is_admin?
+  def if_admin_add_attraction
 		if @user.admin?
-			'ADMIN'
+	 		link_to 'New Attraction', new_attraction_path
 		end
 	end
 end
