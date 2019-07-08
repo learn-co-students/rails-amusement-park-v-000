@@ -21,8 +21,17 @@ class UsersController < ApplicationController
     def hello
     end
 
-    def ride 
-        redirect_to attractions_path
+    def ride
+        @attraction = Attraction.find(params[:attraction][:id])
+        @user = User.find(session[:user_id])
+        @ride = Ride.new 
+        @ride.attraction = @attraction
+        @ride.user = @user
+        @ride.save 
+
+        @ride.take_ride
+
+        redirect_to user_path(@user)
     end
 
     private

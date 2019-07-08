@@ -4,4 +4,7 @@
 <p>Tickets: <%= @attraction.tickets %></p>
 <p>Minimum Height: <%= @attraction.min_height %></p>
 
-<%= button_to "Go on this ride", users_ride_path %>
+<%= form_tag ({controller: 'users', action: 'ride', method: 'post'}) do %>
+    <%= hidden_field(:attraction, :id) %>
+    <%= submit_tag "Go on this ride" %>
+    <% end %>
