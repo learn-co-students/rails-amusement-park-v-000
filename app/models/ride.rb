@@ -4,12 +4,16 @@ class Ride < ActiveRecord::Base
 
     def take_ride 
         if too_short && too_broke 
+            @message = "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
             "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
         elsif too_broke && !too_short
+            @message = "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
             "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
         elsif too_short && !too_broke
+            @message = "Sorry. You are not tall enough to ride the #{self.attraction.name}."
             "Sorry. You are not tall enough to ride the #{self.attraction.name}."
         else
+            @message = "Thanks for riding the #{self.attraction.name}!"
             self.user.tickets = self.user.tickets - self.attraction.tickets
             self.user.happiness = self.user.happiness + self.attraction.happiness_rating
             self.user.nausea = self.user.nausea + self.attraction.nausea_rating

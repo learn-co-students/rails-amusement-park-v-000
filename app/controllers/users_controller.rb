@@ -31,12 +31,30 @@ class UsersController < ApplicationController
 
         @ride.take_ride
 
-        redirect_to user_path(@user)
+        if @ride.too_short && @ride.too_broke 
+            @message = "Sorry. You do not have enough tickets to ride the #{@ride.attraction.name}. You are not tall enough to ride the #{@ride.attraction.name}."
+        elsif @ride.too_broke && !@ride.too_short
+            @message = "Sorry. You do not have enough tickets to ride the #{@ride.attraction.name}."
+        elsif @ride.too_short && !@ride.too_broke
+            @message = "Sorry. You are not tall enough to ride the #{@ride.attraction.name}."
+        else
+            @message = "Thanks for riding the #{@ride.attraction.name}!"
+        end
+
+        render 'show'
     end
 
     private
 
     def user_params
         params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
+    end
+
+    def @ride.too_short 
+        @ride.attraction.min_height > @ride.user.height 
+    end
+
+    def @ride.too_broke 
+        @ride.attraction.tickets > @ride.user.tickets 
     end
 end
