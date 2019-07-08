@@ -20,7 +20,7 @@
   <label>Height:</label><br>
   <%= f.text_field :height %><br>
 
-  <%= f.hidden_field(@user, :admin, :value => false %>
+  <%= f.hidden_field(:admin) %>
 
   <%= f.submit "Create User" %>
 <% end %>
