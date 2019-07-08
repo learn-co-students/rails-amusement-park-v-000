@@ -1,0 +1,21 @@
+<%= form_for(attraction) do |f| %>
+  <label>Name</label><br>
+  <%= f.text_field :name, size: '100' %><br><br>
+
+  <label>Tickets</label><br>
+  <%= f.text_field :tickets, size: '100' %><br><br>
+
+  <label>Nausea Rating</label><br>
+  <%= f.text_field :nausea_rating, size: '100' %><br><br>
+
+  <label>Happiness Rating</label><br>
+  <%= f.text_field :happiness_rating, size: '100' %><br><br>
+
+  <label>Minimum Height</label><br>
+  <%= f.text_field :min_height, size: '100' %><br><br>
+
+  <%= f.submit 'Create Attraction' %>
+  <% if @user.admin? %>
+  	<%= f.submit 'Update Attraction' %>
+  <% end %>
+<% end %>
