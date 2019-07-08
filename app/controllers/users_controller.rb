@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
     def show 
         @user = User.find(params[:id])
+        @message = session[:message]
         if session[:user_id] != @user.id 
             redirect_to :root
         else 
@@ -32,16 +33,16 @@ class UsersController < ApplicationController
         @ride.take_ride
 
         if @ride.too_short && @ride.too_broke 
-            @message = "Sorry. You do not have enough tickets to ride the #{@ride.attraction.name}. You are not tall enough to ride the #{@ride.attraction.name}."
+            session[:message] = "Sorry. You do not have enough tickets to ride the #{@ride.attraction.name}. You are not tall enough to ride the #{@ride.attraction.name}."
         elsif @ride.too_broke && !@ride.too_short
-            @message = "Sorry. You do not have enough tickets to ride the #{@ride.attraction.name}."
+            session[:message] = "Sorry. You do not have enough tickets to ride the #{@ride.attraction.name}."
         elsif @ride.too_short && !@ride.too_broke
-            @message = "Sorry. You are not tall enough to ride the #{@ride.attraction.name}."
+            session[:message] = "Sorry. You are not tall enough to ride the #{@ride.attraction.name}."
         else
-            @message = "Thanks for riding the #{@ride.attraction.name}!"
+            session[:message] = "Thanks for riding the #{@ride.attraction.name}!"
         end
 
-        render 'show'
+        redirect_to user_path(@user)
     end
 
     private
