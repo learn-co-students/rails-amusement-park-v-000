@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     def hello
     end
 
+    def ride 
+        redirect_to attractions_path
+    end
+
     private
 
     def user_params
