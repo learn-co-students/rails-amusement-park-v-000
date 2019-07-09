@@ -8,3 +8,9 @@
 </ul>
 
 <%= link_to "New Attraction", new_attraction_path %>
+
+<ul>
+  <% @attractions.each do |a| %>
+    <li><%= link_to "Show #{a.name}", attraction_path(a)%></li>
+  <% end %>
+</ul>
