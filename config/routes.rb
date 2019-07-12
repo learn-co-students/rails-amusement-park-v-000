@@ -5,6 +5,8 @@ root "static_pages#home"
 
 get "/signin", to: "sessions#new"
 
+get '/users/:id' => 'users#show'
+
 resources :users
 resources :attractions
 resources :rides
