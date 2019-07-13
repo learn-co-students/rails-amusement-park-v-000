@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 root "static_pages#home"
 
 get "/signin", to: "sessions#new"
+post "/signin", to: "sessions#create"
 
-
+#post '/logout' => 'sessions#destroy'
 
 resources :users
 
@@ -13,6 +14,9 @@ get '/users/:id' => 'users#show'
 
 resources :attractions
 resources :rides
+resources :sessions
+
+delete '/logout' => 'sessions#destroy'
 
 #get '/users/new' => 'users#new'
 
