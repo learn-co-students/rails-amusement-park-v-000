@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
   
       def create
      
-          if user = User.find_by(id: params[:user][:id])
-  
-          #if user.try(:authenticate, params[:user][:password])
+          user = User.find_by(id: params[:user][:id])
+       
+          if user.try(:authenticate, params[:user][:password])
       
           session[:user_id] = user.id
       
@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
           #redirect_to controller: 'users', action: 'show'
           
         else
-            redirect_to controller: 'static_pages', action: 'home'
+            #redirect_to controller: 'static_pages', action: 'home'
+            redirect_to '/'
           #redirect_to(controller: 'sessions', action: 'new')
       end
     end

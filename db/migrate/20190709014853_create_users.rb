@@ -3,9 +3,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
       t.string :name
       t.string :password
-      t.integer :nausea
-      t.integer :happiness
-      t.integer :tickets
+      t.integer :nausea, :default => 0
+      t.integer :happiness, :default => 0
+      t.integer :tickets, :default => 0
       t.integer :height
 
       t.timestamps
