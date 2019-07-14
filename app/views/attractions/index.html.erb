@@ -1,0 +1,5 @@
+<% @attractions.each do |f| %>
+    <li><%= link_to "Go on #{f.name}", attraction_path(f) %></li>
+  <%# f.name %>
+    <% end %>
+
