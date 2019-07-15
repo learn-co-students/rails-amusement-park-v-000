@@ -1,0 +1,5 @@
+<%= form_for(@ride) do |f|%>
+<%= f.hidden_field :user, :value => @user.id %>
+<%= f.hidden_field :attraction, :value => @attraction.id %>
+<%= f.submit 'Go on this ride' %>
+<% end %>

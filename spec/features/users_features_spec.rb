@@ -221,6 +221,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     click_link('See attractions')
     click_link("Go on #{@ferriswheel.name}")
     click_button("Go on this ride")
+
     expect(current_path).to eq("/users/1")
   end
 
