@@ -4,19 +4,19 @@ class Ride < ActiveRecord::Base
 
     def take_ride
      
-        if (user.tickets < attraction.tickets) && (user.height < attraction.min_height)
-            return "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
-        elsif user.tickets < attraction.tickets
-            return "Sorry. You do not have enough tickets to ride the #{attraction.name}."
-        elsif user.height < attraction.min_height
-            return "Sorry. You are not tall enough to ride the #{attraction.name}."
+        if (self.user.tickets < self.attraction.tickets) && (self.user.height < self.attraction.min_height)
+            return "Sorry. You do not have enough tickets to ride the #{self.attraction.name}. You are not tall enough to ride the #{self.attraction.name}."
+        elsif self.user.tickets < self.attraction.tickets
+            return "Sorry. You do not have enough tickets to ride the #{self.attraction.name}."
+        elsif self.user.height < self.attraction.min_height
+            return "Sorry. You are not tall enough to ride the #{self.attraction.name}."
         else
-            #a = user.tickets - attraction.tickets
-            #b = user.nausea + attraction.nausea_rating
-            #c = user.happiness + attraction.happiness_rating
-            user.update(:tickets => user.tickets - attraction.tickets, 
-            :nausea => user.nausea + attraction.nausea_rating,
-            :happiness => user.happiness + attraction.happiness_rating)
+            #a = self.user.tickets - self.attraction.tickets
+            #b = self.user.nausea + self.attraction.nausea_rating
+            #c = self.user.happiness + self.attraction.happiness_rating
+            self.user.update(:tickets => self.user.tickets - self.attraction.tickets, 
+            :nausea => self.user.nausea + self.attraction.nausea_rating,
+            :happiness => self.user.happiness + self.attraction.happiness_rating)
         end
     end
 
