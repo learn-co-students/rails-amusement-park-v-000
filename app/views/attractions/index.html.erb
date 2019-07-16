@@ -3,3 +3,9 @@
   <%# f.name %>
     <% end %>
 
+    <br>
+
+  <% if @user.admin %>
+    <p><strong>ADMIN</strong></p>
+    <li><%= link_to "New Attraction", new_attraction_path %></li>
+  <% end %>
