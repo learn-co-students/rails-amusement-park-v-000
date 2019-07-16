@@ -16,7 +16,7 @@ class AttractionsController < ApplicationController
   end
 
   def create
-    @attraction = Attraction.new(attraction_params)
+    @attraction = Attraction.create(attraction_params)
     redirect_to attraction_path(@attraction)
   end
 
