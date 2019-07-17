@@ -5,3 +5,8 @@
 <% end %>
 
 <%= @attraction.name %>
+
+<% if @user.admin %>
+    <p><strong>ADMIN</strong></p>
+    <li><%= link_to "Edit Attraction", edit_attraction_path %></li>
+  <% end %>
