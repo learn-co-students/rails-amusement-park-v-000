@@ -1,0 +1,12 @@
+<%= form_for(@ride) do |f|%>
+<%= f.hidden_field :user_id, :value => @user.id %>
+<%= f.hidden_field :attraction_id, :value => @attraction.id %>
+<%= f.submit 'Go on this ride' %>
+<% end %>
+
+<%= @attraction.name %>
+
+<% if @user.admin %>
+    <p><strong>ADMIN</strong></p>
+    <li><%= link_to "Edit Attraction", edit_attraction_path %></li>
+  <% end %>
