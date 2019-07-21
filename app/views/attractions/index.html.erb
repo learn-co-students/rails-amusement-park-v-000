@@ -1,0 +1,12 @@
+<% @attractions.each do |attraction| %>
+  <p>
+    Name: <%= attraction.name %>
+    Tickets: <%= attraction.tickets %>
+    Details: <%= attraction_detail_link(attraction) %>
+
+    
+  </p>
+
+<% end %>
+
+<p><%= admin_index_link(current_user) %></p>
