@@ -1,0 +1,12 @@
+<%# Should I use divs within the rails form to assign div class="form-group"?? %>
+
+<%= form_tag signin_path do %>
+  <label>Your name: </label>
+  <%= collection_select :user, :name, User.all, :name, :name, {:include_blank => "Please select your username from this dropdown"} %><br><br>
+  <label>Your password:</label><br>
+  <%= password_field_tag :password, nil, :class => "form-control" %><br>
+
+  <%# add data-disable with and class to button %>
+  <%# change to rails form helper %>
+  <input type=submit value="Sign In">
+<% end %>
