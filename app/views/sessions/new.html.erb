@@ -1,4 +1,4 @@
-<%= form_for(:session, url: signin_path) do |f| %>
+<%= form_for(:user, url: signin_path) do |f| %>
     <%= f.collection_select(:name, User.all, :id, :name) %><br>
     <%= f.password_field :password %><br>
 
