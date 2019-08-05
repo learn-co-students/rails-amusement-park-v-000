@@ -1,5 +1,5 @@
 <%= form_for(:user, url: signin_path) do |f| %>
-    <%= f.collection_select(:name, User.all, :id, :name) %><br>
+    <%= f.collection_select(:name, User.all, :name, :name) %><br>
     <%= f.password_field :password %><br>
 
     <%= f.submit "Sign In" %>
