@@ -4,24 +4,33 @@ class AttractionsController < ApplicationController
         @attractions = Attraction.all
     end
 
-    def show
+    def new
+        @attraction = Attraction.new
+    end
+
+    def create
+        @attraction = Attraction.create(attraction_params)
+        redirect_to attraction_path(@attraction)
+    end
+
+    def edit
         @attraction = Attraction.find(params[:id])
     end
 
     def update
-        user = User.find(session[:user_id])
-        @ride = Ride.create(user_id: user.id, attraction_id: params[:id])
-        @ride.take_ride
-        if @ride.user.height < @ride.attraction.min_height && @ride.user.tickets < @ride.attraction.tickets
-            flash[:notice] = "You are not tall enough to ride the #{@ride.attraction.name} You do not have enough tickets to ride the #{@ride.attraction.name}"
-        elsif @ride.user.height < @ride.attraction.min_height
-            flash[:notice] = "You are not tall enough to ride the #{@ride.attraction.name}"
-        elsif @ride.user.tickets < @ride.attraction.tickets
-            flash[:notice] = "You do not have enough tickets to ride the #{@ride.attraction.name}"
-        else
-            flash[:notice] = "Thanks for riding the #{@ride.attraction.name}!"
-        end
-        redirect_to user_path(@ride.user)
+        @attraction = Attraction.find(params[:id])
+        @attraction.update(attraction_params)
+        redirect_to attraction_path(@attraction)
+    end
+
+    def show
+        @attraction = Attraction.find(params[:id])
+    end
+
+    private
+
+    def attraction_params
+        params.require(:attraction).permit(:name, :min_height, :nausea_rating, :happiness_rating, :tickets)
     end
 
 end

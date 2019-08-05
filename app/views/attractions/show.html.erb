@@ -1,1 +1,7 @@
-<%= button_to "Go on this ride", attraction_path, :method => "put" %>
+<%= @attraction.name %>
+
+<%= button_to "Go on this ride", user_path, :method => "put" %>
+
+<% if User.find(session[:user_id]).admin %>
+    <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>

@@ -1,6 +1,6 @@
 module UsersHelper
 
-    def logged_in?
+    def logged_in
         if session[:user_id]
         end
     end
