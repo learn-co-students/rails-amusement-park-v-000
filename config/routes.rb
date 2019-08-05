@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root to: "users#index"
 
   resources :users
+
+  get '/signin', to: 'sessions#new', as: 'signin'
 end
