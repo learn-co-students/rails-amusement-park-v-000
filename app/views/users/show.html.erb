@@ -1,6 +1,10 @@
 <%= @user.name %> <br>
 Mood: <%= @user.mood %> <br>
-<%= @user.tickets %> <br>
+Tickets: <%= @user.tickets %> <br>
 <%= @user.height %> <br>
 
 <%= link_to "See attractions", attractions_path %>
+
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
