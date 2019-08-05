@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_attraction
-    current_attraction ||= Attraction.find(params[:attraction_id])
+    current_attraction ||= Attraction.find_by(params[:attraction_id])
   end
 
   helper_method :current_user, :current_attraction

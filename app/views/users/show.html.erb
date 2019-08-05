@@ -1,12 +1,26 @@
 <div class="center">
   <div class="info">
     <% if current_user.admin %>
-      <p><strong>ADMIN</strong</p>
+      <p><strong>ADMIN</strong></p>
     <% end %>
     <p><strong>Name: </strong><%= current_user.name %></p>
     <p><strong>Tickets: </strong><%= current_user.tickets %></p>
     <p><strong>Mood: </strong><%= current_user.mood %></p>
-    <p><strong>Height: </strong><%= current_user.height %></p>
+    <p><strong>Height: </strong><%= current_user.height %> inches</p>
     <%= link_to "See attractions", attractions_path %>
   </div>
 </div>
+
+<%# Attempted to write code using only Rails helpers, but couldn't figure out how to make the labels bold without making the current_user info bold %>
+<%# <%= content_tag :div, :class => "center" do %>
+  <%# <%= content_tag :div, :class => "info" do %>
+    <%# <% if current_user.admin %>
+      <%# <%= tag.p tag.strong "ADMIN" %>
+    <%# <% end %>
+    <%# <%= tag.p "Name: #{current_user.name}" %>
+    <%# <%= tag.p "Tickets: #{current_user.tickets}" %>
+    <%# <%= tag.p "Mood: #{current_user.mood}" %>
+    <%# <%= tag.p "Height: #{current_user.height} inches" %>
+    <%# <%= link_to "See attractions", attractions_path %>
+  <%# <% end %>
+<%# <% end %>

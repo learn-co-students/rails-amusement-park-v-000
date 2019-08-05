@@ -12,9 +12,6 @@ class SessionsController < ApplicationController
       flash[:message] = "Username or password is incorrect."
       redirect_to signin_path
     end
-    # flash[:message] = "Username or password is incorrect." unless @user.authenticate(params[:user][:password])
-    # session[:user_id] = @user.id
-    # redirect_to user_path(@user)
   end
 
   def destroy

@@ -6,35 +6,40 @@ class AttractionsController < ApplicationController
 
   def show
     @attraction = Attraction.find(params[:id])
+    @ride = Ride.new
   end
 
   def new
-    @attraction = Attraction.new
+    if current_user.admin
+      @attraction = Attraction.new
+    else
+      flash[:message] = "You do not have the authority to create an attraction."
+      redirect_to user_path(current_user)
+    end
   end
 
   def create
-    # should only work if user is admin
-
     attraction = Attraction.new(attraction_params)
     if attraction.save
       redirect_to attraction_path(attraction)
     else
-      # Lets you create an attraction even if all information isn't filled out
       flash[:message] = "Please enter all requested information."
       redirect_to new_attraction_path
     end
   end
 
   def edit
-    # update #current_attraction so it works here
-    @attraction = Attraction.find_by(params[:id])
+    if current_user.admin
+      @attraction = current_attraction
+    else
+      flash[:message] = "You do not have the authority to edit an attraction."
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
-    # update #current_attraction so it works here
-    attraction = Attraction.find_by(params[:id])
-    attraction.update(attraction_params)
-    redirect_to attraction_path(attraction)
+    current_attraction.update(attraction_params)
+    redirect_to attraction_path(current_attraction)
   end
 
   private

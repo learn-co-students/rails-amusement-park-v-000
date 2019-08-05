@@ -1,5 +1,3 @@
-<%# Should I use divs within the rails form to assign div class="form-group"?? %>
-
 <%= form_for @user, :html => {:class => "new_user", :id => "new_user"} do |f| %>
   <%= f.label "Name" %><br>
   <%= f.text_field :name, :class => "form-control" %><br>
@@ -15,8 +13,5 @@
   <%= f.check_box :admin, :class => "form-check-input" %><br><br>
   <%= f.label "Password" %><br>
   <%= f.password_field :password, :class => "form-control" %><br>
-
-
-  <%# add data-disable with and class to button %>
-  <%= f.submit "Create User" %>
+  <%= f.submit :class => "btn btn-primary" %>
 <% end %>
