@@ -1,6 +1,6 @@
-<%= form_for @user do |f| %>
-    Name: <%= f.text_field :name %>
-    Password: <%= f.password_field :password %>
+<%= form_for(:session, url: signin_path) do |f| %>
+    <%= f.collection_select(:name, User.all, :id, :name) %><br>
+    <%= f.password_field :password %><br>
 
-    <%= f.submit "Create User" %>
-  <% end %>
+    <%= f.submit "Sign In" %>
+<% end %>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: "users#index"
 
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   get '/signin', to: 'sessions#new', as: 'signin'
+  post '/signin', to: 'sessions#create'
 end
