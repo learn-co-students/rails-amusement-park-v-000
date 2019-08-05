@@ -1,0 +1,17 @@
+<%= form_for @user, :html => {:class => "new_user", :id => "new_user"} do |f| %>
+  <%= f.label "Name" %><br>
+  <%= f.text_field :name, :class => "form-control" %><br>
+  <%= f.label "Height (in inches) " %><br>
+  <%= f.number_field :height, :class => "form-control" %><br>
+  <%= f.label "How happy are you? (1-5 scale)" %><br>
+  <%= f.number_field :happiness, :class => "form-control" %><br>
+  <%= f.label "How nauseous are you? (1-5 scale)" %><br>
+  <%= f.number_field :nausea, :class => "form-control" %><br>
+  <%= f.label "How many dollars are in your pocket?" %><br>
+  <%= f.number_field :tickets, :class => "form-control" %><br>
+  <%= f.label "Check box if you are a theme park owner" %>
+  <%= f.check_box :admin, :class => "form-check-input" %><br><br>
+  <%= f.label "Password" %><br>
+  <%= f.password_field :password, :class => "form-control" %><br>
+  <%= f.submit :class => "btn btn-primary" %>
+<% end %>
