@@ -1,0 +1,16 @@
+<h1>Welcome, new users</h1>
+<%= form_for(@user) do |f| %>
+<%= f.label :name %>
+<%= f.text_area :name %>
+<%= f.label :password %>
+<%= f.text_area :password %>
+<%= f.label :nausea %>
+<%= f.text_area :nausea %>
+<%= f.label :happiness %>
+<%= f.text_area :happiness %>
+<%= f.label :tickets %>
+<%= f.text_area :tickets %>
+<%= f.label :height %>
+<%= f.text_area :height %>
+<%= f.submit %>
+<% end %>
