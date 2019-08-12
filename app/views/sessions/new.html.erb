@@ -1,6 +1,7 @@
-<%= form_tag(signin_path) do %>
-	<%= text_field(:user, :name, :placeholder => "Name") %></br>
-	<%= password_field(:user, :password, :placeholder => "Password") %></br>
+<%= form_tag(sessions_path) do %>
+	<%= select_tag :user_name, options_from_collection_for_select(User.all, :name, :name) %></br>
+	<%= label_tag(:password, "Your Password:") %>
+	<%= password_field_tag(:password) %></br>
 
 	<%= submit_tag("Sign In") %>
 <% end %>

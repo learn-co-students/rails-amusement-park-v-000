@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
+  # before_action :authentication_required
 
   def index
+    if session[:user_id].present?
+      @user = User.find_by_id(session[:user_id])
+    end
   end
 
   def new
@@ -17,7 +21,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(:id => params[:id])
+    if !session[:user_id].present?
+      redirect_to root_path
+    else
+      @user = User.find_by(:id => params[:id])
+    end
   end
 
   private
@@ -25,4 +33,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :admin, :password)
   end
+
 end

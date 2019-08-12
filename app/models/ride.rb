@@ -17,6 +17,7 @@ class Ride < ApplicationRecord
       n_rating = user.nausea + attraction.nausea_rating
       h_rating = user.happiness + attraction.happiness_rating
       user.update(:tickets => rem_tickets, :nausea => n_rating, :happiness => h_rating)
+      "Thanks for riding the #{attraction.name}!"
     end
   end
 end

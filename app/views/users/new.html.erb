@@ -1,18 +1,18 @@
 <%= form_for @user do |f| %>
 	<%= f.label :name %>
-	<%= f.text_field :name %></br>
+	<%= f.text_field :name, :class => "form-control" %></br>
 	<%= f.label :height, "Height (in inches)" %>
-	<%= f.text_field :height %></br>
+	<%= f.text_field :height, :class => "form-control" %></br>
 	<%= f.label :happiness, "How happy are you? (1-5 scale)" %>
-	<%= f.text_field :happiness %></br>
+	<%= f.text_field :happiness, :class => "form-control" %></br>
 	<%= f.label :nausea, "How nauseous are you? (1-5 scale)" %>
-	<%= f.text_field :nausea %></br>
+	<%= f.text_field :nausea, :class => "form-control" %></br>
 	<%= f.label :tickets, "How many dollars are in your pocket?" %>
-	<%= f.text_field :tickets %></br>
+	<%= f.text_field :tickets, :class => "form-control" %></br>
 	<%= f.label :admin, "Check box if you are a theme park owner" %>
 	<%= f.check_box :admin %></br>
 	<%= f.label :password %>
-	<%= f.password_field :password %></br>
+	<%= f.password_field :password, :class => "form-control" %></br>
 
 	<%= f.button("Create User") %>
 
