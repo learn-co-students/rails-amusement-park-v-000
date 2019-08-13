@@ -1,17 +1,14 @@
 class AttractionsController < ApplicationController
   def index
     @attractions = Attraction.all
-    if session[:user_id].present?
-      @user = User.find_by_id(session[:user_id])
-    else
+    if !logged_in?
       redirect_to '/'
     end
   end
 
   def show
-    if session[:user_id].present?
+    if logged_in?
       @attraction = Attraction.find_by_id(params[:id])
-      @user = User.find_by_id(session[:user_id])
       if !@user.nil? && !@attraction.nil?
         @ride = Ride.new(:user_id => @user.id, :attraction_id => @attraction.id)
       else
@@ -23,14 +20,14 @@ class AttractionsController < ApplicationController
   end
 
   def new
-    @user = User.find_by_id(session[:user_id])
+    logged_in?
     @attraction = Attraction.new
   end
 
   def create
     attraction = Attraction.new(attraction_params)
-    user = User.find_by_id(session[:user_id])
-    if user.admin?
+    logged_in?
+    if @user.admin?
       attraction.save
       redirect_to attraction_path(attraction)
     else
@@ -39,7 +36,7 @@ class AttractionsController < ApplicationController
   end
 
   def edit
-    @user = User.find_by_id(session[:user_id])
+    logged_in?
     @attraction = Attraction.find_by_id(params[:id])
   end
 
