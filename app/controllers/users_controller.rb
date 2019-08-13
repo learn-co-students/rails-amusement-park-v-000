@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :authentication_required
+  before_action :authentication_required
 
   def index
     if logged_in?
@@ -21,11 +21,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !logged_in?
-      redirect_to root_path
-    else
+    # if !logged_in?
+    #   redirect_to root_path
+    # else
       @user = User.find_by(:id => params[:id])
-    end
+    # end
   end
 
   private
