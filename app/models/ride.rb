@@ -4,9 +4,13 @@ belongs_to :attraction
 
 
   def take_ride
-binding.pry
-    check_tickets 
-    check_height
+    if check_tickets == nil
+      check_height
+    elsif check_height == nil
+      check_tickets
+    else
+      check_tickets + " #{check_height}"
+    end
   end
 
   def check_tickets
