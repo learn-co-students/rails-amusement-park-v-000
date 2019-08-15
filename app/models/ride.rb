@@ -4,21 +4,34 @@ belongs_to :attraction
 
 
   def take_ride
-    if check_tickets == nil
-      check_height
-    elsif check_height == nil
-      check_tickets
+    if deficient && short
+      "Sorry. #{insufficient_tickets}. #{insufficient_height}."
+    elsif deficient
+      "Sorry. #{insufficient_tickets}."
+    elsif short
+      "Sorry. #{insufficient_height}."
     else
-      check_tickets + " #{check_height}"
+      user.tickets -= attraction.tickets
+      user.happiness += attraction.happiness_rating
+      user.nausea += attraction.nausea_rating
+      user.save
     end
   end
 
-  def check_tickets
-      "Sorry. You do not have enough tickets to ride the #{attraction.name}." if user.tickets < attraction.tickets
+  def deficient
+      user.tickets < attraction.tickets
   end
 
-  def check_height
-      "Sorry. You are not tall enough to ride the #{attraction.name}." if user.height < attraction.min_height
+  def short
+      user.height < attraction.min_height
+  end
+
+  def insufficient_tickets
+    "You do not have enough tickets to ride the #{attraction.name}"
+  end
+
+  def insufficient_height
+    "You are not tall enough to ride the #{attraction.name}"
   end
 
 end# of class
