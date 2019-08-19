@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
     def sign_in
         @user = User.new
+        @users = User.all
     end
     
     def create

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in?, :user_authenticate
+  helper_method :current_user, :logged_in?, :authenticate_user
   
   def home
   end
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
   
-  def user_authenticate
+  def authenticate_user
     if !logged_in?
       redirect_to root_path
     end
