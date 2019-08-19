@@ -1,0 +1,29 @@
+<% provide(:title, 'Sign Up') %>
+
+<h1>Sign Up</h1>
+
+    <%= form_for(@user) do |f| %>
+
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'form-control' %></br></br>
+
+      <%= f.label :height %> (in inches)<br>
+      <%= f.number_field :height, class: 'form-control' %></br></br>
+
+      <label>How happy are you?</label> (1-5 scale)<br>
+      <%= f.number_field :happiness, class: 'form-control' %></br></br>
+
+      <label>How nauseous are you?</label> (1-5 scale)<br>
+      <%= f.number_field :nausea, class: 'form-control' %></br></br>
+
+      <label>How many dollars are in your pocket?</label><br>
+      <%= f.number_field :tickets, class: 'form-control' %></br></br>
+
+      <label>Check box if you are a theme park owner</label>
+      <%= f.check_box :admin %></br></br>
+
+      <%= f.label :password %><br>
+      <%= f.password_field :password, class: 'form-control' %></br></br>
+
+      <%= f.submit "Create User" %>
+    <% end %>
