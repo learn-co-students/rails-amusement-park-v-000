@@ -22,7 +22,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <% if current_user %>
-              <li><%= link_to "Hello, #{current_user.name}!", user_path(current_user) %></li>
+              <li><%= link_to "#{current_user.name}'s Profile", user_path(current_user) %></li>
               <li><%= link_to "Attractions", attractions_path %></li>
               <li><%= link_to "Log Out", signout_path %></li>
             <% else %>
