@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def create
-binding.pry
     @user = User.new(user_params) 
     @user.password = params[:user][:password]
       if @user.save && @user.authenticate(@user.password)
