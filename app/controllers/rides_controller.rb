@@ -1,9 +1,11 @@
 class RidesController < ApplicationController
 
     def create
+        
         ride = Ride.create(ride_params)
         message = ride.take_ride
-        redirect_to user_path(ride.user), flash: {message: message}
+        #byebug
+        redirect_to user_path(ride.user), flash: {alert: message}
     end
 
     private
