@@ -2,7 +2,7 @@
 
 <%= form_tag signin_path do %>
   <%= label_tag :name %><br>
-  
+
   <%= select_tag :user_name, options_from_collection_for_select(User.all, "id", "name") %><br>
 
   <%= label_tag :password %><br>

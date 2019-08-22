@@ -1,7 +1,20 @@
+
 <h1>Listing Attractions</h1>
 
 <% if @user.admin == false %>
   <%= render partial: "index" %>
 <% else @user.admin == true %>
   <%= render partial: "admin" %>
+
+<% if User.find(session[:user_id]).admin %>
+  <% @attractions.each do |attraction| %>
+    <%= link_to "Show #{attraction.name}", attraction_path(attraction) %><br>
+<% end %>
+
+<%= link_to "New Attraction", new_attraction_path %>
+
+<% else %>
+  <% @attractions.each do |attraction| %>
+    <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %><br>
+  <% end %>
 <% end %>

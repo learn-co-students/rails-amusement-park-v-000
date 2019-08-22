@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Edit Attraction</h1>
 
 <%= form_for @attraction do |f| %>
@@ -17,4 +18,14 @@
   <%= f.text_field :min_height %><br><br>
 
   <%= f.submit %>
+=======
+<%= form_for @attraction do |f| %>
+  <%= f.text_field :name %><br>
+  <%= f.text_field :min_height %><br>
+  <%= f.text_field :nausea_rating %><br>
+  <%= f.text_field :happiness_rating %><br>
+  <%= f.text_field :tickets %><br>
+
+  <%= f.submit "Update Attraction" %><br>
+>>>>>>> 1ecf1ef2e41ab694e3c4b9988d7f18847a817949
 <% end %>
