@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2019_08_23_004526) do
     t.integer "tickets"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "admin"
+    t.boolean "admin"
   end
 
 end

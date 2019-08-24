@@ -3,6 +3,16 @@ class User < ActiveRecord::Base
     has_many :attractions, through: :rides
     has_secure_password
 
+    def admin
+        if self.admin = "f"
+            false
+        elsif self.admin = "t"
+            true
+        else
+            nil
+        end
+    end
+    
     def mood
         if self.happiness < self.nausea
             "sad"
@@ -10,6 +20,4 @@ class User < ActiveRecord::Base
             "happy"
         end
     end
-
-    # make admin default to false in new/edit form
 end
