@@ -1,5 +1,13 @@
-Name: <%= current_user.name %>
-Tickets: <%= current_user.tickets %>
-Mood: <%= current_user.mood %>
-Height: <%= current_user.height %>
-<%= link_to "See attractions", attractions_path %>
+<div class="center alert">
+    <p><%= flash[:notice] %></p>
+</div>
+
+<div class="center">
+    <div class="info">
+        <p><strong>Name:</strong> <%= current_user.name %></p>
+        <p><strong>Tickets:</strong> <%= current_user.tickets %></p>
+        <p><strong>Mood:</strong> <%= current_user.mood %></p>
+        <p><strong>Height:</strong> <%= current_user.height %></p>
+        <%= link_to "See attractions", attractions_path %>
+    </div>
+</div>
