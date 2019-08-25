@@ -2,10 +2,6 @@ class UsersController < ApplicationController
     before_action :require_login
     skip_before_action :require_login, only: [:new, :create]
 
-    PERMISSIONS = {
-        :admin => 1,
-        :non_admin => 0
-    }
 
     def new
         @user = User.new
