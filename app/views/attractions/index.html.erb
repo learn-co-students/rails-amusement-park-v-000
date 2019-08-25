@@ -5,11 +5,11 @@
         <th>Tickets</th>
         <th>Details</th>
     </tr>
-    <% @attractions.each do |att| %>
-        <tr>
-            <td><%= att.name %></td>
-            <td><%= att.tickets %></td>
-            <td><%= link_to "Go on #{att.name}", attraction_path(att) %></td>
-        </tr>
+    <% if current_user.is_admin? %>
+        <%= render 'admin' %>
+        </table>
+        <%= link_to "New Attraction", new_attraction_path %>
+    <% else %>
+        <%= render 'non_admin' %>
+        </table>
     <% end %>
-</table>
