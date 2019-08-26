@@ -12,6 +12,7 @@ def create
         flash.now[:danger] = 'Invalid email/password combination'
         render 'new'
     end
+end
 
     def destroy
         session.delete(:user_id)
