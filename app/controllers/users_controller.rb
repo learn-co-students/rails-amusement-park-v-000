@@ -4,7 +4,9 @@ class UsersController < ApplicationController
     end
 
     def new
-        user = User.new
+        @user = User.new
+        @user.admin = false
+        # binding.pry
     end
 
     def create
