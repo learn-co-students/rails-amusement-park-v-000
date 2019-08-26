@@ -1,2 +1,2 @@
-module RidesHelper
+module RidesHelper        
 end
