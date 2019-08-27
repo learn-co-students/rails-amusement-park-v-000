@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
   get 'signup' => 'users#new'
+  get 'signin' => 'users#create'
   root 'application#hello'
   resources :users
   # resources :attractions

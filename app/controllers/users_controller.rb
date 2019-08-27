@@ -10,7 +10,12 @@ class UsersController < ApplicationController
         @user.admin = false
     end
 
+    def create_standard_user
+        
+    end
+
     def create
+        # binding.pry
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
@@ -22,18 +27,10 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        mood
     end
 
 
-    def mood
-        # binding.pry
-        if @user.nausea > @user.happiness
-            @user.feeling = "sad"
-        else
-            @user.feeling = "happy"
-        end
-    end
+    
 
     private
     def user_params
