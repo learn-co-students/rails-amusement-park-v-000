@@ -22,11 +22,17 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
+        mood
     end
 
 
     def mood
-
+        # binding.pry
+        if @user.nausea > @user.happiness
+            @user.feeling = "sad"
+        else
+            @user.feeling = "happy"
+        end
     end
 
     private
