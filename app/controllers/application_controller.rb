@@ -7,13 +7,20 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def current_user
-    if session[:name].nil? || session[:name].empty?
-      nil
-    elsif session[:name]
-      session[:name]
-    else
-      session[:name] = params[:name]
-    end
+  def authentication_required
+    redirect_to '/' if !logged_in?
+  end 
+
+
+  def logged_in?
+    session[:user_id]
   end
+
+
+  def current_user
+    User.find(session[:user_id])
+  end
+
+
+  helper_method :current_user
 end
