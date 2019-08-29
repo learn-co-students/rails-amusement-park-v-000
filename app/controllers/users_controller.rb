@@ -2,24 +2,26 @@ class UsersController < ApplicationController
 
 
     def new 
-       user_signup
+    #    user_signup
+    @user = User.new
     end
     
     def user_signup
         @user = User.new
-        @user.admin = false
+        # binding.pry
+        # @user.admin = false
     end
 
-    def create_standard_user
+    # def create_standard_user
         
-    end
+    # end
 
     def create
-        # binding.pry
         @user = User.new(user_params)
         if @user.save
+            # binding.pry
             session[:user_id] = @user.id
-            redirect_to @user
+            redirect_to user_path(@user)
         else
             render 'new'
         end
