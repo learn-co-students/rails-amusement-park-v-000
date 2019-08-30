@@ -1,0 +1,6 @@
+<%= @attraction.name %>
+
+<%= button_to 'Go on this ride', attraction_id: @attraction.id %>
+<% if @user.is_admin? %>
+  <%= link_to 'Edit Attraction', edit_attraction_url(@attraction) %>
+<% end %>
