@@ -1,0 +1,11 @@
+<%= form_for @user do |f| %>
+  <%= f.text_field     :name,      placeholder: 'Name' %>
+  <%= f.number_field   :height,    placeholder: 'Height' %>
+  <%= f.number_field   :happiness, placeholder: 'Happiness' %>
+  <%= f.number_field   :nausea,    placeholder: 'Nausea' %>
+  <%= f.number_field   :tickets,   placeholder: 'Tickets' %>
+  <%= f.password_field :password,  placeholder: 'Password' %>
+  <%= f.label          :admin,                  'Are you a park owner?' %>
+  <%= f.check_box      :admin %>
+  <%= f.submit %>
+<% end %>
