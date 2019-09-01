@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show, :edit, :destroy]
 
   def new
     @user = User.new
@@ -27,7 +28,14 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height)
+    params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
+  end
+
+  def require_login
+    unless logged_in
+      flash[:notice] = "You need to be signed in to access this page."
+      redirect_to root_path
+    end
   end
 
 end

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root "sessions#index"
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
-  resources :sessions, only: [:index, :destroy ]
+  resources :sessions, only: [:index, :show, :destroy ]
   resources :users, only: [:new, :create, :show, :update, :destroy]
 end
