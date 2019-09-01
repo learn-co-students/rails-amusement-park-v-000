@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   resources :sessions, only: [:index, :show, :destroy ]
-  resources :users, only: [:new, :create, :show, :update, :destroy]
+  resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :attractions, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :rides, only: [:new, :create]
+
 end

@@ -1,0 +1,21 @@
+<h1>List of Attractions</h1>
+<table>
+  <% @attractions.each do |attr| %>
+    <tr>
+      <th>Name</th>
+      <th>Tickets</th>
+      <th>Details</th>
+      <th>Admin Only</th>
+    </tr>
+    <tr>
+      <td><%= attr.name %></td>
+      <td><%= attr.tickets%></td>
+      <td><%= admin? ? link_to("Show #{attr.name}", attraction_path(attr)) : link_to("Go on #{attr.name}", attraction_path(attr))%></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<p>
+  <%= link_to("New Attraction", new_attraction_path) %>
+</p>

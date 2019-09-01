@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show, :edit, :destroy]
+  before_action :require_login, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -20,6 +20,11 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+
+  end
+
+  def update
+
   end
 
   def destroy
