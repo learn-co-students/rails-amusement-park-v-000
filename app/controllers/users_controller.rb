@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path
     elsif !@user
       user = User.create(user_params)
+      redirect_to new_user_path unless user
       session[:user_id] = user.id
       redirect_to user_path(current_user)
     end
