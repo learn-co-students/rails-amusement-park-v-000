@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <p>
+    <%=f.label :name %>
+    <%=f.collection_select :name, User.all, :name, :name, prompt: true %>
+  </p>
+  <p>
+    <%=f.label :password %>
+    <%=f.text_field :password %>
+  </p>
+    <%= f.submit "Sign In"%>
+<%end%>
