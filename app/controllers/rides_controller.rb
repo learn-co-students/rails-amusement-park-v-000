@@ -11,8 +11,8 @@ class RidesController < ApplicationController
     #need to pass in user and attraction id for take ride method
     #need to pass in attraction from view
     @user = current_user
-    @message =  @ride.take_ride #view will now have access
-    redirect_to user_path(@user, message: @message)
+    @message =  @ride.take_ride
+    redirect_to user_path(@user, message: @message) #@message won't be accessible in show view, need to access :message through params in show action
   end
 
 
