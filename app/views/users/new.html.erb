@@ -1,0 +1,46 @@
+<form id="new_user" action="/users" method="post">
+
+  <!-- <input name="utf8" type="hidden" value="✓"> -->
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <label for="user_name">Name</label>
+    <br>
+    <input type="text" name="user[name]" id="user_name">
+<br>
+
+
+    <label for="user_height">Height (in inches)</label>
+    <br>
+    <input type="number" name="user[height]" id="user_height">
+<br>
+
+    <label for="user_happiness">How happy are you? (1-5 scale)</label>
+    <br>
+    <input type="number" name="user[happiness]" id="user_happiness">
+  <br>
+
+
+    <label for="user_nausea">How nauseous are you? (1-5 scale)</label>
+    <br>
+    <input type="number" name="user[nausea]" id="user_nausea">
+  <br>
+
+    <label for="user_tickets">How many dollars are in your pocket?</label>
+    <br>
+    <input type="number" name="user[tickets]" id="user_tickets">
+  <br>
+
+    <label for="user_admin">Check box if you are a theme park owner</label>
+    <input name="user[admin]" type="hidden" value="0"><input type="checkbox" value="1" name="user[admin]" id="user_admin">
+  <br>
+
+
+    <label for="user_password">Password</label>
+    <br>
+    <input type="password" name="user[password]" id="user_password">
+
+
+    <br><br><br>
+    <input type="submit" name="commit" value="Create User">
+
+</form>

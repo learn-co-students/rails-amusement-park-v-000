@@ -1,0 +1,9 @@
+
+
+      Prefix Verb   URI Pattern
+
+  users GET    /users(.:format)                             users#index
+        POST   /users(.:format)                             users#create
+new_user GET    /users/new(.:format)                         users#new
+   user GET    /users/:id(.:format)                         users#show
+        DELETE /users/:id(.:format)                         users#destroy
