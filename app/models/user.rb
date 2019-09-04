@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
             "happy"
          end
     end
+
+    def create_standard_user
+        redirect_to 'signin'
+    end
 end
