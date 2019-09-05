@@ -7,3 +7,13 @@
 new_user GET    /users/new(.:format)                         users#new
    user GET    /users/:id(.:format)                         users#show
         DELETE /users/:id(.:format)                         users#destroy
+  <%= link_to('Log Out', logout_path, method: :destroy) %>
+
+  <%= render 'login' %>
+
+
+  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+    <input type=submit value='Log Out'>
+  <% end %>
+
+  {:action => :destroy},

@@ -1,7 +1,11 @@
 
-<h3> Hello <%= @user.name %></h3>
+<h3> Hello <%= 'ADMIN' if @user.admin == true %></h3>
 <p><b>Name:</b> <%= @user.name %></p>
 <p><b>Height:</b> <%= @user.height %></p>
 <p><b>Tickets:</b> <%= @user.tickets %></p>
 <p><b>happy</b> <%= @user.happiness %></p> #go back to this to add logic to show user as happy over a certain value
 <p><b>Mood:</b> <%= @user.nausea %></p>
+
+<p>
+<%= link_to("Log Out", logout_path, :method => :post) %>
+</p>
