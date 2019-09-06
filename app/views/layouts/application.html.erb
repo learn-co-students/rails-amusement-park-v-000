@@ -18,8 +18,7 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>" >Home</a>
-
-        <%= render 'users/login_items' %>
+        <%= render 'sessions/login_items' %>
 
         </div>
         <div class="navbar-collapse collapse">
@@ -32,6 +31,10 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
+      
       <%= yield %>
     </div>
   </body>

@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     current_user = nil
-   #see if session really deletes
     redirect_to '/'
   end
 

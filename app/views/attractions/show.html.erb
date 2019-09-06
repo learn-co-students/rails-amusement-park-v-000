@@ -1,0 +1,12 @@
+<p><b>Name:</b> <%= @attraction.name %></p>
+<p><b>Tickets:</b> <%= @attraction.tickets %></p>
+<p><b>Happiness:</b> <%= @attraction.happiness_rating %></p>
+<p><b>Nausea:</b> <%= @attraction.nausea_rating %></p>
+<p><b>Height:</b> <%= @attraction.min_height %></p>
+
+<%= form_for Ride.new, url: rides_path,  method: "post" do |r| %>
+<%= r.hidden_field :attraction_id, :value => @attraction.id %>
+<%= r.submit "Go on this ride"%>
+<% end %>
+
+<%= link_to("Edit Attraction", edit_attraction_path)%>
