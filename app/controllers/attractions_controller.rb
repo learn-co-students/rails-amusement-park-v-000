@@ -1,4 +1,5 @@
 class AttractionsController < ApplicationController
+  before_action :admin?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @attractions = Attraction.all
