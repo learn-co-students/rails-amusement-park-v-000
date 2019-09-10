@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
 
   def destroy
-    reset session
+    reset_session
     redirect_to '/'
   end
 
