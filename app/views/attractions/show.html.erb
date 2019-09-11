@@ -4,9 +4,11 @@
 <br><br>
 <p>Ticket Requirement: <%= @attraction.tickets %></p> 
 <br><br>
-<p>Height Requirement: <%= @attraction.height %></p>
+<p>Height Requirement: <%= @attraction.min_height %></p>
 <br><br>
-<p>Nausea Rating: <%= @attraction.nausea %></p> 
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p> 
 <br><br>
-<p>Happiness Rating: <%= @attraction.happiness %></p> 
-
+<p>Happiness Rating: <%= @attraction.happiness_rating %></p> 
+<%= form_for(@new_ride) do |f| %>
+<%= f.submit "Go on this ride" %>
+<% end %>
