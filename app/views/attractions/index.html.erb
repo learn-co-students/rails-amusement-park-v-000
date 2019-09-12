@@ -10,7 +10,7 @@
   <tr>
     <td><%= attraction.name %></td>
     <td><%= attraction.tickets %></td>
-    <td><a href="/attractions/<%= attraction.id%>">Go on <%= attraction.name %></a>
+    <td><%= display_attraction_link(attraction) %></td>
   </tr>
 <% end %>
 

@@ -6,6 +6,12 @@ class AttractionsController < ApplicationController
     redirect_to attraction_path(@attraction)
   end
 
+
+  def edit
+    @attraction = Attraction.find(params[:id])
+  end
+
+
   def index
     @user = User.find(current_user.id)
     @attractions = Attraction.all    
@@ -16,11 +22,20 @@ class AttractionsController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
     @attraction = Attraction.find(params[:id])
     @new_ride = Ride.new
   end
 
-  def rides
+  def update
+    @user = User.find(current_user.id)
+binding.pry
+    if @user.admin
+      @attraction = Attraction.find(params[:id])
+      @attraction.update(attraction_params)  
+
+      redirect_to attraction_path(@attraction)
+    end
   end
 
 
