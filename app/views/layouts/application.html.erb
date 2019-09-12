@@ -29,7 +29,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
+    <%= flash[:message] if flash[:message] %>
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>

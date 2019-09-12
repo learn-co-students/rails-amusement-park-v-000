@@ -1,13 +1,20 @@
 <h1>Listing Attractions</h1>
+<table class="table">
 <tr>
   <td><strong>Name</strong></td>
   <td><strong>Tickets</strong></td>
   <td><strong>Details</strong</td>
 </tr>
+
 <%= @attractions.each do |attraction| %>
-<tr>
-  <td><%= attraction.name %></td>
-  <td><%= attraction.tickets %></td>
-  <td><a href="/attractions/<%= attraction.id%>">Go on <%= attraction.name %></a>
-</tr>
+  <tr>
+    <td><%= attraction.name %></td>
+    <td><%= attraction.tickets %></td>
+    <td><a href="/attractions/<%= attraction.id%>">Go on <%= attraction.name %></a>
+  </tr>
 <% end %>
+
+</table>
+
+<%= display_new_attraction_link %>
+  

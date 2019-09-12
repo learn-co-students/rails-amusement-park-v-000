@@ -1,0 +1,14 @@
+<h1>New Attraction</h1>
+<%= form_for(@attraction) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :tickets %>
+<%= f.text_field :tickets %>
+<%= f.label :nausea_rating %>
+<%= f.text_field :nausea_rating %>
+<%= f.label :happiness_rating %>
+<%= f.text_field :happiness_rating %>
+<%= f.label :minimum_height %>
+<%= f.text_field :min_height %>
+<%= f.submit %>
+<% end %>

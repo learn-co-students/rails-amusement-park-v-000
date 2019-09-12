@@ -10,5 +10,6 @@
 <br><br>
 <p>Happiness Rating: <%= @attraction.happiness_rating %></p> 
 <%= form_for(@new_ride) do |f| %>
+<%= f.hidden_field :attraction, :value => @attraction.id %>
 <%= f.submit "Go on this ride" %>
 <% end %>
