@@ -29,7 +29,7 @@ class AttractionsController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-binding.pry
+
     if @user.admin
       @attraction = Attraction.find(params[:id])
       @attraction.update(attraction_params)  
