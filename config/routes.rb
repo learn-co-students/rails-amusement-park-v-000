@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   get 'signin' => 'users#create'
   root 'application#hello'
   resources :users
+  resources :rides
   # resources :attractions
 end
