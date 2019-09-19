@@ -1,10 +1,10 @@
 <h1>Log in</h1>
-<%= form_for(:session, url:login_path) do |f| %>
+<%= form_for(:session, url:signin_path) do |f| %>
 <%= f.label :name %>
-<%= f.text_field :name %>
-
+<%= f.collection_select :user_name, User.all, :name, :name %>
+<br>
 <%= f.label :password %>
 <%= f.password_field :password %>
-
-<%= f.submit "Log in" %>
+<br>
+<%= f.submit "Sign In" %>
 <% end %>

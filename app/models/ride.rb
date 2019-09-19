@@ -10,12 +10,12 @@ class Ride < ActiveRecord::Base
     end
 
     def take_ride
-        if @user.tickets < @ride.tickets
+        if @user.tickets < @attraction.tickets
             "Sorry. You do not have enough tickets to ride the #{attraction.name}."
             elsif
-                @user.height < @ride.height 
+                @user.height < @attraction.height 
                 "Sorry. You are not tall enough to ride the #{attraction.name}."
-            elsif @user.tickets < @ride.tickets && @user.height < @ride.height
+            elsif @user.tickets < @attraction.tickets && @user.height < @attraction.height
                 "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
                 else
                     binding.pry
