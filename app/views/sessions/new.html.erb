@@ -1,0 +1,9 @@
+<h1>Login</h1>
+<%= form_tag(signin_path) do %>
+  <%= select("user", "name", User.all.collect{|u| u.name }.insert(0, 'Please select your username from this dropdown')) %>
+  
+  <%= label_tag('password', "Password") %>
+  <%= password_field_tag('password') %> 
+  
+  <%= submit_tag "Sign In" %>
+<% end %>
