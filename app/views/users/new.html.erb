@@ -27,12 +27,12 @@
 
   <div>
     <%= f.label :admin, 'Check box if you are an admin' %>
-    <%= f.check_box :admin, {}, checked_value = true, unchecked_value = false %>
+    <%= f.check_box :admin %>
   </div>
 
   <div>
     <%= f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
 
   <%= f.submit %>

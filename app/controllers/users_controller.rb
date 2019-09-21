@@ -21,14 +21,15 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password)
+    params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
   end
 
   def require_login
-    unless logged_in?
+    unless session[:user_id].present?
       flash[:error] = "You must be logged in to access this section"
       redirect_to root_path
     end

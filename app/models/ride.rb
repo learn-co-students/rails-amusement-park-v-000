@@ -15,6 +15,7 @@ class Ride < ActiveRecord::Base
         nausea: user.nausea + attraction.nausea_rating,
         happiness: user.happiness + attraction.happiness_rating
       )
+      "Thanks for riding the #{attraction.name}!"
     end
   end
 end
