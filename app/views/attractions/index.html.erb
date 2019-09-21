@@ -1,4 +1,11 @@
-<%= link_to "New Attraction", new_attraction_path if admin?%>
+<h1>Attractions</h1>
+
+<% if admin? %>
+  <%= link_to "New Attraction", new_attraction_path %>
+  <br>
+  <br>
+<% end %>
+
 <ul>
   <% @attractions.each do |attraction| %>
     <% if admin? %>

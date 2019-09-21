@@ -5,7 +5,11 @@
 <p>Minimum Height Required: <%= @attraction.min_height %></p>
 <p>Name: <%= @attraction.name %></p>
 
-<%= link_to "Edit Attraction", edit_attraction_path(@attraction) if admin? %>
+<% if admin? %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+  <br>
+  <br>
+<% end %>
 
 <%= form_for Ride.new, url: rides_path,  method: "post" do |f| %>
   <%= f.hidden_field :attraction_id, :value => @attraction.id %>

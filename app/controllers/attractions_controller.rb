@@ -1,5 +1,5 @@
 class AttractionsController < ApplicationController
-  before_action :require_admin
+  before_action :require_login, :require_admin
   skip_before_action :require_admin, only: [:index, :show]
 
   def index
@@ -19,10 +19,8 @@ class AttractionsController < ApplicationController
     if @attraction.save
       redirect_to attraction_path(@attraction)
     else
-      render 'attractions/new'
-
-      #this will render the new page with the form again but will still have the same @attraction. this might have errors on it if validation
-      # is implemented. Will need a message displaying the error
+      redirect_to 'attractions/new'
+      flash[:error] = "Adding attraction was unsuccessful. Please try again."
     end
   end
 
@@ -33,7 +31,7 @@ class AttractionsController < ApplicationController
   def update
     @attraction = Attraction.find_by(id: params[:id])
     if @attraction.update(attraction_params)
-      render attraction_path(@attraction)
+      redirect_to attraction_path(@attraction)
       flash[:message] = "Successfully Updated!"
     else
       flash[:error] = "Update was unsuccessful. Please try again."

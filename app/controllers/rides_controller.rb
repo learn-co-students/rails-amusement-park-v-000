@@ -1,19 +1,17 @@
 class RidesController < ApplicationController
+  before_action :require_login
   def create
-    params[:ride][:user_id] = session[:user_id]
-    #get the user_id from the session hash and add it to params
-    @user = User.find(session[:user_id])
-    #store user in @user for show page where redirected to
-    #creates a ride with user_id and attraction_id attributes (always built off attraction?)
+    @user = current_user
+    params[:ride][:user_id] = @user.id
+
     @ride = Ride.new(ride_params)
-    #runs the take_ride method on the associated objects
-    #now mine
     @attraction = Attraction.find_by(id: ride_params[:attraction_id])
+
     if @ride.save && @user.tickets && @user.happiness && @user.nausea
       flash[:message] = @ride.take_ride
     end
-    redirect_to user_path(@user)
 
+    redirect_to user_path(@user)
   end
     
     

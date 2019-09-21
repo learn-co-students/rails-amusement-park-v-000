@@ -28,10 +28,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :height, :happiness, :nausea, :tickets, :password, :admin)
   end
 
-  def require_login
-    unless session[:user_id].present?
-      flash[:error] = "You must be logged in to access this section"
-      redirect_to root_path
-    end
-  end
 end
