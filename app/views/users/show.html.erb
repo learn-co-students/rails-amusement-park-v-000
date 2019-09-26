@@ -1,0 +1,7 @@
+<p><%= flash[:message] %></p>
+<p><%= "ADMIN" if @user.admin %></p>
+<p>Name: <%= @user.name %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Height: <%= @user.height_in_inches %></p>
+<a href="/attractions">See attractions</a>
