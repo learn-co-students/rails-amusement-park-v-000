@@ -1,0 +1,18 @@
+<%= form_tag('/session', method: :post) do %>
+
+  <div class="form-group">
+    <%= label_tag(:name, "Your name:") %>
+
+    <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown") %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag(:password, "Your password:") %>
+    <%= password_field_tag(:password, nil, class: "form-control") %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag("Sign In") %>
+  </div>
+
+<% end %> 
