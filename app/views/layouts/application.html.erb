@@ -18,6 +18,13 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <% if session.include? :user_id %>
+          <a class="navbar-brand" href="<%= user_url(current_user) %>"/>Profile</a>
+          <%= link_to "Log Out", logout_path, method: "delete", :class => "navbar-brand" %>
+        <% else %>
+        <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
+        <a class="navbar-brand" href="<%= signin_url %>"/>Log in</a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -29,6 +36,9 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% if flash[:message] %>
+      <%= flash[:message] %>
+      <% end %>
       <%= yield %>
     </div>
   </body>
