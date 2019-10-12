@@ -1,2 +1,14 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
+  has_secure_password
+  has_many :rides
+  has_many :attractions, through: :rides
+
+  def mood
+    current_mood = ""
+    if self.happiness < 5
+      current_mood = "sad"
+    else
+      current_mood = "happy"
+    end
+  end
 end
