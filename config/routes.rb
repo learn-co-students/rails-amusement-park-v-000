@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/attractions/new', to: 'attractions#new'
   post '/attractions/new', to: 'attractions#create'
   get '/attractions/:id/edit', to: 'attractions#edit', as: :edit_article
-  post '/attractions/:id/edit', to: 'attractions#update'
+  post '/attractions/:id/edit', to: 'attractions#update' #patch wasn't needed for this one
   resources :rides
   post '/rides/new' => 'rides#new'
   post '/rides', to: 'rides#create', as: "create_ride"  #making new path for attractions page 
