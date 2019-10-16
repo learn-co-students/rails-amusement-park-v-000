@@ -1,0 +1,11 @@
+<%= form_for :user, url: '/users/new' do |f| %>
+    Name <%= f.text_field :name %>
+    Height (in inches) <%= f.text_field :height %>
+    How happy are you? (1-5 scale) <%= f.text_field:happiness %>
+    How nauseous are you? (1-5 scale) <%= f.text_field :nausea %>
+    How many dollars are in your pocket? <%= f.text_field :dollars %>
+    Tickets: <%= f.text_field :tickets %>
+    Check box if you are a theme park owner <%= f.check_box :admin %>
+    Password <%= f.password_field :password %>
+    <%= f.submit "Create User" %>
+<%end%>
