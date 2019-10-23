@@ -1,0 +1,6 @@
+<%= form_with do |f| %>
+  <label for="name">Your name:</label> <%= collection_select(:user, :name, User.all, :id, :name) %>
+<br>
+  <label for="password">Your password:</label> <%= f.text_field :password %><br>
+  <%= f.submit "Sign In" %>
+<% end %>

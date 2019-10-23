@@ -1,0 +1,31 @@
+<%= form_with(url: "/users") do |f| %>
+  <div class="form-group">
+    <label for="user[name]">Name</label>
+    <%= f.text_field "user[name]", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label for="user[height]">Height (in inches)</label>
+    <%= f.text_field "user[height]", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label for="user[happiness]">How happy are you? (1-5 scale)</label>
+    <%= f.text_field "user[happiness]", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label for="user[nausea]">How nauseous are you? (1-5 scale)</label>
+    <%= f.text_field "user[nausea]", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label for="user[tickets]">How many dollars are in your pocket?</label>
+    <%= f.text_field "user[tickets]", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label for="user[admin]">Check box if you are a theme park owner</label>
+    <%= check_box_tag("user[admin]") %>
+  </div>
+  <div class="form-group">
+    <label for="user[password]">Password</label>
+    <%= f.text_field "user[password]", class: "form-control" %>
+  </div>
+  <%= f.submit "Create User" %>
+<% end %>

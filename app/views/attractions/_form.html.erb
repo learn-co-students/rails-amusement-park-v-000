@@ -1,0 +1,32 @@
+<%= form_with model: @attraction do |f| %>
+  <div class="container" role="main">
+
+    <div class="form-group">
+      <label for="attraction_name">Name</label>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label for="attraction_min_height">Height Requirement (in inches)</label>
+      <%= f.text_field :min_height, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label for="attraction_happiness_rating">How fun is it? (1-5 scale)</label>
+      <%= f.text_field :happiness_rating, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label for="attraction_nausea_rating">How nausea-inducing is it? (1-5 scale)</label>
+      <%= f.text_field :nausea_rating, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label for="attraction_tickets">How many tickets does it cost?</label>
+      <%= f.text_field :tickets, class: "form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+</div>
+<% end %>
