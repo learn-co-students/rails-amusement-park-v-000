@@ -1,12 +1,11 @@
 class CreateUsers < ActiveRecord::Migration[5.2]
   def up
     create_table :users do |t|
-      t.string :name
-      t.integer :height
-      t.integer :nausea
-      t.integer :happiness
-      t.integer :dollars
-      t.integer :tickets
+      t.string :first_name
+      t.integer :last_name
+      t.integer :user_name
+      t.integer :age 
+      t.integer :email 
       t.boolean :admin, :default =>  false
       #Ex:- :default =>''
       t.string :password_digest
