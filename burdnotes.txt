@@ -14,3 +14,24 @@ rails g migration CreateRides name:string --no-test-framework
 The object models in the seed file appear to have generated properly.  The next step is to create a test script that creates
 user, attraction and ride models, then associates them to each other, then also prints out existing model instances & associations.
 If this test file can run with no errors, then we know the models are working properly
+
+
+You need the following controllers:
+
+rails g controller users new create show --no-test-framework
+// in the app demo:
+// https://flatiron-amusement-park.herokuapp.com/
+// ...I don't see a way to view all users (index) or delete them (destroy) so I won't include those functions
+
+rails g controller attractions --no-test-framework
+// the user can create an attraction but I don't see anything letting you update it here:
+// ./spec/models/attraction_spec.rb
+
+rails g controller rides create --no-test-framework
+
+rails g controller sessions new create destroy --no-test-framework
+// you shouldn't need a "new" action because there isn't one [doing anything] here:
+// https://github.com/Richard-Burd/rails-sandbox-1/blob/master/app/controllers/sessions_controller.rb
+// and this workspace has all the sign-in & sign-out functionality of Avi's video lecture here:
+// https://www.youtube.com/watch?v=UAvuo-EbTFY
+// actually....it appears it it redirecting to "/login" via the routes....I'll investigate this later on.
