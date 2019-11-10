@@ -15,4 +15,12 @@ class User < ActiveRecord::Base
   # ...and users will stay the same.
   has_many :rides
   has_many :attractions, through: :rides
+
+  def mood
+    if self.nausea > self.happiness
+      "sad"
+    else
+      "happy"
+    end 
+  end
 end
