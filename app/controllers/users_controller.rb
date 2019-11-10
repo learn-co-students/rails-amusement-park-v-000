@@ -12,19 +12,21 @@ class UsersController < ApplicationController
 
       # This will get implemented later when we build sessions
       # session[:user_id] = @user.id
-      
+
       redirect_to user_path(@user)
     else
-      render :plain => "Go back & fill out the form correctly"
+      render :plain => "The form wasn't completed correctly"
     end
   end
 
   def show
-    if logged_in?
-      @user = User.find_by(id: params[:id])
-    else
-      redirect_to root_path
-    end
+    # # This will be implemented with the sessions later on:
+    # if logged_in?
+    #   @user = User.find_by(id: params[:id])
+    # else
+    #   redirect_to root_path
+    # end
+    @user = User.find_by(id: params[:id])
   end
 
   private #=> These will be the strong params
