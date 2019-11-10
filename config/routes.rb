@@ -14,16 +14,27 @@ Rails.application.routes.draw do
   # get 'users/create'
   # get 'users/show'
   # Then I replaced them with this one and the users/new.html.erb rendered properly:
-  resources :users, :only => [:new, :create, :show]
+  resources :users, :only => [:create, :show]
 
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  # get 'sessions/new'
+  # get 'sessions/create'  #=> deleted this view because it is not needed
+  # get 'sessions/destroy' #=> deleted this view because it is not needed
+  # Set the sessions URL's to intuitive paths:
+  get '/login' => "sessions#new"
+  post '/sessions' => "sessions#create"
+  get '/logout' => "sessions#destroy"
+  get '/signup' => 'users#new'
+  # NOTE: alternative syntax:
+  # get '/signup', to: 'users#new'
+
   get 'rides/create'
-  get 'attractions/index'
-  get 'attractions/new'
-  get 'attractions/create'
-  get 'attractions/show'
+
+  # get 'attractions/index'
+  # get 'attractions/new'
+  # get 'attractions/create'
+  # get 'attractions/show'
+  # Time to simplify these:
+  resources :attractions,  :only => [:index, :new, :create, :show]
 
 
 

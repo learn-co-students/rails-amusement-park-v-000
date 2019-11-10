@@ -16,11 +16,20 @@ class User < ActiveRecord::Base
   has_many :rides
   has_many :attractions, through: :rides
 
+  # We need to validate the user entered their info in correctly at signup:
+  validates :name, presence: true
+  validates_numericality_of :height, greater_than: 0
+  validates_numericality_of :happiness, greater_than: 0
+  validates_numericality_of :happiness, less_than_or_equal_to: 5
+  validates_numericality_of :nausea, greater_than: 0
+  validates_numericality_of :nausea, less_than_or_equal_to: 5
+  validates_numericality_of :tickets, greater_than: 0
+
   def mood
     if self.nausea > self.happiness
       "sad"
     else
       "happy"
-    end 
+    end
   end
 end

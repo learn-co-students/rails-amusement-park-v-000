@@ -1,6 +1,8 @@
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
 
+<h2 style="color:red"><%=flash[:custom_error_message_1] %></h2>
+
 <%= form_for(@user) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %><br>
