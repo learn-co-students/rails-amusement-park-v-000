@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # ./app/views/layouts/application.html.erb
   # ...on line 20 where it's looking to be directed to a non-existant root url:
   # <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-  root "myroot#bookmark"
+  root "application#index"
 
   # The form_for Rails helper runs some backend code that is looking for:
   # users_path
