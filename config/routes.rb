@@ -20,23 +20,32 @@ Rails.application.routes.draw do
   # get 'sessions/create'  #=> deleted this view because it is not needed
   # get 'sessions/destroy' #=> deleted this view because it is not needed
   # Set the sessions URL's to intuitive paths:
+
+
   get '/login' => "sessions#new"
-  post '/sessions' => "sessions#create"
+  post '/login' => "sessions#create"
+
+  # This isn't getting used and should be deleted
+  #post '/sessions' => "sessions#create"
+
   get '/logout' => "sessions#destroy"
   get '/signup' => 'users#new'
   # NOTE: alternative syntax:
   # get '/signup', to: 'users#new'
 
   get 'rides/create'
+  post '/ride'=> 'rides#create'
 
   # get 'attractions/index'
   # get 'attractions/new'
   # get 'attractions/create'
   # get 'attractions/show'
   # Time to simplify these:
-  resources :attractions,  :only => [:index, :new, :create, :show]
 
-
+  # I had to add edit because the Rspec errors are telling me that admins
+  # should be able to edit rides:
+  # resources :attractions,  :only => [:index, :new, :create, :show]
+  resources :attractions,  :only => [:index, :new, :create, :show, :edit]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

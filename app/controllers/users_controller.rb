@@ -19,11 +19,14 @@ class UsersController < ApplicationController
 
   def show
     if logged_in?
-      # raise params.inspect
       @user = User.find_by(id: params[:id])
     else
-      redirect_to root_path
+      redirect_to login_path
     end
+  end
+
+  def display
+    render :plain => "This is the #display action controller in the users controller"
   end
 
   private #=> These will be the strong params
