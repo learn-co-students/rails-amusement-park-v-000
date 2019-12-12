@@ -21,7 +21,18 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+            <% if current_user %>
+              <li class="nav-item">
+                <a class="nav-link" href="/signout">Log Out</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signin">Sign In</a>
+              </li>
+            <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,6 +40,7 @@
 
     <!-- content -->
     <div class="container"  role="main">
+       <%= flash[:message] if flash[:message] %>
       <%= yield %>
     </div>
   </body>
