@@ -14,7 +14,7 @@ class Ride < ActiveRecord::Base
       update_tickets
       update_nausea_level
       update_happiness_level
-      "Thank you for your ride on the #{self.attraction.name} Attraction!"
+      "Thanks for riding the #{self.attraction.name}!"
     end
   end
 
