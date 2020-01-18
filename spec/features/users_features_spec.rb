@@ -22,7 +22,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   end
 
   it 'successfully logs in as non-admin' do
-    
+
     # user_login method is defined in login_helper.rb
     create_standard_user
     visit '/signin'

@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-
-  def home
-    render "/welcome"
-  end
+  before_action :authenticate_user, only: [:show]
 
   def new
     @user = User.new
@@ -10,18 +7,27 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save
-    redirect_to user_path(@user)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
+    else
+      render 'new'
+    end
   end
 
   def show
-    @user = User.find(params[:id])
+      @user = User.find(params[:id])
+      if !current_user.admin
+        if current_user != @user
+          redirect_to root_path
+        end
+      end
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :height, :nausea, :happiness, :tickets, :password)
+      params.require(:user).permit(:name, :height, :nausea, :happiness, :tickets, :password, :admin)
     end
 
 end

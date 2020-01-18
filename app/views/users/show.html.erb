@@ -1,5 +1,10 @@
 
-Name: <%=@user.name%>
-Tickets: <%=@user.tickets%>
-Mood: <%=@user.mood%>
-Height: <%=@user.height%>
+<strong>Name:</strong> <%=@current_user.name%> <br>
+<strong>Tickets:</strong> <%=@current_user.tickets%> <br>
+<strong>Mood:</strong> <%=@current_user.mood%> <br>
+<strong>Height:</strong> <%=@current_user.height%> <br>
+<strong>ADMIN:</strong> <%if @current_user.admin == true%>
+  <%= "Yes"%>
+  <% else%>
+    <%="No"%>
+  <%end%>
