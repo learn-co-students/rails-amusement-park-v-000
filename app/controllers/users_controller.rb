@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, only: [:show]
 
+
   def new
     @user = User.new
   end
@@ -22,6 +23,14 @@ class UsersController < ApplicationController
           redirect_to root_path
         end
       end
+  end
+
+  def index
+    if current_user.admin
+      @users = User.all
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   private

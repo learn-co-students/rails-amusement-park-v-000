@@ -7,10 +7,12 @@ class User < ActiveRecord::Base
 
 
   def mood
-    if self.nausea > self.happiness
-      return "sad"
-    else
-      return "happy"
+    if !self.admin
+      if self.nausea > self.happiness
+        return "sad"
+      else
+        return "happy"
+      end
     end
   end
 
