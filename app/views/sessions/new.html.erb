@@ -1,9 +1,0 @@
-<%= form_for(:user, url: create_session_path) do |f| %>
-
-      <%= f.collection_select :name, User.all, :id, :name %> <br>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %> <br>
-
-<%= f.submit  %>
-<% end %>
