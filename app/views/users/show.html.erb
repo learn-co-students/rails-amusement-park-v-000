@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<% if @user.admin %>
+  <p>
+    <b>ADMIN</b>
+  </p>
+<% end %>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @user.height %>
+</p>
+
+<p>
+  <b>Mood:</b>
+  <%= @user.mood %>
+</p>
+
+<p>
+  <b>Nausea:</b>
+  <%= @user.nausea %>
+</p>
+
+<p>
+  <b>Tickets: </b>
+  <%= @user.tickets %>
+</p>
+
+<p>
+  <b>Admin: </b>
+  <%= @user.admin %>
+</p>
+
+
+<p><%= link_to "Log Out", signout_path, method: :delete %></p>
+<p><%= link_to 'See attractions', attractions_path %></p>
