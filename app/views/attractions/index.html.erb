@@ -1,0 +1,16 @@
+<% @attractions.each do |a| %>
+    <% if @user.admin %>
+        <%= link_to "Show #{a.name}", "/attractions/#{a.id}" %>
+    <% else %>
+        <%= link_to "Go on #{a.name}", "/attractions/#{a.id}" %><br>
+    <% end %>
+    <%= a.tickets %><br>
+    <%= a.nausea_rating %><br>
+    <%= a.happiness_rating %><br>
+    <%= a.min_height %><br>
+
+<% end %>
+
+<% if @user.admin %>
+    <%= link_to "New Attraction", '/attractions/new' %>
+<% end %>

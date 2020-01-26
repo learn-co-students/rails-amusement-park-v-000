@@ -1,0 +1,10 @@
+<%= @attraction.name %><br>
+<%= @attraction.tickets %><br>
+<%= @attraction.nausea_rating %><br>
+<%= @attraction.happiness_rating %><br>
+<%= @attraction.min_height %><br>
+<% if @user.admin %>
+    <%= link_to "Edit Attraction", "/attractions/#{@attraction.id}/edit" %>
+<% else %>
+    <%= button_to "Go on this ride", "/rides/#{@attraction.id}" %>
+<% end %>
