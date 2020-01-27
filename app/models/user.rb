@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
 
   def mood
-    # This breaks if happiness is nil; maybe I need a validation?
-    
-    if self.happiness > self.nausea
+    # #to_i is needed because some tests don't fill in nausea or happiness. It converts nil to 0.
+
+    if self.happiness.to_i > self.nausea.to_i
       "happy"
-    elsif self.happiness == self.nausea
+    elsif self.happiness.to_i == self.nausea.to_i
       "apathetic" # I added this
     else
       "sad"

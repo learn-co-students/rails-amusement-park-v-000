@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.name %>'s Profile</h1>
+
+<p>
+  <%= flash[:signed_up] %><br>
+  <%= flash[:signed_in] %>
+</p>
+
+<section>
+  <p><%= "ADMIN" if @user.admin %></p> 
+  <p><strong>Name:</strong> <%= @user.name %></p>
+  <p><strong>Mood:</strong> <%= @user.mood %></p>
+  <p><strong>Tickets:</strong> <%= @user.tickets %></p>
+  <p><strong>Height:</strong> <%= @user.height %></p>
+</section>

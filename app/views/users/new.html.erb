@@ -1,4 +1,46 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Sign up here.</h1>
+
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <!-- I don't know why, but if I use "form_with model @user", it doesn't leave the page or go to UsersController#create. -->
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :height, "Height (in inches)" %><br />
+    <%= f.number_field :height %>
+  </p>
+  <p>
+    <%= f.label :happiness, "How happy are you, on a scale of 1-5?" %><br />
+    <%= f.number_field :happiness, in: 1..5 %>
+  </p>
+  <p>
+    <%= f.label :nausea, "How nauseous are you, on a scale of 1-5?" %><br />
+    <%= f.number_field :nausea, in: 1..5 %>
+  </p>
+  <p>
+    <%= f.label :tickets, "How many tickets do you have?" %><br />
+    <%= f.number_field :tickets, min: 0 %>
+  </p>
+  <p>
+    <%= f.label :admin, "Check this box if you are a theme park owner: " %>
+    <%= f.check_box :admin %>
+  </p>
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
 
 <!-- I should open a PR on this lab; I don't think the link to the Rails Generators is the right one. -->
