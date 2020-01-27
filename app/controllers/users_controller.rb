@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     def show
         @user = User.find_by(id: params[:id]) 
         if !current_user.admin 
-            if current_user != @user 
-                redirect_to root_path   
+            if current_user != @user
+                redirect_to root_path  
             end
         end
     end 
@@ -24,10 +24,13 @@ class UsersController < ApplicationController
         end
     end 
 
+    def update 
+    end 
+
     private 
 
     def strong_params 
-        params.require(:user).permit(:name, :tickets, :height, :nausea, :happiness, :password)
+        params.require(:user).permit(:name, :tickets, :height, :nausea, :happiness, :password, :admin)
     end
 
 end

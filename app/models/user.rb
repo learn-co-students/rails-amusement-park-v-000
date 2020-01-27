@@ -6,6 +6,6 @@ class User < ApplicationRecord
     has_many :attractions, through: :rides
     
     def mood 
-        (self.nausea > self.happiness) ? "sad" : "happy"
+        self.nausea > self.happiness ? "sad" : "happy" unless self.admin
     end 
 end
