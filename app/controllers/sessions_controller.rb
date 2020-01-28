@@ -13,6 +13,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      # Update to the problem below: Try using the "local: true" option in #form_with. Rendering with a flash message should then work.
+
       flash[:error] = "Username and/or password are incorrect."
       redirect_to signin_path
       # For some reason, that flash[:error] won't show up if I use #render instead of #redirect_to.
