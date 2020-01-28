@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # The Login Required lesson should help refactor the authorization/require_logged_in part.
     @user = User.find_by_id(params[:id])
   end
 
