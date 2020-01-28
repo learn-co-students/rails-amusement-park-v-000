@@ -1,0 +1,20 @@
+<h1>Please sign in here.</h1>
+  
+<!-- Don't show this page if the user is ALREADY logged in. -->
+
+<p><%= flash.now %></p>
+<%#= flash[:error] %>
+
+<%= form_with method: "post", url: "/signin" do %>
+  <p>
+    <%= label_tag :username, "Your name:" %>
+    <%= text_field_tag :username %>
+  <p>
+
+  <p>
+    <%= label_tag :password, "Your password:" %>
+    <%= password_field_tag :password %>
+  </p>
+
+  <%= submit_tag "Sign In" %>
+<% end %>

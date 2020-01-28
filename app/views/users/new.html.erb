@@ -10,6 +10,7 @@
 
 <%= form_for @user do |f| %>
   <!-- I don't know why, but if I use "form_with model @user", it doesn't leave the page or go to UsersController#create. -->
+  <!-- Update: Check the output in the console log; it may actually work, but if I raise an error, that page won't render. -->
 
   <p>
     <%= f.label :name %><br />
