@@ -6,13 +6,18 @@
 
 <%= form_with model: User.new, local: true, url: "/signin" do |f| %>
   <p>
-    <%= f.label :name, "Your name:" %>
-    <%= f.collection_select :name, User.all, :name, :name, prompt: "Please select your username from this dropdown" %>
+    <%= f.label "Your name:", for: "user_name" %>
+    <%= f.collection_select :name, User.all, :name, :name, {prompt: "Please select your username from this dropdown"}, {id: "user_name"} %>
+    
+    <!-- For some reason, if I use f.collection_select instead of collection_select, I have to specify the :id attribute; it's not generated. -->
+    <!-- That :id attribute is needed, to pass the tests. -->
+    <!-- Not a big deal, but I also have to specify the label's :for attribute if I want that for/id feature. -->
   <p>
 
   <p>
-    <%= f.label :password, "Your password:" %>
-    <%= f.password_field :password %>
+    <%= f.label "Your password:", for: "password" %>
+    <%= f.password_field :password, id: "password" %>
+    <!-- Also, the tests are looking for a password_field with an id of "password", which is not (for some reason) generated either, in this case. -->
   </p>
 
   <%= f.submit "Sign In" %>
@@ -20,12 +25,15 @@
 
 <!-- --------------------- Previous code (still works) -------------------------- -->
 
-<!--
+<!-- 
   <p><%#= flash[:error] %></p>
   <%#= form_with method: "post", url: "/signin" do %>
     <p>
       <%#= label_tag :name, "Your name:" %>
+      <%#= collection_select :user, :name, User.all, :name, :name, prompt: "Please select your username from this dropdown" %>
+      
       <%#= collection_select :user, :name, @users, :name, :name, prompt: "Please select your username from this dropdown" %>
+      I need to use User.all, not @users, because I would otherwise need to define @users in the SessionsController (which I could, may be better).
     <p>
 
     <p>
