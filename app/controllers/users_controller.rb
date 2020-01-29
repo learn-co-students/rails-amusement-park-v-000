@@ -5,7 +5,13 @@ class UsersController < ApplicationController
 
   def show
     # The Login Required lesson should help refactor the authorization/require_logged_in part.
-    @user = User.find_by_id(params[:id])
+    # The Login Required Lab has #current_user, as does the Authentication: Video Review.
+    if logged_in?
+      @user = User.find_by_id(params[:id])
+    else
+      flash.alert = "You must be logged in to view this page."
+      redirect_to root_path
+    end
   end
 
   def create
@@ -14,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:signed_up] = "You have successfully signed up!"
-      flash[:signed_in] = "You are signed in."
+      flash[:signed_in] = "You are logged in."
       redirect_to user_path(@user)
       # redirect_to user works, too
     else

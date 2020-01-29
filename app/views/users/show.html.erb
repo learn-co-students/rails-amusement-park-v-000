@@ -1,9 +1,7 @@
 <h1><%= @user.name %>'s Profile</h1>
 
-<p>
-  <%= flash[:signed_up] %><br>
-  <%= flash[:signed_in] %>
-</p>
+<p style="color: green;"><%= flash[:signed_up] %></p>
+<p style="color: blue;"><%= flash[:signed_in] %></p>
 
 <section>
   <p><%= "ADMIN" if @user.admin %></p> 

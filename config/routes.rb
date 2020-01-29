@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'signin', to: 'sessions#new'
   post 'signin', to: 'sessions#create'
-  # get 'sessions/destroy'
+  # I should keep this consistent in my routes, controllers, views, etc - either Log In or Sign In, not BOTH!
+  get 'logout', to: 'sessions#destroy'
 
   resources :users, only: [:new, :show, :create]
 
