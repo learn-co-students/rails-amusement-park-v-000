@@ -2,20 +2,37 @@
   
 <!-- Don't show this page if the user is ALREADY logged in. -->
 
-<p><%= flash[:error] %></p>
+<p style="color:red;"><strong><%= flash.now[:alert] %></strong></p>
 
-<%#= flash.now %>
-
-<%= form_with method: "post", url: "/signin" do %>
+<%= form_with model: User.new, local: true, url: "/signin" do |f| %>
   <p>
-    <%= label_tag :name, "Your name:" %>
-    <%= collection_select :user, :name, @users, :name, :name, prompt: "Please select your username from this dropdown" %>
+    <%= f.label :name, "Your name:" %>
+    <%= f.collection_select :name, User.all, :name, :name, prompt: "Please select your username from this dropdown" %>
   <p>
 
   <p>
-    <%= label_tag :password, "Your password:" %>
-    <%= password_field_tag :password %>
+    <%= f.label :password, "Your password:" %>
+    <%= f.password_field :password %>
   </p>
 
-  <%= submit_tag "Sign In" %>
+  <%= f.submit "Sign In" %>
 <% end %>
+
+<!-- --------------------- Previous code (still works) -------------------------- -->
+
+<!--
+  <p><%#= flash[:error] %></p>
+  <%#= form_with method: "post", url: "/signin" do %>
+    <p>
+      <%#= label_tag :name, "Your name:" %>
+      <%#= collection_select :user, :name, @users, :name, :name, prompt: "Please select your username from this dropdown" %>
+    <p>
+
+    <p>
+      <%#= label_tag :password, "Your password:" %>
+      <%#= password_field_tag :password %>
+    </p>
+
+    <%#= submit_tag "Sign In" %>
+  <%# end %>
+-->
