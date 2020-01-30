@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources 'attractions', only: [:index, :show]
+  # get 'attractions', to: 'attractions#index'
+
   get 'signin', to: 'sessions#new'
   post 'signin', to: 'sessions#create'
   # I should keep this consistent in my routes, controllers, views, etc - either Log In or Sign In, not BOTH!

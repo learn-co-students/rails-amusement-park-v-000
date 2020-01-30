@@ -1,0 +1,19 @@
+<h1>Attractions</h1>
+
+<table style="width:100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Available Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- I need the <td> element, or it messes up the table. -->
+    <% @attractions.each do |att| %>
+      <tr>
+        <td><%= att.name %></td>
+        <td><%= link_to "Go on #{att.name}", attraction_path(att) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
