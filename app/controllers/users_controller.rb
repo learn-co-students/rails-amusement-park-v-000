@@ -1,17 +1,12 @@
 class UsersController < ApplicationController
+  before_action :user_must_be_logged_in, only: :show # Defined in ApplicationController
+
   def new
     @user = User.new
   end
 
   def show
-    # The Login Required lesson should help refactor the authorization/require_logged_in part.
-    # The Login Required Lab has #current_user, as does the Authentication: Video Review.
-    if logged_in?
-      @user = User.find_by_id(params[:id])
-    else
-      flash.alert = "You must be logged in to view this page."
-      redirect_to root_path
-    end
+    @user = User.find_by_id(params[:id])
   end
 
   def create

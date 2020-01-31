@@ -5,4 +5,9 @@
   <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
   <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
   <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
+
+  <%= button_to rides_path do %> <!-- The button_to syntax is tricky with blocks. -->
+    <%= hidden_field_tag 'attraction_id', @attraction.id %>
+    Go on this ride
+  <% end %>
 </section>

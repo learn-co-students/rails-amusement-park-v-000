@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources 'attractions', only: [:index, :show]
+  resources 'rides', only: [:create]
+  resources 'attractions', only: [:index, :show, :new]
   # get 'attractions', to: 'attractions#index'
 
   get 'signin', to: 'sessions#new'

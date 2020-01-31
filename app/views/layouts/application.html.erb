@@ -20,7 +20,7 @@
           <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
 
           <% if logged_in? %>
-            <!-- This is where I'd put the link to the current_user's profile -->
+            <a class="navbar-brand" href="<%= user_url(current_user) %>"><%= current_user.name %>'s Profile</a>
 
             <a class="navbar-brand" href="<%= logout_url %>">Log Out</a>
             <!-- <a class="navbar-brand" href="<%#= attractions_url %>">See attractions</a> -->

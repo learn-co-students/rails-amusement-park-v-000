@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :user_must_be_logged_in, only: :destroy # Edge case, method defined in ApplicationController
+  
   def new
     # @users = User.all
     # Remember: @users doesn't exist in the #create method, 
@@ -30,7 +32,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.delete :user_id
+    # session.delete :user_id
+    reset_session
     redirect_to root_path
   end
 end

@@ -1,7 +1,9 @@
 <h1><%= @user.name %>'s Profile</h1>
 
+<p style="color: red;"><%= flash[:not_authorized] %></p>
 <p style="color: green;"><%= flash[:signed_up] %></p>
 <p style="color: blue;"><%= flash[:signed_in] %></p>
+<p style="color: blue;"><%= flash[:ride_message] %></p>
 
 <section>
   <p><%= "ADMIN" if @user.admin %></p> 
@@ -9,5 +11,8 @@
   <p><strong>Mood:</strong> <%= @user.mood %></p>
   <p><strong>Tickets:</strong> <%= @user.tickets %></p>
   <p><strong>Height:</strong> <%= @user.height %> inches</p>
-  <p><%= link_to "See attractions", attractions_path %></p> <!-- I added that to the navbar originally, but this looks like the demo. -->
+
+  <% if @user == current_user %>
+    <p><%= link_to "See attractions", attractions_path %></p> <!-- I added that to the navbar originally, but this looks like the demo. -->
+  <% end %>
 </section>
