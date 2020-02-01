@@ -11,6 +11,7 @@
 <%= form_for @user do |f| %>
   <!-- I don't know why, but if I use "form_with model @user", it doesn't leave the page or go to UsersController#create. -->
   <!-- Update: Check the output in the console log; it may actually work, but if I raise an error, that page won't render. -->
+  <!-- Update 2: #form_with works, but the output (especially for raised errors) is in the console, not the browser. -->
 
   <p>
     <%= f.label :name %><br />
@@ -18,7 +19,7 @@
   </p>
   <p>
     <%= f.label :height, "Height (in inches)" %><br />
-    <%= f.number_field :height %>
+    <%= f.number_field :height, min: 0 %>
   </p>
   <p>
     <%= f.label :happiness, "How happy are you, on a scale of 1-5?" %><br />

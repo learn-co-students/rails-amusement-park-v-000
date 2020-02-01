@@ -1,3 +1,5 @@
+<p style="color:green;"><%= flash[:success] %></p>
+
 <section>
   <p><strong>Name:</strong> <%= @attraction.name %></p>
   <p><strong>Total Number of Riders:</strong> <%= @attraction.total_riders %></p>
@@ -6,8 +8,13 @@
   <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
   <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
 
-  <%= button_to rides_path do %> <!-- The button_to syntax is tricky with blocks. -->
-    <%= hidden_field_tag 'attraction_id', @attraction.id %>
-    Go on this ride
+  <% if current_user.admin %>
+    <%#= button_to "Edit Attraction", edit_attraction_path(@attraction), method: :get %>
+    <%= link_to "Edit Attraction", edit_attraction_path %> <!-- The button works, but the link passes the tests. -->
+  <% else %>
+    <%= button_to rides_path do %> <!-- The button_to syntax is tricky with blocks. -->
+      <%= hidden_field_tag 'attraction_id', @attraction.id %>
+      Go on this ride
+    <% end %>
   <% end %>
 </section>

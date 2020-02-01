@@ -1,5 +1,7 @@
 <h1>Attractions</h1>
 
+<p style="color:red;"><%= flash[:not_found] %></p>
+
 <% if current_user.admin? %>
   <p><%= link_to "New Attraction", new_attraction_path %></p>
 <% end %>
@@ -13,14 +15,11 @@
   </thead>
   <tbody>
     <!-- I need the <td> element, or it messes up the table. -->
+    <!-- Note: view_attraction is defined in the AttractionsHelper. -->
     <% @attractions.each do |att| %>
       <tr>
         <td><%= att.name %></td>
-        <% if current_user.admin? %><!-- See if I can refactor this with a helper. -->
-          <td><%= link_to "Show #{att.name}", attraction_path(att) %></td>
-        <% else %>
-          <td><%= link_to "Go on #{att.name}", attraction_path(att) %></td>
-        <% end %>
+        <td><%= link_to view_attraction(att), attraction_path(att) %></td>
       </tr>
     <% end %>
   </tbody>
