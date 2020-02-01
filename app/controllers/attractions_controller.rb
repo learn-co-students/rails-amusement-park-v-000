@@ -1,18 +1,13 @@
 class AttractionsController < ApplicationController
   before_action :user_must_be_logged_in # Defined in ApplicationController
   before_action :check_for_unauthorized_user, only: [:new, :create, :edit, :update] # Defined here
+  before_action :find_attraction, only: [:show, :edit, :update]
 
   def index
     @attractions = Attraction.all
   end
 
   def show
-    @attraction = Attraction.find_by_id(params[:id])
-
-    if @attraction.nil?
-      flash[:not_found] = "Could not find this attraction."
-      redirect_to attractions_path
-    end
   end
 
   def new
@@ -28,15 +23,12 @@ class AttractionsController < ApplicationController
   end
 
   def edit
-    # @attraction = Attraction.find_by_id(params[:id])
-    # 
-    # if @attraction.nil?
-      # flash[:not_found] = "Could not find this attraction."
-      # redirect_to attractions_path
-    # end
   end
 
   def update
+    @attraction.update(attraction_params)
+    flash[:success] = "Successfully updated the attraction!"
+    redirect_to attraction_path(@attraction)
   end
 
   private
@@ -50,6 +42,15 @@ class AttractionsController < ApplicationController
       unless current_user.admin
         flash[:not_authorized] = "You are not authorized to do this."
         redirect_to user_path(current_user)
+      end
+    end
+
+    def find_attraction
+      @attraction = Attraction.find_by_id(params[:id])
+
+      if @attraction.nil?
+        flash[:not_found] = "Could not find this attraction."
+        redirect_to attractions_path
       end
     end
 end

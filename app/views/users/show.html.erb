@@ -1,12 +1,11 @@
 <h1><%= @user.name %>'s Profile</h1>
-
 <p style="color: red;"><%= flash[:not_authorized] %></p>
 <p style="color: green;"><%= flash[:signed_up] %></p>
 <p style="color: blue;"><%= flash[:signed_in] %></p>
 <p style="color: blue;"><%= flash[:ride_message] %></p>
 
-<section>
-  <p><%= "ADMIN" if @user.admin %></p> 
+<section class="info">
+  <p><strong><%= "ADMIN" if @user.admin %></strong></p> 
   <p><strong>Name:</strong> <%= @user.name %></p>
   <p><strong>Mood:</strong> <%= @user.mood %></p>
   <p><strong>Tickets:</strong> <%= @user.tickets %></p>
