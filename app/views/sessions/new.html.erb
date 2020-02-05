@@ -1,0 +1,10 @@
+<h1>FOR LOGGIN</h1>
+<%= form_for :user do |f| %>
+  <label>Your name:</label>
+  <%= collection_select(:user, :name, User.all, :name, :name) %></br><br>
+
+  <label>Your password:</label><br>
+  <%= f.password_field :password, id: "password" %></br>
+<br>
+  <%= f.submit "Sign In" %>
+<% end %>
