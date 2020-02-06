@@ -961,7 +961,6 @@ rspec ./spec/models/attraction_spec.rb:18 # Attraction has many rides*
 rspec ./spec/models/attraction_spec.rb:24 # Attraction has many users through rides*
 
 
-
 Ride Model:
 rspec ./spec/models/ride_spec.rb:29 # Ride is valid with a user_id and a attraction_id
 rspec ./spec/models/ride_spec.rb:33 # Ride belongs to one attraction*
@@ -972,7 +971,6 @@ rspec ./spec/models/ride_spec.rb:58 # Ride has a method 'take_ride' that account
 rspec ./spec/models/ride_spec.rb:67 # Ride has a method 'take_ride' that updates ticket number
 rspec ./spec/models/ride_spec.rb:75 # Ride has a method 'take_ride' that updates the user's nausea
 rspec ./spec/models/ride_spec.rb:83 # Ride has a method 'take_ride' that updates the user's happiness
-
 
 
 
