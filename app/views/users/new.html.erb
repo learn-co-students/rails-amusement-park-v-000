@@ -1,0 +1,27 @@
+
+#this is the signup page
+
+<%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :height %>
+    <%= f.password_field :height %>
+
+    <%= f.label :happiness %>
+    <%= f.password_field :happiness %>
+   
+    <%= f.label :nausea %>
+    <%= f.password_field :nausea %>
+   
+    <%= f.label :tickets %>
+    <%= f.password_field :tickets %>
+  
+    <%= f.submit "Create User" %>
+
+  <% end %>
+  
+
