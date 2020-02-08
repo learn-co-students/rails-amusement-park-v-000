@@ -18,6 +18,13 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <%= link_to 'Sign Up', new_user_path, class: 'navbar-brand' unless current_user %>
+        <%= link_to_unless current_user, "Login", signin_path, class: 'navbar-brand' do
+          link_to "Profile", user_path(current_user), class: 'navbar-brand'
+        end
+        %>
+        <%= link_to "New Attraction", new_attraction_path, class: 'navbar-brand' if current_user && current_user.admin %>
+        <%= link_to 'Log Out', logout_path, method: 'post', class: 'navbar-brand' if current_user %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

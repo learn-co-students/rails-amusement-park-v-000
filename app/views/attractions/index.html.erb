@@ -1,0 +1,23 @@
+<h1>Attractions List</h1>
+<br>
+<table class='table table-hover'>
+	<thead>
+	    <tr>
+	      <th scope="col">Name</th>
+	      <th scope="col"; style="text-align: center;">Tickets</th>
+  	      <th scope="col">Details</th>
+	    </tr>
+	</thead>
+	<tbody>
+		<% @attractions.each do |attraction| %>
+			<tr>
+				<th scope="row"><%= attraction.name %></th>
+				<td style="text-align: center;"><%= attraction.tickets %></td>
+				<td>
+					<% current_user.admin ? @link_text = 'Show': @link_text = 'Go on' %>
+					<%= link_to "#{@link_text} #{attraction.name}", attraction %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
