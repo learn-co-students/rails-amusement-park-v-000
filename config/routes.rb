@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
  
  # root to: 'application#home'
-  root to: 'users#index'
+  root to: 'users#login'
   
 
   #when the user requests the /home url, then the controller will send them the home view file
