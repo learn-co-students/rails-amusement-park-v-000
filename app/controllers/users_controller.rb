@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user
   def new
     @user = User.new
   end
     
   def create
     @user = User.create(user_params)
-   
+
     #if pw and confirm don't match, then redirect to the UsersController#new (which sends to view/users/new) 
     return redirect_to controller: 'users', action: 'new' unless @user.save    
     
     #if @user.save, then log in, set the session for this user, and redirect to the WelcomeController
     session[:user_id] = @user.id
-    #redirect to user/show (remember that _path is show)
+    #redirect to user/show (_path means show)
     redirect_to user_path(@user)
   end
   
@@ -19,7 +20,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: params[:id])
+    if !current_user.admin || current_user != @user
+      redirect_to root_path
+    end
   end
 
   private
