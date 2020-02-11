@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: [:new, :create]
+  
   def new
     @user = User.new
   end
@@ -35,19 +36,7 @@ class UsersController < ApplicationController
 end
 
 
-  
-#   def user_signout
 
-#   end
-
-#   def go_on_a_ride
-#   end
-
-#   def admin_flow
-#   end
-
-
-# end
 
 #SPEC tests:
 # rspec ./spec/features/users_features_spec.rb:4 # Feature Test: User Signup successfully signs up as non-admin

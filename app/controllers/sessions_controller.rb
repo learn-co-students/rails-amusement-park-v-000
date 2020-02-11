@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  def sign_in 
+  def sign_up 
     @user = User.new
   end
 
