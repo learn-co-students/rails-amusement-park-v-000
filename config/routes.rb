@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
 
   get '/new', to: "users#new"
+  get '/signin', to: "sessions#signin"
   post '/login', to: "sessions#create"
 end
 
