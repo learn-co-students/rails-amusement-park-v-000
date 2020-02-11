@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, except: [:new, :create]
-  
+
   def new
     @user = User.new
   end
@@ -22,9 +22,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    if !current_user.admin || current_user != @user
+   # if !current_user.admin || current_user != @user
       redirect_to root_path
-    end
   end
 
   private

@@ -1,0 +1,20 @@
+
+
+#post
+
+# <%= form_for 
+#   def user_login
+#     select 'Mindy',from:'user_name'
+#     fill_in("password", :with => "password")
+#     click_button('Sign In')
+#   end
+
+  <%= form_for @user do |f| %>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+      
+    <%= f.submit "Log In" %>
+
+  <% end %>
