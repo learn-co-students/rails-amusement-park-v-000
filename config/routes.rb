@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   
 
   get '/new', to: "users#new"
-  get '/signin', to: "sessions#signin"
-  post '/login', to: "sessions#create"
+  get '/signin', to: "sessions#new", as: "signin"
+  post '/signin', to: "sessions#create"
+  get '/logout', to: "sessions#destroy"
+
 end
+
 
 
 # HTTP Verb:	  Path:	      Controller#Action:	 Used for:
