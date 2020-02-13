@@ -1,7 +1,9 @@
 
 <h1>Show User</h1>
 
-Name: <%= @user.name %>
-Mood: <%= @user.mood %>
-Tickets: <%= @user.tickets %>
-Height: <%= @user.height %>
+Name: <%= @user.name %><br>
+Mood: <%= @user.mood %><br>
+Tickets: <%= @user.tickets %><br>
+Height: <%= @user.height %><br>
+
+<%= link_to "See attractions", attractions_path if @user.admin == false %>

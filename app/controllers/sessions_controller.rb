@@ -15,7 +15,7 @@ def create
 end
 
     def destroy
-        log_out
+        session.delete :user_id
         redirect_to controller: 'sessions', action: 'new'
     end
 

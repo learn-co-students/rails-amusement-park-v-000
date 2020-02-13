@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     end
 
     def create
+        #raise params.inspect
         @user = User.new(user_params)
         # binding.pry
         if @user.save
