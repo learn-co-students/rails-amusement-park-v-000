@@ -6,11 +6,12 @@ class UsersController < ApplicationController
   end
     
   def create
+    
     @user = User.create(user_params)
 
     #if pw and confirm don't match, then redirect to the UsersController#new (which sends to view/users/new) 
     return redirect_to controller: 'users', action: 'new' unless @user.save    
-    
+  
     #if @user.save, then log in, set the session for this user, and redirect to the WelcomeController
     session[:user_id] = @user.id
     #redirect to user/show (_path means show)
