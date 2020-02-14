@@ -1,10 +1,8 @@
-<h1>Log in</h1>
-<%= form_for session do |f| %>
-<%= f.label :name %>
-<%= f.collection_select :user, User.all, :name, :name %>
+<h2>Log in</h2>
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+<label>Your Name:</label>
+<%= collection_select(:user, :name, User.all, :name, :name) %>
 <br>
-<%= f.label :password %>
-<%= f.password_field :password %>
-<br>
-<%= f.submit "Sign In" %>
+<label>Your password:  </label><input name="password" type="password"><br>
+<input type="submit" value='Sign In'>
 <% end %>
