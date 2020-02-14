@@ -1,5 +1,5 @@
 <h2>Log in</h2>
-<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+<%= form_tag('/sessions', method: 'post') do %>
 <label>Your Name:</label>
 <%= collection_select(:user, :name, User.all, :name, :name) %>
 <br>
