@@ -1,5 +1,4 @@
-
-#this is the signup page
+User Sign up
 
 <%= form_for @user do |f| %>
     <%= f.label :name %>
@@ -9,16 +8,16 @@
     <%= f.password_field :password %>
 
     <%= f.label :height %>
-    <%= f.password_field :height %>
+    <%= f.number_field :height %>
 
     <%= f.label :happiness %>
-    <%= f.password_field :happiness %>
+    <%= f.number_field :happiness %>
    
     <%= f.label :nausea %>
-    <%= f.password_field :nausea %>
+    <%= f.number_field :nausea %>
    
     <%= f.label :tickets %>
-    <%= f.password_field :tickets %>
+    <%= f.number_field :tickets %>
   
     <%= f.submit "Create User" %>
 
