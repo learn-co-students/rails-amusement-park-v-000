@@ -1,21 +1,15 @@
 class UsersController < ApplicationController
-
+  #  before_action :authenticate_user, only: [:show]
 
     def new 
     @user = User.new
     end
     
-    def user_signup
-        @user = User.new
-    end
-
     def create
-        #raise params.inspect
+      #  raise params.inspect
         @user = User.new(user_params)
-        # binding.pry
         if @user.save
-            session[:user_id] = @user.id
-            # binding.pry
+            session[:name] = @user.name
             redirect_to user_path(@user)
         else
             render 'new'
@@ -23,13 +17,17 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        @user = User.find_by(name: params[:name])
+   #     if !current.user.admin
+            if current_user != @user
+            redirect_to root_path
+            end
+     #   end
     end
     
 
     private
     def user_params
-       #  binding.pry
         params.require(:user).permit(:name, :password, :height, :nausea, :happiness, :tickets, :admin)
     end
 end

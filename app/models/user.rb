@@ -4,12 +4,7 @@ class User < ActiveRecord::Base
     has_many :attractions, through: :rides
 
     def mood
-     # binding.pry
-         if self.nausea > self.happiness
-             "sad"
-            else
-            "happy"
-         end
+         self.nausea > self.happiness ? "sad" : "happy"
     end
 
     def create_standard_user

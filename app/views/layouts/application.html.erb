@@ -18,7 +18,13 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home </a>
-        
+        <% if !logged_in? %>
+            <a class="navbar-brand" href="<%= signup_url %>"/>Sign Up </a>
+            <a class="navbar-brand" href="<%= signin_url %>"/>Log In </a>
+        <% else %>
+            <a class="navbar-brand" href="<%= signup_url %>"/>Profile </a>
+            <a class="navbar-brand" href="<%= logout_url %>"/>Log Out </a>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

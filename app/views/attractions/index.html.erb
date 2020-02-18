@@ -1,5 +1,13 @@
-<h1>Listing Attractions</h1>
+<h1>Attractions Listing</h1>
+<table>
+    <tr>
+<% @attractions.each do |attr| %>
+<td><%= attr.name %> </td> <td>  <%= attr.tickets %> </td><td>    <%= link_to attr.name, attraction_path(attr) %>
+</td>
+</tr><% end %>
 
-<%= @attractions.each do |attr| %>
-<p><%= attr.name %>    <%= attr.tickets %>     <%= link_to attr.name, attraction_path(attr) %></p>
+</table>
+<% if logged_in? %>
+    Logged in as <%= session[:name]%>
 <% end %>
+<%= link_to 'New Attraction', new_attraction_path %>
