@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   root 'application#hello'
   get '/signin' => 'sessions#new'
-  get '/logout' => 'sessions#destroy'
   post '/signin' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   resources :users
   resources :rides
