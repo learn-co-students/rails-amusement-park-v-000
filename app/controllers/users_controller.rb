@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       #  raise params.inspect
         @user = User.new(user_params)
         if @user.save
-            session[:name] = @user.name
+            session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
             render 'new'
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by(name: params[:name])
+        @user = User.find_by(id: params[:id])
    #     if !current.user.admin
             if current_user != @user
             redirect_to root_path
