@@ -1,5 +1,5 @@
 <h2>Log in</h2>
-<%= form_tag('/signin', method: 'post') do %>
+<%= form_tag({controller: 'sessions', action: 'create', method: 'post'}) do %>
 <label>Your Name:</label>
 <%= collection_select(:user, :name, User.all, :name, :name, {:prompt => 'Please select your username from this dropdown'}) %>
 <br>
@@ -7,5 +7,3 @@
 <input type="submit" value='Sign In'>
 <% end %>
 
-
-<!--    This is a comment! -->

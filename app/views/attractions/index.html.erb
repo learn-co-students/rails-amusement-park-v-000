@@ -7,7 +7,6 @@
 </tr><% end %>
 
 </table>
-<% if logged_in? %>
-    Logged in as <%= current_user.name%><br>
+<% if logged_in? && current_user.admin %>
+    <%= link_to 'New Attraction', new_attraction_path %>
 <% end %>
-<%= link_to 'New Attraction', new_attraction_path %>

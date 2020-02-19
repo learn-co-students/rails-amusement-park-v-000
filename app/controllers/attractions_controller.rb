@@ -8,4 +8,11 @@ def show(attraction)
     @attraction = Attraction.find_by(attraction.id)
 end
 
+def new
+end
+
+def create
+
+end
+
 end

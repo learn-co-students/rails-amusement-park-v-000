@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
 
 
     def create
-      raise params.inspect
-      @user = User.find_by(id: params[:id])
+     # raise params.inspect
+      @user = User.find_by(name: params[:user][:name])
       if @user
         session[:user_id] = @user.id
         redirect_to user_path(@user)
@@ -21,5 +21,9 @@ class SessionsController < ApplicationController
         redirect_to '/'
     end
 
+    private
+    def session_params
+        params.require(:session).permit(:user, :password)
+    end
 
 end
