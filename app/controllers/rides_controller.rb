@@ -1,7 +1,6 @@
 class RidesController < ApplicationController
 
-    def take_ride
-    
-    
+    def new
+        take_ride
     end
 end
