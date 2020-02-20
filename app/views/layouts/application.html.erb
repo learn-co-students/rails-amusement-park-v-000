@@ -22,7 +22,7 @@
             <a class="navbar-brand" href="<%= signup_url %>"/>Sign Up </a>
             <a class="navbar-brand" href="<%= signin_url %>"/>Log In </a>
         <% else %>
-            <a class="navbar-brand" href="<%= signup_url %>"/><%=current_user.name %>'s Profile </a>
+            <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%=current_user.name %>'s Profile </a>
             <a class="navbar-brand" href="<%= logout_path %>"/>Log Out </a>
         <% end %>
         </div>
