@@ -2,13 +2,6 @@ class Ride < ActiveRecord::Base
     belongs_to :user
     belongs_to :attraction
 
-    def new
-    end
-
-    def create
-        @ride = Ride.new
-    end
-
     def take_ride
         attraction = self.attraction
         user = self.user
