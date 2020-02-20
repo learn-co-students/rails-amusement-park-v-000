@@ -10,7 +10,7 @@
 <td><%= attr.name %> </td> <td>  <%= attr.tickets %> </td>
 <td>
     <% if current_user.admin %>
-        Show <%= link_to attr.name, edit_attraction_path(attr) %>
+        Show <%= link_to attr.name, attraction_path(attr) %>
     <% else %>
         Go on <%= link_to attr.name, attraction_path(attr) %>
     <% end %>
