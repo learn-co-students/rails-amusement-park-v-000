@@ -1,10 +1,7 @@
 class RidesController < ApplicationController
 
-    def new
-        take_ride
-    end
-
     def create
+        self.take_ride
         @ride = Ride.new
     end
 end
