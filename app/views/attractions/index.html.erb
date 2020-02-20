@@ -1,11 +1,22 @@
-<h1>Attractions Listing</h1>
-<table>
+<h1>Listing attractions</h1>
+<table class="table">
+    <thead>
+<tr><th colspan="3"></th></tr>
+
+    </thead>
+    <tbody>
     <tr>
 <% @attractions.each do |attr| %>
-<td><%= attr.name %> </td> <td>  <%= attr.tickets %> </td><td>    <%= link_to attr.name, attraction_path(attr) %>
+<td><%= attr.name %> </td> <td>  <%= attr.tickets %> </td>
+<td>
+    <% if current_user.admin %>
+        Show <%= link_to attr.name, edit_attraction_path(attr) %>
+    <% else %>
+        Go on <%= link_to attr.name, attraction_path(attr) %>
+    <% end %>
 </td>
 </tr><% end %>
-
+</tbody>
 </table>
 <% if logged_in? && current_user.admin %>
     <%= link_to 'New Attraction', new_attraction_path %>
