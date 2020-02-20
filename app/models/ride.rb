@@ -19,6 +19,7 @@ class Ride < ActiveRecord::Base
             
             user.update(tickets: current_tickets, happiness: current_happiness, nausea: current_nausea)
         end
+        redirect_to user_path(current_user)
     end
 
 end
