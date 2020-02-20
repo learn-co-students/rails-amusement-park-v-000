@@ -25,6 +25,10 @@ def create
 end
 
 
+    def edit
+        @attraction = Attraction.find_by(id: params[:id])
+    end
+
 private
 
     def attraction_params
