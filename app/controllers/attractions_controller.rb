@@ -1,7 +1,11 @@
 class AttractionsController < ApplicationController
 
 def index
-    @attractions = Attraction.all
+    if current_user
+        @attractions = Attraction.all
+    else
+        redirect_to '/'
+    end
 end
 
 def show
@@ -37,7 +41,7 @@ end
             render 'edit'
         end
     end
-    
+
 private
 
     def attraction_params
