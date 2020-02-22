@@ -1,5 +1,5 @@
 
-<h1><%= @user.name %></h1>
+User name: <h1><%= @user.name %></h1>
 Height: <%= @user.height %> 
 Mood: <%= @user.mood %>
 Nausea: <%= @user.nausea %> 
@@ -8,7 +8,9 @@ Tickets: <%= @user.tickets %>
 # Feature Test: User Signout has a link to log out from the users/show page
 
 <% if current_user %>
-<%=     link_to "Logout", :controller => 'sessions', :action => 'destroy' %>
+<%=    link_to "Logout", :controller => 'sessions', :action => 'destroy' %>
 <% else %>
-<%=     link_to "Login", :controller => 'sessions', :action => 'new' %>
+<%=    link_to "Login", :controller => 'sessions', :action => 'new' %>
 <% end %>
+
+<%= link_to "Attractions", :controller => 'attractions', :action => 'index' %>

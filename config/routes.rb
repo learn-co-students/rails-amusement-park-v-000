@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:new, :create, :show]
  
- # root to: 'application#home'
-  root to: 'sessions#home'
+  root to: 'application#home'
+ # root to: 'sessions#home'
   
 
   #when the user requests the /home url, then the controller will send them the home view file
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post '/signin', to: "sessions#create"
 
   get '/logout', to: "sessions#destroy"
+
+  get '/attractions', to: "attractions#index"
 
 
 
