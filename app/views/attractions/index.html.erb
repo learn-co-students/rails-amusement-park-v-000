@@ -15,8 +15,11 @@
 <% @attractions.each do |attr| %>
 <td><%= attr.name %> </td> <td>  <%= attr.tickets %> </td>
 <td>
-    <%= current_user.admin ? "Show" : "Go on" %>
-    <%= link_to attr.name, attraction_path(attr) %>
+    <% if current_user.admin? %>
+        <%= link_to "Show #{attr.name}", attraction_path(attr) %>
+    <% else %>
+        <%= link_to "Go on #{attr.name}", attraction_path(attr) %>
+    <% end %>     
 </td>
 </tr><% end %>
 </tbody>
