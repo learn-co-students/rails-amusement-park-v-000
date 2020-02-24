@@ -17,10 +17,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-       # binding.pry
-        # reset_session
-       # binding.pry
-        session.delete(:user_id)
+        reset_session
+        # session.delete(:user_id)
         redirect_to '/'
     end
 
