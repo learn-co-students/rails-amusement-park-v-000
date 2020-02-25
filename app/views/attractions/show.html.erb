@@ -7,8 +7,8 @@
 <label>Happiness Rating: </label> <%= @attraction.happiness_rating %><br>
 <% if !current_user.admin %>
     <%= form_for (Ride.new) do |f| %>
-        <%= f.submit "Go on this ride" %>
+    <%= f.submit "Go on this ride" %>
     <% end %>
-   <% else %>
+<% else %>
    <%= link_to "Edit Attraction", edit_attraction_path %>
  <% end %>

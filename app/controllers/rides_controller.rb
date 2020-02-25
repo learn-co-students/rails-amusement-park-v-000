@@ -4,7 +4,7 @@ class RidesController < ApplicationController
     end
     
     def create
-       #        binding.pry
+       raise params.inspect
         @ride = Ride.new(params)
         @ride.take_ride
     end
