@@ -5,7 +5,14 @@ class RidesController < ApplicationController
     
     def create
        raise params.inspect
-        @ride = Ride.new(params)
+        @ride = Ride.new(ride_params)
         @ride.take_ride
+    end
+
+
+
+    private
+    def ride_params
+        params.require(:ride).permit(:attraction, :user)
     end
 end
