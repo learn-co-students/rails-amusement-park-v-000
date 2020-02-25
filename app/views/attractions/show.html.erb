@@ -6,7 +6,7 @@
 <label>Nausea Rating: </label> <%= @attraction.nausea_rating %><br>
 <label>Happiness Rating: </label> <%= @attraction.happiness_rating %><br>
 <% if !current_user.admin %>
-    <%= form_for(@ride) do |f| %>
+    <%= form_for (Ride.new) do |f| %>
         <%= f.submit "Go on this ride" %>
     <% end %>
    <% else %>

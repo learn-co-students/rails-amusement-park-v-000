@@ -11,6 +11,7 @@ end
 def show
    # raise params.inspect
     @attraction = Attraction.find_by(id: params[:id])
+   # binding.pry
 end
 
 def new

@@ -1,12 +1,11 @@
 class RidesController < ApplicationController
 
     def new
-        @ride = Ride.new
     end
     
-    
     def create
-        self.take_ride
-        @ride = Ride.new
+       #        binding.pry
+        @ride = Ride.new(params)
+        @ride.take_ride
     end
 end
