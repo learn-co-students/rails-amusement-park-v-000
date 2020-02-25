@@ -17,13 +17,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home </a>
+        <a class="navbar-brand" href="<%= root_url %>">Home </a>
         <% if !logged_in? %>
-            <a class="navbar-brand" href="<%= signup_url %>"/>Sign Up </a>
-            <a class="navbar-brand" href="<%= signin_url %>"/>Log In </a>
+            <a class="navbar-brand" href="<%= signup_url %>">Sign Up </a>
+            <a class="navbar-brand" href="<%= signin_url %>">Log In </a>
         <% else %>
-            <a class="navbar-brand" href="<%= user_path(current_user) %>"/><%=current_user.name %>'s Profile </a>
-            <a class="navbar-brand" href="<%= logout_path %>"/>Log Out</a>
+            <a class="navbar-brand" href="<%= user_path(current_user) %>"><%=current_user.name %>'s Profile </a>
+            <a class="navbar-brand" id="logout" href="<%= logout_path %>">Log Out</a>
         <% end %>
         </div>
         <div class="navbar-collapse collapse">
