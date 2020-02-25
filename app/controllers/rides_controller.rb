@@ -10,6 +10,8 @@ class RidesController < ApplicationController
         @user = current_user
         binding.pry
         @ride.take_ride
+
+        redirect to @user
     end
 
 
