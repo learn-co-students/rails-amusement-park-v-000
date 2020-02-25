@@ -3,9 +3,9 @@ Attractions
 <ul>
   <% @attractions.each do |attraction| %>
     <li>
-    <% link_to "Attractions", :controller => 'attractions', :action => 'show' %>
-        <%= attraction.title %> </a>
+        <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %> 
     </li>
   <% end %>
 </ul>
+
 

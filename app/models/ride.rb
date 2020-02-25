@@ -24,9 +24,3 @@ class Ride < ActiveRecord::Base
   end
 end
 
-# rspec ./spec/models/ride_spec.rb:41 # Ride has a method 'take_ride' that accounts for the user not having enough tickets
-# rspec ./spec/models/ride_spec.rb:49 # Ride has a method 'take_ride' that accounts for the user not being tall enough
-# rspec ./spec/models/ride_spec.rb:58 # Ride has a method 'take_ride' that accounts for the user not being tall enough and not having enough tickets
-# rspec ./spec/models/ride_spec.rb:67 # Ride has a method 'take_ride' that updates ticket number
-# rspec ./spec/models/ride_spec.rb:75 # Ride has a method 'take_ride' that updates the user's nausea
-# rspec ./spec/models/ride_spec.rb:83 # Ride has a method 'take_ride' that updates the user's happiness

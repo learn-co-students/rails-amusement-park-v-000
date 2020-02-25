@@ -1,16 +1,18 @@
 
 User name: <h1><%= @user.name %></h1>
+<% if @user.admin? %>
+<h3> ADMIN </h3>
+<% else %>
 Height: <%= @user.height %> 
 Mood: <%= @user.mood %>
 Nausea: <%= @user.nausea %> 
 Tickets: <%= @user.tickets %> 
-
-# Feature Test: User Signout has a link to log out from the users/show page
+<% end %>
 
 <% if current_user %>
-<%=    link_to "Logout", :controller => 'sessions', :action => 'destroy' %>
+<%=    link_to "Log Out", :controller => 'sessions', :action => 'destroy' %>
 <% else %>
 <%=    link_to "Login", :controller => 'sessions', :action => 'new' %>
 <% end %>
 
-<%= link_to "Attractions", :controller => 'attractions', :action => 'index' %>
+<%= link_to "See attractions", attractions_path %>

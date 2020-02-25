@@ -1,9 +1,18 @@
 class AttractionsController < ApplicationController
 
-    def create
-        if valid_user
-        @user = User.create(name: params[:name], password: params[:password])
-    end
+  def index
+    @attractions = Attraction.all
+  end
 
-    
+  def show
+    @attraction = Attraction.find_by(id: params[:id])
+  end
+
+  def take_ride
+    ride = Ride.new(attraction_id: params[:attraction_id], user_id: current_user.id)  
+    ride.take_ride
+    flash[:notice] = "Thanks for riding the #{@attraction.name}."
+    redirect_to user_path(current_user)
+
+  end
 end
