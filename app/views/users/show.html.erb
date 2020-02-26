@@ -9,6 +9,10 @@ Nausea: <%= @user.nausea %>
 Tickets: <%= @user.tickets %> 
 <% end %>
 
+<% if flash[:notice].present? %>
+  <%= flash[:notice] %>
+<% end %><br />
+
 <% if current_user %>
 <%=    link_to "Log Out", :controller => 'sessions', :action => 'destroy' %>
 <% else %>

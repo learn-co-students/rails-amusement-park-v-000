@@ -1,5 +1,6 @@
 
-Attractions
+Attractions Index
+
 <ul>
   <% @attractions.each do |attraction| %>
     <li>
@@ -8,4 +9,8 @@ Attractions
   <% end %>
 </ul>
 
+<% if user.admin? %>
+<%= link_to "New Attraction", new_attraction_path(attraction) %>
+<%= link_to "Show Attraction", attraction_path(attraction) %>
+<% end %>
 
