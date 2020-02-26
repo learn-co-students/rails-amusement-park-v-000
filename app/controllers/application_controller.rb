@@ -16,10 +16,6 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  def authenticate_user
-    if !logged_in? 
-      redirect to root_path
-    end
-  end
+  
 
 end
