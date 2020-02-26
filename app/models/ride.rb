@@ -5,7 +5,7 @@ class Ride < ActiveRecord::Base
     def take_ride
       #  attraction = self.attraction
       #  user = self.user
-      binding.pry
+      #  binding.pry
         
         if user.tickets < attraction.tickets && user.height < attraction.min_height
             "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
@@ -20,7 +20,7 @@ class Ride < ActiveRecord::Base
             
             user.update(tickets: current_tickets, happiness: current_happiness, nausea: current_nausea)
         end
-        redirect_to user_path(current_user)
+
     end
 
 end

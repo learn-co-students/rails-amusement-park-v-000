@@ -11,6 +11,10 @@ end
 def show
    # raise params.inspect
     @attraction = Attraction.find_by(id: params[:id])
+    @ride = Ride.new
+    @ride.user = current_user
+    @ride.attraction = @attraction
+    @ride.save
    # binding.pry
 end
 
