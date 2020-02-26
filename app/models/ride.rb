@@ -3,8 +3,8 @@ class Ride < ActiveRecord::Base
     belongs_to :attraction
 
     def take_ride
-      #  attraction = self.attraction
-      #  user = self.user
+        attraction = self.attraction
+        user = self.user
       #  binding.pry
         
         if user.tickets < attraction.tickets && user.height < attraction.min_height
@@ -20,7 +20,7 @@ class Ride < ActiveRecord::Base
             
             user.update(tickets: current_tickets, happiness: current_happiness, nausea: current_nausea)
         end
-
+        
     end
 
 end
