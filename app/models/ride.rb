@@ -3,9 +3,9 @@ class Ride < ActiveRecord::Base
     belongs_to :attraction
 
     def take_ride
+       # binding.pry
         attraction = self.attraction
         user = self.user
-      #  binding.pry
         
         if user.tickets < attraction.tickets && user.height < attraction.min_height
             "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
@@ -19,8 +19,9 @@ class Ride < ActiveRecord::Base
             current_happiness = user.happiness + attraction.happiness_rating
             
             user.update(tickets: current_tickets, happiness: current_happiness, nausea: current_nausea)
+            "Thank you for riding the #{attraction.name}."
         end
-        
+
     end
 
 end
