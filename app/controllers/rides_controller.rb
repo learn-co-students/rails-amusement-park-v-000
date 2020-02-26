@@ -18,6 +18,6 @@ class RidesController < ApplicationController
 
     private
     def ride_params
-        params.require(:ride).permit(:attraction, :user)
+        params.require(:ride).permit(:attraction)
     end
 end
