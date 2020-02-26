@@ -8,7 +8,7 @@
 <% if !current_user.admin %>
     <%= form_for (Ride.new) do |f| %>
     <%= f.hidden_field :attraction, :value => @attraction.id %>
-    <%= f.hidden_field :user, :value => @current_user %>
+    <%= f.hidden_field :user, :value => current_user.id %>
 
     <%= f.submit "Go on this ride" %>
     <% end %>
