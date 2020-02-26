@@ -14,7 +14,10 @@ class RidesController < ApplicationController
         redirect to @user
     end
 
+    def update
 
+    end
+    
 
     private
     def ride_params
