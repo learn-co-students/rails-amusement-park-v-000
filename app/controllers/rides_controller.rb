@@ -11,8 +11,8 @@ class RidesController < ApplicationController
 
     def update
        # binding.pry
-        # @ride = Ride.new
-        
+         @ride = Ride.new
+
         @ride.attraction_id = params[:ride][:attraction_id]
         @ride.user_id = params[:ride][:user_id]
         @ride.take_ride
