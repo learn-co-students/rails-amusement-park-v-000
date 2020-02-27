@@ -10,11 +10,12 @@ class RidesController < ApplicationController
     end
 
     def update
-       binding.pry
+      # binding.pry
         @ride = Ride.find_by(id: params[:id])
        # @ride.attraction_id = params[:ride][:attraction_id]
        # @ride.user_id = params[:ride][:user_id]
-        @ride.take_ride
+        @result = @ride.take_ride
+        flash[:success] = @result
         redirect_to user_path(current_user)
     end
 
