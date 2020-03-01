@@ -13,4 +13,15 @@ class AttractionsController < ApplicationController
     flash[:notice] = ride.take_ride
     redirect_to user_path(current_user)
   end
+
+  def update
+    @attraction = Attraction.find_by(params[:id])
+    @attraction.update(user_params)
+    redirect_to attraction_path(@attraction)
+  end
+
+  def edit
+    @attraction = Attraction.find_by(params[:id])
+  end
+
 end

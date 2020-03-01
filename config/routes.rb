@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:new, :create, :show]
-  resources :attractions, only: [:index, :show]
+  resources :attractions
  
   root to: 'application#home'
  # root to: 'sessions#home'
@@ -16,12 +16,13 @@ Rails.application.routes.draw do
 
   get '/logout', to: "sessions#destroy"
 
-  get '/attractions', to: "attractions#index"
+  # get '/attractions', to: "attractions#index"
 
   post '/take_ride', to: 'attractions#take_ride'
+
+  # get '/attraction/:id', to: "attraction#show"
+  # post '/attraction/new', to: "attraction#new"
   
-
-
 
 end
 

@@ -9,6 +9,14 @@ Nausea: <%= @user.nausea %>
 Tickets: <%= @user.tickets %> 
 <% end %>
 
+<% if current_user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path %>
+  <% end %>
+
+<% if current_user || @current_user.admin? %>
+  <%= link_to "See attractions", attractions_path %>
+<% end %>
+
 <% if flash[:notice].present? %>
   <%= flash[:notice] %>
 <% end %><br />
@@ -18,5 +26,3 @@ Tickets: <%= @user.tickets %>
 <% else %>
 <%=    link_to "Login", :controller => 'sessions', :action => 'new' %>
 <% end %>
-
-<%= link_to "See attractions", attractions_path %>

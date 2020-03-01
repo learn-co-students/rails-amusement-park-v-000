@@ -1,16 +1,19 @@
-
 Attractions Index
 
-<ul>
+<table style="width:100%">
+<tbody>
   <% @attractions.each do |attraction| %>
-    <li>
-        <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %> 
-    </li>
+    <tr>
+      <% if current_user.admin %>
+        <td><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></td>
+        <% else %>
+        <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td> 
+        <% end %>  
+    </tr>
   <% end %>
-</ul>
+</tbody>
+</table>
 
-<% if user.admin? %>
-<%= link_to "New Attraction", new_attraction_path(attraction) %>
-<%= link_to "Show Attraction", attraction_path(attraction) %>
+<% if current_user.admin %>
+<td><%= link_to "New Attraction", new_attraction_path(@attraction) %></td>
 <% end %>
-
