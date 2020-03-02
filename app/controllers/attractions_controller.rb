@@ -9,13 +9,11 @@ def index
 end
 
 def show
-   # raise params.inspect
     @attraction = Attraction.find_by(id: params[:id])
     @ride = Ride.new
     @ride.user = current_user
     @ride.attraction = @attraction
     @ride.save
-   # binding.pry
 end
 
 def new
@@ -23,16 +21,14 @@ def new
 end
 
 def create
-  #  raise params.inspect
-  @attraction = Attraction.new(attraction_params)
-  if @attraction.save 
-              redirect_to attraction_path(@attraction)
-          else
-              render 'new'
-          end
+    @attraction = Attraction.new(attraction_params)
+    if @attraction.save 
+        redirect_to attraction_path(@attraction)
+    else
+        render 'new'
+    end
     
 end
-
 
     def edit
         @attraction = Attraction.find_by(id: params[:id])

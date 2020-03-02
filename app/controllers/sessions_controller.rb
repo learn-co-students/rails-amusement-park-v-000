@@ -4,9 +4,7 @@ class SessionsController < ApplicationController
         @user = User.new
     end
 
-
     def create
-      #raise params.inspect
       @user = User.find_by(name: params[:user][:name])
       if @user #&& @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
@@ -18,7 +16,6 @@ class SessionsController < ApplicationController
 
     def destroy
         reset_session
-        # session.delete(:user_id)
         redirect_to '/'
     end
 
