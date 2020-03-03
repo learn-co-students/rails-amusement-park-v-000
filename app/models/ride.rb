@@ -1,2 +1,43 @@
 class Ride < ActiveRecord::Base
+    belongs_to :attraction
+    belongs_to :user
+
+    
+
+    def take_ride
+        attraction = Attraction.find_by(id: self.attraction_id)
+        if !height_check? && !ticket_check?
+            "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
+        elsif !height_check?
+            "Sorry. You are not tall enough to ride the #{attraction.name}."
+        elsif !ticket_check?
+            "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+        else
+            ride_taken
+        end 
+
+    end
+
+
+    def height_check?
+        user = User.find_by(id: self.user_id)
+        attraction = Attraction.find_by(id: self.attraction_id)
+        user.height > attraction.min_height
+    end 
+
+    def ticket_check?
+        user = User.find_by(id: self.user_id)
+        attraction = Attraction.find_by(id: self.attraction_id)
+        user.tickets > attraction.tickets
+    end
+
+    def ride_taken
+        user = User.find_by(id: self.user_id)
+        attraction = Attraction.find_by(id: self.attraction_id)
+        user.tickets = user.tickets - attraction.tickets
+        user.nausea = user.nausea + attraction.nausea_rating
+        user.happiness = user.happiness + attraction.happiness_rating
+        user.save
+    end 
+
 end
