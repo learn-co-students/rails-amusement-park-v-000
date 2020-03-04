@@ -1,0 +1,19 @@
+ 
+<form action='signin' method='post'>
+
+<label> Your name: </label>
+
+<select name="user_name">
+    <%= @users.each do |user| %>
+      <option value="<%= user.id %>"><%= user.name %></option>
+    <% end %>
+</select>
+
+<p> <label> Password: </label> </p>
+<input name='password'> 
+
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+<input type='submit' value='Sign In'>
+
+</form>

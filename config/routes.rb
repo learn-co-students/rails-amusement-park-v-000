@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   root :to => 'welcome#index'
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
+  get '/signin' => 'sessions#new'
+  post '/signin' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
