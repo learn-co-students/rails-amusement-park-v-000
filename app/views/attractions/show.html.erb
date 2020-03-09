@@ -8,23 +8,10 @@
     </div>
 </div>
 
+<label> Name: </label> <%= @attraction.name %> <br>  
+<label> Total Number of Users: </label> <%= @attraction.name %> <br> 
+<label> Ticket Requirement: </label> <%= @attraction.tickets %> <br> 
+<label> Height Requirement: </label> <%= @attraction.min_height %> inches <br> 
 
+<%= button_to "Go on this ride", attraction_path(@attraction), method: :patch %> 
 
-<h1> Listing attractions </h1> 
-
-<table style="width:100%"> 
-    <tr> 
-        <th> Name </th> 
-        <th> Tickets </th> 
-        <th> Details </th> 
-    </tr> 
-
-    <% @attractions.each do |a| %>
-        <tr> 
-            <td> <%= a.name %> </td> 
-            <td> <%= a.tickets %> </td> 
-            <td> <a href="<%= attraction_path(a)%>" > Go on <%=a.name%> </a> </td> 
-        </tr> 
-    <% end %> 
-
-</table> 

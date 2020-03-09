@@ -6,15 +6,19 @@ class Ride < ActiveRecord::Base
 
     def take_ride
         attraction = Attraction.find_by(id: self.attraction_id)
-        if !height_check? && !ticket_check?
-            "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
-        elsif !height_check?
-            "Sorry. You are not tall enough to ride the #{attraction.name}."
-        elsif !ticket_check?
-            "Sorry. You do not have enough tickets to ride the #{attraction.name}."
-        else
-            ride_taken
-        end 
+        if attraction 
+            if !height_check? && !ticket_check?
+                "Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}."
+            elsif !height_check?
+                "Sorry. You are not tall enough to ride the #{attraction.name}."
+            elsif !ticket_check?
+                "Sorry. You do not have enough tickets to ride the #{attraction.name}."
+            else
+                ride_taken
+            end 
+        else 
+            "no attraction"
+        end
 
     end
 
@@ -22,19 +26,28 @@ class Ride < ActiveRecord::Base
     def height_check?
         user = User.find_by(id: self.user_id)
         attraction = Attraction.find_by(id: self.attraction_id)
-        user.height > attraction.min_height
+        if user && attraction
+            user.height > attraction.min_height 
+        else 
+            false
+        end
+        
     end 
 
     def ticket_check?
         user = User.find_by(id: self.user_id)
         attraction = Attraction.find_by(id: self.attraction_id)
-        user.tickets > attraction.tickets
+        if user && attraction 
+            user.tickets > attraction.tickets 
+        else 
+            false
+        end
     end
 
     def ride_taken
         user = User.find_by(id: self.user_id)
         attraction = Attraction.find_by(id: self.attraction_id)
-        user.tickets = user.tickets - attraction.tickets
+        user.tickets = user.tickets - attraction.tickets 
         user.nausea = user.nausea + attraction.nausea_rating
         user.happiness = user.happiness + attraction.happiness_rating
         user.save
