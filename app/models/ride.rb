@@ -15,6 +15,7 @@ class Ride < ActiveRecord::Base
                 "Sorry. You do not have enough tickets to ride the #{attraction.name}."
             else
                 ride_taken
+                "Thanks for riding the #{attraction.name}!"
             end 
         else 
             "no attraction"

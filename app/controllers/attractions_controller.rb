@@ -18,16 +18,42 @@ class AttractionsController < ApplicationController
         end 
     end
 
-    def edit
+    def new
+        @attraction = Attraction.new
+    end
 
+    def create
+        @attraction = Attraction.new(attraction_params)
+        @attraction.save
+        redirect_to attraction_path(@attraction.id)
+    end
+
+    def take_ride
+        attraction = Attraction.find(params[:id])
+        user = User.find(session[:user_id])
+        ride = Ride.new(attraction_id: attraction.id, user_id: user.id )
+        message = ride.take_ride
+        ride.save
+        flash[:message] = message
+        redirect_to user_path(user)
     end
 
     def update
-        user = User.find(session[:user_id])
-        ride = user.rides.build
-        ride.take_ride
-        ride.save
-        redirect_to user_path(user)
+        attraction = Attraction.find(params[:id])
+        attraction.update(attraction_params)
+        attraction.save
+        redirect_to attraction_path(attraction)
+    end 
+
+    def edit
+        @attraction = Attraction.find(params[:id])
     end
+
+
+    private
+
+    def attraction_params
+        params.require(:attraction).permit(:name, :min_height, :nausea_rating, :tickets, :happiness_rating)
+    end 
 
 end 

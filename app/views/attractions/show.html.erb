@@ -13,5 +13,9 @@
 <label> Ticket Requirement: </label> <%= @attraction.tickets %> <br> 
 <label> Height Requirement: </label> <%= @attraction.min_height %> inches <br> 
 
-<%= button_to "Go on this ride", attraction_path(@attraction), method: :patch %> 
+<% if @user.admin %> 
+    <a href="<%=edit_attraction_path%>" > Edit Attraction </> 
+<% else %> 
+    <%= button_to "Go on this ride", action: "take_ride" %> 
+<% end %> 
 

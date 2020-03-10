@@ -23,8 +23,18 @@
         <tr> 
             <td> <%= a.name %> </td> 
             <td> <%= a.tickets %> </td> 
-            <td> <a href="<%= attraction_path(a)%>" > Go on <%=a.name%> </a> </td> 
+            <%if @user.admin %> 
+                <td> <a href="<%= attraction_path(a)%>" > Show <%=a.name%> </a> </td> 
+            <% else %> 
+                <td> <a href="<%= attraction_path(a)%>" > Go on <%=a.name%> </a> </td> 
+            <% end %>
         </tr> 
     <% end %> 
 
 </table> 
+<br> 
+<% if @user.admin %>
+    <a href= <%=new_attraction_path%> > New Attraction </a> 
+<% end %> 
+
+
