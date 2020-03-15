@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class RidesController < ApplicationController
   def new
   end
 
@@ -6,5 +6,5 @@ class UsersController < ApplicationController
   end
 
   def delete
-  end 
+  end
 end
