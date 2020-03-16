@@ -1,4 +1,4 @@
-<%= form_for :user, url: '/user' do |f| %>
+<%= form_for :user, url: '/users' do |f| %>
   Name: <%= f.text_field :name %><br/>
   Password: <%= f.password_field :password %><br/>
   Nausea: <%= f.number_field :nausea %><br/>
@@ -6,6 +6,8 @@
   Tickets: <%= f.number_field :tickets %><br/>
   Height: <%= f.number_field :height %><br/>
 
+  <%= check_box_tag(:user_admin) %>
+  <%= label_tag(:user_admin, "I am admin") %>
 
 <%= f.submit "Create User" %>
 <% end %>

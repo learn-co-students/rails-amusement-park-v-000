@@ -1,4 +1,4 @@
 class Ride < ActiveRecord::Base
   belongs_to :user
-  belongs_to :ride 
+  belongs_to :attraction
 end
