@@ -12,6 +12,11 @@ class Ride < ActiveRecord::Base
     if not_min_height
       return "Sorry. #{not_min_height_message}"
     end
+    user.tickets -= attraction.tickets
+    user.nausea += attraction.nausea_rating
+    user.happiness += attraction.happiness_rating
+
+    user.save
   end
 
   private
