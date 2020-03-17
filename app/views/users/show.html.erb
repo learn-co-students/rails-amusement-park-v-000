@@ -1,3 +1,6 @@
+
+
+
 <% if @user.admin %>
   <p>ADMIN</p>
 <% end %>
@@ -5,3 +8,5 @@
 <p>Mood: <%= @user.mood %></p>
 <p>Height: <%= @user.height %></p>
 <p>Tickets: <%= @user.tickets %></p>
+
+<a href= "<%= attractions_url %>">See attractions</a>

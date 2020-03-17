@@ -17,6 +17,7 @@ class Ride < ActiveRecord::Base
     user.happiness += attraction.happiness_rating
 
     user.save
+    return "Thanks for riding the #{attraction.name}!"
   end
 
   private
