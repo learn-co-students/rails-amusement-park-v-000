@@ -9,3 +9,8 @@
   <%= f.hidden_field(:attraction_id, value: @attraction.id) %><br/>
 <%= f.submit "Go on this ride" %>
 <% end %>
+
+
+<% if @user.admin %>
+  <a href="<%= edit_attraction_url %>">Edit Attraction</a>
+<% end %>

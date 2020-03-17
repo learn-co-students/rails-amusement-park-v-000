@@ -1,3 +1,11 @@
 <% @attractions.each do |attraction| %>
-<a href="<%= attraction_path(attraction) %>">Go on <%= attraction.name %></a><br/>
+<% if @user.admin %>
+    <a href="<%= attraction_path(attraction) %>">Show <%= attraction.name %></a><br/>
+  <% else %>
+    <a href="<%= attraction_path(attraction) %>">Go on <%= attraction.name %></a><br/>
+  <% end %>
+<% end %>
+<br/>
+<% if @user.admin %>
+  <a href="<%= new_attraction_url %>">New Attraction</a>
 <% end %>
