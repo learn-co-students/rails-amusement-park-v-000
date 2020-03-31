@@ -1,24 +1,34 @@
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
   <%= f.label :name %>
+  <br>
   <%= f.text_field :name %>
+  <br><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.label :height %>
+  <%= f.label "Height (in inches)"  %>
+  <br>
   <%= f.text_field :height %>
+  <br><br>
 
-  <%= f.label :happiness %>
+  <%= f.label "How happy are you (scale 1-5)" %>
+  <br>
   <%= f.text_field :happiness %>
+  <br><br>
 
-  <%= f.label :nausea %>
+  <%= f.label "How nauseous are you (1-5)" %>
+  <br>
   <%= f.text_field :nausea %>
+  <br><br>
 
-  <%= f.label :tickets %>
+  <%= f.label "How much money do you have?" %>
+  <br>
   <%= f.text_field :tickets %>
+  <br><br>
+
+  <%# add a checkbox in here to check if admin %>
+  <%= f.label :password %>
+  <br>
+  <%= f.password_field :password %>
+  <br><br>
 
   <%= f.submit "Create User" %>
 <% end %>
