@@ -1,0 +1,37 @@
+<h2> User Sign up </h2>
+
+<h4>
+<%= form_for (@user) do |f| %>
+    <%= f.label :admin? %>
+    <%= check_box_tag "user_admin" %>
+    <br>
+    <br>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br>
+    <br>
+    <%= f.label :height %>
+    <%= f.number_field :height %>
+    <br>
+    <br>
+    <%= f.label :happiness %>
+    <%= f.number_field :happiness %>
+    <br>
+    <br>
+    <%= f.label :nausea %>
+    <%= f.number_field :nausea %>
+    <br>
+    <br>
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets %>
+    <br>
+    <br>
+    <%= f.submit "Create User" %>
+
+  <% end %>
+  </h4>
+

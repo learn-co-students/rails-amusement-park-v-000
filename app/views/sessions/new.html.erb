@@ -1,0 +1,13 @@
+<h3>Sign in </h3>
+
+<%= form_for User.new, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
+
+  <%= f.select :name, User.pluck(:name) %>
+
+  <%= password_field_tag :password %><br>
+
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  
+  <%= submit_tag "Sign In" %>
+<% end %>
+ 
