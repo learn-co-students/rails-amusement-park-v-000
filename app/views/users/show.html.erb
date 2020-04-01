@@ -1,0 +1,31 @@
+<h1> <%= @user.name %> <%= "- ADMIN" if @user.admin %></h1>
+
+<% if flash[:alert] %>
+	<div class="alert alert-success" role="alert"> <%= flash[:alert] %> </div>
+<% end %>
+<br>
+
+<table class='table table-hover'>
+	<tr>
+		<th scope="row">Mood:</th>
+		<td><%= @user.mood %></td>
+	</tr>
+	<tr>
+		<th scope="row">Height:</th>
+		<td><%= @user.height %></td>
+	</tr>
+	<tr>
+		<th scope="row">Happiness:</th>
+		<td><%= @user.happiness %></td>
+	</tr>
+	<tr>
+		<th scope="row">Nausea:</th>
+		<td><%= @user.nausea %></td>
+	</tr>
+	<tr>
+		<th scope="row">Tickets:</th>
+		<td><%= @user.tickets %></td>
+	</tr>
+</table>
+
+<%= link_to "See attractions", attractions_path %> &nbsp;

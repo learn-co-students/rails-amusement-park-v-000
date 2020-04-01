@@ -1,0 +1,30 @@
+<h1> <%= @attraction.name %></h1>
+<br>
+<table class='table table-hover'>
+	<tr>
+		<th scope="row">Happiness Rating</th>
+		<td><%= @attraction.happiness_rating %></td>
+	</tr>
+	<tr>
+		<th scope="row">Tickets</th>
+		<td><%= @attraction.tickets %></td>
+	</tr>
+	<tr>
+		<th scope="row">Minumum Height</th>
+		<td><%= @attraction.min_height %></td>
+	</tr>
+	<tr>
+		<th scope="row">Nausea Rating</th>
+		<td><%= @attraction.nausea_rating %></td>
+	</tr>
+</table>
+
+<% if current_user.admin %>
+	<!-- <%= button_to "Edit Attraction", edit_attraction_path(@attraction), class: 'btn btn-primary', method: :get %> -->
+	<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% else %>
+	<%= form_tag ride_path, method: 'post' do %>
+		<%= hidden_field_tag :attraction_id, @attraction.id  %>
+		<%= submit_tag "Go on this ride", class: "btn btn-info" %>
+	<% end %>
+<% end %>
