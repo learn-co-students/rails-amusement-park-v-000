@@ -1,0 +1,14 @@
+
+<strong>Name:</strong> <%=@current_user.name%> <br>
+<strong>Tickets:</strong> <%=@current_user.tickets%> <br>
+<strong>Mood:</strong> <%=@current_user.mood%> <br>
+<strong>Height:</strong> <%=@current_user.height%> <br>
+<strong>ADMIN:</strong> <%if @current_user.admin == true%>
+  <%= "Yes"%>
+  <% else%>
+    <%="No"%>
+  <%end%>
+  <br>
+  <%=link_to "See attractions", attractions_path%>
+  <br>
+  <%=link_to "Log Out", logout_path%>

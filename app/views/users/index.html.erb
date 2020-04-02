@@ -1,0 +1,10 @@
+<h1>Theme Park Users</h1>
+<%@users.each do |user|%>
+  <strong>Name:</strong> <%=user.name%>
+  <strong>Nausea level:</strong> <%=user.nausea%>
+  <strong>Happiness level:</strong> <%=user.happiness%>
+  <strong>Number of tickets:</strong> <%=user.tickets%>
+  <strong>Height:</strong> <%=user.height%>
+  <br>
+  <br>
+  <%end%>
