@@ -5,3 +5,9 @@ This is the show page for users
 <h2>Mood: <%= current_user.mood %></h2>
 <h2>Height: <%= current_user.height %> inches</h2>
 <h2>Tickets: <%= current_user.tickets %></h2>
+
+<p><%= link_to "See attractions", attractions_path %></p>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
