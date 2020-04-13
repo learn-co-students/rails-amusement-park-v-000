@@ -1,0 +1,40 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="<%= root_url %>"/>Home</a>          
+            <a class="navbar-brand" href="<%= user_path(@user.id) %> "><%=@user.name%>'s profile</a>
+            <a class="navbar-brand" data-method=post href="<%=logout_path%>">Log Out</a> 
+        </div>
+    </div>
+</div>
+
+
+
+<h1> Listing attractions </h1> 
+
+<table style="width:100%"> 
+    <tr> 
+        <th> Name </th> 
+        <th> Tickets </th> 
+        <th> Details </th> 
+    </tr> 
+
+    <% @attractions.each do |a| %>
+        <tr> 
+            <td> <%= a.name %> </td> 
+            <td> <%= a.tickets %> </td> 
+            <%if @user.admin %> 
+                <td> <a href="<%= attraction_path(a)%>" > Show <%=a.name%> </a> </td> 
+            <% else %> 
+                <td> <a href="<%= attraction_path(a)%>" > Go on <%=a.name%> </a> </td> 
+            <% end %>
+        </tr> 
+    <% end %> 
+
+</table> 
+<br> 
+<% if @user.admin %>
+    <a href= <%=new_attraction_path%> > New Attraction </a> 
+<% end %> 
+
+
