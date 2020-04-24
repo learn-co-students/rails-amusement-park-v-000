@@ -5,12 +5,8 @@ class User < ApplicationRecord
   has_many :attractions, through: :rides
 
   def mood
-    # binding.pry
-    current_mood = ""
-    if self.happiness < 5
-      current_mood = "sad"
-    else
-      current_mood = "happy"
+      unless admin
+        happiness > nausea ? "happy" : "sad"
+      end
     end
-  end
 end
