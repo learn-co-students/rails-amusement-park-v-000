@@ -1,5 +1,12 @@
-<h1>Working</h1>
+<p id="notice"><%= notice %></p>
 
+
+
+<% if flash[:message] %>
+  <div class="center alert">
+    <p><%= flash[:message] %></p>
+  </div>
+<% end %>
    <% if @user.admin %>
      <p><strong>ADMIN</strong></p>
    <% end %>
