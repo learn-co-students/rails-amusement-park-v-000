@@ -1,0 +1,46 @@
+
+
+Prefix Verb   URI Pattern                                                                              Controller#Action
+attractions GET    /attractions(.:format)                                                                   attractions#index
+        POST   /attractions(.:format)                                                                   attractions#create
+new_attraction GET    /attractions/new(.:format)                                                               attractions#new
+edit_attraction GET    /attractions/:id/edit(.:format)                                                          attractions#edit
+attraction GET    /attractions/:id(.:format)                                                               attractions#show
+        PATCH  /attractions/:id(.:format)                                                               attractions#update
+        PUT    /attractions/:id(.:format)                                                               attractions#update
+        DELETE /attractions/:id(.:format)                                                               attractions#destroy
+  users GET    /users(.:format)                                                                         users#index
+        POST   /users(.:format)                                                                         users#create
+new_user GET    /users/new(.:format)                                                                     users#new
+   user GET    /users/:id(.:format)                                                                     users#show
+        DELETE /users/:id(.:format)                                                                     users#destroy
+ signin GET    /signin(.:format)                                                                        sessions#new
+        POST   /signin(.:format)                                                                        sessions#create
+   root GET    /                                                                                        users#new
+ logout POST   /logout(.:format)                                                                        sessions#destroy
+
+
+   <%= link_to('Log Out', logout_path, method: :destroy) %>
+
+  <%= render 'login' %>
+
+
+  <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+    <input type=submit value='Log Out'>
+  <% end %>
+
+  {:action => :destroy},
+
+
+
+
+
+  1. Create a button (form_tag submit? -> , creating a ride in the db how does it access method in model?
+  2. Button triggers the take_ride method but on what object? Use create method - The ride associated with the current
+  3. Button navigates to logged_in_user's show page
+
+
+
+  <% if @user.admin == "true" %>
+  <p>><%= link_to "New Attraction", new_attraction_path %></p
+  <% end %>

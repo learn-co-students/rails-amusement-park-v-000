@@ -1,0 +1,14 @@
+<h3>Listing Attractions</h3>
+
+<ul>
+  <% @attractions.each do |attr | %>
+  <li><%= link_to_if (@user.admin?),"Show #{attr.name}", attraction_path(attr) do %></li>
+    <li> <%= link_to("Go on #{attr.name}", attraction_path(attr)) %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<p><%= link_to_if (@user.admin?),"New Attraction",new_attraction_path do  %></p>
+<p>nothing to see here</p>
+<% end %>
