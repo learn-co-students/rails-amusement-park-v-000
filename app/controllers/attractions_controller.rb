@@ -1,7 +1,6 @@
-class UsersController < ApplicationController
-  before_action :athenticate_user, only:[:show]
+class AttractionsController < ApplicationController
   def new
-    @user = User.new
+    @attraction = Attraction.new
   end
 
   def create
@@ -15,13 +14,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find_by(id: params[:id])
-    # if !current_user.admin
-    #   if current_user != @user
-    #     redirect_to root_path
-    #   end
-    # end
-
     if logged_in?
       @user = User.find_by(id: params[:id])
     else
