@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     #   return "happy"
     # end
 
-    self.happiness >= self.nausea ? "happy" : "sad"
+    self.happiness.to_i >= self.nausea.to_i ? "happy" : "sad"
 
     # (self.nausea > self.happiness) ? "sad" : "happy"
   end

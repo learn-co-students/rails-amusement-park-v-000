@@ -11,5 +11,11 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def athenticate_user
+    if !logged_in?
+      redirect_to root_path
+    end
+  end
+
 
 end

@@ -10,7 +10,6 @@ post '/signin' => 'sessions#create'
 post '/signout' => 'sessions#destroy'
 
 # get '/signin', to: 'sessions#sign_in', as: 'signin'
-
+delete '/logout',  to: 'sessions#destroy'
 resources :users
 end
- 
