@@ -15,13 +15,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find_by(id: params[:id])
-    # if !current_user.admin
-    #   if current_user != @user
-    #     redirect_to root_path
-    #   end
-    # end
-
     if logged_in?
       @user = User.find_by(id: params[:id])
     else
