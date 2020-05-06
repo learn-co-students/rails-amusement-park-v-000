@@ -18,5 +18,4 @@ class SessionsController < ApplicationController
     session.destroy
     redirect_to root_path
   end
-
 end

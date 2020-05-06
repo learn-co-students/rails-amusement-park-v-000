@@ -4,7 +4,4 @@ class RidesController < ApplicationController
     flash[:notice] = @ride.take_ride
     redirect_to user_path(current_user)
   end
-
-  
-
 end
