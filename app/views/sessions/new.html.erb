@@ -1,0 +1,9 @@
+<%= form_tag('/session') do %>
+  <label for="name">Your name:</label>
+  <%= collection_select(:user, :name, User.all, :name, :name) %>
+
+  <label for="password">Your password:</label><br>
+  <input name="password" type="password" id="password"><br>
+
+  <input type="submit" value='Sign In'>
+<% end %>
