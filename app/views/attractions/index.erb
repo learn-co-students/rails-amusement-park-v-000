@@ -1,0 +1,35 @@
+<div class="center">
+  <h1>All Attractions</h1>
+  <% if current_user.is_admin? %>
+    <div class="info">
+      <% @attractions.each do |attraction| %>
+        <li><%= link_to "Show #{attraction.name}", attraction_path(attraction) %></li>
+      <% end %>
+      <br>
+      <div class="center">
+        <%= link_to "New Attraction", new_attraction_path %>
+      </div>
+    </div>
+  <% else %>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="center">Name</th>
+          <th class="center">Tickets</th>
+          <th class="center">Min. Height</th>
+          <th class="center">Go On Ride</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @attractions.each do |attraction| %>
+          <tr>
+            <td><%= attraction.name %></td>
+            <td><%= attraction.tickets %></td>
+            <td><%= attraction.min_height %></td>
+            <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
