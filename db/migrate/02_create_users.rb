@@ -6,6 +6,5 @@ class CreateUsers < ActiveRecord::Migration[4.2]
     t.integer :happiness
     t.integer :tickets
     t.integer :height
-    t.boolean :admin, default: false
   end
 end
