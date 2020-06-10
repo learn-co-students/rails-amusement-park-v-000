@@ -1,10 +1,10 @@
 
 <%= form_tag(sessions_path) do %>
-<label for="name">Your name:</label>
+<label for="name" class="form-group">Your name:</label>
 <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Please select your name") %>
 <br>
-<label for="password">Your password:</label>
-<%= text_field_tag :password %>
+<label for="password" class="form-group">Your password:</label>
+<%= text_field_tag :password, "", class:"form-control" %>
 <br>
 <%= submit_tag "Sign In" , class:"btn btn-primary" %>
 <% end %>
