@@ -1,0 +1,15 @@
+<h3><%= @attraction.name %></h3><br>
+Ticket Cost: $<%= @attraction.tickets %><br>
+Nausea Rating: <%= @attraction.nausea_rating %><br>
+Happiness Rating: <%= @attraction.happiness_rating %><br>
+Minimum Height: <%= @attraction.min_height %><br><br>
+<P> I see this </p>
+<% if current_user.admin %>
+  <%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %><br>
+  <%= link_to 'All Attractions', attractions_path %>
+  <% else %>
+    <%= form_tag(rides_path) do %>
+  <%= hidden_field_tag 'ride[attraction_id]', @attraction.id %>
+  <%= button_tag 'Go on this ride' %>
+    <%end%>
+<% end %>
