@@ -1,0 +1,7 @@
+<ul>
+  <% @attractions.each do |attraction| %>
+    <li><%= link_to "#{@attraction_link_prompt_text} #{attraction.name}", attraction_path(attraction) %></li>
+  <% end %>
+</ul>
+
+<%= admin_new_attraction %>
