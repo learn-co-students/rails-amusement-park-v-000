@@ -11,7 +11,7 @@ RSpec.describe User, :type => :model do
       :height => 34
     )
   }
-
+ 
   let(:admin) {
     User.create(
       :name => "Walt",
