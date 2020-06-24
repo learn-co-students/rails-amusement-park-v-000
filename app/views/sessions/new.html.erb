@@ -1,0 +1,13 @@
+<h1>Sessions#new</h1>
+<h2>This is the Place to Login</h2>
+<p>Find me in app/views/sessions/new.html.erb</p>
+<%= form_tag ('/login') do %>
+    <label>Your name: </label>
+    <%= collection_select :user, :name, User.all, :name, :name, {prompt: "Please select your username from this dropdown"} %>
+    <br><br>
+
+
+    <label>Your password: </label><br>
+    <input type="password", name="user[password]", id="password"><br><br>
+    <input type="submit" value="Sign In">
+<% end %>
