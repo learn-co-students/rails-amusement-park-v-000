@@ -1,0 +1,42 @@
+<%= form_with(model: attraction, local: true) do |form| %>
+  <% if attraction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attraction.errors.count, "error") %> prohibited this attraction from being saved:</h2>
+
+      <ul>
+      <% attraction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tickets %>
+    <%= form.number_field :tickets %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nausea_rating %>
+    <%= form.number_field :nausea_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :happiness_rating %>
+    <%= form.number_field :happiness_rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :min_height %>
+    <%= form.number_field :min_height %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
