@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, only: [:show]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:show]
+
+  def index
+    admin_only
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -9,26 +15,39 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to @user, notice: 'User was successfully created.'
     else
-      render 'new'
+      render :new
     end
-
   end
 
   def show
-    @user = User.find_by(id: params[:id])
-    if !current_user.admin
-      if current_user != @user
-      redirect_to root_path
-      end
+    render :show
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :password, :nausea, :happiness, :height, :tickets)
+  def destroy
+    admin_only
+    @user.destroy
+    redirect_to users_url, notice: 'User was successfully destroyed.'
   end
 
+  private
+    def set_user
+      @user = User.find_by(id: params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
+    end
 end

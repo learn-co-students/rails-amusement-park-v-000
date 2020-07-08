@@ -1,8 +1,5 @@
-<%= form_tag('/session', method: :post) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :password %>
-  <%= f.password_field :password %> </br>
+<h1>Log In</h1>
 
-  <%= f.submit 'Sign In' %>
-<% end %>
+<br><%= render 'form' %><br>
+
+<%= link_to 'Back', root_path %>
