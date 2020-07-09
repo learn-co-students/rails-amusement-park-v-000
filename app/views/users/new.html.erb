@@ -1,0 +1,19 @@
+<h1>New User </h1>
+
+<%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :nausea %>
+    <%= f.number_field :nausea %>
+    <%= f.label :happiness %>
+    <%= f.number_field :happiness %>
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets %>
+    <%= f.label :height %>
+    <%= f.number_field :height %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <p>Admin?<%= f.check_box :admin, options = {:class => "user_admin"} %></p>
+
+    <%= f.submit %>
+ <%end%>
