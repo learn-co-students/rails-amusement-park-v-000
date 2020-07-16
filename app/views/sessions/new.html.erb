@@ -1,0 +1,11 @@
+<%= form_with(url: "/signin", method: "post")  do %>
+
+<label>Your Name: </label>
+<%= collection_select :user, :name, User.all, :name, :name %><br>
+
+<label>Password: </label>
+<%= password_field_tag :password %><br>
+
+<%= submit_tag "Sign In" %>
+
+<% end %>
