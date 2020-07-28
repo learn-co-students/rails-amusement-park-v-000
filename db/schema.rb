@@ -10,29 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_201214) do
+ActiveRecord::Schema.define(version: 2020_06_13_160757) do
 
-  create_table "attractions", force: :cascade do |t|
-    t.string "name"
-    t.integer "tickets"
-    t.integer "nausea_rating"
-    t.integer "happiness_rating"
-    t.integer "min_height"
+  create_table "desserts", force: :cascade do |t|
+    t.string "user_id"
+    t.string "food_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "rides", force: :cascade do |t|
-    t.string "user_id"
-    t.string "attraction_id"
+  create_table "drinks", force: :cascade do |t|
+    t.string "business"
+    t.text "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.string "business"
+    t.text "website"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "item_1"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "food_id"
+    t.index ["food_id"], name: "index_items_on_food_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "email"
     t.string "password_digest"
-    t.integer "nausea"
-    t.integer "happiness"
-    t.integer "tickets"
-    t.integer "height"
-    t.boolean "admin", default: false, null: false
   end
 
 end

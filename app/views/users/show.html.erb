@@ -1,16 +1,19 @@
-<% flash.each do |type, msg| %>
-    <div>
-      <%= msg %>
-    </div>
+
+  
+<% if logged_in? %>
+    <h1>You are Logged In, <%= w %></h1>
+<%end%>
+
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", "/logout" %>
+<% else %>
+  <%= link_to 'Sign Up', "/signup" %>
+  <%= link_to 'Log In', "/login" %>
   <% end %>
+<p id=”notice”><%= notice %></p>
 
-<h1><%= @user.name %><h1>
-<h3>Mood: <%= @user.mood %></h3>
-<h3>Tickets: <%= @user.tickets %></h3>
-<h3>Height: <%= @user.height %></h3>
-<% if @user.admin %>
-    <h3> ADMIN </h3>
-<% end %>
 
-<%= link_to "See attractions", "/attractions" %>
+<h1><%= link_to "Catalog", "/catalog" %></h1><br>
 <%= link_to "Log Out", "/logout" %>
+

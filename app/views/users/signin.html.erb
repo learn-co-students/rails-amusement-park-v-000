@@ -1,5 +1,0 @@
-<%= form_tag('/login') do %>
- <%= select_tag 'user_name', options_for_select(@users.collect{ |u| [u.name] }) %>
- <%= text_field_tag 'password' %>
- <%= button_tag 'Sign In' %>
-<% end %>

@@ -1,0 +1,24 @@
+<h1>Name: <%= @food.business %></h1>
+<h3>Website: <%= @food.website %></h3>
+<h3>Rating: <%= @food.rating %></h3>
+
+<h3>Item:</h3>
+<ul>
+   <% @food.items.each do |item| %>
+     <li> <%= item.item_1 %>
+   <% end %>
+ </ul>
+
+
+<%= button_to 'Go to this food', {:controller => "users", :action => "update", :food_id => @food.id} , :method=>:patch %>
+
+
+
+<%= form_tag food_path(@food.id), method: "delete" do %>
+  <%= submit_tag "Delete #{@food.business}" %>
+<% end %>
+
+
+<%= link_to 'Edit', edit_food_path(@food) %> •
+<%= link_to 'Back', foods_path %> •
+<%= link_to "Catalog", catalog_path  %>

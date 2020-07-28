@@ -1,0 +1,24 @@
+<%= form_for @food do |f| %>
+
+<%= f.label :business %>
+<%= f.text_field :business %><br>
+
+<%= f.label :website %>
+<%= f.text_field :website %><br>
+
+<%= f.label :rating %>
+<%= f.number_field :rating, in: 1.0..10.0, step: 1.0 %><br>
+
+<br>
+      <%= f.fields_for :items do |items| %>
+      <%= f.label :Item %>
+        <%= items.text_field :item_1 %>
+      <% end %>
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
