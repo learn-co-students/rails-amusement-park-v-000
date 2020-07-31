@@ -1,0 +1,31 @@
+<h1>Sign Up</h1>
+<p>You'll need an account to ride the attractions!</p>
+
+<%= form_for @user do |f| %>
+<label for="name">Name</label>
+<%= f.text_field :name %><br>
+
+<label for="height">Height (in inches)</label>
+<%= f.text_field :height %><br>
+
+<label for="happiness">How happy are you? (1-5 scale)</label>
+<%= f.text_field :happiness %><br>
+
+<label for="nausea">How nauseous are you? (1-5 scale)</label>
+<%= f.text_field :nausea %><br>
+
+<label for="tickets">How many dollars are in your pocket?</label>
+<%= f.text_field :tickets %><br>
+
+<label for="admin">Check if you are a theme park owner</label>
+<%= f.checkbox :admin %><br>
+
+<label for="password">Password</label>
+<%= f.password_field :password %>
+
+<label for="confirm_password">Confirm Password</label>
+<%= f.password_field :confirm_password %>
+
+<%= f.submit "Create Account" %>
+
+<% end %>
