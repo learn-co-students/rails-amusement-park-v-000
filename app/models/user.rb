@@ -4,10 +4,14 @@ class User < ApplicationRecord
     has_many :attractions, through: :rides
 
     def mood
-        if self.nausea > self.happiness
-            'sad'
+        if self.admin == false
+            if self.nausea > self.happiness
+                'sad'
+            else
+                'happy'
+            end
         else
-            'happy'
+            "Not applicable"
         end
     end
 end

@@ -1,0 +1,9 @@
+<h1>Add an Attraction!</h1>
+
+<%= form_for @attraction do |f| %>
+
+<%= render partial: 'form', locals: {f: f} %>
+
+<%= f.submit "Create Attraction" %>
+
+<% end %>

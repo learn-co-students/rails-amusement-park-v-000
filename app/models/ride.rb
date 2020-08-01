@@ -13,7 +13,12 @@ class Ride < ApplicationRecord
         elsif user.tickets < attraction.tickets
             "Sorry. You do not have enough tickets to ride the #{attraction.name}."
         else
-            user.tickets = user.tickets - attraction.tickets
+            user.tickets -= attraction.tickets
+            user.nausea += attraction.nausea_rating
+            user.happiness += attraction.happiness_rating
+            user.save
+
+            "Thanks for riding the #{attraction.name}!"
         end
     end
 end

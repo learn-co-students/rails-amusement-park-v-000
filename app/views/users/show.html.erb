@@ -1,0 +1,35 @@
+<% if flash[:alert] %>
+<div>
+    <%= flash[:alert] %>
+</div>
+<% end %>
+
+<div class="user">
+
+<h2>Profile Information</h2>
+
+<p>
+<% if @user.admin%>
+    ADMIN
+<% end %>
+</p>
+<p>
+<strong>Name:</strong> <%= @user.name %>
+</p>
+
+<p>
+<strong>Tickets:</strong> <%= @user.tickets %>
+</p>
+
+<p>
+<strong>Mood:</strong> <%= @user.mood %>
+</p>
+
+<p>
+<strong>Height:</strong> <%= @user.height %>
+</p>
+
+<a href="<%= attractions_path %>">See attractions</a>
+
+
+</div>
