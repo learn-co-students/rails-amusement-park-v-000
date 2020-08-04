@@ -4,19 +4,20 @@
 
 <%= form_tag sessions_path do |form| %>
   <div class=”field”>
-    <%= label_tag :email %>
+    <%= label_tag :email %> <br>
     <%= text_field_tag :email %>
   </div>
   <div class=”field”>
-    <%= label_tag :password %>
+    <%= label_tag :password %><br>
     <%= password_field_tag :password %>
   </div> <br>
-
-  <p> <%= link_to 'Sign in with GitHub', '/auth/github'%></p>
-  
-  <p><%= link_to "Sign in with Twitter", "/auth/twitter" %> </p>
   <div class=”actions”>
-    <%= submit_tag 'Login' %>
+  <%= submit_tag 'Login' %>
+  <br>
+  
+  <p><%= link_to 'Sign in with GitHub', '/auth/github'%></p>
+  <p><%= link_to "Sign in with Twitter", "/auth/twitter" %> </p>
+
   </div>
 <% end %>
 

@@ -8,6 +8,7 @@
 </thead>
 
   <tbody>
+  
       <% @foods.each do |food| %>
       <tr>
           <td> <h2> <%= food.business%></td> </h2>
@@ -19,7 +20,11 @@
           <tr></tr>
           <td><h4><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></h4</td>
         </tr>
+        
       <% end %>
+    
+      
+      
     </tbody>
   </table>
 <br></br>

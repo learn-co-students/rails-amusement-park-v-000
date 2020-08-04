@@ -1,19 +1,14 @@
+<h1> local food </h1>
 
-  
-<% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.name %>. </h1>
-<%end%>
+<h2><%= link_to "Catalog", "/catalog" %></h2><br>
 
-<% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Log Out", "/logout" %>
+<% if @user %>
+  Logged in as <%= @user.name %>
 <% else %>
+
   <%= link_to 'Sign Up', "/signup" %>
   <%= link_to 'Log In', "/login" %>
   <% end %>
-<p id=”notice”><%= notice %></p>
 
-
-<h1><%= link_to "Catalog", "/catalog" %></h1><br>
 <%= link_to "Log Out", "/logout" %>
 

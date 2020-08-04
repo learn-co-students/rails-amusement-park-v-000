@@ -1,7 +1,8 @@
 class CatalogController < ApplicationController
     before_action :set_catalog, only: [:show, :edit, :update, :destroy]
+helper_method :logged_in?
 
-  def index
+  def index     
   end
 
 

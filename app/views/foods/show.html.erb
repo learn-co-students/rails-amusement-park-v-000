@@ -9,11 +9,6 @@
    <% end %>
  </ul>
 
-
-<%= button_to 'Go to this food', {:controller => "users", :action => "update", :food_id => @food.id} , :method=>:patch %>
-
-
-
 <%= form_tag food_path(@food.id), method: "delete" do %>
   <%= submit_tag "Delete #{@food.business}" %>
 <% end %>
@@ -22,3 +17,4 @@
 <%= link_to 'Edit', edit_food_path(@food) %> •
 <%= link_to 'Back', foods_path %> •
 <%= link_to "Catalog", catalog_path  %>
+

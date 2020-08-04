@@ -1,6 +1,18 @@
+<% if @user.errors.any? %>
+  <div id="fields_with_errors">
+    <h2>There were some errors:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= form_for @user do |f| %>
 
-   <label for="Name">Name:</label><br>
+    <label for="Name">Name:</label><br>
     <%= f.text_field :name %> <br>
     
     <label for="Email">Email:</label><br>
@@ -13,5 +25,9 @@
        <%= f.password_field :password_confirmation %> <br>
     <br>
     
+    
     <%= f.submit  %>
-<% end %> 
+  
+
+<% end %>
+

@@ -1,24 +1,23 @@
-<%= form_for @food do |f| %>
+<%= form_for (@food) do |f| %>
 
-<%= f.label :business %>
+<%= f.label :business %> <br>
 <%= f.text_field :business %><br>
 
-<%= f.label :website %>
+<%= f.label :website %><br>
 <%= f.text_field :website %><br>
 
-<%= f.label :rating %>
+<%= f.label :rating %><br>
 <%= f.number_field :rating, in: 1.0..10.0, step: 1.0 %><br>
-
 <br>
       <%= f.fields_for :items do |items| %>
-      <%= f.label :Item %>
-        <%= items.text_field :item_1 %>
+      <%= f.label :Item %> <br>
+      <%= items.text_field :item_1 %>
       <% end %>
 
-
-
-
   <div class="actions">
-    <%= f.submit %>
+  <br>
+  <%= f.submit %>
+  
   </div>
+  
 <% end %>

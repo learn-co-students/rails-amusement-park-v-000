@@ -13,7 +13,7 @@ class UsersController < ApplicationController
        flash[:notice] = "Account created successfully!"
        redirect_to '/users/show/'
      else
-       flash.now.alert = "Oops, couldn't create account. Please make sure you are using a valid email and password and try again."
+       flash.now.alert = "Please try again."
        render '/users/new/'
      end
    end
@@ -21,11 +21,6 @@ class UsersController < ApplicationController
   def update
     end
   
-#  def destroy
-#      session.delete(:current_user_id)
-#      redirect_to root_path
-#  end
-
 
 private
    
