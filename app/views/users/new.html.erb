@@ -1,0 +1,17 @@
+<%= form_for @user do |f| %>
+    <br><%= f.label :name %>
+    <br><%= f.text_field :name %>
+    <br><%= f.label :password %>
+    <br><%= f.password_field :password %>
+    <br><%= f.label :nausea %>
+    <br><%= f.text_field :nausea %>
+    <br><%= f.label :happiness %>
+    <br><%= f.text_field :happiness %>
+    <br><%= f.label :tickets %>
+    <br><%= f.text_field :tickets %>
+    <br><%= f.label :height %>
+    <br><%= f.text_field :height %>
+    <br><%= f.label :admin %>
+        <%= f.check_box :admin %>
+    <br><%= f.submit %>
+<% end %>
