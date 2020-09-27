@@ -1,7 +1,7 @@
-<%= form_tag(sessions_path) do %>
+<%= form_tag(signin_path) do %>
   <div class="field required">
     <%= label_tag :user_name, nil, class: "hidden" %>
-    <%= collection_select(:user, :name, @users, :id, :name, prompt: true) %>
+    <%= collection_select(:user, :name, User.all, :name, :name) %>
   </div> 
   <div class="field required">
     <%= label_tag :user_password, nil, class: "hidden" %>

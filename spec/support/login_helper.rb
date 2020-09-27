@@ -8,7 +8,7 @@ module LoginHelper
     fill_in("user[tickets]", :with => "15")
     fill_in("user[password]", :with => "password")
     fill_in("user[password_confirmation]", :with => "password")
-    click_button('Create User')
+    click_button('Sign Up')
   end
 
   def user_login
@@ -20,8 +20,10 @@ module LoginHelper
   def admin_signup
     fill_in("user[name]", :with => "Walt Disney")
     fill_in("user[password]", :with => "password")
+    fill_in("user[password_confirmation]", :with => "password")
+
     find(:css, "#user_admin").set(true)
-    click_button('Create User')
+    click_button('Sign Up')
   end
 
   def admin_login
@@ -34,6 +36,7 @@ module LoginHelper
     @mindy = User.create(
       name: "Mindy",
       password: "password",
+      password_confirmation: "password",
       happiness: 3,
       nausea: 2,
       tickets: 10,
@@ -45,6 +48,7 @@ module LoginHelper
     @mindy = User.create(
       name: "Mindy",
       password: "password",
+      password_confirmation: "password",
       happiness: 3,
       nausea: 2,
       tickets: 10,
@@ -53,6 +57,7 @@ module LoginHelper
     @walt = User.create(
       name: "Walt Disney",
       password: "password",
+      password_confirmation: "password",
       admin: true
     )
   end

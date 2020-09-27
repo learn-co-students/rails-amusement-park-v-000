@@ -1,4 +1,13 @@
-<%= @user.name %>
+
+<nav>
+  <%= link_to "See Attractions", attractions_path %>
+  <%= link_to "Log Out", logout_path %>  
+</nav>
+<% if @user.admin %>
+  <h1>ADMIN</h1>
+<% end %>
+
+<h2><%= @user.name %></h2>
 <p>Mood: <%= @user.user_mood %></p>
 <p>Nausea: <%= @user.nausea %></p>
 <p>Tickets: <%= @user.tickets %></p>

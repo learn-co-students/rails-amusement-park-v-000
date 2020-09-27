@@ -4,8 +4,16 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
-    @user = User.find_by(name: params[:user_name]).try(:authenticate, params[:user_password])
-    @user.valid?
+    if user = User.authenticate_credentials(params[:user][:name], params[:user_password])
+      session[:user_id] = user.id
+      redirect_to user_path(user)
+    else
+      redirect_to signin_path
+    end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url
   end
 end

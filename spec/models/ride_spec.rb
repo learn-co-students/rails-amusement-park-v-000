@@ -38,52 +38,45 @@ RSpec.describe Ride, :type => :model do
     expect(ride.user).to eq(user)
   end
 
-  it "has a method 'take_ride' that accounts for the user not having enough tickets" do
-    ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
-    expect(ride.take_ride).to eq("Sorry. You do not have enough tickets to ride the #{attraction.name}.")
-    expect(user.tickets).to eq(4)
-    expect(user.happiness).to eq(3)
-    expect(user.nausea).to eq(5)
-  end
-
-  it "has a method 'take_ride' that accounts for the user not being tall enough" do
+  it "has a method 'tall_enough' that accounts for the user not being tall enough" do
     user.update(:height => 30, :tickets => 10)
     ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
-    expect(ride.take_ride).to eq("Sorry. You are not tall enough to ride the #{attraction.name}.")
+    expect(ride.tall_enough).to eq(false)
     expect(user.tickets).to eq(10)
     expect(user.happiness).to eq(3)
     expect(user.nausea).to eq(5)
   end
 
-  it "has a method 'take_ride' that accounts for the user not being tall enough and not having enough tickets" do
+  it "has a method 'rider_allowed?' that accounts for the user not being tall enough and not having enough tickets" do
     user.update(:height => 30)
     ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
-    expect(ride.take_ride).to eq("Sorry. You do not have enough tickets to ride the #{attraction.name}. You are not tall enough to ride the #{attraction.name}.")
+    
     expect(user.tickets).to eq(4)
     expect(user.happiness).to eq(3)
     expect(user.nausea).to eq(5)
+    expect(ride.rider_allowed?).to eq(false)
   end
 
-  it "has a method 'take_ride' that updates ticket number" do
+  it "has a method 'user.pay' that updates ticket number" do
     user.update(:tickets => 10)
     ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
-    ride.take_ride
+    ride.user.pay(attraction)
     mindy = User.find_by(:name => "Mindy")
     expect(mindy.tickets).to eq(5)
   end
 
-  it "has a method 'take_ride' that updates the user's nausea" do
+  it "has a method 'user.pay' that updates the user's nausea" do
     user.update(:tickets => 10)
     ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
-    ride.take_ride
+    ride.user.pay(attraction)
     mindy = User.find_by(:name => "Mindy")
     expect(mindy.nausea).to eq(7)
   end
 
-  it "has a method 'take_ride' that updates the user's happiness" do
+  it "has a method 'user.pay' that updates the user's happiness" do
     user.update(:tickets => 10)
     ride = Ride.create(:user_id => user.id, :attraction_id => attraction.id)
-    ride.take_ride
+    ride.user.pay(attraction)
     mindy = User.find_by(:name => "Mindy")
     expect(mindy.happiness).to eq(7)
   end

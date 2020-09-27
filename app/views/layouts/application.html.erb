@@ -29,6 +29,16 @@
 
     <!-- content -->
     <div class="container"  role="main">
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% elsif flash[:alert]%>
+        <% flash[:alert].each do | message| %>
+          <div class="alert">
+            <%= message %>
+          </div>
+      <% end %></div>
+    <% end %>
+
       <%= yield %>
     </div>
   </body>

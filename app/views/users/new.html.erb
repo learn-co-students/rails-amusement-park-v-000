@@ -1,4 +1,4 @@
-<%= form_for @user do |f|%>
+<%= form_for @user do |f| %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -20,6 +20,10 @@
     <%= f.text_field :tickets %>
   </p>
   <p>
+    <%= f.label :admin, "Check if you are a Park Admin" %>
+    <%= f.check_box :admin, id: "user_admin", checked: false %>
+  </p>
+  <p>
     <%= f.label :password %>
     <%= f.text_field :password %>
   </p>
@@ -27,5 +31,5 @@
     <%= f.label :password_confirmation %>
     <%= f.text_field :password_confirmation %>
   </p>
-  <%= f.submit 'Create User'%>
+  <%= f.submit 'Sign Up' %>
 <% end %>
