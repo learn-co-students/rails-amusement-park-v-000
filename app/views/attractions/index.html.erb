@@ -1,0 +1,26 @@
+<h1>Attractions</h1>
+
+<p style="color:red;"><%= flash[:not_found] %></p>
+
+<% if current_user.admin? %>
+  <p><%= link_to "New Attraction", new_attraction_path %></p>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Links to Attractions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- I need the <td> element, or it messes up the table. -->
+    <!-- Note: view_attraction is defined in the AttractionsHelper. -->
+    <% @attractions.each do |att| %>
+      <tr>
+        <td><%= att.name %></td>
+        <td><%= link_to view_attraction(att), attraction_path(att) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
