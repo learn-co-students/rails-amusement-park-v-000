@@ -25,8 +25,8 @@ describe 'Feature Test: User Signup', :type => :feature do
     
     # user_login method is defined in login_helper.rb
     create_standard_user
-    visit '/signin'
-    expect(current_path).to eq('/signin')
+    visit '/login'
+    expect(current_path).to eq('/login')
     user_login
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Mindy")
@@ -38,7 +38,7 @@ describe 'Feature Test: User Signup', :type => :feature do
 
   it "on log in, successfully adds a session hash" do
     create_standard_user
-    visit '/signin'
+    visit '/login'
     # user_login method is defined in login_helper.rb
     user_login
     expect(page.get_rack_session_key('user_id')).to_not be_nil
@@ -70,8 +70,8 @@ describe 'Feature Test: User Signup', :type => :feature do
 
   it 'successfully logs in as admin' do
     create_standard_and_admin_user
-    visit '/signin'
-    expect(current_path).to eq('/signin')
+    visit '/login'
+    expect(current_path).to eq('/login')
     # admin_login method is defined in login_helper.rb
     admin_login
     expect(current_path).to eq('/users/2')
@@ -81,7 +81,7 @@ describe 'Feature Test: User Signup', :type => :feature do
 
   it "on log in, successfully adds a session hash to admins" do
     create_standard_and_admin_user
-    visit '/signin'
+    visit '/login'
     # admin_login method is defined in login_helper.rb
     admin_login
     expect(page.get_rack_session_key('user_id')).to_not be_nil
