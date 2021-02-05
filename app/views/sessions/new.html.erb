@@ -1,0 +1,9 @@
+<% if flash[:alert] %>
+<div>No</div>
+<% end %>
+<h1>Signin Fewl</h1>
+<%= form_tag(sessions_path) do %>
+  <%= select_tag "user_name", options_from_collection_for_select(@users, "name", "name") %>
+  <%= text_field_tag :password %>
+  <%= submit_tag("Sign In") %>
+<% end %>

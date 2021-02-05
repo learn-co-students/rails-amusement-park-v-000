@@ -1,0 +1,13 @@
+<%= render partial: "admin_show_actions", locals: {attraction: @attraction} %>
+<p><%= flash[:alert] if flash[:alert] %></p>
+<h1><%= @attraction.name %></h1>
+<ul>
+  <li>Ticket Amount: <%= @attraction.tickets %></li>
+  <li>Minimum Height: <%= @attraction.min_height %></li>
+  <li>This ride is sick! Nausea rating: <%= @attraction.nausea_rating %></li>
+  <li>Happiness Rating: <%= @attraction.happiness_rating %></li>
+</ul>
+<%= form_tag(attractions_ride_path) do %>
+  <%= hidden_field_tag("ride[attraction_id]", @attraction.id) %>
+  <%= submit_tag("Go on this ride") %>
+<% end %>
