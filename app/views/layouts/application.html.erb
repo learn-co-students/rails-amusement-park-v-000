@@ -18,15 +18,16 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <a class="navbar-brand" href="<%= attractions_path %>"/>Attractions</a>
+        <%= "Tickets: #{current_user.tickets}" if current_user %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </div>
-
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>

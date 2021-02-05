@@ -1,0 +1,17 @@
+<%= link_to("New Attraction", new_attraction_path) if current_user.admin %>
+<% @attractions.each do |attraction| %>
+  <div>
+    <h4>Ride, <%= attraction.name %></h4>
+    <ul>
+      <li>Ticket Amount: <%= attraction.tickets %></li>
+      <li>Minimum Height: <%= attraction.min_height %></li>
+      <li>This ride is sick! Nausea rating: <%= attraction.nausea_rating %></li>
+      <li>Happiness Rating: <%= attraction.happiness_rating %></li>
+    </ul>
+    <% if current_user.admin %>
+      <a href="<%= attraction_path(attraction) %>"><%= "Show #{attraction.name}" %></a>
+    <% else %>
+      <a href="<%= attraction_path(attraction) %>"><%= "Go on #{attraction.name}" %></a>
+    <% end %>
+  </div>
+<% end %>

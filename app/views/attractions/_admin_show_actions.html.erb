@@ -1,0 +1,6 @@
+<% if current_user.admin %>
+<div>
+  <%= link_to("Edit Attraction", edit_attraction_path(attraction)) %>
+  <%= button_to "delete", attraction_path(attraction), method: "delete" %>
+</div>
+<% end %>
