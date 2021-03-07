@@ -78,4 +78,6 @@ def make_attractions_and_rides
   end
 end
 
+puts "seeded"
+
 main

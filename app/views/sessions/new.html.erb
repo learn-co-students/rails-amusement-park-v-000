@@ -1,0 +1,8 @@
+<h1>Login</h1>
+<%= form_for @user, url: create_session_path do |f| %>
+    <%= f.label :name %>
+    <%= f.collection_select :name, User.all, :name, :name %>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br/>
+    <%= f.submit "Sign In" %>
+<% end %>
