@@ -1,0 +1,7 @@
+<h1>New attraction</h1>
+
+<%= form_for :attraction, url: '/attractions' do |f| %>
+  <%= render 'form', f: f %>
+
+<%= f.submit "Create Attraction" %>
+<% end %>
