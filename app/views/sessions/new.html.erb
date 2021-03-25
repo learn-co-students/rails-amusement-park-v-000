@@ -1,9 +1,11 @@
+<%=flash[:notice] %>
+
 <h2>Log in</h2>
 <%= form_tag({controller: 'sessions', action: 'create', method: 'post'}) do %>
 <label>Your Name:</label>
 <%= collection_select(:user, :name, User.all, :name, :name, {:prompt => 'Please select your username from this dropdown'}) %>
 <br>
-<label>Your password:  </label><input name="password" type="password"><br>
+<label>Your password:  </label><input name="user[password]" type="password"><br>
 <input type="submit" value='Sign In'>
 <% end %>
 
