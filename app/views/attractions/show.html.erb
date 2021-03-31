@@ -10,3 +10,6 @@ Min. Height: <%= @attraction.min_height %><br />
        <%= f.hidden_field :attraction_id %><br />
        <%= f.submit "Go on this ride" %>
        <% end %>
+       <% if current_user.admin %>
+             <%= link_to 'Edit Attraction', edit_attraction_path(@attraction)  %></p>
+      <% end %>
