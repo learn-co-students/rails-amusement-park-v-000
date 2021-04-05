@@ -1,0 +1,24 @@
+<%= form_for @user do |f| %>
+<label>Name: </label>
+<%= f.text_field :name %><br>
+
+<label>Height: </label>
+<%= f.number_field :height %><br>
+
+<label>Happiness: </label>
+<%= f.number_field :happiness %><br>
+
+<label>Nausea: </label>
+<%= f.number_field :nausea %><br>
+
+<label>Tickets: </label>
+<%= f.number_field :tickets %><br>
+
+<label>Check box if you are the park owner: </label>
+<%= f.check_box :admin %>
+
+<label>Password: </label>
+<%= f.password_field :password %><br>
+
+<%= f.submit %>
+<% end %>
