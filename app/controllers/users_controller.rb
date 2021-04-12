@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-    
+
     def signin
+    end 
+
+    def welcome
     end 
 
     def new

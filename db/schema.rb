@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_192847) do
+ActiveRecord::Schema.define(version: 2021_04_12_174759) do
 
-  create_table "attactions", force: :cascade do |t|
+  create_table "attractions", force: :cascade do |t|
     t.string "name"
-    t.string "minimum_height"
-    t.string "happiness_rating"
-    t.string "nausea_rating"
     t.integer "tickets"
+    t.integer "min_height"
+    t.integer "nausea_rating"
+    t.integer "happiness_rating"
   end
 
   create_table "rides", force: :cascade do |t|
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2021_04_07_192847) do
     t.integer "height"
     t.integer "nausea"
     t.integer "tickets"
-    t.integer "happiness"
     t.string "password_digest"
     t.boolean "admin", default: false
+    t.integer "happiness"
   end
 
 end
