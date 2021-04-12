@@ -1,33 +1,25 @@
 <%= form_for(@attraction) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %></div>
 
-<div class='field'>
-<%= f.label :name %>
-<%= f.text_field :name %>
-</div>
+  <div class="form-group">
+    <%= f.label :min_height, "Height Requirement (in inches)" %><br>
+    <%= f.number_field :min_height, class: "form-control" %></div>
 
-<div class='field'>
-<%= f.label :min_height, "Height" %>
-<%= f.text_field :min_height %>
-</div>
+  <div class="form-group">
+    <%= f.label :happiness_rating, "How fun is it? (1-5 scale)" %><br>
+    <%= f.number_field :happiness_rating, class: "form-control" %></div>
 
-<div class='field'>
-<%= f.label :happiness_rating, "Funness?" %>
-<%= f.text_field :happiness_rating %>
-</div>
+  <div class="form-group">
+    <%= f.label :nausea_rating, "How nausea-inducing is it? (1-5 scale)" %><br>
+    <%= f.number_field :nausea_rating, class: "form-control" %></div>
 
+  <div class="form-group">
+    <%= f.label :tickets, "How many tickets does it cost?" %><br>
+    <%= f.number_field :tickets, class: "form-control" %></div>
 
-<div class='field'>
-<%= f.label :nausea_rating, "How much nausea?" %>
-<%= f.text_field :nausea_rating %>
-</div>
-
-<div class='field'>
-<%= f.label :tickets, "How many tickets?" %>
-<%= f.text_field :tickets %>
-</div>
-
-
-<%= f.submit class: "btn btn-primary" %>
-
-
-<% end %>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+<% end %> 

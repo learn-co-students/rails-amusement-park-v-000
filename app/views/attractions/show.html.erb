@@ -1,11 +1,15 @@
-<strong>Name:</strong> <%= @attraction.name %></p>
-<strong>Total Number of Users:</strong> <%= @attraction.users.count %></p>
-<strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
-<strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
-<strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
-<strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
+<p id="notice"><%= notice %></p>
 
-<% if current_user.admin %>
+<div class="center">
+
+  <div class="info">
+    <p><strong>Name:</strong> <%= @attraction.name %></p>
+    <p><strong>Total Number of Users:</strong> <%= @attraction.users.count %></p>
+    <p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
+    <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
+    <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
+    <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
+    <% if current_user.admin %>
       <%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
     <% else %>
       <%= form_for @ride do |f| %>
@@ -14,3 +18,6 @@
         <%= f.submit "Go on this ride", class:"btn btn-light" %>
       <% end %>
     <% end %>
+  </div>
+
+</div>
