@@ -1,0 +1,11 @@
+<%= form_tag(signin_path) do %>
+  <div class="field required">
+    <%= label_tag :user_name, nil, class: "hidden" %>
+    <%= collection_select(:user, :name, User.all, :name, :name) %>
+  </div> 
+  <div class="field required">
+    <%= label_tag :user_password, nil, class: "hidden" %>
+    <%= password_field_tag :user_password, nil, required: true, placeholder: "Password" %>
+  </div>
+  <%= submit_tag "Sign In" %>
+<% end %>
