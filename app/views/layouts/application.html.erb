@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsAmusementPark</title>
+    <title>local food</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,7 +21,6 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,7 +28,21 @@
 
     <!-- content -->
     <div class="container"  role="main">
+    
+    <% if notice %>
+              <%= notice %>
+    <% end %>
+    
+    <% if alert %>
+              <%= alert %>
+    <% end %>
+    
       <%= yield %>
     </div>
+    
   </body>
 </html>
+
+<br>
+
+Made with //❤️

@@ -1,12 +1,20 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'omniauth'
+require 'dotenv/load'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module RailsAmusementPark
+Dotenv::Railtie.load
+
+HOSTNAME = ENV['HOSTNAME']
+
+    
+module LocalFood
+     
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1

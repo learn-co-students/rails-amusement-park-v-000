@@ -1,0 +1,14 @@
+<h1> local food </h1>
+
+<h2><%= link_to "Catalog", "/catalog" %></h2><br>
+
+<% if @user %>
+  Logged in as <%= @user.name %>
+<% else %>
+
+  <%= link_to 'Sign Up', "/signup" %>
+  <%= link_to 'Log In', "/login" %>
+  <% end %>
+
+<%= link_to "Log Out", "/logout" %>
+
