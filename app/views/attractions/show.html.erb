@@ -1,0 +1,17 @@
+Attraction show page
+
+
+    <br>Name<%= @attraction.name%> 
+    <br>Tickets:<%= @attraction.tickets %> 
+    <br>Nausea:<%= @attraction.nausea_rating %>
+    <br>Happiness:<%= @attraction.happiness_rating %>
+    <br>Minimum Height:<%= @attraction.min_height %>
+
+    <% if admin %>
+        <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+    <% else %>
+        <%= form_tag('/rides',method: :post) do %>
+            <%= hidden_field_tag "attraction", @attraction.id %>
+            <%= submit_tag("Go on this ride") %>
+        <% end %>
+    <% end %>
