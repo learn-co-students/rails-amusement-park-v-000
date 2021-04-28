@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <strong>Nausea:</strong>
+  <%= @user.nausea %>
+</p>
+
+<p>
+  <strong>Happiness:</strong>
+  <%= @user.happiness %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  <%= @user.tickets %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @user.height %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

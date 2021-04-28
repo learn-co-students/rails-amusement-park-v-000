@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @attraction.name %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  <%= @attraction.tickets %>
+</p>
+
+<p>
+  <strong>Nausea rating:</strong>
+  <%= @attraction.nausea_rating %>
+</p>
+
+<p>
+  <strong>Happiness rating:</strong>
+  <%= @attraction.happiness_rating %>
+</p>
+
+<p>
+  <strong>Min height:</strong>
+  <%= @attraction.min_height %>
+</p>
+
+<%= link_to 'Edit', edit_attraction_path(@attraction) %> |
+<%= link_to 'Back', attractions_path %>
