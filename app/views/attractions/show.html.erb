@@ -1,0 +1,16 @@
+<strong>Name: </strong><%= @attraction.name %><br/>
+<strong>Total Number of Users: </strong><%= @attraction.users.count %><br/>
+<strong>Ticket Requirement: </strong><%= @attraction.tickets %><br/>
+<strong>Height Requirement: </strong><%= @attraction.min_height %></br>
+<strong>Nausea Rating: </strong><%= @attraction.nausea_rating %><br/>
+<strong>Happiness Rating: </strong><%= @attraction.happiness_rating %><br/>
+<!-- another nice opportunity for unless -->
+<% unless current_user.admin %>
+    <%= form_for @ride do |f| %>
+        <%= f.hidden_field :user_id %>
+        <%= f.hidden_field :attraction_id %>
+        <%= f.submit "Go on this ride" %>
+    <% end %>
+<% else %>
+    <%= link_to "Edit Attraction", edit_attraction_path %>
+<% end %>
