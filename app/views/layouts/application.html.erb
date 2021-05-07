@@ -3,7 +3,6 @@
   <head>
     <title>RailsAmusementPark</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -21,7 +20,16 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+            <% if logged_in %>
+               <%= link_to "#{current_user.name}'s profile", current_user, :class => 'navbar-brand' %>
+               <%= link_to "Log Out", signout_path, :class => 'navbar-brand' %>
+               <% if admin %>
+                 <span class="navbar-brand">ADMIN</span>
+               <% end %>
+             <% else %>
+               <%= link_to "Sign In", signin_path, :class => 'navbar-brand' %>
+               <%= link_to "Sign Up", signup_path, :class => 'navbar-brand' %>
+             <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

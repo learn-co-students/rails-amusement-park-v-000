@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @attraction.name %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  <%= @attraction.tickets %>
+</p>
+
+<p>
+  <strong>Nausea rating:</strong>
+  <%= @attraction.nausea_rating %>
+</p>
+
+<p>
+  <strong>Happiness rating:</strong>
+  <%= @attraction.happiness_rating %>
+</p>
+
+<p>
+  <strong>Min height:</strong>
+  <%= @attraction.min_height %>
+</p>
+
+<% if current_user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %> | <%= link_to 'Back', attractions_path %>
+<% else %>
+  <%= form_for @ride do |f| %>
+  <%= f.hidden_field :user_id %><br/>
+  <%= f.hidden_field :attraction_id %><br/>
+  <%= f.submit "Go on this ride", class:"btn btn-light" %>
+  <% end %>
+<% end %>

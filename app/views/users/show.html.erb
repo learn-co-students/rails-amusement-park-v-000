@@ -1,0 +1,47 @@
+<% if flash[:message]%>
+  <h3><%= flash[:message] %></h3>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @user.id %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
+</p>
+
+<p>
+  <strong>Nausea:</strong>
+  <%= @user.nausea %>
+</p>
+
+<p>
+  <strong>Happiness:</strong>
+  <%= @user.happiness %>
+</p>
+
+<p>
+  <strong>Mood:</strong>
+  <%= @user.mood %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  <%= @user.tickets %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @user.height %>
+</p>
+
+<p><%= link_to "See attractions", attractions_path %></p>

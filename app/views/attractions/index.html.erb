@@ -1,0 +1,9 @@
+<% Attraction.all.each do |attraction| %>
+    <%= attraction.name%>
+    <%= link_to "Show #{attraction.name}", attraction if admin %><br>
+    <%= link_to "Go on #{attraction.name}", attraction unless admin %><br>
+
+<%end%>
+<% if admin %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
