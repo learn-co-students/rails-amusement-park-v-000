@@ -4,10 +4,8 @@ class User < ActiveRecord::Base
   has_many :attractions, through: :rides
 
   def mood
-    if nausea > happiness
-      "sad"
-    elsif happiness > nausea
-      "happy"
+    unless admin
+      happiness > nausea ? "happy" : "sad"
     end
   end
 end

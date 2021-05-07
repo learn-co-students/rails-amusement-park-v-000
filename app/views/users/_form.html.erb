@@ -1,47 +1,36 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% user.errors.full_messages.each do |message| %>
+      <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
 
-  <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
-  </div>
+  <%= f.label :height %>
+  <%= f.number_field :height %><br>
 
-  <div class="field">
-    <%= form.label :nausea %>
-    <%= form.number_field :nausea %>
-  </div>
+  <%= f.label :happiness %>
+  <%= f.number_field :happiness %><br>
 
-  <div class="field">
-    <%= form.label :happiness %>
-    <%= form.number_field :happiness %>
-  </div>
+  <%= f.label :nausea %>
+  <%= f.number_field :nausea %><br>
 
-  <div class="field">
-    <%= form.label :tickets %>
-    <%= form.number_field :tickets %>
-  </div>
+  <%= f.label :tickets %>
+  <%= f.number_field :tickets %><br>
 
-  <div class="field">
-    <%= form.label :height %>
-    <%= form.number_field :height %>
-  </div>
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <%= f.label :admin %>
+  <%= f.check_box :admin %><br>
+
+  <%= f.submit "Create User" %>
+<%end%>

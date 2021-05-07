@@ -1,42 +1,18 @@
-<%= form_with(model: attraction, local: true) do |form| %>
-  <% if attraction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(attraction.errors.count, "error") %> prohibited this attraction from being saved:</h2>
+<%= form_for(@attraction) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
 
-      <ul>
-      <% attraction.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= f.label :tickets %>
+    <%= f.number_field :tickets %><br>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <%= f.label :nausea_rating %>
+    <%= f.number_field :nausea_rating %><br>
 
-  <div class="field">
-    <%= form.label :tickets %>
-    <%= form.number_field :tickets %>
-  </div>
+    <%= f.label :happiness_rating %>
+    <%= f.number_field :happiness_rating %><br>
 
-  <div class="field">
-    <%= form.label :nausea_rating %>
-    <%= form.number_field :nausea_rating %>
-  </div>
+    <%= f.label :min_height %>
+    <%= f.number_field :min_height %><br>
 
-  <div class="field">
-    <%= form.label :happiness_rating %>
-    <%= form.number_field :happiness_rating %>
-  </div>
-
-  <div class="field">
-    <%= form.label :min_height %>
-    <%= form.number_field :min_height %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= f.submit %>
 <% end %>

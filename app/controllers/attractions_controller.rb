@@ -8,6 +8,8 @@ class AttractionsController < ApplicationController
 
   # GET /attractions/1 or /attractions/1.json
   def show
+    @attraction = Attraction.find(params[:id])
+    @ride = Ride.new(user_id: session[:user_id], attraction_id: @attraction.id)
   end
 
   # GET /attractions/new
@@ -21,16 +23,11 @@ class AttractionsController < ApplicationController
 
   # POST /attractions or /attractions.json
   def create
-    @attraction = Attraction.new(attraction_params)
-
-    respond_to do |format|
-      if @attraction.save
-        format.html { redirect_to @attraction, notice: "Attraction was successfully created." }
-        format.json { render :show, status: :created, location: @attraction }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @attraction.errors, status: :unprocessable_entity }
-      end
+    @attraction = Attraction.create(attraction_params)
+    if @attraction.save
+      redirect_to attraction_path(@attraction)
+    else
+      redirect_to new_attraction_path
     end
   end
 

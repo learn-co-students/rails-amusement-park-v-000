@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Password digest</th>
+      <th>Password</th>
       <th>Nausea</th>
       <th>Happiness</th>
       <th>Tickets</th>
@@ -19,7 +19,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= user.password_digest %></td>
+        <td><%= user.password %></td>
         <td><%= user.nausea %></td>
         <td><%= user.happiness %></td>
         <td><%= user.tickets %></td>

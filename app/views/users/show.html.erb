@@ -1,3 +1,7 @@
+<% if flash[:message]%>
+  <h3><%= flash[:message] %></h3>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -6,8 +10,13 @@
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
+  <strong>Id:</strong>
+  <%= @user.id %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
 </p>
 
 <p>
@@ -21,6 +30,11 @@
 </p>
 
 <p>
+  <strong>Mood:</strong>
+  <%= @user.mood %>
+</p>
+
+<p>
   <strong>Tickets:</strong>
   <%= @user.tickets %>
 </p>
@@ -30,5 +44,4 @@
   <%= @user.height %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p><%= link_to "See attractions", attractions_path %></p>

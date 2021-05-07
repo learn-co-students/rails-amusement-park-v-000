@@ -1,5 +1,5 @@
 class RidesController < ApplicationController
-  before_action :set_ride, only: %i[ show edit update destroy ]
+  # before_action :set_ride, only: %i[ show edit update destroy ]
 
   # GET /rides or /rides.json
   def index
@@ -21,17 +21,9 @@ class RidesController < ApplicationController
 
   # POST /rides or /rides.json
   def create
-    @ride = Ride.new(ride_params)
-
-    respond_to do |format|
-      if @ride.save
-        format.html { redirect_to @ride, notice: "Ride was successfully created." }
-        format.json { render :show, status: :created, location: @ride }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @ride.errors, status: :unprocessable_entity }
-      end
-    end
+    @ride = Ride.create(ride_params)
+    message = @ride.take_ride
+    redirect_to user_path(@ride.user), flash: {message: message}
   end
 
   # PATCH/PUT /rides/1 or /rides/1.json
@@ -58,9 +50,9 @@ class RidesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_ride
-      @ride = Ride.find(params[:id])
-    end
+    # def set_ride
+    #   @ride = Ride.find(params[:id])
+    # end
 
     # Only allow a list of trusted parameters through.
     def ride_params
