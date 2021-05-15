@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params(:name, :nausea, :happiness, :tickets, :height, :password))
     if @user.valid?
       @user.save
+      current_user(@user)
       redirect_to user_path(@user)
     else
       render :new
