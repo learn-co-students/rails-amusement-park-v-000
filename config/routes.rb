@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get '/signin' => 'users#signin'
   post '/signin' => 'users#create_signin'
   post '/logout' => 'users#destroy'
+
+  resources :attractions, only: [:index]
 end
