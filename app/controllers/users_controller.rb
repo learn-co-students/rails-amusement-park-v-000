@@ -1,17 +1,14 @@
 class UsersController < ApplicationController
-  #before_action :require_signin
-  #skip_before_action :require_signin, only: [:show]
 
   def new
     @user = User.new
   end
 
   def create
-    #binding.pry
     @user = User.new(user_params(:name, :nausea, :happiness, :tickets, :height, :password))
     if @user.valid?
       @user.save
-      current_user(@user)
+      sign_in_user(@user)
       redirect_to user_path(@user)
     else
       render :new
@@ -33,7 +30,7 @@ class UsersController < ApplicationController
       redirect_to '/signin'
     else
       @user = User.find(user_id)
-      current_user(@user)
+      sign_in_user(@user)
       redirect_to user_path(@user)
     end
   end
