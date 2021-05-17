@@ -6,4 +6,24 @@ class AttractionsController < ApplicationController
   def show
     @attraction = Attraction.find(params[:id])
   end
+
+  def new
+    @attraction = Attraction.new
+  end
+
+  def create
+    @attraction = Attraction.new(attraction_params(:name, :min_height, :happiness_rating, :nausea_rating, :tickets))
+    if @attraction.valid?
+      @attraction.save
+      redirect_to attraction_path(@attraction)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def attraction_params(*args)
+    params.require(:attraction).permit(*args)
+  end
 end
