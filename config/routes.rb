@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post '/logout' => 'users#destroy'
 
   resources :attractions, only: [:index, :show]
+  resources :rides, only: [:new, :create]
 end
