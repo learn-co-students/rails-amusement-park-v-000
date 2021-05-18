@@ -1,0 +1,10 @@
+<h1>Attractions</h1>
+<ul>
+<% @attractions.each do |attraction| %>
+  <li><%= link_to link_to_attraction(@user, attraction), attraction_path(attraction) %></li>
+<% end %>
+</ul>
+</br>
+<ul>
+  <li><%= link_to "New Attraction", new_attraction_path %></li>
+</ul>
