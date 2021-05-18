@@ -1,6 +1,6 @@
 <%= form_for @user do |f| %>
   Name: <%= f.text_field :name %><br />
-  Admin: <%= f.check_box :admin %><br />
+  Admin: <%= f.check_box :admin, {}, true, false %><br />
   Nausea: <%= f.number_field :nausea %><br />
   Happiness: <%= f.number_field :happiness %><br />
   Tickets: <%= f.number_field :tickets %><br />

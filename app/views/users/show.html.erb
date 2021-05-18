@@ -1,6 +1,7 @@
 <h1><%= @user.name %></h1>
 <p><%= flash[:notice] %></p>
 <ul>
+  <li><%= is_admin if @user.admin %></li>
   <li>Mood: <%= @user.mood %></li>
   <li>Nausea: <%= @user.nausea %></li>
   <li>Happiness: <%= @user.happiness %></li>
@@ -9,7 +10,6 @@
 </ul>
 </br>
 <ul>
-  <li><%= link_to "ADMIN", attractions_path %></li>
   <li><%= link_to "Log Out", logout_path, method: "post" %></li>
   <li><%= link_to "See attractions", attractions_path %></li>
 </ul>

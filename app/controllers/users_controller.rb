@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params(:name, :nausea, :happiness, :tickets, :height, :password))
+    @user = User.new(user_params(:name, :admin, :nausea, :happiness, :tickets, :height, :password))
     if @user.valid?
       @user.save
       sign_in_user(@user)

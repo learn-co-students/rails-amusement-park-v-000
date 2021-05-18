@@ -1,10 +1,12 @@
 class AttractionsController < ApplicationController
   def index
     @attractions = Attraction.all
+    @user = current_user
   end
 
   def show
     @attraction = Attraction.find(params[:id])
+    @user = current_user
   end
 
   def new
@@ -19,6 +21,16 @@ class AttractionsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @attraction = Attraction.find(params[:id])
+  end
+
+  def update
+    @attraction = Attraction.find(params[:id])
+    @attraction.update(attraction_params(:name, :min_height, :happiness_rating, :nausea_rating, :tickets))
+    redirect_to attraction_path(@attraction)
   end
 
   private
