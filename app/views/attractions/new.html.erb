@@ -1,0 +1,35 @@
+<!-- content -->
+<div class="container"  role="main">
+  <h1>New attraction</h1>
+  <%= form_tag attractions_path do %>
+
+    <div class="form-group">
+      <label for="attraction_name">Name</label><br>
+      <input class="form-control" type="text" name="attraction[name]" id="attraction_name">
+    </div>
+
+    <div class="form-group">
+      <label for="attraction_min_height">Height Requirement (in inches)</label><br>
+      <input class="form-control" type="number" name="attraction[min_height]" id="attraction_min_height">
+    </div>
+
+    <div class="form-group">
+      <label for="attraction_happiness_rating">How fun is it? (1-5 scale)</label><br>
+      <input class="form-control" type="number" name="attraction[happiness_rating]" id="attraction_happiness_rating">
+    </div>
+
+    <div class="form-group">
+      <label for="attraction_nausea_rating">How nausea-inducing is it? (1-5 scale)</label><br>
+      <input class="form-control" type="number" name="attraction[nausea_rating]" id="attraction_nausea_rating">
+    </div>
+
+    <div class="form-group">
+      <label for="attraction_tickets">How many tickets does it cost?</label><br>
+      <input class="form-control" type="number" name="attraction[tickets]" id="attraction_tickets">
+    </div>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Attraction" class="btn btn-primary" data-disable-with="Create Attraction">
+    </div>
+  <% end %>
+</div>

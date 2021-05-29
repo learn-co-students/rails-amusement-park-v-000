@@ -18,11 +18,15 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            
-          </ul>
+
+        <% if logged_in? %>
+          <a class="navbar-brand" href="/users/<%= current_user.id %>"><%= current_user.name %>'s profile</a>
+          <a class="navbar-brand" rel="nofollow" data-method="delete" href="/session">Log Out</a>
+        <% else %>
+          <a class="navbar-brand" href="/users/new">Sign Up</a>
+          <a class="navbar-brand" href="/signin">Log in</a>
+        <% end %>
+        
         </div><!--/.nav-collapse -->
       </div>
     </div>
