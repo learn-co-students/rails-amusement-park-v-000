@@ -1,0 +1,20 @@
+  Name: <%=  @user.name %><br />
+  Nausea: <%= @user.nausea %><br />
+  Happiness: <%= @user.happiness %><br />
+  Mood: <%= @user.mood %><br />
+  Tickets: <%= @user.tickets %><br />
+  Height: <%= @user.height %><br />
+  Password: <%= @user.password %><br />
+  Admin:
+    <% if @user.admin == true %> 
+      <%= "ADMIN" %>
+      
+    <%end%>
+
+ 
+  <br/>
+ 
+  <% flash.each do |type, msg| %>
+    <%= msg %>
+
+  <% end %>
