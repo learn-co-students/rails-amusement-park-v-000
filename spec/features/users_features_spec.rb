@@ -58,7 +58,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     admin_signup
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Walt Disney")
-    expect(page).to have_content("ADMIN")
+    expect(page).to have_content("Admin")
   end
 
   it "on sign up for admin, successfully adds a session hash" do
@@ -76,7 +76,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     admin_login
     expect(current_path).to eq('/users/2')
     expect(page).to have_content("Walt Disney")
-    expect(page).to have_content("ADMIN")
+    expect(page).to have_content("Admin")
   end
 
   it "on log in, successfully adds a session hash to admins" do
