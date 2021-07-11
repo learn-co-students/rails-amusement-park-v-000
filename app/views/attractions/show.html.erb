@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+  <h1>
+    <strong>Name:</strong>
+    <%= @attraction.name %>
+  </h1><br>
+  
+  <p>
+    <strong>Nausea Rating:</strong>
+    <%= @attraction.nausea_rating %>
+  </p><br>
+
+  <p>
+    <strong>Happiness Rating:</strong>
+    <%= @attraction.happiness_rating %>
+  </p><br>
+
+  <p>
+    <strong>Tickets:</strong>
+    <%= @attraction.tickets %>
+  </p><br>
+
+  <p>
+    <strong> Minimum Height:</strong>
+    <%= @attraction.min_height %>
+  </p><br><br>
+
+  <%= form_tag('/rides', method: 'post') do %>
+    <%= hidden_field_tag('attraction_id', @attraction.id) %>
+    <%= submit_tag "Go on this ride" %>
+  <% end %><br><br>
+
+<%= link_to 'Edit Attraction', edit_attraction_path(@attraction) %> | 
+<%= link_to 'Back', attractions_path %> | 
+<%= link_to 'Destroy', @attraction, method: :delete, data: { confirm: 'Are you sure?' } %>
