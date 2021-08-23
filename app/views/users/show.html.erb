@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+  <h1>
+    Name:
+    <%= @user.name %>
+  </h1><br>
+
+  <% if @user.admin? %>
+
+    <p>
+      ADMIN
+    </p><br><br>
+
+  <% else %>
+
+    <p>
+      Nausea:
+      <%= @user.nausea %>
+    </p><br>
+
+    <p>
+      Happiness:
+      <%= @user.happiness %>
+    </p><br>
+
+    <p>
+      Mood:
+      <%= @user.mood %>
+    </p><br>
+
+    <p>
+      Tickets:
+      <%= @user.tickets %>
+    </p><br>
+
+    <p>
+      Height:
+      <%= @user.height %>
+    </p><br><br>
+
+  <% end %>
+
+  <%= link_to "See attractions", attractions_path %><br><br>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

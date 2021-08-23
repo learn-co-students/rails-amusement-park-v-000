@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  Name:
+  <%= @ride.name %>
+</p>
+
+<p>
+  Tickets:
+  <%= @ride.tickets %>
+</p>
+
+<p>
+  Nausea rating:
+  <%= @ride.nausea_rating %>
+</p>
+
+<p>
+  Happiness rating:
+  <%= @ride.happiness_rating %>
+</p>
+
+<p>
+  Min height:
+  <%= @ride.min_height %>
+</p>
+
+<%= link_to 'Edit', edit_ride_path(@ride) %> |
+<%= link_to 'Back', rides_path %>
