@@ -1,0 +1,5 @@
+<p>Mood: <%= current_user.mood %></p>
+<p>Tickets: <%= current_user.tickets %></p>
+<p>Height: <%= current_user.height %> inches</p>
+<p><%= link_to "See attractions", attractions_path %></p>
+<%= alert if alert %>
