@@ -1,0 +1,11 @@
+<% if @user.admin? %>
+  "ADMIN"
+<% end %>
+Name: <%= @user.name %> <br>
+Height: <%= @user.height %> <br>
+Mood: <%= @user.mood %> <br>
+Tickets: <%= @user.tickets %> <br>
+<br>
+
+<a href="/attractions">See attractions</a><br>
+<a href="/logout">Log Out</a>
