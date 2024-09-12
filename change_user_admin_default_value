@@ -1,0 +1,5 @@
+desc "change boolean values to 0 or 1 "
+task :change_boolean_values do
+  user.where("boolean_column = 't'").update_all(boolean_column: 1)
+  user.where("boolean_column = 'f'").update_all(boolean_column: 0)
+end
