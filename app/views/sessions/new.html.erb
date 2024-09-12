@@ -1,0 +1,6 @@
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+  <%= collection_select(:user, :name, @users, :id, :name) %>
+  <%= text_field_tag "password" %>
+  <%= submit_tag "Sign In" %>
+  <% end %>
+  
