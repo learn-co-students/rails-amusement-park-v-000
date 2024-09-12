@@ -1,0 +1,32 @@
+<div class="center">
+  <div class="info">
+    <p><strong>Name: </strong><%= @attraction.name %></p>
+    <p><strong>Total Number of Users: </strong><%= @attraction.users.count %></p>
+    <p><strong>Ticket Requirement: </strong><%= @attraction.tickets %></p>
+    <p><strong>Height Requirement: </strong><%= @attraction.min_height %> inches</p>
+    <p><strong>Nausea Rating: </strong><%= @attraction.nausea_rating %></p>
+    <p><strong>Happiness Rating: </strong><%= @attraction.happiness_rating %></p>
+
+    <% if current_user.admin %>
+      <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+    <% else %>
+      <%= form_for @ride do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :attraction_id, :value => @attraction.id %>
+        <%= f.submit "Go on this ride", :class => "btn btn-light" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%# Attempted to write code using only Rails helpers, but couldn't figure out how to make the labels bold without making the @attraction info bold %>
+<%# <%= content_tag :div, :class => "center" do %>
+  <%# <%= content_tag :div, :class => "info" do %>
+    <%# <%= tag.p "Name: #{@attraction.name}" %>
+    <%# <%= tag.p "Total Number of Users: #{@attraction.users.count}" %>
+    <%# <%= tag.p "Ticket Requirement: #{@attraction.tickets}" %>
+    <%# <%= tag.p "Height Requirement: #{@attraction.min_height} inches" %>
+    <%# <%= tag.p "Nausea Rating: #{@attraction.nausea_rating}" %>
+    <%# <%= tag.p "Happiness Rating: #{@attraction.happiness_rating}" %>
+  <%# <% end %>
+<%# <% end %>

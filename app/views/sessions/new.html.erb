@@ -1,0 +1,7 @@
+<%= form_tag signin_path do %>
+  <%= label_tag "Your name: " %>
+  <%= collection_select :user, :name, User.all, :name, :name, {:include_blank => "Please select your username from this dropdown"} %><br><br>
+  <%= label_tag "Your password: " %>
+  <%= password_field_tag :password, nil, :class => "form-control" %><br>
+  <%= submit_tag value="Sign In", :class => "actions" %>
+<% end %>
