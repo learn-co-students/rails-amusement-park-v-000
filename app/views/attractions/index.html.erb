@@ -1,0 +1,12 @@
+
+<% if current_user.admin %>
+  <%= render 'admin' %>
+<% end %>
+
+<% if current_user.admin %>
+  <%= render partial: "special", collection: @attractions, as: :attraction %>
+<% end %>
+
+<% if current_user.admin == false %>
+  <%= render partial: "regular", collection: @attractions, as: :attraction %>
+<% end %>
