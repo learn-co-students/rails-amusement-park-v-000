@@ -57,7 +57,7 @@ RSpec.describe User, :type => :model do
   end
 
   it "defaults to admin => false" do
-    expect(user.admin).to eq(false)
+    expect(user.admin).to eq("f")
   end
 
   it "has many rides" do

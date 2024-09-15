@@ -1,0 +1,15 @@
+<h1>Listing Attractions</h1>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Tickets</th>
+        <th>Details</th>
+    </tr>
+    <% if current_user.is_admin? %>
+        <%= render 'admin' %>
+        </table>
+        <%= link_to "New Attraction", new_attraction_path %>
+    <% else %>
+        <%= render 'non_admin' %>
+        </table>
+    <% end %>

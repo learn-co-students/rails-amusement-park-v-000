@@ -1,0 +1,6 @@
+<%= form_for :user do |f| %>
+    Your name: <%= f.collection_select :name, User.all, :name, :name %><br>
+    <%= f.label :password, "Your password" %><br>
+    <%= f.password_field :password %><br><br>
+    <%= f.submit 'Sign In' %>
+<% end %>
