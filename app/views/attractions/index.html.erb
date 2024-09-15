@@ -1,0 +1,49 @@
+<div class="row mt-4">
+  <div class="col">
+    <h3>All Attractions</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<% if admin? %>
+
+<div class="row">
+  <div class="col">
+    <%= link_to "New Attraction", new_attraction_path %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>
+
+<% end %>
+
+<div class="row">
+  <div class="col">
+    <ul>
+      <% @attractions.each do |attraction| %>
+        <li>
+          <% if admin? %>
+            <%= link_to "Show #{attraction.name}", attraction_path(attraction) %> - <%= link_to "edit", edit_attraction_path(attraction) %> - <%= link_to "delete", attraction, method: :delete, data: { confirm: "Are you sure?" } %>
+          <% else %>
+            <%= link_to "Go on #{attraction.name}", attraction_path(attraction) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <hr>
+  </div>
+</div>

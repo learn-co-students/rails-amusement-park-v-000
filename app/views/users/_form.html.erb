@@ -1,0 +1,38 @@
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control", placeholder: "Please enter a name" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :height %>
+  <%= f.text_field :height, class: "form-control", placeholder: "Please enter a height" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :happiness %>
+  <%= f.text_field :happiness, class: "form-control", placeholder: "Please enter a happiness" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :nausea %>
+  <%= f.text_field :nausea, class: "form-control", placeholder: "Please enter a nausea" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :tickets %>
+  <%= f.text_field :tickets, class: "form-control", placeholder: "Please enter a tickets" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :password %>
+  <%= f.password_field :password, class: "form-control", placeholder: "Please enter a password" %>
+</div>
+
+<div class="form-check">
+  <%= f.check_box :admin, class: "form-check-input" %>
+  <%= f.label :admin, class: "form-check-label"%>
+</div>
+
+<div class="form-group mt-3">
+  <%= f.submit submit_text, class: "btn btn-primary" %>
+</div>

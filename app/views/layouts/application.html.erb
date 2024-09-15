@@ -18,14 +18,34 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+
+        <% if logged_in? %>
+            <%= link_to "Log Out", logout_path, class: "nav-link" %>
+            <%= link_to "User Info", user_path(session[:user_id]), class: "nav-link" %>
+            <%= link_to "See attractions", attractions_path, class: "nav-link" %>
+        <% else %>
+            <%= link_to "Sign Up", new_user_path, class: "nav-link" %>
+            <%= link_to "Sign In", signin_path, class: "nav-link" %>
+        <% end %>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
+
+    <% if !flash[:notice].blank? %>
+      <div class="container">
+        <div class="row mt-4">
+          <div class="col">
+            <%= flash[:notice] %>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
     <!-- content -->
     <div class="container"  role="main">
