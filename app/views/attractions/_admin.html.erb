@@ -1,0 +1,7 @@
+<% @attractions.each do |att| %>
+    <tr>
+        <td><%= att.name %></td>
+        <td><%= att.tickets %></td>
+        <td><%= link_to "Show #{att.name}", attraction_path(att) %></td>
+    </tr>
+<% end %>
