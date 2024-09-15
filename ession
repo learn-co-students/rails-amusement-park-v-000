@@ -1,0 +1,1084 @@
+=> [32m#<#<Class:0x0d73fd54>:0x0d88f72c[0m
+ @_assigns[32m=[0m
+  {[31m[1;31m"[0m[31mmarked_for_same_origin_verification[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+   [31m[1;31m"[0m[31mattraction[1;31m"[0m[31m[0m=>
+    [32m#<Attraction:0x0d82c2d0[0m
+     id: [1;34m2[0m,
+     name: [31m[1;31m"[0m[31mFerris Wheel[1;31m"[0m[31m[0m,
+     min_height: [1;34m28[0m,
+     nausea_rating: [1;34m2[0m,
+     happiness_rating: [1;34m1[0m,
+     tickets: [1;34m2[0m[32m>[0m},
+ @_config[32m=[0m{},
+ @_controller[32m=[0m
+  [32m#<AttractionsController:0x0d82ef1c[0m
+   @_action_has_layout[32m=[0m[1;36mtrue[0m,
+   @_action_name[32m=[0m[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m,
+   @_config[32m=[0m{},
+   @_db_runtime[32m=[0m[1;35m0.1663450002524769[0m,
+   @_lookup_context[32m=[0m
+    [32m#<ActionView::LookupContext:0x0d82eeb8[0m
+     @cache[32m=[0m[1;36mtrue[0m,
+     @details[32m=[0m
+      {[33m:locale[0m=>[[33m:en[0m],
+       [33m:formats[0m=>[[33m:html[0m],
+       [33m:variants[0m=>[],
+       [33m:handlers[0m=>[[33m:raw[0m, [33m:erb[0m, [33m:html[0m, [33m:builder[0m, [33m:ruby[0m, [33m:coffee[0m, [33m:jbuilder[0m]},
+     @details_key[32m=[0m[32m#<Concurrent::Map:0x0bc2f0f0 entries=0 default_proc=nil>[0m,
+     @prefixes[32m=[0m[[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mapplication[1;31m"[0m[31m[0m],
+     @rendered_format[32m=[0m[33m:html[0m,
+     @view_paths[32m=[0m
+      [32m#<ActionView::PathSet:0x0d82ee18[0m
+       @paths[32m=[0m
+        [[32m#<ActionView::OptimizedFileSystemResolver:0x0bd83b2c[0m
+          @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0xbd83b18 keys=1 queries=0>[0m,
+          @path[32m=[0m
+           [31m[1;31m"[0m[31m/home/learn/Development/Code/rails-amusement-park-v-000/app/views[1;31m"[0m[31m[0m,
+          @pattern[32m=[0m
+           [31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m][32m>[0m[32m>[0m,
+   @_params[32m=[0m
+    <[1;34;4mActionController[0m::[1;34;4mParameters[0m {[31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m} [35mpermitted[0m: [1;36mfalse[0m>,
+   @_request[32m=[0m
+    [32m#<ActionDispatch::Request:0x0d82f91c[0m
+     @env[32m=[0m
+      {[31m[1;31m"[0m[31mrack.version[1;31m"[0m[31m[0m=>[[1;34m1[0m, [1;34m3[0m],
+       [31m[1;31m"[0m[31mrack.input[1;31m"[0m[31m[0m=>[32m#<StringIO:0x0d868924[0m[32m>[0m,
+       [31m[1;31m"[0m[31mrack.errors[1;31m"[0m[31m[0m=>[32m#<StringIO:0x0d868960[0m[32m>[0m,
+       [31m[1;31m"[0m[31mrack.multithread[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+       [31m[1;31m"[0m[31mrack.multiprocess[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+       [31m[1;31m"[0m[31mrack.run_once[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+       [31m[1;31m"[0m[31mREQUEST_METHOD[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mSERVER_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mwww.example.com[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mSERVER_PORT[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m80[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mQUERY_STRING[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mPATH_INFO[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mrack.url_scheme[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mHTTPS[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31moff[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mSCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mCONTENT_LENGTH[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m0[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mrack.test[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+       [31m[1;31m"[0m[31mREMOTE_ADDR[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m127.0.0.1[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mHTTP_REFERER[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp://www.example.com/attractions[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mHTTP_HOST[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mwww.example.com[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mHTTP_COOKIE[1;31m"[0m[31m[0m=>
+        [31m[1;31m"[0m[31m_rails_amusement_park_session=blI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.parameter_filter[1;31m"[0m[31m[0m=>[[33m:password[0m],
+       [31m[1;31m"[0m[31maction_dispatch.redirect_filter[1;31m"[0m[31m[0m=>[],
+       [31m[1;31m"[0m[31maction_dispatch.secret_token[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+       [31m[1;31m"[0m[31maction_dispatch.secret_key_base[1;31m"[0m[31m[0m=>
+        [31m[1;31m"[0m[31me0ca0af364931cd74a979ded531b16420fd749336e8bcadd8664539f5ecee644988e9a1c26f8a096319e6efd9d417a778cc745351da11a0170e35fba18e62b9d[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.show_exceptions[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+       [31m[1;31m"[0m[31maction_dispatch.show_detailed_exceptions[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+       [31m[1;31m"[0m[31maction_dispatch.logger[1;31m"[0m[31m[0m=>
+        [32m#<ActiveSupport::Logger:0x0aaa1748[0m
+         @default_formatter[32m=[0m
+          [32m#<Logger::Formatter:0x0aaa15b8[0m @datetime_format[32m=[0m[1;36mnil[0m[32m>[0m,
+         @formatter[32m=[0m
+          [32m#<ActiveSupport::Logger::SimpleFormatter:0x0a629648[0m
+           @datetime_format[32m=[0m[1;36mnil[0m,
+           @thread_key[32m=[0m[31m[1;31m"[0m[31mactivesupport_tagged_logging_tags:87116580[1;31m"[0m[31m[0m[32m>[0m,
+         @level[32m=[0m[1;34m0[0m,
+         @local_levels[32m=[0m
+          [32m#<Concurrent::Map:0x0aaa0f78 entries=0 default_proc=nil>[0m,
+         @logdev[32m=[0m
+          [32m#<Logger::LogDevice:0x0aaa1540[0m
+           @dev[32m=[0m
+            [32m#<File:/home/learn/Development/Code/rails-amusement-park-v-000/log/test.log>[0m,
+           @filename[32m=[0m[1;36mnil[0m,
+           @mon_count[32m=[0m[1;34m0[0m,
+           @mon_mutex[32m=[0m[32m#<Thread::Mutex:0x0aaa13b0[0m[32m>[0m,
+           @mon_mutex_owner_object_id[32m=[0m[1;34m89459360[0m,
+           @mon_owner[32m=[0m[1;36mnil[0m,
+           @shift_age[32m=[0m[1;36mnil[0m,
+           @shift_period_suffix[32m=[0m[1;36mnil[0m,
+           @shift_size[32m=[0m[1;36mnil[0m[32m>[0m,
+         @progname[32m=[0m[1;36mnil[0m[32m>[0m,
+       [31m[1;31m"[0m[31maction_dispatch.backtrace_cleaner[1;31m"[0m[31m[0m=>
+        [32m#<Rails::BacktraceCleaner:0x0babad3c[0m
+         @filters[32m=[0m
+          [[32m#<Proc:0x0babac9c@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:16>[0m,
+           [32m#<Proc:0x0babac88@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:17>[0m,
+           [32m#<Proc:0x0babac74@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:18>[0m,
+           [32m#<Proc:0x0babaaa8@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:31>[0m],
+         @root[32m=[0m[31m[1;31m"[0m[31m/home/learn/Development/Code/rails-amusement-park-v-000/[1;31m"[0m[31m[0m,
+         @silencers[32m=[0m
+          [[32m#<Proc:0x0babaa80@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:21>[0m][32m>[0m,
+       [31m[1;31m"[0m[31maction_dispatch.key_generator[1;31m"[0m[31m[0m=>
+        [32m#<ActiveSupport::CachingKeyGenerator:0x0b884388[0m
+         @cache_keys[32m=[0m[32m#<Concurrent::Map:0x0b884374 entries=4 default_proc=nil>[0m,
+         @key_generator[32m=[0m
+          [32m#<ActiveSupport::KeyGenerator:0x0b88439c[0m
+           @iterations[32m=[0m[1;34m1000[0m,
+           @secret[32m=[0m
+            [31m[1;31m"[0m[31me0ca0af364931cd74a979ded531b16420fd749336e8bcadd8664539f5ecee644988e9a1c26f8a096319e6efd9d417a778cc745351da11a0170e35fba18e62b9d[1;31m"[0m[31m[0m[32m>[0m[32m>[0m,
+       [31m[1;31m"[0m[31maction_dispatch.http_auth_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp authentication[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.signed_cookie_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31msigned cookie[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.encrypted_cookie_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mencrypted cookie[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.encrypted_signed_cookie_salt[1;31m"[0m[31m[0m=>
+        [31m[1;31m"[0m[31msigned encrypted cookie[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.authenticated_encrypted_cookie_salt[1;31m"[0m[31m[0m=>
+        [31m[1;31m"[0m[31mauthenticated encrypted cookie[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.use_authenticated_cookie_encryption[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+       [31m[1;31m"[0m[31maction_dispatch.encrypted_cookie_cipher[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+       [31m[1;31m"[0m[31maction_dispatch.signed_cookie_digest[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+       [31m[1;31m"[0m[31maction_dispatch.cookies_serializer[1;31m"[0m[31m[0m=>[33m:json[0m,
+       [31m[1;31m"[0m[31maction_dispatch.cookies_digest[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+       [31m[1;31m"[0m[31maction_dispatch.cookies_rotations[1;31m"[0m[31m[0m=>
+        [32m#<ActiveSupport::Messages::RotationConfiguration:0x0a24d844[0m
+         @encrypted[32m=[0m[],
+         @signed[32m=[0m[][32m>[0m,
+       [31m[1;31m"[0m[31maction_dispatch.content_security_policy[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+       [31m[1;31m"[0m[31maction_dispatch.content_security_policy_report_only[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+       [31m[1;31m"[0m[31maction_dispatch.content_security_policy_nonce_generator[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+       [31m[1;31m"[0m[31maction_dispatch.routes[1;31m"[0m[31m[0m=>
+        [32m#<ActionDispatch::Routing::RouteSet:0x09f6c080>[0m,
+       [31m[1;31m"[0m[31mROUTES_83583040_SCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mORIGINAL_FULLPATH[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mORIGINAL_SCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.request_id[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mebbaa38b-a864-45e1-9fc0-1f44221c1f21[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.remote_ip[1;31m"[0m[31m[0m=>
+        [32m#<ActionDispatch::RemoteIp::GetIp:0x0d82c438[0m
+         @check_ip[32m=[0m[1;36mtrue[0m,
+         @ip[32m=[0m[31m[1;31m"[0m[31m127.0.0.1[1;31m"[0m[31m[0m,
+         @proxies[32m=[0m
+          [[32m#<IPAddr: IPv4:127.0.0.1/255.255.255.255>[0m,
+           [32m#<IPAddr: IPv6:0000:0000:0000:0000:0000:0000:0000:0001/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff>[0m,
+           [32m#<IPAddr: IPv6:fc00:0000:0000:0000:0000:0000:0000:0000/fe00:0000:0000:0000:0000:0000:0000:0000>[0m,
+           [32m#<IPAddr: IPv4:10.0.0.0/255.0.0.0>[0m,
+           [32m#<IPAddr: IPv4:172.16.0.0/255.240.0.0>[0m,
+           [32m#<IPAddr: IPv4:192.168.0.0/255.255.0.0>[0m],
+         @req[32m=[0m
+          [32m#<ActionDispatch::Request:0x0d868014[0m
+           @env[32m=[0m{...},
+           @filtered_env[32m=[0m[1;36mnil[0m,
+           @filtered_parameters[32m=[0m[1;36mnil[0m,
+           @filtered_path[32m=[0m[1;36mnil[0m,
+           @fullpath[32m=[0m[1;36mnil[0m,
+           @ip[32m=[0m[1;36mnil[0m,
+           @method[32m=[0m[1;36mnil[0m,
+           @original_fullpath[32m=[0m[1;36mnil[0m,
+           @port[32m=[0m[1;36mnil[0m,
+           @protocol[32m=[0m[1;36mnil[0m,
+           @remote_ip[32m=[0m[1;36mnil[0m,
+           @request_method[32m=[0m[1;36mnil[0m[32m>[0m[32m>[0m,
+       [31m[1;31m"[0m[31mrack.session[1;31m"[0m[31m[0m=>[32m#<ActionDispatch::Request::Session:0x0d82fa5c ...>[0m,
+       [31m[1;31m"[0m[31mrack.session.options[1;31m"[0m[31m[0m=>
+        [32m#<ActionDispatch::Request::Session::Options:0x0d82fa34[0m
+         @by[32m=[0m
+          [32m#<ActionDispatch::Session::CookieStore:0x0b84f930[0m
+           @app[32m=[0m
+            [32m#<ActionDispatch::ContentSecurityPolicy::Middleware:0x0b84f944[0m
+             @app[32m=[0m
+              [32m#<Rack::Head:0x0b84f958[0m
+               @app[32m=[0m
+                [32m#<Rack::ConditionalGet:0x0b84f96c[0m
+                 @app[32m=[0m
+                  [32m#<Rack::ETag:0x0b84f980[0m
+                   @app[32m=[0m
+                    [32m#<Rack::TempfileReaper:0x0b84f994[0m
+                     @app[32m=[0m
+                      [32m#<RackSessionAccess::Middleware:0x0b84fa5c[0m
+                       @app[32m=[0m[32m#<ActionDispatch::Routing::RouteSet:0x09f6c080>[0m,
+                       @key[32m=[0m[31m[1;31m"[0m[31mrack.session[1;31m"[0m[31m[0m,
+                       @routing[32m=[0m
+                        [[[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session[1;31m"[0m[31m[0m, [33m:show[0m],
+                         [[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session/edit[1;31m"[0m[31m[0m, [33m:edit[0m],
+                         [[31m[1;31m"[0m[31mPUT[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session[1;31m"[0m[31m[0m, [33m:update[0m]][32m>[0m[32m>[0m,
+                   @cache_control[32m=[0m[31m[1;31m"[0m[31mmax-age=0, private, must-revalidate[1;31m"[0m[31m[0m,
+                   @no_cache_control[32m=[0m[31m[1;31m"[0m[31mno-cache[1;31m"[0m[31m[0m[32m>[0m[32m>[0m[32m>[0m[32m>[0m,
+           @cookie_only[32m=[0m[1;36mtrue[0m,
+           @default_options[32m=[0m
+            {[33m:path[0m=>[31m[1;31m"[0m[31m/[1;31m"[0m[31m[0m,
+             [33m:domain[0m=>[1;36mnil[0m,
+             [33m:expire_after[0m=>[1;36mnil[0m,
+             [33m:secure[0m=>[1;36mfalse[0m,
+             [33m:httponly[0m=>[1;36mtrue[0m,
+             [33m:defer[0m=>[1;36mfalse[0m,
+             [33m:renew[0m=>[1;36mfalse[0m},
+           @key[32m=[0m[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m[32m>[0m,
+         @delegate[32m=[0m
+          {[33m:path[0m=>[31m[1;31m"[0m[31m/[1;31m"[0m[31m[0m,
+           [33m:domain[0m=>[1;36mnil[0m,
+           [33m:expire_after[0m=>[1;36mnil[0m,
+           [33m:secure[0m=>[1;36mfalse[0m,
+           [33m:httponly[0m=>[1;36mtrue[0m,
+           [33m:defer[0m=>[1;36mfalse[0m,
+           [33m:renew[0m=>[1;36mfalse[0m,
+           [33m:id[0m=>[31m[1;31m"[0m[31md697e2d7ad957edb461844ae73248010[1;31m"[0m[31m[0m}[32m>[0m,
+       [31m[1;31m"[0m[31mrack.tempfiles[1;31m"[0m[31m[0m=>[],
+       [31m[1;31m"[0m[31maction_dispatch.request.path_parameters[1;31m"[0m[31m[0m=>
+        {[33m:controller[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [33m:action[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [33m:id[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+       [31m[1;31m"[0m[31maction_controller.instance[1;31m"[0m[31m[0m=>[32m#<AttractionsController:0x0d82ef1c[0m ...[32m>[0m,
+       [31m[1;31m"[0m[31maction_dispatch.request.content_type[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+       [31m[1;31m"[0m[31maction_dispatch.request.request_parameters[1;31m"[0m[31m[0m=>{},
+       [31m[1;31m"[0m[31mrack.request.query_string[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mrack.request.query_hash[1;31m"[0m[31m[0m=>{},
+       [31m[1;31m"[0m[31maction_dispatch.request.query_parameters[1;31m"[0m[31m[0m=>{},
+       [31m[1;31m"[0m[31maction_dispatch.request.parameters[1;31m"[0m[31m[0m=>
+        {[31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+       [31m[1;31m"[0m[31maction_dispatch.request.formats[1;31m"[0m[31m[0m=>
+        [[32m#<Mime::Type:0x0a1c1f74[0m
+          @hash[32m=[0m[1;34m721589705[0m,
+          @string[32m=[0m[31m[1;31m"[0m[31mtext/html[1;31m"[0m[31m[0m,
+          @symbol[32m=[0m[33m:html[0m,
+          @synonyms[32m=[0m[[31m[1;31m"[0m[31mapplication/xhtml+xml[1;31m"[0m[31m[0m][32m>[0m],
+       [31m[1;31m"[0m[31mrack.request.cookie_hash[1;31m"[0m[31m[0m=>
+        {[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m=>
+          [31m[1;31m"[0m[31mblI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m},
+       [31m[1;31m"[0m[31mrack.request.cookie_string[1;31m"[0m[31m[0m=>
+        [31m[1;31m"[0m[31m_rails_amusement_park_session=blI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31maction_dispatch.cookies[1;31m"[0m[31m[0m=>
+        [32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m
+         @committed[32m=[0m[1;36mfalse[0m,
+         @cookies[32m=[0m
+          {[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m=>
+            [31m[1;31m"[0m[31mblI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m},
+         @delete_cookies[32m=[0m{},
+         @encrypted[32m=[0m
+          [32m#<ActionDispatch::Cookies::EncryptedKeyRotatingCookieJar:0x0d82e0f8[0m
+           @encryptor[32m=[0m
+            [32m#<ActiveSupport::MessageEncryptor:0x0d82e058[0m
+             @aead_mode[32m=[0m[1;36mfalse[0m,
+             @cipher[32m=[0m[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+             @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+             @options[32m=[0m
+              {[33m:cipher[0m=>[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+               [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+             @rotations[32m=[0m[],
+             @secret[32m=[0m
+              [31m[1;31m"[0m[31mn[1;35m\x80[0m[31m'[1;35m\e[0m[31mC=[1;35m\x81[0m[31m[1;35m\xAF[0m[31m[1;35m\xD3[0m[31m[1;35m\xB4[0m[31mF[1;35m\x03[0m[31mpj[1;35m\xCD[0m[31m[1;35m\xC3[0m[31m[1;35m\x11[0m[31mErF[1;35m\xA7[0m[31m[1;35m\x1A[0m[31m[1;35m\xCB[0m[31m[1;35m\x8C[0m[31m[1;35m\x93[0m[31m[1;35m\x18[0m[31m[1;35m\xD3[0m[31m[1;35m\xCD[0m[31mB[1;35m\xC0[0m[31meP[1;31m"[0m[31m[0m,
+             @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m,
+             @sign_secret[32m=[0m
+              [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+             @verifier[32m=[0m
+              [32m#<ActiveSupport::MessageVerifier:0x0d82df68[0m
+               @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+               @options[32m=[0m
+                {[33m:digest[0m=>[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+                 [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+               @rotations[32m=[0m[],
+               @secret[32m=[0m
+                [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+               @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m[32m>[0m[32m>[0m,
+           @parent_jar[32m=[0m[32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m ...[32m>[0m[32m>[0m,
+         @request[32m=[0m
+          [32m#<ActionDispatch::Request:0x0d82fa70[0m
+           @env[32m=[0m{...},
+           @filtered_env[32m=[0m[1;36mnil[0m,
+           @filtered_parameters[32m=[0m[1;36mnil[0m,
+           @filtered_path[32m=[0m[1;36mnil[0m,
+           @fullpath[32m=[0m[1;36mnil[0m,
+           @ip[32m=[0m[1;36mnil[0m,
+           @method[32m=[0m[1;36mnil[0m,
+           @original_fullpath[32m=[0m[1;36mnil[0m,
+           @port[32m=[0m[1;36mnil[0m,
+           @protocol[32m=[0m[1;36mnil[0m,
+           @remote_ip[32m=[0m[1;36mnil[0m,
+           @request_method[32m=[0m[1;36mnil[0m[32m>[0m,
+         @set_cookies[32m=[0m{},
+         @signed_or_encrypted[32m=[0m
+          [32m#<ActionDispatch::Cookies::EncryptedKeyRotatingCookieJar:0x0d82e0f8[0m
+           @encryptor[32m=[0m
+            [32m#<ActiveSupport::MessageEncryptor:0x0d82e058[0m
+             @aead_mode[32m=[0m[1;36mfalse[0m,
+             @cipher[32m=[0m[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+             @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+             @options[32m=[0m
+              {[33m:cipher[0m=>[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+               [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+             @rotations[32m=[0m[],
+             @secret[32m=[0m
+              [31m[1;31m"[0m[31mn[1;35m\x80[0m[31m'[1;35m\e[0m[31mC=[1;35m\x81[0m[31m[1;35m\xAF[0m[31m[1;35m\xD3[0m[31m[1;35m\xB4[0m[31mF[1;35m\x03[0m[31mpj[1;35m\xCD[0m[31m[1;35m\xC3[0m[31m[1;35m\x11[0m[31mErF[1;35m\xA7[0m[31m[1;35m\x1A[0m[31m[1;35m\xCB[0m[31m[1;35m\x8C[0m[31m[1;35m\x93[0m[31m[1;35m\x18[0m[31m[1;35m\xD3[0m[31m[1;35m\xCD[0m[31mB[1;35m\xC0[0m[31meP[1;31m"[0m[31m[0m,
+             @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m,
+             @sign_secret[32m=[0m
+              [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+             @verifier[32m=[0m
+              [32m#<ActiveSupport::MessageVerifier:0x0d82df68[0m
+               @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+               @options[32m=[0m
+                {[33m:digest[0m=>[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+                 [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+               @rotations[32m=[0m[],
+               @secret[32m=[0m
+                [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+               @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m[32m>[0m[32m>[0m,
+           @parent_jar[32m=[0m[32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m ...[32m>[0m[32m>[0m[32m>[0m,
+       [31m[1;31m"[0m[31maction_dispatch.request.unsigned_session_cookie[1;31m"[0m[31m[0m=>
+        {[31m[1;31m"[0m[31msession_id[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31md697e2d7ad957edb461844ae73248010[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31muser_id[1;31m"[0m[31m[0m=>[1;34m1[0m}},
+     @filtered_env[32m=[0m[1;36mnil[0m,
+     @filtered_parameters[32m=[0m
+      {[31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+     @filtered_path[32m=[0m[1;36mnil[0m,
+     @fullpath[32m=[0m[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+     @headers[32m=[0m
+      [32m#<ActionDispatch::Http::Headers:0x0d82e878[0m
+       @req[32m=[0m[32m#<ActionDispatch::Request:0x0d82f91c[0m ...[32m>[0m[32m>[0m,
+     @ip[32m=[0m[1;36mnil[0m,
+     @method[32m=[0m[1;36mnil[0m,
+     @original_fullpath[32m=[0m[1;36mnil[0m,
+     @port[32m=[0m[1;36mnil[0m,
+     @protocol[32m=[0m[1;36mnil[0m,
+     @remote_ip[32m=[0m[1;36mnil[0m,
+     @request_method[32m=[0m[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m,
+     @variant[32m=[0m[][32m>[0m,
+   @_response[32m=[0m
+    [32m#<ActionDispatch::Response:0x0d82f034[0m
+     @cache_control[32m=[0m{},
+     @committed[32m=[0m[1;36mfalse[0m,
+     @cv[32m=[0m
+      [32m#<MonitorMixin::ConditionVariable:0x0d82efa8[0m
+       @cond[32m=[0m[32m#<Thread::ConditionVariable:0x0d82ef94[0m[32m>[0m,
+       @monitor[32m=[0m[32m#<ActionDispatch::Response:0x0d82f034[0m ...[32m>[0m[32m>[0m,
+     @header[32m=[0m
+      {[31m[1;31m"[0m[31mX-Frame-Options[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mSAMEORIGIN[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mX-XSS-Protection[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m1; mode=block[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mX-Content-Type-Options[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mnosniff[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mX-Download-Options[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mnoopen[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mX-Permitted-Cross-Domain-Policies[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mnone[1;31m"[0m[31m[0m,
+       [31m[1;31m"[0m[31mReferrer-Policy[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mstrict-origin-when-cross-origin[1;31m"[0m[31m[0m},
+     @mon_count[32m=[0m[1;34m0[0m,
+     @mon_mutex[32m=[0m[32m#<Thread::Mutex:0x0d82f00c[0m[32m>[0m,
+     @mon_mutex_owner_object_id[32m=[0m[1;34m113342490[0m,
+     @mon_owner[32m=[0m[1;36mnil[0m,
+     @request[32m=[0m
+      [32m#<ActionDispatch::Request:0x0d82f91c[0m
+       @env[32m=[0m
+        {[31m[1;31m"[0m[31mrack.version[1;31m"[0m[31m[0m=>[[1;34m1[0m, [1;34m3[0m],
+         [31m[1;31m"[0m[31mrack.input[1;31m"[0m[31m[0m=>[32m#<StringIO:0x0d868924[0m[32m>[0m,
+         [31m[1;31m"[0m[31mrack.errors[1;31m"[0m[31m[0m=>[32m#<StringIO:0x0d868960[0m[32m>[0m,
+         [31m[1;31m"[0m[31mrack.multithread[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+         [31m[1;31m"[0m[31mrack.multiprocess[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+         [31m[1;31m"[0m[31mrack.run_once[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+         [31m[1;31m"[0m[31mREQUEST_METHOD[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mSERVER_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mwww.example.com[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mSERVER_PORT[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m80[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mQUERY_STRING[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mPATH_INFO[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mrack.url_scheme[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mHTTPS[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31moff[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mSCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mCONTENT_LENGTH[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m0[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mrack.test[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+         [31m[1;31m"[0m[31mREMOTE_ADDR[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m127.0.0.1[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mHTTP_REFERER[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp://www.example.com/attractions[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mHTTP_HOST[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mwww.example.com[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mHTTP_COOKIE[1;31m"[0m[31m[0m=>
+          [31m[1;31m"[0m[31m_rails_amusement_park_session=blI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.parameter_filter[1;31m"[0m[31m[0m=>[[33m:password[0m],
+         [31m[1;31m"[0m[31maction_dispatch.redirect_filter[1;31m"[0m[31m[0m=>[],
+         [31m[1;31m"[0m[31maction_dispatch.secret_token[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+         [31m[1;31m"[0m[31maction_dispatch.secret_key_base[1;31m"[0m[31m[0m=>
+          [31m[1;31m"[0m[31me0ca0af364931cd74a979ded531b16420fd749336e8bcadd8664539f5ecee644988e9a1c26f8a096319e6efd9d417a778cc745351da11a0170e35fba18e62b9d[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.show_exceptions[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+         [31m[1;31m"[0m[31maction_dispatch.show_detailed_exceptions[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+         [31m[1;31m"[0m[31maction_dispatch.logger[1;31m"[0m[31m[0m=>
+          [32m#<ActiveSupport::Logger:0x0aaa1748[0m
+           @default_formatter[32m=[0m
+            [32m#<Logger::Formatter:0x0aaa15b8[0m @datetime_format[32m=[0m[1;36mnil[0m[32m>[0m,
+           @formatter[32m=[0m
+            [32m#<ActiveSupport::Logger::SimpleFormatter:0x0a629648[0m
+             @datetime_format[32m=[0m[1;36mnil[0m,
+             @thread_key[32m=[0m[31m[1;31m"[0m[31mactivesupport_tagged_logging_tags:87116580[1;31m"[0m[31m[0m[32m>[0m,
+           @level[32m=[0m[1;34m0[0m,
+           @local_levels[32m=[0m
+            [32m#<Concurrent::Map:0x0aaa0f78 entries=0 default_proc=nil>[0m,
+           @logdev[32m=[0m
+            [32m#<Logger::LogDevice:0x0aaa1540[0m
+             @dev[32m=[0m
+              [32m#<File:/home/learn/Development/Code/rails-amusement-park-v-000/log/test.log>[0m,
+             @filename[32m=[0m[1;36mnil[0m,
+             @mon_count[32m=[0m[1;34m0[0m,
+             @mon_mutex[32m=[0m[32m#<Thread::Mutex:0x0aaa13b0[0m[32m>[0m,
+             @mon_mutex_owner_object_id[32m=[0m[1;34m89459360[0m,
+             @mon_owner[32m=[0m[1;36mnil[0m,
+             @shift_age[32m=[0m[1;36mnil[0m,
+             @shift_period_suffix[32m=[0m[1;36mnil[0m,
+             @shift_size[32m=[0m[1;36mnil[0m[32m>[0m,
+           @progname[32m=[0m[1;36mnil[0m[32m>[0m,
+         [31m[1;31m"[0m[31maction_dispatch.backtrace_cleaner[1;31m"[0m[31m[0m=>
+          [32m#<Rails::BacktraceCleaner:0x0babad3c[0m
+           @filters[32m=[0m
+            [[32m#<Proc:0x0babac9c@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:16>[0m,
+             [32m#<Proc:0x0babac88@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:17>[0m,
+             [32m#<Proc:0x0babac74@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:18>[0m,
+             [32m#<Proc:0x0babaaa8@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:31>[0m],
+           @root[32m=[0m[31m[1;31m"[0m[31m/home/learn/Development/Code/rails-amusement-park-v-000/[1;31m"[0m[31m[0m,
+           @silencers[32m=[0m
+            [[32m#<Proc:0x0babaa80@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:21>[0m][32m>[0m,
+         [31m[1;31m"[0m[31maction_dispatch.key_generator[1;31m"[0m[31m[0m=>
+          [32m#<ActiveSupport::CachingKeyGenerator:0x0b884388[0m
+           @cache_keys[32m=[0m
+            [32m#<Concurrent::Map:0x0b884374 entries=4 default_proc=nil>[0m,
+           @key_generator[32m=[0m
+            [32m#<ActiveSupport::KeyGenerator:0x0b88439c[0m
+             @iterations[32m=[0m[1;34m1000[0m,
+             @secret[32m=[0m
+              [31m[1;31m"[0m[31me0ca0af364931cd74a979ded531b16420fd749336e8bcadd8664539f5ecee644988e9a1c26f8a096319e6efd9d417a778cc745351da11a0170e35fba18e62b9d[1;31m"[0m[31m[0m[32m>[0m[32m>[0m,
+         [31m[1;31m"[0m[31maction_dispatch.http_auth_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp authentication[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.signed_cookie_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31msigned cookie[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.encrypted_cookie_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mencrypted cookie[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.encrypted_signed_cookie_salt[1;31m"[0m[31m[0m=>
+          [31m[1;31m"[0m[31msigned encrypted cookie[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.authenticated_encrypted_cookie_salt[1;31m"[0m[31m[0m=>
+          [31m[1;31m"[0m[31mauthenticated encrypted cookie[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.use_authenticated_cookie_encryption[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+         [31m[1;31m"[0m[31maction_dispatch.encrypted_cookie_cipher[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+         [31m[1;31m"[0m[31maction_dispatch.signed_cookie_digest[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+         [31m[1;31m"[0m[31maction_dispatch.cookies_serializer[1;31m"[0m[31m[0m=>[33m:json[0m,
+         [31m[1;31m"[0m[31maction_dispatch.cookies_digest[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+         [31m[1;31m"[0m[31maction_dispatch.cookies_rotations[1;31m"[0m[31m[0m=>
+          [32m#<ActiveSupport::Messages::RotationConfiguration:0x0a24d844[0m
+           @encrypted[32m=[0m[],
+           @signed[32m=[0m[][32m>[0m,
+         [31m[1;31m"[0m[31maction_dispatch.content_security_policy[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+         [31m[1;31m"[0m[31maction_dispatch.content_security_policy_report_only[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+         [31m[1;31m"[0m[31maction_dispatch.content_security_policy_nonce_generator[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+         [31m[1;31m"[0m[31maction_dispatch.routes[1;31m"[0m[31m[0m=>
+          [32m#<ActionDispatch::Routing::RouteSet:0x09f6c080>[0m,
+         [31m[1;31m"[0m[31mROUTES_83583040_SCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mORIGINAL_FULLPATH[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mORIGINAL_SCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.request_id[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mebbaa38b-a864-45e1-9fc0-1f44221c1f21[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.remote_ip[1;31m"[0m[31m[0m=>
+          [32m#<ActionDispatch::RemoteIp::GetIp:0x0d82c438[0m
+           @check_ip[32m=[0m[1;36mtrue[0m,
+           @ip[32m=[0m[31m[1;31m"[0m[31m127.0.0.1[1;31m"[0m[31m[0m,
+           @proxies[32m=[0m
+            [[32m#<IPAddr: IPv4:127.0.0.1/255.255.255.255>[0m,
+             [32m#<IPAddr: IPv6:0000:0000:0000:0000:0000:0000:0000:0001/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff>[0m,
+             [32m#<IPAddr: IPv6:fc00:0000:0000:0000:0000:0000:0000:0000/fe00:0000:0000:0000:0000:0000:0000:0000>[0m,
+             [32m#<IPAddr: IPv4:10.0.0.0/255.0.0.0>[0m,
+             [32m#<IPAddr: IPv4:172.16.0.0/255.240.0.0>[0m,
+             [32m#<IPAddr: IPv4:192.168.0.0/255.255.0.0>[0m],
+           @req[32m=[0m
+            [32m#<ActionDispatch::Request:0x0d868014[0m
+             @env[32m=[0m{...},
+             @filtered_env[32m=[0m[1;36mnil[0m,
+             @filtered_parameters[32m=[0m[1;36mnil[0m,
+             @filtered_path[32m=[0m[1;36mnil[0m,
+             @fullpath[32m=[0m[1;36mnil[0m,
+             @ip[32m=[0m[1;36mnil[0m,
+             @method[32m=[0m[1;36mnil[0m,
+             @original_fullpath[32m=[0m[1;36mnil[0m,
+             @port[32m=[0m[1;36mnil[0m,
+             @protocol[32m=[0m[1;36mnil[0m,
+             @remote_ip[32m=[0m[1;36mnil[0m,
+             @request_method[32m=[0m[1;36mnil[0m[32m>[0m[32m>[0m,
+         [31m[1;31m"[0m[31mrack.session[1;31m"[0m[31m[0m=>[32m#<ActionDispatch::Request::Session:0x0d82fa5c ...>[0m,
+         [31m[1;31m"[0m[31mrack.session.options[1;31m"[0m[31m[0m=>
+          [32m#<ActionDispatch::Request::Session::Options:0x0d82fa34[0m
+           @by[32m=[0m
+            [32m#<ActionDispatch::Session::CookieStore:0x0b84f930[0m
+             @app[32m=[0m
+              [32m#<ActionDispatch::ContentSecurityPolicy::Middleware:0x0b84f944[0m
+               @app[32m=[0m
+                [32m#<Rack::Head:0x0b84f958[0m
+                 @app[32m=[0m
+                  [32m#<Rack::ConditionalGet:0x0b84f96c[0m
+                   @app[32m=[0m
+                    [32m#<Rack::ETag:0x0b84f980[0m
+                     @app[32m=[0m
+                      [32m#<Rack::TempfileReaper:0x0b84f994[0m
+                       @app[32m=[0m
+                        [32m#<RackSessionAccess::Middleware:0x0b84fa5c[0m
+                         @app[32m=[0m[32m#<ActionDispatch::Routing::RouteSet:0x09f6c080>[0m,
+                         @key[32m=[0m[31m[1;31m"[0m[31mrack.session[1;31m"[0m[31m[0m,
+                         @routing[32m=[0m
+                          [[[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session[1;31m"[0m[31m[0m, [33m:show[0m],
+                           [[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session/edit[1;31m"[0m[31m[0m, [33m:edit[0m],
+                           [[31m[1;31m"[0m[31mPUT[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session[1;31m"[0m[31m[0m, [33m:update[0m]][32m>[0m[32m>[0m,
+                     @cache_control[32m=[0m[31m[1;31m"[0m[31mmax-age=0, private, must-revalidate[1;31m"[0m[31m[0m,
+                     @no_cache_control[32m=[0m[31m[1;31m"[0m[31mno-cache[1;31m"[0m[31m[0m[32m>[0m[32m>[0m[32m>[0m[32m>[0m,
+             @cookie_only[32m=[0m[1;36mtrue[0m,
+             @default_options[32m=[0m
+              {[33m:path[0m=>[31m[1;31m"[0m[31m/[1;31m"[0m[31m[0m,
+               [33m:domain[0m=>[1;36mnil[0m,
+               [33m:expire_after[0m=>[1;36mnil[0m,
+               [33m:secure[0m=>[1;36mfalse[0m,
+               [33m:httponly[0m=>[1;36mtrue[0m,
+               [33m:defer[0m=>[1;36mfalse[0m,
+               [33m:renew[0m=>[1;36mfalse[0m},
+             @key[32m=[0m[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m[32m>[0m,
+           @delegate[32m=[0m
+            {[33m:path[0m=>[31m[1;31m"[0m[31m/[1;31m"[0m[31m[0m,
+             [33m:domain[0m=>[1;36mnil[0m,
+             [33m:expire_after[0m=>[1;36mnil[0m,
+             [33m:secure[0m=>[1;36mfalse[0m,
+             [33m:httponly[0m=>[1;36mtrue[0m,
+             [33m:defer[0m=>[1;36mfalse[0m,
+             [33m:renew[0m=>[1;36mfalse[0m,
+             [33m:id[0m=>[31m[1;31m"[0m[31md697e2d7ad957edb461844ae73248010[1;31m"[0m[31m[0m}[32m>[0m,
+         [31m[1;31m"[0m[31mrack.tempfiles[1;31m"[0m[31m[0m=>[],
+         [31m[1;31m"[0m[31maction_dispatch.request.path_parameters[1;31m"[0m[31m[0m=>
+          {[33m:controller[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [33m:action[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [33m:id[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+         [31m[1;31m"[0m[31maction_controller.instance[1;31m"[0m[31m[0m=>[32m#<AttractionsController:0x0d82ef1c[0m ...[32m>[0m,
+         [31m[1;31m"[0m[31maction_dispatch.request.content_type[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+         [31m[1;31m"[0m[31maction_dispatch.request.request_parameters[1;31m"[0m[31m[0m=>{},
+         [31m[1;31m"[0m[31mrack.request.query_string[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31mrack.request.query_hash[1;31m"[0m[31m[0m=>{},
+         [31m[1;31m"[0m[31maction_dispatch.request.query_parameters[1;31m"[0m[31m[0m=>{},
+         [31m[1;31m"[0m[31maction_dispatch.request.parameters[1;31m"[0m[31m[0m=>
+          {[31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+         [31m[1;31m"[0m[31maction_dispatch.request.formats[1;31m"[0m[31m[0m=>
+          [[32m#<Mime::Type:0x0a1c1f74[0m
+            @hash[32m=[0m[1;34m721589705[0m,
+            @string[32m=[0m[31m[1;31m"[0m[31mtext/html[1;31m"[0m[31m[0m,
+            @symbol[32m=[0m[33m:html[0m,
+            @synonyms[32m=[0m[[31m[1;31m"[0m[31mapplication/xhtml+xml[1;31m"[0m[31m[0m][32m>[0m],
+         [31m[1;31m"[0m[31mrack.request.cookie_hash[1;31m"[0m[31m[0m=>
+          {[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m=>
+            [31m[1;31m"[0m[31mblI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m},
+         [31m[1;31m"[0m[31mrack.request.cookie_string[1;31m"[0m[31m[0m=>
+          [31m[1;31m"[0m[31m_rails_amusement_park_session=blI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m,
+         [31m[1;31m"[0m[31maction_dispatch.cookies[1;31m"[0m[31m[0m=>
+          [32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m
+           @committed[32m=[0m[1;36mfalse[0m,
+           @cookies[32m=[0m
+            {[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m=>
+              [31m[1;31m"[0m[31mblI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m},
+           @delete_cookies[32m=[0m{},
+           @encrypted[32m=[0m
+            [32m#<ActionDispatch::Cookies::EncryptedKeyRotatingCookieJar:0x0d82e0f8[0m
+             @encryptor[32m=[0m
+              [32m#<ActiveSupport::MessageEncryptor:0x0d82e058[0m
+               @aead_mode[32m=[0m[1;36mfalse[0m,
+               @cipher[32m=[0m[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+               @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+               @options[32m=[0m
+                {[33m:cipher[0m=>[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+                 [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+               @rotations[32m=[0m[],
+               @secret[32m=[0m
+                [31m[1;31m"[0m[31mn[1;35m\x80[0m[31m'[1;35m\e[0m[31mC=[1;35m\x81[0m[31m[1;35m\xAF[0m[31m[1;35m\xD3[0m[31m[1;35m\xB4[0m[31mF[1;35m\x03[0m[31mpj[1;35m\xCD[0m[31m[1;35m\xC3[0m[31m[1;35m\x11[0m[31mErF[1;35m\xA7[0m[31m[1;35m\x1A[0m[31m[1;35m\xCB[0m[31m[1;35m\x8C[0m[31m[1;35m\x93[0m[31m[1;35m\x18[0m[31m[1;35m\xD3[0m[31m[1;35m\xCD[0m[31mB[1;35m\xC0[0m[31meP[1;31m"[0m[31m[0m,
+               @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m,
+               @sign_secret[32m=[0m
+                [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+               @verifier[32m=[0m
+                [32m#<ActiveSupport::MessageVerifier:0x0d82df68[0m
+                 @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+                 @options[32m=[0m
+                  {[33m:digest[0m=>[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+                   [33m:serializer[0m=>
+                    [1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+                 @rotations[32m=[0m[],
+                 @secret[32m=[0m
+                  [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+                 @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m[32m>[0m[32m>[0m,
+             @parent_jar[32m=[0m[32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m ...[32m>[0m[32m>[0m,
+           @request[32m=[0m
+            [32m#<ActionDispatch::Request:0x0d82fa70[0m
+             @env[32m=[0m{...},
+             @filtered_env[32m=[0m[1;36mnil[0m,
+             @filtered_parameters[32m=[0m[1;36mnil[0m,
+             @filtered_path[32m=[0m[1;36mnil[0m,
+             @fullpath[32m=[0m[1;36mnil[0m,
+             @ip[32m=[0m[1;36mnil[0m,
+             @method[32m=[0m[1;36mnil[0m,
+             @original_fullpath[32m=[0m[1;36mnil[0m,
+             @port[32m=[0m[1;36mnil[0m,
+             @protocol[32m=[0m[1;36mnil[0m,
+             @remote_ip[32m=[0m[1;36mnil[0m,
+             @request_method[32m=[0m[1;36mnil[0m[32m>[0m,
+           @set_cookies[32m=[0m{},
+           @signed_or_encrypted[32m=[0m
+            [32m#<ActionDispatch::Cookies::EncryptedKeyRotatingCookieJar:0x0d82e0f8[0m
+             @encryptor[32m=[0m
+              [32m#<ActiveSupport::MessageEncryptor:0x0d82e058[0m
+               @aead_mode[32m=[0m[1;36mfalse[0m,
+               @cipher[32m=[0m[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+               @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+               @options[32m=[0m
+                {[33m:cipher[0m=>[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+                 [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+               @rotations[32m=[0m[],
+               @secret[32m=[0m
+                [31m[1;31m"[0m[31mn[1;35m\x80[0m[31m'[1;35m\e[0m[31mC=[1;35m\x81[0m[31m[1;35m\xAF[0m[31m[1;35m\xD3[0m[31m[1;35m\xB4[0m[31mF[1;35m\x03[0m[31mpj[1;35m\xCD[0m[31m[1;35m\xC3[0m[31m[1;35m\x11[0m[31mErF[1;35m\xA7[0m[31m[1;35m\x1A[0m[31m[1;35m\xCB[0m[31m[1;35m\x8C[0m[31m[1;35m\x93[0m[31m[1;35m\x18[0m[31m[1;35m\xD3[0m[31m[1;35m\xCD[0m[31mB[1;35m\xC0[0m[31meP[1;31m"[0m[31m[0m,
+               @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m,
+               @sign_secret[32m=[0m
+                [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+               @verifier[32m=[0m
+                [32m#<ActiveSupport::MessageVerifier:0x0d82df68[0m
+                 @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+                 @options[32m=[0m
+                  {[33m:digest[0m=>[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+                   [33m:serializer[0m=>
+                    [1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+                 @rotations[32m=[0m[],
+                 @secret[32m=[0m
+                  [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+                 @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m[32m>[0m[32m>[0m,
+             @parent_jar[32m=[0m
+              [32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m ...[32m>[0m[32m>[0m[32m>[0m,
+         [31m[1;31m"[0m[31maction_dispatch.request.unsigned_session_cookie[1;31m"[0m[31m[0m=>
+          {[31m[1;31m"[0m[31msession_id[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31md697e2d7ad957edb461844ae73248010[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31muser_id[1;31m"[0m[31m[0m=>[1;34m1[0m}},
+       @filtered_env[32m=[0m[1;36mnil[0m,
+       @filtered_parameters[32m=[0m
+        {[31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+       @filtered_path[32m=[0m[1;36mnil[0m,
+       @fullpath[32m=[0m[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+       @headers[32m=[0m
+        [32m#<ActionDispatch::Http::Headers:0x0d82e878[0m
+         @req[32m=[0m[32m#<ActionDispatch::Request:0x0d82f91c[0m ...[32m>[0m[32m>[0m,
+       @ip[32m=[0m[1;36mnil[0m,
+       @method[32m=[0m[1;36mnil[0m,
+       @original_fullpath[32m=[0m[1;36mnil[0m,
+       @port[32m=[0m[1;36mnil[0m,
+       @protocol[32m=[0m[1;36mnil[0m,
+       @remote_ip[32m=[0m[1;36mnil[0m,
+       @request_method[32m=[0m[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m,
+       @variant[32m=[0m[][32m>[0m,
+     @sending[32m=[0m[1;36mfalse[0m,
+     @sent[32m=[0m[1;36mfalse[0m,
+     @status[32m=[0m[1;34m200[0m,
+     @stream[32m=[0m
+      [32m#<ActionDispatch::Response::Buffer:0x0d82efbc[0m
+       @buf[32m=[0m[],
+       @closed[32m=[0m[1;36mfalse[0m,
+       @response[32m=[0m[32m#<ActionDispatch::Response:0x0d82f034[0m ...[32m>[0m,
+       @str_body[32m=[0m[1;36mnil[0m[32m>[0m[32m>[0m,
+   @_response_body[32m=[0m[1;36mnil[0m,
+   @_routes[32m=[0m[1;36mnil[0m,
+   @_view_context_class[32m=[0m[32m#<Class:0x0d73fd54>[0m,
+   @_view_renderer[32m=[0m
+    [32m#<ActionView::Renderer:0x0d88f7a4[0m
+     @lookup_context[32m=[0m
+      [32m#<ActionView::LookupContext:0x0d82eeb8[0m
+       @cache[32m=[0m[1;36mtrue[0m,
+       @details[32m=[0m
+        {[33m:locale[0m=>[[33m:en[0m],
+         [33m:formats[0m=>[[33m:html[0m],
+         [33m:variants[0m=>[],
+         [33m:handlers[0m=>[[33m:raw[0m, [33m:erb[0m, [33m:html[0m, [33m:builder[0m, [33m:ruby[0m, [33m:coffee[0m, [33m:jbuilder[0m]},
+       @details_key[32m=[0m[32m#<Concurrent::Map:0x0bc2f0f0 entries=0 default_proc=nil>[0m,
+       @prefixes[32m=[0m[[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mapplication[1;31m"[0m[31m[0m],
+       @rendered_format[32m=[0m[33m:html[0m,
+       @view_paths[32m=[0m
+        [32m#<ActionView::PathSet:0x0d82ee18[0m
+         @paths[32m=[0m
+          [[32m#<ActionView::OptimizedFileSystemResolver:0x0bd83b2c[0m
+            @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0xbd83b18 keys=1 queries=0>[0m,
+            @path[32m=[0m
+             [31m[1;31m"[0m[31m/home/learn/Development/Code/rails-amusement-park-v-000/app/views[1;31m"[0m[31m[0m,
+            @pattern[32m=[0m
+             [31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m][32m>[0m[32m>[0m[32m>[0m,
+   @attraction[32m=[0m
+    [32m#<Attraction:0x0d82c2d0[0m
+     id: [1;34m2[0m,
+     name: [31m[1;31m"[0m[31mFerris Wheel[1;31m"[0m[31m[0m,
+     min_height: [1;34m28[0m,
+     nausea_rating: [1;34m2[0m,
+     happiness_rating: [1;34m1[0m,
+     tickets: [1;34m2[0m[32m>[0m,
+   @marked_for_same_origin_verification[32m=[0m[1;36mtrue[0m[32m>[0m,
+ @_default_form_builder[32m=[0m[1;36mnil[0m,
+ @_request[32m=[0m
+  [32m#<ActionDispatch::Request:0x0d82f91c[0m
+   @env[32m=[0m
+    {[31m[1;31m"[0m[31mrack.version[1;31m"[0m[31m[0m=>[[1;34m1[0m, [1;34m3[0m],
+     [31m[1;31m"[0m[31mrack.input[1;31m"[0m[31m[0m=>[32m#<StringIO:0x0d868924[0m[32m>[0m,
+     [31m[1;31m"[0m[31mrack.errors[1;31m"[0m[31m[0m=>[32m#<StringIO:0x0d868960[0m[32m>[0m,
+     [31m[1;31m"[0m[31mrack.multithread[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+     [31m[1;31m"[0m[31mrack.multiprocess[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+     [31m[1;31m"[0m[31mrack.run_once[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+     [31m[1;31m"[0m[31mREQUEST_METHOD[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mSERVER_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mwww.example.com[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mSERVER_PORT[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m80[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mQUERY_STRING[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mPATH_INFO[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mrack.url_scheme[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTPS[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31moff[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mSCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mCONTENT_LENGTH[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m0[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mrack.test[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+     [31m[1;31m"[0m[31mREMOTE_ADDR[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m127.0.0.1[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_REFERER[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp://www.example.com/attractions[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_HOST[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mwww.example.com[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mHTTP_COOKIE[1;31m"[0m[31m[0m=>
+      [31m[1;31m"[0m[31m_rails_amusement_park_session=blI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.parameter_filter[1;31m"[0m[31m[0m=>[[33m:password[0m],
+     [31m[1;31m"[0m[31maction_dispatch.redirect_filter[1;31m"[0m[31m[0m=>[],
+     [31m[1;31m"[0m[31maction_dispatch.secret_token[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+     [31m[1;31m"[0m[31maction_dispatch.secret_key_base[1;31m"[0m[31m[0m=>
+      [31m[1;31m"[0m[31me0ca0af364931cd74a979ded531b16420fd749336e8bcadd8664539f5ecee644988e9a1c26f8a096319e6efd9d417a778cc745351da11a0170e35fba18e62b9d[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.show_exceptions[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+     [31m[1;31m"[0m[31maction_dispatch.show_detailed_exceptions[1;31m"[0m[31m[0m=>[1;36mtrue[0m,
+     [31m[1;31m"[0m[31maction_dispatch.logger[1;31m"[0m[31m[0m=>
+      [32m#<ActiveSupport::Logger:0x0aaa1748[0m
+       @default_formatter[32m=[0m[32m#<Logger::Formatter:0x0aaa15b8[0m @datetime_format[32m=[0m[1;36mnil[0m[32m>[0m,
+       @formatter[32m=[0m
+        [32m#<ActiveSupport::Logger::SimpleFormatter:0x0a629648[0m
+         @datetime_format[32m=[0m[1;36mnil[0m,
+         @thread_key[32m=[0m[31m[1;31m"[0m[31mactivesupport_tagged_logging_tags:87116580[1;31m"[0m[31m[0m[32m>[0m,
+       @level[32m=[0m[1;34m0[0m,
+       @local_levels[32m=[0m[32m#<Concurrent::Map:0x0aaa0f78 entries=0 default_proc=nil>[0m,
+       @logdev[32m=[0m
+        [32m#<Logger::LogDevice:0x0aaa1540[0m
+         @dev[32m=[0m
+          [32m#<File:/home/learn/Development/Code/rails-amusement-park-v-000/log/test.log>[0m,
+         @filename[32m=[0m[1;36mnil[0m,
+         @mon_count[32m=[0m[1;34m0[0m,
+         @mon_mutex[32m=[0m[32m#<Thread::Mutex:0x0aaa13b0[0m[32m>[0m,
+         @mon_mutex_owner_object_id[32m=[0m[1;34m89459360[0m,
+         @mon_owner[32m=[0m[1;36mnil[0m,
+         @shift_age[32m=[0m[1;36mnil[0m,
+         @shift_period_suffix[32m=[0m[1;36mnil[0m,
+         @shift_size[32m=[0m[1;36mnil[0m[32m>[0m,
+       @progname[32m=[0m[1;36mnil[0m[32m>[0m,
+     [31m[1;31m"[0m[31maction_dispatch.backtrace_cleaner[1;31m"[0m[31m[0m=>
+      [32m#<Rails::BacktraceCleaner:0x0babad3c[0m
+       @filters[32m=[0m
+        [[32m#<Proc:0x0babac9c@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:16>[0m,
+         [32m#<Proc:0x0babac88@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:17>[0m,
+         [32m#<Proc:0x0babac74@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:18>[0m,
+         [32m#<Proc:0x0babaaa8@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:31>[0m],
+       @root[32m=[0m[31m[1;31m"[0m[31m/home/learn/Development/Code/rails-amusement-park-v-000/[1;31m"[0m[31m[0m,
+       @silencers[32m=[0m
+        [[32m#<Proc:0x0babaa80@/home/learn/.rvm/gems/ruby-2.6.1/gems/railties-5.2.3/lib/rails/backtrace_cleaner.rb:21>[0m][32m>[0m,
+     [31m[1;31m"[0m[31maction_dispatch.key_generator[1;31m"[0m[31m[0m=>
+      [32m#<ActiveSupport::CachingKeyGenerator:0x0b884388[0m
+       @cache_keys[32m=[0m[32m#<Concurrent::Map:0x0b884374 entries=4 default_proc=nil>[0m,
+       @key_generator[32m=[0m
+        [32m#<ActiveSupport::KeyGenerator:0x0b88439c[0m
+         @iterations[32m=[0m[1;34m1000[0m,
+         @secret[32m=[0m
+          [31m[1;31m"[0m[31me0ca0af364931cd74a979ded531b16420fd749336e8bcadd8664539f5ecee644988e9a1c26f8a096319e6efd9d417a778cc745351da11a0170e35fba18e62b9d[1;31m"[0m[31m[0m[32m>[0m[32m>[0m,
+     [31m[1;31m"[0m[31maction_dispatch.http_auth_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mhttp authentication[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.signed_cookie_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31msigned cookie[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.encrypted_cookie_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mencrypted cookie[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.encrypted_signed_cookie_salt[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31msigned encrypted cookie[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.authenticated_encrypted_cookie_salt[1;31m"[0m[31m[0m=>
+      [31m[1;31m"[0m[31mauthenticated encrypted cookie[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.use_authenticated_cookie_encryption[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+     [31m[1;31m"[0m[31maction_dispatch.encrypted_cookie_cipher[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+     [31m[1;31m"[0m[31maction_dispatch.signed_cookie_digest[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+     [31m[1;31m"[0m[31maction_dispatch.cookies_serializer[1;31m"[0m[31m[0m=>[33m:json[0m,
+     [31m[1;31m"[0m[31maction_dispatch.cookies_digest[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+     [31m[1;31m"[0m[31maction_dispatch.cookies_rotations[1;31m"[0m[31m[0m=>
+      [32m#<ActiveSupport::Messages::RotationConfiguration:0x0a24d844[0m
+       @encrypted[32m=[0m[],
+       @signed[32m=[0m[][32m>[0m,
+     [31m[1;31m"[0m[31maction_dispatch.content_security_policy[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+     [31m[1;31m"[0m[31maction_dispatch.content_security_policy_report_only[1;31m"[0m[31m[0m=>[1;36mfalse[0m,
+     [31m[1;31m"[0m[31maction_dispatch.content_security_policy_nonce_generator[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+     [31m[1;31m"[0m[31maction_dispatch.routes[1;31m"[0m[31m[0m=>[32m#<ActionDispatch::Routing::RouteSet:0x09f6c080>[0m,
+     [31m[1;31m"[0m[31mROUTES_83583040_SCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mORIGINAL_FULLPATH[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mORIGINAL_SCRIPT_NAME[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.request_id[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mebbaa38b-a864-45e1-9fc0-1f44221c1f21[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.remote_ip[1;31m"[0m[31m[0m=>
+      [32m#<ActionDispatch::RemoteIp::GetIp:0x0d82c438[0m
+       @check_ip[32m=[0m[1;36mtrue[0m,
+       @ip[32m=[0m[31m[1;31m"[0m[31m127.0.0.1[1;31m"[0m[31m[0m,
+       @proxies[32m=[0m
+        [[32m#<IPAddr: IPv4:127.0.0.1/255.255.255.255>[0m,
+         [32m#<IPAddr: IPv6:0000:0000:0000:0000:0000:0000:0000:0001/ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff>[0m,
+         [32m#<IPAddr: IPv6:fc00:0000:0000:0000:0000:0000:0000:0000/fe00:0000:0000:0000:0000:0000:0000:0000>[0m,
+         [32m#<IPAddr: IPv4:10.0.0.0/255.0.0.0>[0m,
+         [32m#<IPAddr: IPv4:172.16.0.0/255.240.0.0>[0m,
+         [32m#<IPAddr: IPv4:192.168.0.0/255.255.0.0>[0m],
+       @req[32m=[0m
+        [32m#<ActionDispatch::Request:0x0d868014[0m
+         @env[32m=[0m{...},
+         @filtered_env[32m=[0m[1;36mnil[0m,
+         @filtered_parameters[32m=[0m[1;36mnil[0m,
+         @filtered_path[32m=[0m[1;36mnil[0m,
+         @fullpath[32m=[0m[1;36mnil[0m,
+         @ip[32m=[0m[1;36mnil[0m,
+         @method[32m=[0m[1;36mnil[0m,
+         @original_fullpath[32m=[0m[1;36mnil[0m,
+         @port[32m=[0m[1;36mnil[0m,
+         @protocol[32m=[0m[1;36mnil[0m,
+         @remote_ip[32m=[0m[1;36mnil[0m,
+         @request_method[32m=[0m[1;36mnil[0m[32m>[0m[32m>[0m,
+     [31m[1;31m"[0m[31mrack.session[1;31m"[0m[31m[0m=>[32m#<ActionDispatch::Request::Session:0x0d82fa5c ...>[0m,
+     [31m[1;31m"[0m[31mrack.session.options[1;31m"[0m[31m[0m=>
+      [32m#<ActionDispatch::Request::Session::Options:0x0d82fa34[0m
+       @by[32m=[0m
+        [32m#<ActionDispatch::Session::CookieStore:0x0b84f930[0m
+         @app[32m=[0m
+          [32m#<ActionDispatch::ContentSecurityPolicy::Middleware:0x0b84f944[0m
+           @app[32m=[0m
+            [32m#<Rack::Head:0x0b84f958[0m
+             @app[32m=[0m
+              [32m#<Rack::ConditionalGet:0x0b84f96c[0m
+               @app[32m=[0m
+                [32m#<Rack::ETag:0x0b84f980[0m
+                 @app[32m=[0m
+                  [32m#<Rack::TempfileReaper:0x0b84f994[0m
+                   @app[32m=[0m
+                    [32m#<RackSessionAccess::Middleware:0x0b84fa5c[0m
+                     @app[32m=[0m[32m#<ActionDispatch::Routing::RouteSet:0x09f6c080>[0m,
+                     @key[32m=[0m[31m[1;31m"[0m[31mrack.session[1;31m"[0m[31m[0m,
+                     @routing[32m=[0m
+                      [[[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session[1;31m"[0m[31m[0m, [33m:show[0m],
+                       [[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session/edit[1;31m"[0m[31m[0m, [33m:edit[0m],
+                       [[31m[1;31m"[0m[31mPUT[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31m/rack_session[1;31m"[0m[31m[0m, [33m:update[0m]][32m>[0m[32m>[0m,
+                 @cache_control[32m=[0m[31m[1;31m"[0m[31mmax-age=0, private, must-revalidate[1;31m"[0m[31m[0m,
+                 @no_cache_control[32m=[0m[31m[1;31m"[0m[31mno-cache[1;31m"[0m[31m[0m[32m>[0m[32m>[0m[32m>[0m[32m>[0m,
+         @cookie_only[32m=[0m[1;36mtrue[0m,
+         @default_options[32m=[0m
+          {[33m:path[0m=>[31m[1;31m"[0m[31m/[1;31m"[0m[31m[0m,
+           [33m:domain[0m=>[1;36mnil[0m,
+           [33m:expire_after[0m=>[1;36mnil[0m,
+           [33m:secure[0m=>[1;36mfalse[0m,
+           [33m:httponly[0m=>[1;36mtrue[0m,
+           [33m:defer[0m=>[1;36mfalse[0m,
+           [33m:renew[0m=>[1;36mfalse[0m},
+         @key[32m=[0m[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m[32m>[0m,
+       @delegate[32m=[0m
+        {[33m:path[0m=>[31m[1;31m"[0m[31m/[1;31m"[0m[31m[0m,
+         [33m:domain[0m=>[1;36mnil[0m,
+         [33m:expire_after[0m=>[1;36mnil[0m,
+         [33m:secure[0m=>[1;36mfalse[0m,
+         [33m:httponly[0m=>[1;36mtrue[0m,
+         [33m:defer[0m=>[1;36mfalse[0m,
+         [33m:renew[0m=>[1;36mfalse[0m,
+         [33m:id[0m=>[31m[1;31m"[0m[31md697e2d7ad957edb461844ae73248010[1;31m"[0m[31m[0m}[32m>[0m,
+     [31m[1;31m"[0m[31mrack.tempfiles[1;31m"[0m[31m[0m=>[],
+     [31m[1;31m"[0m[31maction_dispatch.request.path_parameters[1;31m"[0m[31m[0m=>
+      {[33m:controller[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [33m:action[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [33m:id[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+     [31m[1;31m"[0m[31maction_controller.instance[1;31m"[0m[31m[0m=>
+      [32m#<AttractionsController:0x0d82ef1c[0m
+       @_action_has_layout[32m=[0m[1;36mtrue[0m,
+       @_action_name[32m=[0m[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m,
+       @_config[32m=[0m{},
+       @_db_runtime[32m=[0m[1;35m0.1663450002524769[0m,
+       @_lookup_context[32m=[0m
+        [32m#<ActionView::LookupContext:0x0d82eeb8[0m
+         @cache[32m=[0m[1;36mtrue[0m,
+         @details[32m=[0m
+          {[33m:locale[0m=>[[33m:en[0m],
+           [33m:formats[0m=>[[33m:html[0m],
+           [33m:variants[0m=>[],
+           [33m:handlers[0m=>
+            [[33m:raw[0m, [33m:erb[0m, [33m:html[0m, [33m:builder[0m, [33m:ruby[0m, [33m:coffee[0m, [33m:jbuilder[0m]},
+         @details_key[32m=[0m[32m#<Concurrent::Map:0x0bc2f0f0 entries=0 default_proc=nil>[0m,
+         @prefixes[32m=[0m[[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mapplication[1;31m"[0m[31m[0m],
+         @rendered_format[32m=[0m[33m:html[0m,
+         @view_paths[32m=[0m
+          [32m#<ActionView::PathSet:0x0d82ee18[0m
+           @paths[32m=[0m
+            [[32m#<ActionView::OptimizedFileSystemResolver:0x0bd83b2c[0m
+              @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0xbd83b18 keys=1 queries=0>[0m,
+              @path[32m=[0m
+               [31m[1;31m"[0m[31m/home/learn/Development/Code/rails-amusement-park-v-000/app/views[1;31m"[0m[31m[0m,
+              @pattern[32m=[0m
+               [31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m][32m>[0m[32m>[0m,
+       @_params[32m=[0m
+        <[1;34;4mActionController[0m::[1;34;4mParameters[0m {[31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m} [35mpermitted[0m: [1;36mfalse[0m>,
+       @_request[32m=[0m[32m#<ActionDispatch::Request:0x0d82f91c[0m ...[32m>[0m,
+       @_response[32m=[0m
+        [32m#<ActionDispatch::Response:0x0d82f034[0m
+         @cache_control[32m=[0m{},
+         @committed[32m=[0m[1;36mfalse[0m,
+         @cv[32m=[0m
+          [32m#<MonitorMixin::ConditionVariable:0x0d82efa8[0m
+           @cond[32m=[0m[32m#<Thread::ConditionVariable:0x0d82ef94[0m[32m>[0m,
+           @monitor[32m=[0m[32m#<ActionDispatch::Response:0x0d82f034[0m ...[32m>[0m[32m>[0m,
+         @header[32m=[0m
+          {[31m[1;31m"[0m[31mX-Frame-Options[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mSAMEORIGIN[1;31m"[0m[31m[0m,
+           [31m[1;31m"[0m[31mX-XSS-Protection[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m1; mode=block[1;31m"[0m[31m[0m,
+           [31m[1;31m"[0m[31mX-Content-Type-Options[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mnosniff[1;31m"[0m[31m[0m,
+           [31m[1;31m"[0m[31mX-Download-Options[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mnoopen[1;31m"[0m[31m[0m,
+           [31m[1;31m"[0m[31mX-Permitted-Cross-Domain-Policies[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mnone[1;31m"[0m[31m[0m,
+           [31m[1;31m"[0m[31mReferrer-Policy[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mstrict-origin-when-cross-origin[1;31m"[0m[31m[0m},
+         @mon_count[32m=[0m[1;34m0[0m,
+         @mon_mutex[32m=[0m[32m#<Thread::Mutex:0x0d82f00c[0m[32m>[0m,
+         @mon_mutex_owner_object_id[32m=[0m[1;34m113342490[0m,
+         @mon_owner[32m=[0m[1;36mnil[0m,
+         @request[32m=[0m[32m#<ActionDispatch::Request:0x0d82f91c[0m ...[32m>[0m,
+         @sending[32m=[0m[1;36mfalse[0m,
+         @sent[32m=[0m[1;36mfalse[0m,
+         @status[32m=[0m[1;34m200[0m,
+         @stream[32m=[0m
+          [32m#<ActionDispatch::Response::Buffer:0x0d82efbc[0m
+           @buf[32m=[0m[],
+           @closed[32m=[0m[1;36mfalse[0m,
+           @response[32m=[0m[32m#<ActionDispatch::Response:0x0d82f034[0m ...[32m>[0m,
+           @str_body[32m=[0m[1;36mnil[0m[32m>[0m[32m>[0m,
+       @_response_body[32m=[0m[1;36mnil[0m,
+       @_routes[32m=[0m[1;36mnil[0m,
+       @_view_context_class[32m=[0m[32m#<Class:0x0d73fd54>[0m,
+       @_view_renderer[32m=[0m
+        [32m#<ActionView::Renderer:0x0d88f7a4[0m
+         @lookup_context[32m=[0m
+          [32m#<ActionView::LookupContext:0x0d82eeb8[0m
+           @cache[32m=[0m[1;36mtrue[0m,
+           @details[32m=[0m
+            {[33m:locale[0m=>[[33m:en[0m],
+             [33m:formats[0m=>[[33m:html[0m],
+             [33m:variants[0m=>[],
+             [33m:handlers[0m=>
+              [[33m:raw[0m, [33m:erb[0m, [33m:html[0m, [33m:builder[0m, [33m:ruby[0m, [33m:coffee[0m, [33m:jbuilder[0m]},
+           @details_key[32m=[0m
+            [32m#<Concurrent::Map:0x0bc2f0f0 entries=0 default_proc=nil>[0m,
+           @prefixes[32m=[0m[[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mapplication[1;31m"[0m[31m[0m],
+           @rendered_format[32m=[0m[33m:html[0m,
+           @view_paths[32m=[0m
+            [32m#<ActionView::PathSet:0x0d82ee18[0m
+             @paths[32m=[0m
+              [[32m#<ActionView::OptimizedFileSystemResolver:0x0bd83b2c[0m
+                @cache[32m=[0m
+                 [32m#<ActionView::Resolver::Cache:0xbd83b18 keys=1 queries=0>[0m,
+                @path[32m=[0m
+                 [31m[1;31m"[0m[31m/home/learn/Development/Code/rails-amusement-park-v-000/app/views[1;31m"[0m[31m[0m,
+                @pattern[32m=[0m
+                 [31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m][32m>[0m[32m>[0m[32m>[0m,
+       @attraction[32m=[0m
+        [32m#<Attraction:0x0d82c2d0[0m
+         id: [1;34m2[0m,
+         name: [31m[1;31m"[0m[31mFerris Wheel[1;31m"[0m[31m[0m,
+         min_height: [1;34m28[0m,
+         nausea_rating: [1;34m2[0m,
+         happiness_rating: [1;34m1[0m,
+         tickets: [1;34m2[0m[32m>[0m,
+       @marked_for_same_origin_verification[32m=[0m[1;36mtrue[0m[32m>[0m,
+     [31m[1;31m"[0m[31maction_dispatch.request.content_type[1;31m"[0m[31m[0m=>[1;36mnil[0m,
+     [31m[1;31m"[0m[31maction_dispatch.request.request_parameters[1;31m"[0m[31m[0m=>{},
+     [31m[1;31m"[0m[31mrack.request.query_string[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31mrack.request.query_hash[1;31m"[0m[31m[0m=>{},
+     [31m[1;31m"[0m[31maction_dispatch.request.query_parameters[1;31m"[0m[31m[0m=>{},
+     [31m[1;31m"[0m[31maction_dispatch.request.parameters[1;31m"[0m[31m[0m=>
+      {[31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+     [31m[1;31m"[0m[31maction_dispatch.request.formats[1;31m"[0m[31m[0m=>
+      [[32m#<Mime::Type:0x0a1c1f74[0m
+        @hash[32m=[0m[1;34m721589705[0m,
+        @string[32m=[0m[31m[1;31m"[0m[31mtext/html[1;31m"[0m[31m[0m,
+        @symbol[32m=[0m[33m:html[0m,
+        @synonyms[32m=[0m[[31m[1;31m"[0m[31mapplication/xhtml+xml[1;31m"[0m[31m[0m][32m>[0m],
+     [31m[1;31m"[0m[31mrack.request.cookie_hash[1;31m"[0m[31m[0m=>
+      {[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m=>
+        [31m[1;31m"[0m[31mblI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m},
+     [31m[1;31m"[0m[31mrack.request.cookie_string[1;31m"[0m[31m[0m=>
+      [31m[1;31m"[0m[31m_rails_amusement_park_session=blI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m,
+     [31m[1;31m"[0m[31maction_dispatch.cookies[1;31m"[0m[31m[0m=>
+      [32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m
+       @committed[32m=[0m[1;36mfalse[0m,
+       @cookies[32m=[0m
+        {[31m[1;31m"[0m[31m_rails_amusement_park_session[1;31m"[0m[31m[0m=>
+          [31m[1;31m"[0m[31mblI5NmZ3cjVRN1VQczJvWU0rNUlQMGRCL3VZK2VMYnJjUkxOV1hWMmtNQnJWeklOQjZFVklEak1vanc5aUd0RnVOZ3MrYXBzaDkyWGI4bzZuMlovcUE9PS0tZUpDREVqY2V5WWpNTEZuWERNSVVNZz09--1cb070af476124b5de232877e9fc2fdba2bdca01[1;31m"[0m[31m[0m},
+       @delete_cookies[32m=[0m{},
+       @encrypted[32m=[0m
+        [32m#<ActionDispatch::Cookies::EncryptedKeyRotatingCookieJar:0x0d82e0f8[0m
+         @encryptor[32m=[0m
+          [32m#<ActiveSupport::MessageEncryptor:0x0d82e058[0m
+           @aead_mode[32m=[0m[1;36mfalse[0m,
+           @cipher[32m=[0m[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+           @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+           @options[32m=[0m
+            {[33m:cipher[0m=>[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+             [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+           @rotations[32m=[0m[],
+           @secret[32m=[0m
+            [31m[1;31m"[0m[31mn[1;35m\x80[0m[31m'[1;35m\e[0m[31mC=[1;35m\x81[0m[31m[1;35m\xAF[0m[31m[1;35m\xD3[0m[31m[1;35m\xB4[0m[31mF[1;35m\x03[0m[31mpj[1;35m\xCD[0m[31m[1;35m\xC3[0m[31m[1;35m\x11[0m[31mErF[1;35m\xA7[0m[31m[1;35m\x1A[0m[31m[1;35m\xCB[0m[31m[1;35m\x8C[0m[31m[1;35m\x93[0m[31m[1;35m\x18[0m[31m[1;35m\xD3[0m[31m[1;35m\xCD[0m[31mB[1;35m\xC0[0m[31meP[1;31m"[0m[31m[0m,
+           @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m,
+           @sign_secret[32m=[0m
+            [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+           @verifier[32m=[0m
+            [32m#<ActiveSupport::MessageVerifier:0x0d82df68[0m
+             @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+             @options[32m=[0m
+              {[33m:digest[0m=>[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+               [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+             @rotations[32m=[0m[],
+             @secret[32m=[0m
+              [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+             @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m[32m>[0m[32m>[0m,
+         @parent_jar[32m=[0m[32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m ...[32m>[0m[32m>[0m,
+       @request[32m=[0m
+        [32m#<ActionDispatch::Request:0x0d82fa70[0m
+         @env[32m=[0m{...},
+         @filtered_env[32m=[0m[1;36mnil[0m,
+         @filtered_parameters[32m=[0m[1;36mnil[0m,
+         @filtered_path[32m=[0m[1;36mnil[0m,
+         @fullpath[32m=[0m[1;36mnil[0m,
+         @ip[32m=[0m[1;36mnil[0m,
+         @method[32m=[0m[1;36mnil[0m,
+         @original_fullpath[32m=[0m[1;36mnil[0m,
+         @port[32m=[0m[1;36mnil[0m,
+         @protocol[32m=[0m[1;36mnil[0m,
+         @remote_ip[32m=[0m[1;36mnil[0m,
+         @request_method[32m=[0m[1;36mnil[0m[32m>[0m,
+       @set_cookies[32m=[0m{},
+       @signed_or_encrypted[32m=[0m
+        [32m#<ActionDispatch::Cookies::EncryptedKeyRotatingCookieJar:0x0d82e0f8[0m
+         @encryptor[32m=[0m
+          [32m#<ActiveSupport::MessageEncryptor:0x0d82e058[0m
+           @aead_mode[32m=[0m[1;36mfalse[0m,
+           @cipher[32m=[0m[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+           @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+           @options[32m=[0m
+            {[33m:cipher[0m=>[31m[1;31m"[0m[31maes-256-cbc[1;31m"[0m[31m[0m,
+             [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+           @rotations[32m=[0m[],
+           @secret[32m=[0m
+            [31m[1;31m"[0m[31mn[1;35m\x80[0m[31m'[1;35m\e[0m[31mC=[1;35m\x81[0m[31m[1;35m\xAF[0m[31m[1;35m\xD3[0m[31m[1;35m\xB4[0m[31mF[1;35m\x03[0m[31mpj[1;35m\xCD[0m[31m[1;35m\xC3[0m[31m[1;35m\x11[0m[31mErF[1;35m\xA7[0m[31m[1;35m\x1A[0m[31m[1;35m\xCB[0m[31m[1;35m\x8C[0m[31m[1;35m\x93[0m[31m[1;35m\x18[0m[31m[1;35m\xD3[0m[31m[1;35m\xCD[0m[31mB[1;35m\xC0[0m[31meP[1;31m"[0m[31m[0m,
+           @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m,
+           @sign_secret[32m=[0m
+            [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+           @verifier[32m=[0m
+            [32m#<ActiveSupport::MessageVerifier:0x0d82df68[0m
+             @digest[32m=[0m[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+             @options[32m=[0m
+              {[33m:digest[0m=>[31m[1;31m"[0m[31mSHA1[1;31m"[0m[31m[0m,
+               [33m:serializer[0m=>[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m},
+             @rotations[32m=[0m[],
+             @secret[32m=[0m
+              [31m[1;31m"[0m[31m[1;35m\xBF[0m[31my[1;35m\f[0m[31m[1;35m\x02[0m[31m[1;35m\x9D[0m[31m[1;35m\xB8[0m[31mQ[1;35m\xFF[0m[31m[V[1;35m\xC7[0m[31m[1;35m\f[0m[31m[1;35m\x85[0m[31m[1;35m\xFF[0m[31m[1;35m\xFE[0m[31m[1;35m\x06[0m[31m;U[1;35m\xFE[0m[31m[1;35m\xEC[0m[31m[1;35m\xA1[0m[31m[1;35m\x04[0m[31m}[1;35m\x7F[0m[31m[1;35m\xE0[0m[31m[1;35m\x92[0m[31mx[1;35m\xE4[0m[31mu[1;35m\x8C[0m[31m[1;35m\x1D[0m[31m[1;35m\xA7[0m[31m[1;35m\x89[0m[31m![1;35m\xB7[0m[31m;[1;35m\x84[0m[31m[1;35m\xE5[0m[31mX[1;35m\xAE[0m[31mg[1;35m\xE2[0m[31m[1;35m\f[0m[31m[1;35m\f[0m[31m[1;35m\xD2[0m[31m[1;35m\xDD[0m[31m[1;35m\x15[0m[31m[1;35m\xB9[0m[31mT[1;35m\xEE[0m[31mQ[1;35m\r[0m[31me[1;35m\xAD[0m[31m[1;35m\x99[0m[31m[1;35m\xDD[0m[31m0YN[1;35m\x0F[0m[31m{[1;35m\xF2[0m[31mKA[1;31m"[0m[31m[0m,
+             @serializer[32m=[0m[1;34;4mActiveSupport[0m::[1;34;4mMessageEncryptor[0m::[1;34;4mNullSerializer[0m[32m>[0m[32m>[0m,
+         @parent_jar[32m=[0m[32m#<ActionDispatch::Cookies::CookieJar:0x0d82e15c[0m ...[32m>[0m[32m>[0m[32m>[0m,
+     [31m[1;31m"[0m[31maction_dispatch.request.unsigned_session_cookie[1;31m"[0m[31m[0m=>
+      {[31m[1;31m"[0m[31msession_id[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31md697e2d7ad957edb461844ae73248010[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31muser_id[1;31m"[0m[31m[0m=>[1;34m1[0m}},
+   @filtered_env[32m=[0m[1;36mnil[0m,
+   @filtered_parameters[32m=[0m
+    {[31m[1;31m"[0m[31mcontroller[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31maction[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31mshow[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mid[1;31m"[0m[31m[0m=>[31m[1;31m"[0m[31m2[1;31m"[0m[31m[0m},
+   @filtered_path[32m=[0m[1;36mnil[0m,
+   @fullpath[32m=[0m[31m[1;31m"[0m[31m/attractions/2[1;31m"[0m[31m[0m,
+   @headers[32m=[0m
+    [32m#<ActionDispatch::Http::Headers:0x0d82e878[0m
+     @req[32m=[0m[32m#<ActionDispatch::Request:0x0d82f91c[0m ...[32m>[0m[32m>[0m,
+   @ip[32m=[0m[1;36mnil[0m,
+   @method[32m=[0m[1;36mnil[0m,
+   @original_fullpath[32m=[0m[1;36mnil[0m,
+   @port[32m=[0m[1;36mnil[0m,
+   @protocol[32m=[0m[1;36mnil[0m,
+   @remote_ip[32m=[0m[1;36mnil[0m,
+   @request_method[32m=[0m[31m[1;31m"[0m[31mGET[1;31m"[0m[31m[0m,
+   @variant[32m=[0m[][32m>[0m,
+ @_routes[32m=[0m[1;36mnil[0m,
+ @attraction[32m=[0m
+  [32m#<Attraction:0x0d82c2d0[0m
+   id: [1;34m2[0m,
+   name: [31m[1;31m"[0m[31mFerris Wheel[1;31m"[0m[31m[0m,
+   min_height: [1;34m28[0m,
+   nausea_rating: [1;34m2[0m,
+   happiness_rating: [1;34m1[0m,
+   tickets: [1;34m2[0m[32m>[0m,
+ @cache_hit[32m=[0m{},
+ @marked_for_same_origin_verification[32m=[0m[1;36mtrue[0m,
+ @output_buffer[32m=[0m
+  [31m[1;31m"[0m[31mName: Ferris Wheel<br/>[1;35m\n[0m[31mTickets: 2<br/>[1;35m\n[0m[31mHeight: 28<br/>[1;35m\n[0m[31mHappiness Rating: 1<br/>[1;35m\n[0m[31mNausea Rating: 2<br/>[1;35m\n[0m[31m[1;31m"[0m[31m[0m,
+ @view_flow[32m=[0m[32m#<ActionView::OutputFlow:0x0d88f678[0m @content[32m=[0m{}[32m>[0m,
+ @view_renderer[32m=[0m
+  [32m#<ActionView::Renderer:0x0d88f7a4[0m
+   @lookup_context[32m=[0m
+    [32m#<ActionView::LookupContext:0x0d82eeb8[0m
+     @cache[32m=[0m[1;36mtrue[0m,
+     @details[32m=[0m
+      {[33m:locale[0m=>[[33m:en[0m],
+       [33m:formats[0m=>[[33m:html[0m],
+       [33m:variants[0m=>[],
+       [33m:handlers[0m=>[[33m:raw[0m, [33m:erb[0m, [33m:html[0m, [33m:builder[0m, [33m:ruby[0m, [33m:coffee[0m, [33m:jbuilder[0m]},
+     @details_key[32m=[0m[32m#<Concurrent::Map:0x0bc2f0f0 entries=0 default_proc=nil>[0m,
+     @prefixes[32m=[0m[[31m[1;31m"[0m[31mattractions[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mapplication[1;31m"[0m[31m[0m],
+     @rendered_format[32m=[0m[33m:html[0m,
+     @view_paths[32m=[0m
+      [32m#<ActionView::PathSet:0x0d82ee18[0m
+       @paths[32m=[0m
+        [[32m#<ActionView::OptimizedFileSystemResolver:0x0bd83b2c[0m
+          @cache[32m=[0m[32m#<ActionView::Resolver::Cache:0xbd83b18 keys=1 queries=0>[0m,
+          @path[32m=[0m
+           [31m[1;31m"[0m[31m/home/learn/Development/Code/rails-amusement-park-v-000/app/views[1;31m"[0m[31m[0m,
+          @pattern[32m=[0m
+           [31m[1;31m"[0m[31m:prefix/:action{.:locale,}{.:formats,}{+:variants,}{.:handlers,}[1;31m"[0m[31m[0m[32m>[0m][32m>[0m[32m>[0m[32m>[0m,
+ @virtual_path[32m=[0m[31m[1;31m"[0m[31mattractions/show[1;31m"[0m[31m[0m[32m>[0m
