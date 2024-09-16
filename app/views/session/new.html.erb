@@ -1,0 +1,6 @@
+<%= form_tag(@user) do %>
+  <p><b>Your name:</b> <%= collection_select(:user, :name, User.all, :name, :name, {include_blank: "Please select your username from this dropdown"}) %></p>
+  <p><b>Your password:</b><br /><%= password_field_tag %></p>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= submit_tag "Sign In" %></p>
+<% end %>
