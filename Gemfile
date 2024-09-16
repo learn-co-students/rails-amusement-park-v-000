@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Burd added pry so he can pry into things.
+gem 'pry'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
