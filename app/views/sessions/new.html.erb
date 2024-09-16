@@ -1,0 +1,12 @@
+<h2>Sign In</h2>
+
+<%= form_tag ({controller: "sessions", action: "create", method: "post"}) do %>
+
+<label>Name</label>
+<%= collection_select( :user, :name, User.all, :name, :name) %>
+
+<%= password_field_tag :password %>
+
+
+<%= submit_tag "Sign In" %>
+<% end %>
