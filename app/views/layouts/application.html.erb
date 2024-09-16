@@ -8,6 +8,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+
+
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -18,10 +20,17 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        </div>
+        <% if !session[:user_id] %>
+          <a class="navbar-brand" href="<%= new_user_url %>">Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_url %>">Log In</a>
+        <% else %>
+          <a class="navbar-brand" href="<%= attractions_url %>">See attractions</a>
+          <a class="navbar-brand" href="<%= user_url(current_user) %>">User Information Page</a>
+          <a class="navbar-brand" href="<%= logout_url %>">Log Out</a>
+        <% end %>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -29,7 +38,12 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
       <%= yield %>
     </div>
+
+
   </body>
 </html>

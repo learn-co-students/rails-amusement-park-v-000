@@ -1,0 +1,50 @@
+To Fix
+1. how to pass @ride to user show page
+
+
+Rides controllers
+x1. action for create route using post data from "Go on Ride" form on attraction show page.
+x2. redirect to user show page with message
+x3. call model methods
+
+
+
+
+xAttraction index
+
+For Admin user
+1. attraction name
+2. attraction tickets
+3. Details - linkto attraction show page "Show attraction.name"
+
+
+
+Attraction show page
+
+For standard user
+x 1. @attraction.name
+x2. @attraction.users.count
+x3. @attraction.tickets
+x4. @attraction.min_height
+x5. @attraction.nausea_rating
+x6. @attraction.happiness_rating
+
+xSubmit form '/rides'  "Go on this Ride"
+redirect_to user#show
+  => user show page has message "Thanks for riding the @attraction.name"
+  1. @user.name
+  2. @user.tickets
+  3. @user.mood
+  4. @user.height
+
+  link_to attractions
+
+xAttraction show page For admin
+x1. @attraction.name
+x2. @attraction.users.count
+x3. @attraction.tickets
+x4. @attraction.min_height
+x5. @attraction.nausea_rating
+x6. @attraction.happiness_rating
+
+x7. link_to edit attraction
