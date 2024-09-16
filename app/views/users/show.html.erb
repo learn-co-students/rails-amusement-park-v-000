@@ -1,0 +1,29 @@
+<h1>Hello <%= @user.name %>!</h1>
+
+<% if flash[:message] %>
+    <div class="center alert">
+        <p><%= flash[:message] %></p>
+    </div>
+<% end %>
+
+<div>
+    <% if @user.admin %>
+        <h2>ADMIN</h2>
+    <% end %>
+</div>
+<div>
+    <p>Height: <%= @user.height %> inches</p>
+    <p>Tickets: <%= @user.tickets %></p>
+    <p>Happiness Rating:<%= @user.happiness %></p>
+    <p>Nausea Rating: <%= @user.nausea %></p>
+
+    <% if @user.admin == false %>
+        <p>Current Mood: <%= @user.mood %></p>
+    <% end %>
+</div>
+
+<div>
+    <p><%= link_to "See attractions", attractions_path %></p>
+
+    <p><%= link_to "Log Out", controller: 'sessions', action: 'destroy' %></p>
+</div>
