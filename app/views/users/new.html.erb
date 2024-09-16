@@ -1,0 +1,42 @@
+<h1>Sign Up Here</h1>
+
+<%= form_for @user do |f| %>
+
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+  <br>
+  <br>
+
+  <%= f.label :height %><br>
+  <%= f.number_field :height %>
+  <br>
+  <br>
+
+  <%= f.label :happiness %><br>
+  <%= f.number_field :happiness %>
+  <br>
+  <br>
+
+  <%= f.label :nausea %><br>
+  <%= f.number_field :nausea %>
+  <br>
+  <br>
+
+  <%= f.label :tickets %><br>
+  <%= f.number_field :tickets %>
+  <br>
+  <br>
+
+  <%= f.label :admin %><br>
+  <%= f.check_box :admin %>
+  <br>
+  <br>
+
+  <%= f.label :password %><br>
+  <%= f.text_field :password %>
+  <br>
+  <br>
+
+  <%= f.submit button_label: "Create User"%>
+
+<% end %>

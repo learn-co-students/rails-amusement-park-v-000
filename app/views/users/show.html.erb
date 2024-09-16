@@ -1,0 +1,11 @@
+<h1><%= @user.name %>'s Profile</h1>
+
+<%= "ADMIN" if @user.admin %><br>
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Tickets: </strong><%= @user.tickets %></p>
+<p><strong>Mood: </strong><%= @user.mood %></p>
+<p><strong>Height: </strong><%= @user.height %> inches</p>
+
+<% if @user == current_user %>
+  <p><%= link_to "See attractions", attractions_path %></p>
+<% end %>

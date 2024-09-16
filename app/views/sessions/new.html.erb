@@ -1,0 +1,16 @@
+<h1>Sign In Here</h1>
+
+<%= form_for :user, url: signin_path do |f| %>
+  <%= f.label :name %><br />
+  <%= f.collection_select :name, User.all, :name, :name %>
+  <br>
+  <br>
+   
+  <%= f.label :password %><br />
+  <%= f.password_field :password, id: "password" %>
+  <br>
+  <br>
+  
+  <%= f.submit "Sign In" %>
+
+<% end %>
