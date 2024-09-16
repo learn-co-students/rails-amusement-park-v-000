@@ -1,0 +1,10 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+<%= form_for(:user, url: signin_path) do |f| %>
+    <%= f.label :name %>
+    <%= f.collection_select(:name, User.all, :name, :name) %>
+    <%= f.label :password %>
+    <%= f.password_field :password, id: 'password' %>
+    <%= f.submit 'Sign In'%>
+  <% end %>
