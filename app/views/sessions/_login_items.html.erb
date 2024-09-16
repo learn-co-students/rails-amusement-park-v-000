@@ -1,0 +1,5 @@
+<% if !session[:user_id] %>
+  <a class="navbar-brand" href="/signin" >Log In</a>
+<% else %>
+<%= link_to "LogMoiOut", logout_path, :method => :post, class: "navbar-brand" %>
+<% end %>
