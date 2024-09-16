@@ -1,0 +1,24 @@
+<%= form_for(user) do |f| %>
+  <label>Name</label><br>
+  <%= f.text_field :name, size: '100' %><br><br>
+
+  <label>Height (in inches)</label><br>
+  <%= f.text_field :height, size: '100' %><br><br>
+
+  <label>How happy are you? (1-5)</label><br>
+  <%= f.text_field :happiness, size: '100'  %><br><br>
+
+  <label>How nauseous are you?(1-5)</label><br>
+  <%= f.text_field :nausea, size: '100' %><br><br>
+
+  <label>How many tickets are in your pocket?</label><br>
+  <%= f.text_field :tickets, size: '100' %><br><br>
+
+  <label>Check box if you are a theme park owner</label><br>
+  <%= f.check_box :admin %><br><br>
+
+  <label>Password</label><br>
+  <%= f.password_field :password, size: '100', id: 'password' %><br><br>
+
+  <%= f.submit 'Create User' %>
+<% end %>
