@@ -1,0 +1,21 @@
+<h1> Editing attraction </h1> 
+
+<%= form_for @attraction do |a| %>
+    <p> <label> Name </label> <br> 
+    <%= a.text_field :name %> </p> 
+
+    <p> <label> Height Requirement (in inches) </label> <br> 
+    <%= a.number_field :min_height %> </p> 
+
+    <p> <label> How fun is it? (1-5 scale) </label> <br> 
+    <%= a.number_field :happiness_rating %> </p> 
+
+    <p> <label> How nauseous-inducing is it? (1-5 scale) </label> <br> 
+    <%= a.number_field :nausea_rating %> </p> 
+
+    <p> <label> How many tickets does it cost? </label> <br> 
+    <%= a.number_field :tickets %> </p> 
+
+    <p> <%= a.submit "Update Attraction" %> </p> 
+<% end %> 
+
