@@ -1,0 +1,10 @@
+<%= form_tag url: signin_path, method: :post do %>
+    <%= label_tag :name, "user_name" %>
+    <%= collection_select(:user, :id, @users, :id, :name, {}, {id:"user_name"}) %>
+  
+    <%= label_tag :password %>
+    <%= password_field_tag 'user[password]', nil, {id:'password'} %>
+  
+    <%= submit_tag "Sign In" %>
+    Or <%= link_to(controller: 'users', action: 'new') { 'sign up' } %>
+<% end %>
