@@ -1,0 +1,13 @@
+<%= flash[:message] %>
+<%= @user.admin ? "ADMIN": "" %>
+
+Name: <%= @user.name %>
+
+Tickets: <%= @user.tickets %>
+
+Mood: <%= @user.mood %>
+
+Height: <%= @user.height %>
+
+<%= link_to "Log Out",  signout_path %>
+<%= link_to "See attractions", attractions_path %>%
