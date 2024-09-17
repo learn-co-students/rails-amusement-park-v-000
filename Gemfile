@@ -7,7 +7,8 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1'
+gem 'rails'
+gem 'bundler'
 gem 'bootsnap'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~>1.3.6'
@@ -49,6 +50,7 @@ group :development, :test do
   gem "database_cleaner"
   gem "rspec-rails"
   gem "rack_session_access"
+  gem 'pry'
 end
 
 group :development do
