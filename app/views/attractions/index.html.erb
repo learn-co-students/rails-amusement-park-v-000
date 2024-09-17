@@ -1,0 +1,7 @@
+<h1>Listing Attractions</h1>
+
+<% if @user.admin == false %>
+    <%= render partial: "index" %>
+<% else @user.admin == true %> 
+    <%= render partial: "admin" %>
+<% end %>  
