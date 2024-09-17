@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsAmusementPark</title>
+    <title>Amusement Park</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= analytics_init if Rails.env.production? %>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
   </head>
   <body>
+    <!--  navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -21,15 +23,36 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            
+           <!--  nav here -->
+           <% if not logged_in? %>
+            <li>
+              <%= link_to 'Sign Up', '/users/new' %>
+            </li>
+            <li>
+              <%= link_to 'Sign In', signin_path %>
+            </li>
+           <% else %>
+            <li>
+              <%= link_to "Hello, #{current_user.name}!", user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to "Attractions", attractions_path %>
+            </li>
+            <li>
+              <%= link_to "Log Out", logout_path %>
+            </li>
+           <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
     <!-- content -->
+    <%= render 'layouts/messages' %>
+
     <div class="container"  role="main">
       <%= yield %>
     </div>
+
   </body>
 </html>
