@@ -1,0 +1,13 @@
+<% @attractions.each do |att| %>
+  <ul>
+    <%if current_user.admin %>
+      <a href='<%=attraction_path(att)%>'>Show <%=att.name%></a>
+    <%else%>
+      <a href='<%=attraction_path(att)%>'>Go on <%=att.name%></a>
+    <%end%>
+  </ul>
+<%end%>
+
+<% if current_user.admin %>
+  <%= link_to "New Attraction", new_attraction_path %>
+<%end%>
