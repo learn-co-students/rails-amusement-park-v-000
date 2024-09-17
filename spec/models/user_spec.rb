@@ -44,14 +44,15 @@ RSpec.describe User, :type => :model do
     )
   }
 
+#Create Migration file with the following tables included
   it "is valid with a name, password, happiness, nausea, height, and tickets" do
     expect(user).to be_valid
   end
-
+#For migration file, add password_digest table
   it "is not valid without a password" do
     expect(User.new(name: "Name")).not_to be_valid
   end
-
+#For migration file, add boolean with admin attribute and hash defaults to false
   it "is valid with an admin boolean" do
     expect(admin).to be_valid
   end
@@ -59,20 +60,20 @@ RSpec.describe User, :type => :model do
   it "defaults to admin => false" do
     expect(user.admin).to eq(false)
   end
-
+#For Model. 
   it "has many rides" do
     first_ride = Ride.create(:user_id => user.id, :attraction_id => roller_coaster.id)
     second_ride = Ride.create(:user_id => user.id, :attraction_id => ferris_wheel.id)
     expect(user.rides.first).to eq(first_ride)
     expect(user.rides.last).to eq(second_ride)
   end
-
+#For model.
   it "has many attractions through rides" do
     user.attractions << [roller_coaster, ferris_wheel]
     expect(user.attractions.first).to eq(roller_coaster)
     expect(user.attractions.last).to eq(ferris_wheel)
   end
-
+#Method to add to:
   it "has a method 'mood' that returns 'sad' when the user is more nauseous than happy" do
     expect(user.mood).to eq("sad")
   end
