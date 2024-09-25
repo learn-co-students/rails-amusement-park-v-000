@@ -1,0 +1,29 @@
+<% provide(:title, 'Sign Up') %>
+
+<h1>Sign Up</h1>   
+
+<%= form_for (@user) do |f|%>
+    <label>Name:</label>
+    <%= f.text_field :name%>
+    </br>
+    <label>Nausea:</label>
+    <%= f.number_field :nausea%>
+    </br>
+    <label>Happiness:</label>
+    <%= f.number_field :happiness%>
+    </br>
+    <label>Tickets:</label>
+    <%= f.number_field :tickets%>
+    </br>
+    <label>Height:</label>
+    <%= f.number_field :height%>
+    </br>
+    <label>Admin?</label>
+    <%= f.check_box :admin %>
+    </br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+    </br>
+    <%= f.submit "Create User"%>
+
+<%end%>
