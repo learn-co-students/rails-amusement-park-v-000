@@ -1,0 +1,29 @@
+<div class="container" role="main">
+  <%= yield %><!-- This actually WORKS!!! -->
+
+  <%= form_with model: @attraction do |f| %>
+    
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %> <!-- If I want this to resemble the demo, use `class: "form-control"` -->
+    </p>
+    <p>
+      <%= f.label :height, "Height Requirement (in inches)" %><br />
+      <%= f.number_field :min_height, min: 0 %>
+    </p>
+    <p>
+      <%= f.label :happiness, "How fun is it, on a scale of 1-5?" %><br />
+      <%= f.number_field :happiness_rating, in: 1..5 %>
+    </p>
+    <p>
+      <%= f.label :nausea, "How nausea-inducing is it, on a scale of 1-5?" %><br />
+      <%= f.number_field :nausea_rating, in: 1..5 %>
+    </p>
+    <p>
+      <%= f.label :tickets, "How many tickets does it cost?" %><br />
+      <%= f.number_field :tickets, min: 0 %>
+    </p>
+  
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
