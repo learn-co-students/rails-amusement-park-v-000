@@ -1,0 +1,25 @@
+<h1>New User</h1>
+<%= form_for @user do |f| %>
+  <!-- User Name -->
+  Name: <%= f.text_field :name %> </br>
+  <!-- User Password -->  
+  Password: <%= f.password_field :password %> </br>
+
+  <!-- User is Admin? -->
+  Admin: <%= f.check_box :admin %>
+      
+  <!-- User Height -->
+  Height: <%= f.text_field :height %> </br>
+  
+  <!-- User Tickets -->
+  Tickets: <%= f.text_field :tickets %> </br>
+  
+  <!-- User Happiness -->
+  Happiness: <%= f.text_field :happiness %> </br>
+  <!-- User Nausea -->
+  Nausea: <%= f.text_field :nausea %> </br>
+
+  <!-- Submit -->
+  <%= f.submit "Create User" %> 
+      
+<% end %>

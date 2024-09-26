@@ -1,0 +1,28 @@
+Name: <%= @user.name %></br>
+
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
+
+<% if @user.mood %>
+Mood: <%= @user.mood %></br>
+<% end %>
+<% if @user.happiness %>
+Happiness: <%= @user.happiness %><br>
+<% end %>
+<% if @user.nausea %>
+Nausea: <%= @user.nausea %></br>
+<% end %>
+<% if @user.tickets %>
+Tickets: <%= @user.tickets %></br>
+<% end %>
+<% if @user.height %>
+Height: <%= @user.height %></br>
+<% end %>
+Admin:
+<% if @user.admin %><%= 'ADMIN' %>
+<% end %><br>
+<%= link_to "Log Out", session_path, method:'delete' %>
+
+<!-- might need a link_to "See Attractions, attractions_path -->
+<%= link_to "See attractions", attractions_path %><br>
