@@ -22,7 +22,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   end
 
   it 'successfully logs in as non-admin' do
-    
+
     # user_login method is defined in login_helper.rb
     create_standard_user
     visit '/signin'
@@ -226,6 +226,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
   it "clicking on 'Go on ride' updates the users ticket number" do
     click_link('See attractions')
     click_link("Go on #{@ferriswheel.name}")
+    #binding.pry
     click_button("Go on this ride")
     expect(page).to have_content("Tickets: 13")
   end
