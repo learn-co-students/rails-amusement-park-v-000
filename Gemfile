@@ -7,6 +7,8 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'record_tag_helper', '~> 1.0'
+gem 'pry'
 gem 'rails', '~> 5.1'
 gem 'bootsnap'
 # Use sqlite3 as the database for Active Record
