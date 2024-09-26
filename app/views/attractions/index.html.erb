@@ -1,0 +1,10 @@
+<h1>Attractions</h1>
+<% @attractions.each do |attraction| %>
+        <%= render partial: 'admin_attraction', locals: {attraction: attraction}%>
+        <%= render partial: 'attraction', locals: {attraction: attraction}%>
+
+<%end%>
+<br>
+<br>
+
+<%= link_to "New Attraction", new_attraction_path %>
