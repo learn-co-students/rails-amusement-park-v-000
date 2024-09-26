@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+
     <title>RailsAmusementPark</title>
     <%= csrf_meta_tags %>
 
@@ -18,6 +20,14 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <% if !current_user %>
+          <a class="navbar-brand" href="<%= new_user_url %>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_url %>"/>Log In</a>
+        <% end %>
+        <% if current_user %>
+          <%= link_to "Current user's profile", root_url , class:"navbar-brand" %>
+          <%= link_to "Log Out", logout_path , class:"navbar-brand"%>
+        <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
