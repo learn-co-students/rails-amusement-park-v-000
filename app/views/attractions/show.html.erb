@@ -1,0 +1,26 @@
+    <!-- content -->
+<div class="container" role="main">
+  <p id="notice"></p>
+
+  <div class="center">
+
+    <div class="info">
+      <p><strong>Name:</strong> <%= @attraction.name %> </p>
+      <p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
+      <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
+      <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
+      <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
+      <% if @user.admin? %>
+        <p><a href="<%= edit_attraction_path(@attraction) %>">Edit Attraction</a></p>
+      <% end %>
+
+      
+      <%= form_tag(rides_path) do %>
+      <%= hidden_field(:ride, :user_id) %>
+      <%= hidden_field(:ride, :attraction_id) %>
+      
+      <input type="submit" value="Go on this ride" class="btn btn-light" id="Go on this ride">
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<!-- content -->
+<div class="container" role="main">
+  <h1>Editing attraction</h1>
+
+  <%= form_for @attraction do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: "#{@attraction.name}", class: "form-control" %></br>
+    <%= f.label :min_height, "Height Requirement (in inches)" %>
+    <%= f.text_field :min_height, placeholder: "#{@attraction.min_height}", :class => "form-control" %></br>
+    <%= f.label :happiness_rating, "How fun is it? (1-5 scale)" %>
+    <%= f.text_field :happiness_rating, placeholder: "#{@attraction.happiness_rating}", :class => "form-control" %></br>
+    <%= f.label :nausea_rating, "How nausea-inducing is it? (1-5 scale)" %>
+    <%= f.text_field :nausea_rating, placeholder: "#{@attraction.nausea_rating}", :class => "form-control" %></br>
+    <%= f.label :tickets, "How many tickets does it cost?" %>
+    <%= f.text_field :tickets, placeholder: "#{@attraction.tickets}", :class => "form-control" %></br>
+
+    <%= f.button("Update Attraction", :class => "btn btn-primary") %>
+    
+  <% end %>
+
+  <a href="<%= attraction_path(@attraction) %>">Show</a> |
+  <a href="<%= attractions_path %>">Back</a>
+</div>
