@@ -1,0 +1,21 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+
+<h1><%= @user.name %></h1>
+
+<label>Mood</label>
+<p><%= @user.mood %></p>
+
+<label>Tickets:</label>
+<p><%= @user.tickets %></p>
+
+<label>Height</label>
+<p><%= @user.height %> inches</p>
+
+<%= display_admin(@user) %>
+
+<%= link_to "See attractions", attractions_path %>
+
+<%= link_to "Log Out", logout_path, method: :post %>
