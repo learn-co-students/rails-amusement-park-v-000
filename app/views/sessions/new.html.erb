@@ -1,0 +1,12 @@
+  
+<h1>Sign In</h1>
+
+<%= form_for :user do |f| %>
+  <%= f.label :name %>:
+  <%= f.collection_select(:name, User.all, :name, :name, {prompt: "Select Your Name"}) %><br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, id: "password" %><br>
+
+  <%= f.submit "Sign In"%>
+<% end %>
