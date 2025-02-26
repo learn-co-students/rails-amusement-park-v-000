@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<div class="center">
+  <div class="pic">
+    <img src="http://<%= @attraction.name.gsub(" ", "") %>.jpg.to/" height="250">
+  </div>
+
+  <div class="info">
+    <p><strong>Name:</strong> <%= @attraction.name %></p>
+    <p><strong>Total Number of Users:</strong> <%= @attraction.users.count %></p>
+    <p><strong>Ticket Requirement:</strong> <%= @attraction.tickets %></p>
+    <p><strong>Height Requirement:</strong> <%= @attraction.min_height %> inches</p>
+    <p><strong>Nausea Rating:</strong> <%= @attraction.nausea_rating %></p>
+    <p><strong>Happiness Rating:</strong> <%= @attraction.happiness_rating %></p>
+    <% if current_user.admin %>
+      <%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
+    <% else %>
+      <form action="/rides/new" method="post">
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+        <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+        <input type="submit" value="Go on this ride">
+      </form>
+    <% end %>
+    <%= link_to 'Back', attractions_path %></p>
+  </div>
+</div>
