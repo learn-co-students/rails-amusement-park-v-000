@@ -1,0 +1,8 @@
+<%= form_for @user, url: "/session" do |f| %>
+
+    <%= f.label :name, "Select your name" %><br>
+      <%= f.collection_select(:name, @users, :name, :name) %>
+      <%= f.label :password, "password" %>
+      <%= f.password_field :password %>
+      <%= f.submit "Sign In"  %>
+  <% end %> 
